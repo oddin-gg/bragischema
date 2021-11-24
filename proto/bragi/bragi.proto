@@ -1,0 +1,559 @@
+syntax = "proto3";
+
+package bragi;
+
+option go_package = "oddin.gg/bragi";
+option java_package = "com.oddin.bragi";
+
+import "google/protobuf/timestamp.proto";
+
+service BragiGrpc {
+
+  rpc Sports (SportsRequest) returns (SportsResponse) {}
+
+  rpc Tournaments(TournamentsRequest) returns(TournamentResponse) {}
+
+  rpc TournamentInfo(TournamentInfoRequest) returns (TournamentInfoResponse) {}
+
+  rpc TeamHistoricalStatistics (TeamHistoricalStatisticsRequest) returns (HistoricalStatisticsResponse) {}
+
+  rpc LastFiveEncounters (LastFiveEncountersRequest) returns (LastFiveEncountersResponse) {}
+
+  rpc PostMapStatistics(PostMapStatisticsRequest) returns (PostMapStatisticsResponse) {}
+
+  rpc TournamentStatistics(TournamentStatisticsRequest) returns (TournamentStatisticsResponse) {}
+
+  rpc TeamTournamentStatistics(TeamTournamentStatisticsRequest) returns (TeamTournamentStatisticsResponse) {}
+
+  rpc PlayerStatisticsAccordingRole(PlayerStatisticsAccordingRoleRequest) returns (PlayerStatisticsAccordingRoleResponse) {}
+
+}
+
+// ----------------------------------------------------------------------------------------------------------------------
+// Request/response --------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------
+
+// The request message containing the user's name.
+message SportsRequest {
+}
+
+message TeamHistoricalStatisticsRequest {
+  uint32 sport_id = 1;
+  //  # Timeframe represents interval of computed statistics since current date. Eg. when current date is
+  //  # 2021/08/31 and "timeframe" is THREE_MONTHS, then statistics interval would be 2021/06/01 - 2021/08/31.
+  Timeframe timeframe = 2;
+  uint32 team_id = 3;
+}
+
+message LastFiveEncountersRequest {
+  uint32 sport_id = 1;
+  Timeframe timeframe = 2;
+  uint32 home_team_id = 3;
+  uint32 away_team_id = 4;
+}
+
+message TournamentsRequest {
+  uint32 sport_id = 1;
+  optional google.protobuf.Timestamp date_from = 2;
+  optional google.protobuf.Timestamp date_to = 3;
+}
+
+message TournamentInfoRequest {
+  uint32 tournament_id = 1;
+}
+
+message PostMapStatisticsRequest {
+  uint32 map_id = 1;
+}
+
+message TournamentStatisticsRequest {
+  uint32 tournament_id = 1;
+}
+
+message TeamTournamentStatisticsRequest {
+  uint32 tournament_id = 1;
+  uint32 team_id = 2;
+}
+
+message  PlayerStatisticsAccordingRoleRequest {
+  uint32 sport_id = 1;
+  //    # Timeframe represents interval of computed statistics since current date. Eg. when current date is
+  //    # 2021/08/31 and "timeframe" is THREE_MONTHS, then statistics interval would be 2021/06/01 - 2021/08/31.
+  Timeframe timeframe = 2;
+  string role = 3;
+  uint32 team_id = 4;
+}
+
+// The response message containing the greetings
+message SportsResponse {
+  repeated Sport sports = 1;
+}
+
+message TournamentResponse {
+  repeated Tournament tournaments = 1;
+}
+
+message HistoricalStatisticsResponse {
+  oneof oneof_name {
+    CsgoTeamStatistics csgo_team_statistics = 1;
+  }
+}
+message LastFiveEncountersResponse {
+  repeated Match matches = 1;
+}
+
+message PostMapStatisticsResponse {
+  oneof oneof_name {
+    CsgoPostMapStatistics csgo_post_map_statistics = 1;
+  }
+}
+
+message TournamentInfoResponse {
+  oneof oneof_name {
+    CsgoTournamentInfo csgo_tournament_info = 1;
+  }
+}
+
+message TournamentStatisticsResponse {
+  oneof oneof_name {
+    CsgoTournamentStatistics csgo_tournament_statistics = 1;
+  }
+}
+
+message TeamTournamentStatisticsResponse {
+  oneof oneof_name {
+    CsgoTeamStatistics csgo_teams_tournament_statistics = 1;
+  }
+}
+
+message PlayerStatisticsAccordingRoleResponse {
+  oneof oneof_name {
+    CsgoPlayerStatistics csgo_player_statistics = 1;
+  }
+}
+
+// ----------------------------------------------------------------------------------------------------------------------
+// Csgo entities --------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------
+
+message CsgoTeamStatistics {
+  Team team = 2;
+  repeated CsgoPlayerStatistics player_statistics = 3;
+  CsgoMapVote map_vote = 4;
+  repeated CsgoMapStatistics map_winrate = 5;
+  repeated CsgoMapStatisticsAccordingSide round_winrate = 6;
+  StatisticsValues overall_map_winrate = 7;
+  CsgoStatisticsSideValues overall_round_winrate = 8;
+  CsgoStatisticsSideValues pistol_winrate = 9;
+  CsgoStatisticsSideValues pistol_win_conversion = 10;
+  CsgoStatisticsSideValues pistol_loss_conversion = 11;
+  CsgoStatisticsSideValues kills = 12;
+  CsgoStatisticsSideValues deaths = 13;
+  CsgoStatisticsSideValues kills_over_deaths = 14;
+  CsgoStatisticsSideValues assists = 15;
+  CsgoStatisticsSideValues flash_assists = 16;
+  CsgoStatisticsSideValues damage = 17;
+  CsgoStatisticsSideValues headshot_rate = 18;
+  CsgoStatisticsSideValues opening_kills = 19;
+  CsgoStatisticsSideValues opening_conversion = 20;
+  CsgoStatisticsSideValues opening_death_conversion = 21;
+  CsgoStatisticsSideValues awp_kills = 22;
+  CsgoStatisticsSideValues elimination_winrate = 23;
+  CsgoStatisticsSideValues objective_winrate = 24;
+  CsgoStatisticsSideValues utility_damage = 25;
+  CsgoStatisticsSideValues first_to_win_3_rounds = 26;
+  CsgoStatisticsSideValues first_to_win_6_rounds = 27;
+  CsgoStatisticsSideValues first_to_win_9_rounds = 28;
+  CsgoStatisticsSideValues first_to_win_12_rounds = 29;
+  CsgoStatisticsSideValues rounds_lost = 30;
+  repeated CsgoWeaponStatistics favourite_weapons = 31;
+  repeated Match form = 32;
+}
+
+message CsgoPlayerStatistics {
+  Player player = 1;
+  StatisticsValues kills = 2;
+  StatisticsValues deaths = 3;
+  StatisticsValues assists = 4;
+  StatisticsValues kills_over_deaths = 5;
+  StatisticsValues damage = 6;
+  StatisticsValues headshot_rate = 7;
+  StatisticsValues flash_assists = 8;
+  StatisticsValues opening_kills = 9;
+  StatisticsValues awp_kills = 10;
+  StatisticsValues utility_damage = 11;
+  StatisticsValues enemies_flashed = 12;
+  StatisticsValues multi_kill_rounds = 13;
+  StatisticsValues clutch_rounds = 14;
+  StatisticsValues lurk_kills = 15;
+  StatisticsValues grenades_used = 16;
+  repeated CsgoWeaponStatistics favourite_weapons = 17;
+}
+
+message CsgoPostMapStatistics {
+  CsgoMap map = 1;
+  CsgoTeamPostMapStatistics home_team_statistics = 2;
+  CsgoTeamPostMapStatistics away_team_statistics = 3;
+  repeated CsgoPlayersDuel duels = 4;
+  repeated CsgoRoundPostmap rounds = 5;
+}
+
+message CsgoTournamentInfo {
+  uint32 id = 1;
+  Tournament tournament = 2;
+  optional string organizer = 3;
+  optional string location = 4;
+  optional string prize_pool = 5;
+  optional bool is_offline = 6;
+  optional bool is_qualification = 7;
+  repeated CsgoTeam teams = 8;
+  repeated Match matches = 9;
+  repeated CsgoTournamentBlock blocks = 10;
+}
+
+message CsgoTournamentStatistics {
+  uint32 id = 1;
+  Tournament tournament = 2;
+  optional float terrorists_winrate_in_percent = 3;
+  optional float counter_terrorists_winrate_in_percent = 4;
+  CsgoTournamentBestTeamStatistics best_teams = 5;
+  CsgoTournamentBestPlayerStatistics best_players = 6;
+  repeated CsgoTournamentMapStatistics tournament_maps_statistics = 7;
+}
+
+message CsgoTeamPostMapStatistics {
+  uint32 id = 1;
+  Team team = 2;
+  repeated CsgoPlayerPostMapStatistics players_statistics = 3;
+  int32 rounds_won = 4;
+  int32 rounds_lost = 5;
+  PostMapStatisticsValues kills = 6;
+  PostMapStatisticsValues deaths = 7;
+  PostMapStatisticsValues assists = 8;
+  PostMapStatisticsValues kills_over_deaths = 9;
+  PostMapStatisticsValues damage = 10;
+  PostMapStatisticsValues headshot_rate = 11;
+  PostMapStatisticsValues flash_assists = 12;
+  PostMapStatisticsValues opening_kills = 13;
+  PostMapStatisticsValues kills_difference = 14;
+  PostMapStatisticsValues kill_cost = 15;
+  PostMapStatisticsValues accuracy_rate = 16;
+  PostMapStatisticsValues kills_with_dropped_weapons = 17;
+  repeated CsgoWeaponPostMapStatistics favourite_weapons = 18;
+}
+
+message CsgoPlayerPostMapStatistics {
+  uint32 id = 1;
+  Player player = 2;
+  CsgoPlayerRole player_map_role = 3;
+  PostMapStatisticsValues kills = 4;
+  PostMapStatisticsValues deaths = 5;
+  PostMapStatisticsValues assists = 6;
+  PostMapStatisticsValues rounds_survived = 7;
+  PostMapStatisticsValues kills_over_deaths = 8;
+  PostMapStatisticsValues damage = 9;
+  PostMapStatisticsValues headshot_rate = 10;
+  PostMapStatisticsValues flash_assists = 11;
+  PostMapStatisticsValues opening_kills = 12;
+  PostMapStatisticsValues clutch_rounds = 13;
+  PostMapStatisticsValues utility_damage = 14;
+  PostMapStatisticsValues grenades_used = 15;
+  PostMapStatisticsValues enemies_flashed = 16;
+  PostMapStatisticsValues awp_kills = 17;
+  PostMapStatisticsValues lurk_kills = 18;
+  PostMapStatisticsValues kills_difference = 19;
+  PostMapStatisticsValues kill_cost = 20;
+  PostMapStatisticsValues accuracy_rate = 21;
+  repeated CsgoWeaponPostMapStatistics favourite_weapons = 22;
+}
+
+// ----------------------------------------------------------------------------------------------------------------------
+// Csgo statistics entities ---------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------
+
+message CsgoRoundPostmap{
+  int32 round = 1;
+  Map map = 2;
+  CsgoMap csgo_map = 3;
+  Team winner_team = 4;
+  CsgoSide winner_side = 5;
+  CsgoRoundOutcome round_outcome = 6;
+}
+
+message CsgoMapStatisticsAccordingSide {
+  CsgoMap map = 1;
+  CsgoStatisticsSideValues statistics = 2;
+}
+
+message CsgoTournamentMapStatistics {
+  CsgoMap map = 1;
+  int32 picks = 2;
+  int32 bans = 3;
+  optional float terrorists_winrate_in_percent = 4;
+  optional float counter_terrorists_winrate_in_percent = 5;
+  CsgoTournamentBestTeamStatistics best_teams = 6;
+  CsgoTournamentBestPlayerStatistics best_players = 7;
+}
+
+message CsgoTournamentPlayerStatistics {
+  Player player = 1;
+  optional Team team = 2;
+  float value = 3;
+}
+
+message CsgoTournamentBestTeamStatistics {
+  TournamentTeamStatisticsValue highest_kills = 1;
+  TournamentTeamStatisticsValue highest_kills_over_deaths = 2;
+  TournamentTeamStatisticsValue highest_awp_kills = 3;
+  TournamentTeamStatisticsValueInPercent highest_plant_rate = 4;
+  TournamentTeamStatisticsValueInPercent highest_defuse_rate = 5;
+}
+
+message CsgoTournamentBestPlayerStatistics {
+  CsgoTournamentPlayerStatistics highest_kills = 1;
+  CsgoTournamentPlayerStatistics highest_kills_over_deaths = 2;
+  CsgoTournamentPlayerStatistics highest_damage = 3;
+  CsgoTournamentPlayerStatistics highest_flash_assists = 4;
+  CsgoTournamentPlayerStatistics highest_utility_damage = 5;
+  CsgoTournamentPlayerStatistics highest_opening_kills = 6;
+}
+
+message CsgoTeamStandingRound {
+  int32 round = 1;
+  optional int32 team_score = 2;
+  optional Team opponent = 3;
+  optional int32 opponent_score = 4;
+  bool match_is_closed = 5;
+}
+
+message CsgoPlayersDuel {
+  CsgoPlayer home_player = 1;
+  int32 home_player_kills = 2;
+  CsgoPlayer away_player = 3;
+  int32 away_player_kills = 4;
+}
+
+message CsgoStatisticsSideValues {
+  StatisticsValues terrorists = 1;
+  StatisticsValues counter_terrorists = 2;
+  StatisticsValues all = 3;
+}
+
+message CsgoWeaponStatistics {
+  CsgoWeapon weapon = 1;
+  StatisticsValues kills_with_weapon = 2;
+  StatisticsValues headshots_with_weapon = 3;
+}
+
+message CsgoWeaponPostMapStatistics {
+  CsgoWeapon weapon = 1;
+  int32 kills_with_weapon = 2;
+  int32 headshots_with_weapon = 3;
+}
+
+message CsgoMap {
+  uint32 id = 1;
+  string name = 2;
+  optional string icon_path = 3;
+}
+
+message CsgoMapVote {
+  repeated CsgoMapStatistics picked = 1;
+  repeated CsgoMapStatistics banned = 2;
+}
+
+message CsgoMapStatistics {
+  CsgoMap map = 1;
+  StatisticsValues statistics = 2;
+}
+
+message CsgoWeapon {
+  uint32 id = 1;
+  string name = 2;
+  optional string icon_path = 3;
+}
+
+message CsgoTeam {
+  uint32 id = 1;
+  Team team = 2;
+  repeated Player players = 3;
+}
+
+message CsgoPlayer {
+  uint32 id = 1;
+  string nickname = 2;
+  optional string real_name = 3;
+  optional string shortcut = 4;
+  optional string icon_path = 5;
+  CsgoPlayerRole role = 6;
+}
+
+message CsgoTournamentBlock {
+  oneof oneof_name {
+    CsgoTournamentStandingsBlock csgo_tournament_standings_block = 1;
+    CsgoTournamentBracketsBlock csgo_tournament_brackets_block = 2;
+  }
+}
+
+message CsgoTournamentStandingsBlock {
+  uint32 id = 1;
+  string name = 2;
+  int32 order = 3;
+  repeated CsgoTeamStanding standings = 4;
+}
+
+message CsgoTournamentBracketsBlock {
+  uint32 id = 1;
+  string name = 2;
+  int32 order = 3;
+  repeated TournamentBracketNode brackets = 4;
+}
+
+message CsgoTeamStanding {
+  uint32 id = 1;
+  int32 rank = 2;
+  Team team = 3;
+  int32 points = 4;
+  int32 matches_won = 5;
+  int32 matches_lost = 6;
+  int32 matches_drawn = 7;
+  int32 maps_won = 8;
+  int32 maps_lost = 9;
+  int32 maps_drawn = 10;
+  int32 rounds_won = 11;
+  int32 rounds_lost = 12;
+  int32 map_difference = 13;
+  int32 round_difference = 14;
+  optional string status = 15;
+  repeated CsgoTeamStandingRound rounds = 16;
+}
+
+message TournamentBracketNode {
+  uint32 id = 1;
+  optional Team home_team = 2;
+  optional int32 home_score = 3;
+  optional Team away_team = 4;
+  optional int32 away_score = 5;
+  optional Match match = 6;
+  optional string label = 7;
+  bool is_root = 8;
+  repeated uint32 child_nodes = 9;
+}
+
+enum CsgoPlayerRole {
+  CSGO_PLAYER_ROLE_UNSPECIFIED = 0;
+  CSGO_PLAYER_ROLE_KILL_LEADER = 1;
+  CSGO_PLAYER_ROLE_ENTRY_FRAGGER = 2;
+  CSGO_PLAYER_ROLE_SUPPORT = 3;
+  CSGO_PLAYER_ROLE_AWPER = 4;
+  CSGO_PLAYER_ROLE_LURKER = 5;
+}
+
+enum CsgoSide {
+  CSGO_SIDE_UNSPECIFIED = 0;
+  CSGO_SIDE_COUNTER_TERRORISTS = 1;
+  CSGO_SIDE_TERRORISTS = 2;
+}
+
+enum CsgoRoundOutcome {
+  CSGO_ROUND_OUTCOME_UNSPECIFIED = 0;
+  CSGO_ROUND_OUTCOME_COUNTER_TERRORISTS_ELIMINATED = 1;
+  CSGO_ROUND_OUTCOME_TERRORISTS_ELIMINATED = 2;
+  CSGO_ROUND_OUTCOME_EXPLOSION = 3;
+  CSGO_ROUND_OUTCOME_DEFUSE = 4;
+  CSGO_ROUND_OUTCOME_TIMEOUT = 5;
+}
+
+// ----------------------------------------------------------------------------------------------------------------------
+// common entities ------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------
+
+message Sport {
+  uint32 id = 1;
+  string name = 2;
+}
+
+message Tournament {
+  uint32 id = 1;
+  string name = 2;
+  google.protobuf.Timestamp start_timestamp = 3;
+  google.protobuf.Timestamp end_timestamp = 4;
+}
+
+message Team {
+  uint32 id = 1;
+  string name = 2;
+  optional string icon_path = 3;
+}
+
+message Match {
+  uint32 id = 1;
+  google.protobuf.Timestamp planned_start_timestamp = 2;
+  google.protobuf.Timestamp start_timestamp = 3;
+  google.protobuf.Timestamp end_timestamp = 4;
+  Tournament tournament = 5;
+  optional Team home_team = 6;
+  optional int32 home_score = 7;
+  optional Team away_team = 8;
+  optional int32 away_score = 9;
+  optional Team win_team = 10;
+  bool is_closed = 11;
+  BestOfType best_of_type = 12;
+  repeated Map maps = 13;
+}
+
+message Map {
+  uint32 id = 1;
+  int32 order = 2;
+  optional google.protobuf.Timestamp start_timestamp = 3;
+  optional google.protobuf.Timestamp end_timestamp = 4;
+  bool is_closed = 5;
+}
+
+message Player {
+  uint32 id = 1;
+  string nickname = 2;
+  optional string real_name = 3;
+  optional string shortcut = 4;
+  optional string icon_path = 5;
+}
+
+message TournamentTeamStatisticsValue {
+  Team team = 1;
+  float value = 2;
+}
+
+message TournamentTeamStatisticsValueInPercent {
+  Team team = 1;
+  float value = 2; // In value in percent
+}
+
+message PostMapStatisticsValues {
+  float percentage_of_maximum = 1;
+  float total = 2;
+}
+
+message StatisticsValues {
+  float avg = 1;
+  float percentile = 2;
+  float total = 3;
+}
+
+enum Timeframe {
+  TIMEFRAME_UNSPECIFIED = 0;
+  TIMEFRAME_ONE_MONTH = 1;
+  TIMEFRAME_THREE_MONTHS = 2;
+  TIMEFRAME_SIX_MONTHS = 3;
+  TIMEFRAME_ONE_YEAR = 4;
+}
+
+enum BestOfType {
+  BEST_OF_TYPE_UNSPECIFIED = 0;
+  BEST_OF_TYPE_BO1 = 1;
+  BEST_OF_TYPE_BO2 = 2;
+  BEST_OF_TYPE_BO3 = 3;
+  BEST_OF_TYPE_BO4 = 4;
+  BEST_OF_TYPE_BO5 = 5;
+  BEST_OF_TYPE_BO6 = 6;
+  BEST_OF_TYPE_BO7 = 7;
+}
