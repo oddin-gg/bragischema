@@ -273,12 +273,12 @@ export namespace TournamentResponse {
 }
 
 export class HistoricalStatisticsResponse extends jspb.Message {
-  hasCsgoTeamStatistics(): boolean;
-  clearCsgoTeamStatistics(): void;
-  getCsgoTeamStatistics(): CsgoTeamStatistics | undefined;
-  setCsgoTeamStatistics(value?: CsgoTeamStatistics): void;
+  hasCsgo(): boolean;
+  clearCsgo(): void;
+  getCsgo(): CsgoTeamStatistics | undefined;
+  setCsgo(value?: CsgoTeamStatistics): void;
 
-  getOneofNameCase(): HistoricalStatisticsResponse.OneofNameCase;
+  getHistoricalStatisticsCase(): HistoricalStatisticsResponse.HistoricalStatisticsCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): HistoricalStatisticsResponse.AsObject;
   static toObject(includeInstance: boolean, msg: HistoricalStatisticsResponse): HistoricalStatisticsResponse.AsObject;
@@ -291,12 +291,12 @@ export class HistoricalStatisticsResponse extends jspb.Message {
 
 export namespace HistoricalStatisticsResponse {
   export type AsObject = {
-    csgoTeamStatistics?: CsgoTeamStatistics.AsObject,
+    csgo?: CsgoTeamStatistics.AsObject,
   }
 
-  export enum OneofNameCase {
-    ONEOF_NAME_NOT_SET = 0,
-    CSGO_TEAM_STATISTICS = 1,
+  export enum HistoricalStatisticsCase {
+    HISTORICAL_STATISTICS_NOT_SET = 0,
+    CSGO = 1,
   }
 }
 
@@ -323,12 +323,12 @@ export namespace LastFiveEncountersResponse {
 }
 
 export class PostMapStatisticsResponse extends jspb.Message {
-  hasCsgoPostMapStatistics(): boolean;
-  clearCsgoPostMapStatistics(): void;
-  getCsgoPostMapStatistics(): CsgoPostMapStatistics | undefined;
-  setCsgoPostMapStatistics(value?: CsgoPostMapStatistics): void;
+  hasCsgo(): boolean;
+  clearCsgo(): void;
+  getCsgo(): CsgoPostMapStatistics | undefined;
+  setCsgo(value?: CsgoPostMapStatistics): void;
 
-  getOneofNameCase(): PostMapStatisticsResponse.OneofNameCase;
+  getPostMapStatisticsCase(): PostMapStatisticsResponse.PostMapStatisticsCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PostMapStatisticsResponse.AsObject;
   static toObject(includeInstance: boolean, msg: PostMapStatisticsResponse): PostMapStatisticsResponse.AsObject;
@@ -341,22 +341,22 @@ export class PostMapStatisticsResponse extends jspb.Message {
 
 export namespace PostMapStatisticsResponse {
   export type AsObject = {
-    csgoPostMapStatistics?: CsgoPostMapStatistics.AsObject,
+    csgo?: CsgoPostMapStatistics.AsObject,
   }
 
-  export enum OneofNameCase {
-    ONEOF_NAME_NOT_SET = 0,
-    CSGO_POST_MAP_STATISTICS = 1,
+  export enum PostMapStatisticsCase {
+    POST_MAP_STATISTICS_NOT_SET = 0,
+    CSGO = 1,
   }
 }
 
 export class TournamentInfoResponse extends jspb.Message {
-  hasCsgoTournamentInfo(): boolean;
-  clearCsgoTournamentInfo(): void;
-  getCsgoTournamentInfo(): CsgoTournamentInfo | undefined;
-  setCsgoTournamentInfo(value?: CsgoTournamentInfo): void;
+  hasCsgo(): boolean;
+  clearCsgo(): void;
+  getCsgo(): CsgoTournamentInfo | undefined;
+  setCsgo(value?: CsgoTournamentInfo): void;
 
-  getOneofNameCase(): TournamentInfoResponse.OneofNameCase;
+  getTournamentInfoCase(): TournamentInfoResponse.TournamentInfoCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TournamentInfoResponse.AsObject;
   static toObject(includeInstance: boolean, msg: TournamentInfoResponse): TournamentInfoResponse.AsObject;
@@ -369,22 +369,22 @@ export class TournamentInfoResponse extends jspb.Message {
 
 export namespace TournamentInfoResponse {
   export type AsObject = {
-    csgoTournamentInfo?: CsgoTournamentInfo.AsObject,
+    csgo?: CsgoTournamentInfo.AsObject,
   }
 
-  export enum OneofNameCase {
-    ONEOF_NAME_NOT_SET = 0,
-    CSGO_TOURNAMENT_INFO = 1,
+  export enum TournamentInfoCase {
+    TOURNAMENT_INFO_NOT_SET = 0,
+    CSGO = 1,
   }
 }
 
 export class TournamentStatisticsResponse extends jspb.Message {
-  hasCsgoTournamentStatistics(): boolean;
-  clearCsgoTournamentStatistics(): void;
-  getCsgoTournamentStatistics(): CsgoTournamentStatistics | undefined;
-  setCsgoTournamentStatistics(value?: CsgoTournamentStatistics): void;
+  hasCsgo(): boolean;
+  clearCsgo(): void;
+  getCsgo(): CsgoTournamentStatistics | undefined;
+  setCsgo(value?: CsgoTournamentStatistics): void;
 
-  getOneofNameCase(): TournamentStatisticsResponse.OneofNameCase;
+  getTournamentStatisticsCase(): TournamentStatisticsResponse.TournamentStatisticsCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TournamentStatisticsResponse.AsObject;
   static toObject(includeInstance: boolean, msg: TournamentStatisticsResponse): TournamentStatisticsResponse.AsObject;
@@ -397,22 +397,22 @@ export class TournamentStatisticsResponse extends jspb.Message {
 
 export namespace TournamentStatisticsResponse {
   export type AsObject = {
-    csgoTournamentStatistics?: CsgoTournamentStatistics.AsObject,
+    csgo?: CsgoTournamentStatistics.AsObject,
   }
 
-  export enum OneofNameCase {
-    ONEOF_NAME_NOT_SET = 0,
-    CSGO_TOURNAMENT_STATISTICS = 1,
+  export enum TournamentStatisticsCase {
+    TOURNAMENT_STATISTICS_NOT_SET = 0,
+    CSGO = 1,
   }
 }
 
 export class TeamTournamentStatisticsResponse extends jspb.Message {
-  hasCsgoTeamsTournamentStatistics(): boolean;
-  clearCsgoTeamsTournamentStatistics(): void;
-  getCsgoTeamsTournamentStatistics(): CsgoTeamStatistics | undefined;
-  setCsgoTeamsTournamentStatistics(value?: CsgoTeamStatistics): void;
+  hasCsgo(): boolean;
+  clearCsgo(): void;
+  getCsgo(): CsgoTeamStatistics | undefined;
+  setCsgo(value?: CsgoTeamStatistics): void;
 
-  getOneofNameCase(): TeamTournamentStatisticsResponse.OneofNameCase;
+  getTeamsTournamentStatisticsCase(): TeamTournamentStatisticsResponse.TeamsTournamentStatisticsCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TeamTournamentStatisticsResponse.AsObject;
   static toObject(includeInstance: boolean, msg: TeamTournamentStatisticsResponse): TeamTournamentStatisticsResponse.AsObject;
@@ -425,22 +425,22 @@ export class TeamTournamentStatisticsResponse extends jspb.Message {
 
 export namespace TeamTournamentStatisticsResponse {
   export type AsObject = {
-    csgoTeamsTournamentStatistics?: CsgoTeamStatistics.AsObject,
+    csgo?: CsgoTeamStatistics.AsObject,
   }
 
-  export enum OneofNameCase {
-    ONEOF_NAME_NOT_SET = 0,
-    CSGO_TEAMS_TOURNAMENT_STATISTICS = 1,
+  export enum TeamsTournamentStatisticsCase {
+    TEAMS_TOURNAMENT_STATISTICS_NOT_SET = 0,
+    CSGO = 1,
   }
 }
 
 export class PlayerStatisticsAccordingRoleResponse extends jspb.Message {
-  hasCsgoPlayerStatistics(): boolean;
-  clearCsgoPlayerStatistics(): void;
-  getCsgoPlayerStatistics(): CsgoPlayerStatistics | undefined;
-  setCsgoPlayerStatistics(value?: CsgoPlayerStatistics): void;
+  hasCsgo(): boolean;
+  clearCsgo(): void;
+  getCsgo(): CsgoPlayerStatistics | undefined;
+  setCsgo(value?: CsgoPlayerStatistics): void;
 
-  getOneofNameCase(): PlayerStatisticsAccordingRoleResponse.OneofNameCase;
+  getPlayerStatisticsAccordingRoleCase(): PlayerStatisticsAccordingRoleResponse.PlayerStatisticsAccordingRoleCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PlayerStatisticsAccordingRoleResponse.AsObject;
   static toObject(includeInstance: boolean, msg: PlayerStatisticsAccordingRoleResponse): PlayerStatisticsAccordingRoleResponse.AsObject;
@@ -453,12 +453,12 @@ export class PlayerStatisticsAccordingRoleResponse extends jspb.Message {
 
 export namespace PlayerStatisticsAccordingRoleResponse {
   export type AsObject = {
-    csgoPlayerStatistics?: CsgoPlayerStatistics.AsObject,
+    csgo?: CsgoPlayerStatistics.AsObject,
   }
 
-  export enum OneofNameCase {
-    ONEOF_NAME_NOT_SET = 0,
-    CSGO_PLAYER_STATISTICS = 1,
+  export enum PlayerStatisticsAccordingRoleCase {
+    PLAYER_STATISTICS_ACCORDING_ROLE_NOT_SET = 0,
+    CSGO = 1,
   }
 }
 

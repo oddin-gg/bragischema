@@ -94,8 +94,8 @@ message TournamentResponse {
 }
 
 message HistoricalStatisticsResponse {
-  oneof oneof_name {
-    CsgoTeamStatistics csgo_team_statistics = 1;
+  oneof historical_statistics {
+    CsgoTeamStatistics csgo = 1;
   }
 }
 message LastFiveEncountersResponse {
@@ -103,32 +103,32 @@ message LastFiveEncountersResponse {
 }
 
 message PostMapStatisticsResponse {
-  oneof oneof_name {
-    CsgoPostMapStatistics csgo_post_map_statistics = 1;
+  oneof post_map_statistics {
+    CsgoPostMapStatistics csgo = 1;
   }
 }
 
 message TournamentInfoResponse {
-  oneof oneof_name {
-    CsgoTournamentInfo csgo_tournament_info = 1;
+  oneof tournament_info {
+    CsgoTournamentInfo csgo = 1;
   }
 }
 
 message TournamentStatisticsResponse {
-  oneof oneof_name {
-    CsgoTournamentStatistics csgo_tournament_statistics = 1;
+  oneof tournament_statistics {
+    CsgoTournamentStatistics csgo = 1;
   }
 }
 
 message TeamTournamentStatisticsResponse {
-  oneof oneof_name {
-    CsgoTeamStatistics csgo_teams_tournament_statistics = 1;
+  oneof teams_tournament_statistics {
+    CsgoTeamStatistics csgo = 1;
   }
 }
 
 message PlayerStatisticsAccordingRoleResponse {
-  oneof oneof_name {
-    CsgoPlayerStatistics csgo_player_statistics = 1;
+  oneof player_statistics_according_role {
+    CsgoPlayerStatistics csgo = 1;
   }
 }
 

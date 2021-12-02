@@ -57,7 +57,7 @@ goog.exportSymbol('proto.bragi.CsgoWeapon', null, global);
 goog.exportSymbol('proto.bragi.CsgoWeaponPostMapStatistics', null, global);
 goog.exportSymbol('proto.bragi.CsgoWeaponStatistics', null, global);
 goog.exportSymbol('proto.bragi.HistoricalStatisticsResponse', null, global);
-goog.exportSymbol('proto.bragi.HistoricalStatisticsResponse.OneofNameCase', null, global);
+goog.exportSymbol('proto.bragi.HistoricalStatisticsResponse.HistoricalStatisticsCase', null, global);
 goog.exportSymbol('proto.bragi.LastFiveEncountersRequest', null, global);
 goog.exportSymbol('proto.bragi.LastFiveEncountersResponse', null, global);
 goog.exportSymbol('proto.bragi.Map', null, global);
@@ -65,10 +65,10 @@ goog.exportSymbol('proto.bragi.Match', null, global);
 goog.exportSymbol('proto.bragi.Player', null, global);
 goog.exportSymbol('proto.bragi.PlayerStatisticsAccordingRoleRequest', null, global);
 goog.exportSymbol('proto.bragi.PlayerStatisticsAccordingRoleResponse', null, global);
-goog.exportSymbol('proto.bragi.PlayerStatisticsAccordingRoleResponse.OneofNameCase', null, global);
+goog.exportSymbol('proto.bragi.PlayerStatisticsAccordingRoleResponse.PlayerStatisticsAccordingRoleCase', null, global);
 goog.exportSymbol('proto.bragi.PostMapStatisticsRequest', null, global);
 goog.exportSymbol('proto.bragi.PostMapStatisticsResponse', null, global);
-goog.exportSymbol('proto.bragi.PostMapStatisticsResponse.OneofNameCase', null, global);
+goog.exportSymbol('proto.bragi.PostMapStatisticsResponse.PostMapStatisticsCase', null, global);
 goog.exportSymbol('proto.bragi.PostMapStatisticsValues', null, global);
 goog.exportSymbol('proto.bragi.Sport', null, global);
 goog.exportSymbol('proto.bragi.SportsRequest', null, global);
@@ -78,17 +78,17 @@ goog.exportSymbol('proto.bragi.Team', null, global);
 goog.exportSymbol('proto.bragi.TeamHistoricalStatisticsRequest', null, global);
 goog.exportSymbol('proto.bragi.TeamTournamentStatisticsRequest', null, global);
 goog.exportSymbol('proto.bragi.TeamTournamentStatisticsResponse', null, global);
-goog.exportSymbol('proto.bragi.TeamTournamentStatisticsResponse.OneofNameCase', null, global);
+goog.exportSymbol('proto.bragi.TeamTournamentStatisticsResponse.TeamsTournamentStatisticsCase', null, global);
 goog.exportSymbol('proto.bragi.Timeframe', null, global);
 goog.exportSymbol('proto.bragi.Tournament', null, global);
 goog.exportSymbol('proto.bragi.TournamentBracketNode', null, global);
 goog.exportSymbol('proto.bragi.TournamentInfoRequest', null, global);
 goog.exportSymbol('proto.bragi.TournamentInfoResponse', null, global);
-goog.exportSymbol('proto.bragi.TournamentInfoResponse.OneofNameCase', null, global);
+goog.exportSymbol('proto.bragi.TournamentInfoResponse.TournamentInfoCase', null, global);
 goog.exportSymbol('proto.bragi.TournamentResponse', null, global);
 goog.exportSymbol('proto.bragi.TournamentStatisticsRequest', null, global);
 goog.exportSymbol('proto.bragi.TournamentStatisticsResponse', null, global);
-goog.exportSymbol('proto.bragi.TournamentStatisticsResponse.OneofNameCase', null, global);
+goog.exportSymbol('proto.bragi.TournamentStatisticsResponse.TournamentStatisticsCase', null, global);
 goog.exportSymbol('proto.bragi.TournamentTeamStatisticsValue', null, global);
 goog.exportSymbol('proto.bragi.TournamentTeamStatisticsValueInPercent', null, global);
 goog.exportSymbol('proto.bragi.TournamentsRequest', null, global);
@@ -3136,16 +3136,16 @@ proto.bragi.HistoricalStatisticsResponse.oneofGroups_ = [[1]];
 /**
  * @enum {number}
  */
-proto.bragi.HistoricalStatisticsResponse.OneofNameCase = {
-  ONEOF_NAME_NOT_SET: 0,
-  CSGO_TEAM_STATISTICS: 1
+proto.bragi.HistoricalStatisticsResponse.HistoricalStatisticsCase = {
+  HISTORICAL_STATISTICS_NOT_SET: 0,
+  CSGO: 1
 };
 
 /**
- * @return {proto.bragi.HistoricalStatisticsResponse.OneofNameCase}
+ * @return {proto.bragi.HistoricalStatisticsResponse.HistoricalStatisticsCase}
  */
-proto.bragi.HistoricalStatisticsResponse.prototype.getOneofNameCase = function() {
-  return /** @type {proto.bragi.HistoricalStatisticsResponse.OneofNameCase} */(jspb.Message.computeOneofCase(this, proto.bragi.HistoricalStatisticsResponse.oneofGroups_[0]));
+proto.bragi.HistoricalStatisticsResponse.prototype.getHistoricalStatisticsCase = function() {
+  return /** @type {proto.bragi.HistoricalStatisticsResponse.HistoricalStatisticsCase} */(jspb.Message.computeOneofCase(this, proto.bragi.HistoricalStatisticsResponse.oneofGroups_[0]));
 };
 
 
@@ -3179,7 +3179,7 @@ proto.bragi.HistoricalStatisticsResponse.prototype.toObject = function(opt_inclu
  */
 proto.bragi.HistoricalStatisticsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    csgoTeamStatistics: (f = msg.getCsgoTeamStatistics()) && proto.bragi.CsgoTeamStatistics.toObject(includeInstance, f)
+    csgo: (f = msg.getCsgo()) && proto.bragi.CsgoTeamStatistics.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3219,7 +3219,7 @@ proto.bragi.HistoricalStatisticsResponse.deserializeBinaryFromReader = function(
     case 1:
       var value = new proto.bragi.CsgoTeamStatistics;
       reader.readMessage(value,proto.bragi.CsgoTeamStatistics.deserializeBinaryFromReader);
-      msg.setCsgoTeamStatistics(value);
+      msg.setCsgo(value);
       break;
     default:
       reader.skipField();
@@ -3250,7 +3250,7 @@ proto.bragi.HistoricalStatisticsResponse.prototype.serializeBinary = function() 
  */
 proto.bragi.HistoricalStatisticsResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getCsgoTeamStatistics();
+  f = message.getCsgo();
   if (f != null) {
     writer.writeMessage(
       1,
@@ -3262,10 +3262,10 @@ proto.bragi.HistoricalStatisticsResponse.serializeBinaryToWriter = function(mess
 
 
 /**
- * optional CsgoTeamStatistics csgo_team_statistics = 1;
+ * optional CsgoTeamStatistics csgo = 1;
  * @return {?proto.bragi.CsgoTeamStatistics}
  */
-proto.bragi.HistoricalStatisticsResponse.prototype.getCsgoTeamStatistics = function() {
+proto.bragi.HistoricalStatisticsResponse.prototype.getCsgo = function() {
   return /** @type{?proto.bragi.CsgoTeamStatistics} */ (
     jspb.Message.getWrapperField(this, proto.bragi.CsgoTeamStatistics, 1));
 };
@@ -3275,7 +3275,7 @@ proto.bragi.HistoricalStatisticsResponse.prototype.getCsgoTeamStatistics = funct
  * @param {?proto.bragi.CsgoTeamStatistics|undefined} value
  * @return {!proto.bragi.HistoricalStatisticsResponse} returns this
 */
-proto.bragi.HistoricalStatisticsResponse.prototype.setCsgoTeamStatistics = function(value) {
+proto.bragi.HistoricalStatisticsResponse.prototype.setCsgo = function(value) {
   return jspb.Message.setOneofWrapperField(this, 1, proto.bragi.HistoricalStatisticsResponse.oneofGroups_[0], value);
 };
 
@@ -3284,8 +3284,8 @@ proto.bragi.HistoricalStatisticsResponse.prototype.setCsgoTeamStatistics = funct
  * Clears the message field making it undefined.
  * @return {!proto.bragi.HistoricalStatisticsResponse} returns this
  */
-proto.bragi.HistoricalStatisticsResponse.prototype.clearCsgoTeamStatistics = function() {
-  return this.setCsgoTeamStatistics(undefined);
+proto.bragi.HistoricalStatisticsResponse.prototype.clearCsgo = function() {
+  return this.setCsgo(undefined);
 };
 
 
@@ -3293,7 +3293,7 @@ proto.bragi.HistoricalStatisticsResponse.prototype.clearCsgoTeamStatistics = fun
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.bragi.HistoricalStatisticsResponse.prototype.hasCsgoTeamStatistics = function() {
+proto.bragi.HistoricalStatisticsResponse.prototype.hasCsgo = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
@@ -3472,16 +3472,16 @@ proto.bragi.PostMapStatisticsResponse.oneofGroups_ = [[1]];
 /**
  * @enum {number}
  */
-proto.bragi.PostMapStatisticsResponse.OneofNameCase = {
-  ONEOF_NAME_NOT_SET: 0,
-  CSGO_POST_MAP_STATISTICS: 1
+proto.bragi.PostMapStatisticsResponse.PostMapStatisticsCase = {
+  POST_MAP_STATISTICS_NOT_SET: 0,
+  CSGO: 1
 };
 
 /**
- * @return {proto.bragi.PostMapStatisticsResponse.OneofNameCase}
+ * @return {proto.bragi.PostMapStatisticsResponse.PostMapStatisticsCase}
  */
-proto.bragi.PostMapStatisticsResponse.prototype.getOneofNameCase = function() {
-  return /** @type {proto.bragi.PostMapStatisticsResponse.OneofNameCase} */(jspb.Message.computeOneofCase(this, proto.bragi.PostMapStatisticsResponse.oneofGroups_[0]));
+proto.bragi.PostMapStatisticsResponse.prototype.getPostMapStatisticsCase = function() {
+  return /** @type {proto.bragi.PostMapStatisticsResponse.PostMapStatisticsCase} */(jspb.Message.computeOneofCase(this, proto.bragi.PostMapStatisticsResponse.oneofGroups_[0]));
 };
 
 
@@ -3515,7 +3515,7 @@ proto.bragi.PostMapStatisticsResponse.prototype.toObject = function(opt_includeI
  */
 proto.bragi.PostMapStatisticsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    csgoPostMapStatistics: (f = msg.getCsgoPostMapStatistics()) && proto.bragi.CsgoPostMapStatistics.toObject(includeInstance, f)
+    csgo: (f = msg.getCsgo()) && proto.bragi.CsgoPostMapStatistics.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3555,7 +3555,7 @@ proto.bragi.PostMapStatisticsResponse.deserializeBinaryFromReader = function(msg
     case 1:
       var value = new proto.bragi.CsgoPostMapStatistics;
       reader.readMessage(value,proto.bragi.CsgoPostMapStatistics.deserializeBinaryFromReader);
-      msg.setCsgoPostMapStatistics(value);
+      msg.setCsgo(value);
       break;
     default:
       reader.skipField();
@@ -3586,7 +3586,7 @@ proto.bragi.PostMapStatisticsResponse.prototype.serializeBinary = function() {
  */
 proto.bragi.PostMapStatisticsResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getCsgoPostMapStatistics();
+  f = message.getCsgo();
   if (f != null) {
     writer.writeMessage(
       1,
@@ -3598,10 +3598,10 @@ proto.bragi.PostMapStatisticsResponse.serializeBinaryToWriter = function(message
 
 
 /**
- * optional CsgoPostMapStatistics csgo_post_map_statistics = 1;
+ * optional CsgoPostMapStatistics csgo = 1;
  * @return {?proto.bragi.CsgoPostMapStatistics}
  */
-proto.bragi.PostMapStatisticsResponse.prototype.getCsgoPostMapStatistics = function() {
+proto.bragi.PostMapStatisticsResponse.prototype.getCsgo = function() {
   return /** @type{?proto.bragi.CsgoPostMapStatistics} */ (
     jspb.Message.getWrapperField(this, proto.bragi.CsgoPostMapStatistics, 1));
 };
@@ -3611,7 +3611,7 @@ proto.bragi.PostMapStatisticsResponse.prototype.getCsgoPostMapStatistics = funct
  * @param {?proto.bragi.CsgoPostMapStatistics|undefined} value
  * @return {!proto.bragi.PostMapStatisticsResponse} returns this
 */
-proto.bragi.PostMapStatisticsResponse.prototype.setCsgoPostMapStatistics = function(value) {
+proto.bragi.PostMapStatisticsResponse.prototype.setCsgo = function(value) {
   return jspb.Message.setOneofWrapperField(this, 1, proto.bragi.PostMapStatisticsResponse.oneofGroups_[0], value);
 };
 
@@ -3620,8 +3620,8 @@ proto.bragi.PostMapStatisticsResponse.prototype.setCsgoPostMapStatistics = funct
  * Clears the message field making it undefined.
  * @return {!proto.bragi.PostMapStatisticsResponse} returns this
  */
-proto.bragi.PostMapStatisticsResponse.prototype.clearCsgoPostMapStatistics = function() {
-  return this.setCsgoPostMapStatistics(undefined);
+proto.bragi.PostMapStatisticsResponse.prototype.clearCsgo = function() {
+  return this.setCsgo(undefined);
 };
 
 
@@ -3629,7 +3629,7 @@ proto.bragi.PostMapStatisticsResponse.prototype.clearCsgoPostMapStatistics = fun
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.bragi.PostMapStatisticsResponse.prototype.hasCsgoPostMapStatistics = function() {
+proto.bragi.PostMapStatisticsResponse.prototype.hasCsgo = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
@@ -3648,16 +3648,16 @@ proto.bragi.TournamentInfoResponse.oneofGroups_ = [[1]];
 /**
  * @enum {number}
  */
-proto.bragi.TournamentInfoResponse.OneofNameCase = {
-  ONEOF_NAME_NOT_SET: 0,
-  CSGO_TOURNAMENT_INFO: 1
+proto.bragi.TournamentInfoResponse.TournamentInfoCase = {
+  TOURNAMENT_INFO_NOT_SET: 0,
+  CSGO: 1
 };
 
 /**
- * @return {proto.bragi.TournamentInfoResponse.OneofNameCase}
+ * @return {proto.bragi.TournamentInfoResponse.TournamentInfoCase}
  */
-proto.bragi.TournamentInfoResponse.prototype.getOneofNameCase = function() {
-  return /** @type {proto.bragi.TournamentInfoResponse.OneofNameCase} */(jspb.Message.computeOneofCase(this, proto.bragi.TournamentInfoResponse.oneofGroups_[0]));
+proto.bragi.TournamentInfoResponse.prototype.getTournamentInfoCase = function() {
+  return /** @type {proto.bragi.TournamentInfoResponse.TournamentInfoCase} */(jspb.Message.computeOneofCase(this, proto.bragi.TournamentInfoResponse.oneofGroups_[0]));
 };
 
 
@@ -3691,7 +3691,7 @@ proto.bragi.TournamentInfoResponse.prototype.toObject = function(opt_includeInst
  */
 proto.bragi.TournamentInfoResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    csgoTournamentInfo: (f = msg.getCsgoTournamentInfo()) && proto.bragi.CsgoTournamentInfo.toObject(includeInstance, f)
+    csgo: (f = msg.getCsgo()) && proto.bragi.CsgoTournamentInfo.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3731,7 +3731,7 @@ proto.bragi.TournamentInfoResponse.deserializeBinaryFromReader = function(msg, r
     case 1:
       var value = new proto.bragi.CsgoTournamentInfo;
       reader.readMessage(value,proto.bragi.CsgoTournamentInfo.deserializeBinaryFromReader);
-      msg.setCsgoTournamentInfo(value);
+      msg.setCsgo(value);
       break;
     default:
       reader.skipField();
@@ -3762,7 +3762,7 @@ proto.bragi.TournamentInfoResponse.prototype.serializeBinary = function() {
  */
 proto.bragi.TournamentInfoResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getCsgoTournamentInfo();
+  f = message.getCsgo();
   if (f != null) {
     writer.writeMessage(
       1,
@@ -3774,10 +3774,10 @@ proto.bragi.TournamentInfoResponse.serializeBinaryToWriter = function(message, w
 
 
 /**
- * optional CsgoTournamentInfo csgo_tournament_info = 1;
+ * optional CsgoTournamentInfo csgo = 1;
  * @return {?proto.bragi.CsgoTournamentInfo}
  */
-proto.bragi.TournamentInfoResponse.prototype.getCsgoTournamentInfo = function() {
+proto.bragi.TournamentInfoResponse.prototype.getCsgo = function() {
   return /** @type{?proto.bragi.CsgoTournamentInfo} */ (
     jspb.Message.getWrapperField(this, proto.bragi.CsgoTournamentInfo, 1));
 };
@@ -3787,7 +3787,7 @@ proto.bragi.TournamentInfoResponse.prototype.getCsgoTournamentInfo = function() 
  * @param {?proto.bragi.CsgoTournamentInfo|undefined} value
  * @return {!proto.bragi.TournamentInfoResponse} returns this
 */
-proto.bragi.TournamentInfoResponse.prototype.setCsgoTournamentInfo = function(value) {
+proto.bragi.TournamentInfoResponse.prototype.setCsgo = function(value) {
   return jspb.Message.setOneofWrapperField(this, 1, proto.bragi.TournamentInfoResponse.oneofGroups_[0], value);
 };
 
@@ -3796,8 +3796,8 @@ proto.bragi.TournamentInfoResponse.prototype.setCsgoTournamentInfo = function(va
  * Clears the message field making it undefined.
  * @return {!proto.bragi.TournamentInfoResponse} returns this
  */
-proto.bragi.TournamentInfoResponse.prototype.clearCsgoTournamentInfo = function() {
-  return this.setCsgoTournamentInfo(undefined);
+proto.bragi.TournamentInfoResponse.prototype.clearCsgo = function() {
+  return this.setCsgo(undefined);
 };
 
 
@@ -3805,7 +3805,7 @@ proto.bragi.TournamentInfoResponse.prototype.clearCsgoTournamentInfo = function(
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.bragi.TournamentInfoResponse.prototype.hasCsgoTournamentInfo = function() {
+proto.bragi.TournamentInfoResponse.prototype.hasCsgo = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
@@ -3824,16 +3824,16 @@ proto.bragi.TournamentStatisticsResponse.oneofGroups_ = [[1]];
 /**
  * @enum {number}
  */
-proto.bragi.TournamentStatisticsResponse.OneofNameCase = {
-  ONEOF_NAME_NOT_SET: 0,
-  CSGO_TOURNAMENT_STATISTICS: 1
+proto.bragi.TournamentStatisticsResponse.TournamentStatisticsCase = {
+  TOURNAMENT_STATISTICS_NOT_SET: 0,
+  CSGO: 1
 };
 
 /**
- * @return {proto.bragi.TournamentStatisticsResponse.OneofNameCase}
+ * @return {proto.bragi.TournamentStatisticsResponse.TournamentStatisticsCase}
  */
-proto.bragi.TournamentStatisticsResponse.prototype.getOneofNameCase = function() {
-  return /** @type {proto.bragi.TournamentStatisticsResponse.OneofNameCase} */(jspb.Message.computeOneofCase(this, proto.bragi.TournamentStatisticsResponse.oneofGroups_[0]));
+proto.bragi.TournamentStatisticsResponse.prototype.getTournamentStatisticsCase = function() {
+  return /** @type {proto.bragi.TournamentStatisticsResponse.TournamentStatisticsCase} */(jspb.Message.computeOneofCase(this, proto.bragi.TournamentStatisticsResponse.oneofGroups_[0]));
 };
 
 
@@ -3867,7 +3867,7 @@ proto.bragi.TournamentStatisticsResponse.prototype.toObject = function(opt_inclu
  */
 proto.bragi.TournamentStatisticsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    csgoTournamentStatistics: (f = msg.getCsgoTournamentStatistics()) && proto.bragi.CsgoTournamentStatistics.toObject(includeInstance, f)
+    csgo: (f = msg.getCsgo()) && proto.bragi.CsgoTournamentStatistics.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3907,7 +3907,7 @@ proto.bragi.TournamentStatisticsResponse.deserializeBinaryFromReader = function(
     case 1:
       var value = new proto.bragi.CsgoTournamentStatistics;
       reader.readMessage(value,proto.bragi.CsgoTournamentStatistics.deserializeBinaryFromReader);
-      msg.setCsgoTournamentStatistics(value);
+      msg.setCsgo(value);
       break;
     default:
       reader.skipField();
@@ -3938,7 +3938,7 @@ proto.bragi.TournamentStatisticsResponse.prototype.serializeBinary = function() 
  */
 proto.bragi.TournamentStatisticsResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getCsgoTournamentStatistics();
+  f = message.getCsgo();
   if (f != null) {
     writer.writeMessage(
       1,
@@ -3950,10 +3950,10 @@ proto.bragi.TournamentStatisticsResponse.serializeBinaryToWriter = function(mess
 
 
 /**
- * optional CsgoTournamentStatistics csgo_tournament_statistics = 1;
+ * optional CsgoTournamentStatistics csgo = 1;
  * @return {?proto.bragi.CsgoTournamentStatistics}
  */
-proto.bragi.TournamentStatisticsResponse.prototype.getCsgoTournamentStatistics = function() {
+proto.bragi.TournamentStatisticsResponse.prototype.getCsgo = function() {
   return /** @type{?proto.bragi.CsgoTournamentStatistics} */ (
     jspb.Message.getWrapperField(this, proto.bragi.CsgoTournamentStatistics, 1));
 };
@@ -3963,7 +3963,7 @@ proto.bragi.TournamentStatisticsResponse.prototype.getCsgoTournamentStatistics =
  * @param {?proto.bragi.CsgoTournamentStatistics|undefined} value
  * @return {!proto.bragi.TournamentStatisticsResponse} returns this
 */
-proto.bragi.TournamentStatisticsResponse.prototype.setCsgoTournamentStatistics = function(value) {
+proto.bragi.TournamentStatisticsResponse.prototype.setCsgo = function(value) {
   return jspb.Message.setOneofWrapperField(this, 1, proto.bragi.TournamentStatisticsResponse.oneofGroups_[0], value);
 };
 
@@ -3972,8 +3972,8 @@ proto.bragi.TournamentStatisticsResponse.prototype.setCsgoTournamentStatistics =
  * Clears the message field making it undefined.
  * @return {!proto.bragi.TournamentStatisticsResponse} returns this
  */
-proto.bragi.TournamentStatisticsResponse.prototype.clearCsgoTournamentStatistics = function() {
-  return this.setCsgoTournamentStatistics(undefined);
+proto.bragi.TournamentStatisticsResponse.prototype.clearCsgo = function() {
+  return this.setCsgo(undefined);
 };
 
 
@@ -3981,7 +3981,7 @@ proto.bragi.TournamentStatisticsResponse.prototype.clearCsgoTournamentStatistics
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.bragi.TournamentStatisticsResponse.prototype.hasCsgoTournamentStatistics = function() {
+proto.bragi.TournamentStatisticsResponse.prototype.hasCsgo = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
@@ -4000,16 +4000,16 @@ proto.bragi.TeamTournamentStatisticsResponse.oneofGroups_ = [[1]];
 /**
  * @enum {number}
  */
-proto.bragi.TeamTournamentStatisticsResponse.OneofNameCase = {
-  ONEOF_NAME_NOT_SET: 0,
-  CSGO_TEAMS_TOURNAMENT_STATISTICS: 1
+proto.bragi.TeamTournamentStatisticsResponse.TeamsTournamentStatisticsCase = {
+  TEAMS_TOURNAMENT_STATISTICS_NOT_SET: 0,
+  CSGO: 1
 };
 
 /**
- * @return {proto.bragi.TeamTournamentStatisticsResponse.OneofNameCase}
+ * @return {proto.bragi.TeamTournamentStatisticsResponse.TeamsTournamentStatisticsCase}
  */
-proto.bragi.TeamTournamentStatisticsResponse.prototype.getOneofNameCase = function() {
-  return /** @type {proto.bragi.TeamTournamentStatisticsResponse.OneofNameCase} */(jspb.Message.computeOneofCase(this, proto.bragi.TeamTournamentStatisticsResponse.oneofGroups_[0]));
+proto.bragi.TeamTournamentStatisticsResponse.prototype.getTeamsTournamentStatisticsCase = function() {
+  return /** @type {proto.bragi.TeamTournamentStatisticsResponse.TeamsTournamentStatisticsCase} */(jspb.Message.computeOneofCase(this, proto.bragi.TeamTournamentStatisticsResponse.oneofGroups_[0]));
 };
 
 
@@ -4043,7 +4043,7 @@ proto.bragi.TeamTournamentStatisticsResponse.prototype.toObject = function(opt_i
  */
 proto.bragi.TeamTournamentStatisticsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    csgoTeamsTournamentStatistics: (f = msg.getCsgoTeamsTournamentStatistics()) && proto.bragi.CsgoTeamStatistics.toObject(includeInstance, f)
+    csgo: (f = msg.getCsgo()) && proto.bragi.CsgoTeamStatistics.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4083,7 +4083,7 @@ proto.bragi.TeamTournamentStatisticsResponse.deserializeBinaryFromReader = funct
     case 1:
       var value = new proto.bragi.CsgoTeamStatistics;
       reader.readMessage(value,proto.bragi.CsgoTeamStatistics.deserializeBinaryFromReader);
-      msg.setCsgoTeamsTournamentStatistics(value);
+      msg.setCsgo(value);
       break;
     default:
       reader.skipField();
@@ -4114,7 +4114,7 @@ proto.bragi.TeamTournamentStatisticsResponse.prototype.serializeBinary = functio
  */
 proto.bragi.TeamTournamentStatisticsResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getCsgoTeamsTournamentStatistics();
+  f = message.getCsgo();
   if (f != null) {
     writer.writeMessage(
       1,
@@ -4126,10 +4126,10 @@ proto.bragi.TeamTournamentStatisticsResponse.serializeBinaryToWriter = function(
 
 
 /**
- * optional CsgoTeamStatistics csgo_teams_tournament_statistics = 1;
+ * optional CsgoTeamStatistics csgo = 1;
  * @return {?proto.bragi.CsgoTeamStatistics}
  */
-proto.bragi.TeamTournamentStatisticsResponse.prototype.getCsgoTeamsTournamentStatistics = function() {
+proto.bragi.TeamTournamentStatisticsResponse.prototype.getCsgo = function() {
   return /** @type{?proto.bragi.CsgoTeamStatistics} */ (
     jspb.Message.getWrapperField(this, proto.bragi.CsgoTeamStatistics, 1));
 };
@@ -4139,7 +4139,7 @@ proto.bragi.TeamTournamentStatisticsResponse.prototype.getCsgoTeamsTournamentSta
  * @param {?proto.bragi.CsgoTeamStatistics|undefined} value
  * @return {!proto.bragi.TeamTournamentStatisticsResponse} returns this
 */
-proto.bragi.TeamTournamentStatisticsResponse.prototype.setCsgoTeamsTournamentStatistics = function(value) {
+proto.bragi.TeamTournamentStatisticsResponse.prototype.setCsgo = function(value) {
   return jspb.Message.setOneofWrapperField(this, 1, proto.bragi.TeamTournamentStatisticsResponse.oneofGroups_[0], value);
 };
 
@@ -4148,8 +4148,8 @@ proto.bragi.TeamTournamentStatisticsResponse.prototype.setCsgoTeamsTournamentSta
  * Clears the message field making it undefined.
  * @return {!proto.bragi.TeamTournamentStatisticsResponse} returns this
  */
-proto.bragi.TeamTournamentStatisticsResponse.prototype.clearCsgoTeamsTournamentStatistics = function() {
-  return this.setCsgoTeamsTournamentStatistics(undefined);
+proto.bragi.TeamTournamentStatisticsResponse.prototype.clearCsgo = function() {
+  return this.setCsgo(undefined);
 };
 
 
@@ -4157,7 +4157,7 @@ proto.bragi.TeamTournamentStatisticsResponse.prototype.clearCsgoTeamsTournamentS
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.bragi.TeamTournamentStatisticsResponse.prototype.hasCsgoTeamsTournamentStatistics = function() {
+proto.bragi.TeamTournamentStatisticsResponse.prototype.hasCsgo = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
@@ -4176,16 +4176,16 @@ proto.bragi.PlayerStatisticsAccordingRoleResponse.oneofGroups_ = [[1]];
 /**
  * @enum {number}
  */
-proto.bragi.PlayerStatisticsAccordingRoleResponse.OneofNameCase = {
-  ONEOF_NAME_NOT_SET: 0,
-  CSGO_PLAYER_STATISTICS: 1
+proto.bragi.PlayerStatisticsAccordingRoleResponse.PlayerStatisticsAccordingRoleCase = {
+  PLAYER_STATISTICS_ACCORDING_ROLE_NOT_SET: 0,
+  CSGO: 1
 };
 
 /**
- * @return {proto.bragi.PlayerStatisticsAccordingRoleResponse.OneofNameCase}
+ * @return {proto.bragi.PlayerStatisticsAccordingRoleResponse.PlayerStatisticsAccordingRoleCase}
  */
-proto.bragi.PlayerStatisticsAccordingRoleResponse.prototype.getOneofNameCase = function() {
-  return /** @type {proto.bragi.PlayerStatisticsAccordingRoleResponse.OneofNameCase} */(jspb.Message.computeOneofCase(this, proto.bragi.PlayerStatisticsAccordingRoleResponse.oneofGroups_[0]));
+proto.bragi.PlayerStatisticsAccordingRoleResponse.prototype.getPlayerStatisticsAccordingRoleCase = function() {
+  return /** @type {proto.bragi.PlayerStatisticsAccordingRoleResponse.PlayerStatisticsAccordingRoleCase} */(jspb.Message.computeOneofCase(this, proto.bragi.PlayerStatisticsAccordingRoleResponse.oneofGroups_[0]));
 };
 
 
@@ -4219,7 +4219,7 @@ proto.bragi.PlayerStatisticsAccordingRoleResponse.prototype.toObject = function(
  */
 proto.bragi.PlayerStatisticsAccordingRoleResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    csgoPlayerStatistics: (f = msg.getCsgoPlayerStatistics()) && proto.bragi.CsgoPlayerStatistics.toObject(includeInstance, f)
+    csgo: (f = msg.getCsgo()) && proto.bragi.CsgoPlayerStatistics.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4259,7 +4259,7 @@ proto.bragi.PlayerStatisticsAccordingRoleResponse.deserializeBinaryFromReader = 
     case 1:
       var value = new proto.bragi.CsgoPlayerStatistics;
       reader.readMessage(value,proto.bragi.CsgoPlayerStatistics.deserializeBinaryFromReader);
-      msg.setCsgoPlayerStatistics(value);
+      msg.setCsgo(value);
       break;
     default:
       reader.skipField();
@@ -4290,7 +4290,7 @@ proto.bragi.PlayerStatisticsAccordingRoleResponse.prototype.serializeBinary = fu
  */
 proto.bragi.PlayerStatisticsAccordingRoleResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getCsgoPlayerStatistics();
+  f = message.getCsgo();
   if (f != null) {
     writer.writeMessage(
       1,
@@ -4302,10 +4302,10 @@ proto.bragi.PlayerStatisticsAccordingRoleResponse.serializeBinaryToWriter = func
 
 
 /**
- * optional CsgoPlayerStatistics csgo_player_statistics = 1;
+ * optional CsgoPlayerStatistics csgo = 1;
  * @return {?proto.bragi.CsgoPlayerStatistics}
  */
-proto.bragi.PlayerStatisticsAccordingRoleResponse.prototype.getCsgoPlayerStatistics = function() {
+proto.bragi.PlayerStatisticsAccordingRoleResponse.prototype.getCsgo = function() {
   return /** @type{?proto.bragi.CsgoPlayerStatistics} */ (
     jspb.Message.getWrapperField(this, proto.bragi.CsgoPlayerStatistics, 1));
 };
@@ -4315,7 +4315,7 @@ proto.bragi.PlayerStatisticsAccordingRoleResponse.prototype.getCsgoPlayerStatist
  * @param {?proto.bragi.CsgoPlayerStatistics|undefined} value
  * @return {!proto.bragi.PlayerStatisticsAccordingRoleResponse} returns this
 */
-proto.bragi.PlayerStatisticsAccordingRoleResponse.prototype.setCsgoPlayerStatistics = function(value) {
+proto.bragi.PlayerStatisticsAccordingRoleResponse.prototype.setCsgo = function(value) {
   return jspb.Message.setOneofWrapperField(this, 1, proto.bragi.PlayerStatisticsAccordingRoleResponse.oneofGroups_[0], value);
 };
 
@@ -4324,8 +4324,8 @@ proto.bragi.PlayerStatisticsAccordingRoleResponse.prototype.setCsgoPlayerStatist
  * Clears the message field making it undefined.
  * @return {!proto.bragi.PlayerStatisticsAccordingRoleResponse} returns this
  */
-proto.bragi.PlayerStatisticsAccordingRoleResponse.prototype.clearCsgoPlayerStatistics = function() {
-  return this.setCsgoPlayerStatistics(undefined);
+proto.bragi.PlayerStatisticsAccordingRoleResponse.prototype.clearCsgo = function() {
+  return this.setCsgo(undefined);
 };
 
 
@@ -4333,7 +4333,7 @@ proto.bragi.PlayerStatisticsAccordingRoleResponse.prototype.clearCsgoPlayerStati
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.bragi.PlayerStatisticsAccordingRoleResponse.prototype.hasCsgoPlayerStatistics = function() {
+proto.bragi.PlayerStatisticsAccordingRoleResponse.prototype.hasCsgo = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
