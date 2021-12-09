@@ -1,0 +1,119 @@
+syntax = "proto3";
+
+package bragi.live;
+
+option go_package = "oddin.gg/bragi/stream";
+option java_package = "com.oddin.bragi.stream";
+
+import "google/protobuf/timestamp.proto";
+import "bragi/stream/csgo_data_feed.proto";
+
+
+message LiveDataFeedRequest {
+  // Represent timestamp since matches states should be received. If value is null then currently played matches are
+  // received. If "after" property is defined, then matches which were updated after the "after" timestamp are received.
+  optional google.protobuf.Timestamp after = 1;
+}
+
+message LiveDataFeedMessage{
+
+  oneof message {
+    KeepAlive keepalive = 1;
+    MatchMessage match = 2;
+  }
+}
+
+// Heartbeat message which is sent periodically.
+message KeepAlive {
+  google.protobuf.Timestamp timestamp = 1;
+}
+
+// At the beginning, when the stream is established, an initial MatchMessage with a MatchSnapshot payload is sent (just only once
+// during the stream lifecycle, to recover MatchSnapshot you need to reconnect to server). Cache this MatchSnapshot into memory.
+// Then only AnnouncementUpdate or game update (eg. CsgoMatchMessage) can be received. Those updates are supposed to be applied
+// on cached MatchSnapshot. If AnnouncementUpdate is received then append its "payload" property value to the array of "announcements"
+// in cached MatchSnapshot. If update (e.g. CsgoMatchMessage) payload is received then apply this update on "match_state"
+// property in cached MatchSnapshot. For both update cases do not forget also to update "sequence" and "timestamp" properties
+// in the cached MatchSnapshot with the values from the received MatchMessage.
+message MatchMessage {
+
+  message Payload {
+    oneof payload {
+      // Cache whole entity in client memory.
+      MatchSnapshot snapshot = 1;
+
+      // Append announcement's payload to property announcements array in MatchSnapshot.
+      AnnouncementUpdate announcement = 2;
+
+      // Message which wraps updates which should be applied on "match_state" property in MatchSnapshot.
+      CsgoMatchMessage csgo = 3;
+
+      // LolMatchMessage lol = 4;
+    }
+  }
+
+  Payload payload = 1;
+}
+
+// Represent whole set of data about particular match. This entity is received only at the beginning of stream. Cache MatchSnapshot
+// in memory and then update it with received updates. If AnnouncementUpdate is received then append its payload to property
+// announcements. If game update is received (e.g. CsgoMatchMessage) then apply this update on property match_state.
+// For both update cases do not forget also to update "sequence" and "timestamp" properties with corresponding values from MatchMessage.
+message MatchSnapshot {
+  message GameMatchState {
+    oneof state {
+      CsgoMatchState csgo = 1;
+      // LolMatchState lol = 2;
+    }
+  }
+
+  string match_urn = 1;
+  uint64 sequence = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  repeated Announcement announcements = 4;
+  GameMatchState match_state = 5;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+// Append announcement's payload to property announcements array in MatchSnapshot. Each AnnouncementUpdate carries
+// properties "sequence", "timestamp". Replace cached properties "sequence" and "timestamp" in cached
+// MatchSnapshot with values of "sequence", "timestamp" from AnnouncementUpdate after you successfully applied updates.
+message AnnouncementUpdate {
+  string match_urn = 1;
+  uint64 sequence = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  Announcement payload = 4;
+}
+
+// Announcement informs consumer about operational situation during match lifetime. Eg. match was postponed,there
+// is a server issue etc.
+message Announcement {
+  message Payload {
+    oneof payload {
+      ControlAnnouncement control = 1;
+      ControlErrorAnnouncement error = 2;
+    }
+  }
+
+  google.protobuf.Timestamp created_at = 1;
+  Payload payload = 2;
+}
+
+message ControlAnnouncement {
+  enum ControlAnnouncementType {
+    CONTROL_ANNOUNCEMENT_TYPE_UNSPECIFIED = 0;
+  }
+
+  ControlAnnouncementType type = 1;
+  optional string message = 2;
+}
+
+message ControlErrorAnnouncement {
+  enum ControlErrorAnnouncementType {
+    CONTROL_ERROR_ANNOUNCEMENT_TYPE_UNSPECIFIED = 0;
+  }
+
+  ControlErrorAnnouncementType type = 1;
+  optional string message = 2;
+}

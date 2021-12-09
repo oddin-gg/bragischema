@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package bragi;
+
+option go_package = "oddin.gg/bragi";
+option java_package = "com.oddin.bragi";
+
+import "google/protobuf/timestamp.proto";
+
+message Sport {
+  uint32 id = 1;
+  string name = 2;
+}
+
+message Tournament {
+  uint32 id = 1;
+  string name = 2;
+  google.protobuf.Timestamp start_timestamp = 3;
+  google.protobuf.Timestamp end_timestamp = 4;
+}
+
+message Team {
+  uint32 id = 1;
+  string name = 2;
+  optional string icon_path = 3;
+}
+
+message Match {
+  uint32 id = 1;
+  google.protobuf.Timestamp planned_start_timestamp = 2;
+  google.protobuf.Timestamp start_timestamp = 3;
+  google.protobuf.Timestamp end_timestamp = 4;
+  Tournament tournament = 5;
+  optional Team home_team = 6;
+  optional int32 home_score = 7;
+  optional Team away_team = 8;
+  optional int32 away_score = 9;
+  optional Team win_team = 10;
+  bool is_closed = 11;
+  BestOfType best_of_type = 12;
+  repeated Map maps = 13;
+}
+
+message Map {
+  uint32 id = 1;
+  int32 order = 2;
+  optional google.protobuf.Timestamp start_timestamp = 3;
+  optional google.protobuf.Timestamp end_timestamp = 4;
+  bool is_closed = 5;
+}
+
+message Player {
+  uint32 id = 1;
+  string nickname = 2;
+  optional string real_name = 3;
+  optional string shortcut = 4;
+  optional string icon_path = 5;
+}
+
+enum BestOfType {
+  BEST_OF_TYPE_UNSPECIFIED = 0;
+  BEST_OF_TYPE_BO1 = 1;
+  BEST_OF_TYPE_BO2 = 2;
+  BEST_OF_TYPE_BO3 = 3;
+  BEST_OF_TYPE_BO4 = 4;
+  BEST_OF_TYPE_BO5 = 5;
+  BEST_OF_TYPE_BO6 = 6;
+  BEST_OF_TYPE_BO7 = 7;
+}

@@ -1,0 +1,614 @@
+syntax = "proto3";
+
+package bragi.live;
+
+option go_package = "oddin.gg/bragi/stream";
+option java_package = "com.oddin.bragi.stream";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "bragi/csgo_common.proto";
+import "bragi/common.proto";
+
+
+message CsgoMatchMessage {
+  message Payload {
+    oneof payload {
+      // Replace match_state property in MatchSnapshot.
+      CsgoMatchState match_state = 1;
+
+      // Particular updates which are applied on property match_state in MatchState.
+      CsgoMatchUpdate update = 2;
+    }
+  }
+
+  string match_urn = 1;
+  uint64 sequence = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  Payload payload = 4;
+}
+
+// Apply updates on match_state property of cached match entity (MatchSnapshot). Each CsgoMatchUpdate is received wrapped
+// in CsgoMatchMessage which carries properties "sequence", "timestamp". Replace cached properties "sequence" and "timestamp"
+// in cached MatchSnapshot with values of "sequence", "timestamp" from CsgoMatchMessage after you successfully applied updates.
+// One CsgoMatchUpdate contains at least one item in array "updates" and zero or more items in array "events".
+message CsgoMatchUpdate {
+  // Apply this update on match_state property in CsgoMatchSnapshot. These updates represents idempotent updates of whole
+  // match state or updates of its nested fields. If any update is missed, client can recover whole snapshot (CsgoMatchSnapshot)
+  // with given sequence number and then continue applying new incoming updates with sequence number higher than snapshot one.
+  repeated CsgoMatchStatePartialUpdate updates = 1;
+
+  // Notifies about occurred situation in game. Those events are non-idempotent messages ordered according timestamp and
+  // they are not supposed to be applied on cached match state. Those events represents a history of match. If any event
+  // is missed there is no way how to recover missing events.
+  repeated CsgoEvent events = 2;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+message CsgoMatchStatePartialUpdate {
+  oneof update {
+    // Replaces "score" property in CsgoMatchState.
+    CsgoMatchScoreState score = 1;
+
+    // Replaces "current_map_state" property in CsgoMatchState. To minimalize issues with incorrect updates application
+    // on current_map_state, server sends CsgoMatchStatePartialUpdate with CsgoMapState in periodic time set by customer.
+    CsgoMapState current_map_state = 2;
+
+    // Apply partial update on "current_map_state" property in CsgoMapState.
+    CsgoCurrentMapStatePartialUpdate current_map_state_partial_update = 3;
+
+    // There are no particular updates for eg. previous_map_states, whole current_map_state defined. In case when those
+    // states are updated, then whole update with CsgoMatchState update is sent.
+  }
+}
+
+message CsgoMatchState {
+  string match_urn = 1;
+  BestOfType match_type = 2;
+  CsgoTeam home_team = 3;
+  CsgoTeam away_team = 4;
+  CsgoMatchScoreState score = 5;
+  CsgoMatchStatusType match_status = 6;
+  CsgoMapState current_map_state = 7;
+  repeated CsgoMapState previous_map_states = 8;  //this property is updated only when whole CsgoMatchState update is received
+}
+
+message CsgoMatchScoreState {
+  uint32 home_score = 1;
+  uint32 away_score = 2;
+}
+
+message CsgoTeam {
+  string team_urn = 1;
+  string team_name = 2;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+message CsgoCurrentMapStatePartialUpdate {
+  oneof payload {
+    // Replaces "info" property in CsgoMapState.
+    CsgoMapInfoState info = 1;
+
+    // Replaces "score" property in CsgoMapState.
+    CsgoMapScoreState score = 2;
+
+    // Apply partial update on "current_round_state" property in CsgoMapState.
+    CsgoCurrentRoundStatePartialUpdate current_round_state_partial_update = 3;
+
+    // Apply partial update on value under given key in team_map_states map property in CsgoMapState.
+    CsgoTeamMapStatePartialUpdate team_map_states_partial_update = 4;
+
+    // There are no particular updates for eg. previous_round_states, whole current_round_state defined. In case when those
+    // states are updated, then whole update with CsgoMapState update is sent.
+  }
+}
+
+message CsgoMapState {
+  uint32 map_order = 1;
+  CsgoMapInfoState info = 2;
+  CsgoMapScoreState score = 3;
+  CsgoCurrentRoundState current_round_state = 4;
+  repeated CsgoPreviousRoundState previous_round_states = 5; //this property is updated only when whole CsgoMapState update is received
+  map<string, CsgoTeamMapState> team_map_states = 6; // keys are type of team_urn
+}
+
+message CsgoMapInfoState {
+  string csgo_map_name = 1;
+  uint32 max_rounds_default = 2;
+  uint32 max_rounds_overtime = 3;
+  optional google.protobuf.Duration freeze_time_duration = 4;
+  optional google.protobuf.Duration round_time_duration = 5;
+  optional google.protobuf.Duration bomb_time_duration = 6;
+  optional google.protobuf.Timestamp start_time = 7;
+  optional google.protobuf.Timestamp end_time = 8;
+  bool map_ended = 9;
+}
+
+message CsgoMapScoreState {
+  uint32 home_score = 1;
+  uint32 away_score = 2;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+message CsgoCurrentRoundStatePartialUpdate {
+  oneof update {
+
+    // Replaces "info" property in CsgoCurrentRoundState.
+    CsgoRoundInfoState info = 1;
+
+    // Replaces "score" property in CsgoCurrentRoundState.
+    CsgoRoundScoreState score = 2;
+
+    // Replaces "time" property in CsgoCurrentRoundState.
+    CsgoRoundTimeState time = 3;
+
+    // Replaces "bomb_state" property in CsgoCurrentRoundState.
+    CsgoBombState bomb_state = 4;
+
+    // Apply partial update on value under given key in team_states map property in CsgoCurrentRoundState.
+    CsgoTeamCurrentRoundStatePartialUpdate team_states_partial_update = 5;
+  }
+}
+
+message CsgoCurrentRoundState {
+  uint32 round_number = 1;
+  CsgoRoundInfoState info = 2;
+  CsgoRoundScoreState score = 3;
+  CsgoRoundTimeState time = 4;
+  CsgoBombState bomb_state = 5;
+  map<string, CsgoTeamCurrentRoundState> team_states = 6; // keys are type of team_urn
+}
+
+message CsgoPreviousRoundState {
+  uint32 round_number = 1;
+  CsgoRoundInfoState info = 2;
+  CsgoRoundScoreState score = 3;
+  map<string, CsgoPreviousTeamRoundState> team_states = 4; // keys are type of team_urn
+}
+
+message CsgoRoundInfoState {
+  CsgoRoundStateType round_type = 1;
+  google.protobuf.Timestamp start_time = 2;
+  optional google.protobuf.Timestamp end_time = 3;
+  optional string winning_team_urn = 4;
+  optional CsgoWinReason win_reason = 5;
+}
+
+message CsgoRoundScoreState {
+  string home_team_urn = 1;
+  uint32 home_score = 2;
+  string away_team_urn = 3;
+  uint32 away_score = 4;
+}
+
+message CsgoRoundTimeState {
+  uint32 time_remaining = 1;
+  google.protobuf.Duration map_time = 2;
+}
+
+message CsgoBombState {
+  oneof payload {
+    CsgoBombCarriedState carried = 1;
+    CsgoBombDroppedState dropped = 2;
+    CsgoBombPlantingState planting = 3;
+    CsgoBombPlantedState planted = 4;
+    CsgoBombDefusingState defusing = 5;
+    CsgoBombDefusedState defused = 6;
+  }
+}
+
+message CsgoBombCarriedState {
+  string player_urn = 1;
+  CsgoPosition position = 2;
+}
+
+message CsgoBombDroppedState {
+  string dropped_by_player_urn = 1;
+  CsgoPosition position = 2;
+}
+
+message CsgoBombPlantingState {
+  string player_urn = 1;
+  CsgoPosition position = 2;
+  google.protobuf.Duration countdown = 3;
+}
+
+message CsgoBombPlantedState {
+  string planted_by_player_urn = 1;
+  CsgoPosition position = 2;
+  google.protobuf.Timestamp planted_at = 3;
+}
+
+message CsgoBombDefusingState {
+  string player_urn = 1;
+  CsgoPosition position = 2;
+  google.protobuf.Duration countdown = 3;
+  google.protobuf.Timestamp defuse_started_at = 4;
+}
+
+message CsgoBombDefusedState {
+  string defused_by_player_urn = 1;
+  CsgoPosition position = 2;
+  google.protobuf.Timestamp defused_at = 3;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+message CsgoTeamMapStatePartialUpdate {
+  message Payload {
+    oneof payload {
+      // Apply partial update on value under given key in player_map_states map property in CsgoTeamMapState.
+      CsgoPlayerMapStatePartialUpdate player_map_states_partial_update = 1;
+    }
+  }
+
+  string team_urn = 1;
+  Payload payload = 2;
+}
+
+message CsgoTeamMapState {
+  string team_urn = 1;
+  CsgoSide side = 2;
+  map<string, CsgoPlayerMapState> player_map_states = 3; // keys are type of player_urn
+}
+
+message CsgoTeamCurrentRoundStatePartialUpdate {
+  message Payload {
+    oneof payload {
+      // Apply partial update on value under given key in player_round_states map property in CsgoTeamCurrentRoundState.
+      CsgoPlayerCurrentRoundStatePartialUpdate player_round_states_partial_update = 1;
+    }
+  }
+
+  string team_urn = 1;
+  Payload payload = 2;
+}
+
+message CsgoTeamCurrentRoundState {
+  string team_urn = 1;
+  map<string, CsgoPlayerCurrentRoundState> player_round_states = 2; // keys are type of player_urn
+}
+
+message CsgoPreviousTeamRoundState {
+  string team_urn = 1;
+  map<string, CsgoPlayerPreviousRoundState> players = 2; // keys are type of player_urn
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+message CsgoPlayerMapStatePartialUpdate {
+  message Payload {
+    oneof payload {
+      // Apply partial update on value under given key in 'statistics' map property in CsgoPlayerMapState.
+      CsgoPlayerMapStatisticsState statistics = 1;
+    }
+  }
+
+  string player_urn = 1;
+  Payload payload = 2;
+}
+
+message CsgoPlayerMapState {
+  string player_urn = 1;
+  string player_name = 2;
+  CsgoPlayerMapStatisticsState statistics = 3;
+}
+
+message CsgoPlayerMapStatisticsState {
+  string player_urn = 1;
+  CsgoPlayerStatistics statistics = 2;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+message CsgoPlayerCurrentRoundStatePartialUpdate {
+  message Payload {
+    oneof payload {
+      // Replaces "statistics" property in CsgoPlayerCurrentRoundState.
+      CsgoPlayerCurrentRoundStatisticsState statistics = 1;
+
+      // Replaces "items" property in CsgoPlayerCurrentRoundState.
+      CsgoPlayerItemsState items = 2;
+
+      // Replaces "position" property in CsgoPlayerCurrentRoundState.
+      CsgoPlayerPositionState position = 3;
+    }
+  }
+
+  string player_urn = 1;
+  Payload payload = 2;
+}
+
+message CsgoPlayerCurrentRoundState {
+  string player_urn = 1;
+  string player_name = 2;
+  CsgoPlayerCurrentRoundStatisticsState statistics = 3;
+  CsgoPlayerItemsState items = 4;
+  CsgoPlayerPositionState position = 5;
+}
+
+message CsgoPlayerCurrentRoundStatisticsState {
+  string player_urn = 1;
+  bool alive = 2;
+  bool active = 3;
+  uint32 health = 5;
+  uint32 armor = 6;
+  uint32 balance = 7;
+  string primary_weapon = 8;
+  string secondary_weapon = 9;
+  uint32 equipment_value = 10;
+  CsgoPlayerStatistics statistics = 11;
+}
+
+message CsgoPlayerItemsState {
+  repeated CsgoPlayerItem items = 1;
+}
+
+message CsgoPlayerPreviousRoundState {
+  string player_urn = 1;
+  string player_name = 2;
+  CsgoPlayerStatistics common_statistics = 3;
+}
+
+message CsgoPlayerPositionState {
+  string player_urn = 1;
+  CsgoPosition position = 2;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+message CsgoPlayerStatistics {
+  string player_urn = 1;
+  uint32 kills = 2;
+  uint32 friendly_kills = 3;
+  uint32 enemy_kills = 4;
+  uint32 self_kills = 5;
+  uint32 deaths = 6;
+  uint32 assists = 7;
+  uint32 headshots = 8;
+  optional uint32 friendly_damage_dealt_armor = 9;
+  optional uint32 friendly_damage_dealt_health = 10;
+  optional uint32 enemy_damage_dealt_armor = 11;
+  optional uint32 enemy_damage_dealt_health = 12;
+  optional uint32 enemy_damage_dealt_armor_raw = 13;
+  optional uint32 enemy_damage_dealt_health_raw = 14;
+}
+
+message CsgoPlayerItem {
+  string player_urn = 1;
+  string team_urn = 2;
+  repeated string items = 3;
+  uint32 equipment_value = 4;
+}
+
+message CsgoPosition {
+  float x = 1;
+  float y = 2;
+  float angle = 3;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// EVENTS --------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+
+message CsgoEvent {
+  oneof event {
+    CsgoBombDefuseStarted bomb_defuse_started = 1;
+    CsgoBombDefused bomb_defused = 2;
+    CsgoBombExploded bomb_exploded = 3;
+    CsgoBombPlanted bomb_planted = 4;
+    CsgoDamageDealt damage_dealt = 5;
+    CsgoFreezeTimeEnded freeze_time_ended = 6;
+    CsgoFreezeTimeStarted freeze_time_started = 7;
+    CsgoItemDrop item_drop = 8;
+    CsgoItemPickUp item_pick_up = 9;
+    CsgoItemPurchase item_purchase = 10;
+    CsgoItemThrow item_throw = 11;
+    CsgoKill kill = 12;
+    CsgoDeath death = 13;
+    CsgoMapEnd map_end = 14;
+    CsgoMapStart map_start = 15;
+    CsgoRoundEnd round_end = 16;
+    CsgoRoundPause round_pause = 17;
+    CsgoRoundResume round_resume = 18;
+    CsgoRoundRollback round_rollback = 19;
+    CsgoRoundStart round_start = 20;
+  }
+}
+
+message CsgoPlayerBalance {
+  string player_urn = 1;
+  string team_urn = 2;
+  uint32 balance = 3;
+}
+
+message CsgoPlayerItems {
+  string player_urn = 1;
+  string team_urn = 2;
+  repeated CsgoPlayerItem items = 3;
+}
+
+// ------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
+
+message CsgoBombDefuseStarted {
+  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration time_remaining = 2;
+  uint32 current_round_number = 3;
+  string player_urn = 4;
+  string team_urn = 5;
+}
+
+message CsgoBombDefused {
+  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration time_remaining = 2;
+  uint32 current_round_number = 3;
+  string player_urn = 4;
+  string team_urn = 5;
+  uint32 balance = 6;
+}
+
+message CsgoBombExploded {
+  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration time_remaining = 2;
+  uint32 current_round_number = 3;
+  string team_urn = 4;
+}
+
+message CsgoBombPlanted {
+  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration time_remaining = 2;
+  uint32 current_round_number = 3;
+  string player_urn = 4;
+  string team_urn = 5;
+  uint32 balance = 6;
+}
+
+message CsgoDamageDealt {
+  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration time_remaining = 2;
+  uint32 current_round_number = 3;
+  CsgoPosition position = 4;
+  string killer_urn = 5;
+  string killer_team_urn = 6;
+  string victim_urn = 7;
+  string victim_team_urn = 8;
+  string weapon = 9;
+  string hitgroup = 10;
+  uint32 health_deducted = 11;
+  uint32 health_remaining = 12;
+  uint32 armor_deducted = 13;
+  uint32 armor_remaining = 14;
+  CsgoPosition target_position = 15;
+}
+
+message CsgoFreezeTimeEnded {
+  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration time_remaining = 2;
+  uint32 current_round_number = 3;
+  map<string, CsgoPlayerBalance> player_balances = 4; // keys are type of player_urn
+  map<string, CsgoPlayerItems> player_inventories = 5; // keys are type of player_urn
+}
+
+message CsgoFreezeTimeStarted {
+  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration time_remaining = 2;
+  uint32 current_round_number = 3;
+  map<string, CsgoPlayerBalance> player_balances = 4; // keys are type of player_urn
+  map<string, CsgoSide> teams_round_info = 5; // keys are type of team_urn
+}
+message CsgoItemDrop {
+  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration time_remaining = 2;
+  uint32 current_round_number = 3;
+  CsgoPosition position = 4;
+  string player_urn = 5;
+  string team_urn = 6;
+  string item = 7;
+}
+
+message CsgoItemPickUp {
+  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration time_remaining = 2;
+  uint32 current_round_number = 3;
+  string player_urn = 4;
+  string team_urn = 5;
+}
+
+message CsgoItemPurchase {
+  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration time_remaining = 2;
+  uint32 current_round_number = 3;
+  string player_urn = 4;
+  string team_urn = 5;
+  string item = 6;
+  uint32 balance = 7;
+  uint32 equipment_value = 8;
+}
+
+message CsgoItemThrow {
+  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration time_remaining = 2;
+  uint32 current_round_number = 3;
+  CsgoPosition position = 4;
+  string player_urn = 5;
+  string team_urn = 6;
+  string item = 7;
+}
+
+message CsgoKill {
+  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration time_remaining = 2;
+  uint32 current_round_number = 3;
+  CsgoPosition position = 4;
+  string killer_urn = 5;
+  string killer_team_urn = 6;
+  string victim_urn = 7;
+  string victim_team_urn = 8;
+  string weapon = 9;
+  bool headshot = 10;
+  bool penetrated = 11;
+  repeated string assistants = 12; // array of player_urns
+  uint32 balance = 13;
+}
+
+message CsgoDeath {
+  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration time_remaining = 2;
+  uint32 current_round_number = 3;
+  CsgoPosition position = 4;
+  string player_urn = 5;
+  string team_urn = 6;
+  uint32 total_deaths = 7;
+  google.protobuf.Duration respawn_time = 8;
+  bool suicide = 9;
+}
+
+message CsgoMapEnd {
+  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration time_remaining = 2;
+  uint32 current_round_number = 3;
+  string csgo_map_name = 4;
+  string winning_team_urn = 5;
+}
+
+message CsgoMapStart {
+  google.protobuf.Duration map_time = 1;
+  string csgo_map_name = 2;
+}
+
+message CsgoRoundEnd {
+  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration time_remaining = 2;
+  uint32 current_round_number = 3;
+  string winning_team_urn = 4;
+  CsgoWinReason win_reason = 5;
+  map<string, CsgoPlayerBalance> player_balances = 6; // keys are type of player_urn
+  map<string, CsgoPlayerItems> player_inventories = 7; // keys are type of player_urn
+}
+
+message CsgoRoundPause {
+  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration time_remaining = 2;
+  uint32 current_round_number = 3;
+}
+
+message CsgoRoundResume {
+  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration time_remaining = 2;
+  uint32 current_round_number = 3;
+}
+
+message CsgoRoundRollback {
+  uint32 next_round_number = 1;
+}
+
+message CsgoRoundStart {
+  google.protobuf.Duration map_time = 1 ;
+  google.protobuf.Duration time_remaining = 2;
+  uint32 current_round_number = 3;
+}

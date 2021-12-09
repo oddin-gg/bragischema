@@ -1,160 +1,13 @@
 syntax = "proto3";
 
-package bragi;
+package bragi.statistics;
 
-option go_package = "oddin.gg/bragi";
-option java_package = "com.oddin.bragi";
+option go_package = "oddin.gg/bragi/historical_statistics";
+option java_package = "com.oddin.bragi.historical_statistics";
 
-import "google/protobuf/timestamp.proto";
+import "bragi/csgo_common.proto";
+import "bragi/common.proto";
 
-service BragiGrpc {
-
-  rpc Sports (SportsRequest) returns (SportsResponse) {}
-
-  rpc Tournaments(TournamentsRequest) returns(TournamentResponse) {}
-
-  rpc TournamentInfo(TournamentInfoRequest) returns (TournamentInfoResponse) {}
-
-  rpc TeamHistoricalStatistics (TeamHistoricalStatisticsRequest) returns (HistoricalStatisticsResponse) {}
-
-  rpc LastFiveEncounters (LastFiveEncountersRequest) returns (LastFiveEncountersResponse) {}
-
-  rpc PostMapStatistics(PostMapStatisticsRequest) returns (PostMapStatisticsResponse) {}
-
-  rpc TournamentStatistics(TournamentStatisticsRequest) returns (TournamentStatisticsResponse) {}
-
-  rpc TeamTournamentStatistics(TeamTournamentStatisticsRequest) returns (TeamTournamentStatisticsResponse) {}
-
-  rpc PlayerStatisticsAccordingRole(PlayerStatisticsAccordingRoleRequest) returns (PlayerStatisticsAccordingRoleResponse) {}
-
-  // streamed ----------------------------------------------------------------------------------------------------------
-
-  rpc Csgo2dMaFeed(Csgo2dMaFeedRequest) returns (stream Csgo2dMap) {}
-
-  rpc CsgoScoreBoardFeed(CsgoScoreBoardFeedRequest) returns (stream CsgoScoreBoard) {}
-
-  rpc CsgoEventsFeed(CsgoEventsFeedRequest) returns (stream CsgoEvents) {}
-
-}
-
-// ---------------------------------------------------------------------------------------------------------------------
-// Request/response ----------------------------------------------------------------------------------------------------
-// ---------------------------------------------------------------------------------------------------------------------
-
-// The request message containing the user's name.
-message SportsRequest {
-}
-
-message TeamHistoricalStatisticsRequest {
-  uint32 sport_id = 1;
-  //  # Timeframe represents interval of computed statistics since current date. Eg. when current date is
-  //  # 2021/08/31 and "timeframe" is THREE_MONTHS, then statistics interval would be 2021/06/01 - 2021/08/31.
-  Timeframe timeframe = 2;
-  uint32 team_id = 3;
-}
-
-message LastFiveEncountersRequest {
-  uint32 sport_id = 1;
-  Timeframe timeframe = 2;
-  uint32 home_team_id = 3;
-  uint32 away_team_id = 4;
-}
-
-message TournamentsRequest {
-  uint32 sport_id = 1;
-  optional google.protobuf.Timestamp date_from = 2;
-  optional google.protobuf.Timestamp date_to = 3;
-}
-
-message TournamentInfoRequest {
-  uint32 tournament_id = 1;
-}
-
-message PostMapStatisticsRequest {
-  uint32 map_id = 1;
-}
-
-message TournamentStatisticsRequest {
-  uint32 tournament_id = 1;
-}
-
-message TeamTournamentStatisticsRequest {
-  uint32 tournament_id = 1;
-  uint32 team_id = 2;
-}
-
-message  PlayerStatisticsAccordingRoleRequest {
-  uint32 sport_id = 1;
-  //    # Timeframe represents interval of computed statistics since current date. Eg. when current date is
-  //    # 2021/08/31 and "timeframe" is THREE_MONTHS, then statistics interval would be 2021/06/01 - 2021/08/31.
-  Timeframe timeframe = 2;
-  string role = 3;
-  uint32 team_id = 4;
-}
-
-message Csgo2dMaFeedRequest {
-  uint32  map_id = 1;
-}
-
-message CsgoScoreBoardFeedRequest {
-  uint32  match_id = 1;
-}
-
-message CsgoEventsFeedRequest {
-  uint32 match_id = 1;
-}
-
-// The response message containing the greetings
-message SportsResponse {
-  repeated Sport sports = 1;
-}
-
-message TournamentResponse {
-  repeated Tournament tournaments = 1;
-}
-
-message HistoricalStatisticsResponse {
-  oneof historical_statistics {
-    CsgoTeamStatistics csgo = 1;
-  }
-}
-message LastFiveEncountersResponse {
-  repeated Match matches = 1;
-}
-
-message PostMapStatisticsResponse {
-  oneof post_map_statistics {
-    CsgoPostMapStatistics csgo = 1;
-  }
-}
-
-message TournamentInfoResponse {
-  oneof tournament_info {
-    CsgoTournamentInfo csgo = 1;
-  }
-}
-
-message TournamentStatisticsResponse {
-  oneof tournament_statistics {
-    CsgoTournamentStatistics csgo = 1;
-  }
-}
-
-message TeamTournamentStatisticsResponse {
-  oneof teams_tournament_statistics {
-    CsgoTeamStatistics csgo = 1;
-  }
-}
-
-message PlayerStatisticsAccordingRoleResponse {
-  oneof player_statistics_according_role {
-    CsgoPlayerStatistics csgo = 1;
-  }
-}
-
-// ----------------------------------------------------------------------------------------------------------------------
-// Csgo entities --------------------------------------------------------------------------------------------------------
-// ----------------------------------------------------------------------------------------------------------------------
 
 message CsgoTeamStatistics {
   Team team = 2;
@@ -297,7 +150,7 @@ message CsgoRoundPostmap{
   CsgoMap csgo_map = 3;
   Team winner_team = 4;
   CsgoSide winner_side = 5;
-  CsgoRoundOutcome round_outcome = 6;
+  CsgoWinReason win_reason = 6;
 }
 
 message CsgoMapStatisticsAccordingSide {
@@ -460,165 +313,9 @@ message TournamentBracketNode {
   repeated uint32 child_nodes = 9;
 }
 
-message Csgo2dMap {
-  repeated Csgo2dMapPlayerPosition players_positions = 1;
-  Csgo2dMapBombPosition bomb_positions = 2;
-  CsgoRound round = 3;
-}
-
-message Csgo2dMapPlayerPosition {
-  Player player = 1;
-  CsgoSide side = 2;
-  Map2dPosition position = 3;
-  Map2dPosition forward = 4;
-  string state = 5;
-}
-
-message Csgo2dMapBombPosition {
-  Map2dPosition position = 1;
-  string state = 2;
-  uint32 time_to_defused = 3;
-  uint32 time_to_exploded = 4;
-}
-
-message Map2dPosition {
-  float x = 1;
-  float y = 2;
-}
-
-message CsgoRound {
-  uint32 number = 1;
-  string state = 2;
-  uint32 time_remaining = 3;
-}
-
-message CsgoScoreBoard {
-  CsgoMap map = 1;
-  uint32 round = 2;
-  optional CsgoRoundOutcome round_outcome = 3;
-}
-
-message CsgoTeamScoreBoard {
-  Team team = 1;
-  uint32 score_maps = 2;
-  uint32 score_rounds = 3;
-  CsgoSide side = 4;
-  uint32 equipment_value = 5;
-  int32 balance = 6;
-  uint32 frag = 7;
-  uint32 flashbang = 8;
-  uint32 firebomb = 9;
-  uint32 smoke = 10;
-  uint32 defuser = 11;
-  uint32 decoy = 12;
-  repeated CsgoPlayerScoreBoard players = 13;
-}
-
-message CsgoPlayerScoreBoard {
-  Player player = 1;
-  uint32 health = 2;
-  uint32 kills = 3;
-  uint32 deaths = 4;
-  uint32 assists = 5;
-  uint32 damage = 6;
-  double headshot_rate = 7;
-  uint32 armor = 8;
-  int32 balance = 9;
-  uint32 primary = 10;
-  uint32 secondary = 11;
-  CsgoOpeningDuels opening_duels = 12;
-}
-
-message CsgoOpeningDuels {
-  uint32 kills = 1;
-  uint32 deaths = 2;
-}
-
-message CsgoEvents {
-  string type = 1;
-  Team team = 2;
-  uint32 round = 3;
-  uint32 round_time = 4;
-  string description = 5;
-}
-
-enum CsgoPlayerRole {
-  CSGO_PLAYER_ROLE_UNSPECIFIED = 0;
-  CSGO_PLAYER_ROLE_KILL_LEADER = 1;
-  CSGO_PLAYER_ROLE_ENTRY_FRAGGER = 2;
-  CSGO_PLAYER_ROLE_SUPPORT = 3;
-  CSGO_PLAYER_ROLE_AWPER = 4;
-  CSGO_PLAYER_ROLE_LURKER = 5;
-}
-
-enum CsgoSide {
-  CSGO_SIDE_UNSPECIFIED = 0;
-  CSGO_SIDE_COUNTER_TERRORISTS = 1;
-  CSGO_SIDE_TERRORISTS = 2;
-}
-
-enum CsgoRoundOutcome {
-  CSGO_ROUND_OUTCOME_UNSPECIFIED = 0;
-  CSGO_ROUND_OUTCOME_COUNTER_TERRORISTS_ELIMINATED = 1;
-  CSGO_ROUND_OUTCOME_TERRORISTS_ELIMINATED = 2;
-  CSGO_ROUND_OUTCOME_EXPLOSION = 3;
-  CSGO_ROUND_OUTCOME_DEFUSE = 4;
-  CSGO_ROUND_OUTCOME_TIMEOUT = 5;
-}
-
 // ----------------------------------------------------------------------------------------------------------------------
 // common entities ------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------------
-
-message Sport {
-  uint32 id = 1;
-  string name = 2;
-}
-
-message Tournament {
-  uint32 id = 1;
-  string name = 2;
-  google.protobuf.Timestamp start_timestamp = 3;
-  google.protobuf.Timestamp end_timestamp = 4;
-}
-
-message Team {
-  uint32 id = 1;
-  string name = 2;
-  optional string icon_path = 3;
-}
-
-message Match {
-  uint32 id = 1;
-  google.protobuf.Timestamp planned_start_timestamp = 2;
-  google.protobuf.Timestamp start_timestamp = 3;
-  google.protobuf.Timestamp end_timestamp = 4;
-  Tournament tournament = 5;
-  optional Team home_team = 6;
-  optional int32 home_score = 7;
-  optional Team away_team = 8;
-  optional int32 away_score = 9;
-  optional Team win_team = 10;
-  bool is_closed = 11;
-  BestOfType best_of_type = 12;
-  repeated Map maps = 13;
-}
-
-message Map {
-  uint32 id = 1;
-  int32 order = 2;
-  optional google.protobuf.Timestamp start_timestamp = 3;
-  optional google.protobuf.Timestamp end_timestamp = 4;
-  bool is_closed = 5;
-}
-
-message Player {
-  uint32 id = 1;
-  string nickname = 2;
-  optional string real_name = 3;
-  optional string shortcut = 4;
-  optional string icon_path = 5;
-}
 
 message TournamentTeamStatisticsValue {
   Team team = 1;
@@ -647,15 +344,4 @@ enum Timeframe {
   TIMEFRAME_THREE_MONTHS = 2;
   TIMEFRAME_SIX_MONTHS = 3;
   TIMEFRAME_ONE_YEAR = 4;
-}
-
-enum BestOfType {
-  BEST_OF_TYPE_UNSPECIFIED = 0;
-  BEST_OF_TYPE_BO1 = 1;
-  BEST_OF_TYPE_BO2 = 2;
-  BEST_OF_TYPE_BO3 = 3;
-  BEST_OF_TYPE_BO4 = 4;
-  BEST_OF_TYPE_BO5 = 5;
-  BEST_OF_TYPE_BO6 = 6;
-  BEST_OF_TYPE_BO7 = 7;
 }
