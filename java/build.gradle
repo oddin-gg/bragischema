@@ -26,7 +26,7 @@ dependencies {
 sourceSets {
   main {
     proto {
-        srcDir '../proto/bragi'
+        srcDir '../proto/'
     }
   }
 }
