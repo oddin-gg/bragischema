@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n\017com.oddin.bragiZ\016oddin.gg/bragi',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x11\x62ragi/bragi.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\"\x0f\n\rSportsRequest\"i\n\x1fTeamHistoricalStatisticsRequest\x12\x10\n\x08sport_id\x18\x01 \x01(\r\x12#\n\ttimeframe\x18\x02 \x01(\x0e\x32\x10.bragi.Timeframe\x12\x0f\n\x07team_id\x18\x03 \x01(\r\"~\n\x19LastFiveEncountersRequest\x12\x10\n\x08sport_id\x18\x01 \x01(\r\x12#\n\ttimeframe\x18\x02 \x01(\x0e\x32\x10.bragi.Timeframe\x12\x14\n\x0chome_team_id\x18\x03 \x01(\r\x12\x14\n\x0c\x61way_team_id\x18\x04 \x01(\r\"\xa6\x01\n\x12TournamentsRequest\x12\x10\n\x08sport_id\x18\x01 \x01(\r\x12\x32\n\tdate_from\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x00\x88\x01\x01\x12\x30\n\x07\x64\x61te_to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x01\x88\x01\x01\x42\x0c\n\n_date_fromB\n\n\x08_date_to\".\n\x15TournamentInfoRequest\x12\x15\n\rtournament_id\x18\x01 \x01(\r\"*\n\x18PostMapStatisticsRequest\x12\x0e\n\x06map_id\x18\x01 \x01(\r\"4\n\x1bTournamentStatisticsRequest\x12\x15\n\rtournament_id\x18\x01 \x01(\r\"I\n\x1fTeamTournamentStatisticsRequest\x12\x15\n\rtournament_id\x18\x01 \x01(\r\x12\x0f\n\x07team_id\x18\x02 \x01(\r\"|\n$PlayerStatisticsAccordingRoleRequest\x12\x10\n\x08sport_id\x18\x01 \x01(\r\x12#\n\ttimeframe\x18\x02 \x01(\x0e\x32\x10.bragi.Timeframe\x12\x0c\n\x04role\x18\x03 \x01(\t\x12\x0f\n\x07team_id\x18\x04 \x01(\r\".\n\x0eSportsResponse\x12\x1c\n\x06sports\x18\x01 \x03(\x0b\x32\x0c.bragi.Sport\"<\n\x12TournamentResponse\x12&\n\x0btournaments\x18\x01 \x03(\x0b\x32\x11.bragi.Tournament\"b\n\x1cHistoricalStatisticsResponse\x12)\n\x04\x63sgo\x18\x01 \x01(\x0b\x32\x19.bragi.CsgoTeamStatisticsH\x00\x42\x17\n\x15historical_statistics\";\n\x1aLastFiveEncountersResponse\x12\x1d\n\x07matches\x18\x01 \x03(\x0b\x32\x0c.bragi.Match\"`\n\x19PostMapStatisticsResponse\x12,\n\x04\x63sgo\x18\x01 \x01(\x0b\x32\x1c.bragi.CsgoPostMapStatisticsH\x00\x42\x15\n\x13post_map_statistics\"V\n\x16TournamentInfoResponse\x12)\n\x04\x63sgo\x18\x01 \x01(\x0b\x32\x19.bragi.CsgoTournamentInfoH\x00\x42\x11\n\x0ftournament_info\"h\n\x1cTournamentStatisticsResponse\x12/\n\x04\x63sgo\x18\x01 \x01(\x0b\x32\x1f.bragi.CsgoTournamentStatisticsH\x00\x42\x17\n\x15tournament_statistics\"l\n TeamTournamentStatisticsResponse\x12)\n\x04\x63sgo\x18\x01 \x01(\x0b\x32\x19.bragi.CsgoTeamStatisticsH\x00\x42\x1d\n\x1bteams_tournament_statistics\"x\n%PlayerStatisticsAccordingRoleResponse\x12+\n\x04\x63sgo\x18\x01 \x01(\x0b\x32\x1b.bragi.CsgoPlayerStatisticsH\x00\x42\"\n player_statistics_according_role\"\xc4\r\n\x12\x43sgoTeamStatistics\x12\x19\n\x04team\x18\x02 \x01(\x0b\x32\x0b.bragi.Team\x12\x36\n\x11player_statistics\x18\x03 \x03(\x0b\x32\x1b.bragi.CsgoPlayerStatistics\x12$\n\x08map_vote\x18\x04 \x01(\x0b\x32\x12.bragi.CsgoMapVote\x12-\n\x0bmap_winrate\x18\x05 \x03(\x0b\x32\x18.bragi.CsgoMapStatistics\x12<\n\rround_winrate\x18\x06 \x03(\x0b\x32%.bragi.CsgoMapStatisticsAccordingSide\x12\x34\n\x13overall_map_winrate\x18\x07 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12>\n\x15overall_round_winrate\x18\x08 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12\x37\n\x0epistol_winrate\x18\t \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12>\n\x15pistol_win_conversion\x18\n \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12?\n\x16pistol_loss_conversion\x18\x0b \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12.\n\x05kills\x18\x0c \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12/\n\x06\x64\x65\x61ths\x18\r \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12:\n\x11kills_over_deaths\x18\x0e \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12\x30\n\x07\x61ssists\x18\x0f \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12\x36\n\rflash_assists\x18\x10 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12/\n\x06\x64\x61mage\x18\x11 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12\x36\n\rheadshot_rate\x18\x12 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12\x36\n\ropening_kills\x18\x13 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12;\n\x12opening_conversion\x18\x14 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12\x41\n\x18opening_death_conversion\x18\x15 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12\x32\n\tawp_kills\x18\x16 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12<\n\x13\x65limination_winrate\x18\x17 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12:\n\x11objective_winrate\x18\x18 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12\x37\n\x0eutility_damage\x18\x19 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12>\n\x15\x66irst_to_win_3_rounds\x18\x1a \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12>\n\x15\x66irst_to_win_6_rounds\x18\x1b \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12>\n\x15\x66irst_to_win_9_rounds\x18\x1c \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12?\n\x16\x66irst_to_win_12_rounds\x18\x1d \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12\x34\n\x0brounds_lost\x18\x1e \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12\x36\n\x11\x66\x61vourite_weapons\x18\x1f \x03(\x0b\x32\x1b.bragi.CsgoWeaponStatistics\x12\x1a\n\x04\x66orm\x18  \x03(\x0b\x32\x0c.bragi.Match\"\xa5\x06\n\x14\x43sgoPlayerStatistics\x12\x1d\n\x06player\x18\x01 \x01(\x0b\x32\r.bragi.Player\x12&\n\x05kills\x18\x02 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12\'\n\x06\x64\x65\x61ths\x18\x03 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12(\n\x07\x61ssists\x18\x04 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12\x32\n\x11kills_over_deaths\x18\x05 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12\'\n\x06\x64\x61mage\x18\x06 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12.\n\rheadshot_rate\x18\x07 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12.\n\rflash_assists\x18\x08 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12.\n\ropening_kills\x18\t \x01(\x0b\x32\x17.bragi.StatisticsValues\x12*\n\tawp_kills\x18\n \x01(\x0b\x32\x17.bragi.StatisticsValues\x12/\n\x0eutility_damage\x18\x0b \x01(\x0b\x32\x17.bragi.StatisticsValues\x12\x30\n\x0f\x65nemies_flashed\x18\x0c \x01(\x0b\x32\x17.bragi.StatisticsValues\x12\x32\n\x11multi_kill_rounds\x18\r \x01(\x0b\x32\x17.bragi.StatisticsValues\x12.\n\rclutch_rounds\x18\x0e \x01(\x0b\x32\x17.bragi.StatisticsValues\x12+\n\nlurk_kills\x18\x0f \x01(\x0b\x32\x17.bragi.StatisticsValues\x12.\n\rgrenades_used\x18\x10 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12\x36\n\x11\x66\x61vourite_weapons\x18\x11 \x03(\x0b\x32\x1b.bragi.CsgoWeaponStatistics\"\x84\x02\n\x15\x43sgoPostMapStatistics\x12\x1b\n\x03map\x18\x01 \x01(\x0b\x32\x0e.bragi.CsgoMap\x12>\n\x14home_team_statistics\x18\x02 \x01(\x0b\x32 .bragi.CsgoTeamPostMapStatistics\x12>\n\x14\x61way_team_statistics\x18\x03 \x01(\x0b\x32 .bragi.CsgoTeamPostMapStatistics\x12%\n\x05\x64uels\x18\x04 \x03(\x0b\x32\x16.bragi.CsgoPlayersDuel\x12\'\n\x06rounds\x18\x05 \x03(\x0b\x32\x17.bragi.CsgoRoundPostmap\"\x80\x03\n\x12\x43sgoTournamentInfo\x12\n\n\x02id\x18\x01 \x01(\r\x12%\n\ntournament\x18\x02 \x01(\x0b\x32\x11.bragi.Tournament\x12\x16\n\torganizer\x18\x03 \x01(\tH\x00\x88\x01\x01\x12\x15\n\x08location\x18\x04 \x01(\tH\x01\x88\x01\x01\x12\x17\n\nprize_pool\x18\x05 \x01(\tH\x02\x88\x01\x01\x12\x17\n\nis_offline\x18\x06 \x01(\x08H\x03\x88\x01\x01\x12\x1d\n\x10is_qualification\x18\x07 \x01(\x08H\x04\x88\x01\x01\x12\x1e\n\x05teams\x18\x08 \x03(\x0b\x32\x0f.bragi.CsgoTeam\x12\x1d\n\x07matches\x18\t \x03(\x0b\x32\x0c.bragi.Match\x12*\n\x06\x62locks\x18\n \x03(\x0b\x32\x1a.bragi.CsgoTournamentBlockB\x0c\n\n_organizerB\x0b\n\t_locationB\r\n\x0b_prize_poolB\r\n\x0b_is_offlineB\x13\n\x11_is_qualification\"\xbf\x03\n\x18\x43sgoTournamentStatistics\x12\n\n\x02id\x18\x01 \x01(\r\x12%\n\ntournament\x18\x02 \x01(\x0b\x32\x11.bragi.Tournament\x12*\n\x1dterrorists_winrate_in_percent\x18\x03 \x01(\x02H\x00\x88\x01\x01\x12\x32\n%counter_terrorists_winrate_in_percent\x18\x04 \x01(\x02H\x01\x88\x01\x01\x12;\n\nbest_teams\x18\x05 \x01(\x0b\x32\'.bragi.CsgoTournamentBestTeamStatistics\x12?\n\x0c\x62\x65st_players\x18\x06 \x01(\x0b\x32).bragi.CsgoTournamentBestPlayerStatistics\x12\x46\n\x1atournament_maps_statistics\x18\x07 \x03(\x0b\x32\".bragi.CsgoTournamentMapStatisticsB \n\x1e_terrorists_winrate_in_percentB(\n&_counter_terrorists_winrate_in_percent\"\xf2\x06\n\x19\x43sgoTeamPostMapStatistics\x12\n\n\x02id\x18\x01 \x01(\r\x12\x19\n\x04team\x18\x02 \x01(\x0b\x32\x0b.bragi.Team\x12>\n\x12players_statistics\x18\x03 \x03(\x0b\x32\".bragi.CsgoPlayerPostMapStatistics\x12\x12\n\nrounds_won\x18\x04 \x01(\x05\x12\x13\n\x0brounds_lost\x18\x05 \x01(\x05\x12-\n\x05kills\x18\x06 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12.\n\x06\x64\x65\x61ths\x18\x07 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12/\n\x07\x61ssists\x18\x08 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x39\n\x11kills_over_deaths\x18\t \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12.\n\x06\x64\x61mage\x18\n \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x35\n\rheadshot_rate\x18\x0b \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x35\n\rflash_assists\x18\x0c \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x35\n\ropening_kills\x18\r \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x38\n\x10kills_difference\x18\x0e \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x31\n\tkill_cost\x18\x0f \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x35\n\raccuracy_rate\x18\x10 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x42\n\x1akills_with_dropped_weapons\x18\x11 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12=\n\x11\x66\x61vourite_weapons\x18\x12 \x03(\x0b\x32\".bragi.CsgoWeaponPostMapStatistics\"\xfa\x08\n\x1b\x43sgoPlayerPostMapStatistics\x12\n\n\x02id\x18\x01 \x01(\r\x12\x1d\n\x06player\x18\x02 \x01(\x0b\x32\r.bragi.Player\x12.\n\x0fplayer_map_role\x18\x03 \x01(\x0e\x32\x15.bragi.CsgoPlayerRole\x12-\n\x05kills\x18\x04 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12.\n\x06\x64\x65\x61ths\x18\x05 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12/\n\x07\x61ssists\x18\x06 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x37\n\x0frounds_survived\x18\x07 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x39\n\x11kills_over_deaths\x18\x08 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12.\n\x06\x64\x61mage\x18\t \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x35\n\rheadshot_rate\x18\n \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x35\n\rflash_assists\x18\x0b \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x35\n\ropening_kills\x18\x0c \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x35\n\rclutch_rounds\x18\r \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x36\n\x0eutility_damage\x18\x0e \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x35\n\rgrenades_used\x18\x0f \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x37\n\x0f\x65nemies_flashed\x18\x10 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x31\n\tawp_kills\x18\x11 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x32\n\nlurk_kills\x18\x12 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x38\n\x10kills_difference\x18\x13 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x31\n\tkill_cost\x18\x14 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x35\n\raccuracy_rate\x18\x15 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12=\n\x11\x66\x61vourite_weapons\x18\x16 \x03(\x0b\x32\".bragi.CsgoWeaponPostMapStatistics\"\xd4\x01\n\x10\x43sgoRoundPostmap\x12\r\n\x05round\x18\x01 \x01(\x05\x12\x17\n\x03map\x18\x02 \x01(\x0b\x32\n.bragi.Map\x12 \n\x08\x63sgo_map\x18\x03 \x01(\x0b\x32\x0e.bragi.CsgoMap\x12 \n\x0bwinner_team\x18\x04 \x01(\x0b\x32\x0b.bragi.Team\x12$\n\x0bwinner_side\x18\x05 \x01(\x0e\x32\x0f.bragi.CsgoSide\x12.\n\rround_outcome\x18\x06 \x01(\x0e\x32\x17.bragi.CsgoRoundOutcome\"r\n\x1e\x43sgoMapStatisticsAccordingSide\x12\x1b\n\x03map\x18\x01 \x01(\x0b\x32\x0e.bragi.CsgoMap\x12\x33\n\nstatistics\x18\x02 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\"\x81\x03\n\x1b\x43sgoTournamentMapStatistics\x12\x1b\n\x03map\x18\x01 \x01(\x0b\x32\x0e.bragi.CsgoMap\x12\r\n\x05picks\x18\x02 \x01(\x05\x12\x0c\n\x04\x62\x61ns\x18\x03 \x01(\x05\x12*\n\x1dterrorists_winrate_in_percent\x18\x04 \x01(\x02H\x00\x88\x01\x01\x12\x32\n%counter_terrorists_winrate_in_percent\x18\x05 \x01(\x02H\x01\x88\x01\x01\x12;\n\nbest_teams\x18\x06 \x01(\x0b\x32\'.bragi.CsgoTournamentBestTeamStatistics\x12?\n\x0c\x62\x65st_players\x18\x07 \x01(\x0b\x32).bragi.CsgoTournamentBestPlayerStatisticsB \n\x1e_terrorists_winrate_in_percentB(\n&_counter_terrorists_winrate_in_percent\"w\n\x1e\x43sgoTournamentPlayerStatistics\x12\x1d\n\x06player\x18\x01 \x01(\x0b\x32\r.bragi.Player\x12\x1e\n\x04team\x18\x02 \x01(\x0b\x32\x0b.bragi.TeamH\x00\x88\x01\x01\x12\r\n\x05value\x18\x03 \x01(\x02\x42\x07\n\x05_team\"\x80\x03\n CsgoTournamentBestTeamStatistics\x12;\n\rhighest_kills\x18\x01 \x01(\x0b\x32$.bragi.TournamentTeamStatisticsValue\x12G\n\x19highest_kills_over_deaths\x18\x02 \x01(\x0b\x32$.bragi.TournamentTeamStatisticsValue\x12?\n\x11highest_awp_kills\x18\x03 \x01(\x0b\x32$.bragi.TournamentTeamStatisticsValue\x12I\n\x12highest_plant_rate\x18\x04 \x01(\x0b\x32-.bragi.TournamentTeamStatisticsValueInPercent\x12J\n\x13highest_defuse_rate\x18\x05 \x01(\x0b\x32-.bragi.TournamentTeamStatisticsValueInPercent\"\xbe\x03\n\"CsgoTournamentBestPlayerStatistics\x12<\n\rhighest_kills\x18\x01 \x01(\x0b\x32%.bragi.CsgoTournamentPlayerStatistics\x12H\n\x19highest_kills_over_deaths\x18\x02 \x01(\x0b\x32%.bragi.CsgoTournamentPlayerStatistics\x12=\n\x0ehighest_damage\x18\x03 \x01(\x0b\x32%.bragi.CsgoTournamentPlayerStatistics\x12\x44\n\x15highest_flash_assists\x18\x04 \x01(\x0b\x32%.bragi.CsgoTournamentPlayerStatistics\x12\x45\n\x16highest_utility_damage\x18\x05 \x01(\x0b\x32%.bragi.CsgoTournamentPlayerStatistics\x12\x44\n\x15highest_opening_kills\x18\x06 \x01(\x0b\x32%.bragi.CsgoTournamentPlayerStatistics\"\xc8\x01\n\x15\x43sgoTeamStandingRound\x12\r\n\x05round\x18\x01 \x01(\x05\x12\x17\n\nteam_score\x18\x02 \x01(\x05H\x00\x88\x01\x01\x12\"\n\x08opponent\x18\x03 \x01(\x0b\x32\x0b.bragi.TeamH\x01\x88\x01\x01\x12\x1b\n\x0eopponent_score\x18\x04 \x01(\x05H\x02\x88\x01\x01\x12\x17\n\x0fmatch_is_closed\x18\x05 \x01(\x08\x42\r\n\x0b_team_scoreB\x0b\n\t_opponentB\x11\n\x0f_opponent_score\"\x97\x01\n\x0f\x43sgoPlayersDuel\x12&\n\x0bhome_player\x18\x01 \x01(\x0b\x32\x11.bragi.CsgoPlayer\x12\x19\n\x11home_player_kills\x18\x02 \x01(\x05\x12&\n\x0b\x61way_player\x18\x03 \x01(\x0b\x32\x11.bragi.CsgoPlayer\x12\x19\n\x11\x61way_player_kills\x18\x04 \x01(\x05\"\xa2\x01\n\x18\x43sgoStatisticsSideValues\x12+\n\nterrorists\x18\x01 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12\x33\n\x12\x63ounter_terrorists\x18\x02 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12$\n\x03\x61ll\x18\x03 \x01(\x0b\x32\x17.bragi.StatisticsValues\"\xa5\x01\n\x14\x43sgoWeaponStatistics\x12!\n\x06weapon\x18\x01 \x01(\x0b\x32\x11.bragi.CsgoWeapon\x12\x32\n\x11kills_with_weapon\x18\x02 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12\x36\n\x15headshots_with_weapon\x18\x03 \x01(\x0b\x32\x17.bragi.StatisticsValues\"z\n\x1b\x43sgoWeaponPostMapStatistics\x12!\n\x06weapon\x18\x01 \x01(\x0b\x32\x11.bragi.CsgoWeapon\x12\x19\n\x11kills_with_weapon\x18\x02 \x01(\x05\x12\x1d\n\x15headshots_with_weapon\x18\x03 \x01(\x05\"I\n\x07\x43sgoMap\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x16\n\ticon_path\x18\x03 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_icon_path\"a\n\x0b\x43sgoMapVote\x12(\n\x06picked\x18\x01 \x03(\x0b\x32\x18.bragi.CsgoMapStatistics\x12(\n\x06\x62\x61nned\x18\x02 \x03(\x0b\x32\x18.bragi.CsgoMapStatistics\"]\n\x11\x43sgoMapStatistics\x12\x1b\n\x03map\x18\x01 \x01(\x0b\x32\x0e.bragi.CsgoMap\x12+\n\nstatistics\x18\x02 \x01(\x0b\x32\x17.bragi.StatisticsValues\"L\n\nCsgoWeapon\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x16\n\ticon_path\x18\x03 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_icon_path\"Q\n\x08\x43sgoTeam\x12\n\n\x02id\x18\x01 \x01(\r\x12\x19\n\x04team\x18\x02 \x01(\x0b\x32\x0b.bragi.Team\x12\x1e\n\x07players\x18\x03 \x03(\x0b\x32\r.bragi.Player\"\xbf\x01\n\nCsgoPlayer\x12\n\n\x02id\x18\x01 \x01(\r\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x16\n\treal_name\x18\x03 \x01(\tH\x00\x88\x01\x01\x12\x15\n\x08shortcut\x18\x04 \x01(\tH\x01\x88\x01\x01\x12\x16\n\ticon_path\x18\x05 \x01(\tH\x02\x88\x01\x01\x12#\n\x04role\x18\x06 \x01(\x0e\x32\x15.bragi.CsgoPlayerRoleB\x0c\n\n_real_nameB\x0b\n\t_shortcutB\x0c\n\n_icon_path\"\xc1\x01\n\x13\x43sgoTournamentBlock\x12N\n\x1f\x63sgo_tournament_standings_block\x18\x01 \x01(\x0b\x32#.bragi.CsgoTournamentStandingsBlockH\x00\x12L\n\x1e\x63sgo_tournament_brackets_block\x18\x02 \x01(\x0b\x32\".bragi.CsgoTournamentBracketsBlockH\x00\x42\x0c\n\noneof_name\"s\n\x1c\x43sgoTournamentStandingsBlock\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05order\x18\x03 \x01(\x05\x12*\n\tstandings\x18\x04 \x03(\x0b\x32\x17.bragi.CsgoTeamStanding\"v\n\x1b\x43sgoTournamentBracketsBlock\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05order\x18\x03 \x01(\x05\x12.\n\x08\x62rackets\x18\x04 \x03(\x0b\x32\x1c.bragi.TournamentBracketNode\"\xfb\x02\n\x10\x43sgoTeamStanding\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0c\n\x04rank\x18\x02 \x01(\x05\x12\x19\n\x04team\x18\x03 \x01(\x0b\x32\x0b.bragi.Team\x12\x0e\n\x06points\x18\x04 \x01(\x05\x12\x13\n\x0bmatches_won\x18\x05 \x01(\x05\x12\x14\n\x0cmatches_lost\x18\x06 \x01(\x05\x12\x15\n\rmatches_drawn\x18\x07 \x01(\x05\x12\x10\n\x08maps_won\x18\x08 \x01(\x05\x12\x11\n\tmaps_lost\x18\t \x01(\x05\x12\x12\n\nmaps_drawn\x18\n \x01(\x05\x12\x12\n\nrounds_won\x18\x0b \x01(\x05\x12\x13\n\x0brounds_lost\x18\x0c \x01(\x05\x12\x16\n\x0emap_difference\x18\r \x01(\x05\x12\x18\n\x10round_difference\x18\x0e \x01(\x05\x12\x13\n\x06status\x18\x0f \x01(\tH\x00\x88\x01\x01\x12,\n\x06rounds\x18\x10 \x03(\x0b\x32\x1c.bragi.CsgoTeamStandingRoundB\t\n\x07_status\"\xc9\x02\n\x15TournamentBracketNode\x12\n\n\x02id\x18\x01 \x01(\r\x12#\n\thome_team\x18\x02 \x01(\x0b\x32\x0b.bragi.TeamH\x00\x88\x01\x01\x12\x17\n\nhome_score\x18\x03 \x01(\x05H\x01\x88\x01\x01\x12#\n\taway_team\x18\x04 \x01(\x0b\x32\x0b.bragi.TeamH\x02\x88\x01\x01\x12\x17\n\naway_score\x18\x05 \x01(\x05H\x03\x88\x01\x01\x12 \n\x05match\x18\x06 \x01(\x0b\x32\x0c.bragi.MatchH\x04\x88\x01\x01\x12\x12\n\x05label\x18\x07 \x01(\tH\x05\x88\x01\x01\x12\x0f\n\x07is_root\x18\x08 \x01(\x08\x12\x13\n\x0b\x63hild_nodes\x18\t \x03(\rB\x0c\n\n_home_teamB\r\n\x0b_home_scoreB\x0c\n\n_away_teamB\r\n\x0b_away_scoreB\x08\n\x06_matchB\x08\n\x06_label\"!\n\x05Sport\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\"\x8e\x01\n\nTournament\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x33\n\x0fstart_timestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x31\n\rend_timestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"F\n\x04Team\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x16\n\ticon_path\x18\x03 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_icon_path\"\x9c\x04\n\x05Match\x12\n\n\x02id\x18\x01 \x01(\r\x12;\n\x17planned_start_timestamp\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x33\n\x0fstart_timestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x31\n\rend_timestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12%\n\ntournament\x18\x05 \x01(\x0b\x32\x11.bragi.Tournament\x12#\n\thome_team\x18\x06 \x01(\x0b\x32\x0b.bragi.TeamH\x00\x88\x01\x01\x12\x17\n\nhome_score\x18\x07 \x01(\x05H\x01\x88\x01\x01\x12#\n\taway_team\x18\x08 \x01(\x0b\x32\x0b.bragi.TeamH\x02\x88\x01\x01\x12\x17\n\naway_score\x18\t \x01(\x05H\x03\x88\x01\x01\x12\"\n\x08win_team\x18\n \x01(\x0b\x32\x0b.bragi.TeamH\x04\x88\x01\x01\x12\x11\n\tis_closed\x18\x0b \x01(\x08\x12\'\n\x0c\x62\x65st_of_type\x18\x0c \x01(\x0e\x32\x11.bragi.BestOfType\x12\x18\n\x04maps\x18\r \x03(\x0b\x32\n.bragi.MapB\x0c\n\n_home_teamB\r\n\x0b_home_scoreB\x0c\n\n_away_teamB\r\n\x0b_away_scoreB\x0b\n\t_win_team\"\xcb\x01\n\x03Map\x12\n\n\x02id\x18\x01 \x01(\r\x12\r\n\x05order\x18\x02 \x01(\x05\x12\x38\n\x0fstart_timestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x00\x88\x01\x01\x12\x36\n\rend_timestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x01\x88\x01\x01\x12\x11\n\tis_closed\x18\x05 \x01(\x08\x42\x12\n\x10_start_timestampB\x10\n\x0e_end_timestamp\"\x96\x01\n\x06Player\x12\n\n\x02id\x18\x01 \x01(\r\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x16\n\treal_name\x18\x03 \x01(\tH\x00\x88\x01\x01\x12\x15\n\x08shortcut\x18\x04 \x01(\tH\x01\x88\x01\x01\x12\x16\n\ticon_path\x18\x05 \x01(\tH\x02\x88\x01\x01\x42\x0c\n\n_real_nameB\x0b\n\t_shortcutB\x0c\n\n_icon_path\"I\n\x1dTournamentTeamStatisticsValue\x12\x19\n\x04team\x18\x01 \x01(\x0b\x32\x0b.bragi.Team\x12\r\n\x05value\x18\x02 \x01(\x02\"R\n&TournamentTeamStatisticsValueInPercent\x12\x19\n\x04team\x18\x01 \x01(\x0b\x32\x0b.bragi.Team\x12\r\n\x05value\x18\x02 \x01(\x02\"G\n\x17PostMapStatisticsValues\x12\x1d\n\x15percentage_of_maximum\x18\x01 \x01(\x02\x12\r\n\x05total\x18\x02 \x01(\x02\"B\n\x10StatisticsValues\x12\x0b\n\x03\x61vg\x18\x01 \x01(\x02\x12\x12\n\npercentile\x18\x02 \x01(\x02\x12\r\n\x05total\x18\x03 \x01(\x02*\xcf\x01\n\x0e\x43sgoPlayerRole\x12 \n\x1c\x43SGO_PLAYER_ROLE_UNSPECIFIED\x10\x00\x12 \n\x1c\x43SGO_PLAYER_ROLE_KILL_LEADER\x10\x01\x12\"\n\x1e\x43SGO_PLAYER_ROLE_ENTRY_FRAGGER\x10\x02\x12\x1c\n\x18\x43SGO_PLAYER_ROLE_SUPPORT\x10\x03\x12\x1a\n\x16\x43SGO_PLAYER_ROLE_AWPER\x10\x04\x12\x1b\n\x17\x43SGO_PLAYER_ROLE_LURKER\x10\x05*a\n\x08\x43sgoSide\x12\x19\n\x15\x43SGO_SIDE_UNSPECIFIED\x10\x00\x12 \n\x1c\x43SGO_SIDE_COUNTER_TERRORISTS\x10\x01\x12\x18\n\x14\x43SGO_SIDE_TERRORISTS\x10\x02*\xfb\x01\n\x10\x43sgoRoundOutcome\x12\"\n\x1e\x43SGO_ROUND_OUTCOME_UNSPECIFIED\x10\x00\x12\x34\n0CSGO_ROUND_OUTCOME_COUNTER_TERRORISTS_ELIMINATED\x10\x01\x12,\n(CSGO_ROUND_OUTCOME_TERRORISTS_ELIMINATED\x10\x02\x12 \n\x1c\x43SGO_ROUND_OUTCOME_EXPLOSION\x10\x03\x12\x1d\n\x19\x43SGO_ROUND_OUTCOME_DEFUSE\x10\x04\x12\x1e\n\x1a\x43SGO_ROUND_OUTCOME_TIMEOUT\x10\x05*\x8d\x01\n\tTimeframe\x12\x19\n\x15TIMEFRAME_UNSPECIFIED\x10\x00\x12\x17\n\x13TIMEFRAME_ONE_MONTH\x10\x01\x12\x1a\n\x16TIMEFRAME_THREE_MONTHS\x10\x02\x12\x18\n\x14TIMEFRAME_SIX_MONTHS\x10\x03\x12\x16\n\x12TIMEFRAME_ONE_YEAR\x10\x04*\xc4\x01\n\nBestOfType\x12\x1c\n\x18\x42\x45ST_OF_TYPE_UNSPECIFIED\x10\x00\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO1\x10\x01\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO2\x10\x02\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO3\x10\x03\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO4\x10\x04\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO5\x10\x05\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO6\x10\x06\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO7\x10\x07\x32\xce\x06\n\tBragiGrpc\x12\x37\n\x06Sports\x12\x14.bragi.SportsRequest\x1a\x15.bragi.SportsResponse\"\x00\x12\x45\n\x0bTournaments\x12\x19.bragi.TournamentsRequest\x1a\x19.bragi.TournamentResponse\"\x00\x12O\n\x0eTournamentInfo\x12\x1c.bragi.TournamentInfoRequest\x1a\x1d.bragi.TournamentInfoResponse\"\x00\x12i\n\x18TeamHistoricalStatistics\x12&.bragi.TeamHistoricalStatisticsRequest\x1a#.bragi.HistoricalStatisticsResponse\"\x00\x12[\n\x12LastFiveEncounters\x12 .bragi.LastFiveEncountersRequest\x1a!.bragi.LastFiveEncountersResponse\"\x00\x12X\n\x11PostMapStatistics\x12\x1f.bragi.PostMapStatisticsRequest\x1a .bragi.PostMapStatisticsResponse\"\x00\x12\x61\n\x14TournamentStatistics\x12\".bragi.TournamentStatisticsRequest\x1a#.bragi.TournamentStatisticsResponse\"\x00\x12m\n\x18TeamTournamentStatistics\x12&.bragi.TeamTournamentStatisticsRequest\x1a\'.bragi.TeamTournamentStatisticsResponse\"\x00\x12|\n\x1dPlayerStatisticsAccordingRole\x12+.bragi.PlayerStatisticsAccordingRoleRequest\x1a,.bragi.PlayerStatisticsAccordingRoleResponse\"\x00\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
+  serialized_pb=b'\n\x11\x62ragi/bragi.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\"\x0f\n\rSportsRequest\"i\n\x1fTeamHistoricalStatisticsRequest\x12\x10\n\x08sport_id\x18\x01 \x01(\r\x12#\n\ttimeframe\x18\x02 \x01(\x0e\x32\x10.bragi.Timeframe\x12\x0f\n\x07team_id\x18\x03 \x01(\r\"~\n\x19LastFiveEncountersRequest\x12\x10\n\x08sport_id\x18\x01 \x01(\r\x12#\n\ttimeframe\x18\x02 \x01(\x0e\x32\x10.bragi.Timeframe\x12\x14\n\x0chome_team_id\x18\x03 \x01(\r\x12\x14\n\x0c\x61way_team_id\x18\x04 \x01(\r\"\xa6\x01\n\x12TournamentsRequest\x12\x10\n\x08sport_id\x18\x01 \x01(\r\x12\x32\n\tdate_from\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x00\x88\x01\x01\x12\x30\n\x07\x64\x61te_to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x01\x88\x01\x01\x42\x0c\n\n_date_fromB\n\n\x08_date_to\".\n\x15TournamentInfoRequest\x12\x15\n\rtournament_id\x18\x01 \x01(\r\"*\n\x18PostMapStatisticsRequest\x12\x0e\n\x06map_id\x18\x01 \x01(\r\"4\n\x1bTournamentStatisticsRequest\x12\x15\n\rtournament_id\x18\x01 \x01(\r\"I\n\x1fTeamTournamentStatisticsRequest\x12\x15\n\rtournament_id\x18\x01 \x01(\r\x12\x0f\n\x07team_id\x18\x02 \x01(\r\"|\n$PlayerStatisticsAccordingRoleRequest\x12\x10\n\x08sport_id\x18\x01 \x01(\r\x12#\n\ttimeframe\x18\x02 \x01(\x0e\x32\x10.bragi.Timeframe\x12\x0c\n\x04role\x18\x03 \x01(\t\x12\x0f\n\x07team_id\x18\x04 \x01(\r\"%\n\x13\x43sgo2dMaFeedRequest\x12\x0e\n\x06map_id\x18\x01 \x01(\r\"-\n\x19\x43sgoScoreBoardFeedRequest\x12\x10\n\x08match_id\x18\x01 \x01(\r\")\n\x15\x43sgoEventsFeedRequest\x12\x10\n\x08match_id\x18\x01 \x01(\r\".\n\x0eSportsResponse\x12\x1c\n\x06sports\x18\x01 \x03(\x0b\x32\x0c.bragi.Sport\"<\n\x12TournamentResponse\x12&\n\x0btournaments\x18\x01 \x03(\x0b\x32\x11.bragi.Tournament\"b\n\x1cHistoricalStatisticsResponse\x12)\n\x04\x63sgo\x18\x01 \x01(\x0b\x32\x19.bragi.CsgoTeamStatisticsH\x00\x42\x17\n\x15historical_statistics\";\n\x1aLastFiveEncountersResponse\x12\x1d\n\x07matches\x18\x01 \x03(\x0b\x32\x0c.bragi.Match\"`\n\x19PostMapStatisticsResponse\x12,\n\x04\x63sgo\x18\x01 \x01(\x0b\x32\x1c.bragi.CsgoPostMapStatisticsH\x00\x42\x15\n\x13post_map_statistics\"V\n\x16TournamentInfoResponse\x12)\n\x04\x63sgo\x18\x01 \x01(\x0b\x32\x19.bragi.CsgoTournamentInfoH\x00\x42\x11\n\x0ftournament_info\"h\n\x1cTournamentStatisticsResponse\x12/\n\x04\x63sgo\x18\x01 \x01(\x0b\x32\x1f.bragi.CsgoTournamentStatisticsH\x00\x42\x17\n\x15tournament_statistics\"l\n TeamTournamentStatisticsResponse\x12)\n\x04\x63sgo\x18\x01 \x01(\x0b\x32\x19.bragi.CsgoTeamStatisticsH\x00\x42\x1d\n\x1bteams_tournament_statistics\"x\n%PlayerStatisticsAccordingRoleResponse\x12+\n\x04\x63sgo\x18\x01 \x01(\x0b\x32\x1b.bragi.CsgoPlayerStatisticsH\x00\x42\"\n player_statistics_according_role\"\xc4\r\n\x12\x43sgoTeamStatistics\x12\x19\n\x04team\x18\x02 \x01(\x0b\x32\x0b.bragi.Team\x12\x36\n\x11player_statistics\x18\x03 \x03(\x0b\x32\x1b.bragi.CsgoPlayerStatistics\x12$\n\x08map_vote\x18\x04 \x01(\x0b\x32\x12.bragi.CsgoMapVote\x12-\n\x0bmap_winrate\x18\x05 \x03(\x0b\x32\x18.bragi.CsgoMapStatistics\x12<\n\rround_winrate\x18\x06 \x03(\x0b\x32%.bragi.CsgoMapStatisticsAccordingSide\x12\x34\n\x13overall_map_winrate\x18\x07 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12>\n\x15overall_round_winrate\x18\x08 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12\x37\n\x0epistol_winrate\x18\t \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12>\n\x15pistol_win_conversion\x18\n \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12?\n\x16pistol_loss_conversion\x18\x0b \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12.\n\x05kills\x18\x0c \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12/\n\x06\x64\x65\x61ths\x18\r \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12:\n\x11kills_over_deaths\x18\x0e \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12\x30\n\x07\x61ssists\x18\x0f \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12\x36\n\rflash_assists\x18\x10 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12/\n\x06\x64\x61mage\x18\x11 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12\x36\n\rheadshot_rate\x18\x12 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12\x36\n\ropening_kills\x18\x13 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12;\n\x12opening_conversion\x18\x14 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12\x41\n\x18opening_death_conversion\x18\x15 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12\x32\n\tawp_kills\x18\x16 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12<\n\x13\x65limination_winrate\x18\x17 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12:\n\x11objective_winrate\x18\x18 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12\x37\n\x0eutility_damage\x18\x19 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12>\n\x15\x66irst_to_win_3_rounds\x18\x1a \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12>\n\x15\x66irst_to_win_6_rounds\x18\x1b \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12>\n\x15\x66irst_to_win_9_rounds\x18\x1c \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12?\n\x16\x66irst_to_win_12_rounds\x18\x1d \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12\x34\n\x0brounds_lost\x18\x1e \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\x12\x36\n\x11\x66\x61vourite_weapons\x18\x1f \x03(\x0b\x32\x1b.bragi.CsgoWeaponStatistics\x12\x1a\n\x04\x66orm\x18  \x03(\x0b\x32\x0c.bragi.Match\"\xa5\x06\n\x14\x43sgoPlayerStatistics\x12\x1d\n\x06player\x18\x01 \x01(\x0b\x32\r.bragi.Player\x12&\n\x05kills\x18\x02 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12\'\n\x06\x64\x65\x61ths\x18\x03 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12(\n\x07\x61ssists\x18\x04 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12\x32\n\x11kills_over_deaths\x18\x05 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12\'\n\x06\x64\x61mage\x18\x06 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12.\n\rheadshot_rate\x18\x07 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12.\n\rflash_assists\x18\x08 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12.\n\ropening_kills\x18\t \x01(\x0b\x32\x17.bragi.StatisticsValues\x12*\n\tawp_kills\x18\n \x01(\x0b\x32\x17.bragi.StatisticsValues\x12/\n\x0eutility_damage\x18\x0b \x01(\x0b\x32\x17.bragi.StatisticsValues\x12\x30\n\x0f\x65nemies_flashed\x18\x0c \x01(\x0b\x32\x17.bragi.StatisticsValues\x12\x32\n\x11multi_kill_rounds\x18\r \x01(\x0b\x32\x17.bragi.StatisticsValues\x12.\n\rclutch_rounds\x18\x0e \x01(\x0b\x32\x17.bragi.StatisticsValues\x12+\n\nlurk_kills\x18\x0f \x01(\x0b\x32\x17.bragi.StatisticsValues\x12.\n\rgrenades_used\x18\x10 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12\x36\n\x11\x66\x61vourite_weapons\x18\x11 \x03(\x0b\x32\x1b.bragi.CsgoWeaponStatistics\"\x84\x02\n\x15\x43sgoPostMapStatistics\x12\x1b\n\x03map\x18\x01 \x01(\x0b\x32\x0e.bragi.CsgoMap\x12>\n\x14home_team_statistics\x18\x02 \x01(\x0b\x32 .bragi.CsgoTeamPostMapStatistics\x12>\n\x14\x61way_team_statistics\x18\x03 \x01(\x0b\x32 .bragi.CsgoTeamPostMapStatistics\x12%\n\x05\x64uels\x18\x04 \x03(\x0b\x32\x16.bragi.CsgoPlayersDuel\x12\'\n\x06rounds\x18\x05 \x03(\x0b\x32\x17.bragi.CsgoRoundPostmap\"\x80\x03\n\x12\x43sgoTournamentInfo\x12\n\n\x02id\x18\x01 \x01(\r\x12%\n\ntournament\x18\x02 \x01(\x0b\x32\x11.bragi.Tournament\x12\x16\n\torganizer\x18\x03 \x01(\tH\x00\x88\x01\x01\x12\x15\n\x08location\x18\x04 \x01(\tH\x01\x88\x01\x01\x12\x17\n\nprize_pool\x18\x05 \x01(\tH\x02\x88\x01\x01\x12\x17\n\nis_offline\x18\x06 \x01(\x08H\x03\x88\x01\x01\x12\x1d\n\x10is_qualification\x18\x07 \x01(\x08H\x04\x88\x01\x01\x12\x1e\n\x05teams\x18\x08 \x03(\x0b\x32\x0f.bragi.CsgoTeam\x12\x1d\n\x07matches\x18\t \x03(\x0b\x32\x0c.bragi.Match\x12*\n\x06\x62locks\x18\n \x03(\x0b\x32\x1a.bragi.CsgoTournamentBlockB\x0c\n\n_organizerB\x0b\n\t_locationB\r\n\x0b_prize_poolB\r\n\x0b_is_offlineB\x13\n\x11_is_qualification\"\xbf\x03\n\x18\x43sgoTournamentStatistics\x12\n\n\x02id\x18\x01 \x01(\r\x12%\n\ntournament\x18\x02 \x01(\x0b\x32\x11.bragi.Tournament\x12*\n\x1dterrorists_winrate_in_percent\x18\x03 \x01(\x02H\x00\x88\x01\x01\x12\x32\n%counter_terrorists_winrate_in_percent\x18\x04 \x01(\x02H\x01\x88\x01\x01\x12;\n\nbest_teams\x18\x05 \x01(\x0b\x32\'.bragi.CsgoTournamentBestTeamStatistics\x12?\n\x0c\x62\x65st_players\x18\x06 \x01(\x0b\x32).bragi.CsgoTournamentBestPlayerStatistics\x12\x46\n\x1atournament_maps_statistics\x18\x07 \x03(\x0b\x32\".bragi.CsgoTournamentMapStatisticsB \n\x1e_terrorists_winrate_in_percentB(\n&_counter_terrorists_winrate_in_percent\"\xf2\x06\n\x19\x43sgoTeamPostMapStatistics\x12\n\n\x02id\x18\x01 \x01(\r\x12\x19\n\x04team\x18\x02 \x01(\x0b\x32\x0b.bragi.Team\x12>\n\x12players_statistics\x18\x03 \x03(\x0b\x32\".bragi.CsgoPlayerPostMapStatistics\x12\x12\n\nrounds_won\x18\x04 \x01(\x05\x12\x13\n\x0brounds_lost\x18\x05 \x01(\x05\x12-\n\x05kills\x18\x06 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12.\n\x06\x64\x65\x61ths\x18\x07 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12/\n\x07\x61ssists\x18\x08 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x39\n\x11kills_over_deaths\x18\t \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12.\n\x06\x64\x61mage\x18\n \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x35\n\rheadshot_rate\x18\x0b \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x35\n\rflash_assists\x18\x0c \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x35\n\ropening_kills\x18\r \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x38\n\x10kills_difference\x18\x0e \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x31\n\tkill_cost\x18\x0f \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x35\n\raccuracy_rate\x18\x10 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x42\n\x1akills_with_dropped_weapons\x18\x11 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12=\n\x11\x66\x61vourite_weapons\x18\x12 \x03(\x0b\x32\".bragi.CsgoWeaponPostMapStatistics\"\xfa\x08\n\x1b\x43sgoPlayerPostMapStatistics\x12\n\n\x02id\x18\x01 \x01(\r\x12\x1d\n\x06player\x18\x02 \x01(\x0b\x32\r.bragi.Player\x12.\n\x0fplayer_map_role\x18\x03 \x01(\x0e\x32\x15.bragi.CsgoPlayerRole\x12-\n\x05kills\x18\x04 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12.\n\x06\x64\x65\x61ths\x18\x05 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12/\n\x07\x61ssists\x18\x06 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x37\n\x0frounds_survived\x18\x07 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x39\n\x11kills_over_deaths\x18\x08 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12.\n\x06\x64\x61mage\x18\t \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x35\n\rheadshot_rate\x18\n \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x35\n\rflash_assists\x18\x0b \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x35\n\ropening_kills\x18\x0c \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x35\n\rclutch_rounds\x18\r \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x36\n\x0eutility_damage\x18\x0e \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x35\n\rgrenades_used\x18\x0f \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x37\n\x0f\x65nemies_flashed\x18\x10 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x31\n\tawp_kills\x18\x11 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x32\n\nlurk_kills\x18\x12 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x38\n\x10kills_difference\x18\x13 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x31\n\tkill_cost\x18\x14 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12\x35\n\raccuracy_rate\x18\x15 \x01(\x0b\x32\x1e.bragi.PostMapStatisticsValues\x12=\n\x11\x66\x61vourite_weapons\x18\x16 \x03(\x0b\x32\".bragi.CsgoWeaponPostMapStatistics\"\xd4\x01\n\x10\x43sgoRoundPostmap\x12\r\n\x05round\x18\x01 \x01(\x05\x12\x17\n\x03map\x18\x02 \x01(\x0b\x32\n.bragi.Map\x12 \n\x08\x63sgo_map\x18\x03 \x01(\x0b\x32\x0e.bragi.CsgoMap\x12 \n\x0bwinner_team\x18\x04 \x01(\x0b\x32\x0b.bragi.Team\x12$\n\x0bwinner_side\x18\x05 \x01(\x0e\x32\x0f.bragi.CsgoSide\x12.\n\rround_outcome\x18\x06 \x01(\x0e\x32\x17.bragi.CsgoRoundOutcome\"r\n\x1e\x43sgoMapStatisticsAccordingSide\x12\x1b\n\x03map\x18\x01 \x01(\x0b\x32\x0e.bragi.CsgoMap\x12\x33\n\nstatistics\x18\x02 \x01(\x0b\x32\x1f.bragi.CsgoStatisticsSideValues\"\x81\x03\n\x1b\x43sgoTournamentMapStatistics\x12\x1b\n\x03map\x18\x01 \x01(\x0b\x32\x0e.bragi.CsgoMap\x12\r\n\x05picks\x18\x02 \x01(\x05\x12\x0c\n\x04\x62\x61ns\x18\x03 \x01(\x05\x12*\n\x1dterrorists_winrate_in_percent\x18\x04 \x01(\x02H\x00\x88\x01\x01\x12\x32\n%counter_terrorists_winrate_in_percent\x18\x05 \x01(\x02H\x01\x88\x01\x01\x12;\n\nbest_teams\x18\x06 \x01(\x0b\x32\'.bragi.CsgoTournamentBestTeamStatistics\x12?\n\x0c\x62\x65st_players\x18\x07 \x01(\x0b\x32).bragi.CsgoTournamentBestPlayerStatisticsB \n\x1e_terrorists_winrate_in_percentB(\n&_counter_terrorists_winrate_in_percent\"w\n\x1e\x43sgoTournamentPlayerStatistics\x12\x1d\n\x06player\x18\x01 \x01(\x0b\x32\r.bragi.Player\x12\x1e\n\x04team\x18\x02 \x01(\x0b\x32\x0b.bragi.TeamH\x00\x88\x01\x01\x12\r\n\x05value\x18\x03 \x01(\x02\x42\x07\n\x05_team\"\x80\x03\n CsgoTournamentBestTeamStatistics\x12;\n\rhighest_kills\x18\x01 \x01(\x0b\x32$.bragi.TournamentTeamStatisticsValue\x12G\n\x19highest_kills_over_deaths\x18\x02 \x01(\x0b\x32$.bragi.TournamentTeamStatisticsValue\x12?\n\x11highest_awp_kills\x18\x03 \x01(\x0b\x32$.bragi.TournamentTeamStatisticsValue\x12I\n\x12highest_plant_rate\x18\x04 \x01(\x0b\x32-.bragi.TournamentTeamStatisticsValueInPercent\x12J\n\x13highest_defuse_rate\x18\x05 \x01(\x0b\x32-.bragi.TournamentTeamStatisticsValueInPercent\"\xbe\x03\n\"CsgoTournamentBestPlayerStatistics\x12<\n\rhighest_kills\x18\x01 \x01(\x0b\x32%.bragi.CsgoTournamentPlayerStatistics\x12H\n\x19highest_kills_over_deaths\x18\x02 \x01(\x0b\x32%.bragi.CsgoTournamentPlayerStatistics\x12=\n\x0ehighest_damage\x18\x03 \x01(\x0b\x32%.bragi.CsgoTournamentPlayerStatistics\x12\x44\n\x15highest_flash_assists\x18\x04 \x01(\x0b\x32%.bragi.CsgoTournamentPlayerStatistics\x12\x45\n\x16highest_utility_damage\x18\x05 \x01(\x0b\x32%.bragi.CsgoTournamentPlayerStatistics\x12\x44\n\x15highest_opening_kills\x18\x06 \x01(\x0b\x32%.bragi.CsgoTournamentPlayerStatistics\"\xc8\x01\n\x15\x43sgoTeamStandingRound\x12\r\n\x05round\x18\x01 \x01(\x05\x12\x17\n\nteam_score\x18\x02 \x01(\x05H\x00\x88\x01\x01\x12\"\n\x08opponent\x18\x03 \x01(\x0b\x32\x0b.bragi.TeamH\x01\x88\x01\x01\x12\x1b\n\x0eopponent_score\x18\x04 \x01(\x05H\x02\x88\x01\x01\x12\x17\n\x0fmatch_is_closed\x18\x05 \x01(\x08\x42\r\n\x0b_team_scoreB\x0b\n\t_opponentB\x11\n\x0f_opponent_score\"\x97\x01\n\x0f\x43sgoPlayersDuel\x12&\n\x0bhome_player\x18\x01 \x01(\x0b\x32\x11.bragi.CsgoPlayer\x12\x19\n\x11home_player_kills\x18\x02 \x01(\x05\x12&\n\x0b\x61way_player\x18\x03 \x01(\x0b\x32\x11.bragi.CsgoPlayer\x12\x19\n\x11\x61way_player_kills\x18\x04 \x01(\x05\"\xa2\x01\n\x18\x43sgoStatisticsSideValues\x12+\n\nterrorists\x18\x01 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12\x33\n\x12\x63ounter_terrorists\x18\x02 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12$\n\x03\x61ll\x18\x03 \x01(\x0b\x32\x17.bragi.StatisticsValues\"\xa5\x01\n\x14\x43sgoWeaponStatistics\x12!\n\x06weapon\x18\x01 \x01(\x0b\x32\x11.bragi.CsgoWeapon\x12\x32\n\x11kills_with_weapon\x18\x02 \x01(\x0b\x32\x17.bragi.StatisticsValues\x12\x36\n\x15headshots_with_weapon\x18\x03 \x01(\x0b\x32\x17.bragi.StatisticsValues\"z\n\x1b\x43sgoWeaponPostMapStatistics\x12!\n\x06weapon\x18\x01 \x01(\x0b\x32\x11.bragi.CsgoWeapon\x12\x19\n\x11kills_with_weapon\x18\x02 \x01(\x05\x12\x1d\n\x15headshots_with_weapon\x18\x03 \x01(\x05\"I\n\x07\x43sgoMap\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x16\n\ticon_path\x18\x03 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_icon_path\"a\n\x0b\x43sgoMapVote\x12(\n\x06picked\x18\x01 \x03(\x0b\x32\x18.bragi.CsgoMapStatistics\x12(\n\x06\x62\x61nned\x18\x02 \x03(\x0b\x32\x18.bragi.CsgoMapStatistics\"]\n\x11\x43sgoMapStatistics\x12\x1b\n\x03map\x18\x01 \x01(\x0b\x32\x0e.bragi.CsgoMap\x12+\n\nstatistics\x18\x02 \x01(\x0b\x32\x17.bragi.StatisticsValues\"L\n\nCsgoWeapon\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x16\n\ticon_path\x18\x03 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_icon_path\"Q\n\x08\x43sgoTeam\x12\n\n\x02id\x18\x01 \x01(\r\x12\x19\n\x04team\x18\x02 \x01(\x0b\x32\x0b.bragi.Team\x12\x1e\n\x07players\x18\x03 \x03(\x0b\x32\r.bragi.Player\"\xbf\x01\n\nCsgoPlayer\x12\n\n\x02id\x18\x01 \x01(\r\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x16\n\treal_name\x18\x03 \x01(\tH\x00\x88\x01\x01\x12\x15\n\x08shortcut\x18\x04 \x01(\tH\x01\x88\x01\x01\x12\x16\n\ticon_path\x18\x05 \x01(\tH\x02\x88\x01\x01\x12#\n\x04role\x18\x06 \x01(\x0e\x32\x15.bragi.CsgoPlayerRoleB\x0c\n\n_real_nameB\x0b\n\t_shortcutB\x0c\n\n_icon_path\"\xc1\x01\n\x13\x43sgoTournamentBlock\x12N\n\x1f\x63sgo_tournament_standings_block\x18\x01 \x01(\x0b\x32#.bragi.CsgoTournamentStandingsBlockH\x00\x12L\n\x1e\x63sgo_tournament_brackets_block\x18\x02 \x01(\x0b\x32\".bragi.CsgoTournamentBracketsBlockH\x00\x42\x0c\n\noneof_name\"s\n\x1c\x43sgoTournamentStandingsBlock\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05order\x18\x03 \x01(\x05\x12*\n\tstandings\x18\x04 \x03(\x0b\x32\x17.bragi.CsgoTeamStanding\"v\n\x1b\x43sgoTournamentBracketsBlock\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05order\x18\x03 \x01(\x05\x12.\n\x08\x62rackets\x18\x04 \x03(\x0b\x32\x1c.bragi.TournamentBracketNode\"\xfb\x02\n\x10\x43sgoTeamStanding\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0c\n\x04rank\x18\x02 \x01(\x05\x12\x19\n\x04team\x18\x03 \x01(\x0b\x32\x0b.bragi.Team\x12\x0e\n\x06points\x18\x04 \x01(\x05\x12\x13\n\x0bmatches_won\x18\x05 \x01(\x05\x12\x14\n\x0cmatches_lost\x18\x06 \x01(\x05\x12\x15\n\rmatches_drawn\x18\x07 \x01(\x05\x12\x10\n\x08maps_won\x18\x08 \x01(\x05\x12\x11\n\tmaps_lost\x18\t \x01(\x05\x12\x12\n\nmaps_drawn\x18\n \x01(\x05\x12\x12\n\nrounds_won\x18\x0b \x01(\x05\x12\x13\n\x0brounds_lost\x18\x0c \x01(\x05\x12\x16\n\x0emap_difference\x18\r \x01(\x05\x12\x18\n\x10round_difference\x18\x0e \x01(\x05\x12\x13\n\x06status\x18\x0f \x01(\tH\x00\x88\x01\x01\x12,\n\x06rounds\x18\x10 \x03(\x0b\x32\x1c.bragi.CsgoTeamStandingRoundB\t\n\x07_status\"\xc9\x02\n\x15TournamentBracketNode\x12\n\n\x02id\x18\x01 \x01(\r\x12#\n\thome_team\x18\x02 \x01(\x0b\x32\x0b.bragi.TeamH\x00\x88\x01\x01\x12\x17\n\nhome_score\x18\x03 \x01(\x05H\x01\x88\x01\x01\x12#\n\taway_team\x18\x04 \x01(\x0b\x32\x0b.bragi.TeamH\x02\x88\x01\x01\x12\x17\n\naway_score\x18\x05 \x01(\x05H\x03\x88\x01\x01\x12 \n\x05match\x18\x06 \x01(\x0b\x32\x0c.bragi.MatchH\x04\x88\x01\x01\x12\x12\n\x05label\x18\x07 \x01(\tH\x05\x88\x01\x01\x12\x0f\n\x07is_root\x18\x08 \x01(\x08\x12\x13\n\x0b\x63hild_nodes\x18\t \x03(\rB\x0c\n\n_home_teamB\r\n\x0b_home_scoreB\x0c\n\n_away_teamB\r\n\x0b_away_scoreB\x08\n\x06_matchB\x08\n\x06_label\"\x9d\x01\n\tCsgo2dMap\x12\x39\n\x11players_positions\x18\x01 \x03(\x0b\x32\x1e.bragi.Csgo2dMapPlayerPosition\x12\x34\n\x0e\x62omb_positions\x18\x02 \x01(\x0b\x32\x1c.bragi.Csgo2dMapBombPosition\x12\x1f\n\x05round\x18\x03 \x01(\x0b\x32\x10.bragi.CsgoRound\"\xb5\x01\n\x17\x43sgo2dMapPlayerPosition\x12\x1d\n\x06player\x18\x01 \x01(\x0b\x32\r.bragi.Player\x12\x1d\n\x04side\x18\x02 \x01(\x0e\x32\x0f.bragi.CsgoSide\x12&\n\x08position\x18\x03 \x01(\x0b\x32\x14.bragi.Map2dPosition\x12%\n\x07\x66orward\x18\x04 \x01(\x0b\x32\x14.bragi.Map2dPosition\x12\r\n\x05state\x18\x05 \x01(\t\"\x81\x01\n\x15\x43sgo2dMapBombPosition\x12&\n\x08position\x18\x01 \x01(\x0b\x32\x14.bragi.Map2dPosition\x12\r\n\x05state\x18\x02 \x01(\t\x12\x17\n\x0ftime_to_defused\x18\x03 \x01(\r\x12\x18\n\x10time_to_exploded\x18\x04 \x01(\r\"%\n\rMap2dPosition\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\"B\n\tCsgoRound\x12\x0e\n\x06number\x18\x01 \x01(\r\x12\r\n\x05state\x18\x02 \x01(\t\x12\x16\n\x0etime_remaining\x18\x03 \x01(\r\"\x83\x01\n\x0e\x43sgoScoreBoard\x12\x1b\n\x03map\x18\x01 \x01(\x0b\x32\x0e.bragi.CsgoMap\x12\r\n\x05round\x18\x02 \x01(\r\x12\x33\n\rround_outcome\x18\x03 \x01(\x0e\x32\x17.bragi.CsgoRoundOutcomeH\x00\x88\x01\x01\x42\x10\n\x0e_round_outcome\"\xb2\x02\n\x12\x43sgoTeamScoreBoard\x12\x19\n\x04team\x18\x01 \x01(\x0b\x32\x0b.bragi.Team\x12\x12\n\nscore_maps\x18\x02 \x01(\r\x12\x14\n\x0cscore_rounds\x18\x03 \x01(\r\x12\x1d\n\x04side\x18\x04 \x01(\x0e\x32\x0f.bragi.CsgoSide\x12\x17\n\x0f\x65quipment_value\x18\x05 \x01(\r\x12\x0f\n\x07\x62\x61lance\x18\x06 \x01(\x05\x12\x0c\n\x04\x66rag\x18\x07 \x01(\r\x12\x11\n\tflashbang\x18\x08 \x01(\r\x12\x10\n\x08\x66irebomb\x18\t \x01(\r\x12\r\n\x05smoke\x18\n \x01(\r\x12\x0f\n\x07\x64\x65\x66user\x18\x0b \x01(\r\x12\r\n\x05\x64\x65\x63oy\x18\x0c \x01(\r\x12,\n\x07players\x18\r \x03(\x0b\x32\x1b.bragi.CsgoPlayerScoreBoard\"\x90\x02\n\x14\x43sgoPlayerScoreBoard\x12\x1d\n\x06player\x18\x01 \x01(\x0b\x32\r.bragi.Player\x12\x0e\n\x06health\x18\x02 \x01(\r\x12\r\n\x05kills\x18\x03 \x01(\r\x12\x0e\n\x06\x64\x65\x61ths\x18\x04 \x01(\r\x12\x0f\n\x07\x61ssists\x18\x05 \x01(\r\x12\x0e\n\x06\x64\x61mage\x18\x06 \x01(\r\x12\x15\n\rheadshot_rate\x18\x07 \x01(\x01\x12\r\n\x05\x61rmor\x18\x08 \x01(\r\x12\x0f\n\x07\x62\x61lance\x18\t \x01(\x05\x12\x0f\n\x07primary\x18\n \x01(\r\x12\x11\n\tsecondary\x18\x0b \x01(\r\x12.\n\ropening_duels\x18\x0c \x01(\x0b\x32\x17.bragi.CsgoOpeningDuels\"1\n\x10\x43sgoOpeningDuels\x12\r\n\x05kills\x18\x01 \x01(\r\x12\x0e\n\x06\x64\x65\x61ths\x18\x02 \x01(\r\"m\n\nCsgoEvents\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x19\n\x04team\x18\x02 \x01(\x0b\x32\x0b.bragi.Team\x12\r\n\x05round\x18\x03 \x01(\r\x12\x12\n\nround_time\x18\x04 \x01(\r\x12\x13\n\x0b\x64\x65scription\x18\x05 \x01(\t\"!\n\x05Sport\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\"\x8e\x01\n\nTournament\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x33\n\x0fstart_timestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x31\n\rend_timestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"F\n\x04Team\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x16\n\ticon_path\x18\x03 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_icon_path\"\x9c\x04\n\x05Match\x12\n\n\x02id\x18\x01 \x01(\r\x12;\n\x17planned_start_timestamp\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x33\n\x0fstart_timestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x31\n\rend_timestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12%\n\ntournament\x18\x05 \x01(\x0b\x32\x11.bragi.Tournament\x12#\n\thome_team\x18\x06 \x01(\x0b\x32\x0b.bragi.TeamH\x00\x88\x01\x01\x12\x17\n\nhome_score\x18\x07 \x01(\x05H\x01\x88\x01\x01\x12#\n\taway_team\x18\x08 \x01(\x0b\x32\x0b.bragi.TeamH\x02\x88\x01\x01\x12\x17\n\naway_score\x18\t \x01(\x05H\x03\x88\x01\x01\x12\"\n\x08win_team\x18\n \x01(\x0b\x32\x0b.bragi.TeamH\x04\x88\x01\x01\x12\x11\n\tis_closed\x18\x0b \x01(\x08\x12\'\n\x0c\x62\x65st_of_type\x18\x0c \x01(\x0e\x32\x11.bragi.BestOfType\x12\x18\n\x04maps\x18\r \x03(\x0b\x32\n.bragi.MapB\x0c\n\n_home_teamB\r\n\x0b_home_scoreB\x0c\n\n_away_teamB\r\n\x0b_away_scoreB\x0b\n\t_win_team\"\xcb\x01\n\x03Map\x12\n\n\x02id\x18\x01 \x01(\r\x12\r\n\x05order\x18\x02 \x01(\x05\x12\x38\n\x0fstart_timestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x00\x88\x01\x01\x12\x36\n\rend_timestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x01\x88\x01\x01\x12\x11\n\tis_closed\x18\x05 \x01(\x08\x42\x12\n\x10_start_timestampB\x10\n\x0e_end_timestamp\"\x96\x01\n\x06Player\x12\n\n\x02id\x18\x01 \x01(\r\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x16\n\treal_name\x18\x03 \x01(\tH\x00\x88\x01\x01\x12\x15\n\x08shortcut\x18\x04 \x01(\tH\x01\x88\x01\x01\x12\x16\n\ticon_path\x18\x05 \x01(\tH\x02\x88\x01\x01\x42\x0c\n\n_real_nameB\x0b\n\t_shortcutB\x0c\n\n_icon_path\"I\n\x1dTournamentTeamStatisticsValue\x12\x19\n\x04team\x18\x01 \x01(\x0b\x32\x0b.bragi.Team\x12\r\n\x05value\x18\x02 \x01(\x02\"R\n&TournamentTeamStatisticsValueInPercent\x12\x19\n\x04team\x18\x01 \x01(\x0b\x32\x0b.bragi.Team\x12\r\n\x05value\x18\x02 \x01(\x02\"G\n\x17PostMapStatisticsValues\x12\x1d\n\x15percentage_of_maximum\x18\x01 \x01(\x02\x12\r\n\x05total\x18\x02 \x01(\x02\"B\n\x10StatisticsValues\x12\x0b\n\x03\x61vg\x18\x01 \x01(\x02\x12\x12\n\npercentile\x18\x02 \x01(\x02\x12\r\n\x05total\x18\x03 \x01(\x02*\xcf\x01\n\x0e\x43sgoPlayerRole\x12 \n\x1c\x43SGO_PLAYER_ROLE_UNSPECIFIED\x10\x00\x12 \n\x1c\x43SGO_PLAYER_ROLE_KILL_LEADER\x10\x01\x12\"\n\x1e\x43SGO_PLAYER_ROLE_ENTRY_FRAGGER\x10\x02\x12\x1c\n\x18\x43SGO_PLAYER_ROLE_SUPPORT\x10\x03\x12\x1a\n\x16\x43SGO_PLAYER_ROLE_AWPER\x10\x04\x12\x1b\n\x17\x43SGO_PLAYER_ROLE_LURKER\x10\x05*a\n\x08\x43sgoSide\x12\x19\n\x15\x43SGO_SIDE_UNSPECIFIED\x10\x00\x12 \n\x1c\x43SGO_SIDE_COUNTER_TERRORISTS\x10\x01\x12\x18\n\x14\x43SGO_SIDE_TERRORISTS\x10\x02*\xfb\x01\n\x10\x43sgoRoundOutcome\x12\"\n\x1e\x43SGO_ROUND_OUTCOME_UNSPECIFIED\x10\x00\x12\x34\n0CSGO_ROUND_OUTCOME_COUNTER_TERRORISTS_ELIMINATED\x10\x01\x12,\n(CSGO_ROUND_OUTCOME_TERRORISTS_ELIMINATED\x10\x02\x12 \n\x1c\x43SGO_ROUND_OUTCOME_EXPLOSION\x10\x03\x12\x1d\n\x19\x43SGO_ROUND_OUTCOME_DEFUSE\x10\x04\x12\x1e\n\x1a\x43SGO_ROUND_OUTCOME_TIMEOUT\x10\x05*\x8d\x01\n\tTimeframe\x12\x19\n\x15TIMEFRAME_UNSPECIFIED\x10\x00\x12\x17\n\x13TIMEFRAME_ONE_MONTH\x10\x01\x12\x1a\n\x16TIMEFRAME_THREE_MONTHS\x10\x02\x12\x18\n\x14TIMEFRAME_SIX_MONTHS\x10\x03\x12\x16\n\x12TIMEFRAME_ONE_YEAR\x10\x04*\xc4\x01\n\nBestOfType\x12\x1c\n\x18\x42\x45ST_OF_TYPE_UNSPECIFIED\x10\x00\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO1\x10\x01\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO2\x10\x02\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO3\x10\x03\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO4\x10\x04\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO5\x10\x05\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO6\x10\x06\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO7\x10\x07\x32\xaa\x08\n\tBragiGrpc\x12\x37\n\x06Sports\x12\x14.bragi.SportsRequest\x1a\x15.bragi.SportsResponse\"\x00\x12\x45\n\x0bTournaments\x12\x19.bragi.TournamentsRequest\x1a\x19.bragi.TournamentResponse\"\x00\x12O\n\x0eTournamentInfo\x12\x1c.bragi.TournamentInfoRequest\x1a\x1d.bragi.TournamentInfoResponse\"\x00\x12i\n\x18TeamHistoricalStatistics\x12&.bragi.TeamHistoricalStatisticsRequest\x1a#.bragi.HistoricalStatisticsResponse\"\x00\x12[\n\x12LastFiveEncounters\x12 .bragi.LastFiveEncountersRequest\x1a!.bragi.LastFiveEncountersResponse\"\x00\x12X\n\x11PostMapStatistics\x12\x1f.bragi.PostMapStatisticsRequest\x1a .bragi.PostMapStatisticsResponse\"\x00\x12\x61\n\x14TournamentStatistics\x12\".bragi.TournamentStatisticsRequest\x1a#.bragi.TournamentStatisticsResponse\"\x00\x12m\n\x18TeamTournamentStatistics\x12&.bragi.TeamTournamentStatisticsRequest\x1a\'.bragi.TeamTournamentStatisticsResponse\"\x00\x12|\n\x1dPlayerStatisticsAccordingRole\x12+.bragi.PlayerStatisticsAccordingRoleRequest\x1a,.bragi.PlayerStatisticsAccordingRoleResponse\"\x00\x12@\n\x0c\x43sgo2dMaFeed\x12\x1a.bragi.Csgo2dMaFeedRequest\x1a\x10.bragi.Csgo2dMap\"\x00\x30\x01\x12Q\n\x12\x43sgoScoreBoardFeed\x12 .bragi.CsgoScoreBoardFeedRequest\x1a\x15.bragi.CsgoScoreBoard\"\x00\x30\x01\x12\x45\n\x0e\x43sgoEventsFeed\x12\x1c.bragi.CsgoEventsFeedRequest\x1a\x11.bragi.CsgoEvents\"\x00\x30\x01\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -65,8 +65,8 @@ _CSGOPLAYERROLE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=13017,
-  serialized_end=13224,
+  serialized_start=14609,
+  serialized_end=14816,
 )
 _sym_db.RegisterEnumDescriptor(_CSGOPLAYERROLE)
 
@@ -96,8 +96,8 @@ _CSGOSIDE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=13226,
-  serialized_end=13323,
+  serialized_start=14818,
+  serialized_end=14915,
 )
 _sym_db.RegisterEnumDescriptor(_CSGOSIDE)
 
@@ -142,8 +142,8 @@ _CSGOROUNDOUTCOME = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=13326,
-  serialized_end=13577,
+  serialized_start=14918,
+  serialized_end=15169,
 )
 _sym_db.RegisterEnumDescriptor(_CSGOROUNDOUTCOME)
 
@@ -183,8 +183,8 @@ _TIMEFRAME = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=13580,
-  serialized_end=13721,
+  serialized_start=15172,
+  serialized_end=15313,
 )
 _sym_db.RegisterEnumDescriptor(_TIMEFRAME)
 
@@ -239,8 +239,8 @@ _BESTOFTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=13724,
-  serialized_end=13920,
+  serialized_start=15316,
+  serialized_end=15512,
 )
 _sym_db.RegisterEnumDescriptor(_BESTOFTYPE)
 
@@ -644,6 +644,102 @@ _PLAYERSTATISTICSACCORDINGROLEREQUEST = _descriptor.Descriptor(
 )
 
 
+_CSGO2DMAFEEDREQUEST = _descriptor.Descriptor(
+  name='Csgo2dMaFeedRequest',
+  full_name='bragi.Csgo2dMaFeedRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='map_id', full_name='bragi.Csgo2dMaFeedRequest.map_id', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=829,
+  serialized_end=866,
+)
+
+
+_CSGOSCOREBOARDFEEDREQUEST = _descriptor.Descriptor(
+  name='CsgoScoreBoardFeedRequest',
+  full_name='bragi.CsgoScoreBoardFeedRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='match_id', full_name='bragi.CsgoScoreBoardFeedRequest.match_id', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=868,
+  serialized_end=913,
+)
+
+
+_CSGOEVENTSFEEDREQUEST = _descriptor.Descriptor(
+  name='CsgoEventsFeedRequest',
+  full_name='bragi.CsgoEventsFeedRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='match_id', full_name='bragi.CsgoEventsFeedRequest.match_id', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=915,
+  serialized_end=956,
+)
+
+
 _SPORTSRESPONSE = _descriptor.Descriptor(
   name='SportsResponse',
   full_name='bragi.SportsResponse',
@@ -671,8 +767,8 @@ _SPORTSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=829,
-  serialized_end=875,
+  serialized_start=958,
+  serialized_end=1004,
 )
 
 
@@ -703,8 +799,8 @@ _TOURNAMENTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=877,
-  serialized_end=937,
+  serialized_start=1006,
+  serialized_end=1066,
 )
 
 
@@ -740,8 +836,8 @@ _HISTORICALSTATISTICSRESPONSE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=939,
-  serialized_end=1037,
+  serialized_start=1068,
+  serialized_end=1166,
 )
 
 
@@ -772,8 +868,8 @@ _LASTFIVEENCOUNTERSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1039,
-  serialized_end=1098,
+  serialized_start=1168,
+  serialized_end=1227,
 )
 
 
@@ -809,8 +905,8 @@ _POSTMAPSTATISTICSRESPONSE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1100,
-  serialized_end=1196,
+  serialized_start=1229,
+  serialized_end=1325,
 )
 
 
@@ -846,8 +942,8 @@ _TOURNAMENTINFORESPONSE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1198,
-  serialized_end=1284,
+  serialized_start=1327,
+  serialized_end=1413,
 )
 
 
@@ -883,8 +979,8 @@ _TOURNAMENTSTATISTICSRESPONSE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1286,
-  serialized_end=1390,
+  serialized_start=1415,
+  serialized_end=1519,
 )
 
 
@@ -920,8 +1016,8 @@ _TEAMTOURNAMENTSTATISTICSRESPONSE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1392,
-  serialized_end=1500,
+  serialized_start=1521,
+  serialized_end=1629,
 )
 
 
@@ -957,8 +1053,8 @@ _PLAYERSTATISTICSACCORDINGROLERESPONSE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1502,
-  serialized_end=1622,
+  serialized_start=1631,
+  serialized_end=1751,
 )
 
 
@@ -1199,8 +1295,8 @@ _CSGOTEAMSTATISTICS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1625,
-  serialized_end=3357,
+  serialized_start=1754,
+  serialized_end=3486,
 )
 
 
@@ -1343,8 +1439,8 @@ _CSGOPLAYERSTATISTICS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3360,
-  serialized_end=4165,
+  serialized_start=3489,
+  serialized_end=4294,
 )
 
 
@@ -1403,8 +1499,8 @@ _CSGOPOSTMAPSTATISTICS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4168,
-  serialized_end=4428,
+  serialized_start=4297,
+  serialized_end=4557,
 )
 
 
@@ -1523,8 +1619,8 @@ _CSGOTOURNAMENTINFO = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=4431,
-  serialized_end=4815,
+  serialized_start=4560,
+  serialized_end=4944,
 )
 
 
@@ -1607,8 +1703,8 @@ _CSGOTOURNAMENTSTATISTICS = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=4818,
-  serialized_end=5265,
+  serialized_start=4947,
+  serialized_end=5394,
 )
 
 
@@ -1758,8 +1854,8 @@ _CSGOTEAMPOSTMAPSTATISTICS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5268,
-  serialized_end=6150,
+  serialized_start=5397,
+  serialized_end=6279,
 )
 
 
@@ -1937,8 +2033,8 @@ _CSGOPLAYERPOSTMAPSTATISTICS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6153,
-  serialized_end=7299,
+  serialized_start=6282,
+  serialized_end=7428,
 )
 
 
@@ -2004,8 +2100,8 @@ _CSGOROUNDPOSTMAP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7302,
-  serialized_end=7514,
+  serialized_start=7431,
+  serialized_end=7643,
 )
 
 
@@ -2043,8 +2139,8 @@ _CSGOMAPSTATISTICSACCORDINGSIDE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7516,
-  serialized_end=7630,
+  serialized_start=7645,
+  serialized_end=7759,
 )
 
 
@@ -2127,8 +2223,8 @@ _CSGOTOURNAMENTMAPSTATISTICS = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=7633,
-  serialized_end=8018,
+  serialized_start=7762,
+  serialized_end=8147,
 )
 
 
@@ -2178,8 +2274,8 @@ _CSGOTOURNAMENTPLAYERSTATISTICS = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=8020,
-  serialized_end=8139,
+  serialized_start=8149,
+  serialized_end=8268,
 )
 
 
@@ -2238,8 +2334,8 @@ _CSGOTOURNAMENTBESTTEAMSTATISTICS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8142,
-  serialized_end=8526,
+  serialized_start=8271,
+  serialized_end=8655,
 )
 
 
@@ -2305,8 +2401,8 @@ _CSGOTOURNAMENTBESTPLAYERSTATISTICS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8529,
-  serialized_end=8975,
+  serialized_start=8658,
+  serialized_end=9104,
 )
 
 
@@ -2380,8 +2476,8 @@ _CSGOTEAMSTANDINGROUND = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=8978,
-  serialized_end=9178,
+  serialized_start=9107,
+  serialized_end=9307,
 )
 
 
@@ -2433,8 +2529,8 @@ _CSGOPLAYERSDUEL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9181,
-  serialized_end=9332,
+  serialized_start=9310,
+  serialized_end=9461,
 )
 
 
@@ -2479,8 +2575,8 @@ _CSGOSTATISTICSSIDEVALUES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9335,
-  serialized_end=9497,
+  serialized_start=9464,
+  serialized_end=9626,
 )
 
 
@@ -2525,8 +2621,8 @@ _CSGOWEAPONSTATISTICS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9500,
-  serialized_end=9665,
+  serialized_start=9629,
+  serialized_end=9794,
 )
 
 
@@ -2571,8 +2667,8 @@ _CSGOWEAPONPOSTMAPSTATISTICS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9667,
-  serialized_end=9789,
+  serialized_start=9796,
+  serialized_end=9918,
 )
 
 
@@ -2622,8 +2718,8 @@ _CSGOMAP = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=9791,
-  serialized_end=9864,
+  serialized_start=9920,
+  serialized_end=9993,
 )
 
 
@@ -2661,8 +2757,8 @@ _CSGOMAPVOTE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9866,
-  serialized_end=9963,
+  serialized_start=9995,
+  serialized_end=10092,
 )
 
 
@@ -2700,8 +2796,8 @@ _CSGOMAPSTATISTICS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9965,
-  serialized_end=10058,
+  serialized_start=10094,
+  serialized_end=10187,
 )
 
 
@@ -2751,8 +2847,8 @@ _CSGOWEAPON = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=10060,
-  serialized_end=10136,
+  serialized_start=10189,
+  serialized_end=10265,
 )
 
 
@@ -2797,8 +2893,8 @@ _CSGOTEAM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10138,
-  serialized_end=10219,
+  serialized_start=10267,
+  serialized_end=10348,
 )
 
 
@@ -2879,8 +2975,8 @@ _CSGOPLAYER = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=10222,
-  serialized_end=10413,
+  serialized_start=10351,
+  serialized_end=10542,
 )
 
 
@@ -2923,8 +3019,8 @@ _CSGOTOURNAMENTBLOCK = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=10416,
-  serialized_end=10609,
+  serialized_start=10545,
+  serialized_end=10738,
 )
 
 
@@ -2976,8 +3072,8 @@ _CSGOTOURNAMENTSTANDINGSBLOCK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10611,
-  serialized_end=10726,
+  serialized_start=10740,
+  serialized_end=10855,
 )
 
 
@@ -3029,8 +3125,8 @@ _CSGOTOURNAMENTBRACKETSBLOCK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10728,
-  serialized_end=10846,
+  serialized_start=10857,
+  serialized_end=10975,
 )
 
 
@@ -3171,8 +3267,8 @@ _CSGOTEAMSTANDING = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=10849,
-  serialized_end=11228,
+  serialized_start=10978,
+  serialized_end=11357,
 )
 
 
@@ -3289,8 +3385,627 @@ _TOURNAMENTBRACKETNODE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=11231,
-  serialized_end=11560,
+  serialized_start=11360,
+  serialized_end=11689,
+)
+
+
+_CSGO2DMAP = _descriptor.Descriptor(
+  name='Csgo2dMap',
+  full_name='bragi.Csgo2dMap',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='players_positions', full_name='bragi.Csgo2dMap.players_positions', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='bomb_positions', full_name='bragi.Csgo2dMap.bomb_positions', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='round', full_name='bragi.Csgo2dMap.round', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=11692,
+  serialized_end=11849,
+)
+
+
+_CSGO2DMAPPLAYERPOSITION = _descriptor.Descriptor(
+  name='Csgo2dMapPlayerPosition',
+  full_name='bragi.Csgo2dMapPlayerPosition',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='player', full_name='bragi.Csgo2dMapPlayerPosition.player', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='side', full_name='bragi.Csgo2dMapPlayerPosition.side', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='position', full_name='bragi.Csgo2dMapPlayerPosition.position', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='forward', full_name='bragi.Csgo2dMapPlayerPosition.forward', index=3,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='state', full_name='bragi.Csgo2dMapPlayerPosition.state', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=11852,
+  serialized_end=12033,
+)
+
+
+_CSGO2DMAPBOMBPOSITION = _descriptor.Descriptor(
+  name='Csgo2dMapBombPosition',
+  full_name='bragi.Csgo2dMapBombPosition',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='position', full_name='bragi.Csgo2dMapBombPosition.position', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='state', full_name='bragi.Csgo2dMapBombPosition.state', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='time_to_defused', full_name='bragi.Csgo2dMapBombPosition.time_to_defused', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='time_to_exploded', full_name='bragi.Csgo2dMapBombPosition.time_to_exploded', index=3,
+      number=4, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=12036,
+  serialized_end=12165,
+)
+
+
+_MAP2DPOSITION = _descriptor.Descriptor(
+  name='Map2dPosition',
+  full_name='bragi.Map2dPosition',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='x', full_name='bragi.Map2dPosition.x', index=0,
+      number=1, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='y', full_name='bragi.Map2dPosition.y', index=1,
+      number=2, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=12167,
+  serialized_end=12204,
+)
+
+
+_CSGOROUND = _descriptor.Descriptor(
+  name='CsgoRound',
+  full_name='bragi.CsgoRound',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='number', full_name='bragi.CsgoRound.number', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='state', full_name='bragi.CsgoRound.state', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='time_remaining', full_name='bragi.CsgoRound.time_remaining', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=12206,
+  serialized_end=12272,
+)
+
+
+_CSGOSCOREBOARD = _descriptor.Descriptor(
+  name='CsgoScoreBoard',
+  full_name='bragi.CsgoScoreBoard',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='map', full_name='bragi.CsgoScoreBoard.map', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='round', full_name='bragi.CsgoScoreBoard.round', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='round_outcome', full_name='bragi.CsgoScoreBoard.round_outcome', index=2,
+      number=3, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_round_outcome', full_name='bragi.CsgoScoreBoard._round_outcome',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=12275,
+  serialized_end=12406,
+)
+
+
+_CSGOTEAMSCOREBOARD = _descriptor.Descriptor(
+  name='CsgoTeamScoreBoard',
+  full_name='bragi.CsgoTeamScoreBoard',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='team', full_name='bragi.CsgoTeamScoreBoard.team', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='score_maps', full_name='bragi.CsgoTeamScoreBoard.score_maps', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='score_rounds', full_name='bragi.CsgoTeamScoreBoard.score_rounds', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='side', full_name='bragi.CsgoTeamScoreBoard.side', index=3,
+      number=4, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='equipment_value', full_name='bragi.CsgoTeamScoreBoard.equipment_value', index=4,
+      number=5, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='balance', full_name='bragi.CsgoTeamScoreBoard.balance', index=5,
+      number=6, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='frag', full_name='bragi.CsgoTeamScoreBoard.frag', index=6,
+      number=7, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='flashbang', full_name='bragi.CsgoTeamScoreBoard.flashbang', index=7,
+      number=8, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='firebomb', full_name='bragi.CsgoTeamScoreBoard.firebomb', index=8,
+      number=9, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='smoke', full_name='bragi.CsgoTeamScoreBoard.smoke', index=9,
+      number=10, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='defuser', full_name='bragi.CsgoTeamScoreBoard.defuser', index=10,
+      number=11, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='decoy', full_name='bragi.CsgoTeamScoreBoard.decoy', index=11,
+      number=12, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='players', full_name='bragi.CsgoTeamScoreBoard.players', index=12,
+      number=13, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=12409,
+  serialized_end=12715,
+)
+
+
+_CSGOPLAYERSCOREBOARD = _descriptor.Descriptor(
+  name='CsgoPlayerScoreBoard',
+  full_name='bragi.CsgoPlayerScoreBoard',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='player', full_name='bragi.CsgoPlayerScoreBoard.player', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='health', full_name='bragi.CsgoPlayerScoreBoard.health', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='kills', full_name='bragi.CsgoPlayerScoreBoard.kills', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='deaths', full_name='bragi.CsgoPlayerScoreBoard.deaths', index=3,
+      number=4, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='assists', full_name='bragi.CsgoPlayerScoreBoard.assists', index=4,
+      number=5, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='damage', full_name='bragi.CsgoPlayerScoreBoard.damage', index=5,
+      number=6, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='headshot_rate', full_name='bragi.CsgoPlayerScoreBoard.headshot_rate', index=6,
+      number=7, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='armor', full_name='bragi.CsgoPlayerScoreBoard.armor', index=7,
+      number=8, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='balance', full_name='bragi.CsgoPlayerScoreBoard.balance', index=8,
+      number=9, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='primary', full_name='bragi.CsgoPlayerScoreBoard.primary', index=9,
+      number=10, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='secondary', full_name='bragi.CsgoPlayerScoreBoard.secondary', index=10,
+      number=11, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='opening_duels', full_name='bragi.CsgoPlayerScoreBoard.opening_duels', index=11,
+      number=12, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=12718,
+  serialized_end=12990,
+)
+
+
+_CSGOOPENINGDUELS = _descriptor.Descriptor(
+  name='CsgoOpeningDuels',
+  full_name='bragi.CsgoOpeningDuels',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='kills', full_name='bragi.CsgoOpeningDuels.kills', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='deaths', full_name='bragi.CsgoOpeningDuels.deaths', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=12992,
+  serialized_end=13041,
+)
+
+
+_CSGOEVENTS = _descriptor.Descriptor(
+  name='CsgoEvents',
+  full_name='bragi.CsgoEvents',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='type', full_name='bragi.CsgoEvents.type', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='team', full_name='bragi.CsgoEvents.team', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='round', full_name='bragi.CsgoEvents.round', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='round_time', full_name='bragi.CsgoEvents.round_time', index=3,
+      number=4, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='description', full_name='bragi.CsgoEvents.description', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=13043,
+  serialized_end=13152,
 )
 
 
@@ -3328,8 +4043,8 @@ _SPORT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11562,
-  serialized_end=11595,
+  serialized_start=13154,
+  serialized_end=13187,
 )
 
 
@@ -3381,8 +4096,8 @@ _TOURNAMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11598,
-  serialized_end=11740,
+  serialized_start=13190,
+  serialized_end=13332,
 )
 
 
@@ -3432,8 +4147,8 @@ _TEAM = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=11742,
-  serialized_end=11812,
+  serialized_start=13334,
+  serialized_end=13404,
 )
 
 
@@ -3573,8 +4288,8 @@ _MATCH = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=11815,
-  serialized_end=12355,
+  serialized_start=13407,
+  serialized_end=13947,
 )
 
 
@@ -3643,8 +4358,8 @@ _MAP = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=12358,
-  serialized_end=12561,
+  serialized_start=13950,
+  serialized_end=14153,
 )
 
 
@@ -3718,8 +4433,8 @@ _PLAYER = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=12564,
-  serialized_end=12714,
+  serialized_start=14156,
+  serialized_end=14306,
 )
 
 
@@ -3757,8 +4472,8 @@ _TOURNAMENTTEAMSTATISTICSVALUE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12716,
-  serialized_end=12789,
+  serialized_start=14308,
+  serialized_end=14381,
 )
 
 
@@ -3796,8 +4511,8 @@ _TOURNAMENTTEAMSTATISTICSVALUEINPERCENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12791,
-  serialized_end=12873,
+  serialized_start=14383,
+  serialized_end=14465,
 )
 
 
@@ -3835,8 +4550,8 @@ _POSTMAPSTATISTICSVALUES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12875,
-  serialized_end=12946,
+  serialized_start=14467,
+  serialized_end=14538,
 )
 
 
@@ -3881,8 +4596,8 @@ _STATISTICSVALUES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12948,
-  serialized_end=13014,
+  serialized_start=14540,
+  serialized_end=14606,
 )
 
 _TEAMHISTORICALSTATISTICSREQUEST.fields_by_name['timeframe'].enum_type = _TIMEFRAME
@@ -4150,6 +4865,25 @@ _TOURNAMENTBRACKETNODE.fields_by_name['match'].containing_oneof = _TOURNAMENTBRA
 _TOURNAMENTBRACKETNODE.oneofs_by_name['_label'].fields.append(
   _TOURNAMENTBRACKETNODE.fields_by_name['label'])
 _TOURNAMENTBRACKETNODE.fields_by_name['label'].containing_oneof = _TOURNAMENTBRACKETNODE.oneofs_by_name['_label']
+_CSGO2DMAP.fields_by_name['players_positions'].message_type = _CSGO2DMAPPLAYERPOSITION
+_CSGO2DMAP.fields_by_name['bomb_positions'].message_type = _CSGO2DMAPBOMBPOSITION
+_CSGO2DMAP.fields_by_name['round'].message_type = _CSGOROUND
+_CSGO2DMAPPLAYERPOSITION.fields_by_name['player'].message_type = _PLAYER
+_CSGO2DMAPPLAYERPOSITION.fields_by_name['side'].enum_type = _CSGOSIDE
+_CSGO2DMAPPLAYERPOSITION.fields_by_name['position'].message_type = _MAP2DPOSITION
+_CSGO2DMAPPLAYERPOSITION.fields_by_name['forward'].message_type = _MAP2DPOSITION
+_CSGO2DMAPBOMBPOSITION.fields_by_name['position'].message_type = _MAP2DPOSITION
+_CSGOSCOREBOARD.fields_by_name['map'].message_type = _CSGOMAP
+_CSGOSCOREBOARD.fields_by_name['round_outcome'].enum_type = _CSGOROUNDOUTCOME
+_CSGOSCOREBOARD.oneofs_by_name['_round_outcome'].fields.append(
+  _CSGOSCOREBOARD.fields_by_name['round_outcome'])
+_CSGOSCOREBOARD.fields_by_name['round_outcome'].containing_oneof = _CSGOSCOREBOARD.oneofs_by_name['_round_outcome']
+_CSGOTEAMSCOREBOARD.fields_by_name['team'].message_type = _TEAM
+_CSGOTEAMSCOREBOARD.fields_by_name['side'].enum_type = _CSGOSIDE
+_CSGOTEAMSCOREBOARD.fields_by_name['players'].message_type = _CSGOPLAYERSCOREBOARD
+_CSGOPLAYERSCOREBOARD.fields_by_name['player'].message_type = _PLAYER
+_CSGOPLAYERSCOREBOARD.fields_by_name['opening_duels'].message_type = _CSGOOPENINGDUELS
+_CSGOEVENTS.fields_by_name['team'].message_type = _TEAM
 _TOURNAMENT.fields_by_name['start_timestamp'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _TOURNAMENT.fields_by_name['end_timestamp'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _TEAM.oneofs_by_name['_icon_path'].fields.append(
@@ -4207,6 +4941,9 @@ DESCRIPTOR.message_types_by_name['PostMapStatisticsRequest'] = _POSTMAPSTATISTIC
 DESCRIPTOR.message_types_by_name['TournamentStatisticsRequest'] = _TOURNAMENTSTATISTICSREQUEST
 DESCRIPTOR.message_types_by_name['TeamTournamentStatisticsRequest'] = _TEAMTOURNAMENTSTATISTICSREQUEST
 DESCRIPTOR.message_types_by_name['PlayerStatisticsAccordingRoleRequest'] = _PLAYERSTATISTICSACCORDINGROLEREQUEST
+DESCRIPTOR.message_types_by_name['Csgo2dMaFeedRequest'] = _CSGO2DMAFEEDREQUEST
+DESCRIPTOR.message_types_by_name['CsgoScoreBoardFeedRequest'] = _CSGOSCOREBOARDFEEDREQUEST
+DESCRIPTOR.message_types_by_name['CsgoEventsFeedRequest'] = _CSGOEVENTSFEEDREQUEST
 DESCRIPTOR.message_types_by_name['SportsResponse'] = _SPORTSRESPONSE
 DESCRIPTOR.message_types_by_name['TournamentResponse'] = _TOURNAMENTRESPONSE
 DESCRIPTOR.message_types_by_name['HistoricalStatisticsResponse'] = _HISTORICALSTATISTICSRESPONSE
@@ -4245,6 +4982,16 @@ DESCRIPTOR.message_types_by_name['CsgoTournamentStandingsBlock'] = _CSGOTOURNAME
 DESCRIPTOR.message_types_by_name['CsgoTournamentBracketsBlock'] = _CSGOTOURNAMENTBRACKETSBLOCK
 DESCRIPTOR.message_types_by_name['CsgoTeamStanding'] = _CSGOTEAMSTANDING
 DESCRIPTOR.message_types_by_name['TournamentBracketNode'] = _TOURNAMENTBRACKETNODE
+DESCRIPTOR.message_types_by_name['Csgo2dMap'] = _CSGO2DMAP
+DESCRIPTOR.message_types_by_name['Csgo2dMapPlayerPosition'] = _CSGO2DMAPPLAYERPOSITION
+DESCRIPTOR.message_types_by_name['Csgo2dMapBombPosition'] = _CSGO2DMAPBOMBPOSITION
+DESCRIPTOR.message_types_by_name['Map2dPosition'] = _MAP2DPOSITION
+DESCRIPTOR.message_types_by_name['CsgoRound'] = _CSGOROUND
+DESCRIPTOR.message_types_by_name['CsgoScoreBoard'] = _CSGOSCOREBOARD
+DESCRIPTOR.message_types_by_name['CsgoTeamScoreBoard'] = _CSGOTEAMSCOREBOARD
+DESCRIPTOR.message_types_by_name['CsgoPlayerScoreBoard'] = _CSGOPLAYERSCOREBOARD
+DESCRIPTOR.message_types_by_name['CsgoOpeningDuels'] = _CSGOOPENINGDUELS
+DESCRIPTOR.message_types_by_name['CsgoEvents'] = _CSGOEVENTS
 DESCRIPTOR.message_types_by_name['Sport'] = _SPORT
 DESCRIPTOR.message_types_by_name['Tournament'] = _TOURNAMENT
 DESCRIPTOR.message_types_by_name['Team'] = _TEAM
@@ -4324,6 +5071,27 @@ PlayerStatisticsAccordingRoleRequest = _reflection.GeneratedProtocolMessageType(
   # @@protoc_insertion_point(class_scope:bragi.PlayerStatisticsAccordingRoleRequest)
   })
 _sym_db.RegisterMessage(PlayerStatisticsAccordingRoleRequest)
+
+Csgo2dMaFeedRequest = _reflection.GeneratedProtocolMessageType('Csgo2dMaFeedRequest', (_message.Message,), {
+  'DESCRIPTOR' : _CSGO2DMAFEEDREQUEST,
+  '__module__' : 'bragi.bragi_pb2'
+  # @@protoc_insertion_point(class_scope:bragi.Csgo2dMaFeedRequest)
+  })
+_sym_db.RegisterMessage(Csgo2dMaFeedRequest)
+
+CsgoScoreBoardFeedRequest = _reflection.GeneratedProtocolMessageType('CsgoScoreBoardFeedRequest', (_message.Message,), {
+  'DESCRIPTOR' : _CSGOSCOREBOARDFEEDREQUEST,
+  '__module__' : 'bragi.bragi_pb2'
+  # @@protoc_insertion_point(class_scope:bragi.CsgoScoreBoardFeedRequest)
+  })
+_sym_db.RegisterMessage(CsgoScoreBoardFeedRequest)
+
+CsgoEventsFeedRequest = _reflection.GeneratedProtocolMessageType('CsgoEventsFeedRequest', (_message.Message,), {
+  'DESCRIPTOR' : _CSGOEVENTSFEEDREQUEST,
+  '__module__' : 'bragi.bragi_pb2'
+  # @@protoc_insertion_point(class_scope:bragi.CsgoEventsFeedRequest)
+  })
+_sym_db.RegisterMessage(CsgoEventsFeedRequest)
 
 SportsResponse = _reflection.GeneratedProtocolMessageType('SportsResponse', (_message.Message,), {
   'DESCRIPTOR' : _SPORTSRESPONSE,
@@ -4591,6 +5359,76 @@ TournamentBracketNode = _reflection.GeneratedProtocolMessageType('TournamentBrac
   })
 _sym_db.RegisterMessage(TournamentBracketNode)
 
+Csgo2dMap = _reflection.GeneratedProtocolMessageType('Csgo2dMap', (_message.Message,), {
+  'DESCRIPTOR' : _CSGO2DMAP,
+  '__module__' : 'bragi.bragi_pb2'
+  # @@protoc_insertion_point(class_scope:bragi.Csgo2dMap)
+  })
+_sym_db.RegisterMessage(Csgo2dMap)
+
+Csgo2dMapPlayerPosition = _reflection.GeneratedProtocolMessageType('Csgo2dMapPlayerPosition', (_message.Message,), {
+  'DESCRIPTOR' : _CSGO2DMAPPLAYERPOSITION,
+  '__module__' : 'bragi.bragi_pb2'
+  # @@protoc_insertion_point(class_scope:bragi.Csgo2dMapPlayerPosition)
+  })
+_sym_db.RegisterMessage(Csgo2dMapPlayerPosition)
+
+Csgo2dMapBombPosition = _reflection.GeneratedProtocolMessageType('Csgo2dMapBombPosition', (_message.Message,), {
+  'DESCRIPTOR' : _CSGO2DMAPBOMBPOSITION,
+  '__module__' : 'bragi.bragi_pb2'
+  # @@protoc_insertion_point(class_scope:bragi.Csgo2dMapBombPosition)
+  })
+_sym_db.RegisterMessage(Csgo2dMapBombPosition)
+
+Map2dPosition = _reflection.GeneratedProtocolMessageType('Map2dPosition', (_message.Message,), {
+  'DESCRIPTOR' : _MAP2DPOSITION,
+  '__module__' : 'bragi.bragi_pb2'
+  # @@protoc_insertion_point(class_scope:bragi.Map2dPosition)
+  })
+_sym_db.RegisterMessage(Map2dPosition)
+
+CsgoRound = _reflection.GeneratedProtocolMessageType('CsgoRound', (_message.Message,), {
+  'DESCRIPTOR' : _CSGOROUND,
+  '__module__' : 'bragi.bragi_pb2'
+  # @@protoc_insertion_point(class_scope:bragi.CsgoRound)
+  })
+_sym_db.RegisterMessage(CsgoRound)
+
+CsgoScoreBoard = _reflection.GeneratedProtocolMessageType('CsgoScoreBoard', (_message.Message,), {
+  'DESCRIPTOR' : _CSGOSCOREBOARD,
+  '__module__' : 'bragi.bragi_pb2'
+  # @@protoc_insertion_point(class_scope:bragi.CsgoScoreBoard)
+  })
+_sym_db.RegisterMessage(CsgoScoreBoard)
+
+CsgoTeamScoreBoard = _reflection.GeneratedProtocolMessageType('CsgoTeamScoreBoard', (_message.Message,), {
+  'DESCRIPTOR' : _CSGOTEAMSCOREBOARD,
+  '__module__' : 'bragi.bragi_pb2'
+  # @@protoc_insertion_point(class_scope:bragi.CsgoTeamScoreBoard)
+  })
+_sym_db.RegisterMessage(CsgoTeamScoreBoard)
+
+CsgoPlayerScoreBoard = _reflection.GeneratedProtocolMessageType('CsgoPlayerScoreBoard', (_message.Message,), {
+  'DESCRIPTOR' : _CSGOPLAYERSCOREBOARD,
+  '__module__' : 'bragi.bragi_pb2'
+  # @@protoc_insertion_point(class_scope:bragi.CsgoPlayerScoreBoard)
+  })
+_sym_db.RegisterMessage(CsgoPlayerScoreBoard)
+
+CsgoOpeningDuels = _reflection.GeneratedProtocolMessageType('CsgoOpeningDuels', (_message.Message,), {
+  'DESCRIPTOR' : _CSGOOPENINGDUELS,
+  '__module__' : 'bragi.bragi_pb2'
+  # @@protoc_insertion_point(class_scope:bragi.CsgoOpeningDuels)
+  })
+_sym_db.RegisterMessage(CsgoOpeningDuels)
+
+CsgoEvents = _reflection.GeneratedProtocolMessageType('CsgoEvents', (_message.Message,), {
+  'DESCRIPTOR' : _CSGOEVENTS,
+  '__module__' : 'bragi.bragi_pb2'
+  # @@protoc_insertion_point(class_scope:bragi.CsgoEvents)
+  })
+_sym_db.RegisterMessage(CsgoEvents)
+
 Sport = _reflection.GeneratedProtocolMessageType('Sport', (_message.Message,), {
   'DESCRIPTOR' : _SPORT,
   '__module__' : 'bragi.bragi_pb2'
@@ -4671,8 +5509,8 @@ _BRAGIGRPC = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=13923,
-  serialized_end=14769,
+  serialized_start=15515,
+  serialized_end=16581,
   methods=[
   _descriptor.MethodDescriptor(
     name='Sports',
@@ -4761,6 +5599,36 @@ _BRAGIGRPC = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_PLAYERSTATISTICSACCORDINGROLEREQUEST,
     output_type=_PLAYERSTATISTICSACCORDINGROLERESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='Csgo2dMaFeed',
+    full_name='bragi.BragiGrpc.Csgo2dMaFeed',
+    index=9,
+    containing_service=None,
+    input_type=_CSGO2DMAFEEDREQUEST,
+    output_type=_CSGO2DMAP,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='CsgoScoreBoardFeed',
+    full_name='bragi.BragiGrpc.CsgoScoreBoardFeed',
+    index=10,
+    containing_service=None,
+    input_type=_CSGOSCOREBOARDFEEDREQUEST,
+    output_type=_CSGOSCOREBOARD,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='CsgoEventsFeed',
+    full_name='bragi.BragiGrpc.CsgoEventsFeed',
+    index=11,
+    containing_service=None,
+    input_type=_CSGOEVENTSFEEDREQUEST,
+    output_type=_CSGOEVENTS,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

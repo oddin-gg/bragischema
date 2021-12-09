@@ -27,11 +27,19 @@ service BragiGrpc {
 
   rpc PlayerStatisticsAccordingRole(PlayerStatisticsAccordingRoleRequest) returns (PlayerStatisticsAccordingRoleResponse) {}
 
+  // streamed ----------------------------------------------------------------------------------------------------------
+
+  rpc Csgo2dMaFeed(Csgo2dMaFeedRequest) returns (stream Csgo2dMap) {}
+
+  rpc CsgoScoreBoardFeed(CsgoScoreBoardFeedRequest) returns (stream CsgoScoreBoard) {}
+
+  rpc CsgoEventsFeed(CsgoEventsFeedRequest) returns (stream CsgoEvents) {}
+
 }
 
-// ----------------------------------------------------------------------------------------------------------------------
-// Request/response --------------------------------------------------------------------------------------------------------
-// ----------------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+// Request/response ----------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
 
 // The request message containing the user's name.
 message SportsRequest {
@@ -82,6 +90,18 @@ message  PlayerStatisticsAccordingRoleRequest {
   Timeframe timeframe = 2;
   string role = 3;
   uint32 team_id = 4;
+}
+
+message Csgo2dMaFeedRequest {
+  uint32  map_id = 1;
+}
+
+message CsgoScoreBoardFeedRequest {
+  uint32  match_id = 1;
+}
+
+message CsgoEventsFeedRequest {
+  uint32 match_id = 1;
 }
 
 // The response message containing the greetings
@@ -438,6 +458,88 @@ message TournamentBracketNode {
   optional string label = 7;
   bool is_root = 8;
   repeated uint32 child_nodes = 9;
+}
+
+message Csgo2dMap {
+  repeated Csgo2dMapPlayerPosition players_positions = 1;
+  Csgo2dMapBombPosition bomb_positions = 2;
+  CsgoRound round = 3;
+}
+
+message Csgo2dMapPlayerPosition {
+  Player player = 1;
+  CsgoSide side = 2;
+  Map2dPosition position = 3;
+  Map2dPosition forward = 4;
+  string state = 5;
+}
+
+message Csgo2dMapBombPosition {
+  Map2dPosition position = 1;
+  string state = 2;
+  uint32 time_to_defused = 3;
+  uint32 time_to_exploded = 4;
+}
+
+message Map2dPosition {
+  float x = 1;
+  float y = 2;
+}
+
+message CsgoRound {
+  uint32 number = 1;
+  string state = 2;
+  uint32 time_remaining = 3;
+}
+
+message CsgoScoreBoard {
+  CsgoMap map = 1;
+  uint32 round = 2;
+  optional CsgoRoundOutcome round_outcome = 3;
+}
+
+message CsgoTeamScoreBoard {
+  Team team = 1;
+  uint32 score_maps = 2;
+  uint32 score_rounds = 3;
+  CsgoSide side = 4;
+  uint32 equipment_value = 5;
+  int32 balance = 6;
+  uint32 frag = 7;
+  uint32 flashbang = 8;
+  uint32 firebomb = 9;
+  uint32 smoke = 10;
+  uint32 defuser = 11;
+  uint32 decoy = 12;
+  repeated CsgoPlayerScoreBoard players = 13;
+}
+
+message CsgoPlayerScoreBoard {
+  Player player = 1;
+  uint32 health = 2;
+  uint32 kills = 3;
+  uint32 deaths = 4;
+  uint32 assists = 5;
+  uint32 damage = 6;
+  double headshot_rate = 7;
+  uint32 armor = 8;
+  int32 balance = 9;
+  uint32 primary = 10;
+  uint32 secondary = 11;
+  CsgoOpeningDuels opening_duels = 12;
+}
+
+message CsgoOpeningDuels {
+  uint32 kills = 1;
+  uint32 deaths = 2;
+}
+
+message CsgoEvents {
+  string type = 1;
+  Team team = 2;
+  uint32 round = 3;
+  uint32 round_time = 4;
+  string description = 5;
 }
 
 enum CsgoPlayerRole {

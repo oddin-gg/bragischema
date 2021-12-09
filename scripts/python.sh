@@ -26,6 +26,13 @@ pip --disable-pip-version-check install -r requirements.txt
 # generate Python code from definitions
 python -m grpc_tools.protoc -I=${DEF} --python_out=${PYTHON_PATH} --grpc_python_out=${PYTHON_PATH} ./${DEF}/*/*.proto
 
+if [ "$?" != "0" ];
+then
+  echo "protobuf files generation failed. \n"
+  exit 1
+fi
+
+
 # make folders formal packages
 shopt -s nullglob  # https://unix.stackexchange.com/a/240004/306693
 touch ${PYTHON_PATH}/__init__.py

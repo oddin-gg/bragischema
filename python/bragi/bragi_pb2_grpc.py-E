@@ -59,6 +59,21 @@ class BragiGrpcStub(object):
                 request_serializer=bragi_dot_bragi__pb2.PlayerStatisticsAccordingRoleRequest.SerializeToString,
                 response_deserializer=bragi_dot_bragi__pb2.PlayerStatisticsAccordingRoleResponse.FromString,
                 )
+        self.Csgo2dMaFeed = channel.unary_stream(
+                '/bragi.BragiGrpc/Csgo2dMaFeed',
+                request_serializer=bragi_dot_bragi__pb2.Csgo2dMaFeedRequest.SerializeToString,
+                response_deserializer=bragi_dot_bragi__pb2.Csgo2dMap.FromString,
+                )
+        self.CsgoScoreBoardFeed = channel.unary_stream(
+                '/bragi.BragiGrpc/CsgoScoreBoardFeed',
+                request_serializer=bragi_dot_bragi__pb2.CsgoScoreBoardFeedRequest.SerializeToString,
+                response_deserializer=bragi_dot_bragi__pb2.CsgoScoreBoard.FromString,
+                )
+        self.CsgoEventsFeed = channel.unary_stream(
+                '/bragi.BragiGrpc/CsgoEventsFeed',
+                request_serializer=bragi_dot_bragi__pb2.CsgoEventsFeedRequest.SerializeToString,
+                response_deserializer=bragi_dot_bragi__pb2.CsgoEvents.FromString,
+                )
 
 
 class BragiGrpcServicer(object):
@@ -118,6 +133,26 @@ class BragiGrpcServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Csgo2dMaFeed(self, request, context):
+        """streamed ----------------------------------------------------------------------------------------------------------
+
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CsgoScoreBoardFeed(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CsgoEventsFeed(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_BragiGrpcServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -165,6 +200,21 @@ def add_BragiGrpcServicer_to_server(servicer, server):
                     servicer.PlayerStatisticsAccordingRole,
                     request_deserializer=bragi_dot_bragi__pb2.PlayerStatisticsAccordingRoleRequest.FromString,
                     response_serializer=bragi_dot_bragi__pb2.PlayerStatisticsAccordingRoleResponse.SerializeToString,
+            ),
+            'Csgo2dMaFeed': grpc.unary_stream_rpc_method_handler(
+                    servicer.Csgo2dMaFeed,
+                    request_deserializer=bragi_dot_bragi__pb2.Csgo2dMaFeedRequest.FromString,
+                    response_serializer=bragi_dot_bragi__pb2.Csgo2dMap.SerializeToString,
+            ),
+            'CsgoScoreBoardFeed': grpc.unary_stream_rpc_method_handler(
+                    servicer.CsgoScoreBoardFeed,
+                    request_deserializer=bragi_dot_bragi__pb2.CsgoScoreBoardFeedRequest.FromString,
+                    response_serializer=bragi_dot_bragi__pb2.CsgoScoreBoard.SerializeToString,
+            ),
+            'CsgoEventsFeed': grpc.unary_stream_rpc_method_handler(
+                    servicer.CsgoEventsFeed,
+                    request_deserializer=bragi_dot_bragi__pb2.CsgoEventsFeedRequest.FromString,
+                    response_serializer=bragi_dot_bragi__pb2.CsgoEvents.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -326,5 +376,56 @@ class BragiGrpc(object):
         return grpc.experimental.unary_unary(request, target, '/bragi.BragiGrpc/PlayerStatisticsAccordingRole',
             bragi_dot_bragi__pb2.PlayerStatisticsAccordingRoleRequest.SerializeToString,
             bragi_dot_bragi__pb2.PlayerStatisticsAccordingRoleResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Csgo2dMaFeed(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/bragi.BragiGrpc/Csgo2dMaFeed',
+            bragi_dot_bragi__pb2.Csgo2dMaFeedRequest.SerializeToString,
+            bragi_dot_bragi__pb2.Csgo2dMap.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def CsgoScoreBoardFeed(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/bragi.BragiGrpc/CsgoScoreBoardFeed',
+            bragi_dot_bragi__pb2.CsgoScoreBoardFeedRequest.SerializeToString,
+            bragi_dot_bragi__pb2.CsgoScoreBoard.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def CsgoEventsFeed(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/bragi.BragiGrpc/CsgoEventsFeed',
+            bragi_dot_bragi__pb2.CsgoEventsFeedRequest.SerializeToString,
+            bragi_dot_bragi__pb2.CsgoEvents.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

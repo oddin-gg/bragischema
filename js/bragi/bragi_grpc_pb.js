@@ -5,6 +5,72 @@ var grpc = require('grpc');
 var bragi_bragi_pb = require('../bragi/bragi_pb.js');
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 
+function serialize_bragi_Csgo2dMaFeedRequest(arg) {
+  if (!(arg instanceof bragi_bragi_pb.Csgo2dMaFeedRequest)) {
+    throw new Error('Expected argument of type bragi.Csgo2dMaFeedRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_Csgo2dMaFeedRequest(buffer_arg) {
+  return bragi_bragi_pb.Csgo2dMaFeedRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bragi_Csgo2dMap(arg) {
+  if (!(arg instanceof bragi_bragi_pb.Csgo2dMap)) {
+    throw new Error('Expected argument of type bragi.Csgo2dMap');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_Csgo2dMap(buffer_arg) {
+  return bragi_bragi_pb.Csgo2dMap.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bragi_CsgoEvents(arg) {
+  if (!(arg instanceof bragi_bragi_pb.CsgoEvents)) {
+    throw new Error('Expected argument of type bragi.CsgoEvents');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_CsgoEvents(buffer_arg) {
+  return bragi_bragi_pb.CsgoEvents.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bragi_CsgoEventsFeedRequest(arg) {
+  if (!(arg instanceof bragi_bragi_pb.CsgoEventsFeedRequest)) {
+    throw new Error('Expected argument of type bragi.CsgoEventsFeedRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_CsgoEventsFeedRequest(buffer_arg) {
+  return bragi_bragi_pb.CsgoEventsFeedRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bragi_CsgoScoreBoard(arg) {
+  if (!(arg instanceof bragi_bragi_pb.CsgoScoreBoard)) {
+    throw new Error('Expected argument of type bragi.CsgoScoreBoard');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_CsgoScoreBoard(buffer_arg) {
+  return bragi_bragi_pb.CsgoScoreBoard.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bragi_CsgoScoreBoardFeedRequest(arg) {
+  if (!(arg instanceof bragi_bragi_pb.CsgoScoreBoardFeedRequest)) {
+    throw new Error('Expected argument of type bragi.CsgoScoreBoardFeedRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_CsgoScoreBoardFeedRequest(buffer_arg) {
+  return bragi_bragi_pb.CsgoScoreBoardFeedRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_bragi_HistoricalStatisticsResponse(arg) {
   if (!(arg instanceof bragi_bragi_pb.HistoricalStatisticsResponse)) {
     throw new Error('Expected argument of type bragi.HistoricalStatisticsResponse');
@@ -303,6 +369,41 @@ var BragiGrpcService = exports.BragiGrpcService = {
     requestDeserialize: deserialize_bragi_PlayerStatisticsAccordingRoleRequest,
     responseSerialize: serialize_bragi_PlayerStatisticsAccordingRoleResponse,
     responseDeserialize: deserialize_bragi_PlayerStatisticsAccordingRoleResponse,
+  },
+  // streamed ----------------------------------------------------------------------------------------------------------
+//
+csgo2dMaFeed: {
+    path: '/bragi.BragiGrpc/Csgo2dMaFeed',
+    requestStream: false,
+    responseStream: true,
+    requestType: bragi_bragi_pb.Csgo2dMaFeedRequest,
+    responseType: bragi_bragi_pb.Csgo2dMap,
+    requestSerialize: serialize_bragi_Csgo2dMaFeedRequest,
+    requestDeserialize: deserialize_bragi_Csgo2dMaFeedRequest,
+    responseSerialize: serialize_bragi_Csgo2dMap,
+    responseDeserialize: deserialize_bragi_Csgo2dMap,
+  },
+  csgoScoreBoardFeed: {
+    path: '/bragi.BragiGrpc/CsgoScoreBoardFeed',
+    requestStream: false,
+    responseStream: true,
+    requestType: bragi_bragi_pb.CsgoScoreBoardFeedRequest,
+    responseType: bragi_bragi_pb.CsgoScoreBoard,
+    requestSerialize: serialize_bragi_CsgoScoreBoardFeedRequest,
+    requestDeserialize: deserialize_bragi_CsgoScoreBoardFeedRequest,
+    responseSerialize: serialize_bragi_CsgoScoreBoard,
+    responseDeserialize: deserialize_bragi_CsgoScoreBoard,
+  },
+  csgoEventsFeed: {
+    path: '/bragi.BragiGrpc/CsgoEventsFeed',
+    requestStream: false,
+    responseStream: true,
+    requestType: bragi_bragi_pb.CsgoEventsFeedRequest,
+    responseType: bragi_bragi_pb.CsgoEvents,
+    requestSerialize: serialize_bragi_CsgoEventsFeedRequest,
+    requestDeserialize: deserialize_bragi_CsgoEventsFeedRequest,
+    responseSerialize: serialize_bragi_CsgoEvents,
+    responseDeserialize: deserialize_bragi_CsgoEvents,
   },
 };
 
