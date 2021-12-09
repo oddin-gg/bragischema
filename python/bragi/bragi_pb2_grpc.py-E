@@ -59,6 +59,11 @@ class BragiGrpcStub(object):
                 request_serializer=bragi_dot_bragi__pb2.PlayerStatisticsAccordingRoleRequest.SerializeToString,
                 response_deserializer=bragi_dot_bragi__pb2.PlayerStatisticsAccordingRoleResponse.FromString,
                 )
+        self.CsgoMatchFeed = channel.unary_stream(
+                '/bragi.BragiGrpc/CsgoMatchFeed',
+                request_serializer=bragi_dot_bragi__pb2.CsgoMatchFeedRequest.SerializeToString,
+                response_deserializer=bragi_dot_bragi__pb2.CsgoMatchFeedResponse.FromString,
+                )
 
 
 class BragiGrpcServicer(object):
@@ -118,6 +123,14 @@ class BragiGrpcServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def CsgoMatchFeed(self, request, context):
+        """streamed ----------------------------------------------------------------------------------------------------------
+
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_BragiGrpcServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -165,6 +178,11 @@ def add_BragiGrpcServicer_to_server(servicer, server):
                     servicer.PlayerStatisticsAccordingRole,
                     request_deserializer=bragi_dot_bragi__pb2.PlayerStatisticsAccordingRoleRequest.FromString,
                     response_serializer=bragi_dot_bragi__pb2.PlayerStatisticsAccordingRoleResponse.SerializeToString,
+            ),
+            'CsgoMatchFeed': grpc.unary_stream_rpc_method_handler(
+                    servicer.CsgoMatchFeed,
+                    request_deserializer=bragi_dot_bragi__pb2.CsgoMatchFeedRequest.FromString,
+                    response_serializer=bragi_dot_bragi__pb2.CsgoMatchFeedResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -326,5 +344,22 @@ class BragiGrpc(object):
         return grpc.experimental.unary_unary(request, target, '/bragi.BragiGrpc/PlayerStatisticsAccordingRole',
             bragi_dot_bragi__pb2.PlayerStatisticsAccordingRoleRequest.SerializeToString,
             bragi_dot_bragi__pb2.PlayerStatisticsAccordingRoleResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def CsgoMatchFeed(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/bragi.BragiGrpc/CsgoMatchFeed',
+            bragi_dot_bragi__pb2.CsgoMatchFeedRequest.SerializeToString,
+            bragi_dot_bragi__pb2.CsgoMatchFeedResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

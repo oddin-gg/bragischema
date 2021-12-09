@@ -23,4 +23,10 @@ protoc -I ./${DEF} \
     --ts_out="${JS_PATH}" \
     ./${DEF}/*/*.proto
 
+if [ "$?" != "0" ];
+then
+  echo "protobuf files generation failed. \n"
+  exit 1
+fi
+
 echo "JAVASCRIPT DONE"

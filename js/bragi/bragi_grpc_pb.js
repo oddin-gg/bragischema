@@ -5,6 +5,28 @@ var grpc = require('grpc');
 var bragi_bragi_pb = require('../bragi/bragi_pb.js');
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 
+function serialize_bragi_CsgoMatchFeedRequest(arg) {
+  if (!(arg instanceof bragi_bragi_pb.CsgoMatchFeedRequest)) {
+    throw new Error('Expected argument of type bragi.CsgoMatchFeedRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_CsgoMatchFeedRequest(buffer_arg) {
+  return bragi_bragi_pb.CsgoMatchFeedRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bragi_CsgoMatchFeedResponse(arg) {
+  if (!(arg instanceof bragi_bragi_pb.CsgoMatchFeedResponse)) {
+    throw new Error('Expected argument of type bragi.CsgoMatchFeedResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_CsgoMatchFeedResponse(buffer_arg) {
+  return bragi_bragi_pb.CsgoMatchFeedResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_bragi_HistoricalStatisticsResponse(arg) {
   if (!(arg instanceof bragi_bragi_pb.HistoricalStatisticsResponse)) {
     throw new Error('Expected argument of type bragi.HistoricalStatisticsResponse');
@@ -303,6 +325,19 @@ var BragiGrpcService = exports.BragiGrpcService = {
     requestDeserialize: deserialize_bragi_PlayerStatisticsAccordingRoleRequest,
     responseSerialize: serialize_bragi_PlayerStatisticsAccordingRoleResponse,
     responseDeserialize: deserialize_bragi_PlayerStatisticsAccordingRoleResponse,
+  },
+  // streamed ----------------------------------------------------------------------------------------------------------
+//
+csgoMatchFeed: {
+    path: '/bragi.BragiGrpc/CsgoMatchFeed',
+    requestStream: false,
+    responseStream: true,
+    requestType: bragi_bragi_pb.CsgoMatchFeedRequest,
+    responseType: bragi_bragi_pb.CsgoMatchFeedResponse,
+    requestSerialize: serialize_bragi_CsgoMatchFeedRequest,
+    requestDeserialize: deserialize_bragi_CsgoMatchFeedRequest,
+    responseSerialize: serialize_bragi_CsgoMatchFeedResponse,
+    responseDeserialize: deserialize_bragi_CsgoMatchFeedResponse,
   },
 };
 

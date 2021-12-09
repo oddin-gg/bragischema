@@ -4,6 +4,52 @@
 import * as jspb from "google-protobuf";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 
+export class CsgoMatchFeedRequest extends jspb.Message {
+  getMatchId(): number;
+  setMatchId(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CsgoMatchFeedRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: CsgoMatchFeedRequest): CsgoMatchFeedRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: CsgoMatchFeedRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CsgoMatchFeedRequest;
+  static deserializeBinaryFromReader(message: CsgoMatchFeedRequest, reader: jspb.BinaryReader): CsgoMatchFeedRequest;
+}
+
+export namespace CsgoMatchFeedRequest {
+  export type AsObject = {
+    matchId: number,
+  }
+}
+
+export class CsgoMatchFeedResponse extends jspb.Message {
+  getMatchId(): number;
+  setMatchId(value: number): void;
+
+  hasMatch(): boolean;
+  clearMatch(): void;
+  getMatch(): Match | undefined;
+  setMatch(value?: Match): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CsgoMatchFeedResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: CsgoMatchFeedResponse): CsgoMatchFeedResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: CsgoMatchFeedResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CsgoMatchFeedResponse;
+  static deserializeBinaryFromReader(message: CsgoMatchFeedResponse, reader: jspb.BinaryReader): CsgoMatchFeedResponse;
+}
+
+export namespace CsgoMatchFeedResponse {
+  export type AsObject = {
+    matchId: number,
+    match?: Match.AsObject,
+  }
+}
+
 export class SportsRequest extends jspb.Message {
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): SportsRequest.AsObject;

@@ -27,11 +27,26 @@ service BragiGrpc {
 
   rpc PlayerStatisticsAccordingRole(PlayerStatisticsAccordingRoleRequest) returns (PlayerStatisticsAccordingRoleResponse) {}
 
+  // streamed ----------------------------------------------------------------------------------------------------------
+
+  rpc CsgoMatchFeed(CsgoMatchFeedRequest) returns (stream CsgoMatchFeedResponse) {}
+
 }
 
-// ----------------------------------------------------------------------------------------------------------------------
-// Request/response --------------------------------------------------------------------------------------------------------
-// ----------------------------------------------------------------------------------------------------------------------
+// TODO move into request/response block
+message CsgoMatchFeedRequest {
+  uint32 match_id =1;
+}
+
+// TODO move into request/response block
+message CsgoMatchFeedResponse {
+  uint32 match_id = 1;
+  Match match  = 2; // TODO
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Request/response ----------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
 
 // The request message containing the user's name.
 message SportsRequest {

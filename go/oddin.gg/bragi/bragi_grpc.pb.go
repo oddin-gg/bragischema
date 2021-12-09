@@ -27,6 +27,7 @@ type BragiGrpcClient interface {
 	TournamentStatistics(ctx context.Context, in *TournamentStatisticsRequest, opts ...grpc.CallOption) (*TournamentStatisticsResponse, error)
 	TeamTournamentStatistics(ctx context.Context, in *TeamTournamentStatisticsRequest, opts ...grpc.CallOption) (*TeamTournamentStatisticsResponse, error)
 	PlayerStatisticsAccordingRole(ctx context.Context, in *PlayerStatisticsAccordingRoleRequest, opts ...grpc.CallOption) (*PlayerStatisticsAccordingRoleResponse, error)
+	CsgoMatchFeed(ctx context.Context, in *CsgoMatchFeedRequest, opts ...grpc.CallOption) (BragiGrpc_CsgoMatchFeedClient, error)
 }
 
 type bragiGrpcClient struct {
@@ -118,6 +119,38 @@ func (c *bragiGrpcClient) PlayerStatisticsAccordingRole(ctx context.Context, in 
 	return out, nil
 }
 
+func (c *bragiGrpcClient) CsgoMatchFeed(ctx context.Context, in *CsgoMatchFeedRequest, opts ...grpc.CallOption) (BragiGrpc_CsgoMatchFeedClient, error) {
+	stream, err := c.cc.NewStream(ctx, &BragiGrpc_ServiceDesc.Streams[0], "/bragi.BragiGrpc/CsgoMatchFeed", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &bragiGrpcCsgoMatchFeedClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type BragiGrpc_CsgoMatchFeedClient interface {
+	Recv() (*CsgoMatchFeedResponse, error)
+	grpc.ClientStream
+}
+
+type bragiGrpcCsgoMatchFeedClient struct {
+	grpc.ClientStream
+}
+
+func (x *bragiGrpcCsgoMatchFeedClient) Recv() (*CsgoMatchFeedResponse, error) {
+	m := new(CsgoMatchFeedResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // BragiGrpcServer is the server API for BragiGrpc service.
 // All implementations must embed UnimplementedBragiGrpcServer
 // for forward compatibility
@@ -131,6 +164,7 @@ type BragiGrpcServer interface {
 	TournamentStatistics(context.Context, *TournamentStatisticsRequest) (*TournamentStatisticsResponse, error)
 	TeamTournamentStatistics(context.Context, *TeamTournamentStatisticsRequest) (*TeamTournamentStatisticsResponse, error)
 	PlayerStatisticsAccordingRole(context.Context, *PlayerStatisticsAccordingRoleRequest) (*PlayerStatisticsAccordingRoleResponse, error)
+	CsgoMatchFeed(*CsgoMatchFeedRequest, BragiGrpc_CsgoMatchFeedServer) error
 	mustEmbedUnimplementedBragiGrpcServer()
 }
 
@@ -164,6 +198,9 @@ func (UnimplementedBragiGrpcServer) TeamTournamentStatistics(context.Context, *T
 }
 func (UnimplementedBragiGrpcServer) PlayerStatisticsAccordingRole(context.Context, *PlayerStatisticsAccordingRoleRequest) (*PlayerStatisticsAccordingRoleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PlayerStatisticsAccordingRole not implemented")
+}
+func (UnimplementedBragiGrpcServer) CsgoMatchFeed(*CsgoMatchFeedRequest, BragiGrpc_CsgoMatchFeedServer) error {
+	return status.Errorf(codes.Unimplemented, "method CsgoMatchFeed not implemented")
 }
 func (UnimplementedBragiGrpcServer) mustEmbedUnimplementedBragiGrpcServer() {}
 
@@ -340,6 +377,27 @@ func _BragiGrpc_PlayerStatisticsAccordingRole_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BragiGrpc_CsgoMatchFeed_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(CsgoMatchFeedRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(BragiGrpcServer).CsgoMatchFeed(m, &bragiGrpcCsgoMatchFeedServer{stream})
+}
+
+type BragiGrpc_CsgoMatchFeedServer interface {
+	Send(*CsgoMatchFeedResponse) error
+	grpc.ServerStream
+}
+
+type bragiGrpcCsgoMatchFeedServer struct {
+	grpc.ServerStream
+}
+
+func (x *bragiGrpcCsgoMatchFeedServer) Send(m *CsgoMatchFeedResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 // BragiGrpc_ServiceDesc is the grpc.ServiceDesc for BragiGrpc service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -384,6 +442,12 @@ var BragiGrpc_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _BragiGrpc_PlayerStatisticsAccordingRole_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "CsgoMatchFeed",
+			Handler:       _BragiGrpc_CsgoMatchFeed_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "proto/bragi/bragi.proto",
 }
