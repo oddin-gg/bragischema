@@ -27,7 +27,9 @@ type BragiGrpcClient interface {
 	TournamentStatistics(ctx context.Context, in *TournamentStatisticsRequest, opts ...grpc.CallOption) (*TournamentStatisticsResponse, error)
 	TeamTournamentStatistics(ctx context.Context, in *TeamTournamentStatisticsRequest, opts ...grpc.CallOption) (*TeamTournamentStatisticsResponse, error)
 	PlayerStatisticsAccordingRole(ctx context.Context, in *PlayerStatisticsAccordingRoleRequest, opts ...grpc.CallOption) (*PlayerStatisticsAccordingRoleResponse, error)
-	CsgoMatchFeed(ctx context.Context, in *CsgoMatchFeedRequest, opts ...grpc.CallOption) (BragiGrpc_CsgoMatchFeedClient, error)
+	Csgo2DMaFeed(ctx context.Context, in *Csgo2DMaFeedRequest, opts ...grpc.CallOption) (BragiGrpc_Csgo2DMaFeedClient, error)
+	CsgoScoreBoardFeed(ctx context.Context, in *CsgoScoreBoardFeedRequest, opts ...grpc.CallOption) (BragiGrpc_CsgoScoreBoardFeedClient, error)
+	CsgoEventsFeed(ctx context.Context, in *CsgoEventsFeedRequest, opts ...grpc.CallOption) (BragiGrpc_CsgoEventsFeedClient, error)
 }
 
 type bragiGrpcClient struct {
@@ -119,12 +121,12 @@ func (c *bragiGrpcClient) PlayerStatisticsAccordingRole(ctx context.Context, in 
 	return out, nil
 }
 
-func (c *bragiGrpcClient) CsgoMatchFeed(ctx context.Context, in *CsgoMatchFeedRequest, opts ...grpc.CallOption) (BragiGrpc_CsgoMatchFeedClient, error) {
-	stream, err := c.cc.NewStream(ctx, &BragiGrpc_ServiceDesc.Streams[0], "/bragi.BragiGrpc/CsgoMatchFeed", opts...)
+func (c *bragiGrpcClient) Csgo2DMaFeed(ctx context.Context, in *Csgo2DMaFeedRequest, opts ...grpc.CallOption) (BragiGrpc_Csgo2DMaFeedClient, error) {
+	stream, err := c.cc.NewStream(ctx, &BragiGrpc_ServiceDesc.Streams[0], "/bragi.BragiGrpc/Csgo2dMaFeed", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &bragiGrpcCsgoMatchFeedClient{stream}
+	x := &bragiGrpcCsgo2DMaFeedClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -134,17 +136,81 @@ func (c *bragiGrpcClient) CsgoMatchFeed(ctx context.Context, in *CsgoMatchFeedRe
 	return x, nil
 }
 
-type BragiGrpc_CsgoMatchFeedClient interface {
-	Recv() (*CsgoMatchFeedResponse, error)
+type BragiGrpc_Csgo2DMaFeedClient interface {
+	Recv() (*Csgo2DMap, error)
 	grpc.ClientStream
 }
 
-type bragiGrpcCsgoMatchFeedClient struct {
+type bragiGrpcCsgo2DMaFeedClient struct {
 	grpc.ClientStream
 }
 
-func (x *bragiGrpcCsgoMatchFeedClient) Recv() (*CsgoMatchFeedResponse, error) {
-	m := new(CsgoMatchFeedResponse)
+func (x *bragiGrpcCsgo2DMaFeedClient) Recv() (*Csgo2DMap, error) {
+	m := new(Csgo2DMap)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *bragiGrpcClient) CsgoScoreBoardFeed(ctx context.Context, in *CsgoScoreBoardFeedRequest, opts ...grpc.CallOption) (BragiGrpc_CsgoScoreBoardFeedClient, error) {
+	stream, err := c.cc.NewStream(ctx, &BragiGrpc_ServiceDesc.Streams[1], "/bragi.BragiGrpc/CsgoScoreBoardFeed", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &bragiGrpcCsgoScoreBoardFeedClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type BragiGrpc_CsgoScoreBoardFeedClient interface {
+	Recv() (*CsgoScoreBoard, error)
+	grpc.ClientStream
+}
+
+type bragiGrpcCsgoScoreBoardFeedClient struct {
+	grpc.ClientStream
+}
+
+func (x *bragiGrpcCsgoScoreBoardFeedClient) Recv() (*CsgoScoreBoard, error) {
+	m := new(CsgoScoreBoard)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *bragiGrpcClient) CsgoEventsFeed(ctx context.Context, in *CsgoEventsFeedRequest, opts ...grpc.CallOption) (BragiGrpc_CsgoEventsFeedClient, error) {
+	stream, err := c.cc.NewStream(ctx, &BragiGrpc_ServiceDesc.Streams[2], "/bragi.BragiGrpc/CsgoEventsFeed", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &bragiGrpcCsgoEventsFeedClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type BragiGrpc_CsgoEventsFeedClient interface {
+	Recv() (*CsgoEvents, error)
+	grpc.ClientStream
+}
+
+type bragiGrpcCsgoEventsFeedClient struct {
+	grpc.ClientStream
+}
+
+func (x *bragiGrpcCsgoEventsFeedClient) Recv() (*CsgoEvents, error) {
+	m := new(CsgoEvents)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -164,7 +230,9 @@ type BragiGrpcServer interface {
 	TournamentStatistics(context.Context, *TournamentStatisticsRequest) (*TournamentStatisticsResponse, error)
 	TeamTournamentStatistics(context.Context, *TeamTournamentStatisticsRequest) (*TeamTournamentStatisticsResponse, error)
 	PlayerStatisticsAccordingRole(context.Context, *PlayerStatisticsAccordingRoleRequest) (*PlayerStatisticsAccordingRoleResponse, error)
-	CsgoMatchFeed(*CsgoMatchFeedRequest, BragiGrpc_CsgoMatchFeedServer) error
+	Csgo2DMaFeed(*Csgo2DMaFeedRequest, BragiGrpc_Csgo2DMaFeedServer) error
+	CsgoScoreBoardFeed(*CsgoScoreBoardFeedRequest, BragiGrpc_CsgoScoreBoardFeedServer) error
+	CsgoEventsFeed(*CsgoEventsFeedRequest, BragiGrpc_CsgoEventsFeedServer) error
 	mustEmbedUnimplementedBragiGrpcServer()
 }
 
@@ -199,8 +267,14 @@ func (UnimplementedBragiGrpcServer) TeamTournamentStatistics(context.Context, *T
 func (UnimplementedBragiGrpcServer) PlayerStatisticsAccordingRole(context.Context, *PlayerStatisticsAccordingRoleRequest) (*PlayerStatisticsAccordingRoleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PlayerStatisticsAccordingRole not implemented")
 }
-func (UnimplementedBragiGrpcServer) CsgoMatchFeed(*CsgoMatchFeedRequest, BragiGrpc_CsgoMatchFeedServer) error {
-	return status.Errorf(codes.Unimplemented, "method CsgoMatchFeed not implemented")
+func (UnimplementedBragiGrpcServer) Csgo2DMaFeed(*Csgo2DMaFeedRequest, BragiGrpc_Csgo2DMaFeedServer) error {
+	return status.Errorf(codes.Unimplemented, "method Csgo2DMaFeed not implemented")
+}
+func (UnimplementedBragiGrpcServer) CsgoScoreBoardFeed(*CsgoScoreBoardFeedRequest, BragiGrpc_CsgoScoreBoardFeedServer) error {
+	return status.Errorf(codes.Unimplemented, "method CsgoScoreBoardFeed not implemented")
+}
+func (UnimplementedBragiGrpcServer) CsgoEventsFeed(*CsgoEventsFeedRequest, BragiGrpc_CsgoEventsFeedServer) error {
+	return status.Errorf(codes.Unimplemented, "method CsgoEventsFeed not implemented")
 }
 func (UnimplementedBragiGrpcServer) mustEmbedUnimplementedBragiGrpcServer() {}
 
@@ -377,24 +451,66 @@ func _BragiGrpc_PlayerStatisticsAccordingRole_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
-func _BragiGrpc_CsgoMatchFeed_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(CsgoMatchFeedRequest)
+func _BragiGrpc_Csgo2DMaFeed_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(Csgo2DMaFeedRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(BragiGrpcServer).CsgoMatchFeed(m, &bragiGrpcCsgoMatchFeedServer{stream})
+	return srv.(BragiGrpcServer).Csgo2DMaFeed(m, &bragiGrpcCsgo2DMaFeedServer{stream})
 }
 
-type BragiGrpc_CsgoMatchFeedServer interface {
-	Send(*CsgoMatchFeedResponse) error
+type BragiGrpc_Csgo2DMaFeedServer interface {
+	Send(*Csgo2DMap) error
 	grpc.ServerStream
 }
 
-type bragiGrpcCsgoMatchFeedServer struct {
+type bragiGrpcCsgo2DMaFeedServer struct {
 	grpc.ServerStream
 }
 
-func (x *bragiGrpcCsgoMatchFeedServer) Send(m *CsgoMatchFeedResponse) error {
+func (x *bragiGrpcCsgo2DMaFeedServer) Send(m *Csgo2DMap) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _BragiGrpc_CsgoScoreBoardFeed_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(CsgoScoreBoardFeedRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(BragiGrpcServer).CsgoScoreBoardFeed(m, &bragiGrpcCsgoScoreBoardFeedServer{stream})
+}
+
+type BragiGrpc_CsgoScoreBoardFeedServer interface {
+	Send(*CsgoScoreBoard) error
+	grpc.ServerStream
+}
+
+type bragiGrpcCsgoScoreBoardFeedServer struct {
+	grpc.ServerStream
+}
+
+func (x *bragiGrpcCsgoScoreBoardFeedServer) Send(m *CsgoScoreBoard) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _BragiGrpc_CsgoEventsFeed_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(CsgoEventsFeedRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(BragiGrpcServer).CsgoEventsFeed(m, &bragiGrpcCsgoEventsFeedServer{stream})
+}
+
+type BragiGrpc_CsgoEventsFeedServer interface {
+	Send(*CsgoEvents) error
+	grpc.ServerStream
+}
+
+type bragiGrpcCsgoEventsFeedServer struct {
+	grpc.ServerStream
+}
+
+func (x *bragiGrpcCsgoEventsFeedServer) Send(m *CsgoEvents) error {
 	return x.ServerStream.SendMsg(m)
 }
 
@@ -444,8 +560,18 @@ var BragiGrpc_ServiceDesc = grpc.ServiceDesc{
 	},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "CsgoMatchFeed",
-			Handler:       _BragiGrpc_CsgoMatchFeed_Handler,
+			StreamName:    "Csgo2dMaFeed",
+			Handler:       _BragiGrpc_Csgo2DMaFeed_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "CsgoScoreBoardFeed",
+			Handler:       _BragiGrpc_CsgoScoreBoardFeed_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "CsgoEventsFeed",
+			Handler:       _BragiGrpc_CsgoEventsFeed_Handler,
 			ServerStreams: true,
 		},
 	},
