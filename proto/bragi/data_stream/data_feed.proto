@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package bragi.data_stream;
 
-option go_package = "oddin.gg/bragi/data_stream";
+option go_package = "oddin.gg/bragi";
 option java_package = "com.oddin.bragi.data_stream";
 
 import "google/protobuf/timestamp.proto";

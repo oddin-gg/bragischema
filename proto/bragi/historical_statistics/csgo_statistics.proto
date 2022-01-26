@@ -3,7 +3,7 @@ syntax = "proto3";
 package bragi.historical_statistics;
 
 option go_package = "oddin.gg/bragi";
-option java_package = "com.oddin.bragi";
+option java_package = "com.oddin.bragi.historical_statistics";
 
 import "bragi/csgo_common.proto";
 import "bragi/common.proto";
