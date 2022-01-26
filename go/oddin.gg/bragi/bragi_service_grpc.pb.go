@@ -11,8 +11,6 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	historical_statistics "oddin.gg/bragi/historical_statistics"
-	stream "oddin.gg/bragi/stream"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -25,25 +23,25 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type BragiClient interface {
 	// Sports gRPC remote call returning SportsResponse
-	Sports(ctx context.Context, in *historical_statistics.SportsRequest, opts ...grpc.CallOption) (*historical_statistics.SportsResponse, error)
+	Sports(ctx context.Context, in *SportsRequest, opts ...grpc.CallOption) (*SportsResponse, error)
 	// Tournaments gRPC remote call returning TournamentResponse
-	Tournaments(ctx context.Context, in *historical_statistics.TournamentsRequest, opts ...grpc.CallOption) (*historical_statistics.TournamentResponse, error)
+	Tournaments(ctx context.Context, in *TournamentsRequest, opts ...grpc.CallOption) (*TournamentResponse, error)
 	// TournamentInfo gRPC remote call returning TournamentInfoResponse
-	TournamentInfo(ctx context.Context, in *historical_statistics.TournamentInfoRequest, opts ...grpc.CallOption) (*historical_statistics.TournamentInfoResponse, error)
+	TournamentInfo(ctx context.Context, in *TournamentInfoRequest, opts ...grpc.CallOption) (*TournamentInfoResponse, error)
 	// TeamHistoricalStatistics gRPC remote call returning HistoricalStatisticsResponse
-	TeamHistoricalStatistics(ctx context.Context, in *historical_statistics.TeamHistoricalStatisticsRequest, opts ...grpc.CallOption) (*historical_statistics.HistoricalStatisticsResponse, error)
+	TeamHistoricalStatistics(ctx context.Context, in *TeamHistoricalStatisticsRequest, opts ...grpc.CallOption) (*HistoricalStatisticsResponse, error)
 	// LastFiveEncounters gRPC remote call returning LastFiveEncountersResponse
-	LastFiveEncounters(ctx context.Context, in *historical_statistics.LastFiveEncountersRequest, opts ...grpc.CallOption) (*historical_statistics.LastFiveEncountersResponse, error)
+	LastFiveEncounters(ctx context.Context, in *LastFiveEncountersRequest, opts ...grpc.CallOption) (*LastFiveEncountersResponse, error)
 	// PostMapStatistics gRPC remote call returning PostMapStatisticsResponse
-	PostMapStatistics(ctx context.Context, in *historical_statistics.PostMapStatisticsRequest, opts ...grpc.CallOption) (*historical_statistics.PostMapStatisticsResponse, error)
+	PostMapStatistics(ctx context.Context, in *PostMapStatisticsRequest, opts ...grpc.CallOption) (*PostMapStatisticsResponse, error)
 	// TournamentStatistics gRPC remote call returning TournamentStatisticsResponse
-	TournamentStatistics(ctx context.Context, in *historical_statistics.TournamentStatisticsRequest, opts ...grpc.CallOption) (*historical_statistics.TournamentStatisticsResponse, error)
+	TournamentStatistics(ctx context.Context, in *TournamentStatisticsRequest, opts ...grpc.CallOption) (*TournamentStatisticsResponse, error)
 	// TeamTournamentStatistics gRPC remote call returning TeamTournamentStatisticsResponse
-	TeamTournamentStatistics(ctx context.Context, in *historical_statistics.TeamTournamentStatisticsRequest, opts ...grpc.CallOption) (*historical_statistics.TeamTournamentStatisticsResponse, error)
+	TeamTournamentStatistics(ctx context.Context, in *TeamTournamentStatisticsRequest, opts ...grpc.CallOption) (*TeamTournamentStatisticsResponse, error)
 	// PlayerStatisticsAccordingRole gRPC remote call returning PlayerStatisticsAccordingRoleResponse
-	PlayerStatisticsAccordingRole(ctx context.Context, in *historical_statistics.PlayerStatisticsAccordingRoleRequest, opts ...grpc.CallOption) (*historical_statistics.PlayerStatisticsAccordingRoleResponse, error)
+	PlayerStatisticsAccordingRole(ctx context.Context, in *PlayerStatisticsAccordingRoleRequest, opts ...grpc.CallOption) (*PlayerStatisticsAccordingRoleResponse, error)
 	// LiveDataFeed gRPC stream returning LiveDataFeedMessage one direction stream
-	LiveDataFeed(ctx context.Context, in *stream.LiveDataFeedRequest, opts ...grpc.CallOption) (Bragi_LiveDataFeedClient, error)
+	LiveDataFeed(ctx context.Context, in *LiveDataFeedRequest, opts ...grpc.CallOption) (Bragi_LiveDataFeedClient, error)
 }
 
 type bragiClient struct {
@@ -54,8 +52,8 @@ func NewBragiClient(cc grpc.ClientConnInterface) BragiClient {
 	return &bragiClient{cc}
 }
 
-func (c *bragiClient) Sports(ctx context.Context, in *historical_statistics.SportsRequest, opts ...grpc.CallOption) (*historical_statistics.SportsResponse, error) {
-	out := new(historical_statistics.SportsResponse)
+func (c *bragiClient) Sports(ctx context.Context, in *SportsRequest, opts ...grpc.CallOption) (*SportsResponse, error) {
+	out := new(SportsResponse)
 	err := c.cc.Invoke(ctx, "/bragi.Bragi/Sports", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -63,8 +61,8 @@ func (c *bragiClient) Sports(ctx context.Context, in *historical_statistics.Spor
 	return out, nil
 }
 
-func (c *bragiClient) Tournaments(ctx context.Context, in *historical_statistics.TournamentsRequest, opts ...grpc.CallOption) (*historical_statistics.TournamentResponse, error) {
-	out := new(historical_statistics.TournamentResponse)
+func (c *bragiClient) Tournaments(ctx context.Context, in *TournamentsRequest, opts ...grpc.CallOption) (*TournamentResponse, error) {
+	out := new(TournamentResponse)
 	err := c.cc.Invoke(ctx, "/bragi.Bragi/Tournaments", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -72,8 +70,8 @@ func (c *bragiClient) Tournaments(ctx context.Context, in *historical_statistics
 	return out, nil
 }
 
-func (c *bragiClient) TournamentInfo(ctx context.Context, in *historical_statistics.TournamentInfoRequest, opts ...grpc.CallOption) (*historical_statistics.TournamentInfoResponse, error) {
-	out := new(historical_statistics.TournamentInfoResponse)
+func (c *bragiClient) TournamentInfo(ctx context.Context, in *TournamentInfoRequest, opts ...grpc.CallOption) (*TournamentInfoResponse, error) {
+	out := new(TournamentInfoResponse)
 	err := c.cc.Invoke(ctx, "/bragi.Bragi/TournamentInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -81,8 +79,8 @@ func (c *bragiClient) TournamentInfo(ctx context.Context, in *historical_statist
 	return out, nil
 }
 
-func (c *bragiClient) TeamHistoricalStatistics(ctx context.Context, in *historical_statistics.TeamHistoricalStatisticsRequest, opts ...grpc.CallOption) (*historical_statistics.HistoricalStatisticsResponse, error) {
-	out := new(historical_statistics.HistoricalStatisticsResponse)
+func (c *bragiClient) TeamHistoricalStatistics(ctx context.Context, in *TeamHistoricalStatisticsRequest, opts ...grpc.CallOption) (*HistoricalStatisticsResponse, error) {
+	out := new(HistoricalStatisticsResponse)
 	err := c.cc.Invoke(ctx, "/bragi.Bragi/TeamHistoricalStatistics", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -90,8 +88,8 @@ func (c *bragiClient) TeamHistoricalStatistics(ctx context.Context, in *historic
 	return out, nil
 }
 
-func (c *bragiClient) LastFiveEncounters(ctx context.Context, in *historical_statistics.LastFiveEncountersRequest, opts ...grpc.CallOption) (*historical_statistics.LastFiveEncountersResponse, error) {
-	out := new(historical_statistics.LastFiveEncountersResponse)
+func (c *bragiClient) LastFiveEncounters(ctx context.Context, in *LastFiveEncountersRequest, opts ...grpc.CallOption) (*LastFiveEncountersResponse, error) {
+	out := new(LastFiveEncountersResponse)
 	err := c.cc.Invoke(ctx, "/bragi.Bragi/LastFiveEncounters", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -99,8 +97,8 @@ func (c *bragiClient) LastFiveEncounters(ctx context.Context, in *historical_sta
 	return out, nil
 }
 
-func (c *bragiClient) PostMapStatistics(ctx context.Context, in *historical_statistics.PostMapStatisticsRequest, opts ...grpc.CallOption) (*historical_statistics.PostMapStatisticsResponse, error) {
-	out := new(historical_statistics.PostMapStatisticsResponse)
+func (c *bragiClient) PostMapStatistics(ctx context.Context, in *PostMapStatisticsRequest, opts ...grpc.CallOption) (*PostMapStatisticsResponse, error) {
+	out := new(PostMapStatisticsResponse)
 	err := c.cc.Invoke(ctx, "/bragi.Bragi/PostMapStatistics", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -108,8 +106,8 @@ func (c *bragiClient) PostMapStatistics(ctx context.Context, in *historical_stat
 	return out, nil
 }
 
-func (c *bragiClient) TournamentStatistics(ctx context.Context, in *historical_statistics.TournamentStatisticsRequest, opts ...grpc.CallOption) (*historical_statistics.TournamentStatisticsResponse, error) {
-	out := new(historical_statistics.TournamentStatisticsResponse)
+func (c *bragiClient) TournamentStatistics(ctx context.Context, in *TournamentStatisticsRequest, opts ...grpc.CallOption) (*TournamentStatisticsResponse, error) {
+	out := new(TournamentStatisticsResponse)
 	err := c.cc.Invoke(ctx, "/bragi.Bragi/TournamentStatistics", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -117,8 +115,8 @@ func (c *bragiClient) TournamentStatistics(ctx context.Context, in *historical_s
 	return out, nil
 }
 
-func (c *bragiClient) TeamTournamentStatistics(ctx context.Context, in *historical_statistics.TeamTournamentStatisticsRequest, opts ...grpc.CallOption) (*historical_statistics.TeamTournamentStatisticsResponse, error) {
-	out := new(historical_statistics.TeamTournamentStatisticsResponse)
+func (c *bragiClient) TeamTournamentStatistics(ctx context.Context, in *TeamTournamentStatisticsRequest, opts ...grpc.CallOption) (*TeamTournamentStatisticsResponse, error) {
+	out := new(TeamTournamentStatisticsResponse)
 	err := c.cc.Invoke(ctx, "/bragi.Bragi/TeamTournamentStatistics", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -126,8 +124,8 @@ func (c *bragiClient) TeamTournamentStatistics(ctx context.Context, in *historic
 	return out, nil
 }
 
-func (c *bragiClient) PlayerStatisticsAccordingRole(ctx context.Context, in *historical_statistics.PlayerStatisticsAccordingRoleRequest, opts ...grpc.CallOption) (*historical_statistics.PlayerStatisticsAccordingRoleResponse, error) {
-	out := new(historical_statistics.PlayerStatisticsAccordingRoleResponse)
+func (c *bragiClient) PlayerStatisticsAccordingRole(ctx context.Context, in *PlayerStatisticsAccordingRoleRequest, opts ...grpc.CallOption) (*PlayerStatisticsAccordingRoleResponse, error) {
+	out := new(PlayerStatisticsAccordingRoleResponse)
 	err := c.cc.Invoke(ctx, "/bragi.Bragi/PlayerStatisticsAccordingRole", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -135,7 +133,7 @@ func (c *bragiClient) PlayerStatisticsAccordingRole(ctx context.Context, in *his
 	return out, nil
 }
 
-func (c *bragiClient) LiveDataFeed(ctx context.Context, in *stream.LiveDataFeedRequest, opts ...grpc.CallOption) (Bragi_LiveDataFeedClient, error) {
+func (c *bragiClient) LiveDataFeed(ctx context.Context, in *LiveDataFeedRequest, opts ...grpc.CallOption) (Bragi_LiveDataFeedClient, error) {
 	stream, err := c.cc.NewStream(ctx, &Bragi_ServiceDesc.Streams[0], "/bragi.Bragi/LiveDataFeed", opts...)
 	if err != nil {
 		return nil, err
@@ -151,7 +149,7 @@ func (c *bragiClient) LiveDataFeed(ctx context.Context, in *stream.LiveDataFeedR
 }
 
 type Bragi_LiveDataFeedClient interface {
-	Recv() (*stream.LiveDataFeedMessage, error)
+	Recv() (*LiveDataFeedMessage, error)
 	grpc.ClientStream
 }
 
@@ -159,8 +157,8 @@ type bragiLiveDataFeedClient struct {
 	grpc.ClientStream
 }
 
-func (x *bragiLiveDataFeedClient) Recv() (*stream.LiveDataFeedMessage, error) {
-	m := new(stream.LiveDataFeedMessage)
+func (x *bragiLiveDataFeedClient) Recv() (*LiveDataFeedMessage, error) {
+	m := new(LiveDataFeedMessage)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -172,25 +170,25 @@ func (x *bragiLiveDataFeedClient) Recv() (*stream.LiveDataFeedMessage, error) {
 // for forward compatibility
 type BragiServer interface {
 	// Sports gRPC remote call returning SportsResponse
-	Sports(context.Context, *historical_statistics.SportsRequest) (*historical_statistics.SportsResponse, error)
+	Sports(context.Context, *SportsRequest) (*SportsResponse, error)
 	// Tournaments gRPC remote call returning TournamentResponse
-	Tournaments(context.Context, *historical_statistics.TournamentsRequest) (*historical_statistics.TournamentResponse, error)
+	Tournaments(context.Context, *TournamentsRequest) (*TournamentResponse, error)
 	// TournamentInfo gRPC remote call returning TournamentInfoResponse
-	TournamentInfo(context.Context, *historical_statistics.TournamentInfoRequest) (*historical_statistics.TournamentInfoResponse, error)
+	TournamentInfo(context.Context, *TournamentInfoRequest) (*TournamentInfoResponse, error)
 	// TeamHistoricalStatistics gRPC remote call returning HistoricalStatisticsResponse
-	TeamHistoricalStatistics(context.Context, *historical_statistics.TeamHistoricalStatisticsRequest) (*historical_statistics.HistoricalStatisticsResponse, error)
+	TeamHistoricalStatistics(context.Context, *TeamHistoricalStatisticsRequest) (*HistoricalStatisticsResponse, error)
 	// LastFiveEncounters gRPC remote call returning LastFiveEncountersResponse
-	LastFiveEncounters(context.Context, *historical_statistics.LastFiveEncountersRequest) (*historical_statistics.LastFiveEncountersResponse, error)
+	LastFiveEncounters(context.Context, *LastFiveEncountersRequest) (*LastFiveEncountersResponse, error)
 	// PostMapStatistics gRPC remote call returning PostMapStatisticsResponse
-	PostMapStatistics(context.Context, *historical_statistics.PostMapStatisticsRequest) (*historical_statistics.PostMapStatisticsResponse, error)
+	PostMapStatistics(context.Context, *PostMapStatisticsRequest) (*PostMapStatisticsResponse, error)
 	// TournamentStatistics gRPC remote call returning TournamentStatisticsResponse
-	TournamentStatistics(context.Context, *historical_statistics.TournamentStatisticsRequest) (*historical_statistics.TournamentStatisticsResponse, error)
+	TournamentStatistics(context.Context, *TournamentStatisticsRequest) (*TournamentStatisticsResponse, error)
 	// TeamTournamentStatistics gRPC remote call returning TeamTournamentStatisticsResponse
-	TeamTournamentStatistics(context.Context, *historical_statistics.TeamTournamentStatisticsRequest) (*historical_statistics.TeamTournamentStatisticsResponse, error)
+	TeamTournamentStatistics(context.Context, *TeamTournamentStatisticsRequest) (*TeamTournamentStatisticsResponse, error)
 	// PlayerStatisticsAccordingRole gRPC remote call returning PlayerStatisticsAccordingRoleResponse
-	PlayerStatisticsAccordingRole(context.Context, *historical_statistics.PlayerStatisticsAccordingRoleRequest) (*historical_statistics.PlayerStatisticsAccordingRoleResponse, error)
+	PlayerStatisticsAccordingRole(context.Context, *PlayerStatisticsAccordingRoleRequest) (*PlayerStatisticsAccordingRoleResponse, error)
 	// LiveDataFeed gRPC stream returning LiveDataFeedMessage one direction stream
-	LiveDataFeed(*stream.LiveDataFeedRequest, Bragi_LiveDataFeedServer) error
+	LiveDataFeed(*LiveDataFeedRequest, Bragi_LiveDataFeedServer) error
 	mustEmbedUnimplementedBragiServer()
 }
 
@@ -198,34 +196,34 @@ type BragiServer interface {
 type UnimplementedBragiServer struct {
 }
 
-func (UnimplementedBragiServer) Sports(context.Context, *historical_statistics.SportsRequest) (*historical_statistics.SportsResponse, error) {
+func (UnimplementedBragiServer) Sports(context.Context, *SportsRequest) (*SportsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Sports not implemented")
 }
-func (UnimplementedBragiServer) Tournaments(context.Context, *historical_statistics.TournamentsRequest) (*historical_statistics.TournamentResponse, error) {
+func (UnimplementedBragiServer) Tournaments(context.Context, *TournamentsRequest) (*TournamentResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Tournaments not implemented")
 }
-func (UnimplementedBragiServer) TournamentInfo(context.Context, *historical_statistics.TournamentInfoRequest) (*historical_statistics.TournamentInfoResponse, error) {
+func (UnimplementedBragiServer) TournamentInfo(context.Context, *TournamentInfoRequest) (*TournamentInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TournamentInfo not implemented")
 }
-func (UnimplementedBragiServer) TeamHistoricalStatistics(context.Context, *historical_statistics.TeamHistoricalStatisticsRequest) (*historical_statistics.HistoricalStatisticsResponse, error) {
+func (UnimplementedBragiServer) TeamHistoricalStatistics(context.Context, *TeamHistoricalStatisticsRequest) (*HistoricalStatisticsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TeamHistoricalStatistics not implemented")
 }
-func (UnimplementedBragiServer) LastFiveEncounters(context.Context, *historical_statistics.LastFiveEncountersRequest) (*historical_statistics.LastFiveEncountersResponse, error) {
+func (UnimplementedBragiServer) LastFiveEncounters(context.Context, *LastFiveEncountersRequest) (*LastFiveEncountersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LastFiveEncounters not implemented")
 }
-func (UnimplementedBragiServer) PostMapStatistics(context.Context, *historical_statistics.PostMapStatisticsRequest) (*historical_statistics.PostMapStatisticsResponse, error) {
+func (UnimplementedBragiServer) PostMapStatistics(context.Context, *PostMapStatisticsRequest) (*PostMapStatisticsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PostMapStatistics not implemented")
 }
-func (UnimplementedBragiServer) TournamentStatistics(context.Context, *historical_statistics.TournamentStatisticsRequest) (*historical_statistics.TournamentStatisticsResponse, error) {
+func (UnimplementedBragiServer) TournamentStatistics(context.Context, *TournamentStatisticsRequest) (*TournamentStatisticsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TournamentStatistics not implemented")
 }
-func (UnimplementedBragiServer) TeamTournamentStatistics(context.Context, *historical_statistics.TeamTournamentStatisticsRequest) (*historical_statistics.TeamTournamentStatisticsResponse, error) {
+func (UnimplementedBragiServer) TeamTournamentStatistics(context.Context, *TeamTournamentStatisticsRequest) (*TeamTournamentStatisticsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TeamTournamentStatistics not implemented")
 }
-func (UnimplementedBragiServer) PlayerStatisticsAccordingRole(context.Context, *historical_statistics.PlayerStatisticsAccordingRoleRequest) (*historical_statistics.PlayerStatisticsAccordingRoleResponse, error) {
+func (UnimplementedBragiServer) PlayerStatisticsAccordingRole(context.Context, *PlayerStatisticsAccordingRoleRequest) (*PlayerStatisticsAccordingRoleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PlayerStatisticsAccordingRole not implemented")
 }
-func (UnimplementedBragiServer) LiveDataFeed(*stream.LiveDataFeedRequest, Bragi_LiveDataFeedServer) error {
+func (UnimplementedBragiServer) LiveDataFeed(*LiveDataFeedRequest, Bragi_LiveDataFeedServer) error {
 	return status.Errorf(codes.Unimplemented, "method LiveDataFeed not implemented")
 }
 func (UnimplementedBragiServer) mustEmbedUnimplementedBragiServer() {}
@@ -242,7 +240,7 @@ func RegisterBragiServer(s grpc.ServiceRegistrar, srv BragiServer) {
 }
 
 func _Bragi_Sports_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(historical_statistics.SportsRequest)
+	in := new(SportsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -254,13 +252,13 @@ func _Bragi_Sports_Handler(srv interface{}, ctx context.Context, dec func(interf
 		FullMethod: "/bragi.Bragi/Sports",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BragiServer).Sports(ctx, req.(*historical_statistics.SportsRequest))
+		return srv.(BragiServer).Sports(ctx, req.(*SportsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Bragi_Tournaments_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(historical_statistics.TournamentsRequest)
+	in := new(TournamentsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -272,13 +270,13 @@ func _Bragi_Tournaments_Handler(srv interface{}, ctx context.Context, dec func(i
 		FullMethod: "/bragi.Bragi/Tournaments",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BragiServer).Tournaments(ctx, req.(*historical_statistics.TournamentsRequest))
+		return srv.(BragiServer).Tournaments(ctx, req.(*TournamentsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Bragi_TournamentInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(historical_statistics.TournamentInfoRequest)
+	in := new(TournamentInfoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -290,13 +288,13 @@ func _Bragi_TournamentInfo_Handler(srv interface{}, ctx context.Context, dec fun
 		FullMethod: "/bragi.Bragi/TournamentInfo",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BragiServer).TournamentInfo(ctx, req.(*historical_statistics.TournamentInfoRequest))
+		return srv.(BragiServer).TournamentInfo(ctx, req.(*TournamentInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Bragi_TeamHistoricalStatistics_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(historical_statistics.TeamHistoricalStatisticsRequest)
+	in := new(TeamHistoricalStatisticsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -308,13 +306,13 @@ func _Bragi_TeamHistoricalStatistics_Handler(srv interface{}, ctx context.Contex
 		FullMethod: "/bragi.Bragi/TeamHistoricalStatistics",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BragiServer).TeamHistoricalStatistics(ctx, req.(*historical_statistics.TeamHistoricalStatisticsRequest))
+		return srv.(BragiServer).TeamHistoricalStatistics(ctx, req.(*TeamHistoricalStatisticsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Bragi_LastFiveEncounters_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(historical_statistics.LastFiveEncountersRequest)
+	in := new(LastFiveEncountersRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -326,13 +324,13 @@ func _Bragi_LastFiveEncounters_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: "/bragi.Bragi/LastFiveEncounters",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BragiServer).LastFiveEncounters(ctx, req.(*historical_statistics.LastFiveEncountersRequest))
+		return srv.(BragiServer).LastFiveEncounters(ctx, req.(*LastFiveEncountersRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Bragi_PostMapStatistics_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(historical_statistics.PostMapStatisticsRequest)
+	in := new(PostMapStatisticsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -344,13 +342,13 @@ func _Bragi_PostMapStatistics_Handler(srv interface{}, ctx context.Context, dec 
 		FullMethod: "/bragi.Bragi/PostMapStatistics",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BragiServer).PostMapStatistics(ctx, req.(*historical_statistics.PostMapStatisticsRequest))
+		return srv.(BragiServer).PostMapStatistics(ctx, req.(*PostMapStatisticsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Bragi_TournamentStatistics_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(historical_statistics.TournamentStatisticsRequest)
+	in := new(TournamentStatisticsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -362,13 +360,13 @@ func _Bragi_TournamentStatistics_Handler(srv interface{}, ctx context.Context, d
 		FullMethod: "/bragi.Bragi/TournamentStatistics",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BragiServer).TournamentStatistics(ctx, req.(*historical_statistics.TournamentStatisticsRequest))
+		return srv.(BragiServer).TournamentStatistics(ctx, req.(*TournamentStatisticsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Bragi_TeamTournamentStatistics_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(historical_statistics.TeamTournamentStatisticsRequest)
+	in := new(TeamTournamentStatisticsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -380,13 +378,13 @@ func _Bragi_TeamTournamentStatistics_Handler(srv interface{}, ctx context.Contex
 		FullMethod: "/bragi.Bragi/TeamTournamentStatistics",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BragiServer).TeamTournamentStatistics(ctx, req.(*historical_statistics.TeamTournamentStatisticsRequest))
+		return srv.(BragiServer).TeamTournamentStatistics(ctx, req.(*TeamTournamentStatisticsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Bragi_PlayerStatisticsAccordingRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(historical_statistics.PlayerStatisticsAccordingRoleRequest)
+	in := new(PlayerStatisticsAccordingRoleRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -398,13 +396,13 @@ func _Bragi_PlayerStatisticsAccordingRole_Handler(srv interface{}, ctx context.C
 		FullMethod: "/bragi.Bragi/PlayerStatisticsAccordingRole",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BragiServer).PlayerStatisticsAccordingRole(ctx, req.(*historical_statistics.PlayerStatisticsAccordingRoleRequest))
+		return srv.(BragiServer).PlayerStatisticsAccordingRole(ctx, req.(*PlayerStatisticsAccordingRoleRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Bragi_LiveDataFeed_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(stream.LiveDataFeedRequest)
+	m := new(LiveDataFeedRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
@@ -412,7 +410,7 @@ func _Bragi_LiveDataFeed_Handler(srv interface{}, stream grpc.ServerStream) erro
 }
 
 type Bragi_LiveDataFeedServer interface {
-	Send(*stream.LiveDataFeedMessage) error
+	Send(*LiveDataFeedMessage) error
 	grpc.ServerStream
 }
 
@@ -420,7 +418,7 @@ type bragiLiveDataFeedServer struct {
 	grpc.ServerStream
 }
 
-func (x *bragiLiveDataFeedServer) Send(m *stream.LiveDataFeedMessage) error {
+func (x *bragiLiveDataFeedServer) Send(m *LiveDataFeedMessage) error {
 	return x.ServerStream.SendMsg(m)
 }
 

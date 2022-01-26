@@ -23,5 +23,5 @@ var global = (function() {
 
 var bragi_historical_statistics_statistics_pb = require('../bragi/historical_statistics/statistics_pb.js');
 goog.object.extend(proto, bragi_historical_statistics_statistics_pb);
-var bragi_stream_data_feed_pb = require('../bragi/stream/data_feed_pb.js');
-goog.object.extend(proto, bragi_stream_data_feed_pb);
+var bragi_data_stream_data_feed_pb = require('../bragi/data_stream/data_feed_pb.js');
+goog.object.extend(proto, bragi_data_stream_data_feed_pb);

@@ -6,40 +6,40 @@ option go_package = "oddin.gg/bragi";
 option java_package = "com.oddin.bragi";
 
 import "bragi/historical_statistics/statistics.proto";
-import "bragi/stream/data_feed.proto";
+import "bragi/data_stream/data_feed.proto";
 
 
 service Bragi {
 
   // Sports gRPC remote call returning SportsResponse
-  rpc Sports (statistics.SportsRequest) returns (statistics.SportsResponse) {}
+  rpc Sports (historical_statistics.SportsRequest) returns (historical_statistics.SportsResponse) {}
 
   // Tournaments gRPC remote call returning TournamentResponse
-  rpc Tournaments(statistics.TournamentsRequest) returns(statistics.TournamentResponse) {}
+  rpc Tournaments(historical_statistics.TournamentsRequest) returns(historical_statistics.TournamentResponse) {}
 
   // TournamentInfo gRPC remote call returning TournamentInfoResponse
-  rpc TournamentInfo(statistics.TournamentInfoRequest) returns (statistics.TournamentInfoResponse) {}
+  rpc TournamentInfo(historical_statistics.TournamentInfoRequest) returns (historical_statistics.TournamentInfoResponse) {}
 
   // TeamHistoricalStatistics gRPC remote call returning HistoricalStatisticsResponse
-  rpc TeamHistoricalStatistics (statistics.TeamHistoricalStatisticsRequest) returns (statistics.HistoricalStatisticsResponse) {}
+  rpc TeamHistoricalStatistics (historical_statistics.TeamHistoricalStatisticsRequest) returns (historical_statistics.HistoricalStatisticsResponse) {}
 
   // LastFiveEncounters gRPC remote call returning LastFiveEncountersResponse
-  rpc LastFiveEncounters (statistics.LastFiveEncountersRequest) returns (statistics.LastFiveEncountersResponse) {}
+  rpc LastFiveEncounters (historical_statistics.LastFiveEncountersRequest) returns (historical_statistics.LastFiveEncountersResponse) {}
 
   // PostMapStatistics gRPC remote call returning PostMapStatisticsResponse
-  rpc PostMapStatistics(statistics.PostMapStatisticsRequest) returns (statistics.PostMapStatisticsResponse) {}
+  rpc PostMapStatistics(historical_statistics.PostMapStatisticsRequest) returns (historical_statistics.PostMapStatisticsResponse) {}
 
   // TournamentStatistics gRPC remote call returning TournamentStatisticsResponse
-  rpc TournamentStatistics(statistics.TournamentStatisticsRequest) returns (statistics.TournamentStatisticsResponse) {}
+  rpc TournamentStatistics(historical_statistics.TournamentStatisticsRequest) returns (historical_statistics.TournamentStatisticsResponse) {}
 
   // TeamTournamentStatistics gRPC remote call returning TeamTournamentStatisticsResponse
-  rpc TeamTournamentStatistics(statistics.TeamTournamentStatisticsRequest) returns (statistics.TeamTournamentStatisticsResponse) {}
+  rpc TeamTournamentStatistics(historical_statistics.TeamTournamentStatisticsRequest) returns (historical_statistics.TeamTournamentStatisticsResponse) {}
 
   // PlayerStatisticsAccordingRole gRPC remote call returning PlayerStatisticsAccordingRoleResponse
-  rpc PlayerStatisticsAccordingRole(statistics.PlayerStatisticsAccordingRoleRequest) returns (statistics.PlayerStatisticsAccordingRoleResponse) {}
+  rpc PlayerStatisticsAccordingRole(historical_statistics.PlayerStatisticsAccordingRoleRequest) returns (historical_statistics.PlayerStatisticsAccordingRoleResponse) {}
 
   // streamed ----------------------------------------------------------------------------------------------------------
 
   // LiveDataFeed gRPC stream returning LiveDataFeedMessage one direction stream
-  rpc LiveDataFeed(live.LiveDataFeedRequest) returns (stream live.LiveDataFeedMessage) {}
+  rpc LiveDataFeed(data_stream.LiveDataFeedRequest) returns (stream data_stream.LiveDataFeedMessage) {}
 }

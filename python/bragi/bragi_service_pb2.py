@@ -12,7 +12,7 @@ _sym_db = _symbol_database.Default()
 
 
 from bragi_schema.bragi.historical_statistics import statistics_pb2 as bragi_dot_historical__statistics_dot_statistics__pb2
-from bragi_schema.bragi.stream import data_feed_pb2 as bragi_dot_stream_dot_data__feed__pb2
+from bragi_schema.bragi.data_stream import data_feed_pb2 as bragi_dot_data__stream_dot_data__feed__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -21,9 +21,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n\017com.oddin.bragiZ\016oddin.gg/bragi',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x19\x62ragi/bragi_service.proto\x12\x05\x62ragi\x1a,bragi/historical_statistics/statistics.proto\x1a\x1c\x62ragi/stream/data_feed.proto2\xe8\x08\n\x05\x42ragi\x12M\n\x06Sports\x12\x1f.bragi.statistics.SportsRequest\x1a .bragi.statistics.SportsResponse\"\x00\x12[\n\x0bTournaments\x12$.bragi.statistics.TournamentsRequest\x1a$.bragi.statistics.TournamentResponse\"\x00\x12\x65\n\x0eTournamentInfo\x12\'.bragi.statistics.TournamentInfoRequest\x1a(.bragi.statistics.TournamentInfoResponse\"\x00\x12\x7f\n\x18TeamHistoricalStatistics\x12\x31.bragi.statistics.TeamHistoricalStatisticsRequest\x1a..bragi.statistics.HistoricalStatisticsResponse\"\x00\x12q\n\x12LastFiveEncounters\x12+.bragi.statistics.LastFiveEncountersRequest\x1a,.bragi.statistics.LastFiveEncountersResponse\"\x00\x12n\n\x11PostMapStatistics\x12*.bragi.statistics.PostMapStatisticsRequest\x1a+.bragi.statistics.PostMapStatisticsResponse\"\x00\x12w\n\x14TournamentStatistics\x12-.bragi.statistics.TournamentStatisticsRequest\x1a..bragi.statistics.TournamentStatisticsResponse\"\x00\x12\x83\x01\n\x18TeamTournamentStatistics\x12\x31.bragi.statistics.TeamTournamentStatisticsRequest\x1a\x32.bragi.statistics.TeamTournamentStatisticsResponse\"\x00\x12\x92\x01\n\x1dPlayerStatisticsAccordingRole\x12\x36.bragi.statistics.PlayerStatisticsAccordingRoleRequest\x1a\x37.bragi.statistics.PlayerStatisticsAccordingRoleResponse\"\x00\x12T\n\x0cLiveDataFeed\x12\x1f.bragi.live.LiveDataFeedRequest\x1a\x1f.bragi.live.LiveDataFeedMessage\"\x00\x30\x01\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
+  serialized_pb=b'\n\x19\x62ragi/bragi_service.proto\x12\x05\x62ragi\x1a,bragi/historical_statistics/statistics.proto\x1a!bragi/data_stream/data_feed.proto2\xc0\n\n\x05\x42ragi\x12\x63\n\x06Sports\x12*.bragi.historical_statistics.SportsRequest\x1a+.bragi.historical_statistics.SportsResponse\"\x00\x12q\n\x0bTournaments\x12/.bragi.historical_statistics.TournamentsRequest\x1a/.bragi.historical_statistics.TournamentResponse\"\x00\x12{\n\x0eTournamentInfo\x12\x32.bragi.historical_statistics.TournamentInfoRequest\x1a\x33.bragi.historical_statistics.TournamentInfoResponse\"\x00\x12\x95\x01\n\x18TeamHistoricalStatistics\x12<.bragi.historical_statistics.TeamHistoricalStatisticsRequest\x1a\x39.bragi.historical_statistics.HistoricalStatisticsResponse\"\x00\x12\x87\x01\n\x12LastFiveEncounters\x12\x36.bragi.historical_statistics.LastFiveEncountersRequest\x1a\x37.bragi.historical_statistics.LastFiveEncountersResponse\"\x00\x12\x84\x01\n\x11PostMapStatistics\x12\x35.bragi.historical_statistics.PostMapStatisticsRequest\x1a\x36.bragi.historical_statistics.PostMapStatisticsResponse\"\x00\x12\x8d\x01\n\x14TournamentStatistics\x12\x38.bragi.historical_statistics.TournamentStatisticsRequest\x1a\x39.bragi.historical_statistics.TournamentStatisticsResponse\"\x00\x12\x99\x01\n\x18TeamTournamentStatistics\x12<.bragi.historical_statistics.TeamTournamentStatisticsRequest\x1a=.bragi.historical_statistics.TeamTournamentStatisticsResponse\"\x00\x12\xa8\x01\n\x1dPlayerStatisticsAccordingRole\x12\x41.bragi.historical_statistics.PlayerStatisticsAccordingRoleRequest\x1a\x42.bragi.historical_statistics.PlayerStatisticsAccordingRoleResponse\"\x00\x12\x62\n\x0cLiveDataFeed\x12&.bragi.data_stream.LiveDataFeedRequest\x1a&.bragi.data_stream.LiveDataFeedMessage\"\x00\x30\x01\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
   ,
-  dependencies=[bragi_dot_historical__statistics_dot_statistics__pb2.DESCRIPTOR,bragi_dot_stream_dot_data__feed__pb2.DESCRIPTOR,])
+  dependencies=[bragi_dot_historical__statistics_dot_statistics__pb2.DESCRIPTOR,bragi_dot_data__stream_dot_data__feed__pb2.DESCRIPTOR,])
 
 
 
@@ -39,8 +39,8 @@ _BRAGI = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=113,
-  serialized_end=1241,
+  serialized_start=118,
+  serialized_end=1462,
   methods=[
   _descriptor.MethodDescriptor(
     name='Sports',
@@ -137,8 +137,8 @@ _BRAGI = _descriptor.ServiceDescriptor(
     full_name='bragi.Bragi.LiveDataFeed',
     index=9,
     containing_service=None,
-    input_type=bragi_dot_stream_dot_data__feed__pb2._LIVEDATAFEEDREQUEST,
-    output_type=bragi_dot_stream_dot_data__feed__pb2._LIVEDATAFEEDMESSAGE,
+    input_type=bragi_dot_data__stream_dot_data__feed__pb2._LIVEDATAFEEDREQUEST,
+    output_type=bragi_dot_data__stream_dot_data__feed__pb2._LIVEDATAFEEDMESSAGE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

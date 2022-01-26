@@ -2,8 +2,8 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
+from bragi_schema.bragi.data_stream import data_feed_pb2 as bragi_dot_data__stream_dot_data__feed__pb2
 from bragi_schema.bragi.historical_statistics import statistics_pb2 as bragi_dot_historical__statistics_dot_statistics__pb2
-from bragi_schema.bragi.stream import data_feed_pb2 as bragi_dot_stream_dot_data__feed__pb2
 
 
 class BragiStub(object):
@@ -62,8 +62,8 @@ class BragiStub(object):
                 )
         self.LiveDataFeed = channel.unary_stream(
                 '/bragi.Bragi/LiveDataFeed',
-                request_serializer=bragi_dot_stream_dot_data__feed__pb2.LiveDataFeedRequest.SerializeToString,
-                response_deserializer=bragi_dot_stream_dot_data__feed__pb2.LiveDataFeedMessage.FromString,
+                request_serializer=bragi_dot_data__stream_dot_data__feed__pb2.LiveDataFeedRequest.SerializeToString,
+                response_deserializer=bragi_dot_data__stream_dot_data__feed__pb2.LiveDataFeedMessage.FromString,
                 )
 
 
@@ -192,8 +192,8 @@ def add_BragiServicer_to_server(servicer, server):
             ),
             'LiveDataFeed': grpc.unary_stream_rpc_method_handler(
                     servicer.LiveDataFeed,
-                    request_deserializer=bragi_dot_stream_dot_data__feed__pb2.LiveDataFeedRequest.FromString,
-                    response_serializer=bragi_dot_stream_dot_data__feed__pb2.LiveDataFeedMessage.SerializeToString,
+                    request_deserializer=bragi_dot_data__stream_dot_data__feed__pb2.LiveDataFeedRequest.FromString,
+                    response_serializer=bragi_dot_data__stream_dot_data__feed__pb2.LiveDataFeedMessage.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -370,7 +370,7 @@ class Bragi(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_stream(request, target, '/bragi.Bragi/LiveDataFeed',
-            bragi_dot_stream_dot_data__feed__pb2.LiveDataFeedRequest.SerializeToString,
-            bragi_dot_stream_dot_data__feed__pb2.LiveDataFeedMessage.FromString,
+            bragi_dot_data__stream_dot_data__feed__pb2.LiveDataFeedRequest.SerializeToString,
+            bragi_dot_data__stream_dot_data__feed__pb2.LiveDataFeedMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

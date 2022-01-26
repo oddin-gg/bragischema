@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-package bragi.statistics;
+package bragi.historical_statistics;
 
-option go_package = "oddin.gg/bragi/historical_statistics";
-option java_package = "com.oddin.bragi.historical_statistics";
+option go_package = "oddin.gg/bragi";
+option java_package = "com.oddin.bragi";
 
 import "google/protobuf/timestamp.proto";
 import "bragi/common.proto";
@@ -79,13 +79,13 @@ message LastFiveEncountersResponse {
 
 message PostMapStatisticsResponse {
   oneof post_map_statistics {
-    statistics.CsgoPostMapStatistics csgo = 1;
+    CsgoPostMapStatistics csgo = 1;
   }
 }
 
 message TournamentInfoResponse {
   oneof tournament_info {
-    bragi.statistics.CsgoTournamentInfo csgo = 1;
+    CsgoTournamentInfo csgo = 1;
   }
 }
 

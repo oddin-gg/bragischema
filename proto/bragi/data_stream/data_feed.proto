@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package bragi.live;
+package bragi.data_stream;
 
-option go_package = "oddin.gg/bragi/stream";
-option java_package = "com.oddin.bragi.stream";
+option go_package = "oddin.gg/bragi";
+option java_package = "com.oddin.bragi";
 
 import "google/protobuf/timestamp.proto";
-import "bragi/stream/csgo_data_feed.proto";
+import "bragi/data_stream/csgo_data_feed.proto";
 
 
 message LiveDataFeedRequest {
