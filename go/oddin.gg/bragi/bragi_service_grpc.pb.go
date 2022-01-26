@@ -11,7 +11,6 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	data_stream "oddin.gg/bragi/data_stream"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -42,7 +41,7 @@ type BragiClient interface {
 	// PlayerStatisticsAccordingRole gRPC remote call returning PlayerStatisticsAccordingRoleResponse
 	PlayerStatisticsAccordingRole(ctx context.Context, in *PlayerStatisticsAccordingRoleRequest, opts ...grpc.CallOption) (*PlayerStatisticsAccordingRoleResponse, error)
 	// LiveDataFeed gRPC stream returning LiveDataFeedMessage one direction stream
-	LiveDataFeed(ctx context.Context, in *data_stream.LiveDataFeedRequest, opts ...grpc.CallOption) (Bragi_LiveDataFeedClient, error)
+	LiveDataFeed(ctx context.Context, in *LiveDataFeedRequest, opts ...grpc.CallOption) (Bragi_LiveDataFeedClient, error)
 }
 
 type bragiClient struct {
@@ -134,7 +133,7 @@ func (c *bragiClient) PlayerStatisticsAccordingRole(ctx context.Context, in *Pla
 	return out, nil
 }
 
-func (c *bragiClient) LiveDataFeed(ctx context.Context, in *data_stream.LiveDataFeedRequest, opts ...grpc.CallOption) (Bragi_LiveDataFeedClient, error) {
+func (c *bragiClient) LiveDataFeed(ctx context.Context, in *LiveDataFeedRequest, opts ...grpc.CallOption) (Bragi_LiveDataFeedClient, error) {
 	stream, err := c.cc.NewStream(ctx, &Bragi_ServiceDesc.Streams[0], "/bragi.Bragi/LiveDataFeed", opts...)
 	if err != nil {
 		return nil, err
@@ -150,7 +149,7 @@ func (c *bragiClient) LiveDataFeed(ctx context.Context, in *data_stream.LiveData
 }
 
 type Bragi_LiveDataFeedClient interface {
-	Recv() (*data_stream.LiveDataFeedMessage, error)
+	Recv() (*LiveDataFeedMessage, error)
 	grpc.ClientStream
 }
 
@@ -158,8 +157,8 @@ type bragiLiveDataFeedClient struct {
 	grpc.ClientStream
 }
 
-func (x *bragiLiveDataFeedClient) Recv() (*data_stream.LiveDataFeedMessage, error) {
-	m := new(data_stream.LiveDataFeedMessage)
+func (x *bragiLiveDataFeedClient) Recv() (*LiveDataFeedMessage, error) {
+	m := new(LiveDataFeedMessage)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -189,7 +188,7 @@ type BragiServer interface {
 	// PlayerStatisticsAccordingRole gRPC remote call returning PlayerStatisticsAccordingRoleResponse
 	PlayerStatisticsAccordingRole(context.Context, *PlayerStatisticsAccordingRoleRequest) (*PlayerStatisticsAccordingRoleResponse, error)
 	// LiveDataFeed gRPC stream returning LiveDataFeedMessage one direction stream
-	LiveDataFeed(*data_stream.LiveDataFeedRequest, Bragi_LiveDataFeedServer) error
+	LiveDataFeed(*LiveDataFeedRequest, Bragi_LiveDataFeedServer) error
 	mustEmbedUnimplementedBragiServer()
 }
 
@@ -224,7 +223,7 @@ func (UnimplementedBragiServer) TeamTournamentStatistics(context.Context, *TeamT
 func (UnimplementedBragiServer) PlayerStatisticsAccordingRole(context.Context, *PlayerStatisticsAccordingRoleRequest) (*PlayerStatisticsAccordingRoleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PlayerStatisticsAccordingRole not implemented")
 }
-func (UnimplementedBragiServer) LiveDataFeed(*data_stream.LiveDataFeedRequest, Bragi_LiveDataFeedServer) error {
+func (UnimplementedBragiServer) LiveDataFeed(*LiveDataFeedRequest, Bragi_LiveDataFeedServer) error {
 	return status.Errorf(codes.Unimplemented, "method LiveDataFeed not implemented")
 }
 func (UnimplementedBragiServer) mustEmbedUnimplementedBragiServer() {}
@@ -403,7 +402,7 @@ func _Bragi_PlayerStatisticsAccordingRole_Handler(srv interface{}, ctx context.C
 }
 
 func _Bragi_LiveDataFeed_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(data_stream.LiveDataFeedRequest)
+	m := new(LiveDataFeedRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
@@ -411,7 +410,7 @@ func _Bragi_LiveDataFeed_Handler(srv interface{}, stream grpc.ServerStream) erro
 }
 
 type Bragi_LiveDataFeedServer interface {
-	Send(*data_stream.LiveDataFeedMessage) error
+	Send(*LiveDataFeedMessage) error
 	grpc.ServerStream
 }
 
@@ -419,7 +418,7 @@ type bragiLiveDataFeedServer struct {
 	grpc.ServerStream
 }
 
-func (x *bragiLiveDataFeedServer) Send(m *data_stream.LiveDataFeedMessage) error {
+func (x *bragiLiveDataFeedServer) Send(m *LiveDataFeedMessage) error {
 	return x.ServerStream.SendMsg(m)
 }
 

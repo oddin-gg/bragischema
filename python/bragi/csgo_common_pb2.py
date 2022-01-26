@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n\017com.oddin.bragiZ\016oddin.gg/bragi',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x17\x62ragi/csgo_common.proto\x12\x05\x62ragi*a\n\x08\x43sgoSide\x12\x19\n\x15\x43SGO_SIDE_UNSPECIFIED\x10\x00\x12 \n\x1c\x43SGO_SIDE_COUNTER_TERRORISTS\x10\x01\x12\x18\n\x14\x43SGO_SIDE_TERRORISTS\x10\x02*\x9d\x02\n\rCsgoWinReason\x12\"\n\x1e\x43SGO_ROUND_OUTCOME_UNSPECIFIED\x10\x00\x12\x34\n0CSGO_ROUND_OUTCOME_COUNTER_TERRORISTS_ELIMINATED\x10\x01\x12,\n(CSGO_ROUND_OUTCOME_TERRORISTS_ELIMINATED\x10\x02\x12 \n\x1c\x43SGO_ROUND_OUTCOME_EXPLOSION\x10\x03\x12\x1d\n\x19\x43SGO_ROUND_OUTCOME_DEFUSE\x10\x04\x12\x1e\n\x1a\x43SGO_ROUND_OUTCOME_TIMEOUT\x10\x05\x12#\n\x1f\x43SGO_ROUND_OUTCOME_TARGET_SAVED\x10\x06*\xcf\x01\n\x0e\x43sgoPlayerRole\x12 \n\x1c\x43SGO_PLAYER_ROLE_UNSPECIFIED\x10\x00\x12 \n\x1c\x43SGO_PLAYER_ROLE_KILL_LEADER\x10\x01\x12\"\n\x1e\x43SGO_PLAYER_ROLE_ENTRY_FRAGGER\x10\x02\x12\x1c\n\x18\x43SGO_PLAYER_ROLE_SUPPORT\x10\x03\x12\x1a\n\x16\x43SGO_PLAYER_ROLE_AWPER\x10\x04\x12\x1b\n\x17\x43SGO_PLAYER_ROLE_LURKER\x10\x05*\xcc\x01\n\x12\x43sgoRoundStateType\x12%\n!CSGO_ROUND_STATE_TYPE_UNSPECIFIED\x10\x00\x12\"\n\x1e\x43SGO_ROUND_STATE_TYPE_BUY_TIME\x10\x01\x12%\n!CSGO_ROUND_STATE_TYPE_IN_PROGRESS\x10\x02\x12 \n\x1c\x43SGO_ROUND_STATE_TYPE_PAUSED\x10\x03\x12\"\n\x1e\x43SGO_ROUND_STATE_TYPE_FINISHED\x10\x04*\x83\x01\n\x13\x43sgoMatchStatusType\x12&\n\"CSGO_MATCH_STATUS_TYPE_UNSPECIFIED\x10\x00\x12\x1f\n\x1b\x43SGO_MATCH_STATUS_TYPE_LIVE\x10\x01\x12#\n\x1f\x43SGO_MATCH_STATUS_TYPE_FINISHED\x10\x02\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
+  serialized_pb=b'\n\x17\x62ragi/csgo_common.proto\x12\x05\x62ragi*a\n\x08\x43sgoSide\x12\x19\n\x15\x43SGO_SIDE_UNSPECIFIED\x10\x00\x12 \n\x1c\x43SGO_SIDE_COUNTER_TERRORISTS\x10\x01\x12\x18\n\x14\x43SGO_SIDE_TERRORISTS\x10\x02*\x88\x02\n\rCsgoWinReason\x12\x1f\n\x1b\x43SGO_WIN_REASON_UNSPECIFIED\x10\x00\x12\x31\n-CSGO_WIN_REASON_COUNTER_TERRORISTS_ELIMINATED\x10\x01\x12)\n%CSGO_WIN_REASON_TERRORISTS_ELIMINATED\x10\x02\x12\x1d\n\x19\x43SGO_WIN_REASON_EXPLOSION\x10\x03\x12\x1a\n\x16\x43SGO_WIN_REASON_DEFUSE\x10\x04\x12\x1b\n\x17\x43SGO_WIN_REASON_TIMEOUT\x10\x05\x12 \n\x1c\x43SGO_WIN_REASON_TARGET_SAVED\x10\x06*\xcf\x01\n\x0e\x43sgoPlayerRole\x12 \n\x1c\x43SGO_PLAYER_ROLE_UNSPECIFIED\x10\x00\x12 \n\x1c\x43SGO_PLAYER_ROLE_KILL_LEADER\x10\x01\x12\"\n\x1e\x43SGO_PLAYER_ROLE_ENTRY_FRAGGER\x10\x02\x12\x1c\n\x18\x43SGO_PLAYER_ROLE_SUPPORT\x10\x03\x12\x1a\n\x16\x43SGO_PLAYER_ROLE_AWPER\x10\x04\x12\x1b\n\x17\x43SGO_PLAYER_ROLE_LURKER\x10\x05*\xcc\x01\n\x12\x43sgoRoundStateType\x12%\n!CSGO_ROUND_STATE_TYPE_UNSPECIFIED\x10\x00\x12\"\n\x1e\x43SGO_ROUND_STATE_TYPE_BUY_TIME\x10\x01\x12%\n!CSGO_ROUND_STATE_TYPE_IN_PROGRESS\x10\x02\x12 \n\x1c\x43SGO_ROUND_STATE_TYPE_PAUSED\x10\x03\x12\"\n\x1e\x43SGO_ROUND_STATE_TYPE_FINISHED\x10\x04*\x83\x01\n\x13\x43sgoMatchStatusType\x12&\n\"CSGO_MATCH_STATUS_TYPE_UNSPECIFIED\x10\x00\x12\x1f\n\x1b\x43SGO_MATCH_STATUS_TYPE_LIVE\x10\x01\x12#\n\x1f\x43SGO_MATCH_STATUS_TYPE_FINISHED\x10\x02\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
 )
 
 _CSGOSIDE = _descriptor.EnumDescriptor(
@@ -62,37 +62,37 @@ _CSGOWINREASON = _descriptor.EnumDescriptor(
   create_key=_descriptor._internal_create_key,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='CSGO_ROUND_OUTCOME_UNSPECIFIED', index=0, number=0,
+      name='CSGO_WIN_REASON_UNSPECIFIED', index=0, number=0,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='CSGO_ROUND_OUTCOME_COUNTER_TERRORISTS_ELIMINATED', index=1, number=1,
+      name='CSGO_WIN_REASON_COUNTER_TERRORISTS_ELIMINATED', index=1, number=1,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='CSGO_ROUND_OUTCOME_TERRORISTS_ELIMINATED', index=2, number=2,
+      name='CSGO_WIN_REASON_TERRORISTS_ELIMINATED', index=2, number=2,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='CSGO_ROUND_OUTCOME_EXPLOSION', index=3, number=3,
+      name='CSGO_WIN_REASON_EXPLOSION', index=3, number=3,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='CSGO_ROUND_OUTCOME_DEFUSE', index=4, number=4,
+      name='CSGO_WIN_REASON_DEFUSE', index=4, number=4,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='CSGO_ROUND_OUTCOME_TIMEOUT', index=5, number=5,
+      name='CSGO_WIN_REASON_TIMEOUT', index=5, number=5,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='CSGO_ROUND_OUTCOME_TARGET_SAVED', index=6, number=6,
+      name='CSGO_WIN_REASON_TARGET_SAVED', index=6, number=6,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
@@ -100,7 +100,7 @@ _CSGOWINREASON = _descriptor.EnumDescriptor(
   containing_type=None,
   serialized_options=None,
   serialized_start=134,
-  serialized_end=419,
+  serialized_end=398,
 )
 _sym_db.RegisterEnumDescriptor(_CSGOWINREASON)
 
@@ -145,8 +145,8 @@ _CSGOPLAYERROLE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=422,
-  serialized_end=629,
+  serialized_start=401,
+  serialized_end=608,
 )
 _sym_db.RegisterEnumDescriptor(_CSGOPLAYERROLE)
 
@@ -186,8 +186,8 @@ _CSGOROUNDSTATETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=632,
-  serialized_end=836,
+  serialized_start=611,
+  serialized_end=815,
 )
 _sym_db.RegisterEnumDescriptor(_CSGOROUNDSTATETYPE)
 
@@ -217,8 +217,8 @@ _CSGOMATCHSTATUSTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=839,
-  serialized_end=970,
+  serialized_start=818,
+  serialized_end=949,
 )
 _sym_db.RegisterEnumDescriptor(_CSGOMATCHSTATUSTYPE)
 
@@ -226,13 +226,13 @@ CsgoMatchStatusType = enum_type_wrapper.EnumTypeWrapper(_CSGOMATCHSTATUSTYPE)
 CSGO_SIDE_UNSPECIFIED = 0
 CSGO_SIDE_COUNTER_TERRORISTS = 1
 CSGO_SIDE_TERRORISTS = 2
-CSGO_ROUND_OUTCOME_UNSPECIFIED = 0
-CSGO_ROUND_OUTCOME_COUNTER_TERRORISTS_ELIMINATED = 1
-CSGO_ROUND_OUTCOME_TERRORISTS_ELIMINATED = 2
-CSGO_ROUND_OUTCOME_EXPLOSION = 3
-CSGO_ROUND_OUTCOME_DEFUSE = 4
-CSGO_ROUND_OUTCOME_TIMEOUT = 5
-CSGO_ROUND_OUTCOME_TARGET_SAVED = 6
+CSGO_WIN_REASON_UNSPECIFIED = 0
+CSGO_WIN_REASON_COUNTER_TERRORISTS_ELIMINATED = 1
+CSGO_WIN_REASON_TERRORISTS_ELIMINATED = 2
+CSGO_WIN_REASON_EXPLOSION = 3
+CSGO_WIN_REASON_DEFUSE = 4
+CSGO_WIN_REASON_TIMEOUT = 5
+CSGO_WIN_REASON_TARGET_SAVED = 6
 CSGO_PLAYER_ROLE_UNSPECIFIED = 0
 CSGO_PLAYER_ROLE_KILL_LEADER = 1
 CSGO_PLAYER_ROLE_ENTRY_FRAGGER = 2
