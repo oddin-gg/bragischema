@@ -4,13 +4,14 @@
 // 	protoc        v3.19.3
 // source: bragi/data_stream/csgo_data_feed.proto
 
-package bragi
+package data_stream
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	durationpb "google.golang.org/protobuf/types/known/durationpb"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
+	bragi "oddin.gg/bragi"
 	reflect "reflect"
 	sync "sync"
 )
@@ -262,14 +263,14 @@ type CsgoMatchState struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MatchUrn          string               `protobuf:"bytes,1,opt,name=match_urn,json=matchUrn,proto3" json:"match_urn,omitempty"`
-	MatchType         BestOfType           `protobuf:"varint,2,opt,name=match_type,json=matchType,proto3,enum=bragi.BestOfType" json:"match_type,omitempty"`
-	HomeTeam          *CsgoTeam            `protobuf:"bytes,3,opt,name=home_team,json=homeTeam,proto3" json:"home_team,omitempty"`
-	AwayTeam          *CsgoTeam            `protobuf:"bytes,4,opt,name=away_team,json=awayTeam,proto3" json:"away_team,omitempty"`
-	Score             *CsgoMatchScoreState `protobuf:"bytes,5,opt,name=score,proto3" json:"score,omitempty"`
-	MatchStatus       CsgoMatchStatusType  `protobuf:"varint,6,opt,name=match_status,json=matchStatus,proto3,enum=bragi.CsgoMatchStatusType" json:"match_status,omitempty"`
-	CurrentMapState   *CsgoMapState        `protobuf:"bytes,7,opt,name=current_map_state,json=currentMapState,proto3" json:"current_map_state,omitempty"`
-	PreviousMapStates []*CsgoMapState      `protobuf:"bytes,8,rep,name=previous_map_states,json=previousMapStates,proto3" json:"previous_map_states,omitempty"` //this property is updated only when whole CsgoMatchState update is received
+	MatchUrn          string                    `protobuf:"bytes,1,opt,name=match_urn,json=matchUrn,proto3" json:"match_urn,omitempty"`
+	MatchType         bragi.BestOfType          `protobuf:"varint,2,opt,name=match_type,json=matchType,proto3,enum=bragi.BestOfType" json:"match_type,omitempty"`
+	HomeTeam          *CsgoTeam                 `protobuf:"bytes,3,opt,name=home_team,json=homeTeam,proto3" json:"home_team,omitempty"`
+	AwayTeam          *CsgoTeam                 `protobuf:"bytes,4,opt,name=away_team,json=awayTeam,proto3" json:"away_team,omitempty"`
+	Score             *CsgoMatchScoreState      `protobuf:"bytes,5,opt,name=score,proto3" json:"score,omitempty"`
+	MatchStatus       bragi.CsgoMatchStatusType `protobuf:"varint,6,opt,name=match_status,json=matchStatus,proto3,enum=bragi.CsgoMatchStatusType" json:"match_status,omitempty"`
+	CurrentMapState   *CsgoMapState             `protobuf:"bytes,7,opt,name=current_map_state,json=currentMapState,proto3" json:"current_map_state,omitempty"`
+	PreviousMapStates []*CsgoMapState           `protobuf:"bytes,8,rep,name=previous_map_states,json=previousMapStates,proto3" json:"previous_map_states,omitempty"` //this property is updated only when whole CsgoMatchState update is received
 }
 
 func (x *CsgoMatchState) Reset() {
@@ -311,11 +312,11 @@ func (x *CsgoMatchState) GetMatchUrn() string {
 	return ""
 }
 
-func (x *CsgoMatchState) GetMatchType() BestOfType {
+func (x *CsgoMatchState) GetMatchType() bragi.BestOfType {
 	if x != nil {
 		return x.MatchType
 	}
-	return BestOfType_BEST_OF_TYPE_UNSPECIFIED
+	return bragi.BestOfType(0)
 }
 
 func (x *CsgoMatchState) GetHomeTeam() *CsgoTeam {
@@ -339,11 +340,11 @@ func (x *CsgoMatchState) GetScore() *CsgoMatchScoreState {
 	return nil
 }
 
-func (x *CsgoMatchState) GetMatchStatus() CsgoMatchStatusType {
+func (x *CsgoMatchState) GetMatchStatus() bragi.CsgoMatchStatusType {
 	if x != nil {
 		return x.MatchStatus
 	}
-	return CsgoMatchStatusType_CSGO_MATCH_STATUS_TYPE_UNSPECIFIED
+	return bragi.CsgoMatchStatusType(0)
 }
 
 func (x *CsgoMatchState) GetCurrentMapState() *CsgoMapState {
@@ -1128,11 +1129,11 @@ type CsgoRoundInfoState struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	RoundType      CsgoRoundStateType     `protobuf:"varint,1,opt,name=round_type,json=roundType,proto3,enum=bragi.CsgoRoundStateType" json:"round_type,omitempty"`
-	StartTime      *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	EndTime        *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3,oneof" json:"end_time,omitempty"`
-	WinningTeamUrn *string                `protobuf:"bytes,4,opt,name=winning_team_urn,json=winningTeamUrn,proto3,oneof" json:"winning_team_urn,omitempty"`
-	WinReason      *CsgoWinReason         `protobuf:"varint,5,opt,name=win_reason,json=winReason,proto3,enum=bragi.CsgoWinReason,oneof" json:"win_reason,omitempty"`
+	RoundType      bragi.CsgoRoundStateType `protobuf:"varint,1,opt,name=round_type,json=roundType,proto3,enum=bragi.CsgoRoundStateType" json:"round_type,omitempty"`
+	StartTime      *timestamppb.Timestamp   `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime        *timestamppb.Timestamp   `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3,oneof" json:"end_time,omitempty"`
+	WinningTeamUrn *string                  `protobuf:"bytes,4,opt,name=winning_team_urn,json=winningTeamUrn,proto3,oneof" json:"winning_team_urn,omitempty"`
+	WinReason      *bragi.CsgoWinReason     `protobuf:"varint,5,opt,name=win_reason,json=winReason,proto3,enum=bragi.CsgoWinReason,oneof" json:"win_reason,omitempty"`
 }
 
 func (x *CsgoRoundInfoState) Reset() {
@@ -1167,11 +1168,11 @@ func (*CsgoRoundInfoState) Descriptor() ([]byte, []int) {
 	return file_bragi_data_stream_csgo_data_feed_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *CsgoRoundInfoState) GetRoundType() CsgoRoundStateType {
+func (x *CsgoRoundInfoState) GetRoundType() bragi.CsgoRoundStateType {
 	if x != nil {
 		return x.RoundType
 	}
-	return CsgoRoundStateType_CSGO_ROUND_STATE_TYPE_UNSPECIFIED
+	return bragi.CsgoRoundStateType(0)
 }
 
 func (x *CsgoRoundInfoState) GetStartTime() *timestamppb.Timestamp {
@@ -1195,11 +1196,11 @@ func (x *CsgoRoundInfoState) GetWinningTeamUrn() string {
 	return ""
 }
 
-func (x *CsgoRoundInfoState) GetWinReason() CsgoWinReason {
+func (x *CsgoRoundInfoState) GetWinReason() bragi.CsgoWinReason {
 	if x != nil && x.WinReason != nil {
 		return *x.WinReason
 	}
-	return CsgoWinReason_CSGO_ROUND_OUTCOME_UNSPECIFIED
+	return bragi.CsgoWinReason(0)
 }
 
 type CsgoRoundScoreState struct {
@@ -1895,7 +1896,7 @@ type CsgoTeamMapState struct {
 	unknownFields protoimpl.UnknownFields
 
 	TeamUrn         string                         `protobuf:"bytes,1,opt,name=team_urn,json=teamUrn,proto3" json:"team_urn,omitempty"`
-	Side            CsgoSide                       `protobuf:"varint,2,opt,name=side,proto3,enum=bragi.CsgoSide" json:"side,omitempty"`
+	Side            bragi.CsgoSide                 `protobuf:"varint,2,opt,name=side,proto3,enum=bragi.CsgoSide" json:"side,omitempty"`
 	PlayerMapStates map[string]*CsgoPlayerMapState `protobuf:"bytes,3,rep,name=player_map_states,json=playerMapStates,proto3" json:"player_map_states,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"` // keys are type of player_urn
 }
 
@@ -1938,11 +1939,11 @@ func (x *CsgoTeamMapState) GetTeamUrn() string {
 	return ""
 }
 
-func (x *CsgoTeamMapState) GetSide() CsgoSide {
+func (x *CsgoTeamMapState) GetSide() bragi.CsgoSide {
 	if x != nil {
 		return x.Side
 	}
-	return CsgoSide_CSGO_SIDE_UNSPECIFIED
+	return bragi.CsgoSide(0)
 }
 
 func (x *CsgoTeamMapState) GetPlayerMapStates() map[string]*CsgoPlayerMapState {
@@ -4022,7 +4023,7 @@ type CsgoFreezeTimeStarted struct {
 	TimeRemaining      *durationpb.Duration          `protobuf:"bytes,2,opt,name=time_remaining,json=timeRemaining,proto3" json:"time_remaining,omitempty"`
 	CurrentRoundNumber uint32                        `protobuf:"varint,3,opt,name=current_round_number,json=currentRoundNumber,proto3" json:"current_round_number,omitempty"`
 	PlayerBalances     map[string]*CsgoPlayerBalance `protobuf:"bytes,4,rep,name=player_balances,json=playerBalances,proto3" json:"player_balances,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`                        // keys are type of player_urn
-	TeamsRoundInfo     map[string]CsgoSide           `protobuf:"bytes,5,rep,name=teams_round_info,json=teamsRoundInfo,proto3" json:"teams_round_info,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3,enum=bragi.CsgoSide"` // keys are type of team_urn
+	TeamsRoundInfo     map[string]bragi.CsgoSide     `protobuf:"bytes,5,rep,name=teams_round_info,json=teamsRoundInfo,proto3" json:"teams_round_info,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3,enum=bragi.CsgoSide"` // keys are type of team_urn
 }
 
 func (x *CsgoFreezeTimeStarted) Reset() {
@@ -4085,7 +4086,7 @@ func (x *CsgoFreezeTimeStarted) GetPlayerBalances() map[string]*CsgoPlayerBalanc
 	return nil
 }
 
-func (x *CsgoFreezeTimeStarted) GetTeamsRoundInfo() map[string]CsgoSide {
+func (x *CsgoFreezeTimeStarted) GetTeamsRoundInfo() map[string]bragi.CsgoSide {
 	if x != nil {
 		return x.TeamsRoundInfo
 	}
@@ -4861,7 +4862,7 @@ type CsgoRoundEnd struct {
 	TimeRemaining      *durationpb.Duration          `protobuf:"bytes,2,opt,name=time_remaining,json=timeRemaining,proto3" json:"time_remaining,omitempty"`
 	CurrentRoundNumber uint32                        `protobuf:"varint,3,opt,name=current_round_number,json=currentRoundNumber,proto3" json:"current_round_number,omitempty"`
 	WinningTeamUrn     string                        `protobuf:"bytes,4,opt,name=winning_team_urn,json=winningTeamUrn,proto3" json:"winning_team_urn,omitempty"`
-	WinReason          CsgoWinReason                 `protobuf:"varint,5,opt,name=win_reason,json=winReason,proto3,enum=bragi.CsgoWinReason" json:"win_reason,omitempty"`
+	WinReason          bragi.CsgoWinReason           `protobuf:"varint,5,opt,name=win_reason,json=winReason,proto3,enum=bragi.CsgoWinReason" json:"win_reason,omitempty"`
 	PlayerBalances     map[string]*CsgoPlayerBalance `protobuf:"bytes,6,rep,name=player_balances,json=playerBalances,proto3" json:"player_balances,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`          // keys are type of player_urn
 	PlayerInventories  map[string]*CsgoPlayerItems   `protobuf:"bytes,7,rep,name=player_inventories,json=playerInventories,proto3" json:"player_inventories,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"` // keys are type of player_urn
 }
@@ -4926,11 +4927,11 @@ func (x *CsgoRoundEnd) GetWinningTeamUrn() string {
 	return ""
 }
 
-func (x *CsgoRoundEnd) GetWinReason() CsgoWinReason {
+func (x *CsgoRoundEnd) GetWinReason() bragi.CsgoWinReason {
 	if x != nil {
 		return x.WinReason
 	}
-	return CsgoWinReason_CSGO_ROUND_OUTCOME_UNSPECIFIED
+	return bragi.CsgoWinReason(0)
 }
 
 func (x *CsgoRoundEnd) GetPlayerBalances() map[string]*CsgoPlayerBalance {
@@ -6814,9 +6815,11 @@ var file_bragi_data_stream_csgo_data_feed_proto_rawDesc = []byte{
 	0x12, 0x30, 0x0a, 0x14, 0x63, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x74, 0x5f, 0x72, 0x6f, 0x75, 0x6e,
 	0x64, 0x5f, 0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x12,
 	0x63, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x74, 0x52, 0x6f, 0x75, 0x6e, 0x64, 0x4e, 0x75, 0x6d, 0x62,
-	0x65, 0x72, 0x42, 0x21, 0x0a, 0x0f, 0x63, 0x6f, 0x6d, 0x2e, 0x6f, 0x64, 0x64, 0x69, 0x6e, 0x2e,
-	0x62, 0x72, 0x61, 0x67, 0x69, 0x5a, 0x0e, 0x6f, 0x64, 0x64, 0x69, 0x6e, 0x2e, 0x67, 0x67, 0x2f,
-	0x62, 0x72, 0x61, 0x67, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x65, 0x72, 0x42, 0x39, 0x0a, 0x1b, 0x63, 0x6f, 0x6d, 0x2e, 0x6f, 0x64, 0x64, 0x69, 0x6e, 0x2e,
+	0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x5f, 0x73, 0x74, 0x72, 0x65, 0x61,
+	0x6d, 0x5a, 0x1a, 0x6f, 0x64, 0x64, 0x69, 0x6e, 0x2e, 0x67, 0x67, 0x2f, 0x62, 0x72, 0x61, 0x67,
+	0x69, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x5f, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -6907,19 +6910,19 @@ var file_bragi_data_stream_csgo_data_feed_proto_goTypes = []interface{}{
 	nil, // 71: bragi.data_stream.CsgoPreviousTeamRoundState.PlayersEntry
 	(*CsgoPlayerMapStatePartialUpdate_Payload)(nil),          // 72: bragi.data_stream.CsgoPlayerMapStatePartialUpdate.Payload
 	(*CsgoPlayerCurrentRoundStatePartialUpdate_Payload)(nil), // 73: bragi.data_stream.CsgoPlayerCurrentRoundStatePartialUpdate.Payload
-	nil,                           // 74: bragi.data_stream.CsgoFreezeTimeEnded.PlayerBalancesEntry
-	nil,                           // 75: bragi.data_stream.CsgoFreezeTimeEnded.PlayerInventoriesEntry
-	nil,                           // 76: bragi.data_stream.CsgoFreezeTimeStarted.PlayerBalancesEntry
-	nil,                           // 77: bragi.data_stream.CsgoFreezeTimeStarted.TeamsRoundInfoEntry
-	nil,                           // 78: bragi.data_stream.CsgoRoundEnd.PlayerBalancesEntry
-	nil,                           // 79: bragi.data_stream.CsgoRoundEnd.PlayerInventoriesEntry
-	(*timestamppb.Timestamp)(nil), // 80: google.protobuf.Timestamp
-	(BestOfType)(0),               // 81: bragi.BestOfType
-	(CsgoMatchStatusType)(0),      // 82: bragi.CsgoMatchStatusType
-	(*durationpb.Duration)(nil),   // 83: google.protobuf.Duration
-	(CsgoRoundStateType)(0),       // 84: bragi.CsgoRoundStateType
-	(CsgoWinReason)(0),            // 85: bragi.CsgoWinReason
-	(CsgoSide)(0),                 // 86: bragi.CsgoSide
+	nil,                            // 74: bragi.data_stream.CsgoFreezeTimeEnded.PlayerBalancesEntry
+	nil,                            // 75: bragi.data_stream.CsgoFreezeTimeEnded.PlayerInventoriesEntry
+	nil,                            // 76: bragi.data_stream.CsgoFreezeTimeStarted.PlayerBalancesEntry
+	nil,                            // 77: bragi.data_stream.CsgoFreezeTimeStarted.TeamsRoundInfoEntry
+	nil,                            // 78: bragi.data_stream.CsgoRoundEnd.PlayerBalancesEntry
+	nil,                            // 79: bragi.data_stream.CsgoRoundEnd.PlayerInventoriesEntry
+	(*timestamppb.Timestamp)(nil),  // 80: google.protobuf.Timestamp
+	(bragi.BestOfType)(0),          // 81: bragi.BestOfType
+	(bragi.CsgoMatchStatusType)(0), // 82: bragi.CsgoMatchStatusType
+	(*durationpb.Duration)(nil),    // 83: google.protobuf.Duration
+	(bragi.CsgoRoundStateType)(0),  // 84: bragi.CsgoRoundStateType
+	(bragi.CsgoWinReason)(0),       // 85: bragi.CsgoWinReason
+	(bragi.CsgoSide)(0),            // 86: bragi.CsgoSide
 }
 var file_bragi_data_stream_csgo_data_feed_proto_depIdxs = []int32{
 	80,  // 0: bragi.data_stream.CsgoMatchMessage.timestamp:type_name -> google.protobuf.Timestamp
@@ -7106,8 +7109,6 @@ func file_bragi_data_stream_csgo_data_feed_proto_init() {
 	if File_bragi_data_stream_csgo_data_feed_proto != nil {
 		return
 	}
-	file_bragi_csgo_common_proto_init()
-	file_bragi_common_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_bragi_data_stream_csgo_data_feed_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CsgoMatchMessage); i {

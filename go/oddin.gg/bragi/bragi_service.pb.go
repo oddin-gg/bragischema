@@ -9,6 +9,7 @@ package bragi
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	data_stream "oddin.gg/bragi/data_stream"
 	reflect "reflect"
 )
 
@@ -129,7 +130,7 @@ var file_bragi_bragi_service_proto_goTypes = []interface{}{
 	(*TournamentStatisticsRequest)(nil),           // 6: bragi.historical_statistics.TournamentStatisticsRequest
 	(*TeamTournamentStatisticsRequest)(nil),       // 7: bragi.historical_statistics.TeamTournamentStatisticsRequest
 	(*PlayerStatisticsAccordingRoleRequest)(nil),  // 8: bragi.historical_statistics.PlayerStatisticsAccordingRoleRequest
-	(*LiveDataFeedRequest)(nil),                   // 9: bragi.data_stream.LiveDataFeedRequest
+	(*data_stream.LiveDataFeedRequest)(nil),       // 9: bragi.data_stream.LiveDataFeedRequest
 	(*SportsResponse)(nil),                        // 10: bragi.historical_statistics.SportsResponse
 	(*TournamentResponse)(nil),                    // 11: bragi.historical_statistics.TournamentResponse
 	(*TournamentInfoResponse)(nil),                // 12: bragi.historical_statistics.TournamentInfoResponse
@@ -139,7 +140,7 @@ var file_bragi_bragi_service_proto_goTypes = []interface{}{
 	(*TournamentStatisticsResponse)(nil),          // 16: bragi.historical_statistics.TournamentStatisticsResponse
 	(*TeamTournamentStatisticsResponse)(nil),      // 17: bragi.historical_statistics.TeamTournamentStatisticsResponse
 	(*PlayerStatisticsAccordingRoleResponse)(nil), // 18: bragi.historical_statistics.PlayerStatisticsAccordingRoleResponse
-	(*LiveDataFeedMessage)(nil),                   // 19: bragi.data_stream.LiveDataFeedMessage
+	(*data_stream.LiveDataFeedMessage)(nil),       // 19: bragi.data_stream.LiveDataFeedMessage
 }
 var file_bragi_bragi_service_proto_depIdxs = []int32{
 	0,  // 0: bragi.Bragi.Sports:input_type -> bragi.historical_statistics.SportsRequest
@@ -175,7 +176,6 @@ func file_bragi_bragi_service_proto_init() {
 		return
 	}
 	file_bragi_historical_statistics_statistics_proto_init()
-	file_bragi_data_stream_data_feed_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
