@@ -1,13 +1,12 @@
 syntax = "proto3";
 
-package bragi.data_stream;
+package bragi;
 
 option go_package = "oddin.gg/bragi";
-option java_package = "com.oddin.bragi.data_stream";
+option java_package = "com.oddin.bragi";
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/duration.proto";
-import "bragi/csgo_common.proto";
 import "bragi/common.proto";
 
 
@@ -66,8 +65,8 @@ message CsgoMatchStatePartialUpdate {
 message CsgoMatchState {
   string match_urn = 1;
   BestOfType match_type = 2;
-  CsgoTeamInfo home_team = 3;
-  CsgoTeamInfo away_team = 4;
+  CsgoTeam home_team = 3;
+  CsgoTeam away_team = 4;
   CsgoMatchScoreState score = 5;
   CsgoMatchStatusType match_status = 6;
   CsgoMapState current_map_state = 7;
@@ -79,7 +78,7 @@ message CsgoMatchScoreState {
   uint32 away_score = 2;
 }
 
-message CsgoTeamInfo {
+message CsgoTeam {
   string team_urn = 1;
   string team_name = 2;
 }
@@ -299,7 +298,7 @@ message CsgoPlayerMapState {
 
 message CsgoPlayerMapStatisticsState {
   string player_urn = 1;
-  CsgoPlayerBasicStatistics statistics = 2;
+  CsgoPlayerStatistics statistics = 2;
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -340,7 +339,7 @@ message CsgoPlayerCurrentRoundStatisticsState {
   string primary_weapon = 8;
   string secondary_weapon = 9;
   uint32 equipment_value = 10;
-  CsgoPlayerBasicStatistics statistics = 11;
+  CsgoPlayerStatistics statistics = 11;
 }
 
 message CsgoPlayerItemsState {
@@ -350,7 +349,7 @@ message CsgoPlayerItemsState {
 message CsgoPlayerPreviousRoundState {
   string player_urn = 1;
   string player_name = 2;
-  CsgoPlayerBasicStatistics statistics = 3;
+  CsgoPlayerStatistics statistics = 3;
 }
 
 message CsgoPlayerPositionState {
@@ -360,7 +359,7 @@ message CsgoPlayerPositionState {
 
 // ---------------------------------------------------------------------------------------------------------------------
 
-message CsgoPlayerBasicStatistics {
+message CsgoPlayerStatistics {
   string player_urn = 1;
   uint32 kills = 2;
   uint32 friendly_kills = 3;
@@ -611,4 +610,38 @@ message CsgoRoundStart {
   google.protobuf.Duration map_time = 1 ;
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
+}
+
+// ------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
+
+enum CsgoSide {
+  CSGO_SIDE_UNSPECIFIED = 0;
+  CSGO_SIDE_COUNTER_TERRORISTS = 1;
+  CSGO_SIDE_TERRORISTS = 2;
+}
+
+enum CsgoWinReason {
+  CSGO_WIN_REASON_UNSPECIFIED = 0;
+  CSGO_WIN_REASON_COUNTER_TERRORISTS_ELIMINATED = 1;
+  CSGO_WIN_REASON_TERRORISTS_ELIMINATED = 2;
+  CSGO_WIN_REASON_EXPLOSION = 3;
+  CSGO_WIN_REASON_DEFUSE = 4;
+  CSGO_WIN_REASON_TIMEOUT = 5;
+  CSGO_WIN_REASON_TARGET_SAVED = 6;
+}
+
+enum CsgoRoundStateType {
+  CSGO_ROUND_STATE_TYPE_UNSPECIFIED = 0;
+  CSGO_ROUND_STATE_TYPE_BUY_TIME = 1;
+  CSGO_ROUND_STATE_TYPE_IN_PROGRESS = 2;
+  CSGO_ROUND_STATE_TYPE_PAUSED = 3;
+  CSGO_ROUND_STATE_TYPE_FINISHED = 4;
+}
+
+enum CsgoMatchStatusType {
+  CSGO_MATCH_STATUS_TYPE_UNSPECIFIED = 0;
+  CSGO_MATCH_STATUS_TYPE_LIVE = 1;
+  CSGO_MATCH_STATUS_TYPE_FINISHED = 2;
 }

@@ -4,7 +4,7 @@ echo "GENERATING GO"
 
 rm -rf ./go/*
 
-protoc ./proto/bragi/*.proto ./proto/bragi/*/*.proto -I ./proto --go_out=./go --go-grpc_out=./go
+protoc ./proto/bragi/*.proto -I ./proto --go_out=./go --go-grpc_out=./go
 
 if [ "$?" != "0" ];
 then
