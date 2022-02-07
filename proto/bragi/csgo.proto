@@ -177,14 +177,12 @@ message CsgoRoundInfoState {
 }
 
 message CsgoRoundScoreState {
-  string home_team_urn = 1;
-  uint32 home_score = 2;
-  string away_team_urn = 3;
-  uint32 away_score = 4;
+  uint32 home_score = 1;
+  uint32 away_score = 2;
 }
 
 message CsgoRoundTimeState {
-  uint32 time_remaining = 1;
+  google.protobuf.Duration time_remaining = 1;
   google.protobuf.Duration map_time = 2;
 }
 
@@ -343,7 +341,8 @@ message CsgoPlayerCurrentRoundStatisticsState {
 }
 
 message CsgoPlayerItemsState {
-  repeated CsgoPlayerItem items = 1;
+  string player_urn = 1;
+  repeated CsgoPlayerItem items = 2;
 }
 
 message CsgoPlayerPreviousRoundState {
@@ -377,10 +376,8 @@ message CsgoPlayerStatistics {
 }
 
 message CsgoPlayerItem {
-  string player_urn = 1;
-  string team_urn = 2;
-  repeated string items = 3;
-  uint32 equipment_value = 4;
+  repeated string items = 1;
+  uint32 equipment_value = 2;
 }
 
 message CsgoPosition {
