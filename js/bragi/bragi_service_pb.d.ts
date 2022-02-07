@@ -85,11 +85,22 @@ export namespace KeepAlive {
 }
 
 export class MatchMessage extends jspb.Message {
-  hasPayload(): boolean;
-  clearPayload(): void;
-  getPayload(): MatchMessage.Payload | undefined;
-  setPayload(value?: MatchMessage.Payload): void;
+  hasSnapshot(): boolean;
+  clearSnapshot(): void;
+  getSnapshot(): MatchSnapshot | undefined;
+  setSnapshot(value?: MatchSnapshot): void;
 
+  hasAnnouncement(): boolean;
+  clearAnnouncement(): void;
+  getAnnouncement(): AnnouncementUpdate | undefined;
+  setAnnouncement(value?: AnnouncementUpdate): void;
+
+  hasCsgo(): boolean;
+  clearCsgo(): void;
+  getCsgo(): bragi_csgo_pb.CsgoMatchMessage | undefined;
+  setCsgo(value?: bragi_csgo_pb.CsgoMatchMessage): void;
+
+  getMessageCase(): MatchMessage.MessageCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MatchMessage.AsObject;
   static toObject(includeInstance: boolean, msg: MatchMessage): MatchMessage.AsObject;
@@ -102,49 +113,16 @@ export class MatchMessage extends jspb.Message {
 
 export namespace MatchMessage {
   export type AsObject = {
-    payload?: MatchMessage.Payload.AsObject,
+    snapshot?: MatchSnapshot.AsObject,
+    announcement?: AnnouncementUpdate.AsObject,
+    csgo?: bragi_csgo_pb.CsgoMatchMessage.AsObject,
   }
 
-  export class Payload extends jspb.Message {
-    hasSnapshot(): boolean;
-    clearSnapshot(): void;
-    getSnapshot(): MatchSnapshot | undefined;
-    setSnapshot(value?: MatchSnapshot): void;
-
-    hasAnnouncement(): boolean;
-    clearAnnouncement(): void;
-    getAnnouncement(): AnnouncementUpdate | undefined;
-    setAnnouncement(value?: AnnouncementUpdate): void;
-
-    hasCsgo(): boolean;
-    clearCsgo(): void;
-    getCsgo(): bragi_csgo_pb.CsgoMatchMessage | undefined;
-    setCsgo(value?: bragi_csgo_pb.CsgoMatchMessage): void;
-
-    getPayloadCase(): Payload.PayloadCase;
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Payload.AsObject;
-    static toObject(includeInstance: boolean, msg: Payload): Payload.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: Payload, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Payload;
-    static deserializeBinaryFromReader(message: Payload, reader: jspb.BinaryReader): Payload;
-  }
-
-  export namespace Payload {
-    export type AsObject = {
-      snapshot?: MatchSnapshot.AsObject,
-      announcement?: AnnouncementUpdate.AsObject,
-      csgo?: bragi_csgo_pb.CsgoMatchMessage.AsObject,
-    }
-
-    export enum PayloadCase {
-      PAYLOAD_NOT_SET = 0,
-      SNAPSHOT = 1,
-      ANNOUNCEMENT = 2,
-      CSGO = 3,
-    }
+  export enum MessageCase {
+    MESSAGE_NOT_SET = 0,
+    SNAPSHOT = 1,
+    ANNOUNCEMENT = 2,
+    CSGO = 3,
   }
 }
 

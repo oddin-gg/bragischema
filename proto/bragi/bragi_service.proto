@@ -42,9 +42,7 @@ message KeepAlive {
 // property in cached MatchSnapshot. For both update cases do not forget also to update "sequence" and "timestamp" properties
 // in the cached MatchSnapshot with the values from the received MatchMessage.
 message MatchMessage {
-
-  message Payload {
-    oneof payload {
+    oneof message {
       // Cache whole entity in client memory.
       MatchSnapshot snapshot = 1;
 
@@ -56,9 +54,6 @@ message MatchMessage {
 
       // LolMatchMessage lol = 4;
     }
-  }
-
-  Payload payload = 1;
 }
 
 // Represent whole set of data about particular match. This entity is received only at the beginning of stream. Cache MatchSnapshot
