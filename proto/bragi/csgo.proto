@@ -52,7 +52,7 @@ message CsgoMatchStatePartialUpdate {
 
     // Replaces "current_map_state" property in CsgoMatchState. To minimalize issues with incorrect updates application
     // on current_map_state, server sends CsgoMatchStatePartialUpdate with CsgoMapState in periodic time set by customer.
-    CsgoMapState current_map_state = 2;
+    CsgoCurrentMapState current_map_state = 2;
 
     // Apply partial update on "current_map_state" property in CsgoMapState.
     CsgoCurrentMapStatePartialUpdate current_map_state_partial_update = 3;
@@ -69,8 +69,8 @@ message CsgoMatchState {
   CsgoTeam away_team = 4;
   CsgoMatchScoreState score = 5;
   CsgoMatchStatusType match_status = 6;
-  CsgoMapState current_map_state = 7;
-  repeated CsgoMapState previous_map_states = 8;  //this property is updated only when whole CsgoMatchState update is received
+  CsgoCurrentMapState current_map_state = 7;
+  repeated CsgoPreviousMapState previous_map_states = 8;  //this property is updated only when whole CsgoMatchState update is received
 }
 
 message CsgoMatchScoreState {
@@ -86,7 +86,7 @@ message CsgoTeam {
 // ---------------------------------------------------------------------------------------------------------------------
 
 message CsgoCurrentMapStatePartialUpdate {
-  oneof payload {
+  oneof update {
     // Replaces "info" property in CsgoMapState.
     CsgoMapInfoState info = 1;
 
@@ -104,13 +104,21 @@ message CsgoCurrentMapStatePartialUpdate {
   }
 }
 
-message CsgoMapState {
+message CsgoCurrentMapState {
   uint32 map_order = 1;
   CsgoMapInfoState info = 2;
   CsgoMapScoreState score = 3;
   CsgoCurrentRoundState current_round_state = 4;
   repeated CsgoPreviousRoundState previous_round_states = 5; //this property is updated only when whole CsgoMapState update is received
   map<string, CsgoTeamMapState> team_map_states = 6; // keys are type of team_urn
+}
+
+message CsgoPreviousMapState {
+  uint32 map_order = 1;
+  CsgoMapInfoState info = 2;
+  CsgoMapScoreState score = 3;
+  repeated CsgoPreviousRoundState round_states = 4;
+  map<string, CsgoTeamMapState> team_map_states = 5;
 }
 
 message CsgoMapInfoState {
@@ -336,13 +344,13 @@ message CsgoPlayerCurrentRoundStatisticsState {
   uint32 balance = 7;
   string primary_weapon = 8;
   string secondary_weapon = 9;
-  uint32 equipment_value = 10;
-  CsgoPlayerStatistics statistics = 11;
+  CsgoPlayerStatistics statistics = 10;
 }
 
 message CsgoPlayerItemsState {
   string player_urn = 1;
-  repeated CsgoPlayerItem items = 2;
+  uint32 equipment_value = 2;
+  repeated CsgoPlayerItem items = 3;
 }
 
 message CsgoPlayerPreviousRoundState {
