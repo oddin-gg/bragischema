@@ -6013,10 +6013,8 @@ proto.bragi.CsgoRoundScoreState.prototype.toObject = function(opt_includeInstanc
  */
 proto.bragi.CsgoRoundScoreState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    homeTeamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    homeScore: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    awayTeamUrn: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    awayScore: jspb.Message.getFieldWithDefault(msg, 4, 0)
+    homeScore: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    awayScore: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -6054,18 +6052,10 @@ proto.bragi.CsgoRoundScoreState.deserializeBinaryFromReader = function(msg, read
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setHomeTeamUrn(value);
-      break;
-    case 2:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setHomeScore(value);
       break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAwayTeamUrn(value);
-      break;
-    case 4:
+    case 2:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setAwayScore(value);
       break;
@@ -6098,31 +6088,17 @@ proto.bragi.CsgoRoundScoreState.prototype.serializeBinary = function() {
  */
 proto.bragi.CsgoRoundScoreState.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getHomeTeamUrn();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
-  }
   f = message.getHomeScore();
   if (f !== 0) {
     writer.writeUint32(
-      2,
-      f
-    );
-  }
-  f = message.getAwayTeamUrn();
-  if (f.length > 0) {
-    writer.writeString(
-      3,
+      1,
       f
     );
   }
   f = message.getAwayScore();
   if (f !== 0) {
     writer.writeUint32(
-      4,
+      2,
       f
     );
   }
@@ -6130,29 +6106,11 @@ proto.bragi.CsgoRoundScoreState.serializeBinaryToWriter = function(message, writ
 
 
 /**
- * optional string home_team_urn = 1;
- * @return {string}
- */
-proto.bragi.CsgoRoundScoreState.prototype.getHomeTeamUrn = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.bragi.CsgoRoundScoreState} returns this
- */
-proto.bragi.CsgoRoundScoreState.prototype.setHomeTeamUrn = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-/**
- * optional uint32 home_score = 2;
+ * optional uint32 home_score = 1;
  * @return {number}
  */
 proto.bragi.CsgoRoundScoreState.prototype.getHomeScore = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
@@ -6161,34 +6119,16 @@ proto.bragi.CsgoRoundScoreState.prototype.getHomeScore = function() {
  * @return {!proto.bragi.CsgoRoundScoreState} returns this
  */
 proto.bragi.CsgoRoundScoreState.prototype.setHomeScore = function(value) {
-  return jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 1, value);
 };
 
 
 /**
- * optional string away_team_urn = 3;
- * @return {string}
- */
-proto.bragi.CsgoRoundScoreState.prototype.getAwayTeamUrn = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.bragi.CsgoRoundScoreState} returns this
- */
-proto.bragi.CsgoRoundScoreState.prototype.setAwayTeamUrn = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
-};
-
-
-/**
- * optional uint32 away_score = 4;
+ * optional uint32 away_score = 2;
  * @return {number}
  */
 proto.bragi.CsgoRoundScoreState.prototype.getAwayScore = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
@@ -6197,7 +6137,7 @@ proto.bragi.CsgoRoundScoreState.prototype.getAwayScore = function() {
  * @return {!proto.bragi.CsgoRoundScoreState} returns this
  */
 proto.bragi.CsgoRoundScoreState.prototype.setAwayScore = function(value) {
-  return jspb.Message.setProto3IntField(this, 4, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
@@ -6233,7 +6173,7 @@ proto.bragi.CsgoRoundTimeState.prototype.toObject = function(opt_includeInstance
  */
 proto.bragi.CsgoRoundTimeState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    timeRemaining: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
     mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
   };
 
@@ -6272,7 +6212,8 @@ proto.bragi.CsgoRoundTimeState.deserializeBinaryFromReader = function(msg, reade
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readUint32());
+      var value = new google_protobuf_duration_pb.Duration;
+      reader.readMessage(value,google_protobuf_duration_pb.Duration.deserializeBinaryFromReader);
       msg.setTimeRemaining(value);
       break;
     case 2:
@@ -6310,10 +6251,11 @@ proto.bragi.CsgoRoundTimeState.prototype.serializeBinary = function() {
 proto.bragi.CsgoRoundTimeState.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getTimeRemaining();
-  if (f !== 0) {
-    writer.writeUint32(
+  if (f != null) {
+    writer.writeMessage(
       1,
-      f
+      f,
+      google_protobuf_duration_pb.Duration.serializeBinaryToWriter
     );
   }
   f = message.getMapTime();
@@ -6328,20 +6270,39 @@ proto.bragi.CsgoRoundTimeState.serializeBinaryToWriter = function(message, write
 
 
 /**
- * optional uint32 time_remaining = 1;
- * @return {number}
+ * optional google.protobuf.Duration time_remaining = 1;
+ * @return {?proto.google.protobuf.Duration}
  */
 proto.bragi.CsgoRoundTimeState.prototype.getTimeRemaining = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type{?proto.google.protobuf.Duration} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_duration_pb.Duration, 1));
 };
 
 
 /**
- * @param {number} value
+ * @param {?proto.google.protobuf.Duration|undefined} value
+ * @return {!proto.bragi.CsgoRoundTimeState} returns this
+*/
+proto.bragi.CsgoRoundTimeState.prototype.setTimeRemaining = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.bragi.CsgoRoundTimeState} returns this
  */
-proto.bragi.CsgoRoundTimeState.prototype.setTimeRemaining = function(value) {
-  return jspb.Message.setProto3IntField(this, 1, value);
+proto.bragi.CsgoRoundTimeState.prototype.clearTimeRemaining = function() {
+  return this.setTimeRemaining(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.CsgoRoundTimeState.prototype.hasTimeRemaining = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -11342,7 +11303,7 @@ proto.bragi.CsgoPlayerCurrentRoundStatisticsState.prototype.hasStatistics = func
  * @private {!Array<number>}
  * @const
  */
-proto.bragi.CsgoPlayerItemsState.repeatedFields_ = [1];
+proto.bragi.CsgoPlayerItemsState.repeatedFields_ = [2];
 
 
 
@@ -11375,6 +11336,7 @@ proto.bragi.CsgoPlayerItemsState.prototype.toObject = function(opt_includeInstan
  */
 proto.bragi.CsgoPlayerItemsState.toObject = function(includeInstance, msg) {
   var f, obj = {
+    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
     itemsList: jspb.Message.toObjectList(msg.getItemsList(),
     proto.bragi.CsgoPlayerItem.toObject, includeInstance)
   };
@@ -11414,6 +11376,10 @@ proto.bragi.CsgoPlayerItemsState.deserializeBinaryFromReader = function(msg, rea
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPlayerUrn(value);
+      break;
+    case 2:
       var value = new proto.bragi.CsgoPlayerItem;
       reader.readMessage(value,proto.bragi.CsgoPlayerItem.deserializeBinaryFromReader);
       msg.addItems(value);
@@ -11447,10 +11413,17 @@ proto.bragi.CsgoPlayerItemsState.prototype.serializeBinary = function() {
  */
 proto.bragi.CsgoPlayerItemsState.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getPlayerUrn();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
   f = message.getItemsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      1,
+      2,
       f,
       proto.bragi.CsgoPlayerItem.serializeBinaryToWriter
     );
@@ -11459,12 +11432,30 @@ proto.bragi.CsgoPlayerItemsState.serializeBinaryToWriter = function(message, wri
 
 
 /**
- * repeated CsgoPlayerItem items = 1;
+ * optional string player_urn = 1;
+ * @return {string}
+ */
+proto.bragi.CsgoPlayerItemsState.prototype.getPlayerUrn = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.bragi.CsgoPlayerItemsState} returns this
+ */
+proto.bragi.CsgoPlayerItemsState.prototype.setPlayerUrn = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * repeated CsgoPlayerItem items = 2;
  * @return {!Array<!proto.bragi.CsgoPlayerItem>}
  */
 proto.bragi.CsgoPlayerItemsState.prototype.getItemsList = function() {
   return /** @type{!Array<!proto.bragi.CsgoPlayerItem>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.bragi.CsgoPlayerItem, 1));
+    jspb.Message.getRepeatedWrapperField(this, proto.bragi.CsgoPlayerItem, 2));
 };
 
 
@@ -11473,7 +11464,7 @@ proto.bragi.CsgoPlayerItemsState.prototype.getItemsList = function() {
  * @return {!proto.bragi.CsgoPlayerItemsState} returns this
 */
 proto.bragi.CsgoPlayerItemsState.prototype.setItemsList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
 };
 
 
@@ -11483,7 +11474,7 @@ proto.bragi.CsgoPlayerItemsState.prototype.setItemsList = function(value) {
  * @return {!proto.bragi.CsgoPlayerItem}
  */
 proto.bragi.CsgoPlayerItemsState.prototype.addItems = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.bragi.CsgoPlayerItem, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.bragi.CsgoPlayerItem, opt_index);
 };
 
 
@@ -12522,7 +12513,7 @@ proto.bragi.CsgoPlayerStatistics.prototype.hasEnemyDamageDealtHealthRaw = functi
  * @private {!Array<number>}
  * @const
  */
-proto.bragi.CsgoPlayerItem.repeatedFields_ = [3];
+proto.bragi.CsgoPlayerItem.repeatedFields_ = [1];
 
 
 
@@ -12555,10 +12546,8 @@ proto.bragi.CsgoPlayerItem.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CsgoPlayerItem.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    itemsList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f,
-    equipmentValue: jspb.Message.getFieldWithDefault(msg, 4, 0)
+    itemsList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
+    equipmentValue: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -12597,17 +12586,9 @@ proto.bragi.CsgoPlayerItem.deserializeBinaryFromReader = function(msg, reader) {
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setPlayerUrn(value);
-      break;
-    case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setTeamUrn(value);
-      break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
       msg.addItems(value);
       break;
-    case 4:
+    case 2:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setEquipmentValue(value);
       break;
@@ -12640,31 +12621,17 @@ proto.bragi.CsgoPlayerItem.prototype.serializeBinary = function() {
  */
 proto.bragi.CsgoPlayerItem.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getPlayerUrn();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
-  }
-  f = message.getTeamUrn();
-  if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
-  }
   f = message.getItemsList();
   if (f.length > 0) {
     writer.writeRepeatedString(
-      3,
+      1,
       f
     );
   }
   f = message.getEquipmentValue();
   if (f !== 0) {
     writer.writeUint32(
-      4,
+      2,
       f
     );
   }
@@ -12672,47 +12639,11 @@ proto.bragi.CsgoPlayerItem.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional string player_urn = 1;
- * @return {string}
- */
-proto.bragi.CsgoPlayerItem.prototype.getPlayerUrn = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.bragi.CsgoPlayerItem} returns this
- */
-proto.bragi.CsgoPlayerItem.prototype.setPlayerUrn = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-/**
- * optional string team_urn = 2;
- * @return {string}
- */
-proto.bragi.CsgoPlayerItem.prototype.getTeamUrn = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.bragi.CsgoPlayerItem} returns this
- */
-proto.bragi.CsgoPlayerItem.prototype.setTeamUrn = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
-};
-
-
-/**
- * repeated string items = 3;
+ * repeated string items = 1;
  * @return {!Array<string>}
  */
 proto.bragi.CsgoPlayerItem.prototype.getItemsList = function() {
-  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 3));
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
 };
 
 
@@ -12721,7 +12652,7 @@ proto.bragi.CsgoPlayerItem.prototype.getItemsList = function() {
  * @return {!proto.bragi.CsgoPlayerItem} returns this
  */
 proto.bragi.CsgoPlayerItem.prototype.setItemsList = function(value) {
-  return jspb.Message.setField(this, 3, value || []);
+  return jspb.Message.setField(this, 1, value || []);
 };
 
 
@@ -12731,7 +12662,7 @@ proto.bragi.CsgoPlayerItem.prototype.setItemsList = function(value) {
  * @return {!proto.bragi.CsgoPlayerItem} returns this
  */
 proto.bragi.CsgoPlayerItem.prototype.addItems = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 3, value, opt_index);
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
 };
 
 
@@ -12745,11 +12676,11 @@ proto.bragi.CsgoPlayerItem.prototype.clearItemsList = function() {
 
 
 /**
- * optional uint32 equipment_value = 4;
+ * optional uint32 equipment_value = 2;
  * @return {number}
  */
 proto.bragi.CsgoPlayerItem.prototype.getEquipmentValue = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
@@ -12758,7 +12689,7 @@ proto.bragi.CsgoPlayerItem.prototype.getEquipmentValue = function() {
  * @return {!proto.bragi.CsgoPlayerItem} returns this
  */
 proto.bragi.CsgoPlayerItem.prototype.setEquipmentValue = function(value) {
-  return jspb.Message.setProto3IntField(this, 4, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 

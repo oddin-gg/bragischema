@@ -618,14 +618,8 @@ export namespace CsgoRoundInfoState {
 }
 
 export class CsgoRoundScoreState extends jspb.Message {
-  getHomeTeamUrn(): string;
-  setHomeTeamUrn(value: string): void;
-
   getHomeScore(): number;
   setHomeScore(value: number): void;
-
-  getAwayTeamUrn(): string;
-  setAwayTeamUrn(value: string): void;
 
   getAwayScore(): number;
   setAwayScore(value: number): void;
@@ -642,16 +636,16 @@ export class CsgoRoundScoreState extends jspb.Message {
 
 export namespace CsgoRoundScoreState {
   export type AsObject = {
-    homeTeamUrn: string,
     homeScore: number,
-    awayTeamUrn: string,
     awayScore: number,
   }
 }
 
 export class CsgoRoundTimeState extends jspb.Message {
-  getTimeRemaining(): number;
-  setTimeRemaining(value: number): void;
+  hasTimeRemaining(): boolean;
+  clearTimeRemaining(): void;
+  getTimeRemaining(): google_protobuf_duration_pb.Duration | undefined;
+  setTimeRemaining(value?: google_protobuf_duration_pb.Duration): void;
 
   hasMapTime(): boolean;
   clearMapTime(): void;
@@ -670,7 +664,7 @@ export class CsgoRoundTimeState extends jspb.Message {
 
 export namespace CsgoRoundTimeState {
   export type AsObject = {
-    timeRemaining: number,
+    timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
   }
 }
@@ -1384,6 +1378,9 @@ export namespace CsgoPlayerCurrentRoundStatisticsState {
 }
 
 export class CsgoPlayerItemsState extends jspb.Message {
+  getPlayerUrn(): string;
+  setPlayerUrn(value: string): void;
+
   clearItemsList(): void;
   getItemsList(): Array<CsgoPlayerItem>;
   setItemsList(value: Array<CsgoPlayerItem>): void;
@@ -1401,6 +1398,7 @@ export class CsgoPlayerItemsState extends jspb.Message {
 
 export namespace CsgoPlayerItemsState {
   export type AsObject = {
+    playerUrn: string,
     itemsList: Array<CsgoPlayerItem.AsObject>,
   }
 }
@@ -1546,12 +1544,6 @@ export namespace CsgoPlayerStatistics {
 }
 
 export class CsgoPlayerItem extends jspb.Message {
-  getPlayerUrn(): string;
-  setPlayerUrn(value: string): void;
-
-  getTeamUrn(): string;
-  setTeamUrn(value: string): void;
-
   clearItemsList(): void;
   getItemsList(): Array<string>;
   setItemsList(value: Array<string>): void;
@@ -1572,8 +1564,6 @@ export class CsgoPlayerItem extends jspb.Message {
 
 export namespace CsgoPlayerItem {
   export type AsObject = {
-    playerUrn: string,
-    teamUrn: string,
     itemsList: Array<string>,
     equipmentValue: number,
   }
