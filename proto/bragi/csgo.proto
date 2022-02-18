@@ -93,11 +93,14 @@ message CsgoCurrentMapStatePartialUpdate {
     // Replaces "score" property in CsgoMapState.
     CsgoMapScoreState score = 2;
 
+    // Replaces "current_round_state" property in CsgoMapState.
+    CsgoCurrentRoundState current_round_state = 3;
+
     // Apply partial update on "current_round_state" property in CsgoMapState.
-    CsgoCurrentRoundStatePartialUpdate current_round_state_partial_update = 3;
+    CsgoCurrentRoundStatePartialUpdate current_round_state_partial_update = 4;
 
     // Apply partial update on value under given key in team_map_states map property in CsgoMapState.
-    CsgoTeamMapStatePartialUpdate team_map_states_partial_update = 4;
+    CsgoTeamMapStatePartialUpdate team_map_states_partial_update = 5;
 
     // There are no particular updates for eg. previous_round_states, whole current_round_state defined. In case when those
     // states are updated, then whole update with CsgoMapState update is sent.
@@ -146,33 +149,28 @@ message CsgoCurrentRoundStatePartialUpdate {
     // Replaces "info" property in CsgoCurrentRoundState.
     CsgoRoundInfoState info = 1;
 
-    // Replaces "score" property in CsgoCurrentRoundState.
-    CsgoRoundScoreState score = 2;
-
     // Replaces "time" property in CsgoCurrentRoundState.
-    CsgoRoundTimeState time = 3;
+    CsgoRoundTimeState time = 2;
 
     // Replaces "bomb_state" property in CsgoCurrentRoundState.
-    CsgoBombState bomb_state = 4;
+    CsgoBombState bomb_state = 3;
 
     // Apply partial update on value under given key in team_states map property in CsgoCurrentRoundState.
-    CsgoTeamCurrentRoundStatePartialUpdate team_states_partial_update = 5;
+    CsgoTeamCurrentRoundStatePartialUpdate team_states_partial_update = 4;
   }
 }
 
 message CsgoCurrentRoundState {
   uint32 round_number = 1;
   CsgoRoundInfoState info = 2;
-  CsgoRoundScoreState score = 3;
-  CsgoRoundTimeState time = 4;
-  CsgoBombState bomb_state = 5;
-  map<string, CsgoTeamCurrentRoundState> team_states = 6; // keys are type of team_urn
+  CsgoRoundTimeState time = 3;
+  CsgoBombState bomb_state = 4;
+  map<string, CsgoTeamCurrentRoundState> team_states = 5; // keys are type of team_urn
 }
 
 message CsgoPreviousRoundState {
   uint32 round_number = 1;
   CsgoRoundInfoState info = 2;
-  CsgoRoundScoreState score = 3;
   map<string, CsgoPreviousTeamRoundState> team_states = 4; // keys are type of team_urn
 }
 
@@ -182,11 +180,6 @@ message CsgoRoundInfoState {
   optional google.protobuf.Timestamp end_time = 3;
   optional string winning_team_urn = 4;
   optional CsgoWinReason win_reason = 5;
-}
-
-message CsgoRoundScoreState {
-  uint32 home_score = 1;
-  uint32 away_score = 2;
 }
 
 message CsgoRoundTimeState {
@@ -342,15 +335,13 @@ message CsgoPlayerCurrentRoundStatisticsState {
   uint32 health = 5;
   uint32 armor = 6;
   uint32 balance = 7;
-  string primary_weapon = 8;
-  string secondary_weapon = 9;
-  CsgoPlayerStatistics statistics = 10;
+  CsgoPlayerStatistics statistics = 8;
 }
 
 message CsgoPlayerItemsState {
   string player_urn = 1;
   uint32 equipment_value = 2;
-  repeated CsgoPlayerItem items = 3;
+  repeated CsgoItem items = 3;
 }
 
 message CsgoPlayerPreviousRoundState {
@@ -383,9 +374,8 @@ message CsgoPlayerStatistics {
   optional uint32 enemy_damage_dealt_health_raw = 14;
 }
 
-message CsgoPlayerItem {
-  repeated string items = 1;
-  uint32 equipment_value = 2;
+message CsgoItem {
+  string name = 1;
 }
 
 message CsgoPosition {
@@ -432,7 +422,8 @@ message CsgoPlayerBalance {
 message CsgoPlayerItems {
   string player_urn = 1;
   string team_urn = 2;
-  repeated CsgoPlayerItem items = 3;
+  uint32 equipment_value = 3;
+  repeated CsgoItem items = 4;
 }
 
 // ------------------------------------------------------------------------------

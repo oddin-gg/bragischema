@@ -264,6 +264,11 @@ export class CsgoCurrentMapStatePartialUpdate extends jspb.Message {
   getScore(): CsgoMapScoreState | undefined;
   setScore(value?: CsgoMapScoreState): void;
 
+  hasCurrentRoundState(): boolean;
+  clearCurrentRoundState(): void;
+  getCurrentRoundState(): CsgoCurrentRoundState | undefined;
+  setCurrentRoundState(value?: CsgoCurrentRoundState): void;
+
   hasCurrentRoundStatePartialUpdate(): boolean;
   clearCurrentRoundStatePartialUpdate(): void;
   getCurrentRoundStatePartialUpdate(): CsgoCurrentRoundStatePartialUpdate | undefined;
@@ -289,6 +294,7 @@ export namespace CsgoCurrentMapStatePartialUpdate {
   export type AsObject = {
     info?: CsgoMapInfoState.AsObject,
     score?: CsgoMapScoreState.AsObject,
+    currentRoundState?: CsgoCurrentRoundState.AsObject,
     currentRoundStatePartialUpdate?: CsgoCurrentRoundStatePartialUpdate.AsObject,
     teamMapStatesPartialUpdate?: CsgoTeamMapStatePartialUpdate.AsObject,
   }
@@ -297,8 +303,9 @@ export namespace CsgoCurrentMapStatePartialUpdate {
     UPDATE_NOT_SET = 0,
     INFO = 1,
     SCORE = 2,
-    CURRENT_ROUND_STATE_PARTIAL_UPDATE = 3,
-    TEAM_MAP_STATES_PARTIAL_UPDATE = 4,
+    CURRENT_ROUND_STATE = 3,
+    CURRENT_ROUND_STATE_PARTIAL_UPDATE = 4,
+    TEAM_MAP_STATES_PARTIAL_UPDATE = 5,
   }
 }
 
@@ -482,11 +489,6 @@ export class CsgoCurrentRoundStatePartialUpdate extends jspb.Message {
   getInfo(): CsgoRoundInfoState | undefined;
   setInfo(value?: CsgoRoundInfoState): void;
 
-  hasScore(): boolean;
-  clearScore(): void;
-  getScore(): CsgoRoundScoreState | undefined;
-  setScore(value?: CsgoRoundScoreState): void;
-
   hasTime(): boolean;
   clearTime(): void;
   getTime(): CsgoRoundTimeState | undefined;
@@ -516,7 +518,6 @@ export class CsgoCurrentRoundStatePartialUpdate extends jspb.Message {
 export namespace CsgoCurrentRoundStatePartialUpdate {
   export type AsObject = {
     info?: CsgoRoundInfoState.AsObject,
-    score?: CsgoRoundScoreState.AsObject,
     time?: CsgoRoundTimeState.AsObject,
     bombState?: CsgoBombState.AsObject,
     teamStatesPartialUpdate?: CsgoTeamCurrentRoundStatePartialUpdate.AsObject,
@@ -525,10 +526,9 @@ export namespace CsgoCurrentRoundStatePartialUpdate {
   export enum UpdateCase {
     UPDATE_NOT_SET = 0,
     INFO = 1,
-    SCORE = 2,
-    TIME = 3,
-    BOMB_STATE = 4,
-    TEAM_STATES_PARTIAL_UPDATE = 5,
+    TIME = 2,
+    BOMB_STATE = 3,
+    TEAM_STATES_PARTIAL_UPDATE = 4,
   }
 }
 
@@ -540,11 +540,6 @@ export class CsgoCurrentRoundState extends jspb.Message {
   clearInfo(): void;
   getInfo(): CsgoRoundInfoState | undefined;
   setInfo(value?: CsgoRoundInfoState): void;
-
-  hasScore(): boolean;
-  clearScore(): void;
-  getScore(): CsgoRoundScoreState | undefined;
-  setScore(value?: CsgoRoundScoreState): void;
 
   hasTime(): boolean;
   clearTime(): void;
@@ -572,7 +567,6 @@ export namespace CsgoCurrentRoundState {
   export type AsObject = {
     roundNumber: number,
     info?: CsgoRoundInfoState.AsObject,
-    score?: CsgoRoundScoreState.AsObject,
     time?: CsgoRoundTimeState.AsObject,
     bombState?: CsgoBombState.AsObject,
     teamStatesMap: Array<[string, CsgoTeamCurrentRoundState.AsObject]>,
@@ -587,11 +581,6 @@ export class CsgoPreviousRoundState extends jspb.Message {
   clearInfo(): void;
   getInfo(): CsgoRoundInfoState | undefined;
   setInfo(value?: CsgoRoundInfoState): void;
-
-  hasScore(): boolean;
-  clearScore(): void;
-  getScore(): CsgoRoundScoreState | undefined;
-  setScore(value?: CsgoRoundScoreState): void;
 
   getTeamStatesMap(): jspb.Map<string, CsgoPreviousTeamRoundState>;
   clearTeamStatesMap(): void;
@@ -609,7 +598,6 @@ export namespace CsgoPreviousRoundState {
   export type AsObject = {
     roundNumber: number,
     info?: CsgoRoundInfoState.AsObject,
-    score?: CsgoRoundScoreState.AsObject,
     teamStatesMap: Array<[string, CsgoPreviousTeamRoundState.AsObject]>,
   }
 }
@@ -655,30 +643,6 @@ export namespace CsgoRoundInfoState {
     endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     winningTeamUrn: string,
     winReason: CsgoWinReasonMap[keyof CsgoWinReasonMap],
-  }
-}
-
-export class CsgoRoundScoreState extends jspb.Message {
-  getHomeScore(): number;
-  setHomeScore(value: number): void;
-
-  getAwayScore(): number;
-  setAwayScore(value: number): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoRoundScoreState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoRoundScoreState): CsgoRoundScoreState.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoRoundScoreState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoRoundScoreState;
-  static deserializeBinaryFromReader(message: CsgoRoundScoreState, reader: jspb.BinaryReader): CsgoRoundScoreState;
-}
-
-export namespace CsgoRoundScoreState {
-  export type AsObject = {
-    homeScore: number,
-    awayScore: number,
   }
 }
 
@@ -1379,12 +1343,6 @@ export class CsgoPlayerCurrentRoundStatisticsState extends jspb.Message {
   getBalance(): number;
   setBalance(value: number): void;
 
-  getPrimaryWeapon(): string;
-  setPrimaryWeapon(value: string): void;
-
-  getSecondaryWeapon(): string;
-  setSecondaryWeapon(value: string): void;
-
   hasStatistics(): boolean;
   clearStatistics(): void;
   getStatistics(): CsgoPlayerStatistics | undefined;
@@ -1408,8 +1366,6 @@ export namespace CsgoPlayerCurrentRoundStatisticsState {
     health: number,
     armor: number,
     balance: number,
-    primaryWeapon: string,
-    secondaryWeapon: string,
     statistics?: CsgoPlayerStatistics.AsObject,
   }
 }
@@ -1422,9 +1378,9 @@ export class CsgoPlayerItemsState extends jspb.Message {
   setEquipmentValue(value: number): void;
 
   clearItemsList(): void;
-  getItemsList(): Array<CsgoPlayerItem>;
-  setItemsList(value: Array<CsgoPlayerItem>): void;
-  addItems(value?: CsgoPlayerItem, index?: number): CsgoPlayerItem;
+  getItemsList(): Array<CsgoItem>;
+  setItemsList(value: Array<CsgoItem>): void;
+  addItems(value?: CsgoItem, index?: number): CsgoItem;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CsgoPlayerItemsState.AsObject;
@@ -1440,7 +1396,7 @@ export namespace CsgoPlayerItemsState {
   export type AsObject = {
     playerUrn: string,
     equipmentValue: number,
-    itemsList: Array<CsgoPlayerItem.AsObject>,
+    itemsList: Array<CsgoItem.AsObject>,
   }
 }
 
@@ -1584,29 +1540,23 @@ export namespace CsgoPlayerStatistics {
   }
 }
 
-export class CsgoPlayerItem extends jspb.Message {
-  clearItemsList(): void;
-  getItemsList(): Array<string>;
-  setItemsList(value: Array<string>): void;
-  addItems(value: string, index?: number): string;
-
-  getEquipmentValue(): number;
-  setEquipmentValue(value: number): void;
+export class CsgoItem extends jspb.Message {
+  getName(): string;
+  setName(value: string): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoPlayerItem.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoPlayerItem): CsgoPlayerItem.AsObject;
+  toObject(includeInstance?: boolean): CsgoItem.AsObject;
+  static toObject(includeInstance: boolean, msg: CsgoItem): CsgoItem.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoPlayerItem, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoPlayerItem;
-  static deserializeBinaryFromReader(message: CsgoPlayerItem, reader: jspb.BinaryReader): CsgoPlayerItem;
+  static serializeBinaryToWriter(message: CsgoItem, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CsgoItem;
+  static deserializeBinaryFromReader(message: CsgoItem, reader: jspb.BinaryReader): CsgoItem;
 }
 
-export namespace CsgoPlayerItem {
+export namespace CsgoItem {
   export type AsObject = {
-    itemsList: Array<string>,
-    equipmentValue: number,
+    name: string,
   }
 }
 
@@ -1834,10 +1784,13 @@ export class CsgoPlayerItems extends jspb.Message {
   getTeamUrn(): string;
   setTeamUrn(value: string): void;
 
+  getEquipmentValue(): number;
+  setEquipmentValue(value: number): void;
+
   clearItemsList(): void;
-  getItemsList(): Array<CsgoPlayerItem>;
-  setItemsList(value: Array<CsgoPlayerItem>): void;
-  addItems(value?: CsgoPlayerItem, index?: number): CsgoPlayerItem;
+  getItemsList(): Array<CsgoItem>;
+  setItemsList(value: Array<CsgoItem>): void;
+  addItems(value?: CsgoItem, index?: number): CsgoItem;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CsgoPlayerItems.AsObject;
@@ -1853,7 +1806,8 @@ export namespace CsgoPlayerItems {
   export type AsObject = {
     playerUrn: string,
     teamUrn: string,
-    itemsList: Array<CsgoPlayerItem.AsObject>,
+    equipmentValue: number,
+    itemsList: Array<CsgoItem.AsObject>,
   }
 }
 
