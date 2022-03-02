@@ -184,7 +184,6 @@ message CsgoRoundInfoState {
 
 message CsgoRoundTimeState {
   google.protobuf.Duration time_remaining = 1;
-  google.protobuf.Duration map_time = 2;
 }
 
 message CsgoBombState {
@@ -195,6 +194,7 @@ message CsgoBombState {
     CsgoBombPlantedState planted = 4;
     CsgoBombDefusingState defusing = 5;
     CsgoBombDefusedState defused = 6;
+    CsgoBombExplodedState exploded = 7;
   }
 }
 
@@ -218,6 +218,7 @@ message CsgoBombPlantedState {
   string planted_by_player_urn = 1;
   CsgoPosition position = 2;
   google.protobuf.Timestamp planted_at = 3;
+  google.protobuf.Duration countdown = 4;
 }
 
 message CsgoBombDefusingState {
@@ -233,11 +234,20 @@ message CsgoBombDefusedState {
   google.protobuf.Timestamp defused_at = 3;
 }
 
+message CsgoBombExplodedState {
+  CsgoPosition position = 1;
+  google.protobuf.Timestamp exploded_at = 2;
+}
+
 // ---------------------------------------------------------------------------------------------------------------------
 
 message CsgoTeamMapStatePartialUpdate {
   message Payload {
     oneof payload {
+
+      // Replaces whole value under given key in player_map_states map property in CsgoTeamMapState.
+      CsgoPlayerMapState player_state = 2;
+
       // Apply partial update on value under given key in player_map_states map property in CsgoTeamMapState.
       CsgoPlayerMapStatePartialUpdate player_map_states_partial_update = 1;
     }
@@ -256,6 +266,10 @@ message CsgoTeamMapState {
 message CsgoTeamCurrentRoundStatePartialUpdate {
   message Payload {
     oneof payload {
+
+      // Replaces whole value under given key in player_round_states map property in CsgoTeamCurrentRoundState
+      CsgoPlayerCurrentRoundState player_state = 2;
+
       // Apply partial update on value under given key in player_round_states map property in CsgoTeamCurrentRoundState.
       CsgoPlayerCurrentRoundStatePartialUpdate player_round_states_partial_update = 1;
     }
@@ -297,6 +311,8 @@ message CsgoPlayerMapState {
 
 message CsgoPlayerMapStatisticsState {
   string player_urn = 1;
+  uint32 opening_kills = 4;
+  uint32 opening_deaths = 5;
   CsgoPlayerStatistics statistics = 2;
 }
 
@@ -331,7 +347,7 @@ message CsgoPlayerCurrentRoundState {
 message CsgoPlayerCurrentRoundStatisticsState {
   string player_urn = 1;
   bool alive = 2;
-  bool active = 3;
+  bool active = 3 [deprecated = true];
   uint32 health = 5;
   uint32 armor = 6;
   uint32 balance = 7;
@@ -376,11 +392,15 @@ message CsgoPlayerStatistics {
 
 message CsgoItem {
   string name = 1;
+  CsgoWeaponType type = 2;
+  uint32 count = 3;
+  bool isActive = 4;
 }
 
 message CsgoPosition {
   float x = 1;
   float y = 2;
+  float z = 4;
   float angle = 3;
 }
 
@@ -512,6 +532,7 @@ message CsgoItemPickUp {
   uint32 current_round_number = 3;
   string player_urn = 4;
   string team_urn = 5;
+  string item = 6;
 }
 
 message CsgoItemPurchase {
@@ -640,4 +661,18 @@ enum CsgoMatchStatusType {
   CSGO_MATCH_STATUS_TYPE_UNSPECIFIED = 0;
   CSGO_MATCH_STATUS_TYPE_LIVE = 1;
   CSGO_MATCH_STATUS_TYPE_FINISHED = 2;
+}
+
+enum CsgoWeaponType {
+  CSGO_WEAPON_TYPE_UNSPECIFIED = 0;
+  CSGO_WEAPON_TYPE_PISTOL = 1;
+  CSGO_WEAPON_TYPE_BOMB = 2;
+  CSGO_WEAPON_TYPE_GRENADE = 3;
+  CSGO_WEAPON_TYPE_MACHINE_GUN = 4;
+  CSGO_WEAPON_TYPE_RIFLE = 5;
+  CSGO_WEAPON_TYPE_SHOTGUN = 6;
+  CSGO_WEAPON_TYPE_SNIPER_RIFLE = 7;
+  CSGO_WEAPON_TYPE_SUBMACHINE_GUN = 8;
+  CSGO_WEAPON_TYPE_KNIFE = 9;
+  CSGO_WEAPON_TYPE_DEFUSE_KIT = 10;
 }
