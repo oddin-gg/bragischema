@@ -5,6 +5,14 @@ Represents [gRPC](https://grpc.io/) schema for Oddin.gg data feed and historical
 Currently, only data feed stream is available to our customers. This stream provides live data of currently played matches.
 To check data stream definition check proto/bragi_service.proto and proto/stream/data_feed.proto files.
 
+### Prerequisites
+
+#### Golang
+```bash
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+go get -u google.golang.org/protobuf
+```
+
 ### How to generate Grpc files
  - **For x86 architecture** 
    - run bash script
