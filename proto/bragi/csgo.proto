@@ -13,11 +13,14 @@ import "bragi/common.proto";
 message CsgoMatchMessage {
   message Payload {
     oneof payload {
+      // Initial snapshot
+      CsgoMatchSnapshot snapshot = 1;
+
       // Replace match_state property in MatchSnapshot.
-      CsgoMatchState match_state = 1;
+      CsgoMatchState match_state = 2;
 
       // Particular updates which are applied on property match_state in MatchState.
-      CsgoMatchUpdate update = 2;
+      CsgoMatchUpdate update = 3;
     }
   }
 
@@ -25,6 +28,18 @@ message CsgoMatchMessage {
   uint64 sequence = 2;
   google.protobuf.Timestamp timestamp = 3;
   Payload payload = 4;
+}
+
+// Represent whole set of data about particular match. This entity is received only at the beginning of stream. Cache MatchSnapshot
+// in memory and then update it with received updates. If AnnouncementUpdate is received then append its payload to property
+// announcements. If game update is received (e.g. CsgoMatchMessage) then apply this update on property match_state.
+// For both update cases do not forget also to update "sequence" and "timestamp" properties with corresponding values from MatchMessage.
+message CsgoMatchSnapshot {
+  string match_urn = 1;
+  uint64 sequence = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  repeated Announcement announcements = 4;
+  CsgoMatchState match_state = 5;
 }
 
 // Apply updates on match_state property of cached match entity (MatchSnapshot). Each CsgoMatchUpdate is received wrapped

@@ -7,6 +7,7 @@ option java_package = "com.oddin.bragi";
 
 import "google/protobuf/timestamp.proto";
 import "bragi/csgo.proto";
+import "bragi/common.proto";
 
 service Bragi {
 
@@ -43,78 +44,13 @@ message KeepAlive {
 // in the cached MatchSnapshot with the values from the received MatchMessage.
 message MatchMessage {
     oneof message {
-      // Cache whole entity in client memory.
-      MatchSnapshot snapshot = 1;
 
       // Append announcement's payload to property announcements array in MatchSnapshot.
-      AnnouncementUpdate announcement = 2;
+      AnnouncementUpdate announcement = 1;
 
       // Message which wraps updates which should be applied on "match_state" property in MatchSnapshot.
-      CsgoMatchMessage csgo = 3;
+      CsgoMatchMessage csgo = 2;
 
       // LolMatchMessage lol = 4;
     }
-}
-
-// Represent whole set of data about particular match. This entity is received only at the beginning of stream. Cache MatchSnapshot
-// in memory and then update it with received updates. If AnnouncementUpdate is received then append its payload to property
-// announcements. If game update is received (e.g. CsgoMatchMessage) then apply this update on property match_state.
-// For both update cases do not forget also to update "sequence" and "timestamp" properties with corresponding values from MatchMessage.
-message MatchSnapshot {
-  message GameMatchState {
-    oneof state {
-      CsgoMatchState csgo = 1;
-      // LolMatchState lol = 2;
-    }
-  }
-
-  string match_urn = 1;
-  uint64 sequence = 2;
-  google.protobuf.Timestamp timestamp = 3;
-  repeated Announcement announcements = 4;
-  GameMatchState match_state = 5;
-}
-
-// ---------------------------------------------------------------------------------------------------------------------
-
-// Append announcement's payload to property announcements array in MatchSnapshot. Each AnnouncementUpdate carries
-// properties "sequence", "timestamp". Replace cached properties "sequence" and "timestamp" in cached
-// MatchSnapshot with values of "sequence", "timestamp" from AnnouncementUpdate after you successfully applied updates.
-message AnnouncementUpdate {
-  string match_urn = 1;
-  uint64 sequence = 2;
-  google.protobuf.Timestamp timestamp = 3;
-  Announcement payload = 4;
-}
-
-// Announcement informs consumer about operational situation during match lifetime. Eg. match was postponed,there
-// is a server issue etc.
-message Announcement {
-  message Payload {
-    oneof payload {
-      ControlAnnouncement control = 1;
-      ControlErrorAnnouncement error = 2;
-    }
-  }
-
-  google.protobuf.Timestamp created_at = 1;
-  Payload payload = 2;
-}
-
-message ControlAnnouncement {
-  enum ControlAnnouncementType {
-    CONTROL_ANNOUNCEMENT_TYPE_UNSPECIFIED = 0;
-  }
-
-  ControlAnnouncementType type = 1;
-  optional string message = 2;
-}
-
-message ControlErrorAnnouncement {
-  enum ControlErrorAnnouncementType {
-    CONTROL_ERROR_ANNOUNCEMENT_TYPE_UNSPECIFIED = 0;
-  }
-
-  ControlErrorAnnouncementType type = 1;
-  optional string message = 2;
 }
