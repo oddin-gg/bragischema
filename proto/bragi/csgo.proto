@@ -9,12 +9,13 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/duration.proto";
 import "bragi/common.proto";
 
-
+// Represent an implementation of proto message which satisfies (Game)MatchMessage requirements. For doc about (Game)MatchMessage
+// check bragi_service.proto file.
 message CsgoMatchMessage {
   message Payload {
     oneof payload {
-      // Replace match_state property in MatchSnapshot.
-      CsgoMatchState match_state = 1;
+      // Initial snapshot
+      CsgoMatchSnapshot snapshot = 1;
 
       // Particular updates which are applied on property match_state in MatchState.
       CsgoMatchUpdate update = 2;
@@ -27,20 +28,47 @@ message CsgoMatchMessage {
   Payload payload = 4;
 }
 
-// Apply updates on match_state property of cached match entity (MatchSnapshot). Each CsgoMatchUpdate is received wrapped
-// in CsgoMatchMessage which carries properties "sequence", "timestamp". Replace cached properties "sequence" and "timestamp"
-// in cached MatchSnapshot with values of "sequence", "timestamp" from CsgoMatchMessage after you successfully applied updates.
-// One CsgoMatchUpdate contains at least one item in array "updates" and zero or more items in array "events".
-message CsgoMatchUpdate {
-  // Apply this update on match_state property in CsgoMatchSnapshot. These updates represents idempotent updates of whole
-  // match state or updates of its nested fields. If any update is missed, client can recover whole snapshot (CsgoMatchSnapshot)
-  // with given sequence number and then continue applying new incoming updates with sequence number higher than snapshot one.
-  repeated CsgoMatchStatePartialUpdate updates = 1;
+// Is an implementation of proto message which satisfies (Game)MatchSnapshot requirements. For doc about (Game)MatchSnapshot
+// check bragi_service.proto file. CsgoMatchSnapshot represent whole set of data about particular match. This entity is
+// received only at the beginning of stream. Cache CsgoMatchSnapshot in memory and then update it with received updates.
+// If AnnouncementUpdate is received then append its payload to property announcements. If game update is received (CsgoMatchUpdate)
+// then apply this update on property match_state. For both update cases do not forget also to update "sequence" and "timestamp"
+// properties with corresponding values from CsgoMatchMessage.
+message CsgoMatchSnapshot {
+  string match_urn = 1;
+  uint64 sequence = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  repeated Announcement announcements = 4;
+  CsgoMatchState match_state = 5;
+}
 
-  // Notifies about occurred situation in game. Those events are non-idempotent messages ordered according timestamp and
-  // they are not supposed to be applied on cached match state. Those events represents a history of match. If any event
-  // is missed there is no way how to recover missing events.
+// Represents an update message which "payload" property is supposed be applied to update match_state property of
+// cached match entity (CsgoMatchSnapshot). Each CsgoMatchUpdate is received wrapped in CsgoMatchMessage which carries
+// properties "sequence", "timestamp". Replace cached properties "sequence" and "timestamp" in cached CsgoMatchSnapshot
+// with values of "sequence", "timestamp" from CsgoMatchMessage after you successfully applied updates.
+// If any update is missed, client can recover whole snapshot (CsgoMatchSnapshot) with given sequence number and then
+// continue applying new incoming updates with sequence number higher than snapshot one.
+message CsgoMatchUpdate {
+  message Payload {
+    oneof payload {
+      CsgoMatchState match_state = 1;
+      CsgoMatchStatePartialUpdates partial_updates = 2;
+    }
+  }
+
+  Payload payload = 1;
+
+  // Array of events (can be empty). Notifies about occurred situation in game. Those events are non-idempotent messages
+  // ordered according timestamp and they are not supposed to be applied on cached match state. Those events represents
+  // a history of match. If any eventis missed there is no way how to recover missing events.
   repeated CsgoEvent events = 2;
+}
+
+// One CsgoMatchUpdate contains non-empty array property called "updates". These updates represents idempotent updates
+// which are supposed to be applied on match_state property in CsgoMatchSnapshot.
+message CsgoMatchStatePartialUpdates {
+
+  repeated CsgoMatchStatePartialUpdate updates = 1;
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -68,7 +96,7 @@ message CsgoMatchState {
   CsgoTeam home_team = 3;
   CsgoTeam away_team = 4;
   CsgoMatchScoreState score = 5;
-  CsgoMatchStatusType match_status = 6;
+  MatchStatusType match_status = 6;
   CsgoCurrentMapState current_map_state = 7;
   repeated CsgoPreviousMapState previous_map_states = 8;  //this property is updated only when whole CsgoMatchState update is received
 }
@@ -347,11 +375,10 @@ message CsgoPlayerCurrentRoundState {
 message CsgoPlayerCurrentRoundStatisticsState {
   string player_urn = 1;
   bool alive = 2;
-  bool active = 3 [deprecated = true];
-  uint32 health = 5;
-  uint32 armor = 6;
-  uint32 balance = 7;
-  CsgoPlayerStatistics statistics = 8;
+  uint32 health = 3;
+  uint32 armor = 4;
+  uint32 balance = 5;
+  CsgoPlayerStatistics statistics = 6;
 }
 
 message CsgoPlayerItemsState {
@@ -655,12 +682,6 @@ enum CsgoRoundStateType {
   CSGO_ROUND_STATE_TYPE_IN_PROGRESS = 2;
   CSGO_ROUND_STATE_TYPE_PAUSED = 3;
   CSGO_ROUND_STATE_TYPE_FINISHED = 4;
-}
-
-enum CsgoMatchStatusType {
-  CSGO_MATCH_STATUS_TYPE_UNSPECIFIED = 0;
-  CSGO_MATCH_STATUS_TYPE_LIVE = 1;
-  CSGO_MATCH_STATUS_TYPE_FINISHED = 2;
 }
 
 enum CsgoWeaponType {

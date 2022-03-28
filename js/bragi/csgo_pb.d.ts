@@ -42,10 +42,10 @@ export namespace CsgoMatchMessage {
   }
 
   export class Payload extends jspb.Message {
-    hasMatchState(): boolean;
-    clearMatchState(): void;
-    getMatchState(): CsgoMatchState | undefined;
-    setMatchState(value?: CsgoMatchState): void;
+    hasSnapshot(): boolean;
+    clearSnapshot(): void;
+    getSnapshot(): CsgoMatchSnapshot | undefined;
+    setSnapshot(value?: CsgoMatchSnapshot): void;
 
     hasUpdate(): boolean;
     clearUpdate(): void;
@@ -65,23 +65,65 @@ export namespace CsgoMatchMessage {
 
   export namespace Payload {
     export type AsObject = {
-      matchState?: CsgoMatchState.AsObject,
+      snapshot?: CsgoMatchSnapshot.AsObject,
       update?: CsgoMatchUpdate.AsObject,
     }
 
     export enum PayloadCase {
       PAYLOAD_NOT_SET = 0,
-      MATCH_STATE = 1,
+      SNAPSHOT = 1,
       UPDATE = 2,
     }
   }
 }
 
+export class CsgoMatchSnapshot extends jspb.Message {
+  getMatchUrn(): string;
+  setMatchUrn(value: string): void;
+
+  getSequence(): number;
+  setSequence(value: number): void;
+
+  hasTimestamp(): boolean;
+  clearTimestamp(): void;
+  getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
+  clearAnnouncementsList(): void;
+  getAnnouncementsList(): Array<bragi_common_pb.Announcement>;
+  setAnnouncementsList(value: Array<bragi_common_pb.Announcement>): void;
+  addAnnouncements(value?: bragi_common_pb.Announcement, index?: number): bragi_common_pb.Announcement;
+
+  hasMatchState(): boolean;
+  clearMatchState(): void;
+  getMatchState(): CsgoMatchState | undefined;
+  setMatchState(value?: CsgoMatchState): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CsgoMatchSnapshot.AsObject;
+  static toObject(includeInstance: boolean, msg: CsgoMatchSnapshot): CsgoMatchSnapshot.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: CsgoMatchSnapshot, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CsgoMatchSnapshot;
+  static deserializeBinaryFromReader(message: CsgoMatchSnapshot, reader: jspb.BinaryReader): CsgoMatchSnapshot;
+}
+
+export namespace CsgoMatchSnapshot {
+  export type AsObject = {
+    matchUrn: string,
+    sequence: number,
+    timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    announcementsList: Array<bragi_common_pb.Announcement.AsObject>,
+    matchState?: CsgoMatchState.AsObject,
+  }
+}
+
 export class CsgoMatchUpdate extends jspb.Message {
-  clearUpdatesList(): void;
-  getUpdatesList(): Array<CsgoMatchStatePartialUpdate>;
-  setUpdatesList(value: Array<CsgoMatchStatePartialUpdate>): void;
-  addUpdates(value?: CsgoMatchStatePartialUpdate, index?: number): CsgoMatchStatePartialUpdate;
+  hasPayload(): boolean;
+  clearPayload(): void;
+  getPayload(): CsgoMatchUpdate.Payload | undefined;
+  setPayload(value?: CsgoMatchUpdate.Payload): void;
 
   clearEventsList(): void;
   getEventsList(): Array<CsgoEvent>;
@@ -100,8 +142,65 @@ export class CsgoMatchUpdate extends jspb.Message {
 
 export namespace CsgoMatchUpdate {
   export type AsObject = {
-    updatesList: Array<CsgoMatchStatePartialUpdate.AsObject>,
+    payload?: CsgoMatchUpdate.Payload.AsObject,
     eventsList: Array<CsgoEvent.AsObject>,
+  }
+
+  export class Payload extends jspb.Message {
+    hasMatchState(): boolean;
+    clearMatchState(): void;
+    getMatchState(): CsgoMatchState | undefined;
+    setMatchState(value?: CsgoMatchState): void;
+
+    hasPartialUpdates(): boolean;
+    clearPartialUpdates(): void;
+    getPartialUpdates(): CsgoMatchStatePartialUpdates | undefined;
+    setPartialUpdates(value?: CsgoMatchStatePartialUpdates): void;
+
+    getPayloadCase(): Payload.PayloadCase;
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Payload.AsObject;
+    static toObject(includeInstance: boolean, msg: Payload): Payload.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: Payload, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Payload;
+    static deserializeBinaryFromReader(message: Payload, reader: jspb.BinaryReader): Payload;
+  }
+
+  export namespace Payload {
+    export type AsObject = {
+      matchState?: CsgoMatchState.AsObject,
+      partialUpdates?: CsgoMatchStatePartialUpdates.AsObject,
+    }
+
+    export enum PayloadCase {
+      PAYLOAD_NOT_SET = 0,
+      MATCH_STATE = 1,
+      PARTIAL_UPDATES = 2,
+    }
+  }
+}
+
+export class CsgoMatchStatePartialUpdates extends jspb.Message {
+  clearUpdatesList(): void;
+  getUpdatesList(): Array<CsgoMatchStatePartialUpdate>;
+  setUpdatesList(value: Array<CsgoMatchStatePartialUpdate>): void;
+  addUpdates(value?: CsgoMatchStatePartialUpdate, index?: number): CsgoMatchStatePartialUpdate;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CsgoMatchStatePartialUpdates.AsObject;
+  static toObject(includeInstance: boolean, msg: CsgoMatchStatePartialUpdates): CsgoMatchStatePartialUpdates.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: CsgoMatchStatePartialUpdates, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CsgoMatchStatePartialUpdates;
+  static deserializeBinaryFromReader(message: CsgoMatchStatePartialUpdates, reader: jspb.BinaryReader): CsgoMatchStatePartialUpdates;
+}
+
+export namespace CsgoMatchStatePartialUpdates {
+  export type AsObject = {
+    updatesList: Array<CsgoMatchStatePartialUpdate.AsObject>,
   }
 }
 
@@ -169,8 +268,8 @@ export class CsgoMatchState extends jspb.Message {
   getScore(): CsgoMatchScoreState | undefined;
   setScore(value?: CsgoMatchScoreState): void;
 
-  getMatchStatus(): CsgoMatchStatusTypeMap[keyof CsgoMatchStatusTypeMap];
-  setMatchStatus(value: CsgoMatchStatusTypeMap[keyof CsgoMatchStatusTypeMap]): void;
+  getMatchStatus(): bragi_common_pb.MatchStatusTypeMap[keyof bragi_common_pb.MatchStatusTypeMap];
+  setMatchStatus(value: bragi_common_pb.MatchStatusTypeMap[keyof bragi_common_pb.MatchStatusTypeMap]): void;
 
   hasCurrentMapState(): boolean;
   clearCurrentMapState(): void;
@@ -199,7 +298,7 @@ export namespace CsgoMatchState {
     homeTeam?: CsgoTeam.AsObject,
     awayTeam?: CsgoTeam.AsObject,
     score?: CsgoMatchScoreState.AsObject,
-    matchStatus: CsgoMatchStatusTypeMap[keyof CsgoMatchStatusTypeMap],
+    matchStatus: bragi_common_pb.MatchStatusTypeMap[keyof bragi_common_pb.MatchStatusTypeMap],
     currentMapState?: CsgoCurrentMapState.AsObject,
     previousMapStatesList: Array<CsgoPreviousMapState.AsObject>,
   }
@@ -1388,9 +1487,6 @@ export class CsgoPlayerCurrentRoundStatisticsState extends jspb.Message {
   getAlive(): boolean;
   setAlive(value: boolean): void;
 
-  getActive(): boolean;
-  setActive(value: boolean): void;
-
   getHealth(): number;
   setHealth(value: number): void;
 
@@ -1419,7 +1515,6 @@ export namespace CsgoPlayerCurrentRoundStatisticsState {
   export type AsObject = {
     playerUrn: string,
     alive: boolean,
-    active: boolean,
     health: number,
     armor: number,
     balance: number,
@@ -2797,14 +2892,6 @@ export interface CsgoRoundStateTypeMap {
 }
 
 export const CsgoRoundStateType: CsgoRoundStateTypeMap;
-
-export interface CsgoMatchStatusTypeMap {
-  CSGO_MATCH_STATUS_TYPE_UNSPECIFIED: 0;
-  CSGO_MATCH_STATUS_TYPE_LIVE: 1;
-  CSGO_MATCH_STATUS_TYPE_FINISHED: 2;
-}
-
-export const CsgoMatchStatusType: CsgoMatchStatusTypeMap;
 
 export interface CsgoWeaponTypeMap {
   CSGO_WEAPON_TYPE_UNSPECIFIED: 0;
