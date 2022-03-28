@@ -5,6 +5,50 @@ package bragi;
 option go_package = "oddin.gg/bragi";
 option java_package = "com.oddin.bragi";
 
+import "google/protobuf/timestamp.proto";
+
+// Append announcement's payload to property announcements array in MatchSnapshot. Each AnnouncementUpdate carries
+// properties "sequence", "timestamp". Replace cached properties "sequence" and "timestamp" in cached
+// MatchSnapshot with values of "sequence", "timestamp" from AnnouncementUpdate after you successfully applied updates.
+message AnnouncementUpdate {
+  string match_urn = 1;
+  uint64 sequence = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  Announcement payload = 4;
+}
+
+// Announcement informs consumer about operational situation during match lifetime. Eg. match was postponed,
+// there is a server issue, etc.
+message Announcement {
+  message Payload {
+    oneof payload {
+      ControlAnnouncement control = 1;
+      ControlErrorAnnouncement error = 2;
+    }
+  }
+
+  google.protobuf.Timestamp created_at = 1;
+  Payload payload = 2;
+}
+
+message ControlAnnouncement {
+  enum ControlAnnouncementType {
+    CONTROL_ANNOUNCEMENT_TYPE_UNSPECIFIED = 0;
+  }
+
+  ControlAnnouncementType type = 1;
+  optional string message = 2;
+}
+
+message ControlErrorAnnouncement {
+  enum ControlErrorAnnouncementType {
+    CONTROL_ERROR_ANNOUNCEMENT_TYPE_UNSPECIFIED = 0;
+  }
+
+  ControlErrorAnnouncementType type = 1;
+  optional string message = 2;
+}
+
 enum BestOfType {
   BEST_OF_TYPE_UNSPECIFIED = 0;
   BEST_OF_TYPE_BO1 = 1;
@@ -14,4 +58,11 @@ enum BestOfType {
   BEST_OF_TYPE_BO5 = 5;
   BEST_OF_TYPE_BO6 = 6;
   BEST_OF_TYPE_BO7 = 7;
+}
+
+enum MatchStatusType {
+  MATCH_STATUS_TYPE_UNSPECIFIED = 0;
+  MATCH_STATUS_TYPE_NOT_STARTED = 1;
+  MATCH_STATUS_TYPE_LIVE = 2;
+  MATCH_STATUS_TYPE_FINISHED = 3;
 }
