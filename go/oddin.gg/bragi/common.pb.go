@@ -297,8 +297,8 @@ func (x *AnnouncementUpdate) GetPayload() *Announcement {
 	return nil
 }
 
-// Announcement informs consumer about operational situation during match lifetime. Eg. match was postponed,there
-// is a server issue etc.
+// Announcement informs consumer about operational situation during match lifetime. Eg. match was postponed,
+// there is a server issue, etc.
 type Announcement struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

@@ -205,7 +205,7 @@ func (x *KeepAlive) GetTimestamp() *timestamppb.Timestamp {
 // (Game)MatchSnapshot. If AnnouncementUpdate is received then append its "payload" property value to the array of "announcements"
 // in cached (Game)MatchSnapshot. If update (e.g. CsgoMatchUpdate) payload is received then apply this update on "match_state"
 // property in cached (Game)MatchSnapshot. For both update cases do not forget also to update "sequence" and "timestamp"
-// properties in the cached (Game)MatchSnapshot with the values from the received (Game)MatchMessage.
+// properties in the cached (Game)MatchSnapshot with values from the received (Game)MatchMessage.
 type MatchMessage struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

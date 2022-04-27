@@ -418,7 +418,7 @@ func (x *CsgoMatchSnapshot) GetMatchState() *CsgoMatchState {
 	return nil
 }
 
-// Represents an update message which "payload" property is supposed be applied to update match_state property of
+// Represents an update message which "payload" property is supposed to be applied to update match_state property of
 // cached match entity (CsgoMatchSnapshot). Each CsgoMatchUpdate is received wrapped in CsgoMatchMessage which carries
 // properties "sequence", "timestamp". Replace cached properties "sequence" and "timestamp" in cached CsgoMatchSnapshot
 // with values of "sequence", "timestamp" from CsgoMatchMessage after you successfully applied updates.

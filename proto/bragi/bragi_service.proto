@@ -39,14 +39,14 @@ message KeepAlive {
 // support any interface or trait definition, there is no defined proto message called MatchSnapshot. But still we
 // use (Game)MatchSnapshot term in this documentation. If (Game)MatchSnapshot is mentioned then it represents a game specific proto
 // message which contains exactly five properties. Four of them ("match_urn", "sequence", "timestamp", "announcements")
-// are game non-specific and last one is game specific "match_state" (eg. CsgoMatchState).
+// are not game specific and the last one is game specific "match_state" (eg. CsgoMatchState).
 
 // (Game)MatchMessage - each sport has own defined MatchMessage (eg. CsgoMatchMessage). Because Protocol buffers do not
 // support any interface or trait definition, there is no defined proto message called MatchMessage. But still we
 // use (Game)MatchMessage term in this documentation. If (Game)MatchMessage is mentioned then it represents a game specific proto
-// message which contains exactly four properties. Four of them ("match_urn", "sequence", "timestamp") are game non-specific
-// and last one is game specific "payload" (eg. CsgoMatchState). Property "payload" is enum which can have just two items.
-// One item is a (Game)MatchSnapshot and second one (Game)MatchUpdate.
+// message which contains exactly four properties. Three of them ("match_urn", "sequence", "timestamp") are not game specific
+// and the last one is game specific "payload" (eg. CsgoMatchState). Property "payload" is the oneof which can have just two items.
+// One item is a (Game)MatchSnapshot and the second one (Game)MatchUpdate.
 
 // At the beginning, when the stream is established, an initial (Game)MatchMessage with a (Game)MatchSnapshot payload
 // (eg. CsgoMatchSnapshot) is received (just only once during the stream lifecycle, to recover (Game)MatchSnapshot you
@@ -55,7 +55,7 @@ message KeepAlive {
 // (Game)MatchSnapshot. If AnnouncementUpdate is received then append its "payload" property value to the array of "announcements"
 // in cached (Game)MatchSnapshot. If update (e.g. CsgoMatchUpdate) payload is received then apply this update on "match_state"
 // property in cached (Game)MatchSnapshot. For both update cases do not forget also to update "sequence" and "timestamp"
-// properties in the cached (Game)MatchSnapshot with the values from the received (Game)MatchMessage.
+// properties in the cached (Game)MatchSnapshot with values from the received (Game)MatchMessage.
 message MatchMessage {
   oneof message {
 
