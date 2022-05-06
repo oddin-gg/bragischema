@@ -440,6 +440,7 @@ message CsgoEvent {
     CsgoBombDefuseStarted bomb_defuse_started = 1;
     CsgoBombDefused bomb_defused = 2;
     CsgoBombExploded bomb_exploded = 3;
+    CsgoBombPlantStarted bomb_plant_started = 21;
     CsgoBombPlanted bomb_planted = 4;
     CsgoDamageDealt damage_dealt = 5;
     CsgoFreezeTimeEnded freeze_time_ended = 6;
@@ -491,14 +492,20 @@ message CsgoBombDefused {
   uint32 current_round_number = 3;
   string player_urn = 4;
   string team_urn = 5;
-  uint32 balance = 6;
 }
 
 message CsgoBombExploded {
   google.protobuf.Duration map_time = 1;
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
-  string team_urn = 4;
+}
+
+message CsgoBombPlantStarted {
+  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration time_remaining = 2;
+  uint32 current_round_number = 3;
+  string player_urn = 4;
+  string team_urn = 5;
 }
 
 message CsgoBombPlanted {
@@ -507,14 +514,13 @@ message CsgoBombPlanted {
   uint32 current_round_number = 3;
   string player_urn = 4;
   string team_urn = 5;
-  uint32 balance = 6;
 }
 
 message CsgoDamageDealt {
   google.protobuf.Duration map_time = 1;
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
-  CsgoPosition position = 4;
+  CsgoPosition killer_position = 4;
   string killer_urn = 5;
   string killer_team_urn = 6;
   string victim_urn = 7;
@@ -525,7 +531,7 @@ message CsgoDamageDealt {
   uint32 health_remaining = 12;
   uint32 armor_deducted = 13;
   uint32 armor_remaining = 14;
-  CsgoPosition target_position = 15;
+  CsgoPosition victim_position = 15;
 }
 
 message CsgoFreezeTimeEnded {
@@ -569,7 +575,7 @@ message CsgoItemPurchase {
   string player_urn = 4;
   string team_urn = 5;
   string item = 6;
-  uint32 balance = 7;
+  uint32 player_balance = 7;
   uint32 equipment_value = 8;
 }
 
@@ -587,7 +593,7 @@ message CsgoKill {
   google.protobuf.Duration map_time = 1;
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
-  CsgoPosition position = 4;
+  CsgoPosition killer_position = 4;
   string killer_urn = 5;
   string killer_team_urn = 6;
   string victim_urn = 7;
@@ -596,7 +602,6 @@ message CsgoKill {
   bool headshot = 10;
   bool penetrated = 11;
   repeated string assistants = 12; // array of player_urns
-  uint32 balance = 13;
 }
 
 message CsgoDeath {
@@ -607,13 +612,12 @@ message CsgoDeath {
   string player_urn = 5;
   string team_urn = 6;
   uint32 total_deaths = 7;
-  google.protobuf.Duration respawn_time = 8;
   bool suicide = 9;
+  bool death_by_bomb = 10;
 }
 
 message CsgoMapEnd {
   google.protobuf.Duration map_time = 1;
-  google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
   string csgo_map_name = 4;
   string winning_team_urn = 5;
@@ -697,6 +701,3 @@ enum CsgoWeaponType {
   CSGO_WEAPON_TYPE_KNIFE = 9;
   CSGO_WEAPON_TYPE_DEFUSE_KIT = 10;
 }
-
-
-

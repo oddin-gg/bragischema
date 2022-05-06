@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n\017com.oddin.bragiZ\016oddin.gg/bragi',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x10\x62ragi/csgo.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x12\x62ragi/common.proto\"\x86\x02\n\x10\x43sgoMatchMessage\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x30\n\x07payload\x18\x04 \x01(\x0b\x32\x1f.bragi.CsgoMatchMessage.Payload\x1al\n\x07Payload\x12,\n\x08snapshot\x18\x01 \x01(\x0b\x32\x18.bragi.CsgoMatchSnapshotH\x00\x12(\n\x06update\x18\x02 \x01(\x0b\x32\x16.bragi.CsgoMatchUpdateH\x00\x42\t\n\x07payload\"\xbf\x01\n\x11\x43sgoMatchSnapshot\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12*\n\rannouncements\x18\x04 \x03(\x0b\x32\x13.bragi.Announcement\x12*\n\x0bmatch_state\x18\x05 \x01(\x0b\x32\x15.bragi.CsgoMatchState\"\xe9\x01\n\x0f\x43sgoMatchUpdate\x12/\n\x07payload\x18\x01 \x01(\x0b\x32\x1e.bragi.CsgoMatchUpdate.Payload\x12 \n\x06\x65vents\x18\x02 \x03(\x0b\x32\x10.bragi.CsgoEvent\x1a\x82\x01\n\x07Payload\x12,\n\x0bmatch_state\x18\x01 \x01(\x0b\x32\x15.bragi.CsgoMatchStateH\x00\x12>\n\x0fpartial_updates\x18\x02 \x01(\x0b\x32#.bragi.CsgoMatchStatePartialUpdatesH\x00\x42\t\n\x07payload\"S\n\x1c\x43sgoMatchStatePartialUpdates\x12\x33\n\x07updates\x18\x01 \x03(\x0b\x32\".bragi.CsgoMatchStatePartialUpdate\"\xe2\x01\n\x1b\x43sgoMatchStatePartialUpdate\x12+\n\x05score\x18\x01 \x01(\x0b\x32\x1a.bragi.CsgoMatchScoreStateH\x00\x12\x37\n\x11\x63urrent_map_state\x18\x02 \x01(\x0b\x32\x1a.bragi.CsgoCurrentMapStateH\x00\x12S\n current_map_state_partial_update\x18\x03 \x01(\x0b\x32\'.bragi.CsgoCurrentMapStatePartialUpdateH\x00\x42\x08\n\x06update\"\xdc\x02\n\x0e\x43sgoMatchState\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12%\n\nmatch_type\x18\x02 \x01(\x0e\x32\x11.bragi.BestOfType\x12\"\n\thome_team\x18\x03 \x01(\x0b\x32\x0f.bragi.CsgoTeam\x12\"\n\taway_team\x18\x04 \x01(\x0b\x32\x0f.bragi.CsgoTeam\x12)\n\x05score\x18\x05 \x01(\x0b\x32\x1a.bragi.CsgoMatchScoreState\x12,\n\x0cmatch_status\x18\x06 \x01(\x0e\x32\x16.bragi.MatchStatusType\x12\x35\n\x11\x63urrent_map_state\x18\x07 \x01(\x0b\x32\x1a.bragi.CsgoCurrentMapState\x12\x38\n\x13previous_map_states\x18\x08 \x03(\x0b\x32\x1b.bragi.CsgoPreviousMapState\"=\n\x13\x43sgoMatchScoreState\x12\x12\n\nhome_score\x18\x01 \x01(\r\x12\x12\n\naway_score\x18\x02 \x01(\r\"/\n\x08\x43sgoTeam\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12\x11\n\tteam_name\x18\x02 \x01(\t\"\xe6\x02\n CsgoCurrentMapStatePartialUpdate\x12\'\n\x04info\x18\x01 \x01(\x0b\x32\x17.bragi.CsgoMapInfoStateH\x00\x12)\n\x05score\x18\x02 \x01(\x0b\x32\x18.bragi.CsgoMapScoreStateH\x00\x12;\n\x13\x63urrent_round_state\x18\x03 \x01(\x0b\x32\x1c.bragi.CsgoCurrentRoundStateH\x00\x12W\n\"current_round_state_partial_update\x18\x04 \x01(\x0b\x32).bragi.CsgoCurrentRoundStatePartialUpdateH\x00\x12N\n\x1eteam_map_states_partial_update\x18\x05 \x01(\x0b\x32$.bragi.CsgoTeamMapStatePartialUpdateH\x00\x42\x08\n\x06update\"\x88\x03\n\x13\x43sgoCurrentMapState\x12\x11\n\tmap_order\x18\x01 \x01(\r\x12%\n\x04info\x18\x02 \x01(\x0b\x32\x17.bragi.CsgoMapInfoState\x12\'\n\x05score\x18\x03 \x01(\x0b\x32\x18.bragi.CsgoMapScoreState\x12\x39\n\x13\x63urrent_round_state\x18\x04 \x01(\x0b\x32\x1c.bragi.CsgoCurrentRoundState\x12<\n\x15previous_round_states\x18\x05 \x03(\x0b\x32\x1d.bragi.CsgoPreviousRoundState\x12\x46\n\x0fteam_map_states\x18\x06 \x03(\x0b\x32-.bragi.CsgoCurrentMapState.TeamMapStatesEntry\x1aM\n\x12TeamMapStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.bragi.CsgoTeamMapState:\x02\x38\x01\"\xc6\x02\n\x14\x43sgoPreviousMapState\x12\x11\n\tmap_order\x18\x01 \x01(\r\x12%\n\x04info\x18\x02 \x01(\x0b\x32\x17.bragi.CsgoMapInfoState\x12\'\n\x05score\x18\x03 \x01(\x0b\x32\x18.bragi.CsgoMapScoreState\x12\x33\n\x0cround_states\x18\x04 \x03(\x0b\x32\x1d.bragi.CsgoPreviousRoundState\x12G\n\x0fteam_map_states\x18\x05 \x03(\x0b\x32..bragi.CsgoPreviousMapState.TeamMapStatesEntry\x1aM\n\x12TeamMapStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.bragi.CsgoTeamMapState:\x02\x38\x01\"\xf8\x03\n\x10\x43sgoMapInfoState\x12\x15\n\rcsgo_map_name\x18\x01 \x01(\t\x12\x1a\n\x12max_rounds_default\x18\x02 \x01(\r\x12\x1b\n\x13max_rounds_overtime\x18\x03 \x01(\r\x12<\n\x14\x66reeze_time_duration\x18\x04 \x01(\x0b\x32\x19.google.protobuf.DurationH\x00\x88\x01\x01\x12;\n\x13round_time_duration\x18\x05 \x01(\x0b\x32\x19.google.protobuf.DurationH\x01\x88\x01\x01\x12:\n\x12\x62omb_time_duration\x18\x06 \x01(\x0b\x32\x19.google.protobuf.DurationH\x02\x88\x01\x01\x12\x33\n\nstart_time\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x03\x88\x01\x01\x12\x31\n\x08\x65nd_time\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x04\x88\x01\x01\x12\x11\n\tmap_ended\x18\t \x01(\x08\x42\x17\n\x15_freeze_time_durationB\x16\n\x14_round_time_durationB\x15\n\x13_bomb_time_durationB\r\n\x0b_start_timeB\x0b\n\t_end_time\";\n\x11\x43sgoMapScoreState\x12\x12\n\nhome_score\x18\x01 \x01(\r\x12\x12\n\naway_score\x18\x02 \x01(\r\"\x85\x02\n\"CsgoCurrentRoundStatePartialUpdate\x12)\n\x04info\x18\x01 \x01(\x0b\x32\x19.bragi.CsgoRoundInfoStateH\x00\x12)\n\x04time\x18\x02 \x01(\x0b\x32\x19.bragi.CsgoRoundTimeStateH\x00\x12*\n\nbomb_state\x18\x03 \x01(\x0b\x32\x14.bragi.CsgoBombStateH\x00\x12S\n\x1ateam_states_partial_update\x18\x04 \x01(\x0b\x32-.bragi.CsgoTeamCurrentRoundStatePartialUpdateH\x00\x42\x08\n\x06update\"\xc1\x02\n\x15\x43sgoCurrentRoundState\x12\x14\n\x0cround_number\x18\x01 \x01(\r\x12\'\n\x04info\x18\x02 \x01(\x0b\x32\x19.bragi.CsgoRoundInfoState\x12\'\n\x04time\x18\x03 \x01(\x0b\x32\x19.bragi.CsgoRoundTimeState\x12(\n\nbomb_state\x18\x04 \x01(\x0b\x32\x14.bragi.CsgoBombState\x12\x41\n\x0bteam_states\x18\x05 \x03(\x0b\x32,.bragi.CsgoCurrentRoundState.TeamStatesEntry\x1aS\n\x0fTeamStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12/\n\x05value\x18\x02 \x01(\x0b\x32 .bragi.CsgoTeamCurrentRoundState:\x02\x38\x01\"\xf1\x01\n\x16\x43sgoPreviousRoundState\x12\x14\n\x0cround_number\x18\x01 \x01(\r\x12\'\n\x04info\x18\x02 \x01(\x0b\x32\x19.bragi.CsgoRoundInfoState\x12\x42\n\x0bteam_states\x18\x04 \x03(\x0b\x32-.bragi.CsgoPreviousRoundState.TeamStatesEntry\x1aT\n\x0fTeamStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x30\n\x05value\x18\x02 \x01(\x0b\x32!.bragi.CsgoPreviousTeamRoundState:\x02\x38\x01\"\xa5\x02\n\x12\x43sgoRoundInfoState\x12-\n\nround_type\x18\x01 \x01(\x0e\x32\x19.bragi.CsgoRoundStateType\x12.\n\nstart_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x31\n\x08\x65nd_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x00\x88\x01\x01\x12\x1d\n\x10winning_team_urn\x18\x04 \x01(\tH\x01\x88\x01\x01\x12-\n\nwin_reason\x18\x05 \x01(\x0e\x32\x14.bragi.CsgoWinReasonH\x02\x88\x01\x01\x42\x0b\n\t_end_timeB\x13\n\x11_winning_team_urnB\r\n\x0b_win_reason\"G\n\x12\x43sgoRoundTimeState\x12\x31\n\x0etime_remaining\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\"\xf0\x02\n\rCsgoBombState\x12.\n\x07\x63\x61rried\x18\x01 \x01(\x0b\x32\x1b.bragi.CsgoBombCarriedStateH\x00\x12.\n\x07\x64ropped\x18\x02 \x01(\x0b\x32\x1b.bragi.CsgoBombDroppedStateH\x00\x12\x30\n\x08planting\x18\x03 \x01(\x0b\x32\x1c.bragi.CsgoBombPlantingStateH\x00\x12.\n\x07planted\x18\x04 \x01(\x0b\x32\x1b.bragi.CsgoBombPlantedStateH\x00\x12\x30\n\x08\x64\x65\x66using\x18\x05 \x01(\x0b\x32\x1c.bragi.CsgoBombDefusingStateH\x00\x12.\n\x07\x64\x65\x66used\x18\x06 \x01(\x0b\x32\x1b.bragi.CsgoBombDefusedStateH\x00\x12\x30\n\x08\x65xploded\x18\x07 \x01(\x0b\x32\x1c.bragi.CsgoBombExplodedStateH\x00\x42\t\n\x07payload\"Q\n\x14\x43sgoBombCarriedState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12%\n\x08position\x18\x02 \x01(\x0b\x32\x13.bragi.CsgoPosition\"\\\n\x14\x43sgoBombDroppedState\x12\x1d\n\x15\x64ropped_by_player_urn\x18\x01 \x01(\t\x12%\n\x08position\x18\x02 \x01(\x0b\x32\x13.bragi.CsgoPosition\"\x80\x01\n\x15\x43sgoBombPlantingState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12%\n\x08position\x18\x02 \x01(\x0b\x32\x13.bragi.CsgoPosition\x12,\n\tcountdown\x18\x03 \x01(\x0b\x32\x19.google.protobuf.Duration\"\xba\x01\n\x14\x43sgoBombPlantedState\x12\x1d\n\x15planted_by_player_urn\x18\x01 \x01(\t\x12%\n\x08position\x18\x02 \x01(\x0b\x32\x13.bragi.CsgoPosition\x12.\n\nplanted_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12,\n\tcountdown\x18\x04 \x01(\x0b\x32\x19.google.protobuf.Duration\"\xb7\x01\n\x15\x43sgoBombDefusingState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12%\n\x08position\x18\x02 \x01(\x0b\x32\x13.bragi.CsgoPosition\x12,\n\tcountdown\x18\x03 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x35\n\x11\x64\x65\x66use_started_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x8c\x01\n\x14\x43sgoBombDefusedState\x12\x1d\n\x15\x64\x65\x66used_by_player_urn\x18\x01 \x01(\t\x12%\n\x08position\x18\x02 \x01(\x0b\x32\x13.bragi.CsgoPosition\x12.\n\ndefused_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"o\n\x15\x43sgoBombExplodedState\x12%\n\x08position\x18\x01 \x01(\x0b\x32\x13.bragi.CsgoPosition\x12/\n\x0b\x65xploded_at\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x8e\x02\n\x1d\x43sgoTeamMapStatePartialUpdate\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12=\n\x07payload\x18\x02 \x01(\x0b\x32,.bragi.CsgoTeamMapStatePartialUpdate.Payload\x1a\x9b\x01\n\x07Payload\x12\x31\n\x0cplayer_state\x18\x02 \x01(\x0b\x32\x19.bragi.CsgoPlayerMapStateH\x00\x12R\n player_map_states_partial_update\x18\x01 \x01(\x0b\x32&.bragi.CsgoPlayerMapStatePartialUpdateH\x00\x42\t\n\x07payload\"\xdf\x01\n\x10\x43sgoTeamMapState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12\x1d\n\x04side\x18\x02 \x01(\x0e\x32\x0f.bragi.CsgoSide\x12G\n\x11player_map_states\x18\x03 \x03(\x0b\x32,.bragi.CsgoTeamMapState.PlayerMapStatesEntry\x1aQ\n\x14PlayerMapStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12(\n\x05value\x18\x02 \x01(\x0b\x32\x19.bragi.CsgoPlayerMapState:\x02\x38\x01\"\xb4\x02\n&CsgoTeamCurrentRoundStatePartialUpdate\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12\x46\n\x07payload\x18\x02 \x01(\x0b\x32\x35.bragi.CsgoTeamCurrentRoundStatePartialUpdate.Payload\x1a\xaf\x01\n\x07Payload\x12:\n\x0cplayer_state\x18\x02 \x01(\x0b\x32\".bragi.CsgoPlayerCurrentRoundStateH\x00\x12]\n\"player_round_states_partial_update\x18\x01 \x01(\x0b\x32/.bragi.CsgoPlayerCurrentRoundStatePartialUpdateH\x00\x42\t\n\x07payload\"\xe1\x01\n\x19\x43sgoTeamCurrentRoundState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12T\n\x13player_round_states\x18\x02 \x03(\x0b\x32\x37.bragi.CsgoTeamCurrentRoundState.PlayerRoundStatesEntry\x1a\\\n\x16PlayerRoundStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x31\n\x05value\x18\x02 \x01(\x0b\x32\".bragi.CsgoPlayerCurrentRoundState:\x02\x38\x01\"\xc4\x01\n\x1a\x43sgoPreviousTeamRoundState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12?\n\x07players\x18\x02 \x03(\x0b\x32..bragi.CsgoPreviousTeamRoundState.PlayersEntry\x1aS\n\x0cPlayersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x32\n\x05value\x18\x02 \x01(\x0b\x32#.bragi.CsgoPlayerPreviousRoundState:\x02\x38\x01\"\xc7\x01\n\x1f\x43sgoPlayerMapStatePartialUpdate\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12?\n\x07payload\x18\x02 \x01(\x0b\x32..bragi.CsgoPlayerMapStatePartialUpdate.Payload\x1aO\n\x07Payload\x12\x39\n\nstatistics\x18\x01 \x01(\x0b\x32#.bragi.CsgoPlayerMapStatisticsStateH\x00\x42\t\n\x07payload\"v\n\x12\x43sgoPlayerMapState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x13\n\x0bplayer_name\x18\x02 \x01(\t\x12\x37\n\nstatistics\x18\x03 \x01(\x0b\x32#.bragi.CsgoPlayerMapStatisticsState\"\x92\x01\n\x1c\x43sgoPlayerMapStatisticsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x15\n\ropening_kills\x18\x04 \x01(\r\x12\x16\n\x0eopening_deaths\x18\x05 \x01(\r\x12/\n\nstatistics\x18\x02 \x01(\x0b\x32\x1b.bragi.CsgoPlayerStatistics\"\xc5\x02\n(CsgoPlayerCurrentRoundStatePartialUpdate\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12H\n\x07payload\x18\x02 \x01(\x0b\x32\x37.bragi.CsgoPlayerCurrentRoundStatePartialUpdate.Payload\x1a\xba\x01\n\x07Payload\x12\x42\n\nstatistics\x18\x01 \x01(\x0b\x32,.bragi.CsgoPlayerCurrentRoundStatisticsStateH\x00\x12,\n\x05items\x18\x02 \x01(\x0b\x32\x1b.bragi.CsgoPlayerItemsStateH\x00\x12\x32\n\x08position\x18\x03 \x01(\x0b\x32\x1e.bragi.CsgoPlayerPositionStateH\x00\x42\t\n\x07payload\"\xe6\x01\n\x1b\x43sgoPlayerCurrentRoundState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x13\n\x0bplayer_name\x18\x02 \x01(\t\x12@\n\nstatistics\x18\x03 \x01(\x0b\x32,.bragi.CsgoPlayerCurrentRoundStatisticsState\x12*\n\x05items\x18\x04 \x01(\x0b\x32\x1b.bragi.CsgoPlayerItemsState\x12\x30\n\x08position\x18\x05 \x01(\x0b\x32\x1e.bragi.CsgoPlayerPositionState\"\xab\x01\n%CsgoPlayerCurrentRoundStatisticsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\r\n\x05\x61live\x18\x02 \x01(\x08\x12\x0e\n\x06health\x18\x03 \x01(\r\x12\r\n\x05\x61rmor\x18\x04 \x01(\r\x12\x0f\n\x07\x62\x61lance\x18\x05 \x01(\r\x12/\n\nstatistics\x18\x06 \x01(\x0b\x32\x1b.bragi.CsgoPlayerStatistics\"c\n\x14\x43sgoPlayerItemsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x17\n\x0f\x65quipment_value\x18\x02 \x01(\r\x12\x1e\n\x05items\x18\x03 \x03(\x0b\x32\x0f.bragi.CsgoItem\"x\n\x1c\x43sgoPlayerPreviousRoundState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x13\n\x0bplayer_name\x18\x02 \x01(\t\x12/\n\nstatistics\x18\x03 \x01(\x0b\x32\x1b.bragi.CsgoPlayerStatistics\"T\n\x17\x43sgoPlayerPositionState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12%\n\x08position\x18\x02 \x01(\x0b\x32\x13.bragi.CsgoPosition\"\xe8\x04\n\x14\x43sgoPlayerStatistics\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\r\n\x05kills\x18\x02 \x01(\r\x12\x16\n\x0e\x66riendly_kills\x18\x03 \x01(\r\x12\x13\n\x0b\x65nemy_kills\x18\x04 \x01(\r\x12\x12\n\nself_kills\x18\x05 \x01(\r\x12\x0e\n\x06\x64\x65\x61ths\x18\x06 \x01(\r\x12\x0f\n\x07\x61ssists\x18\x07 \x01(\r\x12\x11\n\theadshots\x18\x08 \x01(\r\x12(\n\x1b\x66riendly_damage_dealt_armor\x18\t \x01(\rH\x00\x88\x01\x01\x12)\n\x1c\x66riendly_damage_dealt_health\x18\n \x01(\rH\x01\x88\x01\x01\x12%\n\x18\x65nemy_damage_dealt_armor\x18\x0b \x01(\rH\x02\x88\x01\x01\x12&\n\x19\x65nemy_damage_dealt_health\x18\x0c \x01(\rH\x03\x88\x01\x01\x12)\n\x1c\x65nemy_damage_dealt_armor_raw\x18\r \x01(\rH\x04\x88\x01\x01\x12*\n\x1d\x65nemy_damage_dealt_health_raw\x18\x0e \x01(\rH\x05\x88\x01\x01\x42\x1e\n\x1c_friendly_damage_dealt_armorB\x1f\n\x1d_friendly_damage_dealt_healthB\x1b\n\x19_enemy_damage_dealt_armorB\x1c\n\x1a_enemy_damage_dealt_healthB\x1f\n\x1d_enemy_damage_dealt_armor_rawB \n\x1e_enemy_damage_dealt_health_raw\"^\n\x08\x43sgoItem\x12\x0c\n\x04name\x18\x01 \x01(\t\x12#\n\x04type\x18\x02 \x01(\x0e\x32\x15.bragi.CsgoWeaponType\x12\r\n\x05\x63ount\x18\x03 \x01(\r\x12\x10\n\x08isActive\x18\x04 \x01(\x08\">\n\x0c\x43sgoPosition\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01z\x18\x04 \x01(\x02\x12\r\n\x05\x61ngle\x18\x03 \x01(\x02\"\xbe\x07\n\tCsgoEvent\x12;\n\x13\x62omb_defuse_started\x18\x01 \x01(\x0b\x32\x1c.bragi.CsgoBombDefuseStartedH\x00\x12.\n\x0c\x62omb_defused\x18\x02 \x01(\x0b\x32\x16.bragi.CsgoBombDefusedH\x00\x12\x30\n\rbomb_exploded\x18\x03 \x01(\x0b\x32\x17.bragi.CsgoBombExplodedH\x00\x12.\n\x0c\x62omb_planted\x18\x04 \x01(\x0b\x32\x16.bragi.CsgoBombPlantedH\x00\x12.\n\x0c\x64\x61mage_dealt\x18\x05 \x01(\x0b\x32\x16.bragi.CsgoDamageDealtH\x00\x12\x37\n\x11\x66reeze_time_ended\x18\x06 \x01(\x0b\x32\x1a.bragi.CsgoFreezeTimeEndedH\x00\x12;\n\x13\x66reeze_time_started\x18\x07 \x01(\x0b\x32\x1c.bragi.CsgoFreezeTimeStartedH\x00\x12(\n\titem_drop\x18\x08 \x01(\x0b\x32\x13.bragi.CsgoItemDropH\x00\x12-\n\x0citem_pick_up\x18\t \x01(\x0b\x32\x15.bragi.CsgoItemPickUpH\x00\x12\x30\n\ritem_purchase\x18\n \x01(\x0b\x32\x17.bragi.CsgoItemPurchaseH\x00\x12*\n\nitem_throw\x18\x0b \x01(\x0b\x32\x14.bragi.CsgoItemThrowH\x00\x12\x1f\n\x04kill\x18\x0c \x01(\x0b\x32\x0f.bragi.CsgoKillH\x00\x12!\n\x05\x64\x65\x61th\x18\r \x01(\x0b\x32\x10.bragi.CsgoDeathH\x00\x12$\n\x07map_end\x18\x0e \x01(\x0b\x32\x11.bragi.CsgoMapEndH\x00\x12(\n\tmap_start\x18\x0f \x01(\x0b\x32\x13.bragi.CsgoMapStartH\x00\x12(\n\tround_end\x18\x10 \x01(\x0b\x32\x13.bragi.CsgoRoundEndH\x00\x12,\n\x0bround_pause\x18\x11 \x01(\x0b\x32\x15.bragi.CsgoRoundPauseH\x00\x12.\n\x0cround_resume\x18\x12 \x01(\x0b\x32\x16.bragi.CsgoRoundResumeH\x00\x12\x32\n\x0eround_rollback\x18\x13 \x01(\x0b\x32\x18.bragi.CsgoRoundRollbackH\x00\x12,\n\x0bround_start\x18\x14 \x01(\x0b\x32\x15.bragi.CsgoRoundStartH\x00\x42\x07\n\x05\x65vent\"J\n\x11\x43sgoPlayerBalance\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x10\n\x08team_urn\x18\x02 \x01(\t\x12\x0f\n\x07\x62\x61lance\x18\x03 \x01(\r\"p\n\x0f\x43sgoPlayerItems\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x10\n\x08team_urn\x18\x02 \x01(\t\x12\x17\n\x0f\x65quipment_value\x18\x03 \x01(\r\x12\x1e\n\x05items\x18\x04 \x03(\x0b\x32\x0f.bragi.CsgoItem\"\xbb\x01\n\x15\x43sgoBombDefuseStarted\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\"\xc6\x01\n\x0f\x43sgoBombDefused\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\x12\x0f\n\x07\x62\x61lance\x18\x06 \x01(\r\"\xa2\x01\n\x10\x43sgoBombExploded\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x10\n\x08team_urn\x18\x04 \x01(\t\"\xc6\x01\n\x0f\x43sgoBombPlanted\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\x12\x0f\n\x07\x62\x61lance\x18\x06 \x01(\r\"\xc4\x03\n\x0f\x43sgoDamageDealt\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12%\n\x08position\x18\x04 \x01(\x0b\x32\x13.bragi.CsgoPosition\x12\x12\n\nkiller_urn\x18\x05 \x01(\t\x12\x17\n\x0fkiller_team_urn\x18\x06 \x01(\t\x12\x12\n\nvictim_urn\x18\x07 \x01(\t\x12\x17\n\x0fvictim_team_urn\x18\x08 \x01(\t\x12\x0e\n\x06weapon\x18\t \x01(\t\x12\x10\n\x08hitgroup\x18\n \x01(\t\x12\x17\n\x0fhealth_deducted\x18\x0b \x01(\r\x12\x18\n\x10health_remaining\x18\x0c \x01(\r\x12\x16\n\x0e\x61rmor_deducted\x18\r \x01(\r\x12\x17\n\x0f\x61rmor_remaining\x18\x0e \x01(\r\x12,\n\x0ftarget_position\x18\x0f \x01(\x0b\x32\x13.bragi.CsgoPosition\"\xce\x03\n\x13\x43sgoFreezeTimeEnded\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12G\n\x0fplayer_balances\x18\x04 \x03(\x0b\x32..bragi.CsgoFreezeTimeEnded.PlayerBalancesEntry\x12M\n\x12player_inventories\x18\x05 \x03(\x0b\x32\x31.bragi.CsgoFreezeTimeEnded.PlayerInventoriesEntry\x1aO\n\x13PlayerBalancesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\'\n\x05value\x18\x02 \x01(\x0b\x32\x18.bragi.CsgoPlayerBalance:\x02\x38\x01\x1aP\n\x16PlayerInventoriesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12%\n\x05value\x18\x02 \x01(\x0b\x32\x16.bragi.CsgoPlayerItems:\x02\x38\x01\"\xc5\x03\n\x15\x43sgoFreezeTimeStarted\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12I\n\x0fplayer_balances\x18\x04 \x03(\x0b\x32\x30.bragi.CsgoFreezeTimeStarted.PlayerBalancesEntry\x12J\n\x10teams_round_info\x18\x05 \x03(\x0b\x32\x30.bragi.CsgoFreezeTimeStarted.TeamsRoundInfoEntry\x1aO\n\x13PlayerBalancesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\'\n\x05value\x18\x02 \x01(\x0b\x32\x18.bragi.CsgoPlayerBalance:\x02\x38\x01\x1a\x46\n\x13TeamsRoundInfoEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x1e\n\x05value\x18\x02 \x01(\x0e\x32\x0f.bragi.CsgoSide:\x02\x38\x01\"\xe7\x01\n\x0c\x43sgoItemDrop\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12%\n\x08position\x18\x04 \x01(\x0b\x32\x13.bragi.CsgoPosition\x12\x12\n\nplayer_urn\x18\x05 \x01(\t\x12\x10\n\x08team_urn\x18\x06 \x01(\t\x12\x0c\n\x04item\x18\x07 \x01(\t\"\xc2\x01\n\x0e\x43sgoItemPickUp\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\x12\x0c\n\x04item\x18\x06 \x01(\t\"\xee\x01\n\x10\x43sgoItemPurchase\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\x12\x0c\n\x04item\x18\x06 \x01(\t\x12\x0f\n\x07\x62\x61lance\x18\x07 \x01(\r\x12\x17\n\x0f\x65quipment_value\x18\x08 \x01(\r\"\xe8\x01\n\rCsgoItemThrow\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12%\n\x08position\x18\x04 \x01(\x0b\x32\x13.bragi.CsgoPosition\x12\x12\n\nplayer_urn\x18\x05 \x01(\t\x12\x10\n\x08team_urn\x18\x06 \x01(\t\x12\x0c\n\x04item\x18\x07 \x01(\t\"\xe4\x02\n\x08\x43sgoKill\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12%\n\x08position\x18\x04 \x01(\x0b\x32\x13.bragi.CsgoPosition\x12\x12\n\nkiller_urn\x18\x05 \x01(\t\x12\x17\n\x0fkiller_team_urn\x18\x06 \x01(\t\x12\x12\n\nvictim_urn\x18\x07 \x01(\t\x12\x17\n\x0fvictim_team_urn\x18\x08 \x01(\t\x12\x0e\n\x06weapon\x18\t \x01(\t\x12\x10\n\x08headshot\x18\n \x01(\x08\x12\x12\n\npenetrated\x18\x0b \x01(\x08\x12\x12\n\nassistants\x18\x0c \x03(\t\x12\x0f\n\x07\x62\x61lance\x18\r \x01(\r\"\xae\x02\n\tCsgoDeath\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12%\n\x08position\x18\x04 \x01(\x0b\x32\x13.bragi.CsgoPosition\x12\x12\n\nplayer_urn\x18\x05 \x01(\t\x12\x10\n\x08team_urn\x18\x06 \x01(\t\x12\x14\n\x0ctotal_deaths\x18\x07 \x01(\r\x12/\n\x0crespawn_time\x18\x08 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x0f\n\x07suicide\x18\t \x01(\x08\"\xbb\x01\n\nCsgoMapEnd\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x15\n\rcsgo_map_name\x18\x04 \x01(\t\x12\x18\n\x10winning_team_urn\x18\x05 \x01(\t\"R\n\x0c\x43sgoMapStart\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x15\n\rcsgo_map_name\x18\x02 \x01(\t\"\xfd\x03\n\x0c\x43sgoRoundEnd\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x18\n\x10winning_team_urn\x18\x04 \x01(\t\x12(\n\nwin_reason\x18\x05 \x01(\x0e\x32\x14.bragi.CsgoWinReason\x12@\n\x0fplayer_balances\x18\x06 \x03(\x0b\x32\'.bragi.CsgoRoundEnd.PlayerBalancesEntry\x12\x46\n\x12player_inventories\x18\x07 \x03(\x0b\x32*.bragi.CsgoRoundEnd.PlayerInventoriesEntry\x1aO\n\x13PlayerBalancesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\'\n\x05value\x18\x02 \x01(\x0b\x32\x18.bragi.CsgoPlayerBalance:\x02\x38\x01\x1aP\n\x16PlayerInventoriesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12%\n\x05value\x18\x02 \x01(\x0b\x32\x16.bragi.CsgoPlayerItems:\x02\x38\x01\"\x8e\x01\n\x0e\x43sgoRoundPause\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\"\x8f\x01\n\x0f\x43sgoRoundResume\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\".\n\x11\x43sgoRoundRollback\x12\x19\n\x11next_round_number\x18\x01 \x01(\r\"\x8e\x01\n\x0e\x43sgoRoundStart\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r*a\n\x08\x43sgoSide\x12\x19\n\x15\x43SGO_SIDE_UNSPECIFIED\x10\x00\x12 \n\x1c\x43SGO_SIDE_COUNTER_TERRORISTS\x10\x01\x12\x18\n\x14\x43SGO_SIDE_TERRORISTS\x10\x02*\x88\x02\n\rCsgoWinReason\x12\x1f\n\x1b\x43SGO_WIN_REASON_UNSPECIFIED\x10\x00\x12\x31\n-CSGO_WIN_REASON_COUNTER_TERRORISTS_ELIMINATED\x10\x01\x12)\n%CSGO_WIN_REASON_TERRORISTS_ELIMINATED\x10\x02\x12\x1d\n\x19\x43SGO_WIN_REASON_EXPLOSION\x10\x03\x12\x1a\n\x16\x43SGO_WIN_REASON_DEFUSE\x10\x04\x12\x1b\n\x17\x43SGO_WIN_REASON_TIMEOUT\x10\x05\x12 \n\x1c\x43SGO_WIN_REASON_TARGET_SAVED\x10\x06*\xcc\x01\n\x12\x43sgoRoundStateType\x12%\n!CSGO_ROUND_STATE_TYPE_UNSPECIFIED\x10\x00\x12\"\n\x1e\x43SGO_ROUND_STATE_TYPE_BUY_TIME\x10\x01\x12%\n!CSGO_ROUND_STATE_TYPE_IN_PROGRESS\x10\x02\x12 \n\x1c\x43SGO_ROUND_STATE_TYPE_PAUSED\x10\x03\x12\"\n\x1e\x43SGO_ROUND_STATE_TYPE_FINISHED\x10\x04*\xe9\x02\n\x0e\x43sgoWeaponType\x12 \n\x1c\x43SGO_WEAPON_TYPE_UNSPECIFIED\x10\x00\x12\x1b\n\x17\x43SGO_WEAPON_TYPE_PISTOL\x10\x01\x12\x19\n\x15\x43SGO_WEAPON_TYPE_BOMB\x10\x02\x12\x1c\n\x18\x43SGO_WEAPON_TYPE_GRENADE\x10\x03\x12 \n\x1c\x43SGO_WEAPON_TYPE_MACHINE_GUN\x10\x04\x12\x1a\n\x16\x43SGO_WEAPON_TYPE_RIFLE\x10\x05\x12\x1c\n\x18\x43SGO_WEAPON_TYPE_SHOTGUN\x10\x06\x12!\n\x1d\x43SGO_WEAPON_TYPE_SNIPER_RIFLE\x10\x07\x12#\n\x1f\x43SGO_WEAPON_TYPE_SUBMACHINE_GUN\x10\x08\x12\x1a\n\x16\x43SGO_WEAPON_TYPE_KNIFE\x10\t\x12\x1f\n\x1b\x43SGO_WEAPON_TYPE_DEFUSE_KIT\x10\nB!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
+  serialized_pb=b'\n\x10\x62ragi/csgo.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x12\x62ragi/common.proto\"\x86\x02\n\x10\x43sgoMatchMessage\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x30\n\x07payload\x18\x04 \x01(\x0b\x32\x1f.bragi.CsgoMatchMessage.Payload\x1al\n\x07Payload\x12,\n\x08snapshot\x18\x01 \x01(\x0b\x32\x18.bragi.CsgoMatchSnapshotH\x00\x12(\n\x06update\x18\x02 \x01(\x0b\x32\x16.bragi.CsgoMatchUpdateH\x00\x42\t\n\x07payload\"\xbf\x01\n\x11\x43sgoMatchSnapshot\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12*\n\rannouncements\x18\x04 \x03(\x0b\x32\x13.bragi.Announcement\x12*\n\x0bmatch_state\x18\x05 \x01(\x0b\x32\x15.bragi.CsgoMatchState\"\xe9\x01\n\x0f\x43sgoMatchUpdate\x12/\n\x07payload\x18\x01 \x01(\x0b\x32\x1e.bragi.CsgoMatchUpdate.Payload\x12 \n\x06\x65vents\x18\x02 \x03(\x0b\x32\x10.bragi.CsgoEvent\x1a\x82\x01\n\x07Payload\x12,\n\x0bmatch_state\x18\x01 \x01(\x0b\x32\x15.bragi.CsgoMatchStateH\x00\x12>\n\x0fpartial_updates\x18\x02 \x01(\x0b\x32#.bragi.CsgoMatchStatePartialUpdatesH\x00\x42\t\n\x07payload\"S\n\x1c\x43sgoMatchStatePartialUpdates\x12\x33\n\x07updates\x18\x01 \x03(\x0b\x32\".bragi.CsgoMatchStatePartialUpdate\"\xe2\x01\n\x1b\x43sgoMatchStatePartialUpdate\x12+\n\x05score\x18\x01 \x01(\x0b\x32\x1a.bragi.CsgoMatchScoreStateH\x00\x12\x37\n\x11\x63urrent_map_state\x18\x02 \x01(\x0b\x32\x1a.bragi.CsgoCurrentMapStateH\x00\x12S\n current_map_state_partial_update\x18\x03 \x01(\x0b\x32\'.bragi.CsgoCurrentMapStatePartialUpdateH\x00\x42\x08\n\x06update\"\xdc\x02\n\x0e\x43sgoMatchState\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12%\n\nmatch_type\x18\x02 \x01(\x0e\x32\x11.bragi.BestOfType\x12\"\n\thome_team\x18\x03 \x01(\x0b\x32\x0f.bragi.CsgoTeam\x12\"\n\taway_team\x18\x04 \x01(\x0b\x32\x0f.bragi.CsgoTeam\x12)\n\x05score\x18\x05 \x01(\x0b\x32\x1a.bragi.CsgoMatchScoreState\x12,\n\x0cmatch_status\x18\x06 \x01(\x0e\x32\x16.bragi.MatchStatusType\x12\x35\n\x11\x63urrent_map_state\x18\x07 \x01(\x0b\x32\x1a.bragi.CsgoCurrentMapState\x12\x38\n\x13previous_map_states\x18\x08 \x03(\x0b\x32\x1b.bragi.CsgoPreviousMapState\"=\n\x13\x43sgoMatchScoreState\x12\x12\n\nhome_score\x18\x01 \x01(\r\x12\x12\n\naway_score\x18\x02 \x01(\r\"/\n\x08\x43sgoTeam\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12\x11\n\tteam_name\x18\x02 \x01(\t\"\xe6\x02\n CsgoCurrentMapStatePartialUpdate\x12\'\n\x04info\x18\x01 \x01(\x0b\x32\x17.bragi.CsgoMapInfoStateH\x00\x12)\n\x05score\x18\x02 \x01(\x0b\x32\x18.bragi.CsgoMapScoreStateH\x00\x12;\n\x13\x63urrent_round_state\x18\x03 \x01(\x0b\x32\x1c.bragi.CsgoCurrentRoundStateH\x00\x12W\n\"current_round_state_partial_update\x18\x04 \x01(\x0b\x32).bragi.CsgoCurrentRoundStatePartialUpdateH\x00\x12N\n\x1eteam_map_states_partial_update\x18\x05 \x01(\x0b\x32$.bragi.CsgoTeamMapStatePartialUpdateH\x00\x42\x08\n\x06update\"\x88\x03\n\x13\x43sgoCurrentMapState\x12\x11\n\tmap_order\x18\x01 \x01(\r\x12%\n\x04info\x18\x02 \x01(\x0b\x32\x17.bragi.CsgoMapInfoState\x12\'\n\x05score\x18\x03 \x01(\x0b\x32\x18.bragi.CsgoMapScoreState\x12\x39\n\x13\x63urrent_round_state\x18\x04 \x01(\x0b\x32\x1c.bragi.CsgoCurrentRoundState\x12<\n\x15previous_round_states\x18\x05 \x03(\x0b\x32\x1d.bragi.CsgoPreviousRoundState\x12\x46\n\x0fteam_map_states\x18\x06 \x03(\x0b\x32-.bragi.CsgoCurrentMapState.TeamMapStatesEntry\x1aM\n\x12TeamMapStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.bragi.CsgoTeamMapState:\x02\x38\x01\"\xc6\x02\n\x14\x43sgoPreviousMapState\x12\x11\n\tmap_order\x18\x01 \x01(\r\x12%\n\x04info\x18\x02 \x01(\x0b\x32\x17.bragi.CsgoMapInfoState\x12\'\n\x05score\x18\x03 \x01(\x0b\x32\x18.bragi.CsgoMapScoreState\x12\x33\n\x0cround_states\x18\x04 \x03(\x0b\x32\x1d.bragi.CsgoPreviousRoundState\x12G\n\x0fteam_map_states\x18\x05 \x03(\x0b\x32..bragi.CsgoPreviousMapState.TeamMapStatesEntry\x1aM\n\x12TeamMapStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.bragi.CsgoTeamMapState:\x02\x38\x01\"\xf8\x03\n\x10\x43sgoMapInfoState\x12\x15\n\rcsgo_map_name\x18\x01 \x01(\t\x12\x1a\n\x12max_rounds_default\x18\x02 \x01(\r\x12\x1b\n\x13max_rounds_overtime\x18\x03 \x01(\r\x12<\n\x14\x66reeze_time_duration\x18\x04 \x01(\x0b\x32\x19.google.protobuf.DurationH\x00\x88\x01\x01\x12;\n\x13round_time_duration\x18\x05 \x01(\x0b\x32\x19.google.protobuf.DurationH\x01\x88\x01\x01\x12:\n\x12\x62omb_time_duration\x18\x06 \x01(\x0b\x32\x19.google.protobuf.DurationH\x02\x88\x01\x01\x12\x33\n\nstart_time\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x03\x88\x01\x01\x12\x31\n\x08\x65nd_time\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x04\x88\x01\x01\x12\x11\n\tmap_ended\x18\t \x01(\x08\x42\x17\n\x15_freeze_time_durationB\x16\n\x14_round_time_durationB\x15\n\x13_bomb_time_durationB\r\n\x0b_start_timeB\x0b\n\t_end_time\";\n\x11\x43sgoMapScoreState\x12\x12\n\nhome_score\x18\x01 \x01(\r\x12\x12\n\naway_score\x18\x02 \x01(\r\"\x85\x02\n\"CsgoCurrentRoundStatePartialUpdate\x12)\n\x04info\x18\x01 \x01(\x0b\x32\x19.bragi.CsgoRoundInfoStateH\x00\x12)\n\x04time\x18\x02 \x01(\x0b\x32\x19.bragi.CsgoRoundTimeStateH\x00\x12*\n\nbomb_state\x18\x03 \x01(\x0b\x32\x14.bragi.CsgoBombStateH\x00\x12S\n\x1ateam_states_partial_update\x18\x04 \x01(\x0b\x32-.bragi.CsgoTeamCurrentRoundStatePartialUpdateH\x00\x42\x08\n\x06update\"\xc1\x02\n\x15\x43sgoCurrentRoundState\x12\x14\n\x0cround_number\x18\x01 \x01(\r\x12\'\n\x04info\x18\x02 \x01(\x0b\x32\x19.bragi.CsgoRoundInfoState\x12\'\n\x04time\x18\x03 \x01(\x0b\x32\x19.bragi.CsgoRoundTimeState\x12(\n\nbomb_state\x18\x04 \x01(\x0b\x32\x14.bragi.CsgoBombState\x12\x41\n\x0bteam_states\x18\x05 \x03(\x0b\x32,.bragi.CsgoCurrentRoundState.TeamStatesEntry\x1aS\n\x0fTeamStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12/\n\x05value\x18\x02 \x01(\x0b\x32 .bragi.CsgoTeamCurrentRoundState:\x02\x38\x01\"\xf1\x01\n\x16\x43sgoPreviousRoundState\x12\x14\n\x0cround_number\x18\x01 \x01(\r\x12\'\n\x04info\x18\x02 \x01(\x0b\x32\x19.bragi.CsgoRoundInfoState\x12\x42\n\x0bteam_states\x18\x04 \x03(\x0b\x32-.bragi.CsgoPreviousRoundState.TeamStatesEntry\x1aT\n\x0fTeamStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x30\n\x05value\x18\x02 \x01(\x0b\x32!.bragi.CsgoPreviousTeamRoundState:\x02\x38\x01\"\xa5\x02\n\x12\x43sgoRoundInfoState\x12-\n\nround_type\x18\x01 \x01(\x0e\x32\x19.bragi.CsgoRoundStateType\x12.\n\nstart_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x31\n\x08\x65nd_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x00\x88\x01\x01\x12\x1d\n\x10winning_team_urn\x18\x04 \x01(\tH\x01\x88\x01\x01\x12-\n\nwin_reason\x18\x05 \x01(\x0e\x32\x14.bragi.CsgoWinReasonH\x02\x88\x01\x01\x42\x0b\n\t_end_timeB\x13\n\x11_winning_team_urnB\r\n\x0b_win_reason\"G\n\x12\x43sgoRoundTimeState\x12\x31\n\x0etime_remaining\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\"\xf0\x02\n\rCsgoBombState\x12.\n\x07\x63\x61rried\x18\x01 \x01(\x0b\x32\x1b.bragi.CsgoBombCarriedStateH\x00\x12.\n\x07\x64ropped\x18\x02 \x01(\x0b\x32\x1b.bragi.CsgoBombDroppedStateH\x00\x12\x30\n\x08planting\x18\x03 \x01(\x0b\x32\x1c.bragi.CsgoBombPlantingStateH\x00\x12.\n\x07planted\x18\x04 \x01(\x0b\x32\x1b.bragi.CsgoBombPlantedStateH\x00\x12\x30\n\x08\x64\x65\x66using\x18\x05 \x01(\x0b\x32\x1c.bragi.CsgoBombDefusingStateH\x00\x12.\n\x07\x64\x65\x66used\x18\x06 \x01(\x0b\x32\x1b.bragi.CsgoBombDefusedStateH\x00\x12\x30\n\x08\x65xploded\x18\x07 \x01(\x0b\x32\x1c.bragi.CsgoBombExplodedStateH\x00\x42\t\n\x07payload\"Q\n\x14\x43sgoBombCarriedState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12%\n\x08position\x18\x02 \x01(\x0b\x32\x13.bragi.CsgoPosition\"\\\n\x14\x43sgoBombDroppedState\x12\x1d\n\x15\x64ropped_by_player_urn\x18\x01 \x01(\t\x12%\n\x08position\x18\x02 \x01(\x0b\x32\x13.bragi.CsgoPosition\"\x80\x01\n\x15\x43sgoBombPlantingState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12%\n\x08position\x18\x02 \x01(\x0b\x32\x13.bragi.CsgoPosition\x12,\n\tcountdown\x18\x03 \x01(\x0b\x32\x19.google.protobuf.Duration\"\xba\x01\n\x14\x43sgoBombPlantedState\x12\x1d\n\x15planted_by_player_urn\x18\x01 \x01(\t\x12%\n\x08position\x18\x02 \x01(\x0b\x32\x13.bragi.CsgoPosition\x12.\n\nplanted_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12,\n\tcountdown\x18\x04 \x01(\x0b\x32\x19.google.protobuf.Duration\"\xb7\x01\n\x15\x43sgoBombDefusingState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12%\n\x08position\x18\x02 \x01(\x0b\x32\x13.bragi.CsgoPosition\x12,\n\tcountdown\x18\x03 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x35\n\x11\x64\x65\x66use_started_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x8c\x01\n\x14\x43sgoBombDefusedState\x12\x1d\n\x15\x64\x65\x66used_by_player_urn\x18\x01 \x01(\t\x12%\n\x08position\x18\x02 \x01(\x0b\x32\x13.bragi.CsgoPosition\x12.\n\ndefused_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"o\n\x15\x43sgoBombExplodedState\x12%\n\x08position\x18\x01 \x01(\x0b\x32\x13.bragi.CsgoPosition\x12/\n\x0b\x65xploded_at\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x8e\x02\n\x1d\x43sgoTeamMapStatePartialUpdate\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12=\n\x07payload\x18\x02 \x01(\x0b\x32,.bragi.CsgoTeamMapStatePartialUpdate.Payload\x1a\x9b\x01\n\x07Payload\x12\x31\n\x0cplayer_state\x18\x02 \x01(\x0b\x32\x19.bragi.CsgoPlayerMapStateH\x00\x12R\n player_map_states_partial_update\x18\x01 \x01(\x0b\x32&.bragi.CsgoPlayerMapStatePartialUpdateH\x00\x42\t\n\x07payload\"\xdf\x01\n\x10\x43sgoTeamMapState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12\x1d\n\x04side\x18\x02 \x01(\x0e\x32\x0f.bragi.CsgoSide\x12G\n\x11player_map_states\x18\x03 \x03(\x0b\x32,.bragi.CsgoTeamMapState.PlayerMapStatesEntry\x1aQ\n\x14PlayerMapStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12(\n\x05value\x18\x02 \x01(\x0b\x32\x19.bragi.CsgoPlayerMapState:\x02\x38\x01\"\xb4\x02\n&CsgoTeamCurrentRoundStatePartialUpdate\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12\x46\n\x07payload\x18\x02 \x01(\x0b\x32\x35.bragi.CsgoTeamCurrentRoundStatePartialUpdate.Payload\x1a\xaf\x01\n\x07Payload\x12:\n\x0cplayer_state\x18\x02 \x01(\x0b\x32\".bragi.CsgoPlayerCurrentRoundStateH\x00\x12]\n\"player_round_states_partial_update\x18\x01 \x01(\x0b\x32/.bragi.CsgoPlayerCurrentRoundStatePartialUpdateH\x00\x42\t\n\x07payload\"\xe1\x01\n\x19\x43sgoTeamCurrentRoundState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12T\n\x13player_round_states\x18\x02 \x03(\x0b\x32\x37.bragi.CsgoTeamCurrentRoundState.PlayerRoundStatesEntry\x1a\\\n\x16PlayerRoundStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x31\n\x05value\x18\x02 \x01(\x0b\x32\".bragi.CsgoPlayerCurrentRoundState:\x02\x38\x01\"\xc4\x01\n\x1a\x43sgoPreviousTeamRoundState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12?\n\x07players\x18\x02 \x03(\x0b\x32..bragi.CsgoPreviousTeamRoundState.PlayersEntry\x1aS\n\x0cPlayersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x32\n\x05value\x18\x02 \x01(\x0b\x32#.bragi.CsgoPlayerPreviousRoundState:\x02\x38\x01\"\xc7\x01\n\x1f\x43sgoPlayerMapStatePartialUpdate\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12?\n\x07payload\x18\x02 \x01(\x0b\x32..bragi.CsgoPlayerMapStatePartialUpdate.Payload\x1aO\n\x07Payload\x12\x39\n\nstatistics\x18\x01 \x01(\x0b\x32#.bragi.CsgoPlayerMapStatisticsStateH\x00\x42\t\n\x07payload\"v\n\x12\x43sgoPlayerMapState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x13\n\x0bplayer_name\x18\x02 \x01(\t\x12\x37\n\nstatistics\x18\x03 \x01(\x0b\x32#.bragi.CsgoPlayerMapStatisticsState\"\x92\x01\n\x1c\x43sgoPlayerMapStatisticsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x15\n\ropening_kills\x18\x04 \x01(\r\x12\x16\n\x0eopening_deaths\x18\x05 \x01(\r\x12/\n\nstatistics\x18\x02 \x01(\x0b\x32\x1b.bragi.CsgoPlayerStatistics\"\xc5\x02\n(CsgoPlayerCurrentRoundStatePartialUpdate\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12H\n\x07payload\x18\x02 \x01(\x0b\x32\x37.bragi.CsgoPlayerCurrentRoundStatePartialUpdate.Payload\x1a\xba\x01\n\x07Payload\x12\x42\n\nstatistics\x18\x01 \x01(\x0b\x32,.bragi.CsgoPlayerCurrentRoundStatisticsStateH\x00\x12,\n\x05items\x18\x02 \x01(\x0b\x32\x1b.bragi.CsgoPlayerItemsStateH\x00\x12\x32\n\x08position\x18\x03 \x01(\x0b\x32\x1e.bragi.CsgoPlayerPositionStateH\x00\x42\t\n\x07payload\"\xe6\x01\n\x1b\x43sgoPlayerCurrentRoundState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x13\n\x0bplayer_name\x18\x02 \x01(\t\x12@\n\nstatistics\x18\x03 \x01(\x0b\x32,.bragi.CsgoPlayerCurrentRoundStatisticsState\x12*\n\x05items\x18\x04 \x01(\x0b\x32\x1b.bragi.CsgoPlayerItemsState\x12\x30\n\x08position\x18\x05 \x01(\x0b\x32\x1e.bragi.CsgoPlayerPositionState\"\xab\x01\n%CsgoPlayerCurrentRoundStatisticsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\r\n\x05\x61live\x18\x02 \x01(\x08\x12\x0e\n\x06health\x18\x03 \x01(\r\x12\r\n\x05\x61rmor\x18\x04 \x01(\r\x12\x0f\n\x07\x62\x61lance\x18\x05 \x01(\r\x12/\n\nstatistics\x18\x06 \x01(\x0b\x32\x1b.bragi.CsgoPlayerStatistics\"c\n\x14\x43sgoPlayerItemsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x17\n\x0f\x65quipment_value\x18\x02 \x01(\r\x12\x1e\n\x05items\x18\x03 \x03(\x0b\x32\x0f.bragi.CsgoItem\"x\n\x1c\x43sgoPlayerPreviousRoundState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x13\n\x0bplayer_name\x18\x02 \x01(\t\x12/\n\nstatistics\x18\x03 \x01(\x0b\x32\x1b.bragi.CsgoPlayerStatistics\"T\n\x17\x43sgoPlayerPositionState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12%\n\x08position\x18\x02 \x01(\x0b\x32\x13.bragi.CsgoPosition\"\xe8\x04\n\x14\x43sgoPlayerStatistics\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\r\n\x05kills\x18\x02 \x01(\r\x12\x16\n\x0e\x66riendly_kills\x18\x03 \x01(\r\x12\x13\n\x0b\x65nemy_kills\x18\x04 \x01(\r\x12\x12\n\nself_kills\x18\x05 \x01(\r\x12\x0e\n\x06\x64\x65\x61ths\x18\x06 \x01(\r\x12\x0f\n\x07\x61ssists\x18\x07 \x01(\r\x12\x11\n\theadshots\x18\x08 \x01(\r\x12(\n\x1b\x66riendly_damage_dealt_armor\x18\t \x01(\rH\x00\x88\x01\x01\x12)\n\x1c\x66riendly_damage_dealt_health\x18\n \x01(\rH\x01\x88\x01\x01\x12%\n\x18\x65nemy_damage_dealt_armor\x18\x0b \x01(\rH\x02\x88\x01\x01\x12&\n\x19\x65nemy_damage_dealt_health\x18\x0c \x01(\rH\x03\x88\x01\x01\x12)\n\x1c\x65nemy_damage_dealt_armor_raw\x18\r \x01(\rH\x04\x88\x01\x01\x12*\n\x1d\x65nemy_damage_dealt_health_raw\x18\x0e \x01(\rH\x05\x88\x01\x01\x42\x1e\n\x1c_friendly_damage_dealt_armorB\x1f\n\x1d_friendly_damage_dealt_healthB\x1b\n\x19_enemy_damage_dealt_armorB\x1c\n\x1a_enemy_damage_dealt_healthB\x1f\n\x1d_enemy_damage_dealt_armor_rawB \n\x1e_enemy_damage_dealt_health_raw\"^\n\x08\x43sgoItem\x12\x0c\n\x04name\x18\x01 \x01(\t\x12#\n\x04type\x18\x02 \x01(\x0e\x32\x15.bragi.CsgoWeaponType\x12\r\n\x05\x63ount\x18\x03 \x01(\r\x12\x10\n\x08isActive\x18\x04 \x01(\x08\">\n\x0c\x43sgoPosition\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01z\x18\x04 \x01(\x02\x12\r\n\x05\x61ngle\x18\x03 \x01(\x02\"\xf9\x07\n\tCsgoEvent\x12;\n\x13\x62omb_defuse_started\x18\x01 \x01(\x0b\x32\x1c.bragi.CsgoBombDefuseStartedH\x00\x12.\n\x0c\x62omb_defused\x18\x02 \x01(\x0b\x32\x16.bragi.CsgoBombDefusedH\x00\x12\x30\n\rbomb_exploded\x18\x03 \x01(\x0b\x32\x17.bragi.CsgoBombExplodedH\x00\x12\x39\n\x12\x62omb_plant_started\x18\x15 \x01(\x0b\x32\x1b.bragi.CsgoBombPlantStartedH\x00\x12.\n\x0c\x62omb_planted\x18\x04 \x01(\x0b\x32\x16.bragi.CsgoBombPlantedH\x00\x12.\n\x0c\x64\x61mage_dealt\x18\x05 \x01(\x0b\x32\x16.bragi.CsgoDamageDealtH\x00\x12\x37\n\x11\x66reeze_time_ended\x18\x06 \x01(\x0b\x32\x1a.bragi.CsgoFreezeTimeEndedH\x00\x12;\n\x13\x66reeze_time_started\x18\x07 \x01(\x0b\x32\x1c.bragi.CsgoFreezeTimeStartedH\x00\x12(\n\titem_drop\x18\x08 \x01(\x0b\x32\x13.bragi.CsgoItemDropH\x00\x12-\n\x0citem_pick_up\x18\t \x01(\x0b\x32\x15.bragi.CsgoItemPickUpH\x00\x12\x30\n\ritem_purchase\x18\n \x01(\x0b\x32\x17.bragi.CsgoItemPurchaseH\x00\x12*\n\nitem_throw\x18\x0b \x01(\x0b\x32\x14.bragi.CsgoItemThrowH\x00\x12\x1f\n\x04kill\x18\x0c \x01(\x0b\x32\x0f.bragi.CsgoKillH\x00\x12!\n\x05\x64\x65\x61th\x18\r \x01(\x0b\x32\x10.bragi.CsgoDeathH\x00\x12$\n\x07map_end\x18\x0e \x01(\x0b\x32\x11.bragi.CsgoMapEndH\x00\x12(\n\tmap_start\x18\x0f \x01(\x0b\x32\x13.bragi.CsgoMapStartH\x00\x12(\n\tround_end\x18\x10 \x01(\x0b\x32\x13.bragi.CsgoRoundEndH\x00\x12,\n\x0bround_pause\x18\x11 \x01(\x0b\x32\x15.bragi.CsgoRoundPauseH\x00\x12.\n\x0cround_resume\x18\x12 \x01(\x0b\x32\x16.bragi.CsgoRoundResumeH\x00\x12\x32\n\x0eround_rollback\x18\x13 \x01(\x0b\x32\x18.bragi.CsgoRoundRollbackH\x00\x12,\n\x0bround_start\x18\x14 \x01(\x0b\x32\x15.bragi.CsgoRoundStartH\x00\x42\x07\n\x05\x65vent\"J\n\x11\x43sgoPlayerBalance\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x10\n\x08team_urn\x18\x02 \x01(\t\x12\x0f\n\x07\x62\x61lance\x18\x03 \x01(\r\"p\n\x0f\x43sgoPlayerItems\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x10\n\x08team_urn\x18\x02 \x01(\t\x12\x17\n\x0f\x65quipment_value\x18\x03 \x01(\r\x12\x1e\n\x05items\x18\x04 \x03(\x0b\x32\x0f.bragi.CsgoItem\"\xbb\x01\n\x15\x43sgoBombDefuseStarted\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\"\xb5\x01\n\x0f\x43sgoBombDefused\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\"\x90\x01\n\x10\x43sgoBombExploded\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\"\xba\x01\n\x14\x43sgoBombPlantStarted\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\"\xb5\x01\n\x0f\x43sgoBombPlanted\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\"\xcb\x03\n\x0f\x43sgoDamageDealt\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12,\n\x0fkiller_position\x18\x04 \x01(\x0b\x32\x13.bragi.CsgoPosition\x12\x12\n\nkiller_urn\x18\x05 \x01(\t\x12\x17\n\x0fkiller_team_urn\x18\x06 \x01(\t\x12\x12\n\nvictim_urn\x18\x07 \x01(\t\x12\x17\n\x0fvictim_team_urn\x18\x08 \x01(\t\x12\x0e\n\x06weapon\x18\t \x01(\t\x12\x10\n\x08hitgroup\x18\n \x01(\t\x12\x17\n\x0fhealth_deducted\x18\x0b \x01(\r\x12\x18\n\x10health_remaining\x18\x0c \x01(\r\x12\x16\n\x0e\x61rmor_deducted\x18\r \x01(\r\x12\x17\n\x0f\x61rmor_remaining\x18\x0e \x01(\r\x12,\n\x0fvictim_position\x18\x0f \x01(\x0b\x32\x13.bragi.CsgoPosition\"\xce\x03\n\x13\x43sgoFreezeTimeEnded\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12G\n\x0fplayer_balances\x18\x04 \x03(\x0b\x32..bragi.CsgoFreezeTimeEnded.PlayerBalancesEntry\x12M\n\x12player_inventories\x18\x05 \x03(\x0b\x32\x31.bragi.CsgoFreezeTimeEnded.PlayerInventoriesEntry\x1aO\n\x13PlayerBalancesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\'\n\x05value\x18\x02 \x01(\x0b\x32\x18.bragi.CsgoPlayerBalance:\x02\x38\x01\x1aP\n\x16PlayerInventoriesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12%\n\x05value\x18\x02 \x01(\x0b\x32\x16.bragi.CsgoPlayerItems:\x02\x38\x01\"\xc5\x03\n\x15\x43sgoFreezeTimeStarted\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12I\n\x0fplayer_balances\x18\x04 \x03(\x0b\x32\x30.bragi.CsgoFreezeTimeStarted.PlayerBalancesEntry\x12J\n\x10teams_round_info\x18\x05 \x03(\x0b\x32\x30.bragi.CsgoFreezeTimeStarted.TeamsRoundInfoEntry\x1aO\n\x13PlayerBalancesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\'\n\x05value\x18\x02 \x01(\x0b\x32\x18.bragi.CsgoPlayerBalance:\x02\x38\x01\x1a\x46\n\x13TeamsRoundInfoEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x1e\n\x05value\x18\x02 \x01(\x0e\x32\x0f.bragi.CsgoSide:\x02\x38\x01\"\xe7\x01\n\x0c\x43sgoItemDrop\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12%\n\x08position\x18\x04 \x01(\x0b\x32\x13.bragi.CsgoPosition\x12\x12\n\nplayer_urn\x18\x05 \x01(\t\x12\x10\n\x08team_urn\x18\x06 \x01(\t\x12\x0c\n\x04item\x18\x07 \x01(\t\"\xc2\x01\n\x0e\x43sgoItemPickUp\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\x12\x0c\n\x04item\x18\x06 \x01(\t\"\xf5\x01\n\x10\x43sgoItemPurchase\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\x12\x0c\n\x04item\x18\x06 \x01(\t\x12\x16\n\x0eplayer_balance\x18\x07 \x01(\r\x12\x17\n\x0f\x65quipment_value\x18\x08 \x01(\r\"\xe8\x01\n\rCsgoItemThrow\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12%\n\x08position\x18\x04 \x01(\x0b\x32\x13.bragi.CsgoPosition\x12\x12\n\nplayer_urn\x18\x05 \x01(\t\x12\x10\n\x08team_urn\x18\x06 \x01(\t\x12\x0c\n\x04item\x18\x07 \x01(\t\"\xda\x02\n\x08\x43sgoKill\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12,\n\x0fkiller_position\x18\x04 \x01(\x0b\x32\x13.bragi.CsgoPosition\x12\x12\n\nkiller_urn\x18\x05 \x01(\t\x12\x17\n\x0fkiller_team_urn\x18\x06 \x01(\t\x12\x12\n\nvictim_urn\x18\x07 \x01(\t\x12\x17\n\x0fvictim_team_urn\x18\x08 \x01(\t\x12\x0e\n\x06weapon\x18\t \x01(\t\x12\x10\n\x08headshot\x18\n \x01(\x08\x12\x12\n\npenetrated\x18\x0b \x01(\x08\x12\x12\n\nassistants\x18\x0c \x03(\t\"\x94\x02\n\tCsgoDeath\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12%\n\x08position\x18\x04 \x01(\x0b\x32\x13.bragi.CsgoPosition\x12\x12\n\nplayer_urn\x18\x05 \x01(\t\x12\x10\n\x08team_urn\x18\x06 \x01(\t\x12\x14\n\x0ctotal_deaths\x18\x07 \x01(\r\x12\x0f\n\x07suicide\x18\t \x01(\x08\x12\x15\n\rdeath_by_bomb\x18\n \x01(\x08\"\x88\x01\n\nCsgoMapEnd\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x15\n\rcsgo_map_name\x18\x04 \x01(\t\x12\x18\n\x10winning_team_urn\x18\x05 \x01(\t\"R\n\x0c\x43sgoMapStart\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x15\n\rcsgo_map_name\x18\x02 \x01(\t\"\xfd\x03\n\x0c\x43sgoRoundEnd\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x18\n\x10winning_team_urn\x18\x04 \x01(\t\x12(\n\nwin_reason\x18\x05 \x01(\x0e\x32\x14.bragi.CsgoWinReason\x12@\n\x0fplayer_balances\x18\x06 \x03(\x0b\x32\'.bragi.CsgoRoundEnd.PlayerBalancesEntry\x12\x46\n\x12player_inventories\x18\x07 \x03(\x0b\x32*.bragi.CsgoRoundEnd.PlayerInventoriesEntry\x1aO\n\x13PlayerBalancesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\'\n\x05value\x18\x02 \x01(\x0b\x32\x18.bragi.CsgoPlayerBalance:\x02\x38\x01\x1aP\n\x16PlayerInventoriesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12%\n\x05value\x18\x02 \x01(\x0b\x32\x16.bragi.CsgoPlayerItems:\x02\x38\x01\"\x8e\x01\n\x0e\x43sgoRoundPause\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\"\x8f\x01\n\x0f\x43sgoRoundResume\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\".\n\x11\x43sgoRoundRollback\x12\x19\n\x11next_round_number\x18\x01 \x01(\r\"\x8e\x01\n\x0e\x43sgoRoundStart\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r*a\n\x08\x43sgoSide\x12\x19\n\x15\x43SGO_SIDE_UNSPECIFIED\x10\x00\x12 \n\x1c\x43SGO_SIDE_COUNTER_TERRORISTS\x10\x01\x12\x18\n\x14\x43SGO_SIDE_TERRORISTS\x10\x02*\x88\x02\n\rCsgoWinReason\x12\x1f\n\x1b\x43SGO_WIN_REASON_UNSPECIFIED\x10\x00\x12\x31\n-CSGO_WIN_REASON_COUNTER_TERRORISTS_ELIMINATED\x10\x01\x12)\n%CSGO_WIN_REASON_TERRORISTS_ELIMINATED\x10\x02\x12\x1d\n\x19\x43SGO_WIN_REASON_EXPLOSION\x10\x03\x12\x1a\n\x16\x43SGO_WIN_REASON_DEFUSE\x10\x04\x12\x1b\n\x17\x43SGO_WIN_REASON_TIMEOUT\x10\x05\x12 \n\x1c\x43SGO_WIN_REASON_TARGET_SAVED\x10\x06*\xcc\x01\n\x12\x43sgoRoundStateType\x12%\n!CSGO_ROUND_STATE_TYPE_UNSPECIFIED\x10\x00\x12\"\n\x1e\x43SGO_ROUND_STATE_TYPE_BUY_TIME\x10\x01\x12%\n!CSGO_ROUND_STATE_TYPE_IN_PROGRESS\x10\x02\x12 \n\x1c\x43SGO_ROUND_STATE_TYPE_PAUSED\x10\x03\x12\"\n\x1e\x43SGO_ROUND_STATE_TYPE_FINISHED\x10\x04*\xe9\x02\n\x0e\x43sgoWeaponType\x12 \n\x1c\x43SGO_WEAPON_TYPE_UNSPECIFIED\x10\x00\x12\x1b\n\x17\x43SGO_WEAPON_TYPE_PISTOL\x10\x01\x12\x19\n\x15\x43SGO_WEAPON_TYPE_BOMB\x10\x02\x12\x1c\n\x18\x43SGO_WEAPON_TYPE_GRENADE\x10\x03\x12 \n\x1c\x43SGO_WEAPON_TYPE_MACHINE_GUN\x10\x04\x12\x1a\n\x16\x43SGO_WEAPON_TYPE_RIFLE\x10\x05\x12\x1c\n\x18\x43SGO_WEAPON_TYPE_SHOTGUN\x10\x06\x12!\n\x1d\x43SGO_WEAPON_TYPE_SNIPER_RIFLE\x10\x07\x12#\n\x1f\x43SGO_WEAPON_TYPE_SUBMACHINE_GUN\x10\x08\x12\x1a\n\x16\x43SGO_WEAPON_TYPE_KNIFE\x10\t\x12\x1f\n\x1b\x43SGO_WEAPON_TYPE_DEFUSE_KIT\x10\nB!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,bragi_dot_common__pb2.DESCRIPTOR,])
 
@@ -52,8 +52,8 @@ _CSGOSIDE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=15404,
-  serialized_end=15501,
+  serialized_start=15527,
+  serialized_end=15624,
 )
 _sym_db.RegisterEnumDescriptor(_CSGOSIDE)
 
@@ -103,8 +103,8 @@ _CSGOWINREASON = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=15504,
-  serialized_end=15768,
+  serialized_start=15627,
+  serialized_end=15891,
 )
 _sym_db.RegisterEnumDescriptor(_CSGOWINREASON)
 
@@ -144,8 +144,8 @@ _CSGOROUNDSTATETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=15771,
-  serialized_end=15975,
+  serialized_start=15894,
+  serialized_end=16098,
 )
 _sym_db.RegisterEnumDescriptor(_CSGOROUNDSTATETYPE)
 
@@ -215,8 +215,8 @@ _CSGOWEAPONTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=15978,
-  serialized_end=16339,
+  serialized_start=16101,
+  serialized_end=16462,
 )
 _sym_db.RegisterEnumDescriptor(_CSGOWEAPONTYPE)
 
@@ -3103,119 +3103,126 @@ _CSGOEVENT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='bomb_planted', full_name='bragi.CsgoEvent.bomb_planted', index=3,
+      name='bomb_plant_started', full_name='bragi.CsgoEvent.bomb_plant_started', index=3,
+      number=21, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='bomb_planted', full_name='bragi.CsgoEvent.bomb_planted', index=4,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='damage_dealt', full_name='bragi.CsgoEvent.damage_dealt', index=4,
+      name='damage_dealt', full_name='bragi.CsgoEvent.damage_dealt', index=5,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='freeze_time_ended', full_name='bragi.CsgoEvent.freeze_time_ended', index=5,
+      name='freeze_time_ended', full_name='bragi.CsgoEvent.freeze_time_ended', index=6,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='freeze_time_started', full_name='bragi.CsgoEvent.freeze_time_started', index=6,
+      name='freeze_time_started', full_name='bragi.CsgoEvent.freeze_time_started', index=7,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='item_drop', full_name='bragi.CsgoEvent.item_drop', index=7,
+      name='item_drop', full_name='bragi.CsgoEvent.item_drop', index=8,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='item_pick_up', full_name='bragi.CsgoEvent.item_pick_up', index=8,
+      name='item_pick_up', full_name='bragi.CsgoEvent.item_pick_up', index=9,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='item_purchase', full_name='bragi.CsgoEvent.item_purchase', index=9,
+      name='item_purchase', full_name='bragi.CsgoEvent.item_purchase', index=10,
       number=10, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='item_throw', full_name='bragi.CsgoEvent.item_throw', index=10,
+      name='item_throw', full_name='bragi.CsgoEvent.item_throw', index=11,
       number=11, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='kill', full_name='bragi.CsgoEvent.kill', index=11,
+      name='kill', full_name='bragi.CsgoEvent.kill', index=12,
       number=12, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='death', full_name='bragi.CsgoEvent.death', index=12,
+      name='death', full_name='bragi.CsgoEvent.death', index=13,
       number=13, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='map_end', full_name='bragi.CsgoEvent.map_end', index=13,
+      name='map_end', full_name='bragi.CsgoEvent.map_end', index=14,
       number=14, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='map_start', full_name='bragi.CsgoEvent.map_start', index=14,
+      name='map_start', full_name='bragi.CsgoEvent.map_start', index=15,
       number=15, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='round_end', full_name='bragi.CsgoEvent.round_end', index=15,
+      name='round_end', full_name='bragi.CsgoEvent.round_end', index=16,
       number=16, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='round_pause', full_name='bragi.CsgoEvent.round_pause', index=16,
+      name='round_pause', full_name='bragi.CsgoEvent.round_pause', index=17,
       number=17, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='round_resume', full_name='bragi.CsgoEvent.round_resume', index=17,
+      name='round_resume', full_name='bragi.CsgoEvent.round_resume', index=18,
       number=18, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='round_rollback', full_name='bragi.CsgoEvent.round_rollback', index=18,
+      name='round_rollback', full_name='bragi.CsgoEvent.round_rollback', index=19,
       number=19, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='round_start', full_name='bragi.CsgoEvent.round_start', index=19,
+      name='round_start', full_name='bragi.CsgoEvent.round_start', index=20,
       number=20, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -3239,7 +3246,7 @@ _CSGOEVENT = _descriptor.Descriptor(
     fields=[]),
   ],
   serialized_start=9280,
-  serialized_end=10238,
+  serialized_end=10297,
 )
 
 
@@ -3284,8 +3291,8 @@ _CSGOPLAYERBALANCE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10240,
-  serialized_end=10314,
+  serialized_start=10299,
+  serialized_end=10373,
 )
 
 
@@ -3337,8 +3344,8 @@ _CSGOPLAYERITEMS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10316,
-  serialized_end=10428,
+  serialized_start=10375,
+  serialized_end=10487,
 )
 
 
@@ -3397,8 +3404,8 @@ _CSGOBOMBDEFUSESTARTED = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10431,
-  serialized_end=10618,
+  serialized_start=10490,
+  serialized_end=10677,
 )
 
 
@@ -3445,13 +3452,6 @@ _CSGOBOMBDEFUSED = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='balance', full_name='bragi.CsgoBombDefused.balance', index=5,
-      number=6, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -3464,8 +3464,8 @@ _CSGOBOMBDEFUSED = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10621,
-  serialized_end=10819,
+  serialized_start=10680,
+  serialized_end=10861,
 )
 
 
@@ -3498,9 +3498,62 @@ _CSGOBOMBEXPLODED = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=10864,
+  serialized_end=11008,
+)
+
+
+_CSGOBOMBPLANTSTARTED = _descriptor.Descriptor(
+  name='CsgoBombPlantStarted',
+  full_name='bragi.CsgoBombPlantStarted',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
     _descriptor.FieldDescriptor(
-      name='team_urn', full_name='bragi.CsgoBombExploded.team_urn', index=3,
+      name='map_time', full_name='bragi.CsgoBombPlantStarted.map_time', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='time_remaining', full_name='bragi.CsgoBombPlantStarted.time_remaining', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='current_round_number', full_name='bragi.CsgoBombPlantStarted.current_round_number', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='player_urn', full_name='bragi.CsgoBombPlantStarted.player_urn', index=3,
       number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='team_urn', full_name='bragi.CsgoBombPlantStarted.team_urn', index=4,
+      number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -3517,8 +3570,8 @@ _CSGOBOMBEXPLODED = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10822,
-  serialized_end=10984,
+  serialized_start=11011,
+  serialized_end=11197,
 )
 
 
@@ -3565,13 +3618,6 @@ _CSGOBOMBPLANTED = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='balance', full_name='bragi.CsgoBombPlanted.balance', index=5,
-      number=6, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -3584,8 +3630,8 @@ _CSGOBOMBPLANTED = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10987,
-  serialized_end=11185,
+  serialized_start=11200,
+  serialized_end=11381,
 )
 
 
@@ -3619,7 +3665,7 @@ _CSGODAMAGEDEALT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='position', full_name='bragi.CsgoDamageDealt.position', index=3,
+      name='killer_position', full_name='bragi.CsgoDamageDealt.killer_position', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -3696,7 +3742,7 @@ _CSGODAMAGEDEALT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='target_position', full_name='bragi.CsgoDamageDealt.target_position', index=14,
+      name='victim_position', full_name='bragi.CsgoDamageDealt.victim_position', index=14,
       number=15, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -3714,8 +3760,8 @@ _CSGODAMAGEDEALT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11188,
-  serialized_end=11640,
+  serialized_start=11384,
+  serialized_end=11843,
 )
 
 
@@ -3753,8 +3799,8 @@ _CSGOFREEZETIMEENDED_PLAYERBALANCESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11944,
-  serialized_end=12023,
+  serialized_start=12147,
+  serialized_end=12226,
 )
 
 _CSGOFREEZETIMEENDED_PLAYERINVENTORIESENTRY = _descriptor.Descriptor(
@@ -3791,8 +3837,8 @@ _CSGOFREEZETIMEENDED_PLAYERINVENTORIESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12025,
-  serialized_end=12105,
+  serialized_start=12228,
+  serialized_end=12308,
 )
 
 _CSGOFREEZETIMEENDED = _descriptor.Descriptor(
@@ -3850,8 +3896,8 @@ _CSGOFREEZETIMEENDED = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11643,
-  serialized_end=12105,
+  serialized_start=11846,
+  serialized_end=12308,
 )
 
 
@@ -3889,8 +3935,8 @@ _CSGOFREEZETIMESTARTED_PLAYERBALANCESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11944,
-  serialized_end=12023,
+  serialized_start=12147,
+  serialized_end=12226,
 )
 
 _CSGOFREEZETIMESTARTED_TEAMSROUNDINFOENTRY = _descriptor.Descriptor(
@@ -3927,8 +3973,8 @@ _CSGOFREEZETIMESTARTED_TEAMSROUNDINFOENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12491,
-  serialized_end=12561,
+  serialized_start=12694,
+  serialized_end=12764,
 )
 
 _CSGOFREEZETIMESTARTED = _descriptor.Descriptor(
@@ -3986,8 +4032,8 @@ _CSGOFREEZETIMESTARTED = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12108,
-  serialized_end=12561,
+  serialized_start=12311,
+  serialized_end=12764,
 )
 
 
@@ -4060,8 +4106,8 @@ _CSGOITEMDROP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12564,
-  serialized_end=12795,
+  serialized_start=12767,
+  serialized_end=12998,
 )
 
 
@@ -4127,8 +4173,8 @@ _CSGOITEMPICKUP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12798,
-  serialized_end=12992,
+  serialized_start=13001,
+  serialized_end=13195,
 )
 
 
@@ -4183,7 +4229,7 @@ _CSGOITEMPURCHASE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='balance', full_name='bragi.CsgoItemPurchase.balance', index=6,
+      name='player_balance', full_name='bragi.CsgoItemPurchase.player_balance', index=6,
       number=7, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -4208,8 +4254,8 @@ _CSGOITEMPURCHASE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12995,
-  serialized_end=13233,
+  serialized_start=13198,
+  serialized_end=13443,
 )
 
 
@@ -4282,8 +4328,8 @@ _CSGOITEMTHROW = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13236,
-  serialized_end=13468,
+  serialized_start=13446,
+  serialized_end=13678,
 )
 
 
@@ -4317,7 +4363,7 @@ _CSGOKILL = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='position', full_name='bragi.CsgoKill.position', index=3,
+      name='killer_position', full_name='bragi.CsgoKill.killer_position', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -4379,13 +4425,6 @@ _CSGOKILL = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='balance', full_name='bragi.CsgoKill.balance', index=12,
-      number=13, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -4398,8 +4437,8 @@ _CSGOKILL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13471,
-  serialized_end=13827,
+  serialized_start=13681,
+  serialized_end=14027,
 )
 
 
@@ -4461,15 +4500,15 @@ _CSGODEATH = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='respawn_time', full_name='bragi.CsgoDeath.respawn_time', index=7,
-      number=8, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='suicide', full_name='bragi.CsgoDeath.suicide', index=7,
+      number=9, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='suicide', full_name='bragi.CsgoDeath.suicide', index=8,
-      number=9, type=8, cpp_type=7, label=1,
+      name='death_by_bomb', full_name='bragi.CsgoDeath.death_by_bomb', index=8,
+      number=10, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -4486,8 +4525,8 @@ _CSGODEATH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13830,
-  serialized_end=14132,
+  serialized_start=14030,
+  serialized_end=14306,
 )
 
 
@@ -4507,28 +4546,21 @@ _CSGOMAPEND = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='time_remaining', full_name='bragi.CsgoMapEnd.time_remaining', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='current_round_number', full_name='bragi.CsgoMapEnd.current_round_number', index=2,
+      name='current_round_number', full_name='bragi.CsgoMapEnd.current_round_number', index=1,
       number=3, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='csgo_map_name', full_name='bragi.CsgoMapEnd.csgo_map_name', index=3,
+      name='csgo_map_name', full_name='bragi.CsgoMapEnd.csgo_map_name', index=2,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='winning_team_urn', full_name='bragi.CsgoMapEnd.winning_team_urn', index=4,
+      name='winning_team_urn', full_name='bragi.CsgoMapEnd.winning_team_urn', index=3,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -4546,8 +4578,8 @@ _CSGOMAPEND = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14135,
-  serialized_end=14322,
+  serialized_start=14309,
+  serialized_end=14445,
 )
 
 
@@ -4585,8 +4617,8 @@ _CSGOMAPSTART = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14324,
-  serialized_end=14406,
+  serialized_start=14447,
+  serialized_end=14529,
 )
 
 
@@ -4624,8 +4656,8 @@ _CSGOROUNDEND_PLAYERBALANCESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11944,
-  serialized_end=12023,
+  serialized_start=12147,
+  serialized_end=12226,
 )
 
 _CSGOROUNDEND_PLAYERINVENTORIESENTRY = _descriptor.Descriptor(
@@ -4662,8 +4694,8 @@ _CSGOROUNDEND_PLAYERINVENTORIESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12025,
-  serialized_end=12105,
+  serialized_start=12228,
+  serialized_end=12308,
 )
 
 _CSGOROUNDEND = _descriptor.Descriptor(
@@ -4735,8 +4767,8 @@ _CSGOROUNDEND = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14409,
-  serialized_end=14918,
+  serialized_start=14532,
+  serialized_end=15041,
 )
 
 
@@ -4781,8 +4813,8 @@ _CSGOROUNDPAUSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14921,
-  serialized_end=15063,
+  serialized_start=15044,
+  serialized_end=15186,
 )
 
 
@@ -4827,8 +4859,8 @@ _CSGOROUNDRESUME = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15066,
-  serialized_end=15209,
+  serialized_start=15189,
+  serialized_end=15332,
 )
 
 
@@ -4859,8 +4891,8 @@ _CSGOROUNDROLLBACK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15211,
-  serialized_end=15257,
+  serialized_start=15334,
+  serialized_end=15380,
 )
 
 
@@ -4905,8 +4937,8 @@ _CSGOROUNDSTART = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15260,
-  serialized_end=15402,
+  serialized_start=15383,
+  serialized_end=15525,
 )
 
 _CSGOMATCHMESSAGE_PAYLOAD.fields_by_name['snapshot'].message_type = _CSGOMATCHSNAPSHOT
@@ -5170,6 +5202,7 @@ _CSGOITEM.fields_by_name['type'].enum_type = _CSGOWEAPONTYPE
 _CSGOEVENT.fields_by_name['bomb_defuse_started'].message_type = _CSGOBOMBDEFUSESTARTED
 _CSGOEVENT.fields_by_name['bomb_defused'].message_type = _CSGOBOMBDEFUSED
 _CSGOEVENT.fields_by_name['bomb_exploded'].message_type = _CSGOBOMBEXPLODED
+_CSGOEVENT.fields_by_name['bomb_plant_started'].message_type = _CSGOBOMBPLANTSTARTED
 _CSGOEVENT.fields_by_name['bomb_planted'].message_type = _CSGOBOMBPLANTED
 _CSGOEVENT.fields_by_name['damage_dealt'].message_type = _CSGODAMAGEDEALT
 _CSGOEVENT.fields_by_name['freeze_time_ended'].message_type = _CSGOFREEZETIMEENDED
@@ -5196,6 +5229,9 @@ _CSGOEVENT.fields_by_name['bomb_defused'].containing_oneof = _CSGOEVENT.oneofs_b
 _CSGOEVENT.oneofs_by_name['event'].fields.append(
   _CSGOEVENT.fields_by_name['bomb_exploded'])
 _CSGOEVENT.fields_by_name['bomb_exploded'].containing_oneof = _CSGOEVENT.oneofs_by_name['event']
+_CSGOEVENT.oneofs_by_name['event'].fields.append(
+  _CSGOEVENT.fields_by_name['bomb_plant_started'])
+_CSGOEVENT.fields_by_name['bomb_plant_started'].containing_oneof = _CSGOEVENT.oneofs_by_name['event']
 _CSGOEVENT.oneofs_by_name['event'].fields.append(
   _CSGOEVENT.fields_by_name['bomb_planted'])
 _CSGOEVENT.fields_by_name['bomb_planted'].containing_oneof = _CSGOEVENT.oneofs_by_name['event']
@@ -5254,12 +5290,14 @@ _CSGOBOMBDEFUSED.fields_by_name['map_time'].message_type = google_dot_protobuf_d
 _CSGOBOMBDEFUSED.fields_by_name['time_remaining'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
 _CSGOBOMBEXPLODED.fields_by_name['map_time'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
 _CSGOBOMBEXPLODED.fields_by_name['time_remaining'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
+_CSGOBOMBPLANTSTARTED.fields_by_name['map_time'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
+_CSGOBOMBPLANTSTARTED.fields_by_name['time_remaining'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
 _CSGOBOMBPLANTED.fields_by_name['map_time'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
 _CSGOBOMBPLANTED.fields_by_name['time_remaining'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
 _CSGODAMAGEDEALT.fields_by_name['map_time'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
 _CSGODAMAGEDEALT.fields_by_name['time_remaining'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
-_CSGODAMAGEDEALT.fields_by_name['position'].message_type = _CSGOPOSITION
-_CSGODAMAGEDEALT.fields_by_name['target_position'].message_type = _CSGOPOSITION
+_CSGODAMAGEDEALT.fields_by_name['killer_position'].message_type = _CSGOPOSITION
+_CSGODAMAGEDEALT.fields_by_name['victim_position'].message_type = _CSGOPOSITION
 _CSGOFREEZETIMEENDED_PLAYERBALANCESENTRY.fields_by_name['value'].message_type = _CSGOPLAYERBALANCE
 _CSGOFREEZETIMEENDED_PLAYERBALANCESENTRY.containing_type = _CSGOFREEZETIMEENDED
 _CSGOFREEZETIMEENDED_PLAYERINVENTORIESENTRY.fields_by_name['value'].message_type = _CSGOPLAYERITEMS
@@ -5288,13 +5326,11 @@ _CSGOITEMTHROW.fields_by_name['time_remaining'].message_type = google_dot_protob
 _CSGOITEMTHROW.fields_by_name['position'].message_type = _CSGOPOSITION
 _CSGOKILL.fields_by_name['map_time'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
 _CSGOKILL.fields_by_name['time_remaining'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
-_CSGOKILL.fields_by_name['position'].message_type = _CSGOPOSITION
+_CSGOKILL.fields_by_name['killer_position'].message_type = _CSGOPOSITION
 _CSGODEATH.fields_by_name['map_time'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
 _CSGODEATH.fields_by_name['time_remaining'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
 _CSGODEATH.fields_by_name['position'].message_type = _CSGOPOSITION
-_CSGODEATH.fields_by_name['respawn_time'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
 _CSGOMAPEND.fields_by_name['map_time'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
-_CSGOMAPEND.fields_by_name['time_remaining'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
 _CSGOMAPSTART.fields_by_name['map_time'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
 _CSGOROUNDEND_PLAYERBALANCESENTRY.fields_by_name['value'].message_type = _CSGOPLAYERBALANCE
 _CSGOROUNDEND_PLAYERBALANCESENTRY.containing_type = _CSGOROUNDEND
@@ -5360,6 +5396,7 @@ DESCRIPTOR.message_types_by_name['CsgoPlayerItems'] = _CSGOPLAYERITEMS
 DESCRIPTOR.message_types_by_name['CsgoBombDefuseStarted'] = _CSGOBOMBDEFUSESTARTED
 DESCRIPTOR.message_types_by_name['CsgoBombDefused'] = _CSGOBOMBDEFUSED
 DESCRIPTOR.message_types_by_name['CsgoBombExploded'] = _CSGOBOMBEXPLODED
+DESCRIPTOR.message_types_by_name['CsgoBombPlantStarted'] = _CSGOBOMBPLANTSTARTED
 DESCRIPTOR.message_types_by_name['CsgoBombPlanted'] = _CSGOBOMBPLANTED
 DESCRIPTOR.message_types_by_name['CsgoDamageDealt'] = _CSGODAMAGEDEALT
 DESCRIPTOR.message_types_by_name['CsgoFreezeTimeEnded'] = _CSGOFREEZETIMEENDED
@@ -5829,6 +5866,13 @@ CsgoBombExploded = _reflection.GeneratedProtocolMessageType('CsgoBombExploded', 
   # @@protoc_insertion_point(class_scope:bragi.CsgoBombExploded)
   })
 _sym_db.RegisterMessage(CsgoBombExploded)
+
+CsgoBombPlantStarted = _reflection.GeneratedProtocolMessageType('CsgoBombPlantStarted', (_message.Message,), {
+  'DESCRIPTOR' : _CSGOBOMBPLANTSTARTED,
+  '__module__' : 'bragi.csgo_pb2'
+  # @@protoc_insertion_point(class_scope:bragi.CsgoBombPlantStarted)
+  })
+_sym_db.RegisterMessage(CsgoBombPlantStarted)
 
 CsgoBombPlanted = _reflection.GeneratedProtocolMessageType('CsgoBombPlanted', (_message.Message,), {
   'DESCRIPTOR' : _CSGOBOMBPLANTED,
