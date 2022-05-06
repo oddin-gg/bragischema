@@ -1772,6 +1772,11 @@ export class CsgoEvent extends jspb.Message {
   getBombExploded(): CsgoBombExploded | undefined;
   setBombExploded(value?: CsgoBombExploded): void;
 
+  hasBombPlantStarted(): boolean;
+  clearBombPlantStarted(): void;
+  getBombPlantStarted(): CsgoBombPlantStarted | undefined;
+  setBombPlantStarted(value?: CsgoBombPlantStarted): void;
+
   hasBombPlanted(): boolean;
   clearBombPlanted(): void;
   getBombPlanted(): CsgoBombPlanted | undefined;
@@ -1873,6 +1878,7 @@ export namespace CsgoEvent {
     bombDefuseStarted?: CsgoBombDefuseStarted.AsObject,
     bombDefused?: CsgoBombDefused.AsObject,
     bombExploded?: CsgoBombExploded.AsObject,
+    bombPlantStarted?: CsgoBombPlantStarted.AsObject,
     bombPlanted?: CsgoBombPlanted.AsObject,
     damageDealt?: CsgoDamageDealt.AsObject,
     freezeTimeEnded?: CsgoFreezeTimeEnded.AsObject,
@@ -1897,6 +1903,7 @@ export namespace CsgoEvent {
     BOMB_DEFUSE_STARTED = 1,
     BOMB_DEFUSED = 2,
     BOMB_EXPLODED = 3,
+    BOMB_PLANT_STARTED = 21,
     BOMB_PLANTED = 4,
     DAMAGE_DEALT = 5,
     FREEZE_TIME_ENDED = 6,
@@ -2039,9 +2046,6 @@ export class CsgoBombDefused extends jspb.Message {
   getTeamUrn(): string;
   setTeamUrn(value: string): void;
 
-  getBalance(): number;
-  setBalance(value: number): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CsgoBombDefused.AsObject;
   static toObject(includeInstance: boolean, msg: CsgoBombDefused): CsgoBombDefused.AsObject;
@@ -2059,7 +2063,6 @@ export namespace CsgoBombDefused {
     currentRoundNumber: number,
     playerUrn: string,
     teamUrn: string,
-    balance: number,
   }
 }
 
@@ -2077,9 +2080,6 @@ export class CsgoBombExploded extends jspb.Message {
   getCurrentRoundNumber(): number;
   setCurrentRoundNumber(value: number): void;
 
-  getTeamUrn(): string;
-  setTeamUrn(value: string): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CsgoBombExploded.AsObject;
   static toObject(includeInstance: boolean, msg: CsgoBombExploded): CsgoBombExploded.AsObject;
@@ -2095,6 +2095,45 @@ export namespace CsgoBombExploded {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
     currentRoundNumber: number,
+  }
+}
+
+export class CsgoBombPlantStarted extends jspb.Message {
+  hasMapTime(): boolean;
+  clearMapTime(): void;
+  getMapTime(): google_protobuf_duration_pb.Duration | undefined;
+  setMapTime(value?: google_protobuf_duration_pb.Duration): void;
+
+  hasTimeRemaining(): boolean;
+  clearTimeRemaining(): void;
+  getTimeRemaining(): google_protobuf_duration_pb.Duration | undefined;
+  setTimeRemaining(value?: google_protobuf_duration_pb.Duration): void;
+
+  getCurrentRoundNumber(): number;
+  setCurrentRoundNumber(value: number): void;
+
+  getPlayerUrn(): string;
+  setPlayerUrn(value: string): void;
+
+  getTeamUrn(): string;
+  setTeamUrn(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CsgoBombPlantStarted.AsObject;
+  static toObject(includeInstance: boolean, msg: CsgoBombPlantStarted): CsgoBombPlantStarted.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: CsgoBombPlantStarted, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CsgoBombPlantStarted;
+  static deserializeBinaryFromReader(message: CsgoBombPlantStarted, reader: jspb.BinaryReader): CsgoBombPlantStarted;
+}
+
+export namespace CsgoBombPlantStarted {
+  export type AsObject = {
+    mapTime?: google_protobuf_duration_pb.Duration.AsObject,
+    timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
+    currentRoundNumber: number,
+    playerUrn: string,
     teamUrn: string,
   }
 }
@@ -2119,9 +2158,6 @@ export class CsgoBombPlanted extends jspb.Message {
   getTeamUrn(): string;
   setTeamUrn(value: string): void;
 
-  getBalance(): number;
-  setBalance(value: number): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CsgoBombPlanted.AsObject;
   static toObject(includeInstance: boolean, msg: CsgoBombPlanted): CsgoBombPlanted.AsObject;
@@ -2139,7 +2175,6 @@ export namespace CsgoBombPlanted {
     currentRoundNumber: number,
     playerUrn: string,
     teamUrn: string,
-    balance: number,
   }
 }
 
@@ -2157,10 +2192,10 @@ export class CsgoDamageDealt extends jspb.Message {
   getCurrentRoundNumber(): number;
   setCurrentRoundNumber(value: number): void;
 
-  hasPosition(): boolean;
-  clearPosition(): void;
-  getPosition(): CsgoPosition | undefined;
-  setPosition(value?: CsgoPosition): void;
+  hasKillerPosition(): boolean;
+  clearKillerPosition(): void;
+  getKillerPosition(): CsgoPosition | undefined;
+  setKillerPosition(value?: CsgoPosition): void;
 
   getKillerUrn(): string;
   setKillerUrn(value: string): void;
@@ -2192,10 +2227,10 @@ export class CsgoDamageDealt extends jspb.Message {
   getArmorRemaining(): number;
   setArmorRemaining(value: number): void;
 
-  hasTargetPosition(): boolean;
-  clearTargetPosition(): void;
-  getTargetPosition(): CsgoPosition | undefined;
-  setTargetPosition(value?: CsgoPosition): void;
+  hasVictimPosition(): boolean;
+  clearVictimPosition(): void;
+  getVictimPosition(): CsgoPosition | undefined;
+  setVictimPosition(value?: CsgoPosition): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CsgoDamageDealt.AsObject;
@@ -2212,7 +2247,7 @@ export namespace CsgoDamageDealt {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
     currentRoundNumber: number,
-    position?: CsgoPosition.AsObject,
+    killerPosition?: CsgoPosition.AsObject,
     killerUrn: string,
     killerTeamUrn: string,
     victimUrn: string,
@@ -2223,7 +2258,7 @@ export namespace CsgoDamageDealt {
     healthRemaining: number,
     armorDeducted: number,
     armorRemaining: number,
-    targetPosition?: CsgoPosition.AsObject,
+    victimPosition?: CsgoPosition.AsObject,
   }
 }
 
@@ -2420,8 +2455,8 @@ export class CsgoItemPurchase extends jspb.Message {
   getItem(): string;
   setItem(value: string): void;
 
-  getBalance(): number;
-  setBalance(value: number): void;
+  getPlayerBalance(): number;
+  setPlayerBalance(value: number): void;
 
   getEquipmentValue(): number;
   setEquipmentValue(value: number): void;
@@ -2444,7 +2479,7 @@ export namespace CsgoItemPurchase {
     playerUrn: string,
     teamUrn: string,
     item: string,
-    balance: number,
+    playerBalance: number,
     equipmentValue: number,
   }
 }
@@ -2513,10 +2548,10 @@ export class CsgoKill extends jspb.Message {
   getCurrentRoundNumber(): number;
   setCurrentRoundNumber(value: number): void;
 
-  hasPosition(): boolean;
-  clearPosition(): void;
-  getPosition(): CsgoPosition | undefined;
-  setPosition(value?: CsgoPosition): void;
+  hasKillerPosition(): boolean;
+  clearKillerPosition(): void;
+  getKillerPosition(): CsgoPosition | undefined;
+  setKillerPosition(value?: CsgoPosition): void;
 
   getKillerUrn(): string;
   setKillerUrn(value: string): void;
@@ -2544,9 +2579,6 @@ export class CsgoKill extends jspb.Message {
   setAssistantsList(value: Array<string>): void;
   addAssistants(value: string, index?: number): string;
 
-  getBalance(): number;
-  setBalance(value: number): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CsgoKill.AsObject;
   static toObject(includeInstance: boolean, msg: CsgoKill): CsgoKill.AsObject;
@@ -2562,7 +2594,7 @@ export namespace CsgoKill {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
     currentRoundNumber: number,
-    position?: CsgoPosition.AsObject,
+    killerPosition?: CsgoPosition.AsObject,
     killerUrn: string,
     killerTeamUrn: string,
     victimUrn: string,
@@ -2571,7 +2603,6 @@ export namespace CsgoKill {
     headshot: boolean,
     penetrated: boolean,
     assistantsList: Array<string>,
-    balance: number,
   }
 }
 
@@ -2603,13 +2634,11 @@ export class CsgoDeath extends jspb.Message {
   getTotalDeaths(): number;
   setTotalDeaths(value: number): void;
 
-  hasRespawnTime(): boolean;
-  clearRespawnTime(): void;
-  getRespawnTime(): google_protobuf_duration_pb.Duration | undefined;
-  setRespawnTime(value?: google_protobuf_duration_pb.Duration): void;
-
   getSuicide(): boolean;
   setSuicide(value: boolean): void;
+
+  getDeathByBomb(): boolean;
+  setDeathByBomb(value: boolean): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CsgoDeath.AsObject;
@@ -2630,8 +2659,8 @@ export namespace CsgoDeath {
     playerUrn: string,
     teamUrn: string,
     totalDeaths: number,
-    respawnTime?: google_protobuf_duration_pb.Duration.AsObject,
     suicide: boolean,
+    deathByBomb: boolean,
   }
 }
 
@@ -2640,11 +2669,6 @@ export class CsgoMapEnd extends jspb.Message {
   clearMapTime(): void;
   getMapTime(): google_protobuf_duration_pb.Duration | undefined;
   setMapTime(value?: google_protobuf_duration_pb.Duration): void;
-
-  hasTimeRemaining(): boolean;
-  clearTimeRemaining(): void;
-  getTimeRemaining(): google_protobuf_duration_pb.Duration | undefined;
-  setTimeRemaining(value?: google_protobuf_duration_pb.Duration): void;
 
   getCurrentRoundNumber(): number;
   setCurrentRoundNumber(value: number): void;
@@ -2668,7 +2692,6 @@ export class CsgoMapEnd extends jspb.Message {
 export namespace CsgoMapEnd {
   export type AsObject = {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
-    timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
     currentRoundNumber: number,
     csgoMapName: string,
     winningTeamUrn: string,
