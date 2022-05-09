@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n\017com.oddin.bragiZ\016oddin.gg/bragi',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x19\x62ragi/bragi_service.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x10\x62ragi/csgo.proto\x1a\x12\x62ragi/common.proto\"O\n\x13LiveDataFeedRequest\x12.\n\x05\x61\x66ter\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x00\x88\x01\x01\x42\x08\n\x06_after\"m\n\x13LiveDataFeedMessage\x12%\n\tkeepalive\x18\x01 \x01(\x0b\x32\x10.bragi.KeepAliveH\x00\x12$\n\x05match\x18\x02 \x01(\x0b\x32\x13.bragi.MatchMessageH\x00\x42\t\n\x07message\":\n\tKeepAlive\x12-\n\ttimestamp\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"u\n\x0cMatchMessage\x12\x31\n\x0c\x61nnouncement\x18\x01 \x01(\x0b\x32\x19.bragi.AnnouncementUpdateH\x00\x12\'\n\x04\x63sgo\x18\x02 \x01(\x0b\x32\x17.bragi.CsgoMatchMessageH\x00\x42\t\n\x07message2S\n\x05\x42ragi\x12J\n\x0cLiveDataFeed\x12\x1a.bragi.LiveDataFeedRequest\x1a\x1a.bragi.LiveDataFeedMessage\"\x00\x30\x01\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
+  serialized_pb=b'\n\x19\x62ragi/bragi_service.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x10\x62ragi/csgo.proto\x1a\x12\x62ragi/common.proto\"O\n\x13LiveDataFeedRequest\x12.\n\x05\x61\x66ter\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x00\x88\x01\x01\x42\x08\n\x06_after\"m\n\x13LiveDataFeedMessage\x12%\n\tkeepalive\x18\x01 \x01(\x0b\x32\x10.bragi.KeepAliveH\x00\x12$\n\x05match\x18\x02 \x01(\x0b\x32\x13.bragi.MatchMessageH\x00\x42\t\n\x07message\":\n\tKeepAlive\x12-\n\ttimestamp\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xa6\x01\n\x0cMatchMessage\x12\x31\n\x0c\x61nnouncement\x18\x01 \x01(\x0b\x32\x19.bragi.AnnouncementUpdateH\x00\x12\'\n\x04\x63sgo\x18\x02 \x01(\x0b\x32\x17.bragi.CsgoMatchMessageH\x00\x12/\n\x0c\x63sgo_wingman\x18\x03 \x01(\x0b\x32\x17.bragi.CsgoMatchMessageH\x00\x42\t\n\x07message\"w\n\rMatchSnapshot\x12(\n\x04\x63sgo\x18\x01 \x01(\x0b\x32\x18.bragi.CsgoMatchSnapshotH\x00\x12\x30\n\x0c\x63sgo_wingman\x18\x02 \x01(\x0b\x32\x18.bragi.CsgoMatchSnapshotH\x00\x42\n\n\x08snapshot\"k\n\nMatchState\x12%\n\x04\x63sgo\x18\x01 \x01(\x0b\x32\x15.bragi.CsgoMatchStateH\x00\x12-\n\x0c\x63sgo_wingman\x18\x02 \x01(\x0b\x32\x15.bragi.CsgoMatchStateH\x00\x42\x07\n\x05state2S\n\x05\x42ragi\x12J\n\x0cLiveDataFeed\x12\x1a.bragi.LiveDataFeedRequest\x1a\x1a.bragi.LiveDataFeedMessage\"\x00\x30\x01\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,bragi_dot_csgo__pb2.DESCRIPTOR,bragi_dot_common__pb2.DESCRIPTOR,])
 
@@ -164,6 +164,13 @@ _MATCHMESSAGE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='csgo_wingman', full_name='bragi.MatchMessage.csgo_wingman', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -181,8 +188,96 @@ _MATCHMESSAGE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=359,
-  serialized_end=476,
+  serialized_start=360,
+  serialized_end=526,
+)
+
+
+_MATCHSNAPSHOT = _descriptor.Descriptor(
+  name='MatchSnapshot',
+  full_name='bragi.MatchSnapshot',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='csgo', full_name='bragi.MatchSnapshot.csgo', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='csgo_wingman', full_name='bragi.MatchSnapshot.csgo_wingman', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='snapshot', full_name='bragi.MatchSnapshot.snapshot',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=528,
+  serialized_end=647,
+)
+
+
+_MATCHSTATE = _descriptor.Descriptor(
+  name='MatchState',
+  full_name='bragi.MatchState',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='csgo', full_name='bragi.MatchState.csgo', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='csgo_wingman', full_name='bragi.MatchState.csgo_wingman', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='state', full_name='bragi.MatchState.state',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=649,
+  serialized_end=756,
 )
 
 _LIVEDATAFEEDREQUEST.fields_by_name['after'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
@@ -200,16 +295,38 @@ _LIVEDATAFEEDMESSAGE.fields_by_name['match'].containing_oneof = _LIVEDATAFEEDMES
 _KEEPALIVE.fields_by_name['timestamp'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _MATCHMESSAGE.fields_by_name['announcement'].message_type = bragi_dot_common__pb2._ANNOUNCEMENTUPDATE
 _MATCHMESSAGE.fields_by_name['csgo'].message_type = bragi_dot_csgo__pb2._CSGOMATCHMESSAGE
+_MATCHMESSAGE.fields_by_name['csgo_wingman'].message_type = bragi_dot_csgo__pb2._CSGOMATCHMESSAGE
 _MATCHMESSAGE.oneofs_by_name['message'].fields.append(
   _MATCHMESSAGE.fields_by_name['announcement'])
 _MATCHMESSAGE.fields_by_name['announcement'].containing_oneof = _MATCHMESSAGE.oneofs_by_name['message']
 _MATCHMESSAGE.oneofs_by_name['message'].fields.append(
   _MATCHMESSAGE.fields_by_name['csgo'])
 _MATCHMESSAGE.fields_by_name['csgo'].containing_oneof = _MATCHMESSAGE.oneofs_by_name['message']
+_MATCHMESSAGE.oneofs_by_name['message'].fields.append(
+  _MATCHMESSAGE.fields_by_name['csgo_wingman'])
+_MATCHMESSAGE.fields_by_name['csgo_wingman'].containing_oneof = _MATCHMESSAGE.oneofs_by_name['message']
+_MATCHSNAPSHOT.fields_by_name['csgo'].message_type = bragi_dot_csgo__pb2._CSGOMATCHSNAPSHOT
+_MATCHSNAPSHOT.fields_by_name['csgo_wingman'].message_type = bragi_dot_csgo__pb2._CSGOMATCHSNAPSHOT
+_MATCHSNAPSHOT.oneofs_by_name['snapshot'].fields.append(
+  _MATCHSNAPSHOT.fields_by_name['csgo'])
+_MATCHSNAPSHOT.fields_by_name['csgo'].containing_oneof = _MATCHSNAPSHOT.oneofs_by_name['snapshot']
+_MATCHSNAPSHOT.oneofs_by_name['snapshot'].fields.append(
+  _MATCHSNAPSHOT.fields_by_name['csgo_wingman'])
+_MATCHSNAPSHOT.fields_by_name['csgo_wingman'].containing_oneof = _MATCHSNAPSHOT.oneofs_by_name['snapshot']
+_MATCHSTATE.fields_by_name['csgo'].message_type = bragi_dot_csgo__pb2._CSGOMATCHSTATE
+_MATCHSTATE.fields_by_name['csgo_wingman'].message_type = bragi_dot_csgo__pb2._CSGOMATCHSTATE
+_MATCHSTATE.oneofs_by_name['state'].fields.append(
+  _MATCHSTATE.fields_by_name['csgo'])
+_MATCHSTATE.fields_by_name['csgo'].containing_oneof = _MATCHSTATE.oneofs_by_name['state']
+_MATCHSTATE.oneofs_by_name['state'].fields.append(
+  _MATCHSTATE.fields_by_name['csgo_wingman'])
+_MATCHSTATE.fields_by_name['csgo_wingman'].containing_oneof = _MATCHSTATE.oneofs_by_name['state']
 DESCRIPTOR.message_types_by_name['LiveDataFeedRequest'] = _LIVEDATAFEEDREQUEST
 DESCRIPTOR.message_types_by_name['LiveDataFeedMessage'] = _LIVEDATAFEEDMESSAGE
 DESCRIPTOR.message_types_by_name['KeepAlive'] = _KEEPALIVE
 DESCRIPTOR.message_types_by_name['MatchMessage'] = _MATCHMESSAGE
+DESCRIPTOR.message_types_by_name['MatchSnapshot'] = _MATCHSNAPSHOT
+DESCRIPTOR.message_types_by_name['MatchState'] = _MATCHSTATE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 LiveDataFeedRequest = _reflection.GeneratedProtocolMessageType('LiveDataFeedRequest', (_message.Message,), {
@@ -240,6 +357,20 @@ MatchMessage = _reflection.GeneratedProtocolMessageType('MatchMessage', (_messag
   })
 _sym_db.RegisterMessage(MatchMessage)
 
+MatchSnapshot = _reflection.GeneratedProtocolMessageType('MatchSnapshot', (_message.Message,), {
+  'DESCRIPTOR' : _MATCHSNAPSHOT,
+  '__module__' : 'bragi.bragi_service_pb2'
+  # @@protoc_insertion_point(class_scope:bragi.MatchSnapshot)
+  })
+_sym_db.RegisterMessage(MatchSnapshot)
+
+MatchState = _reflection.GeneratedProtocolMessageType('MatchState', (_message.Message,), {
+  'DESCRIPTOR' : _MATCHSTATE,
+  '__module__' : 'bragi.bragi_service_pb2'
+  # @@protoc_insertion_point(class_scope:bragi.MatchState)
+  })
+_sym_db.RegisterMessage(MatchState)
+
 
 DESCRIPTOR._options = None
 
@@ -250,8 +381,8 @@ _BRAGI = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=478,
-  serialized_end=561,
+  serialized_start=758,
+  serialized_end=841,
   methods=[
   _descriptor.MethodDescriptor(
     name='LiveDataFeed',

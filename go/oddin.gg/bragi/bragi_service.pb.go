@@ -214,6 +214,7 @@ type MatchMessage struct {
 	// Types that are assignable to Message:
 	//	*MatchMessage_Announcement
 	//	*MatchMessage_Csgo
+	//	*MatchMessage_CsgoWingman
 	Message isMatchMessage_Message `protobuf_oneof:"message"`
 }
 
@@ -270,6 +271,13 @@ func (x *MatchMessage) GetCsgo() *CsgoMatchMessage {
 	return nil
 }
 
+func (x *MatchMessage) GetCsgoWingman() *CsgoMatchMessage {
+	if x, ok := x.GetMessage().(*MatchMessage_CsgoWingman); ok {
+		return x.CsgoWingman
+	}
+	return nil
+}
+
 type isMatchMessage_Message interface {
 	isMatchMessage_Message()
 }
@@ -280,13 +288,184 @@ type MatchMessage_Announcement struct {
 }
 
 type MatchMessage_Csgo struct {
-	// Message which wraps CsgoMatchSnapshot or CsgoMatchUpdate message with given match_urn and sequence.
+	// Message which wraps CsgoMatchSnapshot or CsgoMatchUpdate message with given match_urn and sequence for csgo sport.
 	Csgo *CsgoMatchMessage `protobuf:"bytes,2,opt,name=csgo,proto3,oneof"`
+}
+
+type MatchMessage_CsgoWingman struct {
+	// Message which wraps CsgoMatchSnapshot or CsgoMatchUpdate message with given match_urn and sequence for csgo wingman sport.
+	CsgoWingman *CsgoMatchMessage `protobuf:"bytes,3,opt,name=csgo_wingman,json=csgoWingman,proto3,oneof"`
 }
 
 func (*MatchMessage_Announcement) isMatchMessage_Message() {}
 
 func (*MatchMessage_Csgo) isMatchMessage_Message() {}
+
+func (*MatchMessage_CsgoWingman) isMatchMessage_Message() {}
+
+// This oneof joins together all possible (Game)MatchSnapshots. It servers as a helper wrapper for match snapshots, so
+// it is not necessary to use it for match state maintain/reconstruction.
+type MatchSnapshot struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Types that are assignable to Snapshot:
+	//	*MatchSnapshot_Csgo
+	//	*MatchSnapshot_CsgoWingman
+	Snapshot isMatchSnapshot_Snapshot `protobuf_oneof:"snapshot"`
+}
+
+func (x *MatchSnapshot) Reset() {
+	*x = MatchSnapshot{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_bragi_bragi_service_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MatchSnapshot) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MatchSnapshot) ProtoMessage() {}
+
+func (x *MatchSnapshot) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_bragi_service_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MatchSnapshot.ProtoReflect.Descriptor instead.
+func (*MatchSnapshot) Descriptor() ([]byte, []int) {
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{4}
+}
+
+func (m *MatchSnapshot) GetSnapshot() isMatchSnapshot_Snapshot {
+	if m != nil {
+		return m.Snapshot
+	}
+	return nil
+}
+
+func (x *MatchSnapshot) GetCsgo() *CsgoMatchSnapshot {
+	if x, ok := x.GetSnapshot().(*MatchSnapshot_Csgo); ok {
+		return x.Csgo
+	}
+	return nil
+}
+
+func (x *MatchSnapshot) GetCsgoWingman() *CsgoMatchSnapshot {
+	if x, ok := x.GetSnapshot().(*MatchSnapshot_CsgoWingman); ok {
+		return x.CsgoWingman
+	}
+	return nil
+}
+
+type isMatchSnapshot_Snapshot interface {
+	isMatchSnapshot_Snapshot()
+}
+
+type MatchSnapshot_Csgo struct {
+	Csgo *CsgoMatchSnapshot `protobuf:"bytes,1,opt,name=csgo,proto3,oneof"`
+}
+
+type MatchSnapshot_CsgoWingman struct {
+	CsgoWingman *CsgoMatchSnapshot `protobuf:"bytes,2,opt,name=csgo_wingman,json=csgoWingman,proto3,oneof"`
+}
+
+func (*MatchSnapshot_Csgo) isMatchSnapshot_Snapshot() {}
+
+func (*MatchSnapshot_CsgoWingman) isMatchSnapshot_Snapshot() {}
+
+// This oneof joins together all possible (Game)MatchStates. It servers as a helper wrapper for match states, so
+// it is not necessary to use it for match state maintain/reconstruction.
+type MatchState struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Types that are assignable to State:
+	//	*MatchState_Csgo
+	//	*MatchState_CsgoWingman
+	State isMatchState_State `protobuf_oneof:"state"`
+}
+
+func (x *MatchState) Reset() {
+	*x = MatchState{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_bragi_bragi_service_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MatchState) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MatchState) ProtoMessage() {}
+
+func (x *MatchState) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_bragi_service_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MatchState.ProtoReflect.Descriptor instead.
+func (*MatchState) Descriptor() ([]byte, []int) {
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{5}
+}
+
+func (m *MatchState) GetState() isMatchState_State {
+	if m != nil {
+		return m.State
+	}
+	return nil
+}
+
+func (x *MatchState) GetCsgo() *CsgoMatchState {
+	if x, ok := x.GetState().(*MatchState_Csgo); ok {
+		return x.Csgo
+	}
+	return nil
+}
+
+func (x *MatchState) GetCsgoWingman() *CsgoMatchState {
+	if x, ok := x.GetState().(*MatchState_CsgoWingman); ok {
+		return x.CsgoWingman
+	}
+	return nil
+}
+
+type isMatchState_State interface {
+	isMatchState_State()
+}
+
+type MatchState_Csgo struct {
+	Csgo *CsgoMatchState `protobuf:"bytes,1,opt,name=csgo,proto3,oneof"`
+}
+
+type MatchState_CsgoWingman struct {
+	CsgoWingman *CsgoMatchState `protobuf:"bytes,2,opt,name=csgo_wingman,json=csgoWingman,proto3,oneof"`
+}
+
+func (*MatchState_Csgo) isMatchState_State() {}
+
+func (*MatchState_CsgoWingman) isMatchState_State() {}
 
 var File_bragi_bragi_service_proto protoreflect.FileDescriptor
 
@@ -315,7 +494,7 @@ var file_bragi_bragi_service_proto_rawDesc = []byte{
 	0x38, 0x0a, 0x09, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x18, 0x01, 0x20, 0x01,
 	0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74,
 	0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x09,
-	0x74, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x22, 0x89, 0x01, 0x0a, 0x0c, 0x4d, 0x61,
+	0x74, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x22, 0xc7, 0x01, 0x0a, 0x0c, 0x4d, 0x61,
 	0x74, 0x63, 0x68, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x12, 0x3f, 0x0a, 0x0c, 0x61, 0x6e,
 	0x6e, 0x6f, 0x75, 0x6e, 0x63, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
 	0x32, 0x19, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x41, 0x6e, 0x6e, 0x6f, 0x75, 0x6e, 0x63,
@@ -323,16 +502,36 @@ var file_bragi_bragi_service_proto_rawDesc = []byte{
 	0x6e, 0x6e, 0x6f, 0x75, 0x6e, 0x63, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x12, 0x2d, 0x0a, 0x04, 0x63,
 	0x73, 0x67, 0x6f, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x62, 0x72, 0x61, 0x67,
 	0x69, 0x2e, 0x43, 0x73, 0x67, 0x6f, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x4d, 0x65, 0x73, 0x73, 0x61,
-	0x67, 0x65, 0x48, 0x00, 0x52, 0x04, 0x63, 0x73, 0x67, 0x6f, 0x42, 0x09, 0x0a, 0x07, 0x6d, 0x65,
-	0x73, 0x73, 0x61, 0x67, 0x65, 0x32, 0x53, 0x0a, 0x05, 0x42, 0x72, 0x61, 0x67, 0x69, 0x12, 0x4a,
-	0x0a, 0x0c, 0x4c, 0x69, 0x76, 0x65, 0x44, 0x61, 0x74, 0x61, 0x46, 0x65, 0x65, 0x64, 0x12, 0x1a,
-	0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x4c, 0x69, 0x76, 0x65, 0x44, 0x61, 0x74, 0x61, 0x46,
-	0x65, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1a, 0x2e, 0x62, 0x72, 0x61,
-	0x67, 0x69, 0x2e, 0x4c, 0x69, 0x76, 0x65, 0x44, 0x61, 0x74, 0x61, 0x46, 0x65, 0x65, 0x64, 0x4d,
-	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x00, 0x30, 0x01, 0x42, 0x21, 0x0a, 0x0f, 0x63, 0x6f,
-	0x6d, 0x2e, 0x6f, 0x64, 0x64, 0x69, 0x6e, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x5a, 0x0e, 0x6f,
-	0x64, 0x64, 0x69, 0x6e, 0x2e, 0x67, 0x67, 0x2f, 0x62, 0x72, 0x61, 0x67, 0x69, 0x62, 0x06, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x67, 0x65, 0x48, 0x00, 0x52, 0x04, 0x63, 0x73, 0x67, 0x6f, 0x12, 0x3c, 0x0a, 0x0c, 0x63, 0x73,
+	0x67, 0x6f, 0x5f, 0x77, 0x69, 0x6e, 0x67, 0x6d, 0x61, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x17, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x43, 0x73, 0x67, 0x6f, 0x4d, 0x61, 0x74,
+	0x63, 0x68, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x48, 0x00, 0x52, 0x0b, 0x63, 0x73, 0x67,
+	0x6f, 0x57, 0x69, 0x6e, 0x67, 0x6d, 0x61, 0x6e, 0x42, 0x09, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73,
+	0x61, 0x67, 0x65, 0x22, 0x8a, 0x01, 0x0a, 0x0d, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x53, 0x6e, 0x61,
+	0x70, 0x73, 0x68, 0x6f, 0x74, 0x12, 0x2e, 0x0a, 0x04, 0x63, 0x73, 0x67, 0x6f, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x43, 0x73, 0x67, 0x6f,
+	0x4d, 0x61, 0x74, 0x63, 0x68, 0x53, 0x6e, 0x61, 0x70, 0x73, 0x68, 0x6f, 0x74, 0x48, 0x00, 0x52,
+	0x04, 0x63, 0x73, 0x67, 0x6f, 0x12, 0x3d, 0x0a, 0x0c, 0x63, 0x73, 0x67, 0x6f, 0x5f, 0x77, 0x69,
+	0x6e, 0x67, 0x6d, 0x61, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x62, 0x72,
+	0x61, 0x67, 0x69, 0x2e, 0x43, 0x73, 0x67, 0x6f, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x53, 0x6e, 0x61,
+	0x70, 0x73, 0x68, 0x6f, 0x74, 0x48, 0x00, 0x52, 0x0b, 0x63, 0x73, 0x67, 0x6f, 0x57, 0x69, 0x6e,
+	0x67, 0x6d, 0x61, 0x6e, 0x42, 0x0a, 0x0a, 0x08, 0x73, 0x6e, 0x61, 0x70, 0x73, 0x68, 0x6f, 0x74,
+	0x22, 0x7e, 0x0a, 0x0a, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x53, 0x74, 0x61, 0x74, 0x65, 0x12, 0x2b,
+	0x0a, 0x04, 0x63, 0x73, 0x67, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x15, 0x2e, 0x62,
+	0x72, 0x61, 0x67, 0x69, 0x2e, 0x43, 0x73, 0x67, 0x6f, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x53, 0x74,
+	0x61, 0x74, 0x65, 0x48, 0x00, 0x52, 0x04, 0x63, 0x73, 0x67, 0x6f, 0x12, 0x3a, 0x0a, 0x0c, 0x63,
+	0x73, 0x67, 0x6f, 0x5f, 0x77, 0x69, 0x6e, 0x67, 0x6d, 0x61, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x15, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x43, 0x73, 0x67, 0x6f, 0x4d, 0x61,
+	0x74, 0x63, 0x68, 0x53, 0x74, 0x61, 0x74, 0x65, 0x48, 0x00, 0x52, 0x0b, 0x63, 0x73, 0x67, 0x6f,
+	0x57, 0x69, 0x6e, 0x67, 0x6d, 0x61, 0x6e, 0x42, 0x07, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65,
+	0x32, 0x53, 0x0a, 0x05, 0x42, 0x72, 0x61, 0x67, 0x69, 0x12, 0x4a, 0x0a, 0x0c, 0x4c, 0x69, 0x76,
+	0x65, 0x44, 0x61, 0x74, 0x61, 0x46, 0x65, 0x65, 0x64, 0x12, 0x1a, 0x2e, 0x62, 0x72, 0x61, 0x67,
+	0x69, 0x2e, 0x4c, 0x69, 0x76, 0x65, 0x44, 0x61, 0x74, 0x61, 0x46, 0x65, 0x65, 0x64, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1a, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x4c, 0x69,
+	0x76, 0x65, 0x44, 0x61, 0x74, 0x61, 0x46, 0x65, 0x65, 0x64, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67,
+	0x65, 0x22, 0x00, 0x30, 0x01, 0x42, 0x21, 0x0a, 0x0f, 0x63, 0x6f, 0x6d, 0x2e, 0x6f, 0x64, 0x64,
+	0x69, 0x6e, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x5a, 0x0e, 0x6f, 0x64, 0x64, 0x69, 0x6e, 0x2e,
+	0x67, 0x67, 0x2f, 0x62, 0x72, 0x61, 0x67, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -347,30 +546,39 @@ func file_bragi_bragi_service_proto_rawDescGZIP() []byte {
 	return file_bragi_bragi_service_proto_rawDescData
 }
 
-var file_bragi_bragi_service_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_bragi_bragi_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_bragi_bragi_service_proto_goTypes = []interface{}{
 	(*LiveDataFeedRequest)(nil),   // 0: bragi.LiveDataFeedRequest
 	(*LiveDataFeedMessage)(nil),   // 1: bragi.LiveDataFeedMessage
 	(*KeepAlive)(nil),             // 2: bragi.KeepAlive
 	(*MatchMessage)(nil),          // 3: bragi.MatchMessage
-	(*timestamppb.Timestamp)(nil), // 4: google.protobuf.Timestamp
-	(*AnnouncementUpdate)(nil),    // 5: bragi.AnnouncementUpdate
-	(*CsgoMatchMessage)(nil),      // 6: bragi.CsgoMatchMessage
+	(*MatchSnapshot)(nil),         // 4: bragi.MatchSnapshot
+	(*MatchState)(nil),            // 5: bragi.MatchState
+	(*timestamppb.Timestamp)(nil), // 6: google.protobuf.Timestamp
+	(*AnnouncementUpdate)(nil),    // 7: bragi.AnnouncementUpdate
+	(*CsgoMatchMessage)(nil),      // 8: bragi.CsgoMatchMessage
+	(*CsgoMatchSnapshot)(nil),     // 9: bragi.CsgoMatchSnapshot
+	(*CsgoMatchState)(nil),        // 10: bragi.CsgoMatchState
 }
 var file_bragi_bragi_service_proto_depIdxs = []int32{
-	4, // 0: bragi.LiveDataFeedRequest.after:type_name -> google.protobuf.Timestamp
-	2, // 1: bragi.LiveDataFeedMessage.keepalive:type_name -> bragi.KeepAlive
-	3, // 2: bragi.LiveDataFeedMessage.match:type_name -> bragi.MatchMessage
-	4, // 3: bragi.KeepAlive.timestamp:type_name -> google.protobuf.Timestamp
-	5, // 4: bragi.MatchMessage.announcement:type_name -> bragi.AnnouncementUpdate
-	6, // 5: bragi.MatchMessage.csgo:type_name -> bragi.CsgoMatchMessage
-	0, // 6: bragi.Bragi.LiveDataFeed:input_type -> bragi.LiveDataFeedRequest
-	1, // 7: bragi.Bragi.LiveDataFeed:output_type -> bragi.LiveDataFeedMessage
-	7, // [7:8] is the sub-list for method output_type
-	6, // [6:7] is the sub-list for method input_type
-	6, // [6:6] is the sub-list for extension type_name
-	6, // [6:6] is the sub-list for extension extendee
-	0, // [0:6] is the sub-list for field type_name
+	6,  // 0: bragi.LiveDataFeedRequest.after:type_name -> google.protobuf.Timestamp
+	2,  // 1: bragi.LiveDataFeedMessage.keepalive:type_name -> bragi.KeepAlive
+	3,  // 2: bragi.LiveDataFeedMessage.match:type_name -> bragi.MatchMessage
+	6,  // 3: bragi.KeepAlive.timestamp:type_name -> google.protobuf.Timestamp
+	7,  // 4: bragi.MatchMessage.announcement:type_name -> bragi.AnnouncementUpdate
+	8,  // 5: bragi.MatchMessage.csgo:type_name -> bragi.CsgoMatchMessage
+	8,  // 6: bragi.MatchMessage.csgo_wingman:type_name -> bragi.CsgoMatchMessage
+	9,  // 7: bragi.MatchSnapshot.csgo:type_name -> bragi.CsgoMatchSnapshot
+	9,  // 8: bragi.MatchSnapshot.csgo_wingman:type_name -> bragi.CsgoMatchSnapshot
+	10, // 9: bragi.MatchState.csgo:type_name -> bragi.CsgoMatchState
+	10, // 10: bragi.MatchState.csgo_wingman:type_name -> bragi.CsgoMatchState
+	0,  // 11: bragi.Bragi.LiveDataFeed:input_type -> bragi.LiveDataFeedRequest
+	1,  // 12: bragi.Bragi.LiveDataFeed:output_type -> bragi.LiveDataFeedMessage
+	12, // [12:13] is the sub-list for method output_type
+	11, // [11:12] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_bragi_bragi_service_proto_init() }
@@ -429,6 +637,30 @@ func file_bragi_bragi_service_proto_init() {
 				return nil
 			}
 		}
+		file_bragi_bragi_service_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MatchSnapshot); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_bragi_bragi_service_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MatchState); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	file_bragi_bragi_service_proto_msgTypes[0].OneofWrappers = []interface{}{}
 	file_bragi_bragi_service_proto_msgTypes[1].OneofWrappers = []interface{}{
@@ -438,6 +670,15 @@ func file_bragi_bragi_service_proto_init() {
 	file_bragi_bragi_service_proto_msgTypes[3].OneofWrappers = []interface{}{
 		(*MatchMessage_Announcement)(nil),
 		(*MatchMessage_Csgo)(nil),
+		(*MatchMessage_CsgoWingman)(nil),
+	}
+	file_bragi_bragi_service_proto_msgTypes[4].OneofWrappers = []interface{}{
+		(*MatchSnapshot_Csgo)(nil),
+		(*MatchSnapshot_CsgoWingman)(nil),
+	}
+	file_bragi_bragi_service_proto_msgTypes[5].OneofWrappers = []interface{}{
+		(*MatchState_Csgo)(nil),
+		(*MatchState_CsgoWingman)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -445,7 +686,7 @@ func file_bragi_bragi_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_bragi_bragi_service_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
