@@ -62,9 +62,30 @@ message MatchMessage {
     // Append announcement's payload to property announcements array in (Game)MatchSnapshot.
     AnnouncementUpdate announcement = 1;
 
-    // Message which wraps CsgoMatchSnapshot or CsgoMatchUpdate message with given match_urn and sequence.
+    // Message which wraps CsgoMatchSnapshot or CsgoMatchUpdate message with given match_urn and sequence for csgo sport.
     CsgoMatchMessage csgo = 2;
 
+    // Message which wraps CsgoMatchSnapshot or CsgoMatchUpdate message with given match_urn and sequence for csgo wingman sport.
+    CsgoMatchMessage csgo_wingman = 3;
+
     // LolMatchMessage lol = 3; // not implemented yet
+  }
+}
+
+// This oneof joins together all possible (Game)MatchSnapshots. It servers as a helper wrapper for match snapshots, so
+// it is not necessary to use it for match state maintain/reconstruction.
+message MatchSnapshot {
+  oneof snapshot {
+    CsgoMatchSnapshot csgo = 1;
+    CsgoMatchSnapshot csgo_wingman = 2;
+  }
+}
+
+// This oneof joins together all possible (Game)MatchStates. It servers as a helper wrapper for match states, so
+// it is not necessary to use it for match state maintain/reconstruction.
+message MatchState {
+  oneof state {
+    CsgoMatchState csgo = 1;
+    CsgoMatchState csgo_wingman = 2;
   }
 }

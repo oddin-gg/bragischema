@@ -96,6 +96,11 @@ export class MatchMessage extends jspb.Message {
   getCsgo(): bragi_csgo_pb.CsgoMatchMessage | undefined;
   setCsgo(value?: bragi_csgo_pb.CsgoMatchMessage): void;
 
+  hasCsgoWingman(): boolean;
+  clearCsgoWingman(): void;
+  getCsgoWingman(): bragi_csgo_pb.CsgoMatchMessage | undefined;
+  setCsgoWingman(value?: bragi_csgo_pb.CsgoMatchMessage): void;
+
   getMessageCase(): MatchMessage.MessageCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MatchMessage.AsObject;
@@ -111,12 +116,84 @@ export namespace MatchMessage {
   export type AsObject = {
     announcement?: bragi_common_pb.AnnouncementUpdate.AsObject,
     csgo?: bragi_csgo_pb.CsgoMatchMessage.AsObject,
+    csgoWingman?: bragi_csgo_pb.CsgoMatchMessage.AsObject,
   }
 
   export enum MessageCase {
     MESSAGE_NOT_SET = 0,
     ANNOUNCEMENT = 1,
     CSGO = 2,
+    CSGO_WINGMAN = 3,
+  }
+}
+
+export class MatchSnapshot extends jspb.Message {
+  hasCsgo(): boolean;
+  clearCsgo(): void;
+  getCsgo(): bragi_csgo_pb.CsgoMatchSnapshot | undefined;
+  setCsgo(value?: bragi_csgo_pb.CsgoMatchSnapshot): void;
+
+  hasCsgoWingman(): boolean;
+  clearCsgoWingman(): void;
+  getCsgoWingman(): bragi_csgo_pb.CsgoMatchSnapshot | undefined;
+  setCsgoWingman(value?: bragi_csgo_pb.CsgoMatchSnapshot): void;
+
+  getSnapshotCase(): MatchSnapshot.SnapshotCase;
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MatchSnapshot.AsObject;
+  static toObject(includeInstance: boolean, msg: MatchSnapshot): MatchSnapshot.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MatchSnapshot, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MatchSnapshot;
+  static deserializeBinaryFromReader(message: MatchSnapshot, reader: jspb.BinaryReader): MatchSnapshot;
+}
+
+export namespace MatchSnapshot {
+  export type AsObject = {
+    csgo?: bragi_csgo_pb.CsgoMatchSnapshot.AsObject,
+    csgoWingman?: bragi_csgo_pb.CsgoMatchSnapshot.AsObject,
+  }
+
+  export enum SnapshotCase {
+    SNAPSHOT_NOT_SET = 0,
+    CSGO = 1,
+    CSGO_WINGMAN = 2,
+  }
+}
+
+export class MatchState extends jspb.Message {
+  hasCsgo(): boolean;
+  clearCsgo(): void;
+  getCsgo(): bragi_csgo_pb.CsgoMatchState | undefined;
+  setCsgo(value?: bragi_csgo_pb.CsgoMatchState): void;
+
+  hasCsgoWingman(): boolean;
+  clearCsgoWingman(): void;
+  getCsgoWingman(): bragi_csgo_pb.CsgoMatchState | undefined;
+  setCsgoWingman(value?: bragi_csgo_pb.CsgoMatchState): void;
+
+  getStateCase(): MatchState.StateCase;
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MatchState.AsObject;
+  static toObject(includeInstance: boolean, msg: MatchState): MatchState.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MatchState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MatchState;
+  static deserializeBinaryFromReader(message: MatchState, reader: jspb.BinaryReader): MatchState;
+}
+
+export namespace MatchState {
+  export type AsObject = {
+    csgo?: bragi_csgo_pb.CsgoMatchState.AsObject,
+    csgoWingman?: bragi_csgo_pb.CsgoMatchState.AsObject,
+  }
+
+  export enum StateCase {
+    STATE_NOT_SET = 0,
+    CSGO = 1,
+    CSGO_WINGMAN = 2,
   }
 }
 

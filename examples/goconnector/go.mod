@@ -3,7 +3,7 @@ module goconnector
 go 1.18
 
 require (
-	github.com/oddin-gg/bragischema v0.1.0
+	github.com/oddin-gg/bragischema v0.1.2
 	google.golang.org/grpc v1.44.0
 )
 
