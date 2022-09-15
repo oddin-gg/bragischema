@@ -6,8 +6,9 @@ option go_package = "oddin.gg/bragi";
 option java_package = "com.oddin.bragi";
 
 import "google/protobuf/timestamp.proto";
-import "bragi/csgo.proto";
 import "bragi/common.proto";
+import "bragi/csgo.proto";
+import "bragi/dota2.proto";
 
 service Bragi {
 
@@ -68,6 +69,9 @@ message MatchMessage {
     // Message which wraps CsgoMatchSnapshot or CsgoMatchUpdate message with given match_urn and sequence for csgo wingman sport.
     CsgoMatchMessage csgo_wingman = 3;
 
+    // Message which wraps Dota2MatchSnapshot or Dota2MatchUpdate message with given match_urn and sequence for Dota2 sport.
+    Dota2MatchMessage dota2 = 4;
+
     // LolMatchMessage lol = 3; // not implemented yet
   }
 }
@@ -78,6 +82,7 @@ message MatchSnapshot {
   oneof snapshot {
     CsgoMatchSnapshot csgo = 1;
     CsgoMatchSnapshot csgo_wingman = 2;
+    Dota2MatchSnapshot dota2 = 3;
   }
 }
 
@@ -87,5 +92,6 @@ message MatchState {
   oneof state {
     CsgoMatchState csgo = 1;
     CsgoMatchState csgo_wingman = 2;
+    Dota2MatchState dota2 = 3;
   }
 }

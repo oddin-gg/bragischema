@@ -18,6 +18,9 @@ export class CsgoMatchMessage extends jspb.Message {
   getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
 
+  getDataStatus(): bragi_common_pb.DataStatusMap[keyof bragi_common_pb.DataStatusMap];
+  setDataStatus(value: bragi_common_pb.DataStatusMap[keyof bragi_common_pb.DataStatusMap]): void;
+
   hasPayload(): boolean;
   clearPayload(): void;
   getPayload(): CsgoMatchMessage.Payload | undefined;
@@ -38,6 +41,7 @@ export namespace CsgoMatchMessage {
     matchUrn: string,
     sequence: number,
     timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    dataStatus: bragi_common_pb.DataStatusMap[keyof bragi_common_pb.DataStatusMap],
     payload?: CsgoMatchMessage.Payload.AsObject,
   }
 
@@ -89,6 +93,9 @@ export class CsgoMatchSnapshot extends jspb.Message {
   getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
 
+  getDataStatus(): bragi_common_pb.DataStatusMap[keyof bragi_common_pb.DataStatusMap];
+  setDataStatus(value: bragi_common_pb.DataStatusMap[keyof bragi_common_pb.DataStatusMap]): void;
+
   clearAnnouncementsList(): void;
   getAnnouncementsList(): Array<bragi_common_pb.Announcement>;
   setAnnouncementsList(value: Array<bragi_common_pb.Announcement>): void;
@@ -114,6 +121,7 @@ export namespace CsgoMatchSnapshot {
     matchUrn: string,
     sequence: number,
     timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    dataStatus: bragi_common_pb.DataStatusMap[keyof bragi_common_pb.DataStatusMap],
     announcementsList: Array<bragi_common_pb.Announcement.AsObject>,
     matchState?: CsgoMatchState.AsObject,
   }
@@ -534,6 +542,11 @@ export class CsgoMapInfoState extends jspb.Message {
   getMapEnded(): boolean;
   setMapEnded(value: boolean): void;
 
+  hasWinTeamUrn(): boolean;
+  clearWinTeamUrn(): void;
+  getWinTeamUrn(): string;
+  setWinTeamUrn(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CsgoMapInfoState.AsObject;
   static toObject(includeInstance: boolean, msg: CsgoMapInfoState): CsgoMapInfoState.AsObject;
@@ -555,6 +568,7 @@ export namespace CsgoMapInfoState {
     startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     mapEnded: boolean,
+    winTeamUrn: string,
   }
 }
 
@@ -725,6 +739,11 @@ export class CsgoRoundInfoState extends jspb.Message {
   getWinReason(): CsgoWinReasonMap[keyof CsgoWinReasonMap];
   setWinReason(value: CsgoWinReasonMap[keyof CsgoWinReasonMap]): void;
 
+  hasHomeWon(): boolean;
+  clearHomeWon(): void;
+  getHomeWon(): boolean;
+  setHomeWon(value: boolean): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CsgoRoundInfoState.AsObject;
   static toObject(includeInstance: boolean, msg: CsgoRoundInfoState): CsgoRoundInfoState.AsObject;
@@ -742,6 +761,7 @@ export namespace CsgoRoundInfoState {
     endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     winningTeamUrn: string,
     winReason: CsgoWinReasonMap[keyof CsgoWinReasonMap],
+    homeWon: boolean,
   }
 }
 
@@ -1313,6 +1333,9 @@ export class CsgoPlayerMapState extends jspb.Message {
   getPlayerName(): string;
   setPlayerName(value: string): void;
 
+  getSlotId(): number;
+  setSlotId(value: number): void;
+
   hasStatistics(): boolean;
   clearStatistics(): void;
   getStatistics(): CsgoPlayerMapStatisticsState | undefined;
@@ -1332,6 +1355,7 @@ export namespace CsgoPlayerMapState {
   export type AsObject = {
     playerUrn: string,
     playerName: string,
+    slotId: number,
     statistics?: CsgoPlayerMapStatisticsState.AsObject,
   }
 }
@@ -1345,6 +1369,12 @@ export class CsgoPlayerMapStatisticsState extends jspb.Message {
 
   getOpeningDeaths(): number;
   setOpeningDeaths(value: number): void;
+
+  getTotalDamage(): number;
+  setTotalDamage(value: number): void;
+
+  getAverageDamagePerRound(): number;
+  setAverageDamagePerRound(value: number): void;
 
   hasStatistics(): boolean;
   clearStatistics(): void;
@@ -1366,6 +1396,8 @@ export namespace CsgoPlayerMapStatisticsState {
     playerUrn: string,
     openingKills: number,
     openingDeaths: number,
+    totalDamage: number,
+    averageDamagePerRound: number,
     statistics?: CsgoPlayerStatistics.AsObject,
   }
 }
@@ -1445,6 +1477,9 @@ export class CsgoPlayerCurrentRoundState extends jspb.Message {
   getPlayerName(): string;
   setPlayerName(value: string): void;
 
+  getSlotId(): number;
+  setSlotId(value: number): void;
+
   hasStatistics(): boolean;
   clearStatistics(): void;
   getStatistics(): CsgoPlayerCurrentRoundStatisticsState | undefined;
@@ -1474,6 +1509,7 @@ export namespace CsgoPlayerCurrentRoundState {
   export type AsObject = {
     playerUrn: string,
     playerName: string,
+    slotId: number,
     statistics?: CsgoPlayerCurrentRoundStatisticsState.AsObject,
     items?: CsgoPlayerItemsState.AsObject,
     position?: CsgoPlayerPositionState.AsObject,
@@ -1495,6 +1531,11 @@ export class CsgoPlayerCurrentRoundStatisticsState extends jspb.Message {
 
   getBalance(): number;
   setBalance(value: number): void;
+
+  hasDamage(): boolean;
+  clearDamage(): void;
+  getDamage(): number;
+  setDamage(value: number): void;
 
   hasStatistics(): boolean;
   clearStatistics(): void;
@@ -1518,6 +1559,7 @@ export namespace CsgoPlayerCurrentRoundStatisticsState {
     health: number,
     armor: number,
     balance: number,
+    damage: number,
     statistics?: CsgoPlayerStatistics.AsObject,
   }
 }
@@ -1633,6 +1675,9 @@ export class CsgoPlayerStatistics extends jspb.Message {
   getHeadshots(): number;
   setHeadshots(value: number): void;
 
+  getDamage(): number;
+  setDamage(value: number): void;
+
   hasFriendlyDamageDealtArmor(): boolean;
   clearFriendlyDamageDealtArmor(): void;
   getFriendlyDamageDealtArmor(): number;
@@ -1683,6 +1728,7 @@ export namespace CsgoPlayerStatistics {
     deaths: number,
     assists: number,
     headshots: number,
+    damage: number,
     friendlyDamageDealtArmor: number,
     friendlyDamageDealtHealth: number,
     enemyDamageDealtArmor: number,

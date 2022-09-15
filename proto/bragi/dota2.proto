@@ -1,0 +1,147 @@
+syntax = "proto3";
+
+package bragi;
+
+option go_package = "oddin.gg/bragi";
+option java_package = "com.oddin.bragi";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "bragi/common.proto";
+
+
+message Dota2MatchMessage {
+  message Payload {
+    oneof payload {
+      // Initial snapshot
+      Dota2MatchSnapshot snapshot = 1;
+
+      // Particular updates which are applied on property match_state in MatchState.
+      Dota2MatchUpdate update = 2;
+    }
+  }
+
+  string match_urn = 1;
+  uint64 sequence = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  DataStatus data_status = 5;
+  Payload payload = 4;
+}
+
+message Dota2MatchSnapshot {
+  string match_urn = 1;
+  uint64 sequence = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  DataStatus data_status = 6;
+  repeated Announcement announcements = 4;
+  Dota2MatchState match_state = 5;
+}
+
+message Dota2MatchUpdate {
+  message Payload {
+    oneof payload {
+      Dota2MatchState match_state = 1;
+    }
+  }
+
+  Payload payload = 1;
+}
+
+message Dota2MatchState {
+  string match_urn = 1;
+  Dota2MatchScoreboard scoreboard = 2;
+  Dota2Minimap minimap = 3;
+}
+
+message Dota2MatchScoreboard {
+  string match_urn = 1;
+  bool map_paused = 2;
+  uint32 home_team_urn = 3;
+  uint32 away_team_urn = 4;
+  uint32 home_score = 5;
+  uint32 away_score = 6;
+  MatchStatusType match_status = 7;
+  Dota2MapScoreboard current_map = 8;
+  repeated Dota2MapScoreboard previous_maps = 9;
+}
+
+message Dota2MapScoreboard {
+  uint32 map_order = 1;
+  google.protobuf.Duration game_time = 2;
+  Dota2TeamScoreboard home_team = 3;
+  Dota2TeamScoreboard away_team = 4;
+}
+
+message Dota2TeamScoreboard {
+  string team_urn = 2;
+  Dota2Faction faction = 3;
+  uint32 barracks = 4;
+  uint32 kills = 5;
+  uint32 net_worth = 6;
+  uint32 roshans = 7;
+  uint32 towers = 8;
+  optional bool won = 9;
+  repeated Dota2PlayerScoreboard players = 10;
+}
+
+message Dota2PlayerScoreboard {
+  string player_urn = 1;
+  uint32 slot_id = 10;
+  string ext_name = 2;
+  uint32 hero_id = 3;
+  bool has_aegis = 4;
+  optional google.protobuf.Duration respawn_timer = 5;
+  uint32 assists = 6;
+  uint32 deaths = 7;
+  uint32 kills = 8;
+  uint32 net_worth = 9;
+}
+
+message Dota2Minimap {
+  string match_urn = 1;
+  uint32 map_order = 2;
+  bool map_paused = 3;
+  repeated Dota2MinimapTower towers = 4;
+  repeated Dota2MinimapBarrack barracks = 5;
+}
+
+message Dota2MinimapTower {
+  Dota2Lane lane = 1;
+  Dota2Faction faction = 2;
+  Dota2TowerTier tier = 3;
+  bool alive = 4;
+}
+
+message Dota2MinimapBarrack {
+  Dota2Lane lane = 1;
+  Dota2Faction faction = 2;
+  Dota2BarrackType type = 3;
+  bool alive = 4;
+}
+
+enum Dota2Faction {
+  DOTA2_FACTION_UNSPECIFIED = 0;
+  DOTA2_FACTION_RADIANT = 1;
+  DOTA2_FACTION_DIRE = 2;
+}
+
+enum Dota2Lane {
+  DOTA2_LANE_UNSPECIFIED = 0;
+  DOTA2_LANE_TOP = 1;
+  DOTA2_LANE_MID = 2;
+  DOTA2_LANE_BOT = 3;
+}
+
+enum Dota2TowerTier {
+  DOTA2_TOWER_TIER_UNSPECIFIED = 0;
+  DOTA2_TOWER_TIER_1 = 1;
+  DOTA2_TOWER_TIER_2 = 2;
+  DOTA2_TOWER_TIER_3 = 3;
+  DOTA2_TOWER_TIER_4 = 4;
+}
+
+enum Dota2BarrackType {
+  DOTA2_BARRACK_TYPE_UNSPECIFIED = 0;
+  DOTA2_BARRACK_TYPE_RANGED = 1;
+  DOTA2_BARRACK_TYPE_MELEE = 2;
+}

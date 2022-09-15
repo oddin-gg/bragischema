@@ -13,20 +13,16 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() {
-  if (this) { return this; }
-  if (typeof window !== 'undefined') { return window; }
-  if (typeof global !== 'undefined') { return global; }
-  if (typeof self !== 'undefined') { return self; }
-  return Function('return this')();
-}.call(null));
+var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
-var bragi_csgo_pb = require('../bragi/csgo_pb.js');
-goog.object.extend(proto, bragi_csgo_pb);
 var bragi_common_pb = require('../bragi/common_pb.js');
 goog.object.extend(proto, bragi_common_pb);
+var bragi_csgo_pb = require('../bragi/csgo_pb.js');
+goog.object.extend(proto, bragi_csgo_pb);
+var bragi_dota2_pb = require('../bragi/dota2_pb.js');
+goog.object.extend(proto, bragi_dota2_pb);
 goog.exportSymbol('proto.bragi.KeepAlive', null, global);
 goog.exportSymbol('proto.bragi.LiveDataFeedMessage', null, global);
 goog.exportSymbol('proto.bragi.LiveDataFeedMessage.MessageCase', null, global);
@@ -702,7 +698,7 @@ proto.bragi.KeepAlive.prototype.hasTimestamp = function() {
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.bragi.MatchMessage.oneofGroups_ = [[1,2,3]];
+proto.bragi.MatchMessage.oneofGroups_ = [[1,2,3,4]];
 
 /**
  * @enum {number}
@@ -711,7 +707,8 @@ proto.bragi.MatchMessage.MessageCase = {
   MESSAGE_NOT_SET: 0,
   ANNOUNCEMENT: 1,
   CSGO: 2,
-  CSGO_WINGMAN: 3
+  CSGO_WINGMAN: 3,
+  DOTA2: 4
 };
 
 /**
@@ -754,7 +751,8 @@ proto.bragi.MatchMessage.toObject = function(includeInstance, msg) {
   var f, obj = {
     announcement: (f = msg.getAnnouncement()) && bragi_common_pb.AnnouncementUpdate.toObject(includeInstance, f),
     csgo: (f = msg.getCsgo()) && bragi_csgo_pb.CsgoMatchMessage.toObject(includeInstance, f),
-    csgoWingman: (f = msg.getCsgoWingman()) && bragi_csgo_pb.CsgoMatchMessage.toObject(includeInstance, f)
+    csgoWingman: (f = msg.getCsgoWingman()) && bragi_csgo_pb.CsgoMatchMessage.toObject(includeInstance, f),
+    dota2: (f = msg.getDota2()) && bragi_dota2_pb.Dota2MatchMessage.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -805,6 +803,11 @@ proto.bragi.MatchMessage.deserializeBinaryFromReader = function(msg, reader) {
       var value = new bragi_csgo_pb.CsgoMatchMessage;
       reader.readMessage(value,bragi_csgo_pb.CsgoMatchMessage.deserializeBinaryFromReader);
       msg.setCsgoWingman(value);
+      break;
+    case 4:
+      var value = new bragi_dota2_pb.Dota2MatchMessage;
+      reader.readMessage(value,bragi_dota2_pb.Dota2MatchMessage.deserializeBinaryFromReader);
+      msg.setDota2(value);
       break;
     default:
       reader.skipField();
@@ -857,6 +860,14 @@ proto.bragi.MatchMessage.serializeBinaryToWriter = function(message, writer) {
       3,
       f,
       bragi_csgo_pb.CsgoMatchMessage.serializeBinaryToWriter
+    );
+  }
+  f = message.getDota2();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      bragi_dota2_pb.Dota2MatchMessage.serializeBinaryToWriter
     );
   }
 };
@@ -973,6 +984,43 @@ proto.bragi.MatchMessage.prototype.hasCsgoWingman = function() {
 };
 
 
+/**
+ * optional Dota2MatchMessage dota2 = 4;
+ * @return {?proto.bragi.Dota2MatchMessage}
+ */
+proto.bragi.MatchMessage.prototype.getDota2 = function() {
+  return /** @type{?proto.bragi.Dota2MatchMessage} */ (
+    jspb.Message.getWrapperField(this, bragi_dota2_pb.Dota2MatchMessage, 4));
+};
+
+
+/**
+ * @param {?proto.bragi.Dota2MatchMessage|undefined} value
+ * @return {!proto.bragi.MatchMessage} returns this
+*/
+proto.bragi.MatchMessage.prototype.setDota2 = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 4, proto.bragi.MatchMessage.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.bragi.MatchMessage} returns this
+ */
+proto.bragi.MatchMessage.prototype.clearDota2 = function() {
+  return this.setDota2(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.MatchMessage.prototype.hasDota2 = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
 
 /**
  * Oneof group definitions for this message. Each group defines the field
@@ -982,7 +1030,7 @@ proto.bragi.MatchMessage.prototype.hasCsgoWingman = function() {
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.bragi.MatchSnapshot.oneofGroups_ = [[1,2]];
+proto.bragi.MatchSnapshot.oneofGroups_ = [[1,2,3]];
 
 /**
  * @enum {number}
@@ -990,7 +1038,8 @@ proto.bragi.MatchSnapshot.oneofGroups_ = [[1,2]];
 proto.bragi.MatchSnapshot.SnapshotCase = {
   SNAPSHOT_NOT_SET: 0,
   CSGO: 1,
-  CSGO_WINGMAN: 2
+  CSGO_WINGMAN: 2,
+  DOTA2: 3
 };
 
 /**
@@ -1032,7 +1081,8 @@ proto.bragi.MatchSnapshot.prototype.toObject = function(opt_includeInstance) {
 proto.bragi.MatchSnapshot.toObject = function(includeInstance, msg) {
   var f, obj = {
     csgo: (f = msg.getCsgo()) && bragi_csgo_pb.CsgoMatchSnapshot.toObject(includeInstance, f),
-    csgoWingman: (f = msg.getCsgoWingman()) && bragi_csgo_pb.CsgoMatchSnapshot.toObject(includeInstance, f)
+    csgoWingman: (f = msg.getCsgoWingman()) && bragi_csgo_pb.CsgoMatchSnapshot.toObject(includeInstance, f),
+    dota2: (f = msg.getDota2()) && bragi_dota2_pb.Dota2MatchSnapshot.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1079,6 +1129,11 @@ proto.bragi.MatchSnapshot.deserializeBinaryFromReader = function(msg, reader) {
       reader.readMessage(value,bragi_csgo_pb.CsgoMatchSnapshot.deserializeBinaryFromReader);
       msg.setCsgoWingman(value);
       break;
+    case 3:
+      var value = new bragi_dota2_pb.Dota2MatchSnapshot;
+      reader.readMessage(value,bragi_dota2_pb.Dota2MatchSnapshot.deserializeBinaryFromReader);
+      msg.setDota2(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1122,6 +1177,14 @@ proto.bragi.MatchSnapshot.serializeBinaryToWriter = function(message, writer) {
       2,
       f,
       bragi_csgo_pb.CsgoMatchSnapshot.serializeBinaryToWriter
+    );
+  }
+  f = message.getDota2();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      bragi_dota2_pb.Dota2MatchSnapshot.serializeBinaryToWriter
     );
   }
 };
@@ -1201,6 +1264,43 @@ proto.bragi.MatchSnapshot.prototype.hasCsgoWingman = function() {
 };
 
 
+/**
+ * optional Dota2MatchSnapshot dota2 = 3;
+ * @return {?proto.bragi.Dota2MatchSnapshot}
+ */
+proto.bragi.MatchSnapshot.prototype.getDota2 = function() {
+  return /** @type{?proto.bragi.Dota2MatchSnapshot} */ (
+    jspb.Message.getWrapperField(this, bragi_dota2_pb.Dota2MatchSnapshot, 3));
+};
+
+
+/**
+ * @param {?proto.bragi.Dota2MatchSnapshot|undefined} value
+ * @return {!proto.bragi.MatchSnapshot} returns this
+*/
+proto.bragi.MatchSnapshot.prototype.setDota2 = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 3, proto.bragi.MatchSnapshot.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.bragi.MatchSnapshot} returns this
+ */
+proto.bragi.MatchSnapshot.prototype.clearDota2 = function() {
+  return this.setDota2(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.MatchSnapshot.prototype.hasDota2 = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
 
 /**
  * Oneof group definitions for this message. Each group defines the field
@@ -1210,7 +1310,7 @@ proto.bragi.MatchSnapshot.prototype.hasCsgoWingman = function() {
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.bragi.MatchState.oneofGroups_ = [[1,2]];
+proto.bragi.MatchState.oneofGroups_ = [[1,2,3]];
 
 /**
  * @enum {number}
@@ -1218,7 +1318,8 @@ proto.bragi.MatchState.oneofGroups_ = [[1,2]];
 proto.bragi.MatchState.StateCase = {
   STATE_NOT_SET: 0,
   CSGO: 1,
-  CSGO_WINGMAN: 2
+  CSGO_WINGMAN: 2,
+  DOTA2: 3
 };
 
 /**
@@ -1260,7 +1361,8 @@ proto.bragi.MatchState.prototype.toObject = function(opt_includeInstance) {
 proto.bragi.MatchState.toObject = function(includeInstance, msg) {
   var f, obj = {
     csgo: (f = msg.getCsgo()) && bragi_csgo_pb.CsgoMatchState.toObject(includeInstance, f),
-    csgoWingman: (f = msg.getCsgoWingman()) && bragi_csgo_pb.CsgoMatchState.toObject(includeInstance, f)
+    csgoWingman: (f = msg.getCsgoWingman()) && bragi_csgo_pb.CsgoMatchState.toObject(includeInstance, f),
+    dota2: (f = msg.getDota2()) && bragi_dota2_pb.Dota2MatchState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1307,6 +1409,11 @@ proto.bragi.MatchState.deserializeBinaryFromReader = function(msg, reader) {
       reader.readMessage(value,bragi_csgo_pb.CsgoMatchState.deserializeBinaryFromReader);
       msg.setCsgoWingman(value);
       break;
+    case 3:
+      var value = new bragi_dota2_pb.Dota2MatchState;
+      reader.readMessage(value,bragi_dota2_pb.Dota2MatchState.deserializeBinaryFromReader);
+      msg.setDota2(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1350,6 +1457,14 @@ proto.bragi.MatchState.serializeBinaryToWriter = function(message, writer) {
       2,
       f,
       bragi_csgo_pb.CsgoMatchState.serializeBinaryToWriter
+    );
+  }
+  f = message.getDota2();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      bragi_dota2_pb.Dota2MatchState.serializeBinaryToWriter
     );
   }
 };
@@ -1426,6 +1541,43 @@ proto.bragi.MatchState.prototype.clearCsgoWingman = function() {
  */
 proto.bragi.MatchState.prototype.hasCsgoWingman = function() {
   return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional Dota2MatchState dota2 = 3;
+ * @return {?proto.bragi.Dota2MatchState}
+ */
+proto.bragi.MatchState.prototype.getDota2 = function() {
+  return /** @type{?proto.bragi.Dota2MatchState} */ (
+    jspb.Message.getWrapperField(this, bragi_dota2_pb.Dota2MatchState, 3));
+};
+
+
+/**
+ * @param {?proto.bragi.Dota2MatchState|undefined} value
+ * @return {!proto.bragi.MatchState} returns this
+*/
+proto.bragi.MatchState.prototype.setDota2 = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 3, proto.bragi.MatchState.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.bragi.MatchState} returns this
+ */
+proto.bragi.MatchState.prototype.clearDota2 = function() {
+  return this.setDota2(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.MatchState.prototype.hasDota2 = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 

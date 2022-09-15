@@ -25,6 +25,7 @@ message CsgoMatchMessage {
   string match_urn = 1;
   uint64 sequence = 2;
   google.protobuf.Timestamp timestamp = 3;
+  DataStatus data_status = 5;
   Payload payload = 4;
 }
 
@@ -38,6 +39,7 @@ message CsgoMatchSnapshot {
   string match_urn = 1;
   uint64 sequence = 2;
   google.protobuf.Timestamp timestamp = 3;
+  DataStatus data_status = 6;
   repeated Announcement announcements = 4;
   CsgoMatchState match_state = 5;
 }
@@ -162,6 +164,7 @@ message CsgoMapInfoState {
   optional google.protobuf.Timestamp start_time = 7;
   optional google.protobuf.Timestamp end_time = 8;
   bool map_ended = 9;
+  optional string win_team_urn = 10;
 }
 
 message CsgoMapScoreState {
@@ -208,6 +211,7 @@ message CsgoRoundInfoState {
   optional google.protobuf.Timestamp end_time = 3;
   optional string winning_team_urn = 4;
   optional CsgoWinReason win_reason = 5;
+  optional bool home_won = 6;
 }
 
 message CsgoRoundTimeState {
@@ -334,6 +338,7 @@ message CsgoPlayerMapStatePartialUpdate {
 message CsgoPlayerMapState {
   string player_urn = 1;
   string player_name = 2;
+  uint32 slot_id = 4;
   CsgoPlayerMapStatisticsState statistics = 3;
 }
 
@@ -341,6 +346,8 @@ message CsgoPlayerMapStatisticsState {
   string player_urn = 1;
   uint32 opening_kills = 4;
   uint32 opening_deaths = 5;
+  uint32 total_damage = 6;
+  float average_damage_per_round = 7;
   CsgoPlayerStatistics statistics = 2;
 }
 
@@ -367,6 +374,7 @@ message CsgoPlayerCurrentRoundStatePartialUpdate {
 message CsgoPlayerCurrentRoundState {
   string player_urn = 1;
   string player_name = 2;
+  uint32 slot_id = 6;
   CsgoPlayerCurrentRoundStatisticsState statistics = 3;
   CsgoPlayerItemsState items = 4;
   CsgoPlayerPositionState position = 5;
@@ -378,6 +386,7 @@ message CsgoPlayerCurrentRoundStatisticsState {
   uint32 health = 3;
   uint32 armor = 4;
   uint32 balance = 5;
+  optional uint32 damage = 7;
   CsgoPlayerStatistics statistics = 6;
 }
 
@@ -409,6 +418,7 @@ message CsgoPlayerStatistics {
   uint32 deaths = 6;
   uint32 assists = 7;
   uint32 headshots = 8;
+  uint32 damage = 15 [deprecated = true]; // use CsgoPlayerMapStatisticsState.total_damage or CsgoPlayerCurrentRoundStatisticsState.damage
   optional uint32 friendly_damage_dealt_armor = 9;
   optional uint32 friendly_damage_dealt_health = 10;
   optional uint32 enemy_damage_dealt_armor = 11;
