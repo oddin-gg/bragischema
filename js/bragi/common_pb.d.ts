@@ -189,3 +189,12 @@ export interface MatchStatusTypeMap {
 
 export const MatchStatusType: MatchStatusTypeMap;
 
+export interface DataStatusMap {
+  DATA_STATUS_UNSPECIFIED: 0;
+  DATA_STATUS_DISABLED_DATA: 1;
+  DATA_STATUS_CORRUPTED_DATA: 2;
+  DATA_STATUS_VALID_DATA: 3;
+}
+
+export const DataStatus: DataStatusMap;
+

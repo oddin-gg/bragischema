@@ -3,8 +3,9 @@
 
 import * as jspb from "google-protobuf";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
-import * as bragi_csgo_pb from "../bragi/csgo_pb";
 import * as bragi_common_pb from "../bragi/common_pb";
+import * as bragi_csgo_pb from "../bragi/csgo_pb";
+import * as bragi_dota2_pb from "../bragi/dota2_pb";
 
 export class LiveDataFeedRequest extends jspb.Message {
   hasAfter(): boolean;
@@ -101,6 +102,11 @@ export class MatchMessage extends jspb.Message {
   getCsgoWingman(): bragi_csgo_pb.CsgoMatchMessage | undefined;
   setCsgoWingman(value?: bragi_csgo_pb.CsgoMatchMessage): void;
 
+  hasDota2(): boolean;
+  clearDota2(): void;
+  getDota2(): bragi_dota2_pb.Dota2MatchMessage | undefined;
+  setDota2(value?: bragi_dota2_pb.Dota2MatchMessage): void;
+
   getMessageCase(): MatchMessage.MessageCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MatchMessage.AsObject;
@@ -117,6 +123,7 @@ export namespace MatchMessage {
     announcement?: bragi_common_pb.AnnouncementUpdate.AsObject,
     csgo?: bragi_csgo_pb.CsgoMatchMessage.AsObject,
     csgoWingman?: bragi_csgo_pb.CsgoMatchMessage.AsObject,
+    dota2?: bragi_dota2_pb.Dota2MatchMessage.AsObject,
   }
 
   export enum MessageCase {
@@ -124,6 +131,7 @@ export namespace MatchMessage {
     ANNOUNCEMENT = 1,
     CSGO = 2,
     CSGO_WINGMAN = 3,
+    DOTA2 = 4,
   }
 }
 
@@ -137,6 +145,11 @@ export class MatchSnapshot extends jspb.Message {
   clearCsgoWingman(): void;
   getCsgoWingman(): bragi_csgo_pb.CsgoMatchSnapshot | undefined;
   setCsgoWingman(value?: bragi_csgo_pb.CsgoMatchSnapshot): void;
+
+  hasDota2(): boolean;
+  clearDota2(): void;
+  getDota2(): bragi_dota2_pb.Dota2MatchSnapshot | undefined;
+  setDota2(value?: bragi_dota2_pb.Dota2MatchSnapshot): void;
 
   getSnapshotCase(): MatchSnapshot.SnapshotCase;
   serializeBinary(): Uint8Array;
@@ -153,12 +166,14 @@ export namespace MatchSnapshot {
   export type AsObject = {
     csgo?: bragi_csgo_pb.CsgoMatchSnapshot.AsObject,
     csgoWingman?: bragi_csgo_pb.CsgoMatchSnapshot.AsObject,
+    dota2?: bragi_dota2_pb.Dota2MatchSnapshot.AsObject,
   }
 
   export enum SnapshotCase {
     SNAPSHOT_NOT_SET = 0,
     CSGO = 1,
     CSGO_WINGMAN = 2,
+    DOTA2 = 3,
   }
 }
 
@@ -172,6 +187,11 @@ export class MatchState extends jspb.Message {
   clearCsgoWingman(): void;
   getCsgoWingman(): bragi_csgo_pb.CsgoMatchState | undefined;
   setCsgoWingman(value?: bragi_csgo_pb.CsgoMatchState): void;
+
+  hasDota2(): boolean;
+  clearDota2(): void;
+  getDota2(): bragi_dota2_pb.Dota2MatchState | undefined;
+  setDota2(value?: bragi_dota2_pb.Dota2MatchState): void;
 
   getStateCase(): MatchState.StateCase;
   serializeBinary(): Uint8Array;
@@ -188,12 +208,14 @@ export namespace MatchState {
   export type AsObject = {
     csgo?: bragi_csgo_pb.CsgoMatchState.AsObject,
     csgoWingman?: bragi_csgo_pb.CsgoMatchState.AsObject,
+    dota2?: bragi_dota2_pb.Dota2MatchState.AsObject,
   }
 
   export enum StateCase {
     STATE_NOT_SET = 0,
     CSGO = 1,
     CSGO_WINGMAN = 2,
+    DOTA2 = 3,
   }
 }
 

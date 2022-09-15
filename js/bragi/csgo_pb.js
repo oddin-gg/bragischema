@@ -13,13 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() {
-  if (this) { return this; }
-  if (typeof window !== 'undefined') { return window; }
-  if (typeof global !== 'undefined') { return global; }
-  if (typeof self !== 'undefined') { return self; }
-  return Function('return this')();
-}.call(null));
+var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
@@ -1683,6 +1677,7 @@ proto.bragi.CsgoMatchMessage.toObject = function(includeInstance, msg) {
     matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
     sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
     timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    dataStatus: jspb.Message.getFieldWithDefault(msg, 5, 0),
     payload: (f = msg.getPayload()) && proto.bragi.CsgoMatchMessage.Payload.toObject(includeInstance, f)
   };
 
@@ -1732,6 +1727,10 @@ proto.bragi.CsgoMatchMessage.deserializeBinaryFromReader = function(msg, reader)
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setTimestamp(value);
+      break;
+    case 5:
+      var value = /** @type {!proto.bragi.DataStatus} */ (reader.readEnum());
+      msg.setDataStatus(value);
       break;
     case 4:
       var value = new proto.bragi.CsgoMatchMessage.Payload;
@@ -1787,6 +1786,13 @@ proto.bragi.CsgoMatchMessage.serializeBinaryToWriter = function(message, writer)
       3,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = message.getDataStatus();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      5,
+      f
     );
   }
   f = message.getPayload();
@@ -2102,6 +2108,24 @@ proto.bragi.CsgoMatchMessage.prototype.hasTimestamp = function() {
 
 
 /**
+ * optional DataStatus data_status = 5;
+ * @return {!proto.bragi.DataStatus}
+ */
+proto.bragi.CsgoMatchMessage.prototype.getDataStatus = function() {
+  return /** @type {!proto.bragi.DataStatus} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {!proto.bragi.DataStatus} value
+ * @return {!proto.bragi.CsgoMatchMessage} returns this
+ */
+proto.bragi.CsgoMatchMessage.prototype.setDataStatus = function(value) {
+  return jspb.Message.setProto3EnumField(this, 5, value);
+};
+
+
+/**
  * optional Payload payload = 4;
  * @return {?proto.bragi.CsgoMatchMessage.Payload}
  */
@@ -2180,6 +2204,7 @@ proto.bragi.CsgoMatchSnapshot.toObject = function(includeInstance, msg) {
     matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
     sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
     timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    dataStatus: jspb.Message.getFieldWithDefault(msg, 6, 0),
     announcementsList: jspb.Message.toObjectList(msg.getAnnouncementsList(),
     bragi_common_pb.Announcement.toObject, includeInstance),
     matchState: (f = msg.getMatchState()) && proto.bragi.CsgoMatchState.toObject(includeInstance, f)
@@ -2231,6 +2256,10 @@ proto.bragi.CsgoMatchSnapshot.deserializeBinaryFromReader = function(msg, reader
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setTimestamp(value);
+      break;
+    case 6:
+      var value = /** @type {!proto.bragi.DataStatus} */ (reader.readEnum());
+      msg.setDataStatus(value);
       break;
     case 4:
       var value = new bragi_common_pb.Announcement;
@@ -2291,6 +2320,13 @@ proto.bragi.CsgoMatchSnapshot.serializeBinaryToWriter = function(message, writer
       3,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = message.getDataStatus();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      6,
+      f
     );
   }
   f = message.getAnnouncementsList();
@@ -2382,6 +2418,24 @@ proto.bragi.CsgoMatchSnapshot.prototype.clearTimestamp = function() {
  */
 proto.bragi.CsgoMatchSnapshot.prototype.hasTimestamp = function() {
   return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional DataStatus data_status = 6;
+ * @return {!proto.bragi.DataStatus}
+ */
+proto.bragi.CsgoMatchSnapshot.prototype.getDataStatus = function() {
+  return /** @type {!proto.bragi.DataStatus} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/**
+ * @param {!proto.bragi.DataStatus} value
+ * @return {!proto.bragi.CsgoMatchSnapshot} returns this
+ */
+proto.bragi.CsgoMatchSnapshot.prototype.setDataStatus = function(value) {
+  return jspb.Message.setProto3EnumField(this, 6, value);
 };
 
 
@@ -5238,7 +5292,8 @@ proto.bragi.CsgoMapInfoState.toObject = function(includeInstance, msg) {
     bombTimeDuration: (f = msg.getBombTimeDuration()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
     startTime: (f = msg.getStartTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     endTime: (f = msg.getEndTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    mapEnded: jspb.Message.getBooleanFieldWithDefault(msg, 9, false)
+    mapEnded: jspb.Message.getBooleanFieldWithDefault(msg, 9, false),
+    winTeamUrn: jspb.Message.getFieldWithDefault(msg, 10, "")
   };
 
   if (includeInstance) {
@@ -5315,6 +5370,10 @@ proto.bragi.CsgoMapInfoState.deserializeBinaryFromReader = function(msg, reader)
     case 9:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setMapEnded(value);
+      break;
+    case 10:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setWinTeamUrn(value);
       break;
     default:
       reader.skipField();
@@ -5410,6 +5469,13 @@ proto.bragi.CsgoMapInfoState.serializeBinaryToWriter = function(message, writer)
   if (f) {
     writer.writeBool(
       9,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 10));
+  if (f != null) {
+    writer.writeString(
+      10,
       f
     );
   }
@@ -5670,6 +5736,42 @@ proto.bragi.CsgoMapInfoState.prototype.getMapEnded = function() {
  */
 proto.bragi.CsgoMapInfoState.prototype.setMapEnded = function(value) {
   return jspb.Message.setProto3BooleanField(this, 9, value);
+};
+
+
+/**
+ * optional string win_team_urn = 10;
+ * @return {string}
+ */
+proto.bragi.CsgoMapInfoState.prototype.getWinTeamUrn = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.bragi.CsgoMapInfoState} returns this
+ */
+proto.bragi.CsgoMapInfoState.prototype.setWinTeamUrn = function(value) {
+  return jspb.Message.setField(this, 10, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.bragi.CsgoMapInfoState} returns this
+ */
+proto.bragi.CsgoMapInfoState.prototype.clearWinTeamUrn = function() {
+  return jspb.Message.setField(this, 10, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.CsgoMapInfoState.prototype.hasWinTeamUrn = function() {
+  return jspb.Message.getField(this, 10) != null;
 };
 
 
@@ -6731,7 +6833,8 @@ proto.bragi.CsgoRoundInfoState.toObject = function(includeInstance, msg) {
     startTime: (f = msg.getStartTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     endTime: (f = msg.getEndTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     winningTeamUrn: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    winReason: jspb.Message.getFieldWithDefault(msg, 5, 0)
+    winReason: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    homeWon: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
   };
 
   if (includeInstance) {
@@ -6789,6 +6892,10 @@ proto.bragi.CsgoRoundInfoState.deserializeBinaryFromReader = function(msg, reade
     case 5:
       var value = /** @type {!proto.bragi.CsgoWinReason} */ (reader.readEnum());
       msg.setWinReason(value);
+      break;
+    case 6:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setHomeWon(value);
       break;
     default:
       reader.skipField();
@@ -6853,6 +6960,13 @@ proto.bragi.CsgoRoundInfoState.serializeBinaryToWriter = function(message, write
   if (f != null) {
     writer.writeEnum(
       5,
+      f
+    );
+  }
+  f = /** @type {boolean} */ (jspb.Message.getField(message, 6));
+  if (f != null) {
+    writer.writeBool(
+      6,
       f
     );
   }
@@ -7020,6 +7134,42 @@ proto.bragi.CsgoRoundInfoState.prototype.clearWinReason = function() {
  */
 proto.bragi.CsgoRoundInfoState.prototype.hasWinReason = function() {
   return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional bool home_won = 6;
+ * @return {boolean}
+ */
+proto.bragi.CsgoRoundInfoState.prototype.getHomeWon = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 6, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.bragi.CsgoRoundInfoState} returns this
+ */
+proto.bragi.CsgoRoundInfoState.prototype.setHomeWon = function(value) {
+  return jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.bragi.CsgoRoundInfoState} returns this
+ */
+proto.bragi.CsgoRoundInfoState.prototype.clearHomeWon = function() {
+  return jspb.Message.setField(this, 6, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.CsgoRoundInfoState.prototype.hasHomeWon = function() {
+  return jspb.Message.getField(this, 6) != null;
 };
 
 
@@ -10984,6 +11134,7 @@ proto.bragi.CsgoPlayerMapState.toObject = function(includeInstance, msg) {
   var f, obj = {
     playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
     playerName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    slotId: jspb.Message.getFieldWithDefault(msg, 4, 0),
     statistics: (f = msg.getStatistics()) && proto.bragi.CsgoPlayerMapStatisticsState.toObject(includeInstance, f)
   };
 
@@ -11028,6 +11179,10 @@ proto.bragi.CsgoPlayerMapState.deserializeBinaryFromReader = function(msg, reade
     case 2:
       var value = /** @type {string} */ (reader.readString());
       msg.setPlayerName(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setSlotId(value);
       break;
     case 3:
       var value = new proto.bragi.CsgoPlayerMapStatisticsState;
@@ -11077,6 +11232,13 @@ proto.bragi.CsgoPlayerMapState.serializeBinaryToWriter = function(message, write
       f
     );
   }
+  f = message.getSlotId();
+  if (f !== 0) {
+    writer.writeUint32(
+      4,
+      f
+    );
+  }
   f = message.getStatistics();
   if (f != null) {
     writer.writeMessage(
@@ -11121,6 +11283,24 @@ proto.bragi.CsgoPlayerMapState.prototype.getPlayerName = function() {
  */
 proto.bragi.CsgoPlayerMapState.prototype.setPlayerName = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional uint32 slot_id = 4;
+ * @return {number}
+ */
+proto.bragi.CsgoPlayerMapState.prototype.getSlotId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.bragi.CsgoPlayerMapState} returns this
+ */
+proto.bragi.CsgoPlayerMapState.prototype.setSlotId = function(value) {
+  return jspb.Message.setProto3IntField(this, 4, value);
 };
 
 
@@ -11196,6 +11376,8 @@ proto.bragi.CsgoPlayerMapStatisticsState.toObject = function(includeInstance, ms
     playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
     openingKills: jspb.Message.getFieldWithDefault(msg, 4, 0),
     openingDeaths: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    totalDamage: jspb.Message.getFieldWithDefault(msg, 6, 0),
+    averageDamagePerRound: jspb.Message.getFloatingPointFieldWithDefault(msg, 7, 0.0),
     statistics: (f = msg.getStatistics()) && proto.bragi.CsgoPlayerStatistics.toObject(includeInstance, f)
   };
 
@@ -11244,6 +11426,14 @@ proto.bragi.CsgoPlayerMapStatisticsState.deserializeBinaryFromReader = function(
     case 5:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setOpeningDeaths(value);
+      break;
+    case 6:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setTotalDamage(value);
+      break;
+    case 7:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setAverageDamagePerRound(value);
       break;
     case 2:
       var value = new proto.bragi.CsgoPlayerStatistics;
@@ -11297,6 +11487,20 @@ proto.bragi.CsgoPlayerMapStatisticsState.serializeBinaryToWriter = function(mess
   if (f !== 0) {
     writer.writeUint32(
       5,
+      f
+    );
+  }
+  f = message.getTotalDamage();
+  if (f !== 0) {
+    writer.writeUint32(
+      6,
+      f
+    );
+  }
+  f = message.getAverageDamagePerRound();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      7,
       f
     );
   }
@@ -11362,6 +11566,42 @@ proto.bragi.CsgoPlayerMapStatisticsState.prototype.getOpeningDeaths = function()
  */
 proto.bragi.CsgoPlayerMapStatisticsState.prototype.setOpeningDeaths = function(value) {
   return jspb.Message.setProto3IntField(this, 5, value);
+};
+
+
+/**
+ * optional uint32 total_damage = 6;
+ * @return {number}
+ */
+proto.bragi.CsgoPlayerMapStatisticsState.prototype.getTotalDamage = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.bragi.CsgoPlayerMapStatisticsState} returns this
+ */
+proto.bragi.CsgoPlayerMapStatisticsState.prototype.setTotalDamage = function(value) {
+  return jspb.Message.setProto3IntField(this, 6, value);
+};
+
+
+/**
+ * optional float average_damage_per_round = 7;
+ * @return {number}
+ */
+proto.bragi.CsgoPlayerMapStatisticsState.prototype.getAverageDamagePerRound = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 7, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.bragi.CsgoPlayerMapStatisticsState} returns this
+ */
+proto.bragi.CsgoPlayerMapStatisticsState.prototype.setAverageDamagePerRound = function(value) {
+  return jspb.Message.setProto3FloatField(this, 7, value);
 };
 
 
@@ -11897,6 +12137,7 @@ proto.bragi.CsgoPlayerCurrentRoundState.toObject = function(includeInstance, msg
   var f, obj = {
     playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
     playerName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    slotId: jspb.Message.getFieldWithDefault(msg, 6, 0),
     statistics: (f = msg.getStatistics()) && proto.bragi.CsgoPlayerCurrentRoundStatisticsState.toObject(includeInstance, f),
     items: (f = msg.getItems()) && proto.bragi.CsgoPlayerItemsState.toObject(includeInstance, f),
     position: (f = msg.getPosition()) && proto.bragi.CsgoPlayerPositionState.toObject(includeInstance, f)
@@ -11943,6 +12184,10 @@ proto.bragi.CsgoPlayerCurrentRoundState.deserializeBinaryFromReader = function(m
     case 2:
       var value = /** @type {string} */ (reader.readString());
       msg.setPlayerName(value);
+      break;
+    case 6:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setSlotId(value);
       break;
     case 3:
       var value = new proto.bragi.CsgoPlayerCurrentRoundStatisticsState;
@@ -11999,6 +12244,13 @@ proto.bragi.CsgoPlayerCurrentRoundState.serializeBinaryToWriter = function(messa
   if (f.length > 0) {
     writer.writeString(
       2,
+      f
+    );
+  }
+  f = message.getSlotId();
+  if (f !== 0) {
+    writer.writeUint32(
+      6,
       f
     );
   }
@@ -12062,6 +12314,24 @@ proto.bragi.CsgoPlayerCurrentRoundState.prototype.getPlayerName = function() {
  */
 proto.bragi.CsgoPlayerCurrentRoundState.prototype.setPlayerName = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional uint32 slot_id = 6;
+ * @return {number}
+ */
+proto.bragi.CsgoPlayerCurrentRoundState.prototype.getSlotId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.bragi.CsgoPlayerCurrentRoundState} returns this
+ */
+proto.bragi.CsgoPlayerCurrentRoundState.prototype.setSlotId = function(value) {
+  return jspb.Message.setProto3IntField(this, 6, value);
 };
 
 
@@ -12213,6 +12483,7 @@ proto.bragi.CsgoPlayerCurrentRoundStatisticsState.toObject = function(includeIns
     health: jspb.Message.getFieldWithDefault(msg, 3, 0),
     armor: jspb.Message.getFieldWithDefault(msg, 4, 0),
     balance: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    damage: jspb.Message.getFieldWithDefault(msg, 7, 0),
     statistics: (f = msg.getStatistics()) && proto.bragi.CsgoPlayerStatistics.toObject(includeInstance, f)
   };
 
@@ -12269,6 +12540,10 @@ proto.bragi.CsgoPlayerCurrentRoundStatisticsState.deserializeBinaryFromReader = 
     case 5:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setBalance(value);
+      break;
+    case 7:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setDamage(value);
       break;
     case 6:
       var value = new proto.bragi.CsgoPlayerStatistics;
@@ -12336,6 +12611,13 @@ proto.bragi.CsgoPlayerCurrentRoundStatisticsState.serializeBinaryToWriter = func
   if (f !== 0) {
     writer.writeUint32(
       5,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 7));
+  if (f != null) {
+    writer.writeUint32(
+      7,
       f
     );
   }
@@ -12437,6 +12719,42 @@ proto.bragi.CsgoPlayerCurrentRoundStatisticsState.prototype.getBalance = functio
  */
 proto.bragi.CsgoPlayerCurrentRoundStatisticsState.prototype.setBalance = function(value) {
   return jspb.Message.setProto3IntField(this, 5, value);
+};
+
+
+/**
+ * optional uint32 damage = 7;
+ * @return {number}
+ */
+proto.bragi.CsgoPlayerCurrentRoundStatisticsState.prototype.getDamage = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.bragi.CsgoPlayerCurrentRoundStatisticsState} returns this
+ */
+proto.bragi.CsgoPlayerCurrentRoundStatisticsState.prototype.setDamage = function(value) {
+  return jspb.Message.setField(this, 7, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.bragi.CsgoPlayerCurrentRoundStatisticsState} returns this
+ */
+proto.bragi.CsgoPlayerCurrentRoundStatisticsState.prototype.clearDamage = function() {
+  return jspb.Message.setField(this, 7, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.CsgoPlayerCurrentRoundStatisticsState.prototype.hasDamage = function() {
+  return jspb.Message.getField(this, 7) != null;
 };
 
 
@@ -13129,6 +13447,7 @@ proto.bragi.CsgoPlayerStatistics.toObject = function(includeInstance, msg) {
     deaths: jspb.Message.getFieldWithDefault(msg, 6, 0),
     assists: jspb.Message.getFieldWithDefault(msg, 7, 0),
     headshots: jspb.Message.getFieldWithDefault(msg, 8, 0),
+    damage: jspb.Message.getFieldWithDefault(msg, 15, 0),
     friendlyDamageDealtArmor: jspb.Message.getFieldWithDefault(msg, 9, 0),
     friendlyDamageDealtHealth: jspb.Message.getFieldWithDefault(msg, 10, 0),
     enemyDamageDealtArmor: jspb.Message.getFieldWithDefault(msg, 11, 0),
@@ -13202,6 +13521,10 @@ proto.bragi.CsgoPlayerStatistics.deserializeBinaryFromReader = function(msg, rea
     case 8:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setHeadshots(value);
+      break;
+    case 15:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setDamage(value);
       break;
     case 9:
       var value = /** @type {number} */ (reader.readUint32());
@@ -13309,6 +13632,13 @@ proto.bragi.CsgoPlayerStatistics.serializeBinaryToWriter = function(message, wri
   if (f !== 0) {
     writer.writeUint32(
       8,
+      f
+    );
+  }
+  f = message.getDamage();
+  if (f !== 0) {
+    writer.writeUint32(
+      15,
       f
     );
   }
@@ -13498,6 +13828,24 @@ proto.bragi.CsgoPlayerStatistics.prototype.getHeadshots = function() {
  */
 proto.bragi.CsgoPlayerStatistics.prototype.setHeadshots = function(value) {
   return jspb.Message.setProto3IntField(this, 8, value);
+};
+
+
+/**
+ * optional uint32 damage = 15;
+ * @return {number}
+ */
+proto.bragi.CsgoPlayerStatistics.prototype.getDamage = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 15, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.bragi.CsgoPlayerStatistics} returns this
+ */
+proto.bragi.CsgoPlayerStatistics.prototype.setDamage = function(value) {
+  return jspb.Message.setProto3IntField(this, 15, value);
 };
 
 
