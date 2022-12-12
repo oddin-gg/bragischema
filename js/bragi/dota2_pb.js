@@ -1785,8 +1785,8 @@ proto.bragi.Dota2MatchScoreboard.toObject = function(includeInstance, msg) {
   var f, obj = {
     matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
     mapPaused: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
-    homeTeamUrn: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    awayTeamUrn: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    homeTeamUrn: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    awayTeamUrn: jspb.Message.getFieldWithDefault(msg, 4, ""),
     homeScore: jspb.Message.getFieldWithDefault(msg, 5, 0),
     awayScore: jspb.Message.getFieldWithDefault(msg, 6, 0),
     matchStatus: jspb.Message.getFieldWithDefault(msg, 7, 0),
@@ -1838,11 +1838,11 @@ proto.bragi.Dota2MatchScoreboard.deserializeBinaryFromReader = function(msg, rea
       msg.setMapPaused(value);
       break;
     case 3:
-      var value = /** @type {number} */ (reader.readUint32());
+      var value = /** @type {string} */ (reader.readString());
       msg.setHomeTeamUrn(value);
       break;
     case 4:
-      var value = /** @type {number} */ (reader.readUint32());
+      var value = /** @type {string} */ (reader.readString());
       msg.setAwayTeamUrn(value);
       break;
     case 5:
@@ -1911,15 +1911,15 @@ proto.bragi.Dota2MatchScoreboard.serializeBinaryToWriter = function(message, wri
     );
   }
   f = message.getHomeTeamUrn();
-  if (f !== 0) {
-    writer.writeUint32(
+  if (f.length > 0) {
+    writer.writeString(
       3,
       f
     );
   }
   f = message.getAwayTeamUrn();
-  if (f !== 0) {
-    writer.writeUint32(
+  if (f.length > 0) {
+    writer.writeString(
       4,
       f
     );
@@ -2001,38 +2001,38 @@ proto.bragi.Dota2MatchScoreboard.prototype.setMapPaused = function(value) {
 
 
 /**
- * optional uint32 home_team_urn = 3;
- * @return {number}
+ * optional string home_team_urn = 3;
+ * @return {string}
  */
 proto.bragi.Dota2MatchScoreboard.prototype.getHomeTeamUrn = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /**
- * @param {number} value
+ * @param {string} value
  * @return {!proto.bragi.Dota2MatchScoreboard} returns this
  */
 proto.bragi.Dota2MatchScoreboard.prototype.setHomeTeamUrn = function(value) {
-  return jspb.Message.setProto3IntField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * optional uint32 away_team_urn = 4;
- * @return {number}
+ * optional string away_team_urn = 4;
+ * @return {string}
  */
 proto.bragi.Dota2MatchScoreboard.prototype.getAwayTeamUrn = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
 /**
- * @param {number} value
+ * @param {string} value
  * @return {!proto.bragi.Dota2MatchScoreboard} returns this
  */
 proto.bragi.Dota2MatchScoreboard.prototype.setAwayTeamUrn = function(value) {
-  return jspb.Message.setProto3IntField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 

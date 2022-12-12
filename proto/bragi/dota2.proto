@@ -56,8 +56,8 @@ message Dota2MatchState {
 message Dota2MatchScoreboard {
   string match_urn = 1;
   bool map_paused = 2;
-  uint32 home_team_urn = 3;
-  uint32 away_team_urn = 4;
+  string home_team_urn = 3;
+  string away_team_urn = 4;
   uint32 home_score = 5;
   uint32 away_score = 6;
   MatchStatusType match_status = 7;

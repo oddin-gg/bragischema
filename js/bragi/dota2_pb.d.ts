@@ -216,11 +216,11 @@ export class Dota2MatchScoreboard extends jspb.Message {
   getMapPaused(): boolean;
   setMapPaused(value: boolean): void;
 
-  getHomeTeamUrn(): number;
-  setHomeTeamUrn(value: number): void;
+  getHomeTeamUrn(): string;
+  setHomeTeamUrn(value: string): void;
 
-  getAwayTeamUrn(): number;
-  setAwayTeamUrn(value: number): void;
+  getAwayTeamUrn(): string;
+  setAwayTeamUrn(value: string): void;
 
   getHomeScore(): number;
   setHomeScore(value: number): void;
@@ -255,8 +255,8 @@ export namespace Dota2MatchScoreboard {
   export type AsObject = {
     matchUrn: string,
     mapPaused: boolean,
-    homeTeamUrn: number,
-    awayTeamUrn: number,
+    homeTeamUrn: string,
+    awayTeamUrn: string,
     homeScore: number,
     awayScore: number,
     matchStatus: bragi_common_pb.MatchStatusTypeMap[keyof bragi_common_pb.MatchStatusTypeMap],
