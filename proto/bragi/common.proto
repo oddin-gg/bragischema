@@ -49,6 +49,11 @@ message ControlErrorAnnouncement {
   optional string message = 2;
 }
 
+message Team {
+  string team_urn = 1;
+  string team_name = 2;
+}
+
 enum BestOfType {
   BEST_OF_TYPE_UNSPECIFIED = 0;
   BEST_OF_TYPE_BO1 = 1;

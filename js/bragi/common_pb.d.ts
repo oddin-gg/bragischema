@@ -167,6 +167,30 @@ export namespace ControlErrorAnnouncement {
   export const ControlErrorAnnouncementType: ControlErrorAnnouncementTypeMap;
 }
 
+export class Team extends jspb.Message {
+  getTeamUrn(): string;
+  setTeamUrn(value: string): void;
+
+  getTeamName(): string;
+  setTeamName(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Team.AsObject;
+  static toObject(includeInstance: boolean, msg: Team): Team.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Team, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Team;
+  static deserializeBinaryFromReader(message: Team, reader: jspb.BinaryReader): Team;
+}
+
+export namespace Team {
+  export type AsObject = {
+    teamUrn: string,
+    teamName: string,
+  }
+}
+
 export interface BestOfTypeMap {
   BEST_OF_TYPE_UNSPECIFIED: 0;
   BEST_OF_TYPE_BO1: 1;

@@ -516,6 +516,61 @@ func (x *ControlErrorAnnouncement) GetMessage() string {
 	return ""
 }
 
+type Team struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	TeamUrn  string `protobuf:"bytes,1,opt,name=team_urn,json=teamUrn,proto3" json:"team_urn,omitempty"`
+	TeamName string `protobuf:"bytes,2,opt,name=team_name,json=teamName,proto3" json:"team_name,omitempty"`
+}
+
+func (x *Team) Reset() {
+	*x = Team{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_bragi_common_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Team) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Team) ProtoMessage() {}
+
+func (x *Team) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_common_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Team.ProtoReflect.Descriptor instead.
+func (*Team) Descriptor() ([]byte, []int) {
+	return file_bragi_common_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *Team) GetTeamUrn() string {
+	if x != nil {
+		return x.TeamUrn
+	}
+	return ""
+}
+
+func (x *Team) GetTeamName() string {
+	if x != nil {
+		return x.TeamName
+	}
+	return ""
+}
+
 type Announcement_Payload struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -530,7 +585,7 @@ type Announcement_Payload struct {
 func (x *Announcement_Payload) Reset() {
 	*x = Announcement_Payload{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_bragi_common_proto_msgTypes[4]
+		mi := &file_bragi_common_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -543,7 +598,7 @@ func (x *Announcement_Payload) String() string {
 func (*Announcement_Payload) ProtoMessage() {}
 
 func (x *Announcement_Payload) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_common_proto_msgTypes[4]
+	mi := &file_bragi_common_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -658,7 +713,11 @@ var file_bragi_common_proto_rawDesc = []byte{
 	0x2f, 0x0a, 0x2b, 0x43, 0x4f, 0x4e, 0x54, 0x52, 0x4f, 0x4c, 0x5f, 0x45, 0x52, 0x52, 0x4f, 0x52,
 	0x5f, 0x41, 0x4e, 0x4e, 0x4f, 0x55, 0x4e, 0x43, 0x45, 0x4d, 0x45, 0x4e, 0x54, 0x5f, 0x54, 0x59,
 	0x50, 0x45, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00,
-	0x42, 0x0a, 0x0a, 0x08, 0x5f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x2a, 0xc4, 0x01, 0x0a,
+	0x42, 0x0a, 0x0a, 0x08, 0x5f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x3e, 0x0a, 0x04,
+	0x54, 0x65, 0x61, 0x6d, 0x12, 0x19, 0x0a, 0x08, 0x74, 0x65, 0x61, 0x6d, 0x5f, 0x75, 0x72, 0x6e,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x74, 0x65, 0x61, 0x6d, 0x55, 0x72, 0x6e, 0x12,
+	0x1b, 0x0a, 0x09, 0x74, 0x65, 0x61, 0x6d, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x08, 0x74, 0x65, 0x61, 0x6d, 0x4e, 0x61, 0x6d, 0x65, 0x2a, 0xc4, 0x01, 0x0a,
 	0x0a, 0x42, 0x65, 0x73, 0x74, 0x4f, 0x66, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1c, 0x0a, 0x18, 0x42,
 	0x45, 0x53, 0x54, 0x5f, 0x4f, 0x46, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x55, 0x4e, 0x53, 0x50,
 	0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x14, 0x0a, 0x10, 0x42, 0x45, 0x53,
@@ -707,7 +766,7 @@ func file_bragi_common_proto_rawDescGZIP() []byte {
 }
 
 var file_bragi_common_proto_enumTypes = make([]protoimpl.EnumInfo, 5)
-var file_bragi_common_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_bragi_common_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_bragi_common_proto_goTypes = []interface{}{
 	(BestOfType)(0),      // 0: bragi.BestOfType
 	(MatchStatusType)(0), // 1: bragi.MatchStatusType
@@ -718,14 +777,15 @@ var file_bragi_common_proto_goTypes = []interface{}{
 	(*Announcement)(nil),                                       // 6: bragi.Announcement
 	(*ControlAnnouncement)(nil),                                // 7: bragi.ControlAnnouncement
 	(*ControlErrorAnnouncement)(nil),                           // 8: bragi.ControlErrorAnnouncement
-	(*Announcement_Payload)(nil),                               // 9: bragi.Announcement.Payload
-	(*timestamppb.Timestamp)(nil),                              // 10: google.protobuf.Timestamp
+	(*Team)(nil),                                               // 9: bragi.Team
+	(*Announcement_Payload)(nil),                               // 10: bragi.Announcement.Payload
+	(*timestamppb.Timestamp)(nil),                              // 11: google.protobuf.Timestamp
 }
 var file_bragi_common_proto_depIdxs = []int32{
-	10, // 0: bragi.AnnouncementUpdate.timestamp:type_name -> google.protobuf.Timestamp
+	11, // 0: bragi.AnnouncementUpdate.timestamp:type_name -> google.protobuf.Timestamp
 	6,  // 1: bragi.AnnouncementUpdate.payload:type_name -> bragi.Announcement
-	10, // 2: bragi.Announcement.created_at:type_name -> google.protobuf.Timestamp
-	9,  // 3: bragi.Announcement.payload:type_name -> bragi.Announcement.Payload
+	11, // 2: bragi.Announcement.created_at:type_name -> google.protobuf.Timestamp
+	10, // 3: bragi.Announcement.payload:type_name -> bragi.Announcement.Payload
 	3,  // 4: bragi.ControlAnnouncement.type:type_name -> bragi.ControlAnnouncement.ControlAnnouncementType
 	4,  // 5: bragi.ControlErrorAnnouncement.type:type_name -> bragi.ControlErrorAnnouncement.ControlErrorAnnouncementType
 	7,  // 6: bragi.Announcement.Payload.control:type_name -> bragi.ControlAnnouncement
@@ -792,6 +852,18 @@ func file_bragi_common_proto_init() {
 			}
 		}
 		file_bragi_common_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Team); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_bragi_common_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Announcement_Payload); i {
 			case 0:
 				return &v.state
@@ -806,7 +878,7 @@ func file_bragi_common_proto_init() {
 	}
 	file_bragi_common_proto_msgTypes[2].OneofWrappers = []interface{}{}
 	file_bragi_common_proto_msgTypes[3].OneofWrappers = []interface{}{}
-	file_bragi_common_proto_msgTypes[4].OneofWrappers = []interface{}{
+	file_bragi_common_proto_msgTypes[5].OneofWrappers = []interface{}{
 		(*Announcement_Payload_Control)(nil),
 		(*Announcement_Payload_Error)(nil),
 	}
@@ -816,7 +888,7 @@ func file_bragi_common_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_bragi_common_proto_rawDesc,
 			NumEnums:      5,
-			NumMessages:   5,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

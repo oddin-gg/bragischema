@@ -32,91 +32,252 @@ message Dota2MatchSnapshot {
   string match_urn = 1;
   uint64 sequence = 2;
   google.protobuf.Timestamp timestamp = 3;
-  DataStatus data_status = 6;
-  repeated Announcement announcements = 4;
-  Dota2MatchState match_state = 5;
+  DataStatus data_status = 4;
+  repeated Announcement announcements = 6;
+  Dota2MatchState match_state = 7;
 }
 
 message Dota2MatchUpdate {
   message Payload {
     oneof payload {
       Dota2MatchState match_state = 1;
+      Dota2MatchStatePartialUpdates partial_updates = 2;
     }
   }
 
   Payload payload = 1;
 }
 
+message Dota2MatchStatePartialUpdates {
+
+  repeated Dota2MatchStatePartialUpdate updates = 1;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+message Dota2MatchStatePartialUpdate {
+  oneof update {
+    // Replaces "score" property in Dota2MatchState.
+    Dota2MatchScoreState score = 1;
+
+    // Replaces "current_map_state" property in Dota2MatchState. To minimalize issues with incorrect updates application
+    // on current_map_state, server sends Dota2MatchStatePartialUpdate with Dota2MapState in periodic time set by customer.
+    Dota2CurrentMapState current_map_state = 2;
+
+    // Apply partial update on "current_map_state" property in Dota2MapState.
+    Dota2CurrentMapStatePartialUpdate current_map_state_partial_update = 3;
+
+    // There are no particular updates for eg. previous_map_states, whole current_map_state defined. In case when those
+    // states are updated, then whole update with Dota2MatchState update is sent.
+  }
+}
+
 message Dota2MatchState {
   string match_urn = 1;
-  Dota2MatchScoreboard scoreboard = 2;
-  Dota2Minimap minimap = 3;
+  BestOfType match_type = 2;
+  Team home_team = 3;
+  Team away_team = 4;
+  Dota2MatchScoreState score = 5;
+  MatchStatusType match_status = 6;
+  Dota2CurrentMapState current_map = 7;
+  repeated Dota2PreviousMapState previous_maps = 8;
 }
 
-message Dota2MatchScoreboard {
-  string match_urn = 1;
-  bool map_paused = 2;
-  string home_team_urn = 3;
-  string away_team_urn = 4;
-  uint32 home_score = 5;
-  uint32 away_score = 6;
-  MatchStatusType match_status = 7;
-  Dota2MapScoreboard current_map = 8;
-  repeated Dota2MapScoreboard previous_maps = 9;
+message Dota2MatchScoreState {
+  uint32 home_score = 1;
+  uint32 away_score = 2;
 }
 
-message Dota2MapScoreboard {
+// ---------------------------------------------------------------------------------------------------------------------
+
+message Dota2CurrentMapStatePartialUpdate {
+  oneof update {
+    // Replaces "game_time" property in Dota2CurrentMapTimeState.
+    Dota2CurrentMapTimeState game_time = 1;
+
+    // Replaces whole value under given key in players map property in Dota2TeamCurrentMapState.
+    Dota2TeamCurrentMapState team_current_map_state = 2;
+
+    // Apply partial update on value under given key in teams map property in Dota2CurrentMapState.
+    Dota2TeamCurrentMapStatePartialUpdate team_current_map_partial_update = 3;
+
+    // Replaces "towers" property in Dota2Towers.
+    Dota2Towers towers = 4;
+
+    // Replaces "barracks" property in Dota2Barracks.
+    Dota2Barracks barracks = 5;
+  }
+}
+
+message Dota2CurrentMapState {
   uint32 map_order = 1;
-  google.protobuf.Duration game_time = 2;
-  Dota2TeamScoreboard home_team = 3;
-  Dota2TeamScoreboard away_team = 4;
+  bool map_paused = 2;
+  Dota2CurrentMapTimeState game_time = 3;
+  map<string, Dota2TeamCurrentMapState> teams = 4;
+  Dota2Towers towers = 5;
+  Dota2Barracks barracks = 6;
 }
 
-message Dota2TeamScoreboard {
-  string team_urn = 2;
-  Dota2Faction faction = 3;
-  uint32 barracks = 4;
-  uint32 kills = 5;
-  uint32 net_worth = 6;
-  uint32 roshans = 7;
-  uint32 towers = 8;
-  optional bool won = 9;
-  repeated Dota2PlayerScoreboard players = 10;
+message Dota2CurrentMapTimeState {
+  google.protobuf.Duration game_time = 1;
 }
 
-message Dota2PlayerScoreboard {
+message Dota2PreviousMapState {
+  uint32 map_order = 1;
+  map<string, Dota2TeamPreviousMapState> teams = 2;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+message Dota2TeamCurrentMapStatePartialUpdate {
+  message Payload {
+    oneof payload {
+
+      Dota2TeamCurrentMapStatisticsState statistics = 1;
+
+      // Replaces whole value under given key in players map property in Dota2TeamCurrentMapState.
+      Dota2PlayerCurrentMapState player_current_map_state = 2;
+
+      // Apply partial update on value under given key in player_map_states map property in Dota2TeamMapState.
+      Dota2PlayerCurrentMapStatePartialUpdate player_current_map_partial_update = 3;
+    }
+  }
+
+  string team_urn = 1;
+  Payload payload = 2;
+}
+
+message Dota2TeamCurrentMapState {
+  string team_urn = 1;
+  Dota2Faction faction = 2;
+  Dota2TeamCurrentMapStatisticsState statistics = 3;
+  optional bool won = 4;
+  map<string, Dota2PlayerCurrentMapState> players = 5;
+}
+
+message Dota2TeamCurrentMapStatisticsState {
+  string team_urn = 1;
+  uint32 barracks = 2;
+  uint32 kills = 3;
+  uint32 net_worth = 4;
+  uint32 roshans = 5;
+  uint32 towers = 6;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+message Dota2PlayerCurrentMapStatePartialUpdate {
+  message Payload {
+    oneof payload {
+      // Replaces "player_info" property in Dota2PlayerInfoState.
+      Dota2PlayerInfoState player_info = 1;
+
+      // Replaces "timers" property in Dota2PlayerCurrentMapTimersState.
+      Dota2PlayerCurrentMapTimersState timers = 2;
+
+      // Replaces "statistics" property in Dota2PlayerStatisticsState.
+      Dota2PlayerStatisticsState statistics = 3;
+
+      // Replaces "map_statistics" property in Dota2PlayerCurrentMapStatisticsState.
+      Dota2PlayerCurrentMapStatisticsState map_statistics = 4;
+
+      // Replaces "position" property in Dota2Position.
+      Dota2Position position = 5;
+    }
+  }
+
   string player_urn = 1;
-  uint32 slot_id = 10;
-  string ext_name = 2;
-  uint32 hero_id = 3;
-  bool has_aegis = 4;
-  optional google.protobuf.Duration respawn_timer = 5;
-  uint32 assists = 6;
-  uint32 deaths = 7;
-  uint32 kills = 8;
-  uint32 net_worth = 9;
+  Payload payload = 2;
 }
 
-message Dota2Minimap {
-  string match_urn = 1;
-  uint32 map_order = 2;
-  bool map_paused = 3;
-  repeated Dota2MinimapTower towers = 4;
-  repeated Dota2MinimapBarrack barracks = 5;
+message Dota2PlayerCurrentMapState{
+  string player_urn = 1;
+  Dota2PlayerInfoState player_info = 2;
+  Dota2PlayerCurrentMapTimersState timers = 3;
+  Dota2PlayerStatisticsState statistics = 4;
+  Dota2PlayerCurrentMapStatisticsState map_statistics = 5;
+  Dota2Position position = 6;
 }
 
-message Dota2MinimapTower {
+message Dota2PlayerCurrentMapStatisticsState {
+  string player_urn = 1;
+  bool alive = 2;
+  uint32 health = 3;
+  uint32 max_health = 4;
+  uint32 current_gold = 5;
+  // Players gold plus sum of buy values of items in inventory/courier.
+  uint32 net_worth = 6;
+  // How much gold you need to spend to use buyback.
+  uint32 buyback_cost = 7;
+  bool has_buyback = 8;
+  bool has_aegis = 9;
+  uint32 mana = 10;
+  uint32 max_mana = 11;
+}
+
+message Dota2PlayerCurrentMapTimersState {
+  string player_urn = 1;
+  optional google.protobuf.Duration respawn_timer = 2;
+  google.protobuf.Duration buyback_cooldown = 3;
+}
+
+message Dota2TeamPreviousMapState {
+  string team_urn = 1;
+  Dota2Faction faction = 2;
+  uint32 barracks = 3;
+  uint32 kills = 4;
+  uint32 net_worth = 5;
+  uint32 roshans = 6;
+  uint32 towers = 7;
+  optional bool won = 8;
+  map<string, Dota2PlayerPreviousMapState> players = 9;
+}
+
+message Dota2PlayerPreviousMapState{
+  string player_urn = 1;
+  Dota2PlayerInfoState player_info = 2;
+  Dota2PlayerStatisticsState statistics = 3;
+}
+
+message Dota2PlayerInfoState{
+  string player_urn = 1;
+  uint32 slot_id = 2;
+  string ext_name = 3;
+  optional uint32 hero_id = 4;
+}
+
+message Dota2PlayerStatisticsState {
+  string player_urn = 1;
+  uint32 kills = 2;
+  uint32 deaths = 3;
+  uint32 assists = 4;
+}
+
+message Dota2Towers {
+  repeated Dota2Tower towers = 1;
+}
+
+message Dota2Barracks {
+  repeated Dota2Barrack barracks = 1;
+}
+
+message Dota2Tower {
   Dota2Lane lane = 1;
   Dota2Faction faction = 2;
   Dota2TowerTier tier = 3;
   bool alive = 4;
 }
 
-message Dota2MinimapBarrack {
+message Dota2Barrack {
   Dota2Lane lane = 1;
   Dota2Faction faction = 2;
   Dota2BarrackType type = 3;
   bool alive = 4;
+}
+
+message Dota2Position {
+  float x = 1;
+  float y = 2;
 }
 
 enum Dota2Faction {
