@@ -9,6 +9,7 @@ import "google/protobuf/timestamp.proto";
 import "bragi/common.proto";
 import "bragi/csgo.proto";
 import "bragi/dota2.proto";
+import "bragi/rush_soccer.proto";
 
 service Bragi {
 
@@ -72,6 +73,9 @@ message MatchMessage {
     // Message which wraps Dota2MatchSnapshot or Dota2MatchUpdate message with given match_urn and sequence for Dota2 sport.
     Dota2MatchMessage dota2 = 4;
 
+    // Message which wraps RushSoccerMatchSnapshot or RushSoccerMatchUpdate message with given match_urn and sequence for RushSoccer sport.
+    RushSoccerMatchMessage rush_soccer = 5;
+
     // LolMatchMessage lol = 3; // not implemented yet
   }
 }
@@ -83,6 +87,7 @@ message MatchSnapshot {
     CsgoMatchSnapshot csgo = 1;
     CsgoMatchSnapshot csgo_wingman = 2;
     Dota2MatchSnapshot dota2 = 3;
+    RushSoccerMatchSnapshot rush_soccer = 4;
   }
 }
 
@@ -93,5 +98,6 @@ message MatchState {
     CsgoMatchState csgo = 1;
     CsgoMatchState csgo_wingman = 2;
     Dota2MatchState dota2 = 3;
+    RushSoccerMatchState rush_soccer = 4;
   }
 }
