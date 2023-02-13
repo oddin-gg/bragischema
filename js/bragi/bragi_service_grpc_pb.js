@@ -8,6 +8,7 @@ var bragi_common_pb = require('../bragi/common_pb.js');
 var bragi_csgo_pb = require('../bragi/csgo_pb.js');
 var bragi_dota2_pb = require('../bragi/dota2_pb.js');
 var bragi_rush_soccer_pb = require('../bragi/rush_soccer_pb.js');
+var bragi_lol_pb = require('../bragi/lol_pb.js');
 
 function serialize_bragi_LiveDataFeedMessage(arg) {
   if (!(arg instanceof bragi_bragi_service_pb.LiveDataFeedMessage)) {

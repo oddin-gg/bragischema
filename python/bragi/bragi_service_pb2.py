@@ -16,9 +16,10 @@ from bragi_schema.bragi import common_pb2 as bragi_dot_common__pb2
 from bragi_schema.bragi import csgo_pb2 as bragi_dot_csgo__pb2
 from bragi_schema.bragi import dota2_pb2 as bragi_dot_dota2__pb2
 from bragi_schema.bragi import rush_soccer_pb2 as bragi_dot_rush__soccer__pb2
+from bragi_schema.bragi import lol_pb2 as bragi_dot_lol__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19\x62ragi/bragi_service.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x12\x62ragi/common.proto\x1a\x10\x62ragi/csgo.proto\x1a\x11\x62ragi/dota2.proto\x1a\x17\x62ragi/rush_soccer.proto\"O\n\x13LiveDataFeedRequest\x12.\n\x05\x61\x66ter\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x00\x88\x01\x01\x42\x08\n\x06_after\"m\n\x13LiveDataFeedMessage\x12%\n\tkeepalive\x18\x01 \x01(\x0b\x32\x10.bragi.KeepAliveH\x00\x12$\n\x05match\x18\x02 \x01(\x0b\x32\x13.bragi.MatchMessageH\x00\x42\t\n\x07message\":\n\tKeepAlive\x12-\n\ttimestamp\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x87\x02\n\x0cMatchMessage\x12\x31\n\x0c\x61nnouncement\x18\x01 \x01(\x0b\x32\x19.bragi.AnnouncementUpdateH\x00\x12\'\n\x04\x63sgo\x18\x02 \x01(\x0b\x32\x17.bragi.CsgoMatchMessageH\x00\x12/\n\x0c\x63sgo_wingman\x18\x03 \x01(\x0b\x32\x17.bragi.CsgoMatchMessageH\x00\x12)\n\x05\x64ota2\x18\x04 \x01(\x0b\x32\x18.bragi.Dota2MatchMessageH\x00\x12\x34\n\x0brush_soccer\x18\x05 \x01(\x0b\x32\x1d.bragi.RushSoccerMatchMessageH\x00\x42\t\n\x07message\"\xda\x01\n\rMatchSnapshot\x12(\n\x04\x63sgo\x18\x01 \x01(\x0b\x32\x18.bragi.CsgoMatchSnapshotH\x00\x12\x30\n\x0c\x63sgo_wingman\x18\x02 \x01(\x0b\x32\x18.bragi.CsgoMatchSnapshotH\x00\x12*\n\x05\x64ota2\x18\x03 \x01(\x0b\x32\x19.bragi.Dota2MatchSnapshotH\x00\x12\x35\n\x0brush_soccer\x18\x04 \x01(\x0b\x32\x1e.bragi.RushSoccerMatchSnapshotH\x00\x42\n\n\x08snapshot\"\xc8\x01\n\nMatchState\x12%\n\x04\x63sgo\x18\x01 \x01(\x0b\x32\x15.bragi.CsgoMatchStateH\x00\x12-\n\x0c\x63sgo_wingman\x18\x02 \x01(\x0b\x32\x15.bragi.CsgoMatchStateH\x00\x12\'\n\x05\x64ota2\x18\x03 \x01(\x0b\x32\x16.bragi.Dota2MatchStateH\x00\x12\x32\n\x0brush_soccer\x18\x04 \x01(\x0b\x32\x1b.bragi.RushSoccerMatchStateH\x00\x42\x07\n\x05state2S\n\x05\x42ragi\x12J\n\x0cLiveDataFeed\x12\x1a.bragi.LiveDataFeedRequest\x1a\x1a.bragi.LiveDataFeedMessage\"\x00\x30\x01\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19\x62ragi/bragi_service.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x12\x62ragi/common.proto\x1a\x10\x62ragi/csgo.proto\x1a\x11\x62ragi/dota2.proto\x1a\x17\x62ragi/rush_soccer.proto\x1a\x0f\x62ragi/lol.proto\"O\n\x13LiveDataFeedRequest\x12.\n\x05\x61\x66ter\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x00\x88\x01\x01\x42\x08\n\x06_after\"m\n\x13LiveDataFeedMessage\x12%\n\tkeepalive\x18\x01 \x01(\x0b\x32\x10.bragi.KeepAliveH\x00\x12$\n\x05match\x18\x02 \x01(\x0b\x32\x13.bragi.MatchMessageH\x00\x42\t\n\x07message\":\n\tKeepAlive\x12-\n\ttimestamp\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xae\x02\n\x0cMatchMessage\x12\x31\n\x0c\x61nnouncement\x18\x01 \x01(\x0b\x32\x19.bragi.AnnouncementUpdateH\x00\x12\'\n\x04\x63sgo\x18\x02 \x01(\x0b\x32\x17.bragi.CsgoMatchMessageH\x00\x12/\n\x0c\x63sgo_wingman\x18\x03 \x01(\x0b\x32\x17.bragi.CsgoMatchMessageH\x00\x12)\n\x05\x64ota2\x18\x04 \x01(\x0b\x32\x18.bragi.Dota2MatchMessageH\x00\x12\x34\n\x0brush_soccer\x18\x05 \x01(\x0b\x32\x1d.bragi.RushSoccerMatchMessageH\x00\x12%\n\x03lol\x18\x06 \x01(\x0b\x32\x16.bragi.LolMatchMessageH\x00\x42\t\n\x07message\"\x82\x02\n\rMatchSnapshot\x12(\n\x04\x63sgo\x18\x01 \x01(\x0b\x32\x18.bragi.CsgoMatchSnapshotH\x00\x12\x30\n\x0c\x63sgo_wingman\x18\x02 \x01(\x0b\x32\x18.bragi.CsgoMatchSnapshotH\x00\x12*\n\x05\x64ota2\x18\x03 \x01(\x0b\x32\x19.bragi.Dota2MatchSnapshotH\x00\x12\x35\n\x0brush_soccer\x18\x04 \x01(\x0b\x32\x1e.bragi.RushSoccerMatchSnapshotH\x00\x12&\n\x03lol\x18\x05 \x01(\x0b\x32\x17.bragi.LolMatchSnapshotH\x00\x42\n\n\x08snapshot\"\xed\x01\n\nMatchState\x12%\n\x04\x63sgo\x18\x01 \x01(\x0b\x32\x15.bragi.CsgoMatchStateH\x00\x12-\n\x0c\x63sgo_wingman\x18\x02 \x01(\x0b\x32\x15.bragi.CsgoMatchStateH\x00\x12\'\n\x05\x64ota2\x18\x03 \x01(\x0b\x32\x16.bragi.Dota2MatchStateH\x00\x12\x32\n\x0brush_soccer\x18\x04 \x01(\x0b\x32\x1b.bragi.RushSoccerMatchStateH\x00\x12#\n\x03lol\x18\x05 \x01(\x0b\x32\x14.bragi.LolMatchStateH\x00\x42\x07\n\x05state2S\n\x05\x42ragi\x12J\n\x0cLiveDataFeed\x12\x1a.bragi.LiveDataFeedRequest\x1a\x1a.bragi.LiveDataFeedMessage\"\x00\x30\x01\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'bragi.bragi_service_pb2', globals())
@@ -26,18 +27,18 @@ if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   DESCRIPTOR._serialized_options = b'\n\017com.oddin.bragiZ\016oddin.gg/bragi'
-  _LIVEDATAFEEDREQUEST._serialized_start=151
-  _LIVEDATAFEEDREQUEST._serialized_end=230
-  _LIVEDATAFEEDMESSAGE._serialized_start=232
-  _LIVEDATAFEEDMESSAGE._serialized_end=341
-  _KEEPALIVE._serialized_start=343
-  _KEEPALIVE._serialized_end=401
-  _MATCHMESSAGE._serialized_start=404
-  _MATCHMESSAGE._serialized_end=667
-  _MATCHSNAPSHOT._serialized_start=670
-  _MATCHSNAPSHOT._serialized_end=888
-  _MATCHSTATE._serialized_start=891
-  _MATCHSTATE._serialized_end=1091
-  _BRAGI._serialized_start=1093
-  _BRAGI._serialized_end=1176
+  _LIVEDATAFEEDREQUEST._serialized_start=168
+  _LIVEDATAFEEDREQUEST._serialized_end=247
+  _LIVEDATAFEEDMESSAGE._serialized_start=249
+  _LIVEDATAFEEDMESSAGE._serialized_end=358
+  _KEEPALIVE._serialized_start=360
+  _KEEPALIVE._serialized_end=418
+  _MATCHMESSAGE._serialized_start=421
+  _MATCHMESSAGE._serialized_end=723
+  _MATCHSNAPSHOT._serialized_start=726
+  _MATCHSNAPSHOT._serialized_end=984
+  _MATCHSTATE._serialized_start=987
+  _MATCHSTATE._serialized_end=1224
+  _BRAGI._serialized_start=1226
+  _BRAGI._serialized_end=1309
 # @@protoc_insertion_point(module_scope)

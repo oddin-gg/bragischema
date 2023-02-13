@@ -7,6 +7,7 @@ import * as bragi_common_pb from "../bragi/common_pb";
 import * as bragi_csgo_pb from "../bragi/csgo_pb";
 import * as bragi_dota2_pb from "../bragi/dota2_pb";
 import * as bragi_rush_soccer_pb from "../bragi/rush_soccer_pb";
+import * as bragi_lol_pb from "../bragi/lol_pb";
 
 export class LiveDataFeedRequest extends jspb.Message {
   hasAfter(): boolean;
@@ -113,6 +114,11 @@ export class MatchMessage extends jspb.Message {
   getRushSoccer(): bragi_rush_soccer_pb.RushSoccerMatchMessage | undefined;
   setRushSoccer(value?: bragi_rush_soccer_pb.RushSoccerMatchMessage): void;
 
+  hasLol(): boolean;
+  clearLol(): void;
+  getLol(): bragi_lol_pb.LolMatchMessage | undefined;
+  setLol(value?: bragi_lol_pb.LolMatchMessage): void;
+
   getMessageCase(): MatchMessage.MessageCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MatchMessage.AsObject;
@@ -131,6 +137,7 @@ export namespace MatchMessage {
     csgoWingman?: bragi_csgo_pb.CsgoMatchMessage.AsObject,
     dota2?: bragi_dota2_pb.Dota2MatchMessage.AsObject,
     rushSoccer?: bragi_rush_soccer_pb.RushSoccerMatchMessage.AsObject,
+    lol?: bragi_lol_pb.LolMatchMessage.AsObject,
   }
 
   export enum MessageCase {
@@ -140,6 +147,7 @@ export namespace MatchMessage {
     CSGO_WINGMAN = 3,
     DOTA2 = 4,
     RUSH_SOCCER = 5,
+    LOL = 6,
   }
 }
 
@@ -164,6 +172,11 @@ export class MatchSnapshot extends jspb.Message {
   getRushSoccer(): bragi_rush_soccer_pb.RushSoccerMatchSnapshot | undefined;
   setRushSoccer(value?: bragi_rush_soccer_pb.RushSoccerMatchSnapshot): void;
 
+  hasLol(): boolean;
+  clearLol(): void;
+  getLol(): bragi_lol_pb.LolMatchSnapshot | undefined;
+  setLol(value?: bragi_lol_pb.LolMatchSnapshot): void;
+
   getSnapshotCase(): MatchSnapshot.SnapshotCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MatchSnapshot.AsObject;
@@ -181,6 +194,7 @@ export namespace MatchSnapshot {
     csgoWingman?: bragi_csgo_pb.CsgoMatchSnapshot.AsObject,
     dota2?: bragi_dota2_pb.Dota2MatchSnapshot.AsObject,
     rushSoccer?: bragi_rush_soccer_pb.RushSoccerMatchSnapshot.AsObject,
+    lol?: bragi_lol_pb.LolMatchSnapshot.AsObject,
   }
 
   export enum SnapshotCase {
@@ -189,6 +203,7 @@ export namespace MatchSnapshot {
     CSGO_WINGMAN = 2,
     DOTA2 = 3,
     RUSH_SOCCER = 4,
+    LOL = 5,
   }
 }
 
@@ -213,6 +228,11 @@ export class MatchState extends jspb.Message {
   getRushSoccer(): bragi_rush_soccer_pb.RushSoccerMatchState | undefined;
   setRushSoccer(value?: bragi_rush_soccer_pb.RushSoccerMatchState): void;
 
+  hasLol(): boolean;
+  clearLol(): void;
+  getLol(): bragi_lol_pb.LolMatchState | undefined;
+  setLol(value?: bragi_lol_pb.LolMatchState): void;
+
   getStateCase(): MatchState.StateCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MatchState.AsObject;
@@ -230,6 +250,7 @@ export namespace MatchState {
     csgoWingman?: bragi_csgo_pb.CsgoMatchState.AsObject,
     dota2?: bragi_dota2_pb.Dota2MatchState.AsObject,
     rushSoccer?: bragi_rush_soccer_pb.RushSoccerMatchState.AsObject,
+    lol?: bragi_lol_pb.LolMatchState.AsObject,
   }
 
   export enum StateCase {
@@ -238,6 +259,7 @@ export namespace MatchState {
     CSGO_WINGMAN = 2,
     DOTA2 = 3,
     RUSH_SOCCER = 4,
+    LOL = 5,
   }
 }
 
