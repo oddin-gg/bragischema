@@ -25,6 +25,8 @@ var bragi_dota2_pb = require('../bragi/dota2_pb.js');
 goog.object.extend(proto, bragi_dota2_pb);
 var bragi_rush_soccer_pb = require('../bragi/rush_soccer_pb.js');
 goog.object.extend(proto, bragi_rush_soccer_pb);
+var bragi_lol_pb = require('../bragi/lol_pb.js');
+goog.object.extend(proto, bragi_lol_pb);
 goog.exportSymbol('proto.bragi.KeepAlive', null, global);
 goog.exportSymbol('proto.bragi.LiveDataFeedMessage', null, global);
 goog.exportSymbol('proto.bragi.LiveDataFeedMessage.MessageCase', null, global);
@@ -700,7 +702,7 @@ proto.bragi.KeepAlive.prototype.hasTimestamp = function() {
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.bragi.MatchMessage.oneofGroups_ = [[1,2,3,4,5]];
+proto.bragi.MatchMessage.oneofGroups_ = [[1,2,3,4,5,6]];
 
 /**
  * @enum {number}
@@ -711,7 +713,8 @@ proto.bragi.MatchMessage.MessageCase = {
   CSGO: 2,
   CSGO_WINGMAN: 3,
   DOTA2: 4,
-  RUSH_SOCCER: 5
+  RUSH_SOCCER: 5,
+  LOL: 6
 };
 
 /**
@@ -756,7 +759,8 @@ proto.bragi.MatchMessage.toObject = function(includeInstance, msg) {
     csgo: (f = msg.getCsgo()) && bragi_csgo_pb.CsgoMatchMessage.toObject(includeInstance, f),
     csgoWingman: (f = msg.getCsgoWingman()) && bragi_csgo_pb.CsgoMatchMessage.toObject(includeInstance, f),
     dota2: (f = msg.getDota2()) && bragi_dota2_pb.Dota2MatchMessage.toObject(includeInstance, f),
-    rushSoccer: (f = msg.getRushSoccer()) && bragi_rush_soccer_pb.RushSoccerMatchMessage.toObject(includeInstance, f)
+    rushSoccer: (f = msg.getRushSoccer()) && bragi_rush_soccer_pb.RushSoccerMatchMessage.toObject(includeInstance, f),
+    lol: (f = msg.getLol()) && bragi_lol_pb.LolMatchMessage.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -817,6 +821,11 @@ proto.bragi.MatchMessage.deserializeBinaryFromReader = function(msg, reader) {
       var value = new bragi_rush_soccer_pb.RushSoccerMatchMessage;
       reader.readMessage(value,bragi_rush_soccer_pb.RushSoccerMatchMessage.deserializeBinaryFromReader);
       msg.setRushSoccer(value);
+      break;
+    case 6:
+      var value = new bragi_lol_pb.LolMatchMessage;
+      reader.readMessage(value,bragi_lol_pb.LolMatchMessage.deserializeBinaryFromReader);
+      msg.setLol(value);
       break;
     default:
       reader.skipField();
@@ -885,6 +894,14 @@ proto.bragi.MatchMessage.serializeBinaryToWriter = function(message, writer) {
       5,
       f,
       bragi_rush_soccer_pb.RushSoccerMatchMessage.serializeBinaryToWriter
+    );
+  }
+  f = message.getLol();
+  if (f != null) {
+    writer.writeMessage(
+      6,
+      f,
+      bragi_lol_pb.LolMatchMessage.serializeBinaryToWriter
     );
   }
 };
@@ -1075,6 +1092,43 @@ proto.bragi.MatchMessage.prototype.hasRushSoccer = function() {
 };
 
 
+/**
+ * optional LolMatchMessage lol = 6;
+ * @return {?proto.bragi.LolMatchMessage}
+ */
+proto.bragi.MatchMessage.prototype.getLol = function() {
+  return /** @type{?proto.bragi.LolMatchMessage} */ (
+    jspb.Message.getWrapperField(this, bragi_lol_pb.LolMatchMessage, 6));
+};
+
+
+/**
+ * @param {?proto.bragi.LolMatchMessage|undefined} value
+ * @return {!proto.bragi.MatchMessage} returns this
+*/
+proto.bragi.MatchMessage.prototype.setLol = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 6, proto.bragi.MatchMessage.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.bragi.MatchMessage} returns this
+ */
+proto.bragi.MatchMessage.prototype.clearLol = function() {
+  return this.setLol(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.MatchMessage.prototype.hasLol = function() {
+  return jspb.Message.getField(this, 6) != null;
+};
+
+
 
 /**
  * Oneof group definitions for this message. Each group defines the field
@@ -1084,7 +1138,7 @@ proto.bragi.MatchMessage.prototype.hasRushSoccer = function() {
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.bragi.MatchSnapshot.oneofGroups_ = [[1,2,3,4]];
+proto.bragi.MatchSnapshot.oneofGroups_ = [[1,2,3,4,5]];
 
 /**
  * @enum {number}
@@ -1094,7 +1148,8 @@ proto.bragi.MatchSnapshot.SnapshotCase = {
   CSGO: 1,
   CSGO_WINGMAN: 2,
   DOTA2: 3,
-  RUSH_SOCCER: 4
+  RUSH_SOCCER: 4,
+  LOL: 5
 };
 
 /**
@@ -1138,7 +1193,8 @@ proto.bragi.MatchSnapshot.toObject = function(includeInstance, msg) {
     csgo: (f = msg.getCsgo()) && bragi_csgo_pb.CsgoMatchSnapshot.toObject(includeInstance, f),
     csgoWingman: (f = msg.getCsgoWingman()) && bragi_csgo_pb.CsgoMatchSnapshot.toObject(includeInstance, f),
     dota2: (f = msg.getDota2()) && bragi_dota2_pb.Dota2MatchSnapshot.toObject(includeInstance, f),
-    rushSoccer: (f = msg.getRushSoccer()) && bragi_rush_soccer_pb.RushSoccerMatchSnapshot.toObject(includeInstance, f)
+    rushSoccer: (f = msg.getRushSoccer()) && bragi_rush_soccer_pb.RushSoccerMatchSnapshot.toObject(includeInstance, f),
+    lol: (f = msg.getLol()) && bragi_lol_pb.LolMatchSnapshot.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1194,6 +1250,11 @@ proto.bragi.MatchSnapshot.deserializeBinaryFromReader = function(msg, reader) {
       var value = new bragi_rush_soccer_pb.RushSoccerMatchSnapshot;
       reader.readMessage(value,bragi_rush_soccer_pb.RushSoccerMatchSnapshot.deserializeBinaryFromReader);
       msg.setRushSoccer(value);
+      break;
+    case 5:
+      var value = new bragi_lol_pb.LolMatchSnapshot;
+      reader.readMessage(value,bragi_lol_pb.LolMatchSnapshot.deserializeBinaryFromReader);
+      msg.setLol(value);
       break;
     default:
       reader.skipField();
@@ -1254,6 +1315,14 @@ proto.bragi.MatchSnapshot.serializeBinaryToWriter = function(message, writer) {
       4,
       f,
       bragi_rush_soccer_pb.RushSoccerMatchSnapshot.serializeBinaryToWriter
+    );
+  }
+  f = message.getLol();
+  if (f != null) {
+    writer.writeMessage(
+      5,
+      f,
+      bragi_lol_pb.LolMatchSnapshot.serializeBinaryToWriter
     );
   }
 };
@@ -1407,6 +1476,43 @@ proto.bragi.MatchSnapshot.prototype.hasRushSoccer = function() {
 };
 
 
+/**
+ * optional LolMatchSnapshot lol = 5;
+ * @return {?proto.bragi.LolMatchSnapshot}
+ */
+proto.bragi.MatchSnapshot.prototype.getLol = function() {
+  return /** @type{?proto.bragi.LolMatchSnapshot} */ (
+    jspb.Message.getWrapperField(this, bragi_lol_pb.LolMatchSnapshot, 5));
+};
+
+
+/**
+ * @param {?proto.bragi.LolMatchSnapshot|undefined} value
+ * @return {!proto.bragi.MatchSnapshot} returns this
+*/
+proto.bragi.MatchSnapshot.prototype.setLol = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 5, proto.bragi.MatchSnapshot.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.bragi.MatchSnapshot} returns this
+ */
+proto.bragi.MatchSnapshot.prototype.clearLol = function() {
+  return this.setLol(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.MatchSnapshot.prototype.hasLol = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
 
 /**
  * Oneof group definitions for this message. Each group defines the field
@@ -1416,7 +1522,7 @@ proto.bragi.MatchSnapshot.prototype.hasRushSoccer = function() {
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.bragi.MatchState.oneofGroups_ = [[1,2,3,4]];
+proto.bragi.MatchState.oneofGroups_ = [[1,2,3,4,5]];
 
 /**
  * @enum {number}
@@ -1426,7 +1532,8 @@ proto.bragi.MatchState.StateCase = {
   CSGO: 1,
   CSGO_WINGMAN: 2,
   DOTA2: 3,
-  RUSH_SOCCER: 4
+  RUSH_SOCCER: 4,
+  LOL: 5
 };
 
 /**
@@ -1470,7 +1577,8 @@ proto.bragi.MatchState.toObject = function(includeInstance, msg) {
     csgo: (f = msg.getCsgo()) && bragi_csgo_pb.CsgoMatchState.toObject(includeInstance, f),
     csgoWingman: (f = msg.getCsgoWingman()) && bragi_csgo_pb.CsgoMatchState.toObject(includeInstance, f),
     dota2: (f = msg.getDota2()) && bragi_dota2_pb.Dota2MatchState.toObject(includeInstance, f),
-    rushSoccer: (f = msg.getRushSoccer()) && bragi_rush_soccer_pb.RushSoccerMatchState.toObject(includeInstance, f)
+    rushSoccer: (f = msg.getRushSoccer()) && bragi_rush_soccer_pb.RushSoccerMatchState.toObject(includeInstance, f),
+    lol: (f = msg.getLol()) && bragi_lol_pb.LolMatchState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1526,6 +1634,11 @@ proto.bragi.MatchState.deserializeBinaryFromReader = function(msg, reader) {
       var value = new bragi_rush_soccer_pb.RushSoccerMatchState;
       reader.readMessage(value,bragi_rush_soccer_pb.RushSoccerMatchState.deserializeBinaryFromReader);
       msg.setRushSoccer(value);
+      break;
+    case 5:
+      var value = new bragi_lol_pb.LolMatchState;
+      reader.readMessage(value,bragi_lol_pb.LolMatchState.deserializeBinaryFromReader);
+      msg.setLol(value);
       break;
     default:
       reader.skipField();
@@ -1586,6 +1699,14 @@ proto.bragi.MatchState.serializeBinaryToWriter = function(message, writer) {
       4,
       f,
       bragi_rush_soccer_pb.RushSoccerMatchState.serializeBinaryToWriter
+    );
+  }
+  f = message.getLol();
+  if (f != null) {
+    writer.writeMessage(
+      5,
+      f,
+      bragi_lol_pb.LolMatchState.serializeBinaryToWriter
     );
   }
 };
@@ -1736,6 +1857,43 @@ proto.bragi.MatchState.prototype.clearRushSoccer = function() {
  */
 proto.bragi.MatchState.prototype.hasRushSoccer = function() {
   return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional LolMatchState lol = 5;
+ * @return {?proto.bragi.LolMatchState}
+ */
+proto.bragi.MatchState.prototype.getLol = function() {
+  return /** @type{?proto.bragi.LolMatchState} */ (
+    jspb.Message.getWrapperField(this, bragi_lol_pb.LolMatchState, 5));
+};
+
+
+/**
+ * @param {?proto.bragi.LolMatchState|undefined} value
+ * @return {!proto.bragi.MatchState} returns this
+*/
+proto.bragi.MatchState.prototype.setLol = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 5, proto.bragi.MatchState.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.bragi.MatchState} returns this
+ */
+proto.bragi.MatchState.prototype.clearLol = function() {
+  return this.setLol(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.MatchState.prototype.hasLol = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 
