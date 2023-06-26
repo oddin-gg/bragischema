@@ -215,7 +215,7 @@ message RushSoccerPlayerCurrentMapState{
 message RushSoccerTeamCurrentMapStatisticsState {
   //  Number of goals.
   uint32 goals = 1;
-  // Number of goals in first period.
+  // Number of goals in the first period.
   uint32 goals_ht = 2;
   // Number of penalty kicks.
   uint32 penalty_kicks = 3;
