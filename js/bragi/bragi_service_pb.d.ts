@@ -9,6 +9,7 @@ import * as bragi_dota2_pb from "../bragi/dota2_pb";
 import * as bragi_rush_soccer_pb from "../bragi/rush_soccer_pb";
 import * as bragi_lol_pb from "../bragi/lol_pb";
 import * as bragi_rush_basketball_pb from "../bragi/rush_basketball_pb";
+import * as bragi_valorant_pb from "../bragi/valorant_pb";
 
 export class LiveDataFeedRequest extends jspb.Message {
   hasAfter(): boolean;
@@ -125,6 +126,11 @@ export class MatchMessage extends jspb.Message {
   getRushBasketball(): bragi_rush_basketball_pb.RushBasketballMatchMessage | undefined;
   setRushBasketball(value?: bragi_rush_basketball_pb.RushBasketballMatchMessage): void;
 
+  hasValorant(): boolean;
+  clearValorant(): void;
+  getValorant(): bragi_valorant_pb.ValorantMatchMessage | undefined;
+  setValorant(value?: bragi_valorant_pb.ValorantMatchMessage): void;
+
   getMessageCase(): MatchMessage.MessageCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MatchMessage.AsObject;
@@ -145,6 +151,7 @@ export namespace MatchMessage {
     rushSoccer?: bragi_rush_soccer_pb.RushSoccerMatchMessage.AsObject,
     lol?: bragi_lol_pb.LolMatchMessage.AsObject,
     rushBasketball?: bragi_rush_basketball_pb.RushBasketballMatchMessage.AsObject,
+    valorant?: bragi_valorant_pb.ValorantMatchMessage.AsObject,
   }
 
   export enum MessageCase {
@@ -156,6 +163,7 @@ export namespace MatchMessage {
     RUSH_SOCCER = 5,
     LOL = 6,
     RUSH_BASKETBALL = 7,
+    VALORANT = 8,
   }
 }
 
@@ -190,6 +198,11 @@ export class MatchSnapshot extends jspb.Message {
   getRushBasketball(): bragi_rush_basketball_pb.RushBasketballMatchSnapshot | undefined;
   setRushBasketball(value?: bragi_rush_basketball_pb.RushBasketballMatchSnapshot): void;
 
+  hasValorant(): boolean;
+  clearValorant(): void;
+  getValorant(): bragi_valorant_pb.ValorantMatchSnapshot | undefined;
+  setValorant(value?: bragi_valorant_pb.ValorantMatchSnapshot): void;
+
   getSnapshotCase(): MatchSnapshot.SnapshotCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MatchSnapshot.AsObject;
@@ -209,6 +222,7 @@ export namespace MatchSnapshot {
     rushSoccer?: bragi_rush_soccer_pb.RushSoccerMatchSnapshot.AsObject,
     lol?: bragi_lol_pb.LolMatchSnapshot.AsObject,
     rushBasketball?: bragi_rush_basketball_pb.RushBasketballMatchSnapshot.AsObject,
+    valorant?: bragi_valorant_pb.ValorantMatchSnapshot.AsObject,
   }
 
   export enum SnapshotCase {
@@ -219,6 +233,7 @@ export namespace MatchSnapshot {
     RUSH_SOCCER = 4,
     LOL = 5,
     RUSH_BASKETBALL = 6,
+    VALORANT = 7,
   }
 }
 
@@ -253,6 +268,11 @@ export class MatchState extends jspb.Message {
   getRushBasketball(): bragi_rush_basketball_pb.RushBasketballMatchState | undefined;
   setRushBasketball(value?: bragi_rush_basketball_pb.RushBasketballMatchState): void;
 
+  hasValorant(): boolean;
+  clearValorant(): void;
+  getValorant(): bragi_valorant_pb.ValorantMatchState | undefined;
+  setValorant(value?: bragi_valorant_pb.ValorantMatchState): void;
+
   getStateCase(): MatchState.StateCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MatchState.AsObject;
@@ -272,6 +292,7 @@ export namespace MatchState {
     rushSoccer?: bragi_rush_soccer_pb.RushSoccerMatchState.AsObject,
     lol?: bragi_lol_pb.LolMatchState.AsObject,
     rushBasketball?: bragi_rush_basketball_pb.RushBasketballMatchState.AsObject,
+    valorant?: bragi_valorant_pb.ValorantMatchState.AsObject,
   }
 
   export enum StateCase {
@@ -282,6 +303,7 @@ export namespace MatchState {
     RUSH_SOCCER = 4,
     LOL = 5,
     RUSH_BASKETBALL = 6,
+    VALORANT = 7,
   }
 }
 
