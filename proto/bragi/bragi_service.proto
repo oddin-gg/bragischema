@@ -7,7 +7,7 @@ option java_package = "com.oddin.bragi";
 
 import "google/protobuf/timestamp.proto";
 import "bragi/common.proto";
-import "bragi/csgo.proto";
+import "bragi/cs2.proto";
 import "bragi/dota2.proto";
 import "bragi/rush_soccer.proto";
 import "bragi/lol.proto";
@@ -41,25 +41,25 @@ message KeepAlive {
   google.protobuf.Timestamp timestamp = 1;
 }
 
-// (Game)MatchSnapshot - each sport has own defined MatchSnapshot (eg. CsgoMatchSnapshot). Because Protocol buffers do not
+// (Game)MatchSnapshot - each sport has own defined MatchSnapshot (eg. CS2MatchSnapshot). Because Protocol buffers do not
 // support any interface or trait definition, there is no defined proto message called MatchSnapshot. But still we
 // use (Game)MatchSnapshot term in this documentation. If (Game)MatchSnapshot is mentioned then it represents a game specific proto
 // message which contains exactly five properties. Four of them ("match_urn", "sequence", "timestamp", "announcements")
-// are not game specific and the last one is game specific "match_state" (eg. CsgoMatchState).
+// are not game specific and the last one is game specific "match_state" (eg. CS2MatchState).
 
-// (Game)MatchMessage - each sport has own defined MatchMessage (eg. CsgoMatchMessage). Because Protocol buffers do not
+// (Game)MatchMessage - each sport has own defined MatchMessage (eg. CS2MatchMessage). Because Protocol buffers do not
 // support any interface or trait definition, there is no defined proto message called MatchMessage. But still we
 // use (Game)MatchMessage term in this documentation. If (Game)MatchMessage is mentioned then it represents a game specific proto
 // message which contains exactly four properties. Three of them ("match_urn", "sequence", "timestamp") are not game specific
-// and the last one is game specific "payload" (eg. CsgoMatchState). Property "payload" is the oneof which can have just two items.
+// and the last one is game specific "payload" (eg. CS2MatchState). Property "payload" is the oneof which can have just two items.
 // One item is a (Game)MatchSnapshot and the second one (Game)MatchUpdate.
 
 // At the beginning, when the stream is established, an initial (Game)MatchMessage with a (Game)MatchSnapshot payload
-// (eg. CsgoMatchSnapshot) is received (just only once during the stream lifecycle, to recover (Game)MatchSnapshot you
+// (eg. CS2MatchSnapshot) is received (just only once during the stream lifecycle, to recover (Game)MatchSnapshot you
 // need to reconnect to server). Cache this (Game)MatchSnapshot into memory. Then only AnnouncementUpdate or (Game)MatchMessage
-// with (Game)MatchUpdate payload (eg. CsgoMatchUpdate) can be received. Those updates are supposed to be applied on cached
+// with (Game)MatchUpdate payload (eg. CS2MatchUpdate) can be received. Those updates are supposed to be applied on cached
 // (Game)MatchSnapshot. If AnnouncementUpdate is received then append its "payload" property value to the array of "announcements"
-// in cached (Game)MatchSnapshot. If update (e.g. CsgoMatchUpdate) payload is received then apply this update on "match_state"
+// in cached (Game)MatchSnapshot. If update (e.g. CS2MatchUpdate) payload is received then apply this update on "match_state"
 // property in cached (Game)MatchSnapshot. For both update cases do not forget also to update "sequence" and "timestamp"
 // properties in the cached (Game)MatchSnapshot with values from the received (Game)MatchMessage.
 message MatchMessage {
@@ -68,12 +68,11 @@ message MatchMessage {
     // Append announcement's payload to property announcements array in (Game)MatchSnapshot.
     AnnouncementUpdate announcement = 1;
 
-    // Message which wraps CsgoMatchSnapshot or CsgoMatchUpdate message with given match_urn and sequence for csgo sport.
-    CsgoMatchMessage csgo = 2;
+    // Message which wraps CS2MatchSnapshot or CS2MatchUpdate message with given match_urn and sequence for CS2 sport.
+    CS2MatchMessage cs2 = 2;
 
-    // Message which wraps CsgoMatchSnapshot or CsgoMatchUpdate message with given match_urn and sequence for csgo wingman sport.
-    CsgoMatchMessage csgo_wingman = 3;
-
+    // Message which wraps CS2MatchSnapshot or CS2MatchUpdate message with given match_urn and sequence for CS2 Duels sport.
+    CS2MatchMessage cs2_duels = 3;
     // Message which wraps Dota2MatchSnapshot or Dota2MatchUpdate message with given match_urn and sequence for Dota2 sport.
     Dota2MatchMessage dota2 = 4;
 
@@ -95,8 +94,8 @@ message MatchMessage {
 // it is not necessary to use it for match state maintain/reconstruction.
 message MatchSnapshot {
   oneof snapshot {
-    CsgoMatchSnapshot csgo = 1;
-    CsgoMatchSnapshot csgo_wingman = 2;
+    CS2MatchSnapshot cs2 = 1;
+    CS2MatchSnapshot cs2_duels = 2;
     Dota2MatchSnapshot dota2 = 3;
     RushSoccerMatchSnapshot rush_soccer = 4;
     LolMatchSnapshot lol = 5;
@@ -109,8 +108,8 @@ message MatchSnapshot {
 // it is not necessary to use it for match state maintain/reconstruction.
 message MatchState {
   oneof state {
-    CsgoMatchState csgo = 1;
-    CsgoMatchState csgo_wingman = 2;
+    CS2MatchState cs2 = 1;
+    CS2MatchState cs2_duels = 2;
     Dota2MatchState dota2 = 3;
     RushSoccerMatchState rush_soccer = 4;
     LolMatchState lol = 5;

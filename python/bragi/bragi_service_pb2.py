@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 from bragi_schema.bragi import common_pb2 as bragi_dot_common__pb2
-from bragi_schema.bragi import csgo_pb2 as bragi_dot_csgo__pb2
+from bragi_schema.bragi import cs2_pb2 as bragi_dot_cs2__pb2
 from bragi_schema.bragi import dota2_pb2 as bragi_dot_dota2__pb2
 from bragi_schema.bragi import rush_soccer_pb2 as bragi_dot_rush__soccer__pb2
 from bragi_schema.bragi import lol_pb2 as bragi_dot_lol__pb2
@@ -27,9 +27,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n\017com.oddin.bragiZ\016oddin.gg/bragi',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x19\x62ragi/bragi_service.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x12\x62ragi/common.proto\x1a\x10\x62ragi/csgo.proto\x1a\x11\x62ragi/dota2.proto\x1a\x17\x62ragi/rush_soccer.proto\x1a\x0f\x62ragi/lol.proto\x1a\x1b\x62ragi/rush_basketball.proto\x1a\x14\x62ragi/valorant.proto\"O\n\x13LiveDataFeedRequest\x12.\n\x05\x61\x66ter\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x00\x88\x01\x01\x42\x08\n\x06_after\"m\n\x13LiveDataFeedMessage\x12%\n\tkeepalive\x18\x01 \x01(\x0b\x32\x10.bragi.KeepAliveH\x00\x12$\n\x05match\x18\x02 \x01(\x0b\x32\x13.bragi.MatchMessageH\x00\x42\t\n\x07message\":\n\tKeepAlive\x12-\n\ttimestamp\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x9d\x03\n\x0cMatchMessage\x12\x31\n\x0c\x61nnouncement\x18\x01 \x01(\x0b\x32\x19.bragi.AnnouncementUpdateH\x00\x12\'\n\x04\x63sgo\x18\x02 \x01(\x0b\x32\x17.bragi.CsgoMatchMessageH\x00\x12/\n\x0c\x63sgo_wingman\x18\x03 \x01(\x0b\x32\x17.bragi.CsgoMatchMessageH\x00\x12)\n\x05\x64ota2\x18\x04 \x01(\x0b\x32\x18.bragi.Dota2MatchMessageH\x00\x12\x34\n\x0brush_soccer\x18\x05 \x01(\x0b\x32\x1d.bragi.RushSoccerMatchMessageH\x00\x12%\n\x03lol\x18\x06 \x01(\x0b\x32\x16.bragi.LolMatchMessageH\x00\x12<\n\x0frush_basketball\x18\x07 \x01(\x0b\x32!.bragi.RushBasketballMatchMessageH\x00\x12/\n\x08valorant\x18\x08 \x01(\x0b\x32\x1b.bragi.ValorantMatchMessageH\x00\x42\t\n\x07message\"\xf3\x02\n\rMatchSnapshot\x12(\n\x04\x63sgo\x18\x01 \x01(\x0b\x32\x18.bragi.CsgoMatchSnapshotH\x00\x12\x30\n\x0c\x63sgo_wingman\x18\x02 \x01(\x0b\x32\x18.bragi.CsgoMatchSnapshotH\x00\x12*\n\x05\x64ota2\x18\x03 \x01(\x0b\x32\x19.bragi.Dota2MatchSnapshotH\x00\x12\x35\n\x0brush_soccer\x18\x04 \x01(\x0b\x32\x1e.bragi.RushSoccerMatchSnapshotH\x00\x12&\n\x03lol\x18\x05 \x01(\x0b\x32\x17.bragi.LolMatchSnapshotH\x00\x12=\n\x0frush_basketball\x18\x06 \x01(\x0b\x32\".bragi.RushBasketballMatchSnapshotH\x00\x12\x30\n\x08valorant\x18\x07 \x01(\x0b\x32\x1c.bragi.ValorantMatchSnapshotH\x00\x42\n\n\x08snapshot\"\xd8\x02\n\nMatchState\x12%\n\x04\x63sgo\x18\x01 \x01(\x0b\x32\x15.bragi.CsgoMatchStateH\x00\x12-\n\x0c\x63sgo_wingman\x18\x02 \x01(\x0b\x32\x15.bragi.CsgoMatchStateH\x00\x12\'\n\x05\x64ota2\x18\x03 \x01(\x0b\x32\x16.bragi.Dota2MatchStateH\x00\x12\x32\n\x0brush_soccer\x18\x04 \x01(\x0b\x32\x1b.bragi.RushSoccerMatchStateH\x00\x12#\n\x03lol\x18\x05 \x01(\x0b\x32\x14.bragi.LolMatchStateH\x00\x12:\n\x0frush_basketball\x18\x06 \x01(\x0b\x32\x1f.bragi.RushBasketballMatchStateH\x00\x12-\n\x08valorant\x18\x07 \x01(\x0b\x32\x19.bragi.ValorantMatchStateH\x00\x42\x07\n\x05state2S\n\x05\x42ragi\x12J\n\x0cLiveDataFeed\x12\x1a.bragi.LiveDataFeedRequest\x1a\x1a.bragi.LiveDataFeedMessage\"\x00\x30\x01\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
+  serialized_pb=b'\n\x19\x62ragi/bragi_service.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x12\x62ragi/common.proto\x1a\x0f\x62ragi/cs2.proto\x1a\x11\x62ragi/dota2.proto\x1a\x17\x62ragi/rush_soccer.proto\x1a\x0f\x62ragi/lol.proto\x1a\x1b\x62ragi/rush_basketball.proto\x1a\x14\x62ragi/valorant.proto\"O\n\x13LiveDataFeedRequest\x12.\n\x05\x61\x66ter\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x00\x88\x01\x01\x42\x08\n\x06_after\"m\n\x13LiveDataFeedMessage\x12%\n\tkeepalive\x18\x01 \x01(\x0b\x32\x10.bragi.KeepAliveH\x00\x12$\n\x05match\x18\x02 \x01(\x0b\x32\x13.bragi.MatchMessageH\x00\x42\t\n\x07message\":\n\tKeepAlive\x12-\n\ttimestamp\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x97\x03\n\x0cMatchMessage\x12\x31\n\x0c\x61nnouncement\x18\x01 \x01(\x0b\x32\x19.bragi.AnnouncementUpdateH\x00\x12%\n\x03\x63s2\x18\x02 \x01(\x0b\x32\x16.bragi.CS2MatchMessageH\x00\x12+\n\tcs2_duels\x18\x03 \x01(\x0b\x32\x16.bragi.CS2MatchMessageH\x00\x12)\n\x05\x64ota2\x18\x04 \x01(\x0b\x32\x18.bragi.Dota2MatchMessageH\x00\x12\x34\n\x0brush_soccer\x18\x05 \x01(\x0b\x32\x1d.bragi.RushSoccerMatchMessageH\x00\x12%\n\x03lol\x18\x06 \x01(\x0b\x32\x16.bragi.LolMatchMessageH\x00\x12<\n\x0frush_basketball\x18\x07 \x01(\x0b\x32!.bragi.RushBasketballMatchMessageH\x00\x12/\n\x08valorant\x18\x08 \x01(\x0b\x32\x1b.bragi.ValorantMatchMessageH\x00\x42\t\n\x07message\"\xed\x02\n\rMatchSnapshot\x12&\n\x03\x63s2\x18\x01 \x01(\x0b\x32\x17.bragi.CS2MatchSnapshotH\x00\x12,\n\tcs2_duels\x18\x02 \x01(\x0b\x32\x17.bragi.CS2MatchSnapshotH\x00\x12*\n\x05\x64ota2\x18\x03 \x01(\x0b\x32\x19.bragi.Dota2MatchSnapshotH\x00\x12\x35\n\x0brush_soccer\x18\x04 \x01(\x0b\x32\x1e.bragi.RushSoccerMatchSnapshotH\x00\x12&\n\x03lol\x18\x05 \x01(\x0b\x32\x17.bragi.LolMatchSnapshotH\x00\x12=\n\x0frush_basketball\x18\x06 \x01(\x0b\x32\".bragi.RushBasketballMatchSnapshotH\x00\x12\x30\n\x08valorant\x18\x07 \x01(\x0b\x32\x1c.bragi.ValorantMatchSnapshotH\x00\x42\n\n\x08snapshot\"\xd2\x02\n\nMatchState\x12#\n\x03\x63s2\x18\x01 \x01(\x0b\x32\x14.bragi.CS2MatchStateH\x00\x12)\n\tcs2_duels\x18\x02 \x01(\x0b\x32\x14.bragi.CS2MatchStateH\x00\x12\'\n\x05\x64ota2\x18\x03 \x01(\x0b\x32\x16.bragi.Dota2MatchStateH\x00\x12\x32\n\x0brush_soccer\x18\x04 \x01(\x0b\x32\x1b.bragi.RushSoccerMatchStateH\x00\x12#\n\x03lol\x18\x05 \x01(\x0b\x32\x14.bragi.LolMatchStateH\x00\x12:\n\x0frush_basketball\x18\x06 \x01(\x0b\x32\x1f.bragi.RushBasketballMatchStateH\x00\x12-\n\x08valorant\x18\x07 \x01(\x0b\x32\x19.bragi.ValorantMatchStateH\x00\x42\x07\n\x05state2S\n\x05\x42ragi\x12J\n\x0cLiveDataFeed\x12\x1a.bragi.LiveDataFeedRequest\x1a\x1a.bragi.LiveDataFeedMessage\"\x00\x30\x01\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
   ,
-  dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,bragi_dot_common__pb2.DESCRIPTOR,bragi_dot_csgo__pb2.DESCRIPTOR,bragi_dot_dota2__pb2.DESCRIPTOR,bragi_dot_rush__soccer__pb2.DESCRIPTOR,bragi_dot_lol__pb2.DESCRIPTOR,bragi_dot_rush__basketball__pb2.DESCRIPTOR,bragi_dot_valorant__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,bragi_dot_common__pb2.DESCRIPTOR,bragi_dot_cs2__pb2.DESCRIPTOR,bragi_dot_dota2__pb2.DESCRIPTOR,bragi_dot_rush__soccer__pb2.DESCRIPTOR,bragi_dot_lol__pb2.DESCRIPTOR,bragi_dot_rush__basketball__pb2.DESCRIPTOR,bragi_dot_valorant__pb2.DESCRIPTOR,])
 
 
 
@@ -66,8 +66,8 @@ _LIVEDATAFEEDREQUEST = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=219,
-  serialized_end=298,
+  serialized_start=218,
+  serialized_end=297,
 )
 
 
@@ -110,8 +110,8 @@ _LIVEDATAFEEDMESSAGE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=300,
-  serialized_end=409,
+  serialized_start=299,
+  serialized_end=408,
 )
 
 
@@ -142,8 +142,8 @@ _KEEPALIVE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=411,
-  serialized_end=469,
+  serialized_start=410,
+  serialized_end=468,
 )
 
 
@@ -163,14 +163,14 @@ _MATCHMESSAGE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='csgo', full_name='bragi.MatchMessage.csgo', index=1,
+      name='cs2', full_name='bragi.MatchMessage.cs2', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='csgo_wingman', full_name='bragi.MatchMessage.csgo_wingman', index=2,
+      name='cs2_duels', full_name='bragi.MatchMessage.cs2_duels', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -228,8 +228,8 @@ _MATCHMESSAGE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=472,
-  serialized_end=885,
+  serialized_start=471,
+  serialized_end=878,
 )
 
 
@@ -242,14 +242,14 @@ _MATCHSNAPSHOT = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='csgo', full_name='bragi.MatchSnapshot.csgo', index=0,
+      name='cs2', full_name='bragi.MatchSnapshot.cs2', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='csgo_wingman', full_name='bragi.MatchSnapshot.csgo_wingman', index=1,
+      name='cs2_duels', full_name='bragi.MatchSnapshot.cs2_duels', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -307,8 +307,8 @@ _MATCHSNAPSHOT = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=888,
-  serialized_end=1259,
+  serialized_start=881,
+  serialized_end=1246,
 )
 
 
@@ -321,14 +321,14 @@ _MATCHSTATE = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='csgo', full_name='bragi.MatchState.csgo', index=0,
+      name='cs2', full_name='bragi.MatchState.cs2', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='csgo_wingman', full_name='bragi.MatchState.csgo_wingman', index=1,
+      name='cs2_duels', full_name='bragi.MatchState.cs2_duels', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -386,8 +386,8 @@ _MATCHSTATE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1262,
-  serialized_end=1606,
+  serialized_start=1249,
+  serialized_end=1587,
 )
 
 _LIVEDATAFEEDREQUEST.fields_by_name['after'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
@@ -404,8 +404,8 @@ _LIVEDATAFEEDMESSAGE.oneofs_by_name['message'].fields.append(
 _LIVEDATAFEEDMESSAGE.fields_by_name['match'].containing_oneof = _LIVEDATAFEEDMESSAGE.oneofs_by_name['message']
 _KEEPALIVE.fields_by_name['timestamp'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _MATCHMESSAGE.fields_by_name['announcement'].message_type = bragi_dot_common__pb2._ANNOUNCEMENTUPDATE
-_MATCHMESSAGE.fields_by_name['csgo'].message_type = bragi_dot_csgo__pb2._CSGOMATCHMESSAGE
-_MATCHMESSAGE.fields_by_name['csgo_wingman'].message_type = bragi_dot_csgo__pb2._CSGOMATCHMESSAGE
+_MATCHMESSAGE.fields_by_name['cs2'].message_type = bragi_dot_cs2__pb2._CS2MATCHMESSAGE
+_MATCHMESSAGE.fields_by_name['cs2_duels'].message_type = bragi_dot_cs2__pb2._CS2MATCHMESSAGE
 _MATCHMESSAGE.fields_by_name['dota2'].message_type = bragi_dot_dota2__pb2._DOTA2MATCHMESSAGE
 _MATCHMESSAGE.fields_by_name['rush_soccer'].message_type = bragi_dot_rush__soccer__pb2._RUSHSOCCERMATCHMESSAGE
 _MATCHMESSAGE.fields_by_name['lol'].message_type = bragi_dot_lol__pb2._LOLMATCHMESSAGE
@@ -415,11 +415,11 @@ _MATCHMESSAGE.oneofs_by_name['message'].fields.append(
   _MATCHMESSAGE.fields_by_name['announcement'])
 _MATCHMESSAGE.fields_by_name['announcement'].containing_oneof = _MATCHMESSAGE.oneofs_by_name['message']
 _MATCHMESSAGE.oneofs_by_name['message'].fields.append(
-  _MATCHMESSAGE.fields_by_name['csgo'])
-_MATCHMESSAGE.fields_by_name['csgo'].containing_oneof = _MATCHMESSAGE.oneofs_by_name['message']
+  _MATCHMESSAGE.fields_by_name['cs2'])
+_MATCHMESSAGE.fields_by_name['cs2'].containing_oneof = _MATCHMESSAGE.oneofs_by_name['message']
 _MATCHMESSAGE.oneofs_by_name['message'].fields.append(
-  _MATCHMESSAGE.fields_by_name['csgo_wingman'])
-_MATCHMESSAGE.fields_by_name['csgo_wingman'].containing_oneof = _MATCHMESSAGE.oneofs_by_name['message']
+  _MATCHMESSAGE.fields_by_name['cs2_duels'])
+_MATCHMESSAGE.fields_by_name['cs2_duels'].containing_oneof = _MATCHMESSAGE.oneofs_by_name['message']
 _MATCHMESSAGE.oneofs_by_name['message'].fields.append(
   _MATCHMESSAGE.fields_by_name['dota2'])
 _MATCHMESSAGE.fields_by_name['dota2'].containing_oneof = _MATCHMESSAGE.oneofs_by_name['message']
@@ -435,19 +435,19 @@ _MATCHMESSAGE.fields_by_name['rush_basketball'].containing_oneof = _MATCHMESSAGE
 _MATCHMESSAGE.oneofs_by_name['message'].fields.append(
   _MATCHMESSAGE.fields_by_name['valorant'])
 _MATCHMESSAGE.fields_by_name['valorant'].containing_oneof = _MATCHMESSAGE.oneofs_by_name['message']
-_MATCHSNAPSHOT.fields_by_name['csgo'].message_type = bragi_dot_csgo__pb2._CSGOMATCHSNAPSHOT
-_MATCHSNAPSHOT.fields_by_name['csgo_wingman'].message_type = bragi_dot_csgo__pb2._CSGOMATCHSNAPSHOT
+_MATCHSNAPSHOT.fields_by_name['cs2'].message_type = bragi_dot_cs2__pb2._CS2MATCHSNAPSHOT
+_MATCHSNAPSHOT.fields_by_name['cs2_duels'].message_type = bragi_dot_cs2__pb2._CS2MATCHSNAPSHOT
 _MATCHSNAPSHOT.fields_by_name['dota2'].message_type = bragi_dot_dota2__pb2._DOTA2MATCHSNAPSHOT
 _MATCHSNAPSHOT.fields_by_name['rush_soccer'].message_type = bragi_dot_rush__soccer__pb2._RUSHSOCCERMATCHSNAPSHOT
 _MATCHSNAPSHOT.fields_by_name['lol'].message_type = bragi_dot_lol__pb2._LOLMATCHSNAPSHOT
 _MATCHSNAPSHOT.fields_by_name['rush_basketball'].message_type = bragi_dot_rush__basketball__pb2._RUSHBASKETBALLMATCHSNAPSHOT
 _MATCHSNAPSHOT.fields_by_name['valorant'].message_type = bragi_dot_valorant__pb2._VALORANTMATCHSNAPSHOT
 _MATCHSNAPSHOT.oneofs_by_name['snapshot'].fields.append(
-  _MATCHSNAPSHOT.fields_by_name['csgo'])
-_MATCHSNAPSHOT.fields_by_name['csgo'].containing_oneof = _MATCHSNAPSHOT.oneofs_by_name['snapshot']
+  _MATCHSNAPSHOT.fields_by_name['cs2'])
+_MATCHSNAPSHOT.fields_by_name['cs2'].containing_oneof = _MATCHSNAPSHOT.oneofs_by_name['snapshot']
 _MATCHSNAPSHOT.oneofs_by_name['snapshot'].fields.append(
-  _MATCHSNAPSHOT.fields_by_name['csgo_wingman'])
-_MATCHSNAPSHOT.fields_by_name['csgo_wingman'].containing_oneof = _MATCHSNAPSHOT.oneofs_by_name['snapshot']
+  _MATCHSNAPSHOT.fields_by_name['cs2_duels'])
+_MATCHSNAPSHOT.fields_by_name['cs2_duels'].containing_oneof = _MATCHSNAPSHOT.oneofs_by_name['snapshot']
 _MATCHSNAPSHOT.oneofs_by_name['snapshot'].fields.append(
   _MATCHSNAPSHOT.fields_by_name['dota2'])
 _MATCHSNAPSHOT.fields_by_name['dota2'].containing_oneof = _MATCHSNAPSHOT.oneofs_by_name['snapshot']
@@ -463,19 +463,19 @@ _MATCHSNAPSHOT.fields_by_name['rush_basketball'].containing_oneof = _MATCHSNAPSH
 _MATCHSNAPSHOT.oneofs_by_name['snapshot'].fields.append(
   _MATCHSNAPSHOT.fields_by_name['valorant'])
 _MATCHSNAPSHOT.fields_by_name['valorant'].containing_oneof = _MATCHSNAPSHOT.oneofs_by_name['snapshot']
-_MATCHSTATE.fields_by_name['csgo'].message_type = bragi_dot_csgo__pb2._CSGOMATCHSTATE
-_MATCHSTATE.fields_by_name['csgo_wingman'].message_type = bragi_dot_csgo__pb2._CSGOMATCHSTATE
+_MATCHSTATE.fields_by_name['cs2'].message_type = bragi_dot_cs2__pb2._CS2MATCHSTATE
+_MATCHSTATE.fields_by_name['cs2_duels'].message_type = bragi_dot_cs2__pb2._CS2MATCHSTATE
 _MATCHSTATE.fields_by_name['dota2'].message_type = bragi_dot_dota2__pb2._DOTA2MATCHSTATE
 _MATCHSTATE.fields_by_name['rush_soccer'].message_type = bragi_dot_rush__soccer__pb2._RUSHSOCCERMATCHSTATE
 _MATCHSTATE.fields_by_name['lol'].message_type = bragi_dot_lol__pb2._LOLMATCHSTATE
 _MATCHSTATE.fields_by_name['rush_basketball'].message_type = bragi_dot_rush__basketball__pb2._RUSHBASKETBALLMATCHSTATE
 _MATCHSTATE.fields_by_name['valorant'].message_type = bragi_dot_valorant__pb2._VALORANTMATCHSTATE
 _MATCHSTATE.oneofs_by_name['state'].fields.append(
-  _MATCHSTATE.fields_by_name['csgo'])
-_MATCHSTATE.fields_by_name['csgo'].containing_oneof = _MATCHSTATE.oneofs_by_name['state']
+  _MATCHSTATE.fields_by_name['cs2'])
+_MATCHSTATE.fields_by_name['cs2'].containing_oneof = _MATCHSTATE.oneofs_by_name['state']
 _MATCHSTATE.oneofs_by_name['state'].fields.append(
-  _MATCHSTATE.fields_by_name['csgo_wingman'])
-_MATCHSTATE.fields_by_name['csgo_wingman'].containing_oneof = _MATCHSTATE.oneofs_by_name['state']
+  _MATCHSTATE.fields_by_name['cs2_duels'])
+_MATCHSTATE.fields_by_name['cs2_duels'].containing_oneof = _MATCHSTATE.oneofs_by_name['state']
 _MATCHSTATE.oneofs_by_name['state'].fields.append(
   _MATCHSTATE.fields_by_name['dota2'])
 _MATCHSTATE.fields_by_name['dota2'].containing_oneof = _MATCHSTATE.oneofs_by_name['state']
@@ -551,8 +551,8 @@ _BRAGI = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=1608,
-  serialized_end=1691,
+  serialized_start=1589,
+  serialized_end=1672,
   methods=[
   _descriptor.MethodDescriptor(
     name='LiveDataFeed',
