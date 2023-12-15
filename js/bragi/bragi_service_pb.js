@@ -19,8 +19,8 @@ var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/time
 goog.object.extend(proto, google_protobuf_timestamp_pb);
 var bragi_common_pb = require('../bragi/common_pb.js');
 goog.object.extend(proto, bragi_common_pb);
-var bragi_csgo_pb = require('../bragi/csgo_pb.js');
-goog.object.extend(proto, bragi_csgo_pb);
+var bragi_cs2_pb = require('../bragi/cs2_pb.js');
+goog.object.extend(proto, bragi_cs2_pb);
 var bragi_dota2_pb = require('../bragi/dota2_pb.js');
 goog.object.extend(proto, bragi_dota2_pb);
 var bragi_rush_soccer_pb = require('../bragi/rush_soccer_pb.js');
@@ -714,8 +714,8 @@ proto.bragi.MatchMessage.oneofGroups_ = [[1,2,3,4,5,6,7,8]];
 proto.bragi.MatchMessage.MessageCase = {
   MESSAGE_NOT_SET: 0,
   ANNOUNCEMENT: 1,
-  CSGO: 2,
-  CSGO_WINGMAN: 3,
+  CS2: 2,
+  CS2_DUELS: 3,
   DOTA2: 4,
   RUSH_SOCCER: 5,
   LOL: 6,
@@ -762,8 +762,8 @@ proto.bragi.MatchMessage.prototype.toObject = function(opt_includeInstance) {
 proto.bragi.MatchMessage.toObject = function(includeInstance, msg) {
   var f, obj = {
     announcement: (f = msg.getAnnouncement()) && bragi_common_pb.AnnouncementUpdate.toObject(includeInstance, f),
-    csgo: (f = msg.getCsgo()) && bragi_csgo_pb.CsgoMatchMessage.toObject(includeInstance, f),
-    csgoWingman: (f = msg.getCsgoWingman()) && bragi_csgo_pb.CsgoMatchMessage.toObject(includeInstance, f),
+    cs2: (f = msg.getCs2()) && bragi_cs2_pb.CS2MatchMessage.toObject(includeInstance, f),
+    cs2Duels: (f = msg.getCs2Duels()) && bragi_cs2_pb.CS2MatchMessage.toObject(includeInstance, f),
     dota2: (f = msg.getDota2()) && bragi_dota2_pb.Dota2MatchMessage.toObject(includeInstance, f),
     rushSoccer: (f = msg.getRushSoccer()) && bragi_rush_soccer_pb.RushSoccerMatchMessage.toObject(includeInstance, f),
     lol: (f = msg.getLol()) && bragi_lol_pb.LolMatchMessage.toObject(includeInstance, f),
@@ -811,14 +811,14 @@ proto.bragi.MatchMessage.deserializeBinaryFromReader = function(msg, reader) {
       msg.setAnnouncement(value);
       break;
     case 2:
-      var value = new bragi_csgo_pb.CsgoMatchMessage;
-      reader.readMessage(value,bragi_csgo_pb.CsgoMatchMessage.deserializeBinaryFromReader);
-      msg.setCsgo(value);
+      var value = new bragi_cs2_pb.CS2MatchMessage;
+      reader.readMessage(value,bragi_cs2_pb.CS2MatchMessage.deserializeBinaryFromReader);
+      msg.setCs2(value);
       break;
     case 3:
-      var value = new bragi_csgo_pb.CsgoMatchMessage;
-      reader.readMessage(value,bragi_csgo_pb.CsgoMatchMessage.deserializeBinaryFromReader);
-      msg.setCsgoWingman(value);
+      var value = new bragi_cs2_pb.CS2MatchMessage;
+      reader.readMessage(value,bragi_cs2_pb.CS2MatchMessage.deserializeBinaryFromReader);
+      msg.setCs2Duels(value);
       break;
     case 4:
       var value = new bragi_dota2_pb.Dota2MatchMessage;
@@ -882,20 +882,20 @@ proto.bragi.MatchMessage.serializeBinaryToWriter = function(message, writer) {
       bragi_common_pb.AnnouncementUpdate.serializeBinaryToWriter
     );
   }
-  f = message.getCsgo();
+  f = message.getCs2();
   if (f != null) {
     writer.writeMessage(
       2,
       f,
-      bragi_csgo_pb.CsgoMatchMessage.serializeBinaryToWriter
+      bragi_cs2_pb.CS2MatchMessage.serializeBinaryToWriter
     );
   }
-  f = message.getCsgoWingman();
+  f = message.getCs2Duels();
   if (f != null) {
     writer.writeMessage(
       3,
       f,
-      bragi_csgo_pb.CsgoMatchMessage.serializeBinaryToWriter
+      bragi_cs2_pb.CS2MatchMessage.serializeBinaryToWriter
     );
   }
   f = message.getDota2();
@@ -979,20 +979,20 @@ proto.bragi.MatchMessage.prototype.hasAnnouncement = function() {
 
 
 /**
- * optional CsgoMatchMessage csgo = 2;
- * @return {?proto.bragi.CsgoMatchMessage}
+ * optional CS2MatchMessage cs2 = 2;
+ * @return {?proto.bragi.CS2MatchMessage}
  */
-proto.bragi.MatchMessage.prototype.getCsgo = function() {
-  return /** @type{?proto.bragi.CsgoMatchMessage} */ (
-    jspb.Message.getWrapperField(this, bragi_csgo_pb.CsgoMatchMessage, 2));
+proto.bragi.MatchMessage.prototype.getCs2 = function() {
+  return /** @type{?proto.bragi.CS2MatchMessage} */ (
+    jspb.Message.getWrapperField(this, bragi_cs2_pb.CS2MatchMessage, 2));
 };
 
 
 /**
- * @param {?proto.bragi.CsgoMatchMessage|undefined} value
+ * @param {?proto.bragi.CS2MatchMessage|undefined} value
  * @return {!proto.bragi.MatchMessage} returns this
 */
-proto.bragi.MatchMessage.prototype.setCsgo = function(value) {
+proto.bragi.MatchMessage.prototype.setCs2 = function(value) {
   return jspb.Message.setOneofWrapperField(this, 2, proto.bragi.MatchMessage.oneofGroups_[0], value);
 };
 
@@ -1001,8 +1001,8 @@ proto.bragi.MatchMessage.prototype.setCsgo = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.bragi.MatchMessage} returns this
  */
-proto.bragi.MatchMessage.prototype.clearCsgo = function() {
-  return this.setCsgo(undefined);
+proto.bragi.MatchMessage.prototype.clearCs2 = function() {
+  return this.setCs2(undefined);
 };
 
 
@@ -1010,26 +1010,26 @@ proto.bragi.MatchMessage.prototype.clearCsgo = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.bragi.MatchMessage.prototype.hasCsgo = function() {
+proto.bragi.MatchMessage.prototype.hasCs2 = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 
 
 /**
- * optional CsgoMatchMessage csgo_wingman = 3;
- * @return {?proto.bragi.CsgoMatchMessage}
+ * optional CS2MatchMessage cs2_duels = 3;
+ * @return {?proto.bragi.CS2MatchMessage}
  */
-proto.bragi.MatchMessage.prototype.getCsgoWingman = function() {
-  return /** @type{?proto.bragi.CsgoMatchMessage} */ (
-    jspb.Message.getWrapperField(this, bragi_csgo_pb.CsgoMatchMessage, 3));
+proto.bragi.MatchMessage.prototype.getCs2Duels = function() {
+  return /** @type{?proto.bragi.CS2MatchMessage} */ (
+    jspb.Message.getWrapperField(this, bragi_cs2_pb.CS2MatchMessage, 3));
 };
 
 
 /**
- * @param {?proto.bragi.CsgoMatchMessage|undefined} value
+ * @param {?proto.bragi.CS2MatchMessage|undefined} value
  * @return {!proto.bragi.MatchMessage} returns this
 */
-proto.bragi.MatchMessage.prototype.setCsgoWingman = function(value) {
+proto.bragi.MatchMessage.prototype.setCs2Duels = function(value) {
   return jspb.Message.setOneofWrapperField(this, 3, proto.bragi.MatchMessage.oneofGroups_[0], value);
 };
 
@@ -1038,8 +1038,8 @@ proto.bragi.MatchMessage.prototype.setCsgoWingman = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.bragi.MatchMessage} returns this
  */
-proto.bragi.MatchMessage.prototype.clearCsgoWingman = function() {
-  return this.setCsgoWingman(undefined);
+proto.bragi.MatchMessage.prototype.clearCs2Duels = function() {
+  return this.setCs2Duels(undefined);
 };
 
 
@@ -1047,7 +1047,7 @@ proto.bragi.MatchMessage.prototype.clearCsgoWingman = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.bragi.MatchMessage.prototype.hasCsgoWingman = function() {
+proto.bragi.MatchMessage.prototype.hasCs2Duels = function() {
   return jspb.Message.getField(this, 3) != null;
 };
 
@@ -1253,8 +1253,8 @@ proto.bragi.MatchSnapshot.oneofGroups_ = [[1,2,3,4,5,6,7]];
  */
 proto.bragi.MatchSnapshot.SnapshotCase = {
   SNAPSHOT_NOT_SET: 0,
-  CSGO: 1,
-  CSGO_WINGMAN: 2,
+  CS2: 1,
+  CS2_DUELS: 2,
   DOTA2: 3,
   RUSH_SOCCER: 4,
   LOL: 5,
@@ -1300,8 +1300,8 @@ proto.bragi.MatchSnapshot.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.MatchSnapshot.toObject = function(includeInstance, msg) {
   var f, obj = {
-    csgo: (f = msg.getCsgo()) && bragi_csgo_pb.CsgoMatchSnapshot.toObject(includeInstance, f),
-    csgoWingman: (f = msg.getCsgoWingman()) && bragi_csgo_pb.CsgoMatchSnapshot.toObject(includeInstance, f),
+    cs2: (f = msg.getCs2()) && bragi_cs2_pb.CS2MatchSnapshot.toObject(includeInstance, f),
+    cs2Duels: (f = msg.getCs2Duels()) && bragi_cs2_pb.CS2MatchSnapshot.toObject(includeInstance, f),
     dota2: (f = msg.getDota2()) && bragi_dota2_pb.Dota2MatchSnapshot.toObject(includeInstance, f),
     rushSoccer: (f = msg.getRushSoccer()) && bragi_rush_soccer_pb.RushSoccerMatchSnapshot.toObject(includeInstance, f),
     lol: (f = msg.getLol()) && bragi_lol_pb.LolMatchSnapshot.toObject(includeInstance, f),
@@ -1344,14 +1344,14 @@ proto.bragi.MatchSnapshot.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new bragi_csgo_pb.CsgoMatchSnapshot;
-      reader.readMessage(value,bragi_csgo_pb.CsgoMatchSnapshot.deserializeBinaryFromReader);
-      msg.setCsgo(value);
+      var value = new bragi_cs2_pb.CS2MatchSnapshot;
+      reader.readMessage(value,bragi_cs2_pb.CS2MatchSnapshot.deserializeBinaryFromReader);
+      msg.setCs2(value);
       break;
     case 2:
-      var value = new bragi_csgo_pb.CsgoMatchSnapshot;
-      reader.readMessage(value,bragi_csgo_pb.CsgoMatchSnapshot.deserializeBinaryFromReader);
-      msg.setCsgoWingman(value);
+      var value = new bragi_cs2_pb.CS2MatchSnapshot;
+      reader.readMessage(value,bragi_cs2_pb.CS2MatchSnapshot.deserializeBinaryFromReader);
+      msg.setCs2Duels(value);
       break;
     case 3:
       var value = new bragi_dota2_pb.Dota2MatchSnapshot;
@@ -1407,20 +1407,20 @@ proto.bragi.MatchSnapshot.prototype.serializeBinary = function() {
  */
 proto.bragi.MatchSnapshot.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getCsgo();
+  f = message.getCs2();
   if (f != null) {
     writer.writeMessage(
       1,
       f,
-      bragi_csgo_pb.CsgoMatchSnapshot.serializeBinaryToWriter
+      bragi_cs2_pb.CS2MatchSnapshot.serializeBinaryToWriter
     );
   }
-  f = message.getCsgoWingman();
+  f = message.getCs2Duels();
   if (f != null) {
     writer.writeMessage(
       2,
       f,
-      bragi_csgo_pb.CsgoMatchSnapshot.serializeBinaryToWriter
+      bragi_cs2_pb.CS2MatchSnapshot.serializeBinaryToWriter
     );
   }
   f = message.getDota2();
@@ -1467,20 +1467,20 @@ proto.bragi.MatchSnapshot.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional CsgoMatchSnapshot csgo = 1;
- * @return {?proto.bragi.CsgoMatchSnapshot}
+ * optional CS2MatchSnapshot cs2 = 1;
+ * @return {?proto.bragi.CS2MatchSnapshot}
  */
-proto.bragi.MatchSnapshot.prototype.getCsgo = function() {
-  return /** @type{?proto.bragi.CsgoMatchSnapshot} */ (
-    jspb.Message.getWrapperField(this, bragi_csgo_pb.CsgoMatchSnapshot, 1));
+proto.bragi.MatchSnapshot.prototype.getCs2 = function() {
+  return /** @type{?proto.bragi.CS2MatchSnapshot} */ (
+    jspb.Message.getWrapperField(this, bragi_cs2_pb.CS2MatchSnapshot, 1));
 };
 
 
 /**
- * @param {?proto.bragi.CsgoMatchSnapshot|undefined} value
+ * @param {?proto.bragi.CS2MatchSnapshot|undefined} value
  * @return {!proto.bragi.MatchSnapshot} returns this
 */
-proto.bragi.MatchSnapshot.prototype.setCsgo = function(value) {
+proto.bragi.MatchSnapshot.prototype.setCs2 = function(value) {
   return jspb.Message.setOneofWrapperField(this, 1, proto.bragi.MatchSnapshot.oneofGroups_[0], value);
 };
 
@@ -1489,8 +1489,8 @@ proto.bragi.MatchSnapshot.prototype.setCsgo = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.bragi.MatchSnapshot} returns this
  */
-proto.bragi.MatchSnapshot.prototype.clearCsgo = function() {
-  return this.setCsgo(undefined);
+proto.bragi.MatchSnapshot.prototype.clearCs2 = function() {
+  return this.setCs2(undefined);
 };
 
 
@@ -1498,26 +1498,26 @@ proto.bragi.MatchSnapshot.prototype.clearCsgo = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.bragi.MatchSnapshot.prototype.hasCsgo = function() {
+proto.bragi.MatchSnapshot.prototype.hasCs2 = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
 
 /**
- * optional CsgoMatchSnapshot csgo_wingman = 2;
- * @return {?proto.bragi.CsgoMatchSnapshot}
+ * optional CS2MatchSnapshot cs2_duels = 2;
+ * @return {?proto.bragi.CS2MatchSnapshot}
  */
-proto.bragi.MatchSnapshot.prototype.getCsgoWingman = function() {
-  return /** @type{?proto.bragi.CsgoMatchSnapshot} */ (
-    jspb.Message.getWrapperField(this, bragi_csgo_pb.CsgoMatchSnapshot, 2));
+proto.bragi.MatchSnapshot.prototype.getCs2Duels = function() {
+  return /** @type{?proto.bragi.CS2MatchSnapshot} */ (
+    jspb.Message.getWrapperField(this, bragi_cs2_pb.CS2MatchSnapshot, 2));
 };
 
 
 /**
- * @param {?proto.bragi.CsgoMatchSnapshot|undefined} value
+ * @param {?proto.bragi.CS2MatchSnapshot|undefined} value
  * @return {!proto.bragi.MatchSnapshot} returns this
 */
-proto.bragi.MatchSnapshot.prototype.setCsgoWingman = function(value) {
+proto.bragi.MatchSnapshot.prototype.setCs2Duels = function(value) {
   return jspb.Message.setOneofWrapperField(this, 2, proto.bragi.MatchSnapshot.oneofGroups_[0], value);
 };
 
@@ -1526,8 +1526,8 @@ proto.bragi.MatchSnapshot.prototype.setCsgoWingman = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.bragi.MatchSnapshot} returns this
  */
-proto.bragi.MatchSnapshot.prototype.clearCsgoWingman = function() {
-  return this.setCsgoWingman(undefined);
+proto.bragi.MatchSnapshot.prototype.clearCs2Duels = function() {
+  return this.setCs2Duels(undefined);
 };
 
 
@@ -1535,7 +1535,7 @@ proto.bragi.MatchSnapshot.prototype.clearCsgoWingman = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.bragi.MatchSnapshot.prototype.hasCsgoWingman = function() {
+proto.bragi.MatchSnapshot.prototype.hasCs2Duels = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 
@@ -1741,8 +1741,8 @@ proto.bragi.MatchState.oneofGroups_ = [[1,2,3,4,5,6,7]];
  */
 proto.bragi.MatchState.StateCase = {
   STATE_NOT_SET: 0,
-  CSGO: 1,
-  CSGO_WINGMAN: 2,
+  CS2: 1,
+  CS2_DUELS: 2,
   DOTA2: 3,
   RUSH_SOCCER: 4,
   LOL: 5,
@@ -1788,8 +1788,8 @@ proto.bragi.MatchState.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.MatchState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    csgo: (f = msg.getCsgo()) && bragi_csgo_pb.CsgoMatchState.toObject(includeInstance, f),
-    csgoWingman: (f = msg.getCsgoWingman()) && bragi_csgo_pb.CsgoMatchState.toObject(includeInstance, f),
+    cs2: (f = msg.getCs2()) && bragi_cs2_pb.CS2MatchState.toObject(includeInstance, f),
+    cs2Duels: (f = msg.getCs2Duels()) && bragi_cs2_pb.CS2MatchState.toObject(includeInstance, f),
     dota2: (f = msg.getDota2()) && bragi_dota2_pb.Dota2MatchState.toObject(includeInstance, f),
     rushSoccer: (f = msg.getRushSoccer()) && bragi_rush_soccer_pb.RushSoccerMatchState.toObject(includeInstance, f),
     lol: (f = msg.getLol()) && bragi_lol_pb.LolMatchState.toObject(includeInstance, f),
@@ -1832,14 +1832,14 @@ proto.bragi.MatchState.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new bragi_csgo_pb.CsgoMatchState;
-      reader.readMessage(value,bragi_csgo_pb.CsgoMatchState.deserializeBinaryFromReader);
-      msg.setCsgo(value);
+      var value = new bragi_cs2_pb.CS2MatchState;
+      reader.readMessage(value,bragi_cs2_pb.CS2MatchState.deserializeBinaryFromReader);
+      msg.setCs2(value);
       break;
     case 2:
-      var value = new bragi_csgo_pb.CsgoMatchState;
-      reader.readMessage(value,bragi_csgo_pb.CsgoMatchState.deserializeBinaryFromReader);
-      msg.setCsgoWingman(value);
+      var value = new bragi_cs2_pb.CS2MatchState;
+      reader.readMessage(value,bragi_cs2_pb.CS2MatchState.deserializeBinaryFromReader);
+      msg.setCs2Duels(value);
       break;
     case 3:
       var value = new bragi_dota2_pb.Dota2MatchState;
@@ -1895,20 +1895,20 @@ proto.bragi.MatchState.prototype.serializeBinary = function() {
  */
 proto.bragi.MatchState.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getCsgo();
+  f = message.getCs2();
   if (f != null) {
     writer.writeMessage(
       1,
       f,
-      bragi_csgo_pb.CsgoMatchState.serializeBinaryToWriter
+      bragi_cs2_pb.CS2MatchState.serializeBinaryToWriter
     );
   }
-  f = message.getCsgoWingman();
+  f = message.getCs2Duels();
   if (f != null) {
     writer.writeMessage(
       2,
       f,
-      bragi_csgo_pb.CsgoMatchState.serializeBinaryToWriter
+      bragi_cs2_pb.CS2MatchState.serializeBinaryToWriter
     );
   }
   f = message.getDota2();
@@ -1955,20 +1955,20 @@ proto.bragi.MatchState.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional CsgoMatchState csgo = 1;
- * @return {?proto.bragi.CsgoMatchState}
+ * optional CS2MatchState cs2 = 1;
+ * @return {?proto.bragi.CS2MatchState}
  */
-proto.bragi.MatchState.prototype.getCsgo = function() {
-  return /** @type{?proto.bragi.CsgoMatchState} */ (
-    jspb.Message.getWrapperField(this, bragi_csgo_pb.CsgoMatchState, 1));
+proto.bragi.MatchState.prototype.getCs2 = function() {
+  return /** @type{?proto.bragi.CS2MatchState} */ (
+    jspb.Message.getWrapperField(this, bragi_cs2_pb.CS2MatchState, 1));
 };
 
 
 /**
- * @param {?proto.bragi.CsgoMatchState|undefined} value
+ * @param {?proto.bragi.CS2MatchState|undefined} value
  * @return {!proto.bragi.MatchState} returns this
 */
-proto.bragi.MatchState.prototype.setCsgo = function(value) {
+proto.bragi.MatchState.prototype.setCs2 = function(value) {
   return jspb.Message.setOneofWrapperField(this, 1, proto.bragi.MatchState.oneofGroups_[0], value);
 };
 
@@ -1977,8 +1977,8 @@ proto.bragi.MatchState.prototype.setCsgo = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.bragi.MatchState} returns this
  */
-proto.bragi.MatchState.prototype.clearCsgo = function() {
-  return this.setCsgo(undefined);
+proto.bragi.MatchState.prototype.clearCs2 = function() {
+  return this.setCs2(undefined);
 };
 
 
@@ -1986,26 +1986,26 @@ proto.bragi.MatchState.prototype.clearCsgo = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.bragi.MatchState.prototype.hasCsgo = function() {
+proto.bragi.MatchState.prototype.hasCs2 = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
 
 /**
- * optional CsgoMatchState csgo_wingman = 2;
- * @return {?proto.bragi.CsgoMatchState}
+ * optional CS2MatchState cs2_duels = 2;
+ * @return {?proto.bragi.CS2MatchState}
  */
-proto.bragi.MatchState.prototype.getCsgoWingman = function() {
-  return /** @type{?proto.bragi.CsgoMatchState} */ (
-    jspb.Message.getWrapperField(this, bragi_csgo_pb.CsgoMatchState, 2));
+proto.bragi.MatchState.prototype.getCs2Duels = function() {
+  return /** @type{?proto.bragi.CS2MatchState} */ (
+    jspb.Message.getWrapperField(this, bragi_cs2_pb.CS2MatchState, 2));
 };
 
 
 /**
- * @param {?proto.bragi.CsgoMatchState|undefined} value
+ * @param {?proto.bragi.CS2MatchState|undefined} value
  * @return {!proto.bragi.MatchState} returns this
 */
-proto.bragi.MatchState.prototype.setCsgoWingman = function(value) {
+proto.bragi.MatchState.prototype.setCs2Duels = function(value) {
   return jspb.Message.setOneofWrapperField(this, 2, proto.bragi.MatchState.oneofGroups_[0], value);
 };
 
@@ -2014,8 +2014,8 @@ proto.bragi.MatchState.prototype.setCsgoWingman = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.bragi.MatchState} returns this
  */
-proto.bragi.MatchState.prototype.clearCsgoWingman = function() {
-  return this.setCsgoWingman(undefined);
+proto.bragi.MatchState.prototype.clearCs2Duels = function() {
+  return this.setCs2Duels(undefined);
 };
 
 
@@ -2023,7 +2023,7 @@ proto.bragi.MatchState.prototype.clearCsgoWingman = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.bragi.MatchState.prototype.hasCsgoWingman = function() {
+proto.bragi.MatchState.prototype.hasCs2Duels = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 

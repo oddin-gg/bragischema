@@ -1,12 +1,12 @@
 // package: bragi
-// file: bragi/csgo.proto
+// file: bragi/cs2.proto
 
 import * as jspb from "google-protobuf";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 import * as google_protobuf_duration_pb from "google-protobuf/google/protobuf/duration_pb";
 import * as bragi_common_pb from "../bragi/common_pb";
 
-export class CsgoMatchMessage extends jspb.Message {
+export class CS2MatchMessage extends jspb.Message {
   getMatchUrn(): string;
   setMatchUrn(value: string): void;
 
@@ -23,38 +23,38 @@ export class CsgoMatchMessage extends jspb.Message {
 
   hasPayload(): boolean;
   clearPayload(): void;
-  getPayload(): CsgoMatchMessage.Payload | undefined;
-  setPayload(value?: CsgoMatchMessage.Payload): void;
+  getPayload(): CS2MatchMessage.Payload | undefined;
+  setPayload(value?: CS2MatchMessage.Payload): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoMatchMessage.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoMatchMessage): CsgoMatchMessage.AsObject;
+  toObject(includeInstance?: boolean): CS2MatchMessage.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2MatchMessage): CS2MatchMessage.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoMatchMessage, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoMatchMessage;
-  static deserializeBinaryFromReader(message: CsgoMatchMessage, reader: jspb.BinaryReader): CsgoMatchMessage;
+  static serializeBinaryToWriter(message: CS2MatchMessage, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2MatchMessage;
+  static deserializeBinaryFromReader(message: CS2MatchMessage, reader: jspb.BinaryReader): CS2MatchMessage;
 }
 
-export namespace CsgoMatchMessage {
+export namespace CS2MatchMessage {
   export type AsObject = {
     matchUrn: string,
     sequence: number,
     timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     dataStatus: bragi_common_pb.DataStatusMap[keyof bragi_common_pb.DataStatusMap],
-    payload?: CsgoMatchMessage.Payload.AsObject,
+    payload?: CS2MatchMessage.Payload.AsObject,
   }
 
   export class Payload extends jspb.Message {
     hasSnapshot(): boolean;
     clearSnapshot(): void;
-    getSnapshot(): CsgoMatchSnapshot | undefined;
-    setSnapshot(value?: CsgoMatchSnapshot): void;
+    getSnapshot(): CS2MatchSnapshot | undefined;
+    setSnapshot(value?: CS2MatchSnapshot): void;
 
     hasUpdate(): boolean;
     clearUpdate(): void;
-    getUpdate(): CsgoMatchUpdate | undefined;
-    setUpdate(value?: CsgoMatchUpdate): void;
+    getUpdate(): CS2MatchUpdate | undefined;
+    setUpdate(value?: CS2MatchUpdate): void;
 
     getPayloadCase(): Payload.PayloadCase;
     serializeBinary(): Uint8Array;
@@ -69,8 +69,8 @@ export namespace CsgoMatchMessage {
 
   export namespace Payload {
     export type AsObject = {
-      snapshot?: CsgoMatchSnapshot.AsObject,
-      update?: CsgoMatchUpdate.AsObject,
+      snapshot?: CS2MatchSnapshot.AsObject,
+      update?: CS2MatchUpdate.AsObject,
     }
 
     export enum PayloadCase {
@@ -81,7 +81,7 @@ export namespace CsgoMatchMessage {
   }
 }
 
-export class CsgoMatchSnapshot extends jspb.Message {
+export class CS2MatchSnapshot extends jspb.Message {
   getMatchUrn(): string;
   setMatchUrn(value: string): void;
 
@@ -103,67 +103,67 @@ export class CsgoMatchSnapshot extends jspb.Message {
 
   hasMatchState(): boolean;
   clearMatchState(): void;
-  getMatchState(): CsgoMatchState | undefined;
-  setMatchState(value?: CsgoMatchState): void;
+  getMatchState(): CS2MatchState | undefined;
+  setMatchState(value?: CS2MatchState): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoMatchSnapshot.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoMatchSnapshot): CsgoMatchSnapshot.AsObject;
+  toObject(includeInstance?: boolean): CS2MatchSnapshot.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2MatchSnapshot): CS2MatchSnapshot.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoMatchSnapshot, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoMatchSnapshot;
-  static deserializeBinaryFromReader(message: CsgoMatchSnapshot, reader: jspb.BinaryReader): CsgoMatchSnapshot;
+  static serializeBinaryToWriter(message: CS2MatchSnapshot, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2MatchSnapshot;
+  static deserializeBinaryFromReader(message: CS2MatchSnapshot, reader: jspb.BinaryReader): CS2MatchSnapshot;
 }
 
-export namespace CsgoMatchSnapshot {
+export namespace CS2MatchSnapshot {
   export type AsObject = {
     matchUrn: string,
     sequence: number,
     timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     dataStatus: bragi_common_pb.DataStatusMap[keyof bragi_common_pb.DataStatusMap],
     announcementsList: Array<bragi_common_pb.Announcement.AsObject>,
-    matchState?: CsgoMatchState.AsObject,
+    matchState?: CS2MatchState.AsObject,
   }
 }
 
-export class CsgoMatchUpdate extends jspb.Message {
+export class CS2MatchUpdate extends jspb.Message {
   hasPayload(): boolean;
   clearPayload(): void;
-  getPayload(): CsgoMatchUpdate.Payload | undefined;
-  setPayload(value?: CsgoMatchUpdate.Payload): void;
+  getPayload(): CS2MatchUpdate.Payload | undefined;
+  setPayload(value?: CS2MatchUpdate.Payload): void;
 
   clearEventsList(): void;
-  getEventsList(): Array<CsgoEvent>;
-  setEventsList(value: Array<CsgoEvent>): void;
-  addEvents(value?: CsgoEvent, index?: number): CsgoEvent;
+  getEventsList(): Array<CS2Event>;
+  setEventsList(value: Array<CS2Event>): void;
+  addEvents(value?: CS2Event, index?: number): CS2Event;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoMatchUpdate.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoMatchUpdate): CsgoMatchUpdate.AsObject;
+  toObject(includeInstance?: boolean): CS2MatchUpdate.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2MatchUpdate): CS2MatchUpdate.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoMatchUpdate, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoMatchUpdate;
-  static deserializeBinaryFromReader(message: CsgoMatchUpdate, reader: jspb.BinaryReader): CsgoMatchUpdate;
+  static serializeBinaryToWriter(message: CS2MatchUpdate, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2MatchUpdate;
+  static deserializeBinaryFromReader(message: CS2MatchUpdate, reader: jspb.BinaryReader): CS2MatchUpdate;
 }
 
-export namespace CsgoMatchUpdate {
+export namespace CS2MatchUpdate {
   export type AsObject = {
-    payload?: CsgoMatchUpdate.Payload.AsObject,
-    eventsList: Array<CsgoEvent.AsObject>,
+    payload?: CS2MatchUpdate.Payload.AsObject,
+    eventsList: Array<CS2Event.AsObject>,
   }
 
   export class Payload extends jspb.Message {
     hasMatchState(): boolean;
     clearMatchState(): void;
-    getMatchState(): CsgoMatchState | undefined;
-    setMatchState(value?: CsgoMatchState): void;
+    getMatchState(): CS2MatchState | undefined;
+    setMatchState(value?: CS2MatchState): void;
 
     hasPartialUpdates(): boolean;
     clearPartialUpdates(): void;
-    getPartialUpdates(): CsgoMatchStatePartialUpdates | undefined;
-    setPartialUpdates(value?: CsgoMatchStatePartialUpdates): void;
+    getPartialUpdates(): CS2MatchStatePartialUpdates | undefined;
+    setPartialUpdates(value?: CS2MatchStatePartialUpdates): void;
 
     getPayloadCase(): Payload.PayloadCase;
     serializeBinary(): Uint8Array;
@@ -178,8 +178,8 @@ export namespace CsgoMatchUpdate {
 
   export namespace Payload {
     export type AsObject = {
-      matchState?: CsgoMatchState.AsObject,
-      partialUpdates?: CsgoMatchStatePartialUpdates.AsObject,
+      matchState?: CS2MatchState.AsObject,
+      partialUpdates?: CS2MatchStatePartialUpdates.AsObject,
     }
 
     export enum PayloadCase {
@@ -190,60 +190,60 @@ export namespace CsgoMatchUpdate {
   }
 }
 
-export class CsgoMatchStatePartialUpdates extends jspb.Message {
+export class CS2MatchStatePartialUpdates extends jspb.Message {
   clearUpdatesList(): void;
-  getUpdatesList(): Array<CsgoMatchStatePartialUpdate>;
-  setUpdatesList(value: Array<CsgoMatchStatePartialUpdate>): void;
-  addUpdates(value?: CsgoMatchStatePartialUpdate, index?: number): CsgoMatchStatePartialUpdate;
+  getUpdatesList(): Array<CS2MatchStatePartialUpdate>;
+  setUpdatesList(value: Array<CS2MatchStatePartialUpdate>): void;
+  addUpdates(value?: CS2MatchStatePartialUpdate, index?: number): CS2MatchStatePartialUpdate;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoMatchStatePartialUpdates.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoMatchStatePartialUpdates): CsgoMatchStatePartialUpdates.AsObject;
+  toObject(includeInstance?: boolean): CS2MatchStatePartialUpdates.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2MatchStatePartialUpdates): CS2MatchStatePartialUpdates.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoMatchStatePartialUpdates, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoMatchStatePartialUpdates;
-  static deserializeBinaryFromReader(message: CsgoMatchStatePartialUpdates, reader: jspb.BinaryReader): CsgoMatchStatePartialUpdates;
+  static serializeBinaryToWriter(message: CS2MatchStatePartialUpdates, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2MatchStatePartialUpdates;
+  static deserializeBinaryFromReader(message: CS2MatchStatePartialUpdates, reader: jspb.BinaryReader): CS2MatchStatePartialUpdates;
 }
 
-export namespace CsgoMatchStatePartialUpdates {
+export namespace CS2MatchStatePartialUpdates {
   export type AsObject = {
-    updatesList: Array<CsgoMatchStatePartialUpdate.AsObject>,
+    updatesList: Array<CS2MatchStatePartialUpdate.AsObject>,
   }
 }
 
-export class CsgoMatchStatePartialUpdate extends jspb.Message {
+export class CS2MatchStatePartialUpdate extends jspb.Message {
   hasScore(): boolean;
   clearScore(): void;
-  getScore(): CsgoMatchScoreState | undefined;
-  setScore(value?: CsgoMatchScoreState): void;
+  getScore(): CS2MatchScoreState | undefined;
+  setScore(value?: CS2MatchScoreState): void;
 
   hasCurrentMapState(): boolean;
   clearCurrentMapState(): void;
-  getCurrentMapState(): CsgoCurrentMapState | undefined;
-  setCurrentMapState(value?: CsgoCurrentMapState): void;
+  getCurrentMapState(): CS2CurrentMapState | undefined;
+  setCurrentMapState(value?: CS2CurrentMapState): void;
 
   hasCurrentMapStatePartialUpdate(): boolean;
   clearCurrentMapStatePartialUpdate(): void;
-  getCurrentMapStatePartialUpdate(): CsgoCurrentMapStatePartialUpdate | undefined;
-  setCurrentMapStatePartialUpdate(value?: CsgoCurrentMapStatePartialUpdate): void;
+  getCurrentMapStatePartialUpdate(): CS2CurrentMapStatePartialUpdate | undefined;
+  setCurrentMapStatePartialUpdate(value?: CS2CurrentMapStatePartialUpdate): void;
 
-  getUpdateCase(): CsgoMatchStatePartialUpdate.UpdateCase;
+  getUpdateCase(): CS2MatchStatePartialUpdate.UpdateCase;
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoMatchStatePartialUpdate.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoMatchStatePartialUpdate): CsgoMatchStatePartialUpdate.AsObject;
+  toObject(includeInstance?: boolean): CS2MatchStatePartialUpdate.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2MatchStatePartialUpdate): CS2MatchStatePartialUpdate.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoMatchStatePartialUpdate, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoMatchStatePartialUpdate;
-  static deserializeBinaryFromReader(message: CsgoMatchStatePartialUpdate, reader: jspb.BinaryReader): CsgoMatchStatePartialUpdate;
+  static serializeBinaryToWriter(message: CS2MatchStatePartialUpdate, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2MatchStatePartialUpdate;
+  static deserializeBinaryFromReader(message: CS2MatchStatePartialUpdate, reader: jspb.BinaryReader): CS2MatchStatePartialUpdate;
 }
 
-export namespace CsgoMatchStatePartialUpdate {
+export namespace CS2MatchStatePartialUpdate {
   export type AsObject = {
-    score?: CsgoMatchScoreState.AsObject,
-    currentMapState?: CsgoCurrentMapState.AsObject,
-    currentMapStatePartialUpdate?: CsgoCurrentMapStatePartialUpdate.AsObject,
+    score?: CS2MatchScoreState.AsObject,
+    currentMapState?: CS2CurrentMapState.AsObject,
+    currentMapStatePartialUpdate?: CS2CurrentMapStatePartialUpdate.AsObject,
   }
 
   export enum UpdateCase {
@@ -254,7 +254,7 @@ export namespace CsgoMatchStatePartialUpdate {
   }
 }
 
-export class CsgoMatchState extends jspb.Message {
+export class CS2MatchState extends jspb.Message {
   getMatchUrn(): string;
   setMatchUrn(value: string): void;
 
@@ -263,56 +263,56 @@ export class CsgoMatchState extends jspb.Message {
 
   hasHomeTeam(): boolean;
   clearHomeTeam(): void;
-  getHomeTeam(): CsgoTeam | undefined;
-  setHomeTeam(value?: CsgoTeam): void;
+  getHomeTeam(): CS2Team | undefined;
+  setHomeTeam(value?: CS2Team): void;
 
   hasAwayTeam(): boolean;
   clearAwayTeam(): void;
-  getAwayTeam(): CsgoTeam | undefined;
-  setAwayTeam(value?: CsgoTeam): void;
+  getAwayTeam(): CS2Team | undefined;
+  setAwayTeam(value?: CS2Team): void;
 
   hasScore(): boolean;
   clearScore(): void;
-  getScore(): CsgoMatchScoreState | undefined;
-  setScore(value?: CsgoMatchScoreState): void;
+  getScore(): CS2MatchScoreState | undefined;
+  setScore(value?: CS2MatchScoreState): void;
 
   getMatchStatus(): bragi_common_pb.MatchStatusTypeMap[keyof bragi_common_pb.MatchStatusTypeMap];
   setMatchStatus(value: bragi_common_pb.MatchStatusTypeMap[keyof bragi_common_pb.MatchStatusTypeMap]): void;
 
   hasCurrentMapState(): boolean;
   clearCurrentMapState(): void;
-  getCurrentMapState(): CsgoCurrentMapState | undefined;
-  setCurrentMapState(value?: CsgoCurrentMapState): void;
+  getCurrentMapState(): CS2CurrentMapState | undefined;
+  setCurrentMapState(value?: CS2CurrentMapState): void;
 
   clearPreviousMapStatesList(): void;
-  getPreviousMapStatesList(): Array<CsgoPreviousMapState>;
-  setPreviousMapStatesList(value: Array<CsgoPreviousMapState>): void;
-  addPreviousMapStates(value?: CsgoPreviousMapState, index?: number): CsgoPreviousMapState;
+  getPreviousMapStatesList(): Array<CS2PreviousMapState>;
+  setPreviousMapStatesList(value: Array<CS2PreviousMapState>): void;
+  addPreviousMapStates(value?: CS2PreviousMapState, index?: number): CS2PreviousMapState;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoMatchState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoMatchState): CsgoMatchState.AsObject;
+  toObject(includeInstance?: boolean): CS2MatchState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2MatchState): CS2MatchState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoMatchState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoMatchState;
-  static deserializeBinaryFromReader(message: CsgoMatchState, reader: jspb.BinaryReader): CsgoMatchState;
+  static serializeBinaryToWriter(message: CS2MatchState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2MatchState;
+  static deserializeBinaryFromReader(message: CS2MatchState, reader: jspb.BinaryReader): CS2MatchState;
 }
 
-export namespace CsgoMatchState {
+export namespace CS2MatchState {
   export type AsObject = {
     matchUrn: string,
     matchType: bragi_common_pb.BestOfTypeMap[keyof bragi_common_pb.BestOfTypeMap],
-    homeTeam?: CsgoTeam.AsObject,
-    awayTeam?: CsgoTeam.AsObject,
-    score?: CsgoMatchScoreState.AsObject,
+    homeTeam?: CS2Team.AsObject,
+    awayTeam?: CS2Team.AsObject,
+    score?: CS2MatchScoreState.AsObject,
     matchStatus: bragi_common_pb.MatchStatusTypeMap[keyof bragi_common_pb.MatchStatusTypeMap],
-    currentMapState?: CsgoCurrentMapState.AsObject,
-    previousMapStatesList: Array<CsgoPreviousMapState.AsObject>,
+    currentMapState?: CS2CurrentMapState.AsObject,
+    previousMapStatesList: Array<CS2PreviousMapState.AsObject>,
   }
 }
 
-export class CsgoMatchScoreState extends jspb.Message {
+export class CS2MatchScoreState extends jspb.Message {
   getHomeScore(): number;
   setHomeScore(value: number): void;
 
@@ -320,23 +320,23 @@ export class CsgoMatchScoreState extends jspb.Message {
   setAwayScore(value: number): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoMatchScoreState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoMatchScoreState): CsgoMatchScoreState.AsObject;
+  toObject(includeInstance?: boolean): CS2MatchScoreState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2MatchScoreState): CS2MatchScoreState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoMatchScoreState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoMatchScoreState;
-  static deserializeBinaryFromReader(message: CsgoMatchScoreState, reader: jspb.BinaryReader): CsgoMatchScoreState;
+  static serializeBinaryToWriter(message: CS2MatchScoreState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2MatchScoreState;
+  static deserializeBinaryFromReader(message: CS2MatchScoreState, reader: jspb.BinaryReader): CS2MatchScoreState;
 }
 
-export namespace CsgoMatchScoreState {
+export namespace CS2MatchScoreState {
   export type AsObject = {
     homeScore: number,
     awayScore: number,
   }
 }
 
-export class CsgoTeam extends jspb.Message {
+export class CS2Team extends jspb.Message {
   getTeamUrn(): string;
   setTeamUrn(value: string): void;
 
@@ -344,66 +344,66 @@ export class CsgoTeam extends jspb.Message {
   setTeamName(value: string): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoTeam.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoTeam): CsgoTeam.AsObject;
+  toObject(includeInstance?: boolean): CS2Team.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2Team): CS2Team.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoTeam, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoTeam;
-  static deserializeBinaryFromReader(message: CsgoTeam, reader: jspb.BinaryReader): CsgoTeam;
+  static serializeBinaryToWriter(message: CS2Team, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2Team;
+  static deserializeBinaryFromReader(message: CS2Team, reader: jspb.BinaryReader): CS2Team;
 }
 
-export namespace CsgoTeam {
+export namespace CS2Team {
   export type AsObject = {
     teamUrn: string,
     teamName: string,
   }
 }
 
-export class CsgoCurrentMapStatePartialUpdate extends jspb.Message {
+export class CS2CurrentMapStatePartialUpdate extends jspb.Message {
   hasInfo(): boolean;
   clearInfo(): void;
-  getInfo(): CsgoMapInfoState | undefined;
-  setInfo(value?: CsgoMapInfoState): void;
+  getInfo(): CS2MapInfoState | undefined;
+  setInfo(value?: CS2MapInfoState): void;
 
   hasScore(): boolean;
   clearScore(): void;
-  getScore(): CsgoMapScoreState | undefined;
-  setScore(value?: CsgoMapScoreState): void;
+  getScore(): CS2MapScoreState | undefined;
+  setScore(value?: CS2MapScoreState): void;
 
   hasCurrentRoundState(): boolean;
   clearCurrentRoundState(): void;
-  getCurrentRoundState(): CsgoCurrentRoundState | undefined;
-  setCurrentRoundState(value?: CsgoCurrentRoundState): void;
+  getCurrentRoundState(): CS2CurrentRoundState | undefined;
+  setCurrentRoundState(value?: CS2CurrentRoundState): void;
 
   hasCurrentRoundStatePartialUpdate(): boolean;
   clearCurrentRoundStatePartialUpdate(): void;
-  getCurrentRoundStatePartialUpdate(): CsgoCurrentRoundStatePartialUpdate | undefined;
-  setCurrentRoundStatePartialUpdate(value?: CsgoCurrentRoundStatePartialUpdate): void;
+  getCurrentRoundStatePartialUpdate(): CS2CurrentRoundStatePartialUpdate | undefined;
+  setCurrentRoundStatePartialUpdate(value?: CS2CurrentRoundStatePartialUpdate): void;
 
   hasTeamMapStatesPartialUpdate(): boolean;
   clearTeamMapStatesPartialUpdate(): void;
-  getTeamMapStatesPartialUpdate(): CsgoTeamMapStatePartialUpdate | undefined;
-  setTeamMapStatesPartialUpdate(value?: CsgoTeamMapStatePartialUpdate): void;
+  getTeamMapStatesPartialUpdate(): CS2TeamMapStatePartialUpdate | undefined;
+  setTeamMapStatesPartialUpdate(value?: CS2TeamMapStatePartialUpdate): void;
 
-  getUpdateCase(): CsgoCurrentMapStatePartialUpdate.UpdateCase;
+  getUpdateCase(): CS2CurrentMapStatePartialUpdate.UpdateCase;
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoCurrentMapStatePartialUpdate.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoCurrentMapStatePartialUpdate): CsgoCurrentMapStatePartialUpdate.AsObject;
+  toObject(includeInstance?: boolean): CS2CurrentMapStatePartialUpdate.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2CurrentMapStatePartialUpdate): CS2CurrentMapStatePartialUpdate.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoCurrentMapStatePartialUpdate, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoCurrentMapStatePartialUpdate;
-  static deserializeBinaryFromReader(message: CsgoCurrentMapStatePartialUpdate, reader: jspb.BinaryReader): CsgoCurrentMapStatePartialUpdate;
+  static serializeBinaryToWriter(message: CS2CurrentMapStatePartialUpdate, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2CurrentMapStatePartialUpdate;
+  static deserializeBinaryFromReader(message: CS2CurrentMapStatePartialUpdate, reader: jspb.BinaryReader): CS2CurrentMapStatePartialUpdate;
 }
 
-export namespace CsgoCurrentMapStatePartialUpdate {
+export namespace CS2CurrentMapStatePartialUpdate {
   export type AsObject = {
-    info?: CsgoMapInfoState.AsObject,
-    score?: CsgoMapScoreState.AsObject,
-    currentRoundState?: CsgoCurrentRoundState.AsObject,
-    currentRoundStatePartialUpdate?: CsgoCurrentRoundStatePartialUpdate.AsObject,
-    teamMapStatesPartialUpdate?: CsgoTeamMapStatePartialUpdate.AsObject,
+    info?: CS2MapInfoState.AsObject,
+    score?: CS2MapScoreState.AsObject,
+    currentRoundState?: CS2CurrentRoundState.AsObject,
+    currentRoundStatePartialUpdate?: CS2CurrentRoundStatePartialUpdate.AsObject,
+    teamMapStatesPartialUpdate?: CS2TeamMapStatePartialUpdate.AsObject,
   }
 
   export enum UpdateCase {
@@ -416,97 +416,97 @@ export namespace CsgoCurrentMapStatePartialUpdate {
   }
 }
 
-export class CsgoCurrentMapState extends jspb.Message {
+export class CS2CurrentMapState extends jspb.Message {
   getMapOrder(): number;
   setMapOrder(value: number): void;
 
   hasInfo(): boolean;
   clearInfo(): void;
-  getInfo(): CsgoMapInfoState | undefined;
-  setInfo(value?: CsgoMapInfoState): void;
+  getInfo(): CS2MapInfoState | undefined;
+  setInfo(value?: CS2MapInfoState): void;
 
   hasScore(): boolean;
   clearScore(): void;
-  getScore(): CsgoMapScoreState | undefined;
-  setScore(value?: CsgoMapScoreState): void;
+  getScore(): CS2MapScoreState | undefined;
+  setScore(value?: CS2MapScoreState): void;
 
   hasCurrentRoundState(): boolean;
   clearCurrentRoundState(): void;
-  getCurrentRoundState(): CsgoCurrentRoundState | undefined;
-  setCurrentRoundState(value?: CsgoCurrentRoundState): void;
+  getCurrentRoundState(): CS2CurrentRoundState | undefined;
+  setCurrentRoundState(value?: CS2CurrentRoundState): void;
 
   clearPreviousRoundStatesList(): void;
-  getPreviousRoundStatesList(): Array<CsgoPreviousRoundState>;
-  setPreviousRoundStatesList(value: Array<CsgoPreviousRoundState>): void;
-  addPreviousRoundStates(value?: CsgoPreviousRoundState, index?: number): CsgoPreviousRoundState;
+  getPreviousRoundStatesList(): Array<CS2PreviousRoundState>;
+  setPreviousRoundStatesList(value: Array<CS2PreviousRoundState>): void;
+  addPreviousRoundStates(value?: CS2PreviousRoundState, index?: number): CS2PreviousRoundState;
 
-  getTeamMapStatesMap(): jspb.Map<string, CsgoTeamMapState>;
+  getTeamMapStatesMap(): jspb.Map<string, CS2TeamMapState>;
   clearTeamMapStatesMap(): void;
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoCurrentMapState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoCurrentMapState): CsgoCurrentMapState.AsObject;
+  toObject(includeInstance?: boolean): CS2CurrentMapState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2CurrentMapState): CS2CurrentMapState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoCurrentMapState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoCurrentMapState;
-  static deserializeBinaryFromReader(message: CsgoCurrentMapState, reader: jspb.BinaryReader): CsgoCurrentMapState;
+  static serializeBinaryToWriter(message: CS2CurrentMapState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2CurrentMapState;
+  static deserializeBinaryFromReader(message: CS2CurrentMapState, reader: jspb.BinaryReader): CS2CurrentMapState;
 }
 
-export namespace CsgoCurrentMapState {
+export namespace CS2CurrentMapState {
   export type AsObject = {
     mapOrder: number,
-    info?: CsgoMapInfoState.AsObject,
-    score?: CsgoMapScoreState.AsObject,
-    currentRoundState?: CsgoCurrentRoundState.AsObject,
-    previousRoundStatesList: Array<CsgoPreviousRoundState.AsObject>,
-    teamMapStatesMap: Array<[string, CsgoTeamMapState.AsObject]>,
+    info?: CS2MapInfoState.AsObject,
+    score?: CS2MapScoreState.AsObject,
+    currentRoundState?: CS2CurrentRoundState.AsObject,
+    previousRoundStatesList: Array<CS2PreviousRoundState.AsObject>,
+    teamMapStatesMap: Array<[string, CS2TeamMapState.AsObject]>,
   }
 }
 
-export class CsgoPreviousMapState extends jspb.Message {
+export class CS2PreviousMapState extends jspb.Message {
   getMapOrder(): number;
   setMapOrder(value: number): void;
 
   hasInfo(): boolean;
   clearInfo(): void;
-  getInfo(): CsgoMapInfoState | undefined;
-  setInfo(value?: CsgoMapInfoState): void;
+  getInfo(): CS2MapInfoState | undefined;
+  setInfo(value?: CS2MapInfoState): void;
 
   hasScore(): boolean;
   clearScore(): void;
-  getScore(): CsgoMapScoreState | undefined;
-  setScore(value?: CsgoMapScoreState): void;
+  getScore(): CS2MapScoreState | undefined;
+  setScore(value?: CS2MapScoreState): void;
 
   clearRoundStatesList(): void;
-  getRoundStatesList(): Array<CsgoPreviousRoundState>;
-  setRoundStatesList(value: Array<CsgoPreviousRoundState>): void;
-  addRoundStates(value?: CsgoPreviousRoundState, index?: number): CsgoPreviousRoundState;
+  getRoundStatesList(): Array<CS2PreviousRoundState>;
+  setRoundStatesList(value: Array<CS2PreviousRoundState>): void;
+  addRoundStates(value?: CS2PreviousRoundState, index?: number): CS2PreviousRoundState;
 
-  getTeamMapStatesMap(): jspb.Map<string, CsgoTeamMapState>;
+  getTeamMapStatesMap(): jspb.Map<string, CS2TeamMapState>;
   clearTeamMapStatesMap(): void;
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoPreviousMapState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoPreviousMapState): CsgoPreviousMapState.AsObject;
+  toObject(includeInstance?: boolean): CS2PreviousMapState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2PreviousMapState): CS2PreviousMapState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoPreviousMapState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoPreviousMapState;
-  static deserializeBinaryFromReader(message: CsgoPreviousMapState, reader: jspb.BinaryReader): CsgoPreviousMapState;
+  static serializeBinaryToWriter(message: CS2PreviousMapState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2PreviousMapState;
+  static deserializeBinaryFromReader(message: CS2PreviousMapState, reader: jspb.BinaryReader): CS2PreviousMapState;
 }
 
-export namespace CsgoPreviousMapState {
+export namespace CS2PreviousMapState {
   export type AsObject = {
     mapOrder: number,
-    info?: CsgoMapInfoState.AsObject,
-    score?: CsgoMapScoreState.AsObject,
-    roundStatesList: Array<CsgoPreviousRoundState.AsObject>,
-    teamMapStatesMap: Array<[string, CsgoTeamMapState.AsObject]>,
+    info?: CS2MapInfoState.AsObject,
+    score?: CS2MapScoreState.AsObject,
+    roundStatesList: Array<CS2PreviousRoundState.AsObject>,
+    teamMapStatesMap: Array<[string, CS2TeamMapState.AsObject]>,
   }
 }
 
-export class CsgoMapInfoState extends jspb.Message {
-  getCsgoMapName(): string;
-  setCsgoMapName(value: string): void;
+export class CS2MapInfoState extends jspb.Message {
+  getMapName(): string;
+  setMapName(value: string): void;
 
   getMaxRoundsDefault(): number;
   setMaxRoundsDefault(value: number): void;
@@ -548,18 +548,18 @@ export class CsgoMapInfoState extends jspb.Message {
   setWinTeamUrn(value: string): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoMapInfoState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoMapInfoState): CsgoMapInfoState.AsObject;
+  toObject(includeInstance?: boolean): CS2MapInfoState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2MapInfoState): CS2MapInfoState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoMapInfoState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoMapInfoState;
-  static deserializeBinaryFromReader(message: CsgoMapInfoState, reader: jspb.BinaryReader): CsgoMapInfoState;
+  static serializeBinaryToWriter(message: CS2MapInfoState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2MapInfoState;
+  static deserializeBinaryFromReader(message: CS2MapInfoState, reader: jspb.BinaryReader): CS2MapInfoState;
 }
 
-export namespace CsgoMapInfoState {
+export namespace CS2MapInfoState {
   export type AsObject = {
-    csgoMapName: string,
+    mapName: string,
     maxRoundsDefault: number,
     maxRoundsOvertime: number,
     freezeTimeDuration?: google_protobuf_duration_pb.Duration.AsObject,
@@ -572,7 +572,7 @@ export namespace CsgoMapInfoState {
   }
 }
 
-export class CsgoMapScoreState extends jspb.Message {
+export class CS2MapScoreState extends jspb.Message {
   getHomeScore(): number;
   setHomeScore(value: number): void;
 
@@ -580,60 +580,60 @@ export class CsgoMapScoreState extends jspb.Message {
   setAwayScore(value: number): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoMapScoreState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoMapScoreState): CsgoMapScoreState.AsObject;
+  toObject(includeInstance?: boolean): CS2MapScoreState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2MapScoreState): CS2MapScoreState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoMapScoreState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoMapScoreState;
-  static deserializeBinaryFromReader(message: CsgoMapScoreState, reader: jspb.BinaryReader): CsgoMapScoreState;
+  static serializeBinaryToWriter(message: CS2MapScoreState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2MapScoreState;
+  static deserializeBinaryFromReader(message: CS2MapScoreState, reader: jspb.BinaryReader): CS2MapScoreState;
 }
 
-export namespace CsgoMapScoreState {
+export namespace CS2MapScoreState {
   export type AsObject = {
     homeScore: number,
     awayScore: number,
   }
 }
 
-export class CsgoCurrentRoundStatePartialUpdate extends jspb.Message {
+export class CS2CurrentRoundStatePartialUpdate extends jspb.Message {
   hasInfo(): boolean;
   clearInfo(): void;
-  getInfo(): CsgoRoundInfoState | undefined;
-  setInfo(value?: CsgoRoundInfoState): void;
+  getInfo(): CS2RoundInfoState | undefined;
+  setInfo(value?: CS2RoundInfoState): void;
 
   hasTime(): boolean;
   clearTime(): void;
-  getTime(): CsgoRoundTimeState | undefined;
-  setTime(value?: CsgoRoundTimeState): void;
+  getTime(): CS2RoundTimeState | undefined;
+  setTime(value?: CS2RoundTimeState): void;
 
   hasBombState(): boolean;
   clearBombState(): void;
-  getBombState(): CsgoBombState | undefined;
-  setBombState(value?: CsgoBombState): void;
+  getBombState(): CS2BombState | undefined;
+  setBombState(value?: CS2BombState): void;
 
   hasTeamStatesPartialUpdate(): boolean;
   clearTeamStatesPartialUpdate(): void;
-  getTeamStatesPartialUpdate(): CsgoTeamCurrentRoundStatePartialUpdate | undefined;
-  setTeamStatesPartialUpdate(value?: CsgoTeamCurrentRoundStatePartialUpdate): void;
+  getTeamStatesPartialUpdate(): CS2TeamCurrentRoundStatePartialUpdate | undefined;
+  setTeamStatesPartialUpdate(value?: CS2TeamCurrentRoundStatePartialUpdate): void;
 
-  getUpdateCase(): CsgoCurrentRoundStatePartialUpdate.UpdateCase;
+  getUpdateCase(): CS2CurrentRoundStatePartialUpdate.UpdateCase;
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoCurrentRoundStatePartialUpdate.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoCurrentRoundStatePartialUpdate): CsgoCurrentRoundStatePartialUpdate.AsObject;
+  toObject(includeInstance?: boolean): CS2CurrentRoundStatePartialUpdate.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2CurrentRoundStatePartialUpdate): CS2CurrentRoundStatePartialUpdate.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoCurrentRoundStatePartialUpdate, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoCurrentRoundStatePartialUpdate;
-  static deserializeBinaryFromReader(message: CsgoCurrentRoundStatePartialUpdate, reader: jspb.BinaryReader): CsgoCurrentRoundStatePartialUpdate;
+  static serializeBinaryToWriter(message: CS2CurrentRoundStatePartialUpdate, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2CurrentRoundStatePartialUpdate;
+  static deserializeBinaryFromReader(message: CS2CurrentRoundStatePartialUpdate, reader: jspb.BinaryReader): CS2CurrentRoundStatePartialUpdate;
 }
 
-export namespace CsgoCurrentRoundStatePartialUpdate {
+export namespace CS2CurrentRoundStatePartialUpdate {
   export type AsObject = {
-    info?: CsgoRoundInfoState.AsObject,
-    time?: CsgoRoundTimeState.AsObject,
-    bombState?: CsgoBombState.AsObject,
-    teamStatesPartialUpdate?: CsgoTeamCurrentRoundStatePartialUpdate.AsObject,
+    info?: CS2RoundInfoState.AsObject,
+    time?: CS2RoundTimeState.AsObject,
+    bombState?: CS2BombState.AsObject,
+    teamStatesPartialUpdate?: CS2TeamCurrentRoundStatePartialUpdate.AsObject,
   }
 
   export enum UpdateCase {
@@ -645,79 +645,79 @@ export namespace CsgoCurrentRoundStatePartialUpdate {
   }
 }
 
-export class CsgoCurrentRoundState extends jspb.Message {
+export class CS2CurrentRoundState extends jspb.Message {
   getRoundNumber(): number;
   setRoundNumber(value: number): void;
 
   hasInfo(): boolean;
   clearInfo(): void;
-  getInfo(): CsgoRoundInfoState | undefined;
-  setInfo(value?: CsgoRoundInfoState): void;
+  getInfo(): CS2RoundInfoState | undefined;
+  setInfo(value?: CS2RoundInfoState): void;
 
   hasTime(): boolean;
   clearTime(): void;
-  getTime(): CsgoRoundTimeState | undefined;
-  setTime(value?: CsgoRoundTimeState): void;
+  getTime(): CS2RoundTimeState | undefined;
+  setTime(value?: CS2RoundTimeState): void;
 
   hasBombState(): boolean;
   clearBombState(): void;
-  getBombState(): CsgoBombState | undefined;
-  setBombState(value?: CsgoBombState): void;
+  getBombState(): CS2BombState | undefined;
+  setBombState(value?: CS2BombState): void;
 
-  getTeamStatesMap(): jspb.Map<string, CsgoTeamCurrentRoundState>;
+  getTeamStatesMap(): jspb.Map<string, CS2TeamCurrentRoundState>;
   clearTeamStatesMap(): void;
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoCurrentRoundState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoCurrentRoundState): CsgoCurrentRoundState.AsObject;
+  toObject(includeInstance?: boolean): CS2CurrentRoundState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2CurrentRoundState): CS2CurrentRoundState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoCurrentRoundState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoCurrentRoundState;
-  static deserializeBinaryFromReader(message: CsgoCurrentRoundState, reader: jspb.BinaryReader): CsgoCurrentRoundState;
+  static serializeBinaryToWriter(message: CS2CurrentRoundState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2CurrentRoundState;
+  static deserializeBinaryFromReader(message: CS2CurrentRoundState, reader: jspb.BinaryReader): CS2CurrentRoundState;
 }
 
-export namespace CsgoCurrentRoundState {
+export namespace CS2CurrentRoundState {
   export type AsObject = {
     roundNumber: number,
-    info?: CsgoRoundInfoState.AsObject,
-    time?: CsgoRoundTimeState.AsObject,
-    bombState?: CsgoBombState.AsObject,
-    teamStatesMap: Array<[string, CsgoTeamCurrentRoundState.AsObject]>,
+    info?: CS2RoundInfoState.AsObject,
+    time?: CS2RoundTimeState.AsObject,
+    bombState?: CS2BombState.AsObject,
+    teamStatesMap: Array<[string, CS2TeamCurrentRoundState.AsObject]>,
   }
 }
 
-export class CsgoPreviousRoundState extends jspb.Message {
+export class CS2PreviousRoundState extends jspb.Message {
   getRoundNumber(): number;
   setRoundNumber(value: number): void;
 
   hasInfo(): boolean;
   clearInfo(): void;
-  getInfo(): CsgoRoundInfoState | undefined;
-  setInfo(value?: CsgoRoundInfoState): void;
+  getInfo(): CS2RoundInfoState | undefined;
+  setInfo(value?: CS2RoundInfoState): void;
 
-  getTeamStatesMap(): jspb.Map<string, CsgoPreviousTeamRoundState>;
+  getTeamStatesMap(): jspb.Map<string, CS2PreviousTeamRoundState>;
   clearTeamStatesMap(): void;
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoPreviousRoundState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoPreviousRoundState): CsgoPreviousRoundState.AsObject;
+  toObject(includeInstance?: boolean): CS2PreviousRoundState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2PreviousRoundState): CS2PreviousRoundState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoPreviousRoundState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoPreviousRoundState;
-  static deserializeBinaryFromReader(message: CsgoPreviousRoundState, reader: jspb.BinaryReader): CsgoPreviousRoundState;
+  static serializeBinaryToWriter(message: CS2PreviousRoundState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2PreviousRoundState;
+  static deserializeBinaryFromReader(message: CS2PreviousRoundState, reader: jspb.BinaryReader): CS2PreviousRoundState;
 }
 
-export namespace CsgoPreviousRoundState {
+export namespace CS2PreviousRoundState {
   export type AsObject = {
     roundNumber: number,
-    info?: CsgoRoundInfoState.AsObject,
-    teamStatesMap: Array<[string, CsgoPreviousTeamRoundState.AsObject]>,
+    info?: CS2RoundInfoState.AsObject,
+    teamStatesMap: Array<[string, CS2PreviousTeamRoundState.AsObject]>,
   }
 }
 
-export class CsgoRoundInfoState extends jspb.Message {
-  getRoundType(): CsgoRoundStateTypeMap[keyof CsgoRoundStateTypeMap];
-  setRoundType(value: CsgoRoundStateTypeMap[keyof CsgoRoundStateTypeMap]): void;
+export class CS2RoundInfoState extends jspb.Message {
+  getRoundType(): CS2RoundStateTypeMap[keyof CS2RoundStateTypeMap];
+  setRoundType(value: CS2RoundStateTypeMap[keyof CS2RoundStateTypeMap]): void;
 
   hasStartTime(): boolean;
   clearStartTime(): void;
@@ -736,8 +736,8 @@ export class CsgoRoundInfoState extends jspb.Message {
 
   hasWinReason(): boolean;
   clearWinReason(): void;
-  getWinReason(): CsgoWinReasonMap[keyof CsgoWinReasonMap];
-  setWinReason(value: CsgoWinReasonMap[keyof CsgoWinReasonMap]): void;
+  getWinReason(): CS2WinReasonMap[keyof CS2WinReasonMap];
+  setWinReason(value: CS2WinReasonMap[keyof CS2WinReasonMap]): void;
 
   hasHomeWon(): boolean;
   clearHomeWon(): void;
@@ -745,104 +745,104 @@ export class CsgoRoundInfoState extends jspb.Message {
   setHomeWon(value: boolean): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoRoundInfoState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoRoundInfoState): CsgoRoundInfoState.AsObject;
+  toObject(includeInstance?: boolean): CS2RoundInfoState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2RoundInfoState): CS2RoundInfoState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoRoundInfoState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoRoundInfoState;
-  static deserializeBinaryFromReader(message: CsgoRoundInfoState, reader: jspb.BinaryReader): CsgoRoundInfoState;
+  static serializeBinaryToWriter(message: CS2RoundInfoState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2RoundInfoState;
+  static deserializeBinaryFromReader(message: CS2RoundInfoState, reader: jspb.BinaryReader): CS2RoundInfoState;
 }
 
-export namespace CsgoRoundInfoState {
+export namespace CS2RoundInfoState {
   export type AsObject = {
-    roundType: CsgoRoundStateTypeMap[keyof CsgoRoundStateTypeMap],
+    roundType: CS2RoundStateTypeMap[keyof CS2RoundStateTypeMap],
     startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     winningTeamUrn: string,
-    winReason: CsgoWinReasonMap[keyof CsgoWinReasonMap],
+    winReason: CS2WinReasonMap[keyof CS2WinReasonMap],
     homeWon: boolean,
   }
 }
 
-export class CsgoRoundTimeState extends jspb.Message {
+export class CS2RoundTimeState extends jspb.Message {
   hasTimeRemaining(): boolean;
   clearTimeRemaining(): void;
   getTimeRemaining(): google_protobuf_duration_pb.Duration | undefined;
   setTimeRemaining(value?: google_protobuf_duration_pb.Duration): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoRoundTimeState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoRoundTimeState): CsgoRoundTimeState.AsObject;
+  toObject(includeInstance?: boolean): CS2RoundTimeState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2RoundTimeState): CS2RoundTimeState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoRoundTimeState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoRoundTimeState;
-  static deserializeBinaryFromReader(message: CsgoRoundTimeState, reader: jspb.BinaryReader): CsgoRoundTimeState;
+  static serializeBinaryToWriter(message: CS2RoundTimeState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2RoundTimeState;
+  static deserializeBinaryFromReader(message: CS2RoundTimeState, reader: jspb.BinaryReader): CS2RoundTimeState;
 }
 
-export namespace CsgoRoundTimeState {
+export namespace CS2RoundTimeState {
   export type AsObject = {
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
   }
 }
 
-export class CsgoBombState extends jspb.Message {
+export class CS2BombState extends jspb.Message {
   hasCarried(): boolean;
   clearCarried(): void;
-  getCarried(): CsgoBombCarriedState | undefined;
-  setCarried(value?: CsgoBombCarriedState): void;
+  getCarried(): CS2BombCarriedState | undefined;
+  setCarried(value?: CS2BombCarriedState): void;
 
   hasDropped(): boolean;
   clearDropped(): void;
-  getDropped(): CsgoBombDroppedState | undefined;
-  setDropped(value?: CsgoBombDroppedState): void;
+  getDropped(): CS2BombDroppedState | undefined;
+  setDropped(value?: CS2BombDroppedState): void;
 
   hasPlanting(): boolean;
   clearPlanting(): void;
-  getPlanting(): CsgoBombPlantingState | undefined;
-  setPlanting(value?: CsgoBombPlantingState): void;
+  getPlanting(): CS2BombPlantingState | undefined;
+  setPlanting(value?: CS2BombPlantingState): void;
 
   hasPlanted(): boolean;
   clearPlanted(): void;
-  getPlanted(): CsgoBombPlantedState | undefined;
-  setPlanted(value?: CsgoBombPlantedState): void;
+  getPlanted(): CS2BombPlantedState | undefined;
+  setPlanted(value?: CS2BombPlantedState): void;
 
   hasDefusing(): boolean;
   clearDefusing(): void;
-  getDefusing(): CsgoBombDefusingState | undefined;
-  setDefusing(value?: CsgoBombDefusingState): void;
+  getDefusing(): CS2BombDefusingState | undefined;
+  setDefusing(value?: CS2BombDefusingState): void;
 
   hasDefused(): boolean;
   clearDefused(): void;
-  getDefused(): CsgoBombDefusedState | undefined;
-  setDefused(value?: CsgoBombDefusedState): void;
+  getDefused(): CS2BombDefusedState | undefined;
+  setDefused(value?: CS2BombDefusedState): void;
 
   hasExploded(): boolean;
   clearExploded(): void;
-  getExploded(): CsgoBombExplodedState | undefined;
-  setExploded(value?: CsgoBombExplodedState): void;
+  getExploded(): CS2BombExplodedState | undefined;
+  setExploded(value?: CS2BombExplodedState): void;
 
-  getPayloadCase(): CsgoBombState.PayloadCase;
+  getPayloadCase(): CS2BombState.PayloadCase;
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoBombState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoBombState): CsgoBombState.AsObject;
+  toObject(includeInstance?: boolean): CS2BombState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2BombState): CS2BombState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoBombState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoBombState;
-  static deserializeBinaryFromReader(message: CsgoBombState, reader: jspb.BinaryReader): CsgoBombState;
+  static serializeBinaryToWriter(message: CS2BombState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2BombState;
+  static deserializeBinaryFromReader(message: CS2BombState, reader: jspb.BinaryReader): CS2BombState;
 }
 
-export namespace CsgoBombState {
+export namespace CS2BombState {
   export type AsObject = {
-    carried?: CsgoBombCarriedState.AsObject,
-    dropped?: CsgoBombDroppedState.AsObject,
-    planting?: CsgoBombPlantingState.AsObject,
-    planted?: CsgoBombPlantedState.AsObject,
-    defusing?: CsgoBombDefusingState.AsObject,
-    defused?: CsgoBombDefusedState.AsObject,
-    exploded?: CsgoBombExplodedState.AsObject,
+    carried?: CS2BombCarriedState.AsObject,
+    dropped?: CS2BombDroppedState.AsObject,
+    planting?: CS2BombPlantingState.AsObject,
+    planted?: CS2BombPlantedState.AsObject,
+    defusing?: CS2BombDefusingState.AsObject,
+    defused?: CS2BombDefusedState.AsObject,
+    exploded?: CS2BombExplodedState.AsObject,
   }
 
   export enum PayloadCase {
@@ -857,66 +857,66 @@ export namespace CsgoBombState {
   }
 }
 
-export class CsgoBombCarriedState extends jspb.Message {
+export class CS2BombCarriedState extends jspb.Message {
   getPlayerUrn(): string;
   setPlayerUrn(value: string): void;
 
   hasPosition(): boolean;
   clearPosition(): void;
-  getPosition(): CsgoPosition | undefined;
-  setPosition(value?: CsgoPosition): void;
+  getPosition(): CS2Position | undefined;
+  setPosition(value?: CS2Position): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoBombCarriedState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoBombCarriedState): CsgoBombCarriedState.AsObject;
+  toObject(includeInstance?: boolean): CS2BombCarriedState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2BombCarriedState): CS2BombCarriedState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoBombCarriedState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoBombCarriedState;
-  static deserializeBinaryFromReader(message: CsgoBombCarriedState, reader: jspb.BinaryReader): CsgoBombCarriedState;
+  static serializeBinaryToWriter(message: CS2BombCarriedState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2BombCarriedState;
+  static deserializeBinaryFromReader(message: CS2BombCarriedState, reader: jspb.BinaryReader): CS2BombCarriedState;
 }
 
-export namespace CsgoBombCarriedState {
+export namespace CS2BombCarriedState {
   export type AsObject = {
     playerUrn: string,
-    position?: CsgoPosition.AsObject,
+    position?: CS2Position.AsObject,
   }
 }
 
-export class CsgoBombDroppedState extends jspb.Message {
+export class CS2BombDroppedState extends jspb.Message {
   getDroppedByPlayerUrn(): string;
   setDroppedByPlayerUrn(value: string): void;
 
   hasPosition(): boolean;
   clearPosition(): void;
-  getPosition(): CsgoPosition | undefined;
-  setPosition(value?: CsgoPosition): void;
+  getPosition(): CS2Position | undefined;
+  setPosition(value?: CS2Position): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoBombDroppedState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoBombDroppedState): CsgoBombDroppedState.AsObject;
+  toObject(includeInstance?: boolean): CS2BombDroppedState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2BombDroppedState): CS2BombDroppedState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoBombDroppedState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoBombDroppedState;
-  static deserializeBinaryFromReader(message: CsgoBombDroppedState, reader: jspb.BinaryReader): CsgoBombDroppedState;
+  static serializeBinaryToWriter(message: CS2BombDroppedState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2BombDroppedState;
+  static deserializeBinaryFromReader(message: CS2BombDroppedState, reader: jspb.BinaryReader): CS2BombDroppedState;
 }
 
-export namespace CsgoBombDroppedState {
+export namespace CS2BombDroppedState {
   export type AsObject = {
     droppedByPlayerUrn: string,
-    position?: CsgoPosition.AsObject,
+    position?: CS2Position.AsObject,
   }
 }
 
-export class CsgoBombPlantingState extends jspb.Message {
+export class CS2BombPlantingState extends jspb.Message {
   getPlayerUrn(): string;
   setPlayerUrn(value: string): void;
 
   hasPosition(): boolean;
   clearPosition(): void;
-  getPosition(): CsgoPosition | undefined;
-  setPosition(value?: CsgoPosition): void;
+  getPosition(): CS2Position | undefined;
+  setPosition(value?: CS2Position): void;
 
   hasCountdown(): boolean;
   clearCountdown(): void;
@@ -924,31 +924,31 @@ export class CsgoBombPlantingState extends jspb.Message {
   setCountdown(value?: google_protobuf_duration_pb.Duration): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoBombPlantingState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoBombPlantingState): CsgoBombPlantingState.AsObject;
+  toObject(includeInstance?: boolean): CS2BombPlantingState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2BombPlantingState): CS2BombPlantingState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoBombPlantingState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoBombPlantingState;
-  static deserializeBinaryFromReader(message: CsgoBombPlantingState, reader: jspb.BinaryReader): CsgoBombPlantingState;
+  static serializeBinaryToWriter(message: CS2BombPlantingState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2BombPlantingState;
+  static deserializeBinaryFromReader(message: CS2BombPlantingState, reader: jspb.BinaryReader): CS2BombPlantingState;
 }
 
-export namespace CsgoBombPlantingState {
+export namespace CS2BombPlantingState {
   export type AsObject = {
     playerUrn: string,
-    position?: CsgoPosition.AsObject,
+    position?: CS2Position.AsObject,
     countdown?: google_protobuf_duration_pb.Duration.AsObject,
   }
 }
 
-export class CsgoBombPlantedState extends jspb.Message {
+export class CS2BombPlantedState extends jspb.Message {
   getPlantedByPlayerUrn(): string;
   setPlantedByPlayerUrn(value: string): void;
 
   hasPosition(): boolean;
   clearPosition(): void;
-  getPosition(): CsgoPosition | undefined;
-  setPosition(value?: CsgoPosition): void;
+  getPosition(): CS2Position | undefined;
+  setPosition(value?: CS2Position): void;
 
   hasPlantedAt(): boolean;
   clearPlantedAt(): void;
@@ -961,32 +961,32 @@ export class CsgoBombPlantedState extends jspb.Message {
   setCountdown(value?: google_protobuf_duration_pb.Duration): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoBombPlantedState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoBombPlantedState): CsgoBombPlantedState.AsObject;
+  toObject(includeInstance?: boolean): CS2BombPlantedState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2BombPlantedState): CS2BombPlantedState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoBombPlantedState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoBombPlantedState;
-  static deserializeBinaryFromReader(message: CsgoBombPlantedState, reader: jspb.BinaryReader): CsgoBombPlantedState;
+  static serializeBinaryToWriter(message: CS2BombPlantedState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2BombPlantedState;
+  static deserializeBinaryFromReader(message: CS2BombPlantedState, reader: jspb.BinaryReader): CS2BombPlantedState;
 }
 
-export namespace CsgoBombPlantedState {
+export namespace CS2BombPlantedState {
   export type AsObject = {
     plantedByPlayerUrn: string,
-    position?: CsgoPosition.AsObject,
+    position?: CS2Position.AsObject,
     plantedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     countdown?: google_protobuf_duration_pb.Duration.AsObject,
   }
 }
 
-export class CsgoBombDefusingState extends jspb.Message {
+export class CS2BombDefusingState extends jspb.Message {
   getPlayerUrn(): string;
   setPlayerUrn(value: string): void;
 
   hasPosition(): boolean;
   clearPosition(): void;
-  getPosition(): CsgoPosition | undefined;
-  setPosition(value?: CsgoPosition): void;
+  getPosition(): CS2Position | undefined;
+  setPosition(value?: CS2Position): void;
 
   hasCountdown(): boolean;
   clearCountdown(): void;
@@ -999,32 +999,32 @@ export class CsgoBombDefusingState extends jspb.Message {
   setDefuseStartedAt(value?: google_protobuf_timestamp_pb.Timestamp): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoBombDefusingState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoBombDefusingState): CsgoBombDefusingState.AsObject;
+  toObject(includeInstance?: boolean): CS2BombDefusingState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2BombDefusingState): CS2BombDefusingState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoBombDefusingState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoBombDefusingState;
-  static deserializeBinaryFromReader(message: CsgoBombDefusingState, reader: jspb.BinaryReader): CsgoBombDefusingState;
+  static serializeBinaryToWriter(message: CS2BombDefusingState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2BombDefusingState;
+  static deserializeBinaryFromReader(message: CS2BombDefusingState, reader: jspb.BinaryReader): CS2BombDefusingState;
 }
 
-export namespace CsgoBombDefusingState {
+export namespace CS2BombDefusingState {
   export type AsObject = {
     playerUrn: string,
-    position?: CsgoPosition.AsObject,
+    position?: CS2Position.AsObject,
     countdown?: google_protobuf_duration_pb.Duration.AsObject,
     defuseStartedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
 
-export class CsgoBombDefusedState extends jspb.Message {
+export class CS2BombDefusedState extends jspb.Message {
   getDefusedByPlayerUrn(): string;
   setDefusedByPlayerUrn(value: string): void;
 
   hasPosition(): boolean;
   clearPosition(): void;
-  getPosition(): CsgoPosition | undefined;
-  setPosition(value?: CsgoPosition): void;
+  getPosition(): CS2Position | undefined;
+  setPosition(value?: CS2Position): void;
 
   hasDefusedAt(): boolean;
   clearDefusedAt(): void;
@@ -1032,28 +1032,28 @@ export class CsgoBombDefusedState extends jspb.Message {
   setDefusedAt(value?: google_protobuf_timestamp_pb.Timestamp): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoBombDefusedState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoBombDefusedState): CsgoBombDefusedState.AsObject;
+  toObject(includeInstance?: boolean): CS2BombDefusedState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2BombDefusedState): CS2BombDefusedState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoBombDefusedState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoBombDefusedState;
-  static deserializeBinaryFromReader(message: CsgoBombDefusedState, reader: jspb.BinaryReader): CsgoBombDefusedState;
+  static serializeBinaryToWriter(message: CS2BombDefusedState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2BombDefusedState;
+  static deserializeBinaryFromReader(message: CS2BombDefusedState, reader: jspb.BinaryReader): CS2BombDefusedState;
 }
 
-export namespace CsgoBombDefusedState {
+export namespace CS2BombDefusedState {
   export type AsObject = {
     defusedByPlayerUrn: string,
-    position?: CsgoPosition.AsObject,
+    position?: CS2Position.AsObject,
     defusedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
 
-export class CsgoBombExplodedState extends jspb.Message {
+export class CS2BombExplodedState extends jspb.Message {
   hasPosition(): boolean;
   clearPosition(): void;
-  getPosition(): CsgoPosition | undefined;
-  setPosition(value?: CsgoPosition): void;
+  getPosition(): CS2Position | undefined;
+  setPosition(value?: CS2Position): void;
 
   hasExplodedAt(): boolean;
   clearExplodedAt(): void;
@@ -1061,57 +1061,57 @@ export class CsgoBombExplodedState extends jspb.Message {
   setExplodedAt(value?: google_protobuf_timestamp_pb.Timestamp): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoBombExplodedState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoBombExplodedState): CsgoBombExplodedState.AsObject;
+  toObject(includeInstance?: boolean): CS2BombExplodedState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2BombExplodedState): CS2BombExplodedState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoBombExplodedState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoBombExplodedState;
-  static deserializeBinaryFromReader(message: CsgoBombExplodedState, reader: jspb.BinaryReader): CsgoBombExplodedState;
+  static serializeBinaryToWriter(message: CS2BombExplodedState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2BombExplodedState;
+  static deserializeBinaryFromReader(message: CS2BombExplodedState, reader: jspb.BinaryReader): CS2BombExplodedState;
 }
 
-export namespace CsgoBombExplodedState {
+export namespace CS2BombExplodedState {
   export type AsObject = {
-    position?: CsgoPosition.AsObject,
+    position?: CS2Position.AsObject,
     explodedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
 
-export class CsgoTeamMapStatePartialUpdate extends jspb.Message {
+export class CS2TeamMapStatePartialUpdate extends jspb.Message {
   getTeamUrn(): string;
   setTeamUrn(value: string): void;
 
   hasPayload(): boolean;
   clearPayload(): void;
-  getPayload(): CsgoTeamMapStatePartialUpdate.Payload | undefined;
-  setPayload(value?: CsgoTeamMapStatePartialUpdate.Payload): void;
+  getPayload(): CS2TeamMapStatePartialUpdate.Payload | undefined;
+  setPayload(value?: CS2TeamMapStatePartialUpdate.Payload): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoTeamMapStatePartialUpdate.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoTeamMapStatePartialUpdate): CsgoTeamMapStatePartialUpdate.AsObject;
+  toObject(includeInstance?: boolean): CS2TeamMapStatePartialUpdate.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2TeamMapStatePartialUpdate): CS2TeamMapStatePartialUpdate.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoTeamMapStatePartialUpdate, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoTeamMapStatePartialUpdate;
-  static deserializeBinaryFromReader(message: CsgoTeamMapStatePartialUpdate, reader: jspb.BinaryReader): CsgoTeamMapStatePartialUpdate;
+  static serializeBinaryToWriter(message: CS2TeamMapStatePartialUpdate, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2TeamMapStatePartialUpdate;
+  static deserializeBinaryFromReader(message: CS2TeamMapStatePartialUpdate, reader: jspb.BinaryReader): CS2TeamMapStatePartialUpdate;
 }
 
-export namespace CsgoTeamMapStatePartialUpdate {
+export namespace CS2TeamMapStatePartialUpdate {
   export type AsObject = {
     teamUrn: string,
-    payload?: CsgoTeamMapStatePartialUpdate.Payload.AsObject,
+    payload?: CS2TeamMapStatePartialUpdate.Payload.AsObject,
   }
 
   export class Payload extends jspb.Message {
     hasPlayerState(): boolean;
     clearPlayerState(): void;
-    getPlayerState(): CsgoPlayerMapState | undefined;
-    setPlayerState(value?: CsgoPlayerMapState): void;
+    getPlayerState(): CS2PlayerMapState | undefined;
+    setPlayerState(value?: CS2PlayerMapState): void;
 
     hasPlayerMapStatesPartialUpdate(): boolean;
     clearPlayerMapStatesPartialUpdate(): void;
-    getPlayerMapStatesPartialUpdate(): CsgoPlayerMapStatePartialUpdate | undefined;
-    setPlayerMapStatesPartialUpdate(value?: CsgoPlayerMapStatePartialUpdate): void;
+    getPlayerMapStatesPartialUpdate(): CS2PlayerMapStatePartialUpdate | undefined;
+    setPlayerMapStatesPartialUpdate(value?: CS2PlayerMapStatePartialUpdate): void;
 
     getPayloadCase(): Payload.PayloadCase;
     serializeBinary(): Uint8Array;
@@ -1126,8 +1126,8 @@ export namespace CsgoTeamMapStatePartialUpdate {
 
   export namespace Payload {
     export type AsObject = {
-      playerState?: CsgoPlayerMapState.AsObject,
-      playerMapStatesPartialUpdate?: CsgoPlayerMapStatePartialUpdate.AsObject,
+      playerState?: CS2PlayerMapState.AsObject,
+      playerMapStatesPartialUpdate?: CS2PlayerMapStatePartialUpdate.AsObject,
     }
 
     export enum PayloadCase {
@@ -1138,68 +1138,68 @@ export namespace CsgoTeamMapStatePartialUpdate {
   }
 }
 
-export class CsgoTeamMapState extends jspb.Message {
+export class CS2TeamMapState extends jspb.Message {
   getTeamUrn(): string;
   setTeamUrn(value: string): void;
 
-  getSide(): CsgoSideMap[keyof CsgoSideMap];
-  setSide(value: CsgoSideMap[keyof CsgoSideMap]): void;
+  getSide(): CS2SideMap[keyof CS2SideMap];
+  setSide(value: CS2SideMap[keyof CS2SideMap]): void;
 
-  getPlayerMapStatesMap(): jspb.Map<string, CsgoPlayerMapState>;
+  getPlayerMapStatesMap(): jspb.Map<string, CS2PlayerMapState>;
   clearPlayerMapStatesMap(): void;
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoTeamMapState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoTeamMapState): CsgoTeamMapState.AsObject;
+  toObject(includeInstance?: boolean): CS2TeamMapState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2TeamMapState): CS2TeamMapState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoTeamMapState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoTeamMapState;
-  static deserializeBinaryFromReader(message: CsgoTeamMapState, reader: jspb.BinaryReader): CsgoTeamMapState;
+  static serializeBinaryToWriter(message: CS2TeamMapState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2TeamMapState;
+  static deserializeBinaryFromReader(message: CS2TeamMapState, reader: jspb.BinaryReader): CS2TeamMapState;
 }
 
-export namespace CsgoTeamMapState {
+export namespace CS2TeamMapState {
   export type AsObject = {
     teamUrn: string,
-    side: CsgoSideMap[keyof CsgoSideMap],
-    playerMapStatesMap: Array<[string, CsgoPlayerMapState.AsObject]>,
+    side: CS2SideMap[keyof CS2SideMap],
+    playerMapStatesMap: Array<[string, CS2PlayerMapState.AsObject]>,
   }
 }
 
-export class CsgoTeamCurrentRoundStatePartialUpdate extends jspb.Message {
+export class CS2TeamCurrentRoundStatePartialUpdate extends jspb.Message {
   getTeamUrn(): string;
   setTeamUrn(value: string): void;
 
   hasPayload(): boolean;
   clearPayload(): void;
-  getPayload(): CsgoTeamCurrentRoundStatePartialUpdate.Payload | undefined;
-  setPayload(value?: CsgoTeamCurrentRoundStatePartialUpdate.Payload): void;
+  getPayload(): CS2TeamCurrentRoundStatePartialUpdate.Payload | undefined;
+  setPayload(value?: CS2TeamCurrentRoundStatePartialUpdate.Payload): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoTeamCurrentRoundStatePartialUpdate.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoTeamCurrentRoundStatePartialUpdate): CsgoTeamCurrentRoundStatePartialUpdate.AsObject;
+  toObject(includeInstance?: boolean): CS2TeamCurrentRoundStatePartialUpdate.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2TeamCurrentRoundStatePartialUpdate): CS2TeamCurrentRoundStatePartialUpdate.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoTeamCurrentRoundStatePartialUpdate, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoTeamCurrentRoundStatePartialUpdate;
-  static deserializeBinaryFromReader(message: CsgoTeamCurrentRoundStatePartialUpdate, reader: jspb.BinaryReader): CsgoTeamCurrentRoundStatePartialUpdate;
+  static serializeBinaryToWriter(message: CS2TeamCurrentRoundStatePartialUpdate, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2TeamCurrentRoundStatePartialUpdate;
+  static deserializeBinaryFromReader(message: CS2TeamCurrentRoundStatePartialUpdate, reader: jspb.BinaryReader): CS2TeamCurrentRoundStatePartialUpdate;
 }
 
-export namespace CsgoTeamCurrentRoundStatePartialUpdate {
+export namespace CS2TeamCurrentRoundStatePartialUpdate {
   export type AsObject = {
     teamUrn: string,
-    payload?: CsgoTeamCurrentRoundStatePartialUpdate.Payload.AsObject,
+    payload?: CS2TeamCurrentRoundStatePartialUpdate.Payload.AsObject,
   }
 
   export class Payload extends jspb.Message {
     hasPlayerState(): boolean;
     clearPlayerState(): void;
-    getPlayerState(): CsgoPlayerCurrentRoundState | undefined;
-    setPlayerState(value?: CsgoPlayerCurrentRoundState): void;
+    getPlayerState(): CS2PlayerCurrentRoundState | undefined;
+    setPlayerState(value?: CS2PlayerCurrentRoundState): void;
 
     hasPlayerRoundStatesPartialUpdate(): boolean;
     clearPlayerRoundStatesPartialUpdate(): void;
-    getPlayerRoundStatesPartialUpdate(): CsgoPlayerCurrentRoundStatePartialUpdate | undefined;
-    setPlayerRoundStatesPartialUpdate(value?: CsgoPlayerCurrentRoundStatePartialUpdate): void;
+    getPlayerRoundStatesPartialUpdate(): CS2PlayerCurrentRoundStatePartialUpdate | undefined;
+    setPlayerRoundStatesPartialUpdate(value?: CS2PlayerCurrentRoundStatePartialUpdate): void;
 
     getPayloadCase(): Payload.PayloadCase;
     serializeBinary(): Uint8Array;
@@ -1214,8 +1214,8 @@ export namespace CsgoTeamCurrentRoundStatePartialUpdate {
 
   export namespace Payload {
     export type AsObject = {
-      playerState?: CsgoPlayerCurrentRoundState.AsObject,
-      playerRoundStatesPartialUpdate?: CsgoPlayerCurrentRoundStatePartialUpdate.AsObject,
+      playerState?: CS2PlayerCurrentRoundState.AsObject,
+      playerRoundStatesPartialUpdate?: CS2PlayerCurrentRoundStatePartialUpdate.AsObject,
     }
 
     export enum PayloadCase {
@@ -1226,82 +1226,82 @@ export namespace CsgoTeamCurrentRoundStatePartialUpdate {
   }
 }
 
-export class CsgoTeamCurrentRoundState extends jspb.Message {
+export class CS2TeamCurrentRoundState extends jspb.Message {
   getTeamUrn(): string;
   setTeamUrn(value: string): void;
 
-  getPlayerRoundStatesMap(): jspb.Map<string, CsgoPlayerCurrentRoundState>;
+  getPlayerRoundStatesMap(): jspb.Map<string, CS2PlayerCurrentRoundState>;
   clearPlayerRoundStatesMap(): void;
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoTeamCurrentRoundState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoTeamCurrentRoundState): CsgoTeamCurrentRoundState.AsObject;
+  toObject(includeInstance?: boolean): CS2TeamCurrentRoundState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2TeamCurrentRoundState): CS2TeamCurrentRoundState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoTeamCurrentRoundState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoTeamCurrentRoundState;
-  static deserializeBinaryFromReader(message: CsgoTeamCurrentRoundState, reader: jspb.BinaryReader): CsgoTeamCurrentRoundState;
+  static serializeBinaryToWriter(message: CS2TeamCurrentRoundState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2TeamCurrentRoundState;
+  static deserializeBinaryFromReader(message: CS2TeamCurrentRoundState, reader: jspb.BinaryReader): CS2TeamCurrentRoundState;
 }
 
-export namespace CsgoTeamCurrentRoundState {
+export namespace CS2TeamCurrentRoundState {
   export type AsObject = {
     teamUrn: string,
-    playerRoundStatesMap: Array<[string, CsgoPlayerCurrentRoundState.AsObject]>,
+    playerRoundStatesMap: Array<[string, CS2PlayerCurrentRoundState.AsObject]>,
   }
 }
 
-export class CsgoPreviousTeamRoundState extends jspb.Message {
+export class CS2PreviousTeamRoundState extends jspb.Message {
   getTeamUrn(): string;
   setTeamUrn(value: string): void;
 
-  getPlayersMap(): jspb.Map<string, CsgoPlayerPreviousRoundState>;
+  getPlayersMap(): jspb.Map<string, CS2PlayerPreviousRoundState>;
   clearPlayersMap(): void;
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoPreviousTeamRoundState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoPreviousTeamRoundState): CsgoPreviousTeamRoundState.AsObject;
+  toObject(includeInstance?: boolean): CS2PreviousTeamRoundState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2PreviousTeamRoundState): CS2PreviousTeamRoundState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoPreviousTeamRoundState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoPreviousTeamRoundState;
-  static deserializeBinaryFromReader(message: CsgoPreviousTeamRoundState, reader: jspb.BinaryReader): CsgoPreviousTeamRoundState;
+  static serializeBinaryToWriter(message: CS2PreviousTeamRoundState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2PreviousTeamRoundState;
+  static deserializeBinaryFromReader(message: CS2PreviousTeamRoundState, reader: jspb.BinaryReader): CS2PreviousTeamRoundState;
 }
 
-export namespace CsgoPreviousTeamRoundState {
+export namespace CS2PreviousTeamRoundState {
   export type AsObject = {
     teamUrn: string,
-    playersMap: Array<[string, CsgoPlayerPreviousRoundState.AsObject]>,
+    playersMap: Array<[string, CS2PlayerPreviousRoundState.AsObject]>,
   }
 }
 
-export class CsgoPlayerMapStatePartialUpdate extends jspb.Message {
+export class CS2PlayerMapStatePartialUpdate extends jspb.Message {
   getPlayerUrn(): string;
   setPlayerUrn(value: string): void;
 
   hasPayload(): boolean;
   clearPayload(): void;
-  getPayload(): CsgoPlayerMapStatePartialUpdate.Payload | undefined;
-  setPayload(value?: CsgoPlayerMapStatePartialUpdate.Payload): void;
+  getPayload(): CS2PlayerMapStatePartialUpdate.Payload | undefined;
+  setPayload(value?: CS2PlayerMapStatePartialUpdate.Payload): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoPlayerMapStatePartialUpdate.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoPlayerMapStatePartialUpdate): CsgoPlayerMapStatePartialUpdate.AsObject;
+  toObject(includeInstance?: boolean): CS2PlayerMapStatePartialUpdate.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2PlayerMapStatePartialUpdate): CS2PlayerMapStatePartialUpdate.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoPlayerMapStatePartialUpdate, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoPlayerMapStatePartialUpdate;
-  static deserializeBinaryFromReader(message: CsgoPlayerMapStatePartialUpdate, reader: jspb.BinaryReader): CsgoPlayerMapStatePartialUpdate;
+  static serializeBinaryToWriter(message: CS2PlayerMapStatePartialUpdate, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2PlayerMapStatePartialUpdate;
+  static deserializeBinaryFromReader(message: CS2PlayerMapStatePartialUpdate, reader: jspb.BinaryReader): CS2PlayerMapStatePartialUpdate;
 }
 
-export namespace CsgoPlayerMapStatePartialUpdate {
+export namespace CS2PlayerMapStatePartialUpdate {
   export type AsObject = {
     playerUrn: string,
-    payload?: CsgoPlayerMapStatePartialUpdate.Payload.AsObject,
+    payload?: CS2PlayerMapStatePartialUpdate.Payload.AsObject,
   }
 
   export class Payload extends jspb.Message {
     hasStatistics(): boolean;
     clearStatistics(): void;
-    getStatistics(): CsgoPlayerMapStatisticsState | undefined;
-    setStatistics(value?: CsgoPlayerMapStatisticsState): void;
+    getStatistics(): CS2PlayerMapStatisticsState | undefined;
+    setStatistics(value?: CS2PlayerMapStatisticsState): void;
 
     getPayloadCase(): Payload.PayloadCase;
     serializeBinary(): Uint8Array;
@@ -1316,7 +1316,7 @@ export namespace CsgoPlayerMapStatePartialUpdate {
 
   export namespace Payload {
     export type AsObject = {
-      statistics?: CsgoPlayerMapStatisticsState.AsObject,
+      statistics?: CS2PlayerMapStatisticsState.AsObject,
     }
 
     export enum PayloadCase {
@@ -1326,7 +1326,7 @@ export namespace CsgoPlayerMapStatePartialUpdate {
   }
 }
 
-export class CsgoPlayerMapState extends jspb.Message {
+export class CS2PlayerMapState extends jspb.Message {
   getPlayerUrn(): string;
   setPlayerUrn(value: string): void;
 
@@ -1338,29 +1338,29 @@ export class CsgoPlayerMapState extends jspb.Message {
 
   hasStatistics(): boolean;
   clearStatistics(): void;
-  getStatistics(): CsgoPlayerMapStatisticsState | undefined;
-  setStatistics(value?: CsgoPlayerMapStatisticsState): void;
+  getStatistics(): CS2PlayerMapStatisticsState | undefined;
+  setStatistics(value?: CS2PlayerMapStatisticsState): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoPlayerMapState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoPlayerMapState): CsgoPlayerMapState.AsObject;
+  toObject(includeInstance?: boolean): CS2PlayerMapState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2PlayerMapState): CS2PlayerMapState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoPlayerMapState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoPlayerMapState;
-  static deserializeBinaryFromReader(message: CsgoPlayerMapState, reader: jspb.BinaryReader): CsgoPlayerMapState;
+  static serializeBinaryToWriter(message: CS2PlayerMapState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2PlayerMapState;
+  static deserializeBinaryFromReader(message: CS2PlayerMapState, reader: jspb.BinaryReader): CS2PlayerMapState;
 }
 
-export namespace CsgoPlayerMapState {
+export namespace CS2PlayerMapState {
   export type AsObject = {
     playerUrn: string,
     playerName: string,
     slotId: number,
-    statistics?: CsgoPlayerMapStatisticsState.AsObject,
+    statistics?: CS2PlayerMapStatisticsState.AsObject,
   }
 }
 
-export class CsgoPlayerMapStatisticsState extends jspb.Message {
+export class CS2PlayerMapStatisticsState extends jspb.Message {
   getPlayerUrn(): string;
   setPlayerUrn(value: string): void;
 
@@ -1378,70 +1378,70 @@ export class CsgoPlayerMapStatisticsState extends jspb.Message {
 
   hasStatistics(): boolean;
   clearStatistics(): void;
-  getStatistics(): CsgoPlayerStatistics | undefined;
-  setStatistics(value?: CsgoPlayerStatistics): void;
+  getStatistics(): CS2PlayerStatistics | undefined;
+  setStatistics(value?: CS2PlayerStatistics): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoPlayerMapStatisticsState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoPlayerMapStatisticsState): CsgoPlayerMapStatisticsState.AsObject;
+  toObject(includeInstance?: boolean): CS2PlayerMapStatisticsState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2PlayerMapStatisticsState): CS2PlayerMapStatisticsState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoPlayerMapStatisticsState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoPlayerMapStatisticsState;
-  static deserializeBinaryFromReader(message: CsgoPlayerMapStatisticsState, reader: jspb.BinaryReader): CsgoPlayerMapStatisticsState;
+  static serializeBinaryToWriter(message: CS2PlayerMapStatisticsState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2PlayerMapStatisticsState;
+  static deserializeBinaryFromReader(message: CS2PlayerMapStatisticsState, reader: jspb.BinaryReader): CS2PlayerMapStatisticsState;
 }
 
-export namespace CsgoPlayerMapStatisticsState {
+export namespace CS2PlayerMapStatisticsState {
   export type AsObject = {
     playerUrn: string,
     openingKills: number,
     openingDeaths: number,
     totalDamage: number,
     averageDamagePerRound: number,
-    statistics?: CsgoPlayerStatistics.AsObject,
+    statistics?: CS2PlayerStatistics.AsObject,
   }
 }
 
-export class CsgoPlayerCurrentRoundStatePartialUpdate extends jspb.Message {
+export class CS2PlayerCurrentRoundStatePartialUpdate extends jspb.Message {
   getPlayerUrn(): string;
   setPlayerUrn(value: string): void;
 
   hasPayload(): boolean;
   clearPayload(): void;
-  getPayload(): CsgoPlayerCurrentRoundStatePartialUpdate.Payload | undefined;
-  setPayload(value?: CsgoPlayerCurrentRoundStatePartialUpdate.Payload): void;
+  getPayload(): CS2PlayerCurrentRoundStatePartialUpdate.Payload | undefined;
+  setPayload(value?: CS2PlayerCurrentRoundStatePartialUpdate.Payload): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoPlayerCurrentRoundStatePartialUpdate.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoPlayerCurrentRoundStatePartialUpdate): CsgoPlayerCurrentRoundStatePartialUpdate.AsObject;
+  toObject(includeInstance?: boolean): CS2PlayerCurrentRoundStatePartialUpdate.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2PlayerCurrentRoundStatePartialUpdate): CS2PlayerCurrentRoundStatePartialUpdate.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoPlayerCurrentRoundStatePartialUpdate, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoPlayerCurrentRoundStatePartialUpdate;
-  static deserializeBinaryFromReader(message: CsgoPlayerCurrentRoundStatePartialUpdate, reader: jspb.BinaryReader): CsgoPlayerCurrentRoundStatePartialUpdate;
+  static serializeBinaryToWriter(message: CS2PlayerCurrentRoundStatePartialUpdate, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2PlayerCurrentRoundStatePartialUpdate;
+  static deserializeBinaryFromReader(message: CS2PlayerCurrentRoundStatePartialUpdate, reader: jspb.BinaryReader): CS2PlayerCurrentRoundStatePartialUpdate;
 }
 
-export namespace CsgoPlayerCurrentRoundStatePartialUpdate {
+export namespace CS2PlayerCurrentRoundStatePartialUpdate {
   export type AsObject = {
     playerUrn: string,
-    payload?: CsgoPlayerCurrentRoundStatePartialUpdate.Payload.AsObject,
+    payload?: CS2PlayerCurrentRoundStatePartialUpdate.Payload.AsObject,
   }
 
   export class Payload extends jspb.Message {
     hasStatistics(): boolean;
     clearStatistics(): void;
-    getStatistics(): CsgoPlayerCurrentRoundStatisticsState | undefined;
-    setStatistics(value?: CsgoPlayerCurrentRoundStatisticsState): void;
+    getStatistics(): CS2PlayerCurrentRoundStatisticsState | undefined;
+    setStatistics(value?: CS2PlayerCurrentRoundStatisticsState): void;
 
     hasItems(): boolean;
     clearItems(): void;
-    getItems(): CsgoPlayerItemsState | undefined;
-    setItems(value?: CsgoPlayerItemsState): void;
+    getItems(): CS2PlayerItemsState | undefined;
+    setItems(value?: CS2PlayerItemsState): void;
 
     hasPosition(): boolean;
     clearPosition(): void;
-    getPosition(): CsgoPlayerPositionState | undefined;
-    setPosition(value?: CsgoPlayerPositionState): void;
+    getPosition(): CS2PlayerPositionState | undefined;
+    setPosition(value?: CS2PlayerPositionState): void;
 
     getPayloadCase(): Payload.PayloadCase;
     serializeBinary(): Uint8Array;
@@ -1456,9 +1456,9 @@ export namespace CsgoPlayerCurrentRoundStatePartialUpdate {
 
   export namespace Payload {
     export type AsObject = {
-      statistics?: CsgoPlayerCurrentRoundStatisticsState.AsObject,
-      items?: CsgoPlayerItemsState.AsObject,
-      position?: CsgoPlayerPositionState.AsObject,
+      statistics?: CS2PlayerCurrentRoundStatisticsState.AsObject,
+      items?: CS2PlayerItemsState.AsObject,
+      position?: CS2PlayerPositionState.AsObject,
     }
 
     export enum PayloadCase {
@@ -1470,7 +1470,7 @@ export namespace CsgoPlayerCurrentRoundStatePartialUpdate {
   }
 }
 
-export class CsgoPlayerCurrentRoundState extends jspb.Message {
+export class CS2PlayerCurrentRoundState extends jspb.Message {
   getPlayerUrn(): string;
   setPlayerUrn(value: string): void;
 
@@ -1482,41 +1482,41 @@ export class CsgoPlayerCurrentRoundState extends jspb.Message {
 
   hasStatistics(): boolean;
   clearStatistics(): void;
-  getStatistics(): CsgoPlayerCurrentRoundStatisticsState | undefined;
-  setStatistics(value?: CsgoPlayerCurrentRoundStatisticsState): void;
+  getStatistics(): CS2PlayerCurrentRoundStatisticsState | undefined;
+  setStatistics(value?: CS2PlayerCurrentRoundStatisticsState): void;
 
   hasItems(): boolean;
   clearItems(): void;
-  getItems(): CsgoPlayerItemsState | undefined;
-  setItems(value?: CsgoPlayerItemsState): void;
+  getItems(): CS2PlayerItemsState | undefined;
+  setItems(value?: CS2PlayerItemsState): void;
 
   hasPosition(): boolean;
   clearPosition(): void;
-  getPosition(): CsgoPlayerPositionState | undefined;
-  setPosition(value?: CsgoPlayerPositionState): void;
+  getPosition(): CS2PlayerPositionState | undefined;
+  setPosition(value?: CS2PlayerPositionState): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoPlayerCurrentRoundState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoPlayerCurrentRoundState): CsgoPlayerCurrentRoundState.AsObject;
+  toObject(includeInstance?: boolean): CS2PlayerCurrentRoundState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2PlayerCurrentRoundState): CS2PlayerCurrentRoundState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoPlayerCurrentRoundState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoPlayerCurrentRoundState;
-  static deserializeBinaryFromReader(message: CsgoPlayerCurrentRoundState, reader: jspb.BinaryReader): CsgoPlayerCurrentRoundState;
+  static serializeBinaryToWriter(message: CS2PlayerCurrentRoundState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2PlayerCurrentRoundState;
+  static deserializeBinaryFromReader(message: CS2PlayerCurrentRoundState, reader: jspb.BinaryReader): CS2PlayerCurrentRoundState;
 }
 
-export namespace CsgoPlayerCurrentRoundState {
+export namespace CS2PlayerCurrentRoundState {
   export type AsObject = {
     playerUrn: string,
     playerName: string,
     slotId: number,
-    statistics?: CsgoPlayerCurrentRoundStatisticsState.AsObject,
-    items?: CsgoPlayerItemsState.AsObject,
-    position?: CsgoPlayerPositionState.AsObject,
+    statistics?: CS2PlayerCurrentRoundStatisticsState.AsObject,
+    items?: CS2PlayerItemsState.AsObject,
+    position?: CS2PlayerPositionState.AsObject,
   }
 }
 
-export class CsgoPlayerCurrentRoundStatisticsState extends jspb.Message {
+export class CS2PlayerCurrentRoundStatisticsState extends jspb.Message {
   getPlayerUrn(): string;
   setPlayerUrn(value: string): void;
 
@@ -1539,20 +1539,20 @@ export class CsgoPlayerCurrentRoundStatisticsState extends jspb.Message {
 
   hasStatistics(): boolean;
   clearStatistics(): void;
-  getStatistics(): CsgoPlayerStatistics | undefined;
-  setStatistics(value?: CsgoPlayerStatistics): void;
+  getStatistics(): CS2PlayerStatistics | undefined;
+  setStatistics(value?: CS2PlayerStatistics): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoPlayerCurrentRoundStatisticsState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoPlayerCurrentRoundStatisticsState): CsgoPlayerCurrentRoundStatisticsState.AsObject;
+  toObject(includeInstance?: boolean): CS2PlayerCurrentRoundStatisticsState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2PlayerCurrentRoundStatisticsState): CS2PlayerCurrentRoundStatisticsState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoPlayerCurrentRoundStatisticsState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoPlayerCurrentRoundStatisticsState;
-  static deserializeBinaryFromReader(message: CsgoPlayerCurrentRoundStatisticsState, reader: jspb.BinaryReader): CsgoPlayerCurrentRoundStatisticsState;
+  static serializeBinaryToWriter(message: CS2PlayerCurrentRoundStatisticsState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2PlayerCurrentRoundStatisticsState;
+  static deserializeBinaryFromReader(message: CS2PlayerCurrentRoundStatisticsState, reader: jspb.BinaryReader): CS2PlayerCurrentRoundStatisticsState;
 }
 
-export namespace CsgoPlayerCurrentRoundStatisticsState {
+export namespace CS2PlayerCurrentRoundStatisticsState {
   export type AsObject = {
     playerUrn: string,
     alive: boolean,
@@ -1560,11 +1560,11 @@ export namespace CsgoPlayerCurrentRoundStatisticsState {
     armor: number,
     balance: number,
     damage: number,
-    statistics?: CsgoPlayerStatistics.AsObject,
+    statistics?: CS2PlayerStatistics.AsObject,
   }
 }
 
-export class CsgoPlayerItemsState extends jspb.Message {
+export class CS2PlayerItemsState extends jspb.Message {
   getPlayerUrn(): string;
   setPlayerUrn(value: string): void;
 
@@ -1572,29 +1572,29 @@ export class CsgoPlayerItemsState extends jspb.Message {
   setEquipmentValue(value: number): void;
 
   clearItemsList(): void;
-  getItemsList(): Array<CsgoItem>;
-  setItemsList(value: Array<CsgoItem>): void;
-  addItems(value?: CsgoItem, index?: number): CsgoItem;
+  getItemsList(): Array<CS2Item>;
+  setItemsList(value: Array<CS2Item>): void;
+  addItems(value?: CS2Item, index?: number): CS2Item;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoPlayerItemsState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoPlayerItemsState): CsgoPlayerItemsState.AsObject;
+  toObject(includeInstance?: boolean): CS2PlayerItemsState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2PlayerItemsState): CS2PlayerItemsState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoPlayerItemsState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoPlayerItemsState;
-  static deserializeBinaryFromReader(message: CsgoPlayerItemsState, reader: jspb.BinaryReader): CsgoPlayerItemsState;
+  static serializeBinaryToWriter(message: CS2PlayerItemsState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2PlayerItemsState;
+  static deserializeBinaryFromReader(message: CS2PlayerItemsState, reader: jspb.BinaryReader): CS2PlayerItemsState;
 }
 
-export namespace CsgoPlayerItemsState {
+export namespace CS2PlayerItemsState {
   export type AsObject = {
     playerUrn: string,
     equipmentValue: number,
-    itemsList: Array<CsgoItem.AsObject>,
+    itemsList: Array<CS2Item.AsObject>,
   }
 }
 
-export class CsgoPlayerPreviousRoundState extends jspb.Message {
+export class CS2PlayerPreviousRoundState extends jspb.Message {
   getPlayerUrn(): string;
   setPlayerUrn(value: string): void;
 
@@ -1603,54 +1603,54 @@ export class CsgoPlayerPreviousRoundState extends jspb.Message {
 
   hasStatistics(): boolean;
   clearStatistics(): void;
-  getStatistics(): CsgoPlayerStatistics | undefined;
-  setStatistics(value?: CsgoPlayerStatistics): void;
+  getStatistics(): CS2PlayerStatistics | undefined;
+  setStatistics(value?: CS2PlayerStatistics): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoPlayerPreviousRoundState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoPlayerPreviousRoundState): CsgoPlayerPreviousRoundState.AsObject;
+  toObject(includeInstance?: boolean): CS2PlayerPreviousRoundState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2PlayerPreviousRoundState): CS2PlayerPreviousRoundState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoPlayerPreviousRoundState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoPlayerPreviousRoundState;
-  static deserializeBinaryFromReader(message: CsgoPlayerPreviousRoundState, reader: jspb.BinaryReader): CsgoPlayerPreviousRoundState;
+  static serializeBinaryToWriter(message: CS2PlayerPreviousRoundState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2PlayerPreviousRoundState;
+  static deserializeBinaryFromReader(message: CS2PlayerPreviousRoundState, reader: jspb.BinaryReader): CS2PlayerPreviousRoundState;
 }
 
-export namespace CsgoPlayerPreviousRoundState {
+export namespace CS2PlayerPreviousRoundState {
   export type AsObject = {
     playerUrn: string,
     playerName: string,
-    statistics?: CsgoPlayerStatistics.AsObject,
+    statistics?: CS2PlayerStatistics.AsObject,
   }
 }
 
-export class CsgoPlayerPositionState extends jspb.Message {
+export class CS2PlayerPositionState extends jspb.Message {
   getPlayerUrn(): string;
   setPlayerUrn(value: string): void;
 
   hasPosition(): boolean;
   clearPosition(): void;
-  getPosition(): CsgoPosition | undefined;
-  setPosition(value?: CsgoPosition): void;
+  getPosition(): CS2Position | undefined;
+  setPosition(value?: CS2Position): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoPlayerPositionState.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoPlayerPositionState): CsgoPlayerPositionState.AsObject;
+  toObject(includeInstance?: boolean): CS2PlayerPositionState.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2PlayerPositionState): CS2PlayerPositionState.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoPlayerPositionState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoPlayerPositionState;
-  static deserializeBinaryFromReader(message: CsgoPlayerPositionState, reader: jspb.BinaryReader): CsgoPlayerPositionState;
+  static serializeBinaryToWriter(message: CS2PlayerPositionState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2PlayerPositionState;
+  static deserializeBinaryFromReader(message: CS2PlayerPositionState, reader: jspb.BinaryReader): CS2PlayerPositionState;
 }
 
-export namespace CsgoPlayerPositionState {
+export namespace CS2PlayerPositionState {
   export type AsObject = {
     playerUrn: string,
-    position?: CsgoPosition.AsObject,
+    position?: CS2Position.AsObject,
   }
 }
 
-export class CsgoPlayerStatistics extends jspb.Message {
+export class CS2PlayerStatistics extends jspb.Message {
   getPlayerUrn(): string;
   setPlayerUrn(value: string): void;
 
@@ -1709,16 +1709,16 @@ export class CsgoPlayerStatistics extends jspb.Message {
   setEnemyDamageDealtHealthRaw(value: number): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoPlayerStatistics.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoPlayerStatistics): CsgoPlayerStatistics.AsObject;
+  toObject(includeInstance?: boolean): CS2PlayerStatistics.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2PlayerStatistics): CS2PlayerStatistics.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoPlayerStatistics, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoPlayerStatistics;
-  static deserializeBinaryFromReader(message: CsgoPlayerStatistics, reader: jspb.BinaryReader): CsgoPlayerStatistics;
+  static serializeBinaryToWriter(message: CS2PlayerStatistics, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2PlayerStatistics;
+  static deserializeBinaryFromReader(message: CS2PlayerStatistics, reader: jspb.BinaryReader): CS2PlayerStatistics;
 }
 
-export namespace CsgoPlayerStatistics {
+export namespace CS2PlayerStatistics {
   export type AsObject = {
     playerUrn: string,
     kills: number,
@@ -1738,12 +1738,12 @@ export namespace CsgoPlayerStatistics {
   }
 }
 
-export class CsgoItem extends jspb.Message {
+export class CS2Item extends jspb.Message {
   getName(): string;
   setName(value: string): void;
 
-  getType(): CsgoWeaponTypeMap[keyof CsgoWeaponTypeMap];
-  setType(value: CsgoWeaponTypeMap[keyof CsgoWeaponTypeMap]): void;
+  getType(): CS2WeaponTypeMap[keyof CS2WeaponTypeMap];
+  setType(value: CS2WeaponTypeMap[keyof CS2WeaponTypeMap]): void;
 
   getCount(): number;
   setCount(value: number): void;
@@ -1752,25 +1752,25 @@ export class CsgoItem extends jspb.Message {
   setIsactive(value: boolean): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoItem.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoItem): CsgoItem.AsObject;
+  toObject(includeInstance?: boolean): CS2Item.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2Item): CS2Item.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoItem, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoItem;
-  static deserializeBinaryFromReader(message: CsgoItem, reader: jspb.BinaryReader): CsgoItem;
+  static serializeBinaryToWriter(message: CS2Item, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2Item;
+  static deserializeBinaryFromReader(message: CS2Item, reader: jspb.BinaryReader): CS2Item;
 }
 
-export namespace CsgoItem {
+export namespace CS2Item {
   export type AsObject = {
     name: string,
-    type: CsgoWeaponTypeMap[keyof CsgoWeaponTypeMap],
+    type: CS2WeaponTypeMap[keyof CS2WeaponTypeMap],
     count: number,
     isactive: boolean,
   }
 }
 
-export class CsgoPosition extends jspb.Message {
+export class CS2Position extends jspb.Message {
   getX(): number;
   setX(value: number): void;
 
@@ -1784,16 +1784,16 @@ export class CsgoPosition extends jspb.Message {
   setAngle(value: number): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoPosition.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoPosition): CsgoPosition.AsObject;
+  toObject(includeInstance?: boolean): CS2Position.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2Position): CS2Position.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoPosition, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoPosition;
-  static deserializeBinaryFromReader(message: CsgoPosition, reader: jspb.BinaryReader): CsgoPosition;
+  static serializeBinaryToWriter(message: CS2Position, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2Position;
+  static deserializeBinaryFromReader(message: CS2Position, reader: jspb.BinaryReader): CS2Position;
 }
 
-export namespace CsgoPosition {
+export namespace CS2Position {
   export type AsObject = {
     x: number,
     y: number,
@@ -1802,146 +1802,146 @@ export namespace CsgoPosition {
   }
 }
 
-export class CsgoEvent extends jspb.Message {
+export class CS2Event extends jspb.Message {
   hasBombDefuseStarted(): boolean;
   clearBombDefuseStarted(): void;
-  getBombDefuseStarted(): CsgoBombDefuseStarted | undefined;
-  setBombDefuseStarted(value?: CsgoBombDefuseStarted): void;
+  getBombDefuseStarted(): CS2BombDefuseStarted | undefined;
+  setBombDefuseStarted(value?: CS2BombDefuseStarted): void;
 
   hasBombDefused(): boolean;
   clearBombDefused(): void;
-  getBombDefused(): CsgoBombDefused | undefined;
-  setBombDefused(value?: CsgoBombDefused): void;
+  getBombDefused(): CS2BombDefused | undefined;
+  setBombDefused(value?: CS2BombDefused): void;
 
   hasBombExploded(): boolean;
   clearBombExploded(): void;
-  getBombExploded(): CsgoBombExploded | undefined;
-  setBombExploded(value?: CsgoBombExploded): void;
+  getBombExploded(): CS2BombExploded | undefined;
+  setBombExploded(value?: CS2BombExploded): void;
 
   hasBombPlantStarted(): boolean;
   clearBombPlantStarted(): void;
-  getBombPlantStarted(): CsgoBombPlantStarted | undefined;
-  setBombPlantStarted(value?: CsgoBombPlantStarted): void;
+  getBombPlantStarted(): CS2BombPlantStarted | undefined;
+  setBombPlantStarted(value?: CS2BombPlantStarted): void;
 
   hasBombPlanted(): boolean;
   clearBombPlanted(): void;
-  getBombPlanted(): CsgoBombPlanted | undefined;
-  setBombPlanted(value?: CsgoBombPlanted): void;
+  getBombPlanted(): CS2BombPlanted | undefined;
+  setBombPlanted(value?: CS2BombPlanted): void;
 
   hasDamageDealt(): boolean;
   clearDamageDealt(): void;
-  getDamageDealt(): CsgoDamageDealt | undefined;
-  setDamageDealt(value?: CsgoDamageDealt): void;
+  getDamageDealt(): CS2DamageDealt | undefined;
+  setDamageDealt(value?: CS2DamageDealt): void;
 
   hasFreezeTimeEnded(): boolean;
   clearFreezeTimeEnded(): void;
-  getFreezeTimeEnded(): CsgoFreezeTimeEnded | undefined;
-  setFreezeTimeEnded(value?: CsgoFreezeTimeEnded): void;
+  getFreezeTimeEnded(): CS2FreezeTimeEnded | undefined;
+  setFreezeTimeEnded(value?: CS2FreezeTimeEnded): void;
 
   hasFreezeTimeStarted(): boolean;
   clearFreezeTimeStarted(): void;
-  getFreezeTimeStarted(): CsgoFreezeTimeStarted | undefined;
-  setFreezeTimeStarted(value?: CsgoFreezeTimeStarted): void;
+  getFreezeTimeStarted(): CS2FreezeTimeStarted | undefined;
+  setFreezeTimeStarted(value?: CS2FreezeTimeStarted): void;
 
   hasItemDrop(): boolean;
   clearItemDrop(): void;
-  getItemDrop(): CsgoItemDrop | undefined;
-  setItemDrop(value?: CsgoItemDrop): void;
+  getItemDrop(): CS2ItemDrop | undefined;
+  setItemDrop(value?: CS2ItemDrop): void;
 
   hasItemPickUp(): boolean;
   clearItemPickUp(): void;
-  getItemPickUp(): CsgoItemPickUp | undefined;
-  setItemPickUp(value?: CsgoItemPickUp): void;
+  getItemPickUp(): CS2ItemPickUp | undefined;
+  setItemPickUp(value?: CS2ItemPickUp): void;
 
   hasItemPurchase(): boolean;
   clearItemPurchase(): void;
-  getItemPurchase(): CsgoItemPurchase | undefined;
-  setItemPurchase(value?: CsgoItemPurchase): void;
+  getItemPurchase(): CS2ItemPurchase | undefined;
+  setItemPurchase(value?: CS2ItemPurchase): void;
 
   hasItemThrow(): boolean;
   clearItemThrow(): void;
-  getItemThrow(): CsgoItemThrow | undefined;
-  setItemThrow(value?: CsgoItemThrow): void;
+  getItemThrow(): CS2ItemThrow | undefined;
+  setItemThrow(value?: CS2ItemThrow): void;
 
   hasKill(): boolean;
   clearKill(): void;
-  getKill(): CsgoKill | undefined;
-  setKill(value?: CsgoKill): void;
+  getKill(): CS2Kill | undefined;
+  setKill(value?: CS2Kill): void;
 
   hasDeath(): boolean;
   clearDeath(): void;
-  getDeath(): CsgoDeath | undefined;
-  setDeath(value?: CsgoDeath): void;
+  getDeath(): CS2Death | undefined;
+  setDeath(value?: CS2Death): void;
 
   hasMapEnd(): boolean;
   clearMapEnd(): void;
-  getMapEnd(): CsgoMapEnd | undefined;
-  setMapEnd(value?: CsgoMapEnd): void;
+  getMapEnd(): CS2MapEnd | undefined;
+  setMapEnd(value?: CS2MapEnd): void;
 
   hasMapStart(): boolean;
   clearMapStart(): void;
-  getMapStart(): CsgoMapStart | undefined;
-  setMapStart(value?: CsgoMapStart): void;
+  getMapStart(): CS2MapStart | undefined;
+  setMapStart(value?: CS2MapStart): void;
 
   hasRoundEnd(): boolean;
   clearRoundEnd(): void;
-  getRoundEnd(): CsgoRoundEnd | undefined;
-  setRoundEnd(value?: CsgoRoundEnd): void;
+  getRoundEnd(): CS2RoundEnd | undefined;
+  setRoundEnd(value?: CS2RoundEnd): void;
 
   hasRoundPause(): boolean;
   clearRoundPause(): void;
-  getRoundPause(): CsgoRoundPause | undefined;
-  setRoundPause(value?: CsgoRoundPause): void;
+  getRoundPause(): CS2RoundPause | undefined;
+  setRoundPause(value?: CS2RoundPause): void;
 
   hasRoundResume(): boolean;
   clearRoundResume(): void;
-  getRoundResume(): CsgoRoundResume | undefined;
-  setRoundResume(value?: CsgoRoundResume): void;
+  getRoundResume(): CS2RoundResume | undefined;
+  setRoundResume(value?: CS2RoundResume): void;
 
   hasRoundRollback(): boolean;
   clearRoundRollback(): void;
-  getRoundRollback(): CsgoRoundRollback | undefined;
-  setRoundRollback(value?: CsgoRoundRollback): void;
+  getRoundRollback(): CS2RoundRollback | undefined;
+  setRoundRollback(value?: CS2RoundRollback): void;
 
   hasRoundStart(): boolean;
   clearRoundStart(): void;
-  getRoundStart(): CsgoRoundStart | undefined;
-  setRoundStart(value?: CsgoRoundStart): void;
+  getRoundStart(): CS2RoundStart | undefined;
+  setRoundStart(value?: CS2RoundStart): void;
 
-  getEventCase(): CsgoEvent.EventCase;
+  getEventCase(): CS2Event.EventCase;
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoEvent.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoEvent): CsgoEvent.AsObject;
+  toObject(includeInstance?: boolean): CS2Event.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2Event): CS2Event.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoEvent, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoEvent;
-  static deserializeBinaryFromReader(message: CsgoEvent, reader: jspb.BinaryReader): CsgoEvent;
+  static serializeBinaryToWriter(message: CS2Event, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2Event;
+  static deserializeBinaryFromReader(message: CS2Event, reader: jspb.BinaryReader): CS2Event;
 }
 
-export namespace CsgoEvent {
+export namespace CS2Event {
   export type AsObject = {
-    bombDefuseStarted?: CsgoBombDefuseStarted.AsObject,
-    bombDefused?: CsgoBombDefused.AsObject,
-    bombExploded?: CsgoBombExploded.AsObject,
-    bombPlantStarted?: CsgoBombPlantStarted.AsObject,
-    bombPlanted?: CsgoBombPlanted.AsObject,
-    damageDealt?: CsgoDamageDealt.AsObject,
-    freezeTimeEnded?: CsgoFreezeTimeEnded.AsObject,
-    freezeTimeStarted?: CsgoFreezeTimeStarted.AsObject,
-    itemDrop?: CsgoItemDrop.AsObject,
-    itemPickUp?: CsgoItemPickUp.AsObject,
-    itemPurchase?: CsgoItemPurchase.AsObject,
-    itemThrow?: CsgoItemThrow.AsObject,
-    kill?: CsgoKill.AsObject,
-    death?: CsgoDeath.AsObject,
-    mapEnd?: CsgoMapEnd.AsObject,
-    mapStart?: CsgoMapStart.AsObject,
-    roundEnd?: CsgoRoundEnd.AsObject,
-    roundPause?: CsgoRoundPause.AsObject,
-    roundResume?: CsgoRoundResume.AsObject,
-    roundRollback?: CsgoRoundRollback.AsObject,
-    roundStart?: CsgoRoundStart.AsObject,
+    bombDefuseStarted?: CS2BombDefuseStarted.AsObject,
+    bombDefused?: CS2BombDefused.AsObject,
+    bombExploded?: CS2BombExploded.AsObject,
+    bombPlantStarted?: CS2BombPlantStarted.AsObject,
+    bombPlanted?: CS2BombPlanted.AsObject,
+    damageDealt?: CS2DamageDealt.AsObject,
+    freezeTimeEnded?: CS2FreezeTimeEnded.AsObject,
+    freezeTimeStarted?: CS2FreezeTimeStarted.AsObject,
+    itemDrop?: CS2ItemDrop.AsObject,
+    itemPickUp?: CS2ItemPickUp.AsObject,
+    itemPurchase?: CS2ItemPurchase.AsObject,
+    itemThrow?: CS2ItemThrow.AsObject,
+    kill?: CS2Kill.AsObject,
+    death?: CS2Death.AsObject,
+    mapEnd?: CS2MapEnd.AsObject,
+    mapStart?: CS2MapStart.AsObject,
+    roundEnd?: CS2RoundEnd.AsObject,
+    roundPause?: CS2RoundPause.AsObject,
+    roundResume?: CS2RoundResume.AsObject,
+    roundRollback?: CS2RoundRollback.AsObject,
+    roundStart?: CS2RoundStart.AsObject,
   }
 
   export enum EventCase {
@@ -1970,7 +1970,7 @@ export namespace CsgoEvent {
   }
 }
 
-export class CsgoPlayerBalance extends jspb.Message {
+export class CS2PlayerBalance extends jspb.Message {
   getPlayerUrn(): string;
   setPlayerUrn(value: string): void;
 
@@ -1981,16 +1981,16 @@ export class CsgoPlayerBalance extends jspb.Message {
   setBalance(value: number): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoPlayerBalance.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoPlayerBalance): CsgoPlayerBalance.AsObject;
+  toObject(includeInstance?: boolean): CS2PlayerBalance.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2PlayerBalance): CS2PlayerBalance.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoPlayerBalance, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoPlayerBalance;
-  static deserializeBinaryFromReader(message: CsgoPlayerBalance, reader: jspb.BinaryReader): CsgoPlayerBalance;
+  static serializeBinaryToWriter(message: CS2PlayerBalance, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2PlayerBalance;
+  static deserializeBinaryFromReader(message: CS2PlayerBalance, reader: jspb.BinaryReader): CS2PlayerBalance;
 }
 
-export namespace CsgoPlayerBalance {
+export namespace CS2PlayerBalance {
   export type AsObject = {
     playerUrn: string,
     teamUrn: string,
@@ -1998,7 +1998,7 @@ export namespace CsgoPlayerBalance {
   }
 }
 
-export class CsgoPlayerItems extends jspb.Message {
+export class CS2PlayerItems extends jspb.Message {
   getPlayerUrn(): string;
   setPlayerUrn(value: string): void;
 
@@ -2009,30 +2009,30 @@ export class CsgoPlayerItems extends jspb.Message {
   setEquipmentValue(value: number): void;
 
   clearItemsList(): void;
-  getItemsList(): Array<CsgoItem>;
-  setItemsList(value: Array<CsgoItem>): void;
-  addItems(value?: CsgoItem, index?: number): CsgoItem;
+  getItemsList(): Array<CS2Item>;
+  setItemsList(value: Array<CS2Item>): void;
+  addItems(value?: CS2Item, index?: number): CS2Item;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoPlayerItems.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoPlayerItems): CsgoPlayerItems.AsObject;
+  toObject(includeInstance?: boolean): CS2PlayerItems.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2PlayerItems): CS2PlayerItems.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoPlayerItems, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoPlayerItems;
-  static deserializeBinaryFromReader(message: CsgoPlayerItems, reader: jspb.BinaryReader): CsgoPlayerItems;
+  static serializeBinaryToWriter(message: CS2PlayerItems, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2PlayerItems;
+  static deserializeBinaryFromReader(message: CS2PlayerItems, reader: jspb.BinaryReader): CS2PlayerItems;
 }
 
-export namespace CsgoPlayerItems {
+export namespace CS2PlayerItems {
   export type AsObject = {
     playerUrn: string,
     teamUrn: string,
     equipmentValue: number,
-    itemsList: Array<CsgoItem.AsObject>,
+    itemsList: Array<CS2Item.AsObject>,
   }
 }
 
-export class CsgoBombDefuseStarted extends jspb.Message {
+export class CS2BombDefuseStarted extends jspb.Message {
   hasMapTime(): boolean;
   clearMapTime(): void;
   getMapTime(): google_protobuf_duration_pb.Duration | undefined;
@@ -2053,16 +2053,16 @@ export class CsgoBombDefuseStarted extends jspb.Message {
   setTeamUrn(value: string): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoBombDefuseStarted.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoBombDefuseStarted): CsgoBombDefuseStarted.AsObject;
+  toObject(includeInstance?: boolean): CS2BombDefuseStarted.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2BombDefuseStarted): CS2BombDefuseStarted.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoBombDefuseStarted, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoBombDefuseStarted;
-  static deserializeBinaryFromReader(message: CsgoBombDefuseStarted, reader: jspb.BinaryReader): CsgoBombDefuseStarted;
+  static serializeBinaryToWriter(message: CS2BombDefuseStarted, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2BombDefuseStarted;
+  static deserializeBinaryFromReader(message: CS2BombDefuseStarted, reader: jspb.BinaryReader): CS2BombDefuseStarted;
 }
 
-export namespace CsgoBombDefuseStarted {
+export namespace CS2BombDefuseStarted {
   export type AsObject = {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
@@ -2072,7 +2072,7 @@ export namespace CsgoBombDefuseStarted {
   }
 }
 
-export class CsgoBombDefused extends jspb.Message {
+export class CS2BombDefused extends jspb.Message {
   hasMapTime(): boolean;
   clearMapTime(): void;
   getMapTime(): google_protobuf_duration_pb.Duration | undefined;
@@ -2093,16 +2093,16 @@ export class CsgoBombDefused extends jspb.Message {
   setTeamUrn(value: string): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoBombDefused.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoBombDefused): CsgoBombDefused.AsObject;
+  toObject(includeInstance?: boolean): CS2BombDefused.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2BombDefused): CS2BombDefused.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoBombDefused, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoBombDefused;
-  static deserializeBinaryFromReader(message: CsgoBombDefused, reader: jspb.BinaryReader): CsgoBombDefused;
+  static serializeBinaryToWriter(message: CS2BombDefused, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2BombDefused;
+  static deserializeBinaryFromReader(message: CS2BombDefused, reader: jspb.BinaryReader): CS2BombDefused;
 }
 
-export namespace CsgoBombDefused {
+export namespace CS2BombDefused {
   export type AsObject = {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
@@ -2112,7 +2112,7 @@ export namespace CsgoBombDefused {
   }
 }
 
-export class CsgoBombExploded extends jspb.Message {
+export class CS2BombExploded extends jspb.Message {
   hasMapTime(): boolean;
   clearMapTime(): void;
   getMapTime(): google_protobuf_duration_pb.Duration | undefined;
@@ -2127,16 +2127,16 @@ export class CsgoBombExploded extends jspb.Message {
   setCurrentRoundNumber(value: number): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoBombExploded.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoBombExploded): CsgoBombExploded.AsObject;
+  toObject(includeInstance?: boolean): CS2BombExploded.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2BombExploded): CS2BombExploded.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoBombExploded, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoBombExploded;
-  static deserializeBinaryFromReader(message: CsgoBombExploded, reader: jspb.BinaryReader): CsgoBombExploded;
+  static serializeBinaryToWriter(message: CS2BombExploded, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2BombExploded;
+  static deserializeBinaryFromReader(message: CS2BombExploded, reader: jspb.BinaryReader): CS2BombExploded;
 }
 
-export namespace CsgoBombExploded {
+export namespace CS2BombExploded {
   export type AsObject = {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
@@ -2144,47 +2144,7 @@ export namespace CsgoBombExploded {
   }
 }
 
-export class CsgoBombPlantStarted extends jspb.Message {
-  hasMapTime(): boolean;
-  clearMapTime(): void;
-  getMapTime(): google_protobuf_duration_pb.Duration | undefined;
-  setMapTime(value?: google_protobuf_duration_pb.Duration): void;
-
-  hasTimeRemaining(): boolean;
-  clearTimeRemaining(): void;
-  getTimeRemaining(): google_protobuf_duration_pb.Duration | undefined;
-  setTimeRemaining(value?: google_protobuf_duration_pb.Duration): void;
-
-  getCurrentRoundNumber(): number;
-  setCurrentRoundNumber(value: number): void;
-
-  getPlayerUrn(): string;
-  setPlayerUrn(value: string): void;
-
-  getTeamUrn(): string;
-  setTeamUrn(value: string): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoBombPlantStarted.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoBombPlantStarted): CsgoBombPlantStarted.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoBombPlantStarted, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoBombPlantStarted;
-  static deserializeBinaryFromReader(message: CsgoBombPlantStarted, reader: jspb.BinaryReader): CsgoBombPlantStarted;
-}
-
-export namespace CsgoBombPlantStarted {
-  export type AsObject = {
-    mapTime?: google_protobuf_duration_pb.Duration.AsObject,
-    timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
-    currentRoundNumber: number,
-    playerUrn: string,
-    teamUrn: string,
-  }
-}
-
-export class CsgoBombPlanted extends jspb.Message {
+export class CS2BombPlantStarted extends jspb.Message {
   hasMapTime(): boolean;
   clearMapTime(): void;
   getMapTime(): google_protobuf_duration_pb.Duration | undefined;
@@ -2205,16 +2165,16 @@ export class CsgoBombPlanted extends jspb.Message {
   setTeamUrn(value: string): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoBombPlanted.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoBombPlanted): CsgoBombPlanted.AsObject;
+  toObject(includeInstance?: boolean): CS2BombPlantStarted.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2BombPlantStarted): CS2BombPlantStarted.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoBombPlanted, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoBombPlanted;
-  static deserializeBinaryFromReader(message: CsgoBombPlanted, reader: jspb.BinaryReader): CsgoBombPlanted;
+  static serializeBinaryToWriter(message: CS2BombPlantStarted, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2BombPlantStarted;
+  static deserializeBinaryFromReader(message: CS2BombPlantStarted, reader: jspb.BinaryReader): CS2BombPlantStarted;
 }
 
-export namespace CsgoBombPlanted {
+export namespace CS2BombPlantStarted {
   export type AsObject = {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
@@ -2224,7 +2184,47 @@ export namespace CsgoBombPlanted {
   }
 }
 
-export class CsgoDamageDealt extends jspb.Message {
+export class CS2BombPlanted extends jspb.Message {
+  hasMapTime(): boolean;
+  clearMapTime(): void;
+  getMapTime(): google_protobuf_duration_pb.Duration | undefined;
+  setMapTime(value?: google_protobuf_duration_pb.Duration): void;
+
+  hasTimeRemaining(): boolean;
+  clearTimeRemaining(): void;
+  getTimeRemaining(): google_protobuf_duration_pb.Duration | undefined;
+  setTimeRemaining(value?: google_protobuf_duration_pb.Duration): void;
+
+  getCurrentRoundNumber(): number;
+  setCurrentRoundNumber(value: number): void;
+
+  getPlayerUrn(): string;
+  setPlayerUrn(value: string): void;
+
+  getTeamUrn(): string;
+  setTeamUrn(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CS2BombPlanted.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2BombPlanted): CS2BombPlanted.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: CS2BombPlanted, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2BombPlanted;
+  static deserializeBinaryFromReader(message: CS2BombPlanted, reader: jspb.BinaryReader): CS2BombPlanted;
+}
+
+export namespace CS2BombPlanted {
+  export type AsObject = {
+    mapTime?: google_protobuf_duration_pb.Duration.AsObject,
+    timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
+    currentRoundNumber: number,
+    playerUrn: string,
+    teamUrn: string,
+  }
+}
+
+export class CS2DamageDealt extends jspb.Message {
   hasMapTime(): boolean;
   clearMapTime(): void;
   getMapTime(): google_protobuf_duration_pb.Duration | undefined;
@@ -2240,8 +2240,8 @@ export class CsgoDamageDealt extends jspb.Message {
 
   hasKillerPosition(): boolean;
   clearKillerPosition(): void;
-  getKillerPosition(): CsgoPosition | undefined;
-  setKillerPosition(value?: CsgoPosition): void;
+  getKillerPosition(): CS2Position | undefined;
+  setKillerPosition(value?: CS2Position): void;
 
   getKillerUrn(): string;
   setKillerUrn(value: string): void;
@@ -2275,25 +2275,25 @@ export class CsgoDamageDealt extends jspb.Message {
 
   hasVictimPosition(): boolean;
   clearVictimPosition(): void;
-  getVictimPosition(): CsgoPosition | undefined;
-  setVictimPosition(value?: CsgoPosition): void;
+  getVictimPosition(): CS2Position | undefined;
+  setVictimPosition(value?: CS2Position): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoDamageDealt.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoDamageDealt): CsgoDamageDealt.AsObject;
+  toObject(includeInstance?: boolean): CS2DamageDealt.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2DamageDealt): CS2DamageDealt.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoDamageDealt, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoDamageDealt;
-  static deserializeBinaryFromReader(message: CsgoDamageDealt, reader: jspb.BinaryReader): CsgoDamageDealt;
+  static serializeBinaryToWriter(message: CS2DamageDealt, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2DamageDealt;
+  static deserializeBinaryFromReader(message: CS2DamageDealt, reader: jspb.BinaryReader): CS2DamageDealt;
 }
 
-export namespace CsgoDamageDealt {
+export namespace CS2DamageDealt {
   export type AsObject = {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
     currentRoundNumber: number,
-    killerPosition?: CsgoPosition.AsObject,
+    killerPosition?: CS2Position.AsObject,
     killerUrn: string,
     killerTeamUrn: string,
     victimUrn: string,
@@ -2304,11 +2304,11 @@ export namespace CsgoDamageDealt {
     healthRemaining: number,
     armorDeducted: number,
     armorRemaining: number,
-    victimPosition?: CsgoPosition.AsObject,
+    victimPosition?: CS2Position.AsObject,
   }
 }
 
-export class CsgoFreezeTimeEnded extends jspb.Message {
+export class CS2FreezeTimeEnded extends jspb.Message {
   hasMapTime(): boolean;
   clearMapTime(): void;
   getMapTime(): google_protobuf_duration_pb.Duration | undefined;
@@ -2322,31 +2322,31 @@ export class CsgoFreezeTimeEnded extends jspb.Message {
   getCurrentRoundNumber(): number;
   setCurrentRoundNumber(value: number): void;
 
-  getPlayerBalancesMap(): jspb.Map<string, CsgoPlayerBalance>;
+  getPlayerBalancesMap(): jspb.Map<string, CS2PlayerBalance>;
   clearPlayerBalancesMap(): void;
-  getPlayerInventoriesMap(): jspb.Map<string, CsgoPlayerItems>;
+  getPlayerInventoriesMap(): jspb.Map<string, CS2PlayerItems>;
   clearPlayerInventoriesMap(): void;
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoFreezeTimeEnded.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoFreezeTimeEnded): CsgoFreezeTimeEnded.AsObject;
+  toObject(includeInstance?: boolean): CS2FreezeTimeEnded.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2FreezeTimeEnded): CS2FreezeTimeEnded.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoFreezeTimeEnded, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoFreezeTimeEnded;
-  static deserializeBinaryFromReader(message: CsgoFreezeTimeEnded, reader: jspb.BinaryReader): CsgoFreezeTimeEnded;
+  static serializeBinaryToWriter(message: CS2FreezeTimeEnded, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2FreezeTimeEnded;
+  static deserializeBinaryFromReader(message: CS2FreezeTimeEnded, reader: jspb.BinaryReader): CS2FreezeTimeEnded;
 }
 
-export namespace CsgoFreezeTimeEnded {
+export namespace CS2FreezeTimeEnded {
   export type AsObject = {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
     currentRoundNumber: number,
-    playerBalancesMap: Array<[string, CsgoPlayerBalance.AsObject]>,
-    playerInventoriesMap: Array<[string, CsgoPlayerItems.AsObject]>,
+    playerBalancesMap: Array<[string, CS2PlayerBalance.AsObject]>,
+    playerInventoriesMap: Array<[string, CS2PlayerItems.AsObject]>,
   }
 }
 
-export class CsgoFreezeTimeStarted extends jspb.Message {
+export class CS2FreezeTimeStarted extends jspb.Message {
   hasMapTime(): boolean;
   clearMapTime(): void;
   getMapTime(): google_protobuf_duration_pb.Duration | undefined;
@@ -2360,31 +2360,31 @@ export class CsgoFreezeTimeStarted extends jspb.Message {
   getCurrentRoundNumber(): number;
   setCurrentRoundNumber(value: number): void;
 
-  getPlayerBalancesMap(): jspb.Map<string, CsgoPlayerBalance>;
+  getPlayerBalancesMap(): jspb.Map<string, CS2PlayerBalance>;
   clearPlayerBalancesMap(): void;
-  getTeamsRoundInfoMap(): jspb.Map<string, CsgoSideMap[keyof CsgoSideMap]>;
+  getTeamsRoundInfoMap(): jspb.Map<string, CS2SideMap[keyof CS2SideMap]>;
   clearTeamsRoundInfoMap(): void;
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoFreezeTimeStarted.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoFreezeTimeStarted): CsgoFreezeTimeStarted.AsObject;
+  toObject(includeInstance?: boolean): CS2FreezeTimeStarted.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2FreezeTimeStarted): CS2FreezeTimeStarted.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoFreezeTimeStarted, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoFreezeTimeStarted;
-  static deserializeBinaryFromReader(message: CsgoFreezeTimeStarted, reader: jspb.BinaryReader): CsgoFreezeTimeStarted;
+  static serializeBinaryToWriter(message: CS2FreezeTimeStarted, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2FreezeTimeStarted;
+  static deserializeBinaryFromReader(message: CS2FreezeTimeStarted, reader: jspb.BinaryReader): CS2FreezeTimeStarted;
 }
 
-export namespace CsgoFreezeTimeStarted {
+export namespace CS2FreezeTimeStarted {
   export type AsObject = {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
     currentRoundNumber: number,
-    playerBalancesMap: Array<[string, CsgoPlayerBalance.AsObject]>,
-    teamsRoundInfoMap: Array<[string, CsgoSideMap[keyof CsgoSideMap]]>,
+    playerBalancesMap: Array<[string, CS2PlayerBalance.AsObject]>,
+    teamsRoundInfoMap: Array<[string, CS2SideMap[keyof CS2SideMap]]>,
   }
 }
 
-export class CsgoItemDrop extends jspb.Message {
+export class CS2ItemDrop extends jspb.Message {
   hasMapTime(): boolean;
   clearMapTime(): void;
   getMapTime(): google_protobuf_duration_pb.Duration | undefined;
@@ -2400,8 +2400,8 @@ export class CsgoItemDrop extends jspb.Message {
 
   hasPosition(): boolean;
   clearPosition(): void;
-  getPosition(): CsgoPosition | undefined;
-  setPosition(value?: CsgoPosition): void;
+  getPosition(): CS2Position | undefined;
+  setPosition(value?: CS2Position): void;
 
   getPlayerUrn(): string;
   setPlayerUrn(value: string): void;
@@ -2413,28 +2413,28 @@ export class CsgoItemDrop extends jspb.Message {
   setItem(value: string): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoItemDrop.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoItemDrop): CsgoItemDrop.AsObject;
+  toObject(includeInstance?: boolean): CS2ItemDrop.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2ItemDrop): CS2ItemDrop.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoItemDrop, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoItemDrop;
-  static deserializeBinaryFromReader(message: CsgoItemDrop, reader: jspb.BinaryReader): CsgoItemDrop;
+  static serializeBinaryToWriter(message: CS2ItemDrop, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2ItemDrop;
+  static deserializeBinaryFromReader(message: CS2ItemDrop, reader: jspb.BinaryReader): CS2ItemDrop;
 }
 
-export namespace CsgoItemDrop {
+export namespace CS2ItemDrop {
   export type AsObject = {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
     currentRoundNumber: number,
-    position?: CsgoPosition.AsObject,
+    position?: CS2Position.AsObject,
     playerUrn: string,
     teamUrn: string,
     item: string,
   }
 }
 
-export class CsgoItemPickUp extends jspb.Message {
+export class CS2ItemPickUp extends jspb.Message {
   hasMapTime(): boolean;
   clearMapTime(): void;
   getMapTime(): google_protobuf_duration_pb.Duration | undefined;
@@ -2458,16 +2458,16 @@ export class CsgoItemPickUp extends jspb.Message {
   setItem(value: string): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoItemPickUp.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoItemPickUp): CsgoItemPickUp.AsObject;
+  toObject(includeInstance?: boolean): CS2ItemPickUp.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2ItemPickUp): CS2ItemPickUp.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoItemPickUp, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoItemPickUp;
-  static deserializeBinaryFromReader(message: CsgoItemPickUp, reader: jspb.BinaryReader): CsgoItemPickUp;
+  static serializeBinaryToWriter(message: CS2ItemPickUp, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2ItemPickUp;
+  static deserializeBinaryFromReader(message: CS2ItemPickUp, reader: jspb.BinaryReader): CS2ItemPickUp;
 }
 
-export namespace CsgoItemPickUp {
+export namespace CS2ItemPickUp {
   export type AsObject = {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
@@ -2478,7 +2478,7 @@ export namespace CsgoItemPickUp {
   }
 }
 
-export class CsgoItemPurchase extends jspb.Message {
+export class CS2ItemPurchase extends jspb.Message {
   hasMapTime(): boolean;
   clearMapTime(): void;
   getMapTime(): google_protobuf_duration_pb.Duration | undefined;
@@ -2508,16 +2508,16 @@ export class CsgoItemPurchase extends jspb.Message {
   setEquipmentValue(value: number): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoItemPurchase.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoItemPurchase): CsgoItemPurchase.AsObject;
+  toObject(includeInstance?: boolean): CS2ItemPurchase.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2ItemPurchase): CS2ItemPurchase.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoItemPurchase, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoItemPurchase;
-  static deserializeBinaryFromReader(message: CsgoItemPurchase, reader: jspb.BinaryReader): CsgoItemPurchase;
+  static serializeBinaryToWriter(message: CS2ItemPurchase, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2ItemPurchase;
+  static deserializeBinaryFromReader(message: CS2ItemPurchase, reader: jspb.BinaryReader): CS2ItemPurchase;
 }
 
-export namespace CsgoItemPurchase {
+export namespace CS2ItemPurchase {
   export type AsObject = {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
@@ -2530,7 +2530,7 @@ export namespace CsgoItemPurchase {
   }
 }
 
-export class CsgoItemThrow extends jspb.Message {
+export class CS2ItemThrow extends jspb.Message {
   hasMapTime(): boolean;
   clearMapTime(): void;
   getMapTime(): google_protobuf_duration_pb.Duration | undefined;
@@ -2546,8 +2546,8 @@ export class CsgoItemThrow extends jspb.Message {
 
   hasPosition(): boolean;
   clearPosition(): void;
-  getPosition(): CsgoPosition | undefined;
-  setPosition(value?: CsgoPosition): void;
+  getPosition(): CS2Position | undefined;
+  setPosition(value?: CS2Position): void;
 
   getPlayerUrn(): string;
   setPlayerUrn(value: string): void;
@@ -2559,28 +2559,28 @@ export class CsgoItemThrow extends jspb.Message {
   setItem(value: string): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoItemThrow.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoItemThrow): CsgoItemThrow.AsObject;
+  toObject(includeInstance?: boolean): CS2ItemThrow.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2ItemThrow): CS2ItemThrow.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoItemThrow, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoItemThrow;
-  static deserializeBinaryFromReader(message: CsgoItemThrow, reader: jspb.BinaryReader): CsgoItemThrow;
+  static serializeBinaryToWriter(message: CS2ItemThrow, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2ItemThrow;
+  static deserializeBinaryFromReader(message: CS2ItemThrow, reader: jspb.BinaryReader): CS2ItemThrow;
 }
 
-export namespace CsgoItemThrow {
+export namespace CS2ItemThrow {
   export type AsObject = {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
     currentRoundNumber: number,
-    position?: CsgoPosition.AsObject,
+    position?: CS2Position.AsObject,
     playerUrn: string,
     teamUrn: string,
     item: string,
   }
 }
 
-export class CsgoKill extends jspb.Message {
+export class CS2Kill extends jspb.Message {
   hasMapTime(): boolean;
   clearMapTime(): void;
   getMapTime(): google_protobuf_duration_pb.Duration | undefined;
@@ -2596,8 +2596,8 @@ export class CsgoKill extends jspb.Message {
 
   hasKillerPosition(): boolean;
   clearKillerPosition(): void;
-  getKillerPosition(): CsgoPosition | undefined;
-  setKillerPosition(value?: CsgoPosition): void;
+  getKillerPosition(): CS2Position | undefined;
+  setKillerPosition(value?: CS2Position): void;
 
   getKillerUrn(): string;
   setKillerUrn(value: string): void;
@@ -2626,21 +2626,21 @@ export class CsgoKill extends jspb.Message {
   addAssistants(value: string, index?: number): string;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoKill.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoKill): CsgoKill.AsObject;
+  toObject(includeInstance?: boolean): CS2Kill.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2Kill): CS2Kill.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoKill, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoKill;
-  static deserializeBinaryFromReader(message: CsgoKill, reader: jspb.BinaryReader): CsgoKill;
+  static serializeBinaryToWriter(message: CS2Kill, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2Kill;
+  static deserializeBinaryFromReader(message: CS2Kill, reader: jspb.BinaryReader): CS2Kill;
 }
 
-export namespace CsgoKill {
+export namespace CS2Kill {
   export type AsObject = {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
     currentRoundNumber: number,
-    killerPosition?: CsgoPosition.AsObject,
+    killerPosition?: CS2Position.AsObject,
     killerUrn: string,
     killerTeamUrn: string,
     victimUrn: string,
@@ -2652,7 +2652,7 @@ export namespace CsgoKill {
   }
 }
 
-export class CsgoDeath extends jspb.Message {
+export class CS2Death extends jspb.Message {
   hasMapTime(): boolean;
   clearMapTime(): void;
   getMapTime(): google_protobuf_duration_pb.Duration | undefined;
@@ -2668,8 +2668,8 @@ export class CsgoDeath extends jspb.Message {
 
   hasPosition(): boolean;
   clearPosition(): void;
-  getPosition(): CsgoPosition | undefined;
-  setPosition(value?: CsgoPosition): void;
+  getPosition(): CS2Position | undefined;
+  setPosition(value?: CS2Position): void;
 
   getPlayerUrn(): string;
   setPlayerUrn(value: string): void;
@@ -2687,21 +2687,21 @@ export class CsgoDeath extends jspb.Message {
   setDeathByBomb(value: boolean): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoDeath.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoDeath): CsgoDeath.AsObject;
+  toObject(includeInstance?: boolean): CS2Death.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2Death): CS2Death.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoDeath, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoDeath;
-  static deserializeBinaryFromReader(message: CsgoDeath, reader: jspb.BinaryReader): CsgoDeath;
+  static serializeBinaryToWriter(message: CS2Death, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2Death;
+  static deserializeBinaryFromReader(message: CS2Death, reader: jspb.BinaryReader): CS2Death;
 }
 
-export namespace CsgoDeath {
+export namespace CS2Death {
   export type AsObject = {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
     currentRoundNumber: number,
-    position?: CsgoPosition.AsObject,
+    position?: CS2Position.AsObject,
     playerUrn: string,
     teamUrn: string,
     totalDeaths: number,
@@ -2710,7 +2710,7 @@ export namespace CsgoDeath {
   }
 }
 
-export class CsgoMapEnd extends jspb.Message {
+export class CS2MapEnd extends jspb.Message {
   hasMapTime(): boolean;
   clearMapTime(): void;
   getMapTime(): google_protobuf_duration_pb.Duration | undefined;
@@ -2719,58 +2719,58 @@ export class CsgoMapEnd extends jspb.Message {
   getCurrentRoundNumber(): number;
   setCurrentRoundNumber(value: number): void;
 
-  getCsgoMapName(): string;
-  setCsgoMapName(value: string): void;
+  getMapName(): string;
+  setMapName(value: string): void;
 
   getWinningTeamUrn(): string;
   setWinningTeamUrn(value: string): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoMapEnd.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoMapEnd): CsgoMapEnd.AsObject;
+  toObject(includeInstance?: boolean): CS2MapEnd.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2MapEnd): CS2MapEnd.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoMapEnd, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoMapEnd;
-  static deserializeBinaryFromReader(message: CsgoMapEnd, reader: jspb.BinaryReader): CsgoMapEnd;
+  static serializeBinaryToWriter(message: CS2MapEnd, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2MapEnd;
+  static deserializeBinaryFromReader(message: CS2MapEnd, reader: jspb.BinaryReader): CS2MapEnd;
 }
 
-export namespace CsgoMapEnd {
+export namespace CS2MapEnd {
   export type AsObject = {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     currentRoundNumber: number,
-    csgoMapName: string,
+    mapName: string,
     winningTeamUrn: string,
   }
 }
 
-export class CsgoMapStart extends jspb.Message {
+export class CS2MapStart extends jspb.Message {
   hasMapTime(): boolean;
   clearMapTime(): void;
   getMapTime(): google_protobuf_duration_pb.Duration | undefined;
   setMapTime(value?: google_protobuf_duration_pb.Duration): void;
 
-  getCsgoMapName(): string;
-  setCsgoMapName(value: string): void;
+  getMapName(): string;
+  setMapName(value: string): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoMapStart.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoMapStart): CsgoMapStart.AsObject;
+  toObject(includeInstance?: boolean): CS2MapStart.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2MapStart): CS2MapStart.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoMapStart, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoMapStart;
-  static deserializeBinaryFromReader(message: CsgoMapStart, reader: jspb.BinaryReader): CsgoMapStart;
+  static serializeBinaryToWriter(message: CS2MapStart, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2MapStart;
+  static deserializeBinaryFromReader(message: CS2MapStart, reader: jspb.BinaryReader): CS2MapStart;
 }
 
-export namespace CsgoMapStart {
+export namespace CS2MapStart {
   export type AsObject = {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
-    csgoMapName: string,
+    mapName: string,
   }
 }
 
-export class CsgoRoundEnd extends jspb.Message {
+export class CS2RoundEnd extends jspb.Message {
   hasMapTime(): boolean;
   clearMapTime(): void;
   getMapTime(): google_protobuf_duration_pb.Duration | undefined;
@@ -2787,36 +2787,36 @@ export class CsgoRoundEnd extends jspb.Message {
   getWinningTeamUrn(): string;
   setWinningTeamUrn(value: string): void;
 
-  getWinReason(): CsgoWinReasonMap[keyof CsgoWinReasonMap];
-  setWinReason(value: CsgoWinReasonMap[keyof CsgoWinReasonMap]): void;
+  getWinReason(): CS2WinReasonMap[keyof CS2WinReasonMap];
+  setWinReason(value: CS2WinReasonMap[keyof CS2WinReasonMap]): void;
 
-  getPlayerBalancesMap(): jspb.Map<string, CsgoPlayerBalance>;
+  getPlayerBalancesMap(): jspb.Map<string, CS2PlayerBalance>;
   clearPlayerBalancesMap(): void;
-  getPlayerInventoriesMap(): jspb.Map<string, CsgoPlayerItems>;
+  getPlayerInventoriesMap(): jspb.Map<string, CS2PlayerItems>;
   clearPlayerInventoriesMap(): void;
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoRoundEnd.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoRoundEnd): CsgoRoundEnd.AsObject;
+  toObject(includeInstance?: boolean): CS2RoundEnd.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2RoundEnd): CS2RoundEnd.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoRoundEnd, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoRoundEnd;
-  static deserializeBinaryFromReader(message: CsgoRoundEnd, reader: jspb.BinaryReader): CsgoRoundEnd;
+  static serializeBinaryToWriter(message: CS2RoundEnd, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2RoundEnd;
+  static deserializeBinaryFromReader(message: CS2RoundEnd, reader: jspb.BinaryReader): CS2RoundEnd;
 }
 
-export namespace CsgoRoundEnd {
+export namespace CS2RoundEnd {
   export type AsObject = {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
     currentRoundNumber: number,
     winningTeamUrn: string,
-    winReason: CsgoWinReasonMap[keyof CsgoWinReasonMap],
-    playerBalancesMap: Array<[string, CsgoPlayerBalance.AsObject]>,
-    playerInventoriesMap: Array<[string, CsgoPlayerItems.AsObject]>,
+    winReason: CS2WinReasonMap[keyof CS2WinReasonMap],
+    playerBalancesMap: Array<[string, CS2PlayerBalance.AsObject]>,
+    playerInventoriesMap: Array<[string, CS2PlayerItems.AsObject]>,
   }
 }
 
-export class CsgoRoundPause extends jspb.Message {
+export class CS2RoundPause extends jspb.Message {
   hasMapTime(): boolean;
   clearMapTime(): void;
   getMapTime(): google_protobuf_duration_pb.Duration | undefined;
@@ -2831,16 +2831,16 @@ export class CsgoRoundPause extends jspb.Message {
   setCurrentRoundNumber(value: number): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoRoundPause.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoRoundPause): CsgoRoundPause.AsObject;
+  toObject(includeInstance?: boolean): CS2RoundPause.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2RoundPause): CS2RoundPause.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoRoundPause, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoRoundPause;
-  static deserializeBinaryFromReader(message: CsgoRoundPause, reader: jspb.BinaryReader): CsgoRoundPause;
+  static serializeBinaryToWriter(message: CS2RoundPause, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2RoundPause;
+  static deserializeBinaryFromReader(message: CS2RoundPause, reader: jspb.BinaryReader): CS2RoundPause;
 }
 
-export namespace CsgoRoundPause {
+export namespace CS2RoundPause {
   export type AsObject = {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
@@ -2848,7 +2848,7 @@ export namespace CsgoRoundPause {
   }
 }
 
-export class CsgoRoundResume extends jspb.Message {
+export class CS2RoundResume extends jspb.Message {
   hasMapTime(): boolean;
   clearMapTime(): void;
   getMapTime(): google_protobuf_duration_pb.Duration | undefined;
@@ -2863,16 +2863,16 @@ export class CsgoRoundResume extends jspb.Message {
   setCurrentRoundNumber(value: number): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoRoundResume.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoRoundResume): CsgoRoundResume.AsObject;
+  toObject(includeInstance?: boolean): CS2RoundResume.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2RoundResume): CS2RoundResume.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoRoundResume, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoRoundResume;
-  static deserializeBinaryFromReader(message: CsgoRoundResume, reader: jspb.BinaryReader): CsgoRoundResume;
+  static serializeBinaryToWriter(message: CS2RoundResume, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2RoundResume;
+  static deserializeBinaryFromReader(message: CS2RoundResume, reader: jspb.BinaryReader): CS2RoundResume;
 }
 
-export namespace CsgoRoundResume {
+export namespace CS2RoundResume {
   export type AsObject = {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
@@ -2880,27 +2880,27 @@ export namespace CsgoRoundResume {
   }
 }
 
-export class CsgoRoundRollback extends jspb.Message {
+export class CS2RoundRollback extends jspb.Message {
   getNextRoundNumber(): number;
   setNextRoundNumber(value: number): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoRoundRollback.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoRoundRollback): CsgoRoundRollback.AsObject;
+  toObject(includeInstance?: boolean): CS2RoundRollback.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2RoundRollback): CS2RoundRollback.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoRoundRollback, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoRoundRollback;
-  static deserializeBinaryFromReader(message: CsgoRoundRollback, reader: jspb.BinaryReader): CsgoRoundRollback;
+  static serializeBinaryToWriter(message: CS2RoundRollback, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2RoundRollback;
+  static deserializeBinaryFromReader(message: CS2RoundRollback, reader: jspb.BinaryReader): CS2RoundRollback;
 }
 
-export namespace CsgoRoundRollback {
+export namespace CS2RoundRollback {
   export type AsObject = {
     nextRoundNumber: number,
   }
 }
 
-export class CsgoRoundStart extends jspb.Message {
+export class CS2RoundStart extends jspb.Message {
   hasMapTime(): boolean;
   clearMapTime(): void;
   getMapTime(): google_protobuf_duration_pb.Duration | undefined;
@@ -2915,16 +2915,16 @@ export class CsgoRoundStart extends jspb.Message {
   setCurrentRoundNumber(value: number): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CsgoRoundStart.AsObject;
-  static toObject(includeInstance: boolean, msg: CsgoRoundStart): CsgoRoundStart.AsObject;
+  toObject(includeInstance?: boolean): CS2RoundStart.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2RoundStart): CS2RoundStart.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CsgoRoundStart, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CsgoRoundStart;
-  static deserializeBinaryFromReader(message: CsgoRoundStart, reader: jspb.BinaryReader): CsgoRoundStart;
+  static serializeBinaryToWriter(message: CS2RoundStart, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2RoundStart;
+  static deserializeBinaryFromReader(message: CS2RoundStart, reader: jspb.BinaryReader): CS2RoundStart;
 }
 
-export namespace CsgoRoundStart {
+export namespace CS2RoundStart {
   export type AsObject = {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
@@ -2932,49 +2932,49 @@ export namespace CsgoRoundStart {
   }
 }
 
-export interface CsgoSideMap {
-  CSGO_SIDE_UNSPECIFIED: 0;
-  CSGO_SIDE_COUNTER_TERRORISTS: 1;
-  CSGO_SIDE_TERRORISTS: 2;
+export interface CS2SideMap {
+  CS2_SIDE_UNSPECIFIED: 0;
+  CS2_SIDE_COUNTER_TERRORISTS: 1;
+  CS2_SIDE_TERRORISTS: 2;
 }
 
-export const CsgoSide: CsgoSideMap;
+export const CS2Side: CS2SideMap;
 
-export interface CsgoWinReasonMap {
-  CSGO_WIN_REASON_UNSPECIFIED: 0;
-  CSGO_WIN_REASON_COUNTER_TERRORISTS_ELIMINATED: 1;
-  CSGO_WIN_REASON_TERRORISTS_ELIMINATED: 2;
-  CSGO_WIN_REASON_EXPLOSION: 3;
-  CSGO_WIN_REASON_DEFUSE: 4;
-  CSGO_WIN_REASON_TIMEOUT: 5;
-  CSGO_WIN_REASON_TARGET_SAVED: 6;
+export interface CS2WinReasonMap {
+  CS2_WIN_REASON_UNSPECIFIED: 0;
+  CS2_WIN_REASON_COUNTER_TERRORISTS_ELIMINATED: 1;
+  CS2_WIN_REASON_TERRORISTS_ELIMINATED: 2;
+  CS2_WIN_REASON_EXPLOSION: 3;
+  CS2_WIN_REASON_DEFUSE: 4;
+  CS2_WIN_REASON_TIMEOUT: 5;
+  CS2_WIN_REASON_TARGET_SAVED: 6;
 }
 
-export const CsgoWinReason: CsgoWinReasonMap;
+export const CS2WinReason: CS2WinReasonMap;
 
-export interface CsgoRoundStateTypeMap {
-  CSGO_ROUND_STATE_TYPE_UNSPECIFIED: 0;
-  CSGO_ROUND_STATE_TYPE_BUY_TIME: 1;
-  CSGO_ROUND_STATE_TYPE_IN_PROGRESS: 2;
-  CSGO_ROUND_STATE_TYPE_PAUSED: 3;
-  CSGO_ROUND_STATE_TYPE_FINISHED: 4;
+export interface CS2RoundStateTypeMap {
+  CS2_ROUND_STATE_TYPE_UNSPECIFIED: 0;
+  CS2_ROUND_STATE_TYPE_BUY_TIME: 1;
+  CS2_ROUND_STATE_TYPE_IN_PROGRESS: 2;
+  CS2_ROUND_STATE_TYPE_PAUSED: 3;
+  CS2_ROUND_STATE_TYPE_FINISHED: 4;
 }
 
-export const CsgoRoundStateType: CsgoRoundStateTypeMap;
+export const CS2RoundStateType: CS2RoundStateTypeMap;
 
-export interface CsgoWeaponTypeMap {
-  CSGO_WEAPON_TYPE_UNSPECIFIED: 0;
-  CSGO_WEAPON_TYPE_PISTOL: 1;
-  CSGO_WEAPON_TYPE_BOMB: 2;
-  CSGO_WEAPON_TYPE_GRENADE: 3;
-  CSGO_WEAPON_TYPE_MACHINE_GUN: 4;
-  CSGO_WEAPON_TYPE_RIFLE: 5;
-  CSGO_WEAPON_TYPE_SHOTGUN: 6;
-  CSGO_WEAPON_TYPE_SNIPER_RIFLE: 7;
-  CSGO_WEAPON_TYPE_SUBMACHINE_GUN: 8;
-  CSGO_WEAPON_TYPE_KNIFE: 9;
-  CSGO_WEAPON_TYPE_DEFUSE_KIT: 10;
+export interface CS2WeaponTypeMap {
+  CS2_WEAPON_TYPE_UNSPECIFIED: 0;
+  CS2_WEAPON_TYPE_PISTOL: 1;
+  CS2_WEAPON_TYPE_BOMB: 2;
+  CS2_WEAPON_TYPE_GRENADE: 3;
+  CS2_WEAPON_TYPE_MACHINE_GUN: 4;
+  CS2_WEAPON_TYPE_RIFLE: 5;
+  CS2_WEAPON_TYPE_SHOTGUN: 6;
+  CS2_WEAPON_TYPE_SNIPER_RIFLE: 7;
+  CS2_WEAPON_TYPE_SUBMACHINE_GUN: 8;
+  CS2_WEAPON_TYPE_KNIFE: 9;
+  CS2_WEAPON_TYPE_DEFUSE_KIT: 10;
 }
 
-export const CsgoWeaponType: CsgoWeaponTypeMap;
+export const CS2WeaponType: CS2WeaponTypeMap;
 

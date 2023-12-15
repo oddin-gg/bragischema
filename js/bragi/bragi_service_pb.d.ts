@@ -4,7 +4,7 @@
 import * as jspb from "google-protobuf";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 import * as bragi_common_pb from "../bragi/common_pb";
-import * as bragi_csgo_pb from "../bragi/csgo_pb";
+import * as bragi_cs2_pb from "../bragi/cs2_pb";
 import * as bragi_dota2_pb from "../bragi/dota2_pb";
 import * as bragi_rush_soccer_pb from "../bragi/rush_soccer_pb";
 import * as bragi_lol_pb from "../bragi/lol_pb";
@@ -96,15 +96,15 @@ export class MatchMessage extends jspb.Message {
   getAnnouncement(): bragi_common_pb.AnnouncementUpdate | undefined;
   setAnnouncement(value?: bragi_common_pb.AnnouncementUpdate): void;
 
-  hasCsgo(): boolean;
-  clearCsgo(): void;
-  getCsgo(): bragi_csgo_pb.CsgoMatchMessage | undefined;
-  setCsgo(value?: bragi_csgo_pb.CsgoMatchMessage): void;
+  hasCs2(): boolean;
+  clearCs2(): void;
+  getCs2(): bragi_cs2_pb.CS2MatchMessage | undefined;
+  setCs2(value?: bragi_cs2_pb.CS2MatchMessage): void;
 
-  hasCsgoWingman(): boolean;
-  clearCsgoWingman(): void;
-  getCsgoWingman(): bragi_csgo_pb.CsgoMatchMessage | undefined;
-  setCsgoWingman(value?: bragi_csgo_pb.CsgoMatchMessage): void;
+  hasCs2Duels(): boolean;
+  clearCs2Duels(): void;
+  getCs2Duels(): bragi_cs2_pb.CS2MatchMessage | undefined;
+  setCs2Duels(value?: bragi_cs2_pb.CS2MatchMessage): void;
 
   hasDota2(): boolean;
   clearDota2(): void;
@@ -145,8 +145,8 @@ export class MatchMessage extends jspb.Message {
 export namespace MatchMessage {
   export type AsObject = {
     announcement?: bragi_common_pb.AnnouncementUpdate.AsObject,
-    csgo?: bragi_csgo_pb.CsgoMatchMessage.AsObject,
-    csgoWingman?: bragi_csgo_pb.CsgoMatchMessage.AsObject,
+    cs2?: bragi_cs2_pb.CS2MatchMessage.AsObject,
+    cs2Duels?: bragi_cs2_pb.CS2MatchMessage.AsObject,
     dota2?: bragi_dota2_pb.Dota2MatchMessage.AsObject,
     rushSoccer?: bragi_rush_soccer_pb.RushSoccerMatchMessage.AsObject,
     lol?: bragi_lol_pb.LolMatchMessage.AsObject,
@@ -157,8 +157,8 @@ export namespace MatchMessage {
   export enum MessageCase {
     MESSAGE_NOT_SET = 0,
     ANNOUNCEMENT = 1,
-    CSGO = 2,
-    CSGO_WINGMAN = 3,
+    CS2 = 2,
+    CS2_DUELS = 3,
     DOTA2 = 4,
     RUSH_SOCCER = 5,
     LOL = 6,
@@ -168,15 +168,15 @@ export namespace MatchMessage {
 }
 
 export class MatchSnapshot extends jspb.Message {
-  hasCsgo(): boolean;
-  clearCsgo(): void;
-  getCsgo(): bragi_csgo_pb.CsgoMatchSnapshot | undefined;
-  setCsgo(value?: bragi_csgo_pb.CsgoMatchSnapshot): void;
+  hasCs2(): boolean;
+  clearCs2(): void;
+  getCs2(): bragi_cs2_pb.CS2MatchSnapshot | undefined;
+  setCs2(value?: bragi_cs2_pb.CS2MatchSnapshot): void;
 
-  hasCsgoWingman(): boolean;
-  clearCsgoWingman(): void;
-  getCsgoWingman(): bragi_csgo_pb.CsgoMatchSnapshot | undefined;
-  setCsgoWingman(value?: bragi_csgo_pb.CsgoMatchSnapshot): void;
+  hasCs2Duels(): boolean;
+  clearCs2Duels(): void;
+  getCs2Duels(): bragi_cs2_pb.CS2MatchSnapshot | undefined;
+  setCs2Duels(value?: bragi_cs2_pb.CS2MatchSnapshot): void;
 
   hasDota2(): boolean;
   clearDota2(): void;
@@ -216,8 +216,8 @@ export class MatchSnapshot extends jspb.Message {
 
 export namespace MatchSnapshot {
   export type AsObject = {
-    csgo?: bragi_csgo_pb.CsgoMatchSnapshot.AsObject,
-    csgoWingman?: bragi_csgo_pb.CsgoMatchSnapshot.AsObject,
+    cs2?: bragi_cs2_pb.CS2MatchSnapshot.AsObject,
+    cs2Duels?: bragi_cs2_pb.CS2MatchSnapshot.AsObject,
     dota2?: bragi_dota2_pb.Dota2MatchSnapshot.AsObject,
     rushSoccer?: bragi_rush_soccer_pb.RushSoccerMatchSnapshot.AsObject,
     lol?: bragi_lol_pb.LolMatchSnapshot.AsObject,
@@ -227,8 +227,8 @@ export namespace MatchSnapshot {
 
   export enum SnapshotCase {
     SNAPSHOT_NOT_SET = 0,
-    CSGO = 1,
-    CSGO_WINGMAN = 2,
+    CS2 = 1,
+    CS2_DUELS = 2,
     DOTA2 = 3,
     RUSH_SOCCER = 4,
     LOL = 5,
@@ -238,15 +238,15 @@ export namespace MatchSnapshot {
 }
 
 export class MatchState extends jspb.Message {
-  hasCsgo(): boolean;
-  clearCsgo(): void;
-  getCsgo(): bragi_csgo_pb.CsgoMatchState | undefined;
-  setCsgo(value?: bragi_csgo_pb.CsgoMatchState): void;
+  hasCs2(): boolean;
+  clearCs2(): void;
+  getCs2(): bragi_cs2_pb.CS2MatchState | undefined;
+  setCs2(value?: bragi_cs2_pb.CS2MatchState): void;
 
-  hasCsgoWingman(): boolean;
-  clearCsgoWingman(): void;
-  getCsgoWingman(): bragi_csgo_pb.CsgoMatchState | undefined;
-  setCsgoWingman(value?: bragi_csgo_pb.CsgoMatchState): void;
+  hasCs2Duels(): boolean;
+  clearCs2Duels(): void;
+  getCs2Duels(): bragi_cs2_pb.CS2MatchState | undefined;
+  setCs2Duels(value?: bragi_cs2_pb.CS2MatchState): void;
 
   hasDota2(): boolean;
   clearDota2(): void;
@@ -286,8 +286,8 @@ export class MatchState extends jspb.Message {
 
 export namespace MatchState {
   export type AsObject = {
-    csgo?: bragi_csgo_pb.CsgoMatchState.AsObject,
-    csgoWingman?: bragi_csgo_pb.CsgoMatchState.AsObject,
+    cs2?: bragi_cs2_pb.CS2MatchState.AsObject,
+    cs2Duels?: bragi_cs2_pb.CS2MatchState.AsObject,
     dota2?: bragi_dota2_pb.Dota2MatchState.AsObject,
     rushSoccer?: bragi_rush_soccer_pb.RushSoccerMatchState.AsObject,
     lol?: bragi_lol_pb.LolMatchState.AsObject,
@@ -297,8 +297,8 @@ export namespace MatchState {
 
   export enum StateCase {
     STATE_NOT_SET = 0,
-    CSGO = 1,
-    CSGO_WINGMAN = 2,
+    CS2 = 1,
+    CS2_DUELS = 2,
     DOTA2 = 3,
     RUSH_SOCCER = 4,
     LOL = 5,
