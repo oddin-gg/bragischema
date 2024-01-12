@@ -11,6 +11,44 @@ import * as bragi_lol_pb from "../bragi/lol_pb";
 import * as bragi_rush_basketball_pb from "../bragi/rush_basketball_pb";
 import * as bragi_valorant_pb from "../bragi/valorant_pb";
 
+export class MatchTimelineRequest extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MatchTimelineRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: MatchTimelineRequest): MatchTimelineRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MatchTimelineRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MatchTimelineRequest;
+  static deserializeBinaryFromReader(message: MatchTimelineRequest, reader: jspb.BinaryReader): MatchTimelineRequest;
+}
+
+export namespace MatchTimelineRequest {
+  export type AsObject = {
+  }
+}
+
+export class MatchTimelineResponse extends jspb.Message {
+  clearMatchesList(): void;
+  getMatchesList(): Array<bragi_common_pb.Match>;
+  setMatchesList(value: Array<bragi_common_pb.Match>): void;
+  addMatches(value?: bragi_common_pb.Match, index?: number): bragi_common_pb.Match;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MatchTimelineResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: MatchTimelineResponse): MatchTimelineResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MatchTimelineResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MatchTimelineResponse;
+  static deserializeBinaryFromReader(message: MatchTimelineResponse, reader: jspb.BinaryReader): MatchTimelineResponse;
+}
+
+export namespace MatchTimelineResponse {
+  export type AsObject = {
+    matchesList: Array<bragi_common_pb.Match.AsObject>,
+  }
+}
+
 export class LiveDataFeedRequest extends jspb.Message {
   hasAfter(): boolean;
   clearAfter(): void;

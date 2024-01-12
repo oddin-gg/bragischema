@@ -167,6 +167,60 @@ export namespace ControlErrorAnnouncement {
   export const ControlErrorAnnouncementType: ControlErrorAnnouncementTypeMap;
 }
 
+export class Match extends jspb.Message {
+  getMatchUrn(): string;
+  setMatchUrn(value: string): void;
+
+  getTournamentUrn(): string;
+  setTournamentUrn(value: string): void;
+
+  getSport(): SportMap[keyof SportMap];
+  setSport(value: SportMap[keyof SportMap]): void;
+
+  getHomeTeamUrn(): string;
+  setHomeTeamUrn(value: string): void;
+
+  getAwayTeamUrn(): string;
+  setAwayTeamUrn(value: string): void;
+
+  getHomeScore(): number;
+  setHomeScore(value: number): void;
+
+  getAwayScore(): number;
+  setAwayScore(value: number): void;
+
+  getMatchStatus(): MatchStatusTypeMap[keyof MatchStatusTypeMap];
+  setMatchStatus(value: MatchStatusTypeMap[keyof MatchStatusTypeMap]): void;
+
+  hasPlannetStart(): boolean;
+  clearPlannetStart(): void;
+  getPlannetStart(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setPlannetStart(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Match.AsObject;
+  static toObject(includeInstance: boolean, msg: Match): Match.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Match, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Match;
+  static deserializeBinaryFromReader(message: Match, reader: jspb.BinaryReader): Match;
+}
+
+export namespace Match {
+  export type AsObject = {
+    matchUrn: string,
+    tournamentUrn: string,
+    sport: SportMap[keyof SportMap],
+    homeTeamUrn: string,
+    awayTeamUrn: string,
+    homeScore: number,
+    awayScore: number,
+    matchStatus: MatchStatusTypeMap[keyof MatchStatusTypeMap],
+    plannetStart?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+  }
+}
+
 export class Team extends jspb.Message {
   getTeamUrn(): string;
   setTeamUrn(value: string): void;
@@ -191,6 +245,18 @@ export namespace Team {
   }
 }
 
+export interface SportMap {
+  SPORT_UNSPECIFIED: 0;
+  SPORT_CS2: 1;
+  SPORT_DOTA2: 2;
+  SPORT_LOL: 3;
+  SPORT_VALORANT: 4;
+  SPORT_RUSH_SOCCER: 5;
+  SPORT_RUSH_BASKETBALL: 6;
+}
+
+export const Sport: SportMap;
+
 export interface BestOfTypeMap {
   BEST_OF_TYPE_UNSPECIFIED: 0;
   BEST_OF_TYPE_BO1: 1;
@@ -209,6 +275,7 @@ export interface MatchStatusTypeMap {
   MATCH_STATUS_TYPE_NOT_STARTED: 1;
   MATCH_STATUS_TYPE_LIVE: 2;
   MATCH_STATUS_TYPE_FINISHED: 3;
+  MATCH_STATUS_TYPE_CANCELED: 4;
 }
 
 export const MatchStatusType: MatchStatusTypeMap;

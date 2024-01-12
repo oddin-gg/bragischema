@@ -276,6 +276,11 @@ export class CS2MatchState extends jspb.Message {
   getScore(): CS2MatchScoreState | undefined;
   setScore(value?: CS2MatchScoreState): void;
 
+  hasWinTeamUrn(): boolean;
+  clearWinTeamUrn(): void;
+  getWinTeamUrn(): string;
+  setWinTeamUrn(value: string): void;
+
   getMatchStatus(): bragi_common_pb.MatchStatusTypeMap[keyof bragi_common_pb.MatchStatusTypeMap];
   setMatchStatus(value: bragi_common_pb.MatchStatusTypeMap[keyof bragi_common_pb.MatchStatusTypeMap]): void;
 
@@ -306,6 +311,7 @@ export namespace CS2MatchState {
     homeTeam?: CS2Team.AsObject,
     awayTeam?: CS2Team.AsObject,
     score?: CS2MatchScoreState.AsObject,
+    winTeamUrn: string,
     matchStatus: bragi_common_pb.MatchStatusTypeMap[keyof bragi_common_pb.MatchStatusTypeMap],
     currentMapState?: CS2CurrentMapState.AsObject,
     previousMapStatesList: Array<CS2PreviousMapState.AsObject>,
@@ -1742,8 +1748,11 @@ export class CS2Item extends jspb.Message {
   getName(): string;
   setName(value: string): void;
 
-  getType(): CS2WeaponTypeMap[keyof CS2WeaponTypeMap];
-  setType(value: CS2WeaponTypeMap[keyof CS2WeaponTypeMap]): void;
+  getWeaponType(): CS2WeaponTypeMap[keyof CS2WeaponTypeMap];
+  setWeaponType(value: CS2WeaponTypeMap[keyof CS2WeaponTypeMap]): void;
+
+  getType(): CS2ItemTypeMap[keyof CS2ItemTypeMap];
+  setType(value: CS2ItemTypeMap[keyof CS2ItemTypeMap]): void;
 
   getCount(): number;
   setCount(value: number): void;
@@ -1764,7 +1773,8 @@ export class CS2Item extends jspb.Message {
 export namespace CS2Item {
   export type AsObject = {
     name: string,
-    type: CS2WeaponTypeMap[keyof CS2WeaponTypeMap],
+    weaponType: CS2WeaponTypeMap[keyof CS2WeaponTypeMap],
+    type: CS2ItemTypeMap[keyof CS2ItemTypeMap],
     count: number,
     isactive: boolean,
   }
@@ -2977,4 +2987,21 @@ export interface CS2WeaponTypeMap {
 }
 
 export const CS2WeaponType: CS2WeaponTypeMap;
+
+export interface CS2ItemTypeMap {
+  CS2_ITEM_TYPE_UNSPECIFIED: 0;
+  CS2_ITEM_TYPE_PISTOL: 1;
+  CS2_ITEM_TYPE_BOMB: 2;
+  CS2_ITEM_TYPE_GRENADE: 3;
+  CS2_ITEM_TYPE_MACHINE_GUN: 4;
+  CS2_ITEM_TYPE_RIFLE: 5;
+  CS2_ITEM_TYPE_SHOTGUN: 6;
+  CS2_ITEM_TYPE_SNIPER_RIFLE: 7;
+  CS2_ITEM_TYPE_SUBMACHINE_GUN: 8;
+  CS2_ITEM_TYPE_KNIFE: 9;
+  CS2_ITEM_TYPE_DEFUSE_KIT: 10;
+  CS2_ITEM_TYPE_ARMOR: 11;
+}
+
+export const CS2ItemType: CS2ItemTypeMap;
 

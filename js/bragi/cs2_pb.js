@@ -52,6 +52,7 @@ goog.exportSymbol('proto.bragi.CS2ItemDrop', null, global);
 goog.exportSymbol('proto.bragi.CS2ItemPickUp', null, global);
 goog.exportSymbol('proto.bragi.CS2ItemPurchase', null, global);
 goog.exportSymbol('proto.bragi.CS2ItemThrow', null, global);
+goog.exportSymbol('proto.bragi.CS2ItemType', null, global);
 goog.exportSymbol('proto.bragi.CS2Kill', null, global);
 goog.exportSymbol('proto.bragi.CS2MapEnd', null, global);
 goog.exportSymbol('proto.bragi.CS2MapInfoState', null, global);
@@ -3437,6 +3438,7 @@ proto.bragi.CS2MatchState.toObject = function(includeInstance, msg) {
     homeTeam: (f = msg.getHomeTeam()) && proto.bragi.CS2Team.toObject(includeInstance, f),
     awayTeam: (f = msg.getAwayTeam()) && proto.bragi.CS2Team.toObject(includeInstance, f),
     score: (f = msg.getScore()) && proto.bragi.CS2MatchScoreState.toObject(includeInstance, f),
+    winTeamUrn: jspb.Message.getFieldWithDefault(msg, 9, ""),
     matchStatus: jspb.Message.getFieldWithDefault(msg, 6, 0),
     currentMapState: (f = msg.getCurrentMapState()) && proto.bragi.CS2CurrentMapState.toObject(includeInstance, f),
     previousMapStatesList: jspb.Message.toObjectList(msg.getPreviousMapStatesList(),
@@ -3499,6 +3501,10 @@ proto.bragi.CS2MatchState.deserializeBinaryFromReader = function(msg, reader) {
       var value = new proto.bragi.CS2MatchScoreState;
       reader.readMessage(value,proto.bragi.CS2MatchScoreState.deserializeBinaryFromReader);
       msg.setScore(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setWinTeamUrn(value);
       break;
     case 6:
       var value = /** @type {!proto.bragi.MatchStatusType} */ (reader.readEnum());
@@ -3579,6 +3585,13 @@ proto.bragi.CS2MatchState.serializeBinaryToWriter = function(message, writer) {
       5,
       f,
       proto.bragi.CS2MatchScoreState.serializeBinaryToWriter
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 9));
+  if (f != null) {
+    writer.writeString(
+      9,
+      f
     );
   }
   f = message.getMatchStatus();
@@ -3751,6 +3764,42 @@ proto.bragi.CS2MatchState.prototype.clearScore = function() {
  */
 proto.bragi.CS2MatchState.prototype.hasScore = function() {
   return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional string win_team_urn = 9;
+ * @return {string}
+ */
+proto.bragi.CS2MatchState.prototype.getWinTeamUrn = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.bragi.CS2MatchState} returns this
+ */
+proto.bragi.CS2MatchState.prototype.setWinTeamUrn = function(value) {
+  return jspb.Message.setField(this, 9, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.bragi.CS2MatchState} returns this
+ */
+proto.bragi.CS2MatchState.prototype.clearWinTeamUrn = function() {
+  return jspb.Message.setField(this, 9, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.CS2MatchState.prototype.hasWinTeamUrn = function() {
+  return jspb.Message.getField(this, 9) != null;
 };
 
 
@@ -14098,7 +14147,8 @@ proto.bragi.CS2Item.prototype.toObject = function(opt_includeInstance) {
 proto.bragi.CS2Item.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    type: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    weaponType: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    type: jspb.Message.getFieldWithDefault(msg, 5, 0),
     count: jspb.Message.getFieldWithDefault(msg, 3, 0),
     isactive: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
@@ -14143,6 +14193,10 @@ proto.bragi.CS2Item.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 2:
       var value = /** @type {!proto.bragi.CS2WeaponType} */ (reader.readEnum());
+      msg.setWeaponType(value);
+      break;
+    case 5:
+      var value = /** @type {!proto.bragi.CS2ItemType} */ (reader.readEnum());
       msg.setType(value);
       break;
     case 3:
@@ -14189,10 +14243,17 @@ proto.bragi.CS2Item.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getType();
+  f = message.getWeaponType();
   if (f !== 0.0) {
     writer.writeEnum(
       2,
+      f
+    );
+  }
+  f = message.getType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      5,
       f
     );
   }
@@ -14232,10 +14293,10 @@ proto.bragi.CS2Item.prototype.setName = function(value) {
 
 
 /**
- * optional CS2WeaponType type = 2;
+ * optional CS2WeaponType weapon_type = 2;
  * @return {!proto.bragi.CS2WeaponType}
  */
-proto.bragi.CS2Item.prototype.getType = function() {
+proto.bragi.CS2Item.prototype.getWeaponType = function() {
   return /** @type {!proto.bragi.CS2WeaponType} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
@@ -14244,8 +14305,26 @@ proto.bragi.CS2Item.prototype.getType = function() {
  * @param {!proto.bragi.CS2WeaponType} value
  * @return {!proto.bragi.CS2Item} returns this
  */
-proto.bragi.CS2Item.prototype.setType = function(value) {
+proto.bragi.CS2Item.prototype.setWeaponType = function(value) {
   return jspb.Message.setProto3EnumField(this, 2, value);
+};
+
+
+/**
+ * optional CS2ItemType type = 5;
+ * @return {!proto.bragi.CS2ItemType}
+ */
+proto.bragi.CS2Item.prototype.getType = function() {
+  return /** @type {!proto.bragi.CS2ItemType} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {!proto.bragi.CS2ItemType} value
+ * @return {!proto.bragi.CS2Item} returns this
+ */
+proto.bragi.CS2Item.prototype.setType = function(value) {
+  return jspb.Message.setProto3EnumField(this, 5, value);
 };
 
 
@@ -22877,6 +22956,24 @@ proto.bragi.CS2WeaponType = {
   CS2_WEAPON_TYPE_SUBMACHINE_GUN: 8,
   CS2_WEAPON_TYPE_KNIFE: 9,
   CS2_WEAPON_TYPE_DEFUSE_KIT: 10
+};
+
+/**
+ * @enum {number}
+ */
+proto.bragi.CS2ItemType = {
+  CS2_ITEM_TYPE_UNSPECIFIED: 0,
+  CS2_ITEM_TYPE_PISTOL: 1,
+  CS2_ITEM_TYPE_BOMB: 2,
+  CS2_ITEM_TYPE_GRENADE: 3,
+  CS2_ITEM_TYPE_MACHINE_GUN: 4,
+  CS2_ITEM_TYPE_RIFLE: 5,
+  CS2_ITEM_TYPE_SHOTGUN: 6,
+  CS2_ITEM_TYPE_SNIPER_RIFLE: 7,
+  CS2_ITEM_TYPE_SUBMACHINE_GUN: 8,
+  CS2_ITEM_TYPE_KNIFE: 9,
+  CS2_ITEM_TYPE_DEFUSE_KIT: 10,
+  CS2_ITEM_TYPE_ARMOR: 11
 };
 
 goog.object.extend(exports, proto.bragi);

@@ -49,9 +49,31 @@ message ControlErrorAnnouncement {
   optional string message = 2;
 }
 
+message Match {
+  string match_urn = 1;
+  string tournament_urn = 2;
+  Sport sport = 3;
+  string home_team_urn = 4;
+  string away_team_urn = 5;
+  uint32 home_score = 6;
+  uint32 away_score = 7;
+  MatchStatusType match_status = 8;
+  google.protobuf.Timestamp plannet_start = 9;
+}
+
 message Team {
   string team_urn = 1;
   string team_name = 2;
+}
+
+enum Sport {
+  SPORT_UNSPECIFIED = 0;
+  SPORT_CS2 = 1;
+  SPORT_DOTA2 = 2;
+  SPORT_LOL = 3;
+  SPORT_VALORANT = 4;
+  SPORT_RUSH_SOCCER = 5;
+  SPORT_RUSH_BASKETBALL = 6;
 }
 
 enum BestOfType {
@@ -70,6 +92,7 @@ enum MatchStatusType {
   MATCH_STATUS_TYPE_NOT_STARTED = 1;
   MATCH_STATUS_TYPE_LIVE = 2;
   MATCH_STATUS_TYPE_FINISHED = 3;
+  MATCH_STATUS_TYPE_CANCELED = 4;
 }
 
 enum DataStatus {
