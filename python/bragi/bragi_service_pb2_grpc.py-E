@@ -14,6 +14,11 @@ class BragiStub(object):
         Args:
             channel: A grpc.Channel.
         """
+        self.MatchTimeline = channel.unary_unary(
+                '/bragi.Bragi/MatchTimeline',
+                request_serializer=bragi_dot_bragi__service__pb2.MatchTimelineRequest.SerializeToString,
+                response_deserializer=bragi_dot_bragi__service__pb2.MatchTimelineResponse.FromString,
+                )
         self.LiveDataFeed = channel.unary_stream(
                 '/bragi.Bragi/LiveDataFeed',
                 request_serializer=bragi_dot_bragi__service__pb2.LiveDataFeedRequest.SerializeToString,
@@ -23,6 +28,13 @@ class BragiStub(object):
 
 class BragiServicer(object):
     """Missing associated documentation comment in .proto file."""
+
+    def MatchTimeline(self, request, context):
+        """Matches gRPC unary call returns all planned or currently played matches
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
     def LiveDataFeed(self, request, context):
         """LiveDataFeed gRPC stream returning LiveDataFeedMessage one direction stream
@@ -34,6 +46,11 @@ class BragiServicer(object):
 
 def add_BragiServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'MatchTimeline': grpc.unary_unary_rpc_method_handler(
+                    servicer.MatchTimeline,
+                    request_deserializer=bragi_dot_bragi__service__pb2.MatchTimelineRequest.FromString,
+                    response_serializer=bragi_dot_bragi__service__pb2.MatchTimelineResponse.SerializeToString,
+            ),
             'LiveDataFeed': grpc.unary_stream_rpc_method_handler(
                     servicer.LiveDataFeed,
                     request_deserializer=bragi_dot_bragi__service__pb2.LiveDataFeedRequest.FromString,
@@ -48,6 +65,23 @@ def add_BragiServicer_to_server(servicer, server):
  # This class is part of an EXPERIMENTAL API.
 class Bragi(object):
     """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def MatchTimeline(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/bragi.Bragi/MatchTimeline',
+            bragi_dot_bragi__service__pb2.MatchTimelineRequest.SerializeToString,
+            bragi_dot_bragi__service__pb2.MatchTimelineResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def LiveDataFeed(request,

@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n\017com.oddin.bragiZ\016oddin.gg/bragi',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0f\x62ragi/cs2.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x12\x62ragi/common.proto\"\xaa\x02\n\x0f\x43S2MatchMessage\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x0b\x64\x61ta_status\x18\x05 \x01(\x0e\x32\x11.bragi.DataStatus\x12/\n\x07payload\x18\x04 \x01(\x0b\x32\x1e.bragi.CS2MatchMessage.Payload\x1aj\n\x07Payload\x12+\n\x08snapshot\x18\x01 \x01(\x0b\x32\x17.bragi.CS2MatchSnapshotH\x00\x12\'\n\x06update\x18\x02 \x01(\x0b\x32\x15.bragi.CS2MatchUpdateH\x00\x42\t\n\x07payload\"\xe5\x01\n\x10\x43S2MatchSnapshot\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x0b\x64\x61ta_status\x18\x06 \x01(\x0e\x32\x11.bragi.DataStatus\x12*\n\rannouncements\x18\x04 \x03(\x0b\x32\x13.bragi.Announcement\x12)\n\x0bmatch_state\x18\x05 \x01(\x0b\x32\x14.bragi.CS2MatchState\"\xe8\x01\n\x0e\x43S2MatchUpdate\x12.\n\x07payload\x18\x01 \x01(\x0b\x32\x1d.bragi.CS2MatchUpdate.Payload\x12#\n\x06\x65vents\x18\x02 \x03(\x0b\x32\x0f.bragi.CS2EventB\x02\x18\x01\x1a\x80\x01\n\x07Payload\x12+\n\x0bmatch_state\x18\x01 \x01(\x0b\x32\x14.bragi.CS2MatchStateH\x00\x12=\n\x0fpartial_updates\x18\x02 \x01(\x0b\x32\".bragi.CS2MatchStatePartialUpdatesH\x00\x42\t\n\x07payload\"Q\n\x1b\x43S2MatchStatePartialUpdates\x12\x32\n\x07updates\x18\x01 \x03(\x0b\x32!.bragi.CS2MatchStatePartialUpdate\"\xde\x01\n\x1a\x43S2MatchStatePartialUpdate\x12*\n\x05score\x18\x01 \x01(\x0b\x32\x19.bragi.CS2MatchScoreStateH\x00\x12\x36\n\x11\x63urrent_map_state\x18\x02 \x01(\x0b\x32\x19.bragi.CS2CurrentMapStateH\x00\x12R\n current_map_state_partial_update\x18\x03 \x01(\x0b\x32&.bragi.CS2CurrentMapStatePartialUpdateH\x00\x42\x08\n\x06update\"\xd6\x02\n\rCS2MatchState\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12%\n\nmatch_type\x18\x02 \x01(\x0e\x32\x11.bragi.BestOfType\x12!\n\thome_team\x18\x03 \x01(\x0b\x32\x0e.bragi.CS2Team\x12!\n\taway_team\x18\x04 \x01(\x0b\x32\x0e.bragi.CS2Team\x12(\n\x05score\x18\x05 \x01(\x0b\x32\x19.bragi.CS2MatchScoreState\x12,\n\x0cmatch_status\x18\x06 \x01(\x0e\x32\x16.bragi.MatchStatusType\x12\x34\n\x11\x63urrent_map_state\x18\x07 \x01(\x0b\x32\x19.bragi.CS2CurrentMapState\x12\x37\n\x13previous_map_states\x18\x08 \x03(\x0b\x32\x1a.bragi.CS2PreviousMapState\"<\n\x12\x43S2MatchScoreState\x12\x12\n\nhome_score\x18\x01 \x01(\r\x12\x12\n\naway_score\x18\x02 \x01(\r\".\n\x07\x43S2Team\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12\x11\n\tteam_name\x18\x02 \x01(\t\"\xe0\x02\n\x1f\x43S2CurrentMapStatePartialUpdate\x12&\n\x04info\x18\x01 \x01(\x0b\x32\x16.bragi.CS2MapInfoStateH\x00\x12(\n\x05score\x18\x02 \x01(\x0b\x32\x17.bragi.CS2MapScoreStateH\x00\x12:\n\x13\x63urrent_round_state\x18\x03 \x01(\x0b\x32\x1b.bragi.CS2CurrentRoundStateH\x00\x12V\n\"current_round_state_partial_update\x18\x04 \x01(\x0b\x32(.bragi.CS2CurrentRoundStatePartialUpdateH\x00\x12M\n\x1eteam_map_states_partial_update\x18\x05 \x01(\x0b\x32#.bragi.CS2TeamMapStatePartialUpdateH\x00\x42\x08\n\x06update\"\x81\x03\n\x12\x43S2CurrentMapState\x12\x11\n\tmap_order\x18\x01 \x01(\r\x12$\n\x04info\x18\x02 \x01(\x0b\x32\x16.bragi.CS2MapInfoState\x12&\n\x05score\x18\x03 \x01(\x0b\x32\x17.bragi.CS2MapScoreState\x12\x38\n\x13\x63urrent_round_state\x18\x04 \x01(\x0b\x32\x1b.bragi.CS2CurrentRoundState\x12;\n\x15previous_round_states\x18\x05 \x03(\x0b\x32\x1c.bragi.CS2PreviousRoundState\x12\x45\n\x0fteam_map_states\x18\x06 \x03(\x0b\x32,.bragi.CS2CurrentMapState.TeamMapStatesEntry\x1aL\n\x12TeamMapStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12%\n\x05value\x18\x02 \x01(\x0b\x32\x16.bragi.CS2TeamMapState:\x02\x38\x01\"\xc0\x02\n\x13\x43S2PreviousMapState\x12\x11\n\tmap_order\x18\x01 \x01(\r\x12$\n\x04info\x18\x02 \x01(\x0b\x32\x16.bragi.CS2MapInfoState\x12&\n\x05score\x18\x03 \x01(\x0b\x32\x17.bragi.CS2MapScoreState\x12\x32\n\x0cround_states\x18\x04 \x03(\x0b\x32\x1c.bragi.CS2PreviousRoundState\x12\x46\n\x0fteam_map_states\x18\x05 \x03(\x0b\x32-.bragi.CS2PreviousMapState.TeamMapStatesEntry\x1aL\n\x12TeamMapStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12%\n\x05value\x18\x02 \x01(\x0b\x32\x16.bragi.CS2TeamMapState:\x02\x38\x01\"\x9e\x04\n\x0f\x43S2MapInfoState\x12\x10\n\x08map_name\x18\x01 \x01(\t\x12\x1a\n\x12max_rounds_default\x18\x02 \x01(\r\x12\x1b\n\x13max_rounds_overtime\x18\x03 \x01(\r\x12<\n\x14\x66reeze_time_duration\x18\x04 \x01(\x0b\x32\x19.google.protobuf.DurationH\x00\x88\x01\x01\x12;\n\x13round_time_duration\x18\x05 \x01(\x0b\x32\x19.google.protobuf.DurationH\x01\x88\x01\x01\x12:\n\x12\x62omb_time_duration\x18\x06 \x01(\x0b\x32\x19.google.protobuf.DurationH\x02\x88\x01\x01\x12\x33\n\nstart_time\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x03\x88\x01\x01\x12\x31\n\x08\x65nd_time\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x04\x88\x01\x01\x12\x11\n\tmap_ended\x18\t \x01(\x08\x12\x19\n\x0cwin_team_urn\x18\n \x01(\tH\x05\x88\x01\x01\x42\x17\n\x15_freeze_time_durationB\x16\n\x14_round_time_durationB\x15\n\x13_bomb_time_durationB\r\n\x0b_start_timeB\x0b\n\t_end_timeB\x0f\n\r_win_team_urn\":\n\x10\x43S2MapScoreState\x12\x12\n\nhome_score\x18\x01 \x01(\r\x12\x12\n\naway_score\x18\x02 \x01(\r\"\x80\x02\n!CS2CurrentRoundStatePartialUpdate\x12(\n\x04info\x18\x01 \x01(\x0b\x32\x18.bragi.CS2RoundInfoStateH\x00\x12(\n\x04time\x18\x02 \x01(\x0b\x32\x18.bragi.CS2RoundTimeStateH\x00\x12)\n\nbomb_state\x18\x03 \x01(\x0b\x32\x13.bragi.CS2BombStateH\x00\x12R\n\x1ateam_states_partial_update\x18\x04 \x01(\x0b\x32,.bragi.CS2TeamCurrentRoundStatePartialUpdateH\x00\x42\x08\n\x06update\"\xbb\x02\n\x14\x43S2CurrentRoundState\x12\x14\n\x0cround_number\x18\x01 \x01(\r\x12&\n\x04info\x18\x02 \x01(\x0b\x32\x18.bragi.CS2RoundInfoState\x12&\n\x04time\x18\x03 \x01(\x0b\x32\x18.bragi.CS2RoundTimeState\x12\'\n\nbomb_state\x18\x04 \x01(\x0b\x32\x13.bragi.CS2BombState\x12@\n\x0bteam_states\x18\x05 \x03(\x0b\x32+.bragi.CS2CurrentRoundState.TeamStatesEntry\x1aR\n\x0fTeamStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12.\n\x05value\x18\x02 \x01(\x0b\x32\x1f.bragi.CS2TeamCurrentRoundState:\x02\x38\x01\"\xed\x01\n\x15\x43S2PreviousRoundState\x12\x14\n\x0cround_number\x18\x01 \x01(\r\x12&\n\x04info\x18\x02 \x01(\x0b\x32\x18.bragi.CS2RoundInfoState\x12\x41\n\x0bteam_states\x18\x04 \x03(\x0b\x32,.bragi.CS2PreviousRoundState.TeamStatesEntry\x1aS\n\x0fTeamStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12/\n\x05value\x18\x02 \x01(\x0b\x32 .bragi.CS2PreviousTeamRoundState:\x02\x38\x01\"\xc6\x02\n\x11\x43S2RoundInfoState\x12,\n\nround_type\x18\x01 \x01(\x0e\x32\x18.bragi.CS2RoundStateType\x12.\n\nstart_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x31\n\x08\x65nd_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x00\x88\x01\x01\x12\x1d\n\x10winning_team_urn\x18\x04 \x01(\tH\x01\x88\x01\x01\x12,\n\nwin_reason\x18\x05 \x01(\x0e\x32\x13.bragi.CS2WinReasonH\x02\x88\x01\x01\x12\x15\n\x08home_won\x18\x06 \x01(\x08H\x03\x88\x01\x01\x42\x0b\n\t_end_timeB\x13\n\x11_winning_team_urnB\r\n\x0b_win_reasonB\x0b\n\t_home_won\"F\n\x11\x43S2RoundTimeState\x12\x31\n\x0etime_remaining\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\"\xe8\x02\n\x0c\x43S2BombState\x12-\n\x07\x63\x61rried\x18\x01 \x01(\x0b\x32\x1a.bragi.CS2BombCarriedStateH\x00\x12-\n\x07\x64ropped\x18\x02 \x01(\x0b\x32\x1a.bragi.CS2BombDroppedStateH\x00\x12/\n\x08planting\x18\x03 \x01(\x0b\x32\x1b.bragi.CS2BombPlantingStateH\x00\x12-\n\x07planted\x18\x04 \x01(\x0b\x32\x1a.bragi.CS2BombPlantedStateH\x00\x12/\n\x08\x64\x65\x66using\x18\x05 \x01(\x0b\x32\x1b.bragi.CS2BombDefusingStateH\x00\x12-\n\x07\x64\x65\x66used\x18\x06 \x01(\x0b\x32\x1a.bragi.CS2BombDefusedStateH\x00\x12/\n\x08\x65xploded\x18\x07 \x01(\x0b\x32\x1b.bragi.CS2BombExplodedStateH\x00\x42\t\n\x07payload\"O\n\x13\x43S2BombCarriedState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12$\n\x08position\x18\x02 \x01(\x0b\x32\x12.bragi.CS2Position\"Z\n\x13\x43S2BombDroppedState\x12\x1d\n\x15\x64ropped_by_player_urn\x18\x01 \x01(\t\x12$\n\x08position\x18\x02 \x01(\x0b\x32\x12.bragi.CS2Position\"~\n\x14\x43S2BombPlantingState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12$\n\x08position\x18\x02 \x01(\x0b\x32\x12.bragi.CS2Position\x12,\n\tcountdown\x18\x03 \x01(\x0b\x32\x19.google.protobuf.Duration\"\xb8\x01\n\x13\x43S2BombPlantedState\x12\x1d\n\x15planted_by_player_urn\x18\x01 \x01(\t\x12$\n\x08position\x18\x02 \x01(\x0b\x32\x12.bragi.CS2Position\x12.\n\nplanted_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12,\n\tcountdown\x18\x04 \x01(\x0b\x32\x19.google.protobuf.Duration\"\xb5\x01\n\x14\x43S2BombDefusingState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12$\n\x08position\x18\x02 \x01(\x0b\x32\x12.bragi.CS2Position\x12,\n\tcountdown\x18\x03 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x35\n\x11\x64\x65\x66use_started_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x8a\x01\n\x13\x43S2BombDefusedState\x12\x1d\n\x15\x64\x65\x66used_by_player_urn\x18\x01 \x01(\t\x12$\n\x08position\x18\x02 \x01(\x0b\x32\x12.bragi.CS2Position\x12.\n\ndefused_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"m\n\x14\x43S2BombExplodedState\x12$\n\x08position\x18\x01 \x01(\x0b\x32\x12.bragi.CS2Position\x12/\n\x0b\x65xploded_at\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x8a\x02\n\x1c\x43S2TeamMapStatePartialUpdate\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12<\n\x07payload\x18\x02 \x01(\x0b\x32+.bragi.CS2TeamMapStatePartialUpdate.Payload\x1a\x99\x01\n\x07Payload\x12\x30\n\x0cplayer_state\x18\x02 \x01(\x0b\x32\x18.bragi.CS2PlayerMapStateH\x00\x12Q\n player_map_states_partial_update\x18\x01 \x01(\x0b\x32%.bragi.CS2PlayerMapStatePartialUpdateH\x00\x42\t\n\x07payload\"\xdb\x01\n\x0f\x43S2TeamMapState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12\x1c\n\x04side\x18\x02 \x01(\x0e\x32\x0e.bragi.CS2Side\x12\x46\n\x11player_map_states\x18\x03 \x03(\x0b\x32+.bragi.CS2TeamMapState.PlayerMapStatesEntry\x1aP\n\x14PlayerMapStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\'\n\x05value\x18\x02 \x01(\x0b\x32\x18.bragi.CS2PlayerMapState:\x02\x38\x01\"\xb0\x02\n%CS2TeamCurrentRoundStatePartialUpdate\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12\x45\n\x07payload\x18\x02 \x01(\x0b\x32\x34.bragi.CS2TeamCurrentRoundStatePartialUpdate.Payload\x1a\xad\x01\n\x07Payload\x12\x39\n\x0cplayer_state\x18\x02 \x01(\x0b\x32!.bragi.CS2PlayerCurrentRoundStateH\x00\x12\\\n\"player_round_states_partial_update\x18\x01 \x01(\x0b\x32..bragi.CS2PlayerCurrentRoundStatePartialUpdateH\x00\x42\t\n\x07payload\"\xde\x01\n\x18\x43S2TeamCurrentRoundState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12S\n\x13player_round_states\x18\x02 \x03(\x0b\x32\x36.bragi.CS2TeamCurrentRoundState.PlayerRoundStatesEntry\x1a[\n\x16PlayerRoundStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x30\n\x05value\x18\x02 \x01(\x0b\x32!.bragi.CS2PlayerCurrentRoundState:\x02\x38\x01\"\xc1\x01\n\x19\x43S2PreviousTeamRoundState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12>\n\x07players\x18\x02 \x03(\x0b\x32-.bragi.CS2PreviousTeamRoundState.PlayersEntry\x1aR\n\x0cPlayersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x31\n\x05value\x18\x02 \x01(\x0b\x32\".bragi.CS2PlayerPreviousRoundState:\x02\x38\x01\"\xc4\x01\n\x1e\x43S2PlayerMapStatePartialUpdate\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12>\n\x07payload\x18\x02 \x01(\x0b\x32-.bragi.CS2PlayerMapStatePartialUpdate.Payload\x1aN\n\x07Payload\x12\x38\n\nstatistics\x18\x01 \x01(\x0b\x32\".bragi.CS2PlayerMapStatisticsStateH\x00\x42\t\n\x07payload\"\x85\x01\n\x11\x43S2PlayerMapState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x13\n\x0bplayer_name\x18\x02 \x01(\t\x12\x0f\n\x07slot_id\x18\x04 \x01(\r\x12\x36\n\nstatistics\x18\x03 \x01(\x0b\x32\".bragi.CS2PlayerMapStatisticsState\"\xc8\x01\n\x1b\x43S2PlayerMapStatisticsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x15\n\ropening_kills\x18\x04 \x01(\r\x12\x16\n\x0eopening_deaths\x18\x05 \x01(\r\x12\x14\n\x0ctotal_damage\x18\x06 \x01(\r\x12 \n\x18\x61verage_damage_per_round\x18\x07 \x01(\x02\x12.\n\nstatistics\x18\x02 \x01(\x0b\x32\x1a.bragi.CS2PlayerStatistics\"\xc0\x02\n\'CS2PlayerCurrentRoundStatePartialUpdate\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12G\n\x07payload\x18\x02 \x01(\x0b\x32\x36.bragi.CS2PlayerCurrentRoundStatePartialUpdate.Payload\x1a\xb7\x01\n\x07Payload\x12\x41\n\nstatistics\x18\x01 \x01(\x0b\x32+.bragi.CS2PlayerCurrentRoundStatisticsStateH\x00\x12+\n\x05items\x18\x02 \x01(\x0b\x32\x1a.bragi.CS2PlayerItemsStateH\x00\x12\x31\n\x08position\x18\x03 \x01(\x0b\x32\x1d.bragi.CS2PlayerPositionStateH\x00\x42\t\n\x07payload\"\xf3\x01\n\x1a\x43S2PlayerCurrentRoundState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x13\n\x0bplayer_name\x18\x02 \x01(\t\x12\x0f\n\x07slot_id\x18\x06 \x01(\r\x12?\n\nstatistics\x18\x03 \x01(\x0b\x32+.bragi.CS2PlayerCurrentRoundStatisticsState\x12)\n\x05items\x18\x04 \x01(\x0b\x32\x1a.bragi.CS2PlayerItemsState\x12/\n\x08position\x18\x05 \x01(\x0b\x32\x1d.bragi.CS2PlayerPositionState\"\xc9\x01\n$CS2PlayerCurrentRoundStatisticsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\r\n\x05\x61live\x18\x02 \x01(\x08\x12\x0e\n\x06health\x18\x03 \x01(\r\x12\r\n\x05\x61rmor\x18\x04 \x01(\r\x12\x0f\n\x07\x62\x61lance\x18\x05 \x01(\r\x12\x13\n\x06\x64\x61mage\x18\x07 \x01(\rH\x00\x88\x01\x01\x12.\n\nstatistics\x18\x06 \x01(\x0b\x32\x1a.bragi.CS2PlayerStatisticsB\t\n\x07_damage\"a\n\x13\x43S2PlayerItemsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x17\n\x0f\x65quipment_value\x18\x02 \x01(\r\x12\x1d\n\x05items\x18\x03 \x03(\x0b\x32\x0e.bragi.CS2Item\"v\n\x1b\x43S2PlayerPreviousRoundState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x13\n\x0bplayer_name\x18\x02 \x01(\t\x12.\n\nstatistics\x18\x03 \x01(\x0b\x32\x1a.bragi.CS2PlayerStatistics\"R\n\x16\x43S2PlayerPositionState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12$\n\x08position\x18\x02 \x01(\x0b\x32\x12.bragi.CS2Position\"\xfb\x04\n\x13\x43S2PlayerStatistics\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\r\n\x05kills\x18\x02 \x01(\r\x12\x16\n\x0e\x66riendly_kills\x18\x03 \x01(\r\x12\x13\n\x0b\x65nemy_kills\x18\x04 \x01(\r\x12\x12\n\nself_kills\x18\x05 \x01(\r\x12\x0e\n\x06\x64\x65\x61ths\x18\x06 \x01(\r\x12\x0f\n\x07\x61ssists\x18\x07 \x01(\r\x12\x11\n\theadshots\x18\x08 \x01(\r\x12\x12\n\x06\x64\x61mage\x18\x0f \x01(\rB\x02\x18\x01\x12(\n\x1b\x66riendly_damage_dealt_armor\x18\t \x01(\rH\x00\x88\x01\x01\x12)\n\x1c\x66riendly_damage_dealt_health\x18\n \x01(\rH\x01\x88\x01\x01\x12%\n\x18\x65nemy_damage_dealt_armor\x18\x0b \x01(\rH\x02\x88\x01\x01\x12&\n\x19\x65nemy_damage_dealt_health\x18\x0c \x01(\rH\x03\x88\x01\x01\x12)\n\x1c\x65nemy_damage_dealt_armor_raw\x18\r \x01(\rH\x04\x88\x01\x01\x12*\n\x1d\x65nemy_damage_dealt_health_raw\x18\x0e \x01(\rH\x05\x88\x01\x01\x42\x1e\n\x1c_friendly_damage_dealt_armorB\x1f\n\x1d_friendly_damage_dealt_healthB\x1b\n\x19_enemy_damage_dealt_armorB\x1c\n\x1a_enemy_damage_dealt_healthB\x1f\n\x1d_enemy_damage_dealt_armor_rawB \n\x1e_enemy_damage_dealt_health_raw\"\\\n\x07\x43S2Item\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\"\n\x04type\x18\x02 \x01(\x0e\x32\x14.bragi.CS2WeaponType\x12\r\n\x05\x63ount\x18\x03 \x01(\r\x12\x10\n\x08isActive\x18\x04 \x01(\x08\"=\n\x0b\x43S2Position\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01z\x18\x04 \x01(\x02\x12\r\n\x05\x61ngle\x18\x03 \x01(\x02\"\xe7\x07\n\x08\x43S2Event\x12:\n\x13\x62omb_defuse_started\x18\x01 \x01(\x0b\x32\x1b.bragi.CS2BombDefuseStartedH\x00\x12-\n\x0c\x62omb_defused\x18\x02 \x01(\x0b\x32\x15.bragi.CS2BombDefusedH\x00\x12/\n\rbomb_exploded\x18\x03 \x01(\x0b\x32\x16.bragi.CS2BombExplodedH\x00\x12\x38\n\x12\x62omb_plant_started\x18\x15 \x01(\x0b\x32\x1a.bragi.CS2BombPlantStartedH\x00\x12-\n\x0c\x62omb_planted\x18\x04 \x01(\x0b\x32\x15.bragi.CS2BombPlantedH\x00\x12-\n\x0c\x64\x61mage_dealt\x18\x05 \x01(\x0b\x32\x15.bragi.CS2DamageDealtH\x00\x12\x36\n\x11\x66reeze_time_ended\x18\x06 \x01(\x0b\x32\x19.bragi.CS2FreezeTimeEndedH\x00\x12:\n\x13\x66reeze_time_started\x18\x07 \x01(\x0b\x32\x1b.bragi.CS2FreezeTimeStartedH\x00\x12\'\n\titem_drop\x18\x08 \x01(\x0b\x32\x12.bragi.CS2ItemDropH\x00\x12,\n\x0citem_pick_up\x18\t \x01(\x0b\x32\x14.bragi.CS2ItemPickUpH\x00\x12/\n\ritem_purchase\x18\n \x01(\x0b\x32\x16.bragi.CS2ItemPurchaseH\x00\x12)\n\nitem_throw\x18\x0b \x01(\x0b\x32\x13.bragi.CS2ItemThrowH\x00\x12\x1e\n\x04kill\x18\x0c \x01(\x0b\x32\x0e.bragi.CS2KillH\x00\x12 \n\x05\x64\x65\x61th\x18\r \x01(\x0b\x32\x0f.bragi.CS2DeathH\x00\x12#\n\x07map_end\x18\x0e \x01(\x0b\x32\x10.bragi.CS2MapEndH\x00\x12\'\n\tmap_start\x18\x0f \x01(\x0b\x32\x12.bragi.CS2MapStartH\x00\x12\'\n\tround_end\x18\x10 \x01(\x0b\x32\x12.bragi.CS2RoundEndH\x00\x12+\n\x0bround_pause\x18\x11 \x01(\x0b\x32\x14.bragi.CS2RoundPauseH\x00\x12-\n\x0cround_resume\x18\x12 \x01(\x0b\x32\x15.bragi.CS2RoundResumeH\x00\x12\x31\n\x0eround_rollback\x18\x13 \x01(\x0b\x32\x17.bragi.CS2RoundRollbackH\x00\x12+\n\x0bround_start\x18\x14 \x01(\x0b\x32\x14.bragi.CS2RoundStartH\x00:\x02\x18\x01\x42\x07\n\x05\x65vent\"I\n\x10\x43S2PlayerBalance\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x10\n\x08team_urn\x18\x02 \x01(\t\x12\x0f\n\x07\x62\x61lance\x18\x03 \x01(\r\"n\n\x0e\x43S2PlayerItems\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x10\n\x08team_urn\x18\x02 \x01(\t\x12\x17\n\x0f\x65quipment_value\x18\x03 \x01(\r\x12\x1d\n\x05items\x18\x04 \x03(\x0b\x32\x0e.bragi.CS2Item\"\xba\x01\n\x14\x43S2BombDefuseStarted\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\"\xb4\x01\n\x0e\x43S2BombDefused\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\"\x8f\x01\n\x0f\x43S2BombExploded\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\"\xb9\x01\n\x13\x43S2BombPlantStarted\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\"\xb4\x01\n\x0e\x43S2BombPlanted\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\"\xc8\x03\n\x0e\x43S2DamageDealt\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12+\n\x0fkiller_position\x18\x04 \x01(\x0b\x32\x12.bragi.CS2Position\x12\x12\n\nkiller_urn\x18\x05 \x01(\t\x12\x17\n\x0fkiller_team_urn\x18\x06 \x01(\t\x12\x12\n\nvictim_urn\x18\x07 \x01(\t\x12\x17\n\x0fvictim_team_urn\x18\x08 \x01(\t\x12\x0e\n\x06weapon\x18\t \x01(\t\x12\x10\n\x08hitgroup\x18\n \x01(\t\x12\x17\n\x0fhealth_deducted\x18\x0b \x01(\r\x12\x18\n\x10health_remaining\x18\x0c \x01(\r\x12\x16\n\x0e\x61rmor_deducted\x18\r \x01(\r\x12\x17\n\x0f\x61rmor_remaining\x18\x0e \x01(\r\x12+\n\x0fvictim_position\x18\x0f \x01(\x0b\x32\x12.bragi.CS2Position\"\xc9\x03\n\x12\x43S2FreezeTimeEnded\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x46\n\x0fplayer_balances\x18\x04 \x03(\x0b\x32-.bragi.CS2FreezeTimeEnded.PlayerBalancesEntry\x12L\n\x12player_inventories\x18\x05 \x03(\x0b\x32\x30.bragi.CS2FreezeTimeEnded.PlayerInventoriesEntry\x1aN\n\x13PlayerBalancesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.bragi.CS2PlayerBalance:\x02\x38\x01\x1aO\n\x16PlayerInventoriesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12$\n\x05value\x18\x02 \x01(\x0b\x32\x15.bragi.CS2PlayerItems:\x02\x38\x01\"\xc0\x03\n\x14\x43S2FreezeTimeStarted\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12H\n\x0fplayer_balances\x18\x04 \x03(\x0b\x32/.bragi.CS2FreezeTimeStarted.PlayerBalancesEntry\x12I\n\x10teams_round_info\x18\x05 \x03(\x0b\x32/.bragi.CS2FreezeTimeStarted.TeamsRoundInfoEntry\x1aN\n\x13PlayerBalancesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.bragi.CS2PlayerBalance:\x02\x38\x01\x1a\x45\n\x13TeamsRoundInfoEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x1d\n\x05value\x18\x02 \x01(\x0e\x32\x0e.bragi.CS2Side:\x02\x38\x01\"\xe5\x01\n\x0b\x43S2ItemDrop\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12$\n\x08position\x18\x04 \x01(\x0b\x32\x12.bragi.CS2Position\x12\x12\n\nplayer_urn\x18\x05 \x01(\t\x12\x10\n\x08team_urn\x18\x06 \x01(\t\x12\x0c\n\x04item\x18\x07 \x01(\t\"\xc1\x01\n\rCS2ItemPickUp\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\x12\x0c\n\x04item\x18\x06 \x01(\t\"\xf4\x01\n\x0f\x43S2ItemPurchase\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\x12\x0c\n\x04item\x18\x06 \x01(\t\x12\x16\n\x0eplayer_balance\x18\x07 \x01(\r\x12\x17\n\x0f\x65quipment_value\x18\x08 \x01(\r\"\xe6\x01\n\x0c\x43S2ItemThrow\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12$\n\x08position\x18\x04 \x01(\x0b\x32\x12.bragi.CS2Position\x12\x12\n\nplayer_urn\x18\x05 \x01(\t\x12\x10\n\x08team_urn\x18\x06 \x01(\t\x12\x0c\n\x04item\x18\x07 \x01(\t\"\xd8\x02\n\x07\x43S2Kill\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12+\n\x0fkiller_position\x18\x04 \x01(\x0b\x32\x12.bragi.CS2Position\x12\x12\n\nkiller_urn\x18\x05 \x01(\t\x12\x17\n\x0fkiller_team_urn\x18\x06 \x01(\t\x12\x12\n\nvictim_urn\x18\x07 \x01(\t\x12\x17\n\x0fvictim_team_urn\x18\x08 \x01(\t\x12\x0e\n\x06weapon\x18\t \x01(\t\x12\x10\n\x08headshot\x18\n \x01(\x08\x12\x12\n\npenetrated\x18\x0b \x01(\x08\x12\x12\n\nassistants\x18\x0c \x03(\t\"\x92\x02\n\x08\x43S2Death\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12$\n\x08position\x18\x04 \x01(\x0b\x32\x12.bragi.CS2Position\x12\x12\n\nplayer_urn\x18\x05 \x01(\t\x12\x10\n\x08team_urn\x18\x06 \x01(\t\x12\x14\n\x0ctotal_deaths\x18\x07 \x01(\r\x12\x0f\n\x07suicide\x18\t \x01(\x08\x12\x15\n\rdeath_by_bomb\x18\n \x01(\x08\"\x82\x01\n\tCS2MapEnd\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x10\n\x08map_name\x18\x04 \x01(\t\x12\x18\n\x10winning_team_urn\x18\x05 \x01(\t\"L\n\x0b\x43S2MapStart\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x10\n\x08map_name\x18\x02 \x01(\t\"\xf7\x03\n\x0b\x43S2RoundEnd\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x18\n\x10winning_team_urn\x18\x04 \x01(\t\x12\'\n\nwin_reason\x18\x05 \x01(\x0e\x32\x13.bragi.CS2WinReason\x12?\n\x0fplayer_balances\x18\x06 \x03(\x0b\x32&.bragi.CS2RoundEnd.PlayerBalancesEntry\x12\x45\n\x12player_inventories\x18\x07 \x03(\x0b\x32).bragi.CS2RoundEnd.PlayerInventoriesEntry\x1aN\n\x13PlayerBalancesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.bragi.CS2PlayerBalance:\x02\x38\x01\x1aO\n\x16PlayerInventoriesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12$\n\x05value\x18\x02 \x01(\x0b\x32\x15.bragi.CS2PlayerItems:\x02\x38\x01\"\x8d\x01\n\rCS2RoundPause\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\"\x8e\x01\n\x0e\x43S2RoundResume\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\"-\n\x10\x43S2RoundRollback\x12\x19\n\x11next_round_number\x18\x01 \x01(\r\"\x8d\x01\n\rCS2RoundStart\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r*]\n\x07\x43S2Side\x12\x18\n\x14\x43S2_SIDE_UNSPECIFIED\x10\x00\x12\x1f\n\x1b\x43S2_SIDE_COUNTER_TERRORISTS\x10\x01\x12\x17\n\x13\x43S2_SIDE_TERRORISTS\x10\x02*\x80\x02\n\x0c\x43S2WinReason\x12\x1e\n\x1a\x43S2_WIN_REASON_UNSPECIFIED\x10\x00\x12\x30\n,CS2_WIN_REASON_COUNTER_TERRORISTS_ELIMINATED\x10\x01\x12(\n$CS2_WIN_REASON_TERRORISTS_ELIMINATED\x10\x02\x12\x1c\n\x18\x43S2_WIN_REASON_EXPLOSION\x10\x03\x12\x19\n\x15\x43S2_WIN_REASON_DEFUSE\x10\x04\x12\x1a\n\x16\x43S2_WIN_REASON_TIMEOUT\x10\x05\x12\x1f\n\x1b\x43S2_WIN_REASON_TARGET_SAVED\x10\x06*\xc6\x01\n\x11\x43S2RoundStateType\x12$\n CS2_ROUND_STATE_TYPE_UNSPECIFIED\x10\x00\x12!\n\x1d\x43S2_ROUND_STATE_TYPE_BUY_TIME\x10\x01\x12$\n CS2_ROUND_STATE_TYPE_IN_PROGRESS\x10\x02\x12\x1f\n\x1b\x43S2_ROUND_STATE_TYPE_PAUSED\x10\x03\x12!\n\x1d\x43S2_ROUND_STATE_TYPE_FINISHED\x10\x04*\xdd\x02\n\rCS2WeaponType\x12\x1f\n\x1b\x43S2_WEAPON_TYPE_UNSPECIFIED\x10\x00\x12\x1a\n\x16\x43S2_WEAPON_TYPE_PISTOL\x10\x01\x12\x18\n\x14\x43S2_WEAPON_TYPE_BOMB\x10\x02\x12\x1b\n\x17\x43S2_WEAPON_TYPE_GRENADE\x10\x03\x12\x1f\n\x1b\x43S2_WEAPON_TYPE_MACHINE_GUN\x10\x04\x12\x19\n\x15\x43S2_WEAPON_TYPE_RIFLE\x10\x05\x12\x1b\n\x17\x43S2_WEAPON_TYPE_SHOTGUN\x10\x06\x12 \n\x1c\x43S2_WEAPON_TYPE_SNIPER_RIFLE\x10\x07\x12\"\n\x1e\x43S2_WEAPON_TYPE_SUBMACHINE_GUN\x10\x08\x12\x19\n\x15\x43S2_WEAPON_TYPE_KNIFE\x10\t\x12\x1e\n\x1a\x43S2_WEAPON_TYPE_DEFUSE_KIT\x10\nB!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
+  serialized_pb=b'\n\x0f\x62ragi/cs2.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x12\x62ragi/common.proto\"\xaa\x02\n\x0f\x43S2MatchMessage\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x0b\x64\x61ta_status\x18\x05 \x01(\x0e\x32\x11.bragi.DataStatus\x12/\n\x07payload\x18\x04 \x01(\x0b\x32\x1e.bragi.CS2MatchMessage.Payload\x1aj\n\x07Payload\x12+\n\x08snapshot\x18\x01 \x01(\x0b\x32\x17.bragi.CS2MatchSnapshotH\x00\x12\'\n\x06update\x18\x02 \x01(\x0b\x32\x15.bragi.CS2MatchUpdateH\x00\x42\t\n\x07payload\"\xe5\x01\n\x10\x43S2MatchSnapshot\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x0b\x64\x61ta_status\x18\x06 \x01(\x0e\x32\x11.bragi.DataStatus\x12*\n\rannouncements\x18\x04 \x03(\x0b\x32\x13.bragi.Announcement\x12)\n\x0bmatch_state\x18\x05 \x01(\x0b\x32\x14.bragi.CS2MatchState\"\xe8\x01\n\x0e\x43S2MatchUpdate\x12.\n\x07payload\x18\x01 \x01(\x0b\x32\x1d.bragi.CS2MatchUpdate.Payload\x12#\n\x06\x65vents\x18\x02 \x03(\x0b\x32\x0f.bragi.CS2EventB\x02\x18\x01\x1a\x80\x01\n\x07Payload\x12+\n\x0bmatch_state\x18\x01 \x01(\x0b\x32\x14.bragi.CS2MatchStateH\x00\x12=\n\x0fpartial_updates\x18\x02 \x01(\x0b\x32\".bragi.CS2MatchStatePartialUpdatesH\x00\x42\t\n\x07payload\"Q\n\x1b\x43S2MatchStatePartialUpdates\x12\x32\n\x07updates\x18\x01 \x03(\x0b\x32!.bragi.CS2MatchStatePartialUpdate\"\xde\x01\n\x1a\x43S2MatchStatePartialUpdate\x12*\n\x05score\x18\x01 \x01(\x0b\x32\x19.bragi.CS2MatchScoreStateH\x00\x12\x36\n\x11\x63urrent_map_state\x18\x02 \x01(\x0b\x32\x19.bragi.CS2CurrentMapStateH\x00\x12R\n current_map_state_partial_update\x18\x03 \x01(\x0b\x32&.bragi.CS2CurrentMapStatePartialUpdateH\x00\x42\x08\n\x06update\"\x82\x03\n\rCS2MatchState\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12%\n\nmatch_type\x18\x02 \x01(\x0e\x32\x11.bragi.BestOfType\x12!\n\thome_team\x18\x03 \x01(\x0b\x32\x0e.bragi.CS2Team\x12!\n\taway_team\x18\x04 \x01(\x0b\x32\x0e.bragi.CS2Team\x12(\n\x05score\x18\x05 \x01(\x0b\x32\x19.bragi.CS2MatchScoreState\x12\x19\n\x0cwin_team_urn\x18\t \x01(\tH\x00\x88\x01\x01\x12,\n\x0cmatch_status\x18\x06 \x01(\x0e\x32\x16.bragi.MatchStatusType\x12\x34\n\x11\x63urrent_map_state\x18\x07 \x01(\x0b\x32\x19.bragi.CS2CurrentMapState\x12\x37\n\x13previous_map_states\x18\x08 \x03(\x0b\x32\x1a.bragi.CS2PreviousMapStateB\x0f\n\r_win_team_urn\"<\n\x12\x43S2MatchScoreState\x12\x12\n\nhome_score\x18\x01 \x01(\r\x12\x12\n\naway_score\x18\x02 \x01(\r\".\n\x07\x43S2Team\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12\x11\n\tteam_name\x18\x02 \x01(\t\"\xe0\x02\n\x1f\x43S2CurrentMapStatePartialUpdate\x12&\n\x04info\x18\x01 \x01(\x0b\x32\x16.bragi.CS2MapInfoStateH\x00\x12(\n\x05score\x18\x02 \x01(\x0b\x32\x17.bragi.CS2MapScoreStateH\x00\x12:\n\x13\x63urrent_round_state\x18\x03 \x01(\x0b\x32\x1b.bragi.CS2CurrentRoundStateH\x00\x12V\n\"current_round_state_partial_update\x18\x04 \x01(\x0b\x32(.bragi.CS2CurrentRoundStatePartialUpdateH\x00\x12M\n\x1eteam_map_states_partial_update\x18\x05 \x01(\x0b\x32#.bragi.CS2TeamMapStatePartialUpdateH\x00\x42\x08\n\x06update\"\x81\x03\n\x12\x43S2CurrentMapState\x12\x11\n\tmap_order\x18\x01 \x01(\r\x12$\n\x04info\x18\x02 \x01(\x0b\x32\x16.bragi.CS2MapInfoState\x12&\n\x05score\x18\x03 \x01(\x0b\x32\x17.bragi.CS2MapScoreState\x12\x38\n\x13\x63urrent_round_state\x18\x04 \x01(\x0b\x32\x1b.bragi.CS2CurrentRoundState\x12;\n\x15previous_round_states\x18\x05 \x03(\x0b\x32\x1c.bragi.CS2PreviousRoundState\x12\x45\n\x0fteam_map_states\x18\x06 \x03(\x0b\x32,.bragi.CS2CurrentMapState.TeamMapStatesEntry\x1aL\n\x12TeamMapStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12%\n\x05value\x18\x02 \x01(\x0b\x32\x16.bragi.CS2TeamMapState:\x02\x38\x01\"\xc0\x02\n\x13\x43S2PreviousMapState\x12\x11\n\tmap_order\x18\x01 \x01(\r\x12$\n\x04info\x18\x02 \x01(\x0b\x32\x16.bragi.CS2MapInfoState\x12&\n\x05score\x18\x03 \x01(\x0b\x32\x17.bragi.CS2MapScoreState\x12\x32\n\x0cround_states\x18\x04 \x03(\x0b\x32\x1c.bragi.CS2PreviousRoundState\x12\x46\n\x0fteam_map_states\x18\x05 \x03(\x0b\x32-.bragi.CS2PreviousMapState.TeamMapStatesEntry\x1aL\n\x12TeamMapStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12%\n\x05value\x18\x02 \x01(\x0b\x32\x16.bragi.CS2TeamMapState:\x02\x38\x01\"\x9e\x04\n\x0f\x43S2MapInfoState\x12\x10\n\x08map_name\x18\x01 \x01(\t\x12\x1a\n\x12max_rounds_default\x18\x02 \x01(\r\x12\x1b\n\x13max_rounds_overtime\x18\x03 \x01(\r\x12<\n\x14\x66reeze_time_duration\x18\x04 \x01(\x0b\x32\x19.google.protobuf.DurationH\x00\x88\x01\x01\x12;\n\x13round_time_duration\x18\x05 \x01(\x0b\x32\x19.google.protobuf.DurationH\x01\x88\x01\x01\x12:\n\x12\x62omb_time_duration\x18\x06 \x01(\x0b\x32\x19.google.protobuf.DurationH\x02\x88\x01\x01\x12\x33\n\nstart_time\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x03\x88\x01\x01\x12\x31\n\x08\x65nd_time\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x04\x88\x01\x01\x12\x11\n\tmap_ended\x18\t \x01(\x08\x12\x19\n\x0cwin_team_urn\x18\n \x01(\tH\x05\x88\x01\x01\x42\x17\n\x15_freeze_time_durationB\x16\n\x14_round_time_durationB\x15\n\x13_bomb_time_durationB\r\n\x0b_start_timeB\x0b\n\t_end_timeB\x0f\n\r_win_team_urn\":\n\x10\x43S2MapScoreState\x12\x12\n\nhome_score\x18\x01 \x01(\r\x12\x12\n\naway_score\x18\x02 \x01(\r\"\x80\x02\n!CS2CurrentRoundStatePartialUpdate\x12(\n\x04info\x18\x01 \x01(\x0b\x32\x18.bragi.CS2RoundInfoStateH\x00\x12(\n\x04time\x18\x02 \x01(\x0b\x32\x18.bragi.CS2RoundTimeStateH\x00\x12)\n\nbomb_state\x18\x03 \x01(\x0b\x32\x13.bragi.CS2BombStateH\x00\x12R\n\x1ateam_states_partial_update\x18\x04 \x01(\x0b\x32,.bragi.CS2TeamCurrentRoundStatePartialUpdateH\x00\x42\x08\n\x06update\"\xbb\x02\n\x14\x43S2CurrentRoundState\x12\x14\n\x0cround_number\x18\x01 \x01(\r\x12&\n\x04info\x18\x02 \x01(\x0b\x32\x18.bragi.CS2RoundInfoState\x12&\n\x04time\x18\x03 \x01(\x0b\x32\x18.bragi.CS2RoundTimeState\x12\'\n\nbomb_state\x18\x04 \x01(\x0b\x32\x13.bragi.CS2BombState\x12@\n\x0bteam_states\x18\x05 \x03(\x0b\x32+.bragi.CS2CurrentRoundState.TeamStatesEntry\x1aR\n\x0fTeamStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12.\n\x05value\x18\x02 \x01(\x0b\x32\x1f.bragi.CS2TeamCurrentRoundState:\x02\x38\x01\"\xed\x01\n\x15\x43S2PreviousRoundState\x12\x14\n\x0cround_number\x18\x01 \x01(\r\x12&\n\x04info\x18\x02 \x01(\x0b\x32\x18.bragi.CS2RoundInfoState\x12\x41\n\x0bteam_states\x18\x04 \x03(\x0b\x32,.bragi.CS2PreviousRoundState.TeamStatesEntry\x1aS\n\x0fTeamStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12/\n\x05value\x18\x02 \x01(\x0b\x32 .bragi.CS2PreviousTeamRoundState:\x02\x38\x01\"\xc6\x02\n\x11\x43S2RoundInfoState\x12,\n\nround_type\x18\x01 \x01(\x0e\x32\x18.bragi.CS2RoundStateType\x12.\n\nstart_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x31\n\x08\x65nd_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x00\x88\x01\x01\x12\x1d\n\x10winning_team_urn\x18\x04 \x01(\tH\x01\x88\x01\x01\x12,\n\nwin_reason\x18\x05 \x01(\x0e\x32\x13.bragi.CS2WinReasonH\x02\x88\x01\x01\x12\x15\n\x08home_won\x18\x06 \x01(\x08H\x03\x88\x01\x01\x42\x0b\n\t_end_timeB\x13\n\x11_winning_team_urnB\r\n\x0b_win_reasonB\x0b\n\t_home_won\"F\n\x11\x43S2RoundTimeState\x12\x31\n\x0etime_remaining\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\"\xe8\x02\n\x0c\x43S2BombState\x12-\n\x07\x63\x61rried\x18\x01 \x01(\x0b\x32\x1a.bragi.CS2BombCarriedStateH\x00\x12-\n\x07\x64ropped\x18\x02 \x01(\x0b\x32\x1a.bragi.CS2BombDroppedStateH\x00\x12/\n\x08planting\x18\x03 \x01(\x0b\x32\x1b.bragi.CS2BombPlantingStateH\x00\x12-\n\x07planted\x18\x04 \x01(\x0b\x32\x1a.bragi.CS2BombPlantedStateH\x00\x12/\n\x08\x64\x65\x66using\x18\x05 \x01(\x0b\x32\x1b.bragi.CS2BombDefusingStateH\x00\x12-\n\x07\x64\x65\x66used\x18\x06 \x01(\x0b\x32\x1a.bragi.CS2BombDefusedStateH\x00\x12/\n\x08\x65xploded\x18\x07 \x01(\x0b\x32\x1b.bragi.CS2BombExplodedStateH\x00\x42\t\n\x07payload\"O\n\x13\x43S2BombCarriedState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12$\n\x08position\x18\x02 \x01(\x0b\x32\x12.bragi.CS2Position\"Z\n\x13\x43S2BombDroppedState\x12\x1d\n\x15\x64ropped_by_player_urn\x18\x01 \x01(\t\x12$\n\x08position\x18\x02 \x01(\x0b\x32\x12.bragi.CS2Position\"~\n\x14\x43S2BombPlantingState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12$\n\x08position\x18\x02 \x01(\x0b\x32\x12.bragi.CS2Position\x12,\n\tcountdown\x18\x03 \x01(\x0b\x32\x19.google.protobuf.Duration\"\xb8\x01\n\x13\x43S2BombPlantedState\x12\x1d\n\x15planted_by_player_urn\x18\x01 \x01(\t\x12$\n\x08position\x18\x02 \x01(\x0b\x32\x12.bragi.CS2Position\x12.\n\nplanted_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12,\n\tcountdown\x18\x04 \x01(\x0b\x32\x19.google.protobuf.Duration\"\xb5\x01\n\x14\x43S2BombDefusingState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12$\n\x08position\x18\x02 \x01(\x0b\x32\x12.bragi.CS2Position\x12,\n\tcountdown\x18\x03 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x35\n\x11\x64\x65\x66use_started_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x8a\x01\n\x13\x43S2BombDefusedState\x12\x1d\n\x15\x64\x65\x66used_by_player_urn\x18\x01 \x01(\t\x12$\n\x08position\x18\x02 \x01(\x0b\x32\x12.bragi.CS2Position\x12.\n\ndefused_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"m\n\x14\x43S2BombExplodedState\x12$\n\x08position\x18\x01 \x01(\x0b\x32\x12.bragi.CS2Position\x12/\n\x0b\x65xploded_at\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x8a\x02\n\x1c\x43S2TeamMapStatePartialUpdate\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12<\n\x07payload\x18\x02 \x01(\x0b\x32+.bragi.CS2TeamMapStatePartialUpdate.Payload\x1a\x99\x01\n\x07Payload\x12\x30\n\x0cplayer_state\x18\x02 \x01(\x0b\x32\x18.bragi.CS2PlayerMapStateH\x00\x12Q\n player_map_states_partial_update\x18\x01 \x01(\x0b\x32%.bragi.CS2PlayerMapStatePartialUpdateH\x00\x42\t\n\x07payload\"\xdb\x01\n\x0f\x43S2TeamMapState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12\x1c\n\x04side\x18\x02 \x01(\x0e\x32\x0e.bragi.CS2Side\x12\x46\n\x11player_map_states\x18\x03 \x03(\x0b\x32+.bragi.CS2TeamMapState.PlayerMapStatesEntry\x1aP\n\x14PlayerMapStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\'\n\x05value\x18\x02 \x01(\x0b\x32\x18.bragi.CS2PlayerMapState:\x02\x38\x01\"\xb0\x02\n%CS2TeamCurrentRoundStatePartialUpdate\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12\x45\n\x07payload\x18\x02 \x01(\x0b\x32\x34.bragi.CS2TeamCurrentRoundStatePartialUpdate.Payload\x1a\xad\x01\n\x07Payload\x12\x39\n\x0cplayer_state\x18\x02 \x01(\x0b\x32!.bragi.CS2PlayerCurrentRoundStateH\x00\x12\\\n\"player_round_states_partial_update\x18\x01 \x01(\x0b\x32..bragi.CS2PlayerCurrentRoundStatePartialUpdateH\x00\x42\t\n\x07payload\"\xde\x01\n\x18\x43S2TeamCurrentRoundState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12S\n\x13player_round_states\x18\x02 \x03(\x0b\x32\x36.bragi.CS2TeamCurrentRoundState.PlayerRoundStatesEntry\x1a[\n\x16PlayerRoundStatesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x30\n\x05value\x18\x02 \x01(\x0b\x32!.bragi.CS2PlayerCurrentRoundState:\x02\x38\x01\"\xc1\x01\n\x19\x43S2PreviousTeamRoundState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12>\n\x07players\x18\x02 \x03(\x0b\x32-.bragi.CS2PreviousTeamRoundState.PlayersEntry\x1aR\n\x0cPlayersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x31\n\x05value\x18\x02 \x01(\x0b\x32\".bragi.CS2PlayerPreviousRoundState:\x02\x38\x01\"\xc4\x01\n\x1e\x43S2PlayerMapStatePartialUpdate\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12>\n\x07payload\x18\x02 \x01(\x0b\x32-.bragi.CS2PlayerMapStatePartialUpdate.Payload\x1aN\n\x07Payload\x12\x38\n\nstatistics\x18\x01 \x01(\x0b\x32\".bragi.CS2PlayerMapStatisticsStateH\x00\x42\t\n\x07payload\"\x85\x01\n\x11\x43S2PlayerMapState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x13\n\x0bplayer_name\x18\x02 \x01(\t\x12\x0f\n\x07slot_id\x18\x04 \x01(\r\x12\x36\n\nstatistics\x18\x03 \x01(\x0b\x32\".bragi.CS2PlayerMapStatisticsState\"\xc8\x01\n\x1b\x43S2PlayerMapStatisticsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x15\n\ropening_kills\x18\x04 \x01(\r\x12\x16\n\x0eopening_deaths\x18\x05 \x01(\r\x12\x14\n\x0ctotal_damage\x18\x06 \x01(\r\x12 \n\x18\x61verage_damage_per_round\x18\x07 \x01(\x02\x12.\n\nstatistics\x18\x02 \x01(\x0b\x32\x1a.bragi.CS2PlayerStatistics\"\xc0\x02\n\'CS2PlayerCurrentRoundStatePartialUpdate\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12G\n\x07payload\x18\x02 \x01(\x0b\x32\x36.bragi.CS2PlayerCurrentRoundStatePartialUpdate.Payload\x1a\xb7\x01\n\x07Payload\x12\x41\n\nstatistics\x18\x01 \x01(\x0b\x32+.bragi.CS2PlayerCurrentRoundStatisticsStateH\x00\x12+\n\x05items\x18\x02 \x01(\x0b\x32\x1a.bragi.CS2PlayerItemsStateH\x00\x12\x31\n\x08position\x18\x03 \x01(\x0b\x32\x1d.bragi.CS2PlayerPositionStateH\x00\x42\t\n\x07payload\"\xf3\x01\n\x1a\x43S2PlayerCurrentRoundState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x13\n\x0bplayer_name\x18\x02 \x01(\t\x12\x0f\n\x07slot_id\x18\x06 \x01(\r\x12?\n\nstatistics\x18\x03 \x01(\x0b\x32+.bragi.CS2PlayerCurrentRoundStatisticsState\x12)\n\x05items\x18\x04 \x01(\x0b\x32\x1a.bragi.CS2PlayerItemsState\x12/\n\x08position\x18\x05 \x01(\x0b\x32\x1d.bragi.CS2PlayerPositionState\"\xc9\x01\n$CS2PlayerCurrentRoundStatisticsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\r\n\x05\x61live\x18\x02 \x01(\x08\x12\x0e\n\x06health\x18\x03 \x01(\r\x12\r\n\x05\x61rmor\x18\x04 \x01(\r\x12\x0f\n\x07\x62\x61lance\x18\x05 \x01(\r\x12\x13\n\x06\x64\x61mage\x18\x07 \x01(\rH\x00\x88\x01\x01\x12.\n\nstatistics\x18\x06 \x01(\x0b\x32\x1a.bragi.CS2PlayerStatisticsB\t\n\x07_damage\"a\n\x13\x43S2PlayerItemsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x17\n\x0f\x65quipment_value\x18\x02 \x01(\r\x12\x1d\n\x05items\x18\x03 \x03(\x0b\x32\x0e.bragi.CS2Item\"v\n\x1b\x43S2PlayerPreviousRoundState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x13\n\x0bplayer_name\x18\x02 \x01(\t\x12.\n\nstatistics\x18\x03 \x01(\x0b\x32\x1a.bragi.CS2PlayerStatistics\"R\n\x16\x43S2PlayerPositionState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12$\n\x08position\x18\x02 \x01(\x0b\x32\x12.bragi.CS2Position\"\xfb\x04\n\x13\x43S2PlayerStatistics\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\r\n\x05kills\x18\x02 \x01(\r\x12\x16\n\x0e\x66riendly_kills\x18\x03 \x01(\r\x12\x13\n\x0b\x65nemy_kills\x18\x04 \x01(\r\x12\x12\n\nself_kills\x18\x05 \x01(\r\x12\x0e\n\x06\x64\x65\x61ths\x18\x06 \x01(\r\x12\x0f\n\x07\x61ssists\x18\x07 \x01(\r\x12\x11\n\theadshots\x18\x08 \x01(\r\x12\x12\n\x06\x64\x61mage\x18\x0f \x01(\rB\x02\x18\x01\x12(\n\x1b\x66riendly_damage_dealt_armor\x18\t \x01(\rH\x00\x88\x01\x01\x12)\n\x1c\x66riendly_damage_dealt_health\x18\n \x01(\rH\x01\x88\x01\x01\x12%\n\x18\x65nemy_damage_dealt_armor\x18\x0b \x01(\rH\x02\x88\x01\x01\x12&\n\x19\x65nemy_damage_dealt_health\x18\x0c \x01(\rH\x03\x88\x01\x01\x12)\n\x1c\x65nemy_damage_dealt_armor_raw\x18\r \x01(\rH\x04\x88\x01\x01\x12*\n\x1d\x65nemy_damage_dealt_health_raw\x18\x0e \x01(\rH\x05\x88\x01\x01\x42\x1e\n\x1c_friendly_damage_dealt_armorB\x1f\n\x1d_friendly_damage_dealt_healthB\x1b\n\x19_enemy_damage_dealt_armorB\x1c\n\x1a_enemy_damage_dealt_healthB\x1f\n\x1d_enemy_damage_dealt_armor_rawB \n\x1e_enemy_damage_dealt_health_raw\"\x89\x01\n\x07\x43S2Item\x12\x0c\n\x04name\x18\x01 \x01(\t\x12-\n\x0bweapon_type\x18\x02 \x01(\x0e\x32\x14.bragi.CS2WeaponTypeB\x02\x18\x01\x12 \n\x04type\x18\x05 \x01(\x0e\x32\x12.bragi.CS2ItemType\x12\r\n\x05\x63ount\x18\x03 \x01(\r\x12\x10\n\x08isActive\x18\x04 \x01(\x08\"=\n\x0b\x43S2Position\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01z\x18\x04 \x01(\x02\x12\r\n\x05\x61ngle\x18\x03 \x01(\x02\"\xe7\x07\n\x08\x43S2Event\x12:\n\x13\x62omb_defuse_started\x18\x01 \x01(\x0b\x32\x1b.bragi.CS2BombDefuseStartedH\x00\x12-\n\x0c\x62omb_defused\x18\x02 \x01(\x0b\x32\x15.bragi.CS2BombDefusedH\x00\x12/\n\rbomb_exploded\x18\x03 \x01(\x0b\x32\x16.bragi.CS2BombExplodedH\x00\x12\x38\n\x12\x62omb_plant_started\x18\x15 \x01(\x0b\x32\x1a.bragi.CS2BombPlantStartedH\x00\x12-\n\x0c\x62omb_planted\x18\x04 \x01(\x0b\x32\x15.bragi.CS2BombPlantedH\x00\x12-\n\x0c\x64\x61mage_dealt\x18\x05 \x01(\x0b\x32\x15.bragi.CS2DamageDealtH\x00\x12\x36\n\x11\x66reeze_time_ended\x18\x06 \x01(\x0b\x32\x19.bragi.CS2FreezeTimeEndedH\x00\x12:\n\x13\x66reeze_time_started\x18\x07 \x01(\x0b\x32\x1b.bragi.CS2FreezeTimeStartedH\x00\x12\'\n\titem_drop\x18\x08 \x01(\x0b\x32\x12.bragi.CS2ItemDropH\x00\x12,\n\x0citem_pick_up\x18\t \x01(\x0b\x32\x14.bragi.CS2ItemPickUpH\x00\x12/\n\ritem_purchase\x18\n \x01(\x0b\x32\x16.bragi.CS2ItemPurchaseH\x00\x12)\n\nitem_throw\x18\x0b \x01(\x0b\x32\x13.bragi.CS2ItemThrowH\x00\x12\x1e\n\x04kill\x18\x0c \x01(\x0b\x32\x0e.bragi.CS2KillH\x00\x12 \n\x05\x64\x65\x61th\x18\r \x01(\x0b\x32\x0f.bragi.CS2DeathH\x00\x12#\n\x07map_end\x18\x0e \x01(\x0b\x32\x10.bragi.CS2MapEndH\x00\x12\'\n\tmap_start\x18\x0f \x01(\x0b\x32\x12.bragi.CS2MapStartH\x00\x12\'\n\tround_end\x18\x10 \x01(\x0b\x32\x12.bragi.CS2RoundEndH\x00\x12+\n\x0bround_pause\x18\x11 \x01(\x0b\x32\x14.bragi.CS2RoundPauseH\x00\x12-\n\x0cround_resume\x18\x12 \x01(\x0b\x32\x15.bragi.CS2RoundResumeH\x00\x12\x31\n\x0eround_rollback\x18\x13 \x01(\x0b\x32\x17.bragi.CS2RoundRollbackH\x00\x12+\n\x0bround_start\x18\x14 \x01(\x0b\x32\x14.bragi.CS2RoundStartH\x00:\x02\x18\x01\x42\x07\n\x05\x65vent\"I\n\x10\x43S2PlayerBalance\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x10\n\x08team_urn\x18\x02 \x01(\t\x12\x0f\n\x07\x62\x61lance\x18\x03 \x01(\r\"n\n\x0e\x43S2PlayerItems\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x10\n\x08team_urn\x18\x02 \x01(\t\x12\x17\n\x0f\x65quipment_value\x18\x03 \x01(\r\x12\x1d\n\x05items\x18\x04 \x03(\x0b\x32\x0e.bragi.CS2Item\"\xba\x01\n\x14\x43S2BombDefuseStarted\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\"\xb4\x01\n\x0e\x43S2BombDefused\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\"\x8f\x01\n\x0f\x43S2BombExploded\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\"\xb9\x01\n\x13\x43S2BombPlantStarted\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\"\xb4\x01\n\x0e\x43S2BombPlanted\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\"\xc8\x03\n\x0e\x43S2DamageDealt\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12+\n\x0fkiller_position\x18\x04 \x01(\x0b\x32\x12.bragi.CS2Position\x12\x12\n\nkiller_urn\x18\x05 \x01(\t\x12\x17\n\x0fkiller_team_urn\x18\x06 \x01(\t\x12\x12\n\nvictim_urn\x18\x07 \x01(\t\x12\x17\n\x0fvictim_team_urn\x18\x08 \x01(\t\x12\x0e\n\x06weapon\x18\t \x01(\t\x12\x10\n\x08hitgroup\x18\n \x01(\t\x12\x17\n\x0fhealth_deducted\x18\x0b \x01(\r\x12\x18\n\x10health_remaining\x18\x0c \x01(\r\x12\x16\n\x0e\x61rmor_deducted\x18\r \x01(\r\x12\x17\n\x0f\x61rmor_remaining\x18\x0e \x01(\r\x12+\n\x0fvictim_position\x18\x0f \x01(\x0b\x32\x12.bragi.CS2Position\"\xc9\x03\n\x12\x43S2FreezeTimeEnded\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x46\n\x0fplayer_balances\x18\x04 \x03(\x0b\x32-.bragi.CS2FreezeTimeEnded.PlayerBalancesEntry\x12L\n\x12player_inventories\x18\x05 \x03(\x0b\x32\x30.bragi.CS2FreezeTimeEnded.PlayerInventoriesEntry\x1aN\n\x13PlayerBalancesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.bragi.CS2PlayerBalance:\x02\x38\x01\x1aO\n\x16PlayerInventoriesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12$\n\x05value\x18\x02 \x01(\x0b\x32\x15.bragi.CS2PlayerItems:\x02\x38\x01\"\xc0\x03\n\x14\x43S2FreezeTimeStarted\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12H\n\x0fplayer_balances\x18\x04 \x03(\x0b\x32/.bragi.CS2FreezeTimeStarted.PlayerBalancesEntry\x12I\n\x10teams_round_info\x18\x05 \x03(\x0b\x32/.bragi.CS2FreezeTimeStarted.TeamsRoundInfoEntry\x1aN\n\x13PlayerBalancesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.bragi.CS2PlayerBalance:\x02\x38\x01\x1a\x45\n\x13TeamsRoundInfoEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x1d\n\x05value\x18\x02 \x01(\x0e\x32\x0e.bragi.CS2Side:\x02\x38\x01\"\xe5\x01\n\x0b\x43S2ItemDrop\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12$\n\x08position\x18\x04 \x01(\x0b\x32\x12.bragi.CS2Position\x12\x12\n\nplayer_urn\x18\x05 \x01(\t\x12\x10\n\x08team_urn\x18\x06 \x01(\t\x12\x0c\n\x04item\x18\x07 \x01(\t\"\xc1\x01\n\rCS2ItemPickUp\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\x12\x0c\n\x04item\x18\x06 \x01(\t\"\xf4\x01\n\x0f\x43S2ItemPurchase\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x12\n\nplayer_urn\x18\x04 \x01(\t\x12\x10\n\x08team_urn\x18\x05 \x01(\t\x12\x0c\n\x04item\x18\x06 \x01(\t\x12\x16\n\x0eplayer_balance\x18\x07 \x01(\r\x12\x17\n\x0f\x65quipment_value\x18\x08 \x01(\r\"\xe6\x01\n\x0c\x43S2ItemThrow\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12$\n\x08position\x18\x04 \x01(\x0b\x32\x12.bragi.CS2Position\x12\x12\n\nplayer_urn\x18\x05 \x01(\t\x12\x10\n\x08team_urn\x18\x06 \x01(\t\x12\x0c\n\x04item\x18\x07 \x01(\t\"\xd8\x02\n\x07\x43S2Kill\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12+\n\x0fkiller_position\x18\x04 \x01(\x0b\x32\x12.bragi.CS2Position\x12\x12\n\nkiller_urn\x18\x05 \x01(\t\x12\x17\n\x0fkiller_team_urn\x18\x06 \x01(\t\x12\x12\n\nvictim_urn\x18\x07 \x01(\t\x12\x17\n\x0fvictim_team_urn\x18\x08 \x01(\t\x12\x0e\n\x06weapon\x18\t \x01(\t\x12\x10\n\x08headshot\x18\n \x01(\x08\x12\x12\n\npenetrated\x18\x0b \x01(\x08\x12\x12\n\nassistants\x18\x0c \x03(\t\"\x92\x02\n\x08\x43S2Death\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12$\n\x08position\x18\x04 \x01(\x0b\x32\x12.bragi.CS2Position\x12\x12\n\nplayer_urn\x18\x05 \x01(\t\x12\x10\n\x08team_urn\x18\x06 \x01(\t\x12\x14\n\x0ctotal_deaths\x18\x07 \x01(\r\x12\x0f\n\x07suicide\x18\t \x01(\x08\x12\x15\n\rdeath_by_bomb\x18\n \x01(\x08\"\x82\x01\n\tCS2MapEnd\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x10\n\x08map_name\x18\x04 \x01(\t\x12\x18\n\x10winning_team_urn\x18\x05 \x01(\t\"L\n\x0b\x43S2MapStart\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x10\n\x08map_name\x18\x02 \x01(\t\"\xf7\x03\n\x0b\x43S2RoundEnd\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\x12\x18\n\x10winning_team_urn\x18\x04 \x01(\t\x12\'\n\nwin_reason\x18\x05 \x01(\x0e\x32\x13.bragi.CS2WinReason\x12?\n\x0fplayer_balances\x18\x06 \x03(\x0b\x32&.bragi.CS2RoundEnd.PlayerBalancesEntry\x12\x45\n\x12player_inventories\x18\x07 \x03(\x0b\x32).bragi.CS2RoundEnd.PlayerInventoriesEntry\x1aN\n\x13PlayerBalancesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.bragi.CS2PlayerBalance:\x02\x38\x01\x1aO\n\x16PlayerInventoriesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12$\n\x05value\x18\x02 \x01(\x0b\x32\x15.bragi.CS2PlayerItems:\x02\x38\x01\"\x8d\x01\n\rCS2RoundPause\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\"\x8e\x01\n\x0e\x43S2RoundResume\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r\"-\n\x10\x43S2RoundRollback\x12\x19\n\x11next_round_number\x18\x01 \x01(\r\"\x8d\x01\n\rCS2RoundStart\x12+\n\x08map_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x31\n\x0etime_remaining\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1c\n\x14\x63urrent_round_number\x18\x03 \x01(\r*]\n\x07\x43S2Side\x12\x18\n\x14\x43S2_SIDE_UNSPECIFIED\x10\x00\x12\x1f\n\x1b\x43S2_SIDE_COUNTER_TERRORISTS\x10\x01\x12\x17\n\x13\x43S2_SIDE_TERRORISTS\x10\x02*\x80\x02\n\x0c\x43S2WinReason\x12\x1e\n\x1a\x43S2_WIN_REASON_UNSPECIFIED\x10\x00\x12\x30\n,CS2_WIN_REASON_COUNTER_TERRORISTS_ELIMINATED\x10\x01\x12(\n$CS2_WIN_REASON_TERRORISTS_ELIMINATED\x10\x02\x12\x1c\n\x18\x43S2_WIN_REASON_EXPLOSION\x10\x03\x12\x19\n\x15\x43S2_WIN_REASON_DEFUSE\x10\x04\x12\x1a\n\x16\x43S2_WIN_REASON_TIMEOUT\x10\x05\x12\x1f\n\x1b\x43S2_WIN_REASON_TARGET_SAVED\x10\x06*\xc6\x01\n\x11\x43S2RoundStateType\x12$\n CS2_ROUND_STATE_TYPE_UNSPECIFIED\x10\x00\x12!\n\x1d\x43S2_ROUND_STATE_TYPE_BUY_TIME\x10\x01\x12$\n CS2_ROUND_STATE_TYPE_IN_PROGRESS\x10\x02\x12\x1f\n\x1b\x43S2_ROUND_STATE_TYPE_PAUSED\x10\x03\x12!\n\x1d\x43S2_ROUND_STATE_TYPE_FINISHED\x10\x04*\xe1\x02\n\rCS2WeaponType\x12\x1f\n\x1b\x43S2_WEAPON_TYPE_UNSPECIFIED\x10\x00\x12\x1a\n\x16\x43S2_WEAPON_TYPE_PISTOL\x10\x01\x12\x18\n\x14\x43S2_WEAPON_TYPE_BOMB\x10\x02\x12\x1b\n\x17\x43S2_WEAPON_TYPE_GRENADE\x10\x03\x12\x1f\n\x1b\x43S2_WEAPON_TYPE_MACHINE_GUN\x10\x04\x12\x19\n\x15\x43S2_WEAPON_TYPE_RIFLE\x10\x05\x12\x1b\n\x17\x43S2_WEAPON_TYPE_SHOTGUN\x10\x06\x12 \n\x1c\x43S2_WEAPON_TYPE_SNIPER_RIFLE\x10\x07\x12\"\n\x1e\x43S2_WEAPON_TYPE_SUBMACHINE_GUN\x10\x08\x12\x19\n\x15\x43S2_WEAPON_TYPE_KNIFE\x10\t\x12\x1e\n\x1a\x43S2_WEAPON_TYPE_DEFUSE_KIT\x10\n\x1a\x02\x18\x01*\xde\x02\n\x0b\x43S2ItemType\x12\x1d\n\x19\x43S2_ITEM_TYPE_UNSPECIFIED\x10\x00\x12\x18\n\x14\x43S2_ITEM_TYPE_PISTOL\x10\x01\x12\x16\n\x12\x43S2_ITEM_TYPE_BOMB\x10\x02\x12\x19\n\x15\x43S2_ITEM_TYPE_GRENADE\x10\x03\x12\x1d\n\x19\x43S2_ITEM_TYPE_MACHINE_GUN\x10\x04\x12\x17\n\x13\x43S2_ITEM_TYPE_RIFLE\x10\x05\x12\x19\n\x15\x43S2_ITEM_TYPE_SHOTGUN\x10\x06\x12\x1e\n\x1a\x43S2_ITEM_TYPE_SNIPER_RIFLE\x10\x07\x12 \n\x1c\x43S2_ITEM_TYPE_SUBMACHINE_GUN\x10\x08\x12\x17\n\x13\x43S2_ITEM_TYPE_KNIFE\x10\t\x12\x1c\n\x18\x43S2_ITEM_TYPE_DEFUSE_KIT\x10\n\x12\x17\n\x13\x43S2_ITEM_TYPE_ARMOR\x10\x0b\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,bragi_dot_common__pb2.DESCRIPTOR,])
 
@@ -52,8 +52,8 @@ _CS2SIDE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=15623,
-  serialized_end=15716,
+  serialized_start=15713,
+  serialized_end=15806,
 )
 _sym_db.RegisterEnumDescriptor(_CS2SIDE)
 
@@ -103,8 +103,8 @@ _CS2WINREASON = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=15719,
-  serialized_end=15975,
+  serialized_start=15809,
+  serialized_end=16065,
 )
 _sym_db.RegisterEnumDescriptor(_CS2WINREASON)
 
@@ -144,8 +144,8 @@ _CS2ROUNDSTATETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=15978,
-  serialized_end=16176,
+  serialized_start=16068,
+  serialized_end=16266,
 )
 _sym_db.RegisterEnumDescriptor(_CS2ROUNDSTATETYPE)
 
@@ -214,13 +214,89 @@ _CS2WEAPONTYPE = _descriptor.EnumDescriptor(
       create_key=_descriptor._internal_create_key),
   ],
   containing_type=None,
-  serialized_options=None,
-  serialized_start=16179,
-  serialized_end=16528,
+  serialized_options=b'\030\001',
+  serialized_start=16269,
+  serialized_end=16622,
 )
 _sym_db.RegisterEnumDescriptor(_CS2WEAPONTYPE)
 
 CS2WeaponType = enum_type_wrapper.EnumTypeWrapper(_CS2WEAPONTYPE)
+_CS2ITEMTYPE = _descriptor.EnumDescriptor(
+  name='CS2ItemType',
+  full_name='bragi.CS2ItemType',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='CS2_ITEM_TYPE_UNSPECIFIED', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CS2_ITEM_TYPE_PISTOL', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CS2_ITEM_TYPE_BOMB', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CS2_ITEM_TYPE_GRENADE', index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CS2_ITEM_TYPE_MACHINE_GUN', index=4, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CS2_ITEM_TYPE_RIFLE', index=5, number=5,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CS2_ITEM_TYPE_SHOTGUN', index=6, number=6,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CS2_ITEM_TYPE_SNIPER_RIFLE', index=7, number=7,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CS2_ITEM_TYPE_SUBMACHINE_GUN', index=8, number=8,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CS2_ITEM_TYPE_KNIFE', index=9, number=9,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CS2_ITEM_TYPE_DEFUSE_KIT', index=10, number=10,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CS2_ITEM_TYPE_ARMOR', index=11, number=11,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=16625,
+  serialized_end=16975,
+)
+_sym_db.RegisterEnumDescriptor(_CS2ITEMTYPE)
+
+CS2ItemType = enum_type_wrapper.EnumTypeWrapper(_CS2ITEMTYPE)
 CS2_SIDE_UNSPECIFIED = 0
 CS2_SIDE_COUNTER_TERRORISTS = 1
 CS2_SIDE_TERRORISTS = 2
@@ -247,6 +323,18 @@ CS2_WEAPON_TYPE_SNIPER_RIFLE = 7
 CS2_WEAPON_TYPE_SUBMACHINE_GUN = 8
 CS2_WEAPON_TYPE_KNIFE = 9
 CS2_WEAPON_TYPE_DEFUSE_KIT = 10
+CS2_ITEM_TYPE_UNSPECIFIED = 0
+CS2_ITEM_TYPE_PISTOL = 1
+CS2_ITEM_TYPE_BOMB = 2
+CS2_ITEM_TYPE_GRENADE = 3
+CS2_ITEM_TYPE_MACHINE_GUN = 4
+CS2_ITEM_TYPE_RIFLE = 5
+CS2_ITEM_TYPE_SHOTGUN = 6
+CS2_ITEM_TYPE_SNIPER_RIFLE = 7
+CS2_ITEM_TYPE_SUBMACHINE_GUN = 8
+CS2_ITEM_TYPE_KNIFE = 9
+CS2_ITEM_TYPE_DEFUSE_KIT = 10
+CS2_ITEM_TYPE_ARMOR = 11
 
 
 
@@ -629,21 +717,28 @@ _CS2MATCHSTATE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='match_status', full_name='bragi.CS2MatchState.match_status', index=5,
+      name='win_team_urn', full_name='bragi.CS2MatchState.win_team_urn', index=5,
+      number=9, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='match_status', full_name='bragi.CS2MatchState.match_status', index=6,
       number=6, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='current_map_state', full_name='bragi.CS2MatchState.current_map_state', index=6,
+      name='current_map_state', full_name='bragi.CS2MatchState.current_map_state', index=7,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='previous_map_states', full_name='bragi.CS2MatchState.previous_map_states', index=7,
+      name='previous_map_states', full_name='bragi.CS2MatchState.previous_map_states', index=8,
       number=8, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -660,9 +755,14 @@ _CS2MATCHSTATE = _descriptor.Descriptor(
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_win_team_urn', full_name='bragi.CS2MatchState._win_team_urn',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=1188,
-  serialized_end=1530,
+  serialized_end=1574,
 )
 
 
@@ -700,8 +800,8 @@ _CS2MATCHSCORESTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1532,
-  serialized_end=1592,
+  serialized_start=1576,
+  serialized_end=1636,
 )
 
 
@@ -739,8 +839,8 @@ _CS2TEAM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1594,
-  serialized_end=1640,
+  serialized_start=1638,
+  serialized_end=1684,
 )
 
 
@@ -804,8 +904,8 @@ _CS2CURRENTMAPSTATEPARTIALUPDATE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1643,
-  serialized_end=1995,
+  serialized_start=1687,
+  serialized_end=2039,
 )
 
 
@@ -843,8 +943,8 @@ _CS2CURRENTMAPSTATE_TEAMMAPSTATESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2307,
-  serialized_end=2383,
+  serialized_start=2351,
+  serialized_end=2427,
 )
 
 _CS2CURRENTMAPSTATE = _descriptor.Descriptor(
@@ -909,8 +1009,8 @@ _CS2CURRENTMAPSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1998,
-  serialized_end=2383,
+  serialized_start=2042,
+  serialized_end=2427,
 )
 
 
@@ -948,8 +1048,8 @@ _CS2PREVIOUSMAPSTATE_TEAMMAPSTATESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2307,
-  serialized_end=2383,
+  serialized_start=2351,
+  serialized_end=2427,
 )
 
 _CS2PREVIOUSMAPSTATE = _descriptor.Descriptor(
@@ -1007,8 +1107,8 @@ _CS2PREVIOUSMAPSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2386,
-  serialized_end=2706,
+  serialized_start=2430,
+  serialized_end=2750,
 )
 
 
@@ -1132,8 +1232,8 @@ _CS2MAPINFOSTATE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=2709,
-  serialized_end=3251,
+  serialized_start=2753,
+  serialized_end=3295,
 )
 
 
@@ -1171,8 +1271,8 @@ _CS2MAPSCORESTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3253,
-  serialized_end=3311,
+  serialized_start=3297,
+  serialized_end=3355,
 )
 
 
@@ -1229,8 +1329,8 @@ _CS2CURRENTROUNDSTATEPARTIALUPDATE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=3314,
-  serialized_end=3570,
+  serialized_start=3358,
+  serialized_end=3614,
 )
 
 
@@ -1268,8 +1368,8 @@ _CS2CURRENTROUNDSTATE_TEAMSTATESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3806,
-  serialized_end=3888,
+  serialized_start=3850,
+  serialized_end=3932,
 )
 
 _CS2CURRENTROUNDSTATE = _descriptor.Descriptor(
@@ -1327,8 +1427,8 @@ _CS2CURRENTROUNDSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3573,
-  serialized_end=3888,
+  serialized_start=3617,
+  serialized_end=3932,
 )
 
 
@@ -1366,8 +1466,8 @@ _CS2PREVIOUSROUNDSTATE_TEAMSTATESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4045,
-  serialized_end=4128,
+  serialized_start=4089,
+  serialized_end=4172,
 )
 
 _CS2PREVIOUSROUNDSTATE = _descriptor.Descriptor(
@@ -1411,8 +1511,8 @@ _CS2PREVIOUSROUNDSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3891,
-  serialized_end=4128,
+  serialized_start=3935,
+  serialized_end=4172,
 )
 
 
@@ -1498,8 +1598,8 @@ _CS2ROUNDINFOSTATE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=4131,
-  serialized_end=4457,
+  serialized_start=4175,
+  serialized_end=4501,
 )
 
 
@@ -1530,8 +1630,8 @@ _CS2ROUNDTIMESTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4459,
-  serialized_end=4529,
+  serialized_start=4503,
+  serialized_end=4573,
 )
 
 
@@ -1609,8 +1709,8 @@ _CS2BOMBSTATE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=4532,
-  serialized_end=4892,
+  serialized_start=4576,
+  serialized_end=4936,
 )
 
 
@@ -1648,8 +1748,8 @@ _CS2BOMBCARRIEDSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4894,
-  serialized_end=4973,
+  serialized_start=4938,
+  serialized_end=5017,
 )
 
 
@@ -1687,8 +1787,8 @@ _CS2BOMBDROPPEDSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4975,
-  serialized_end=5065,
+  serialized_start=5019,
+  serialized_end=5109,
 )
 
 
@@ -1733,8 +1833,8 @@ _CS2BOMBPLANTINGSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5067,
-  serialized_end=5193,
+  serialized_start=5111,
+  serialized_end=5237,
 )
 
 
@@ -1786,8 +1886,8 @@ _CS2BOMBPLANTEDSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5196,
-  serialized_end=5380,
+  serialized_start=5240,
+  serialized_end=5424,
 )
 
 
@@ -1839,8 +1939,8 @@ _CS2BOMBDEFUSINGSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5383,
-  serialized_end=5564,
+  serialized_start=5427,
+  serialized_end=5608,
 )
 
 
@@ -1885,8 +1985,8 @@ _CS2BOMBDEFUSEDSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5567,
-  serialized_end=5705,
+  serialized_start=5611,
+  serialized_end=5749,
 )
 
 
@@ -1924,8 +2024,8 @@ _CS2BOMBEXPLODEDSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5707,
-  serialized_end=5816,
+  serialized_start=5751,
+  serialized_end=5860,
 )
 
 
@@ -1968,8 +2068,8 @@ _CS2TEAMMAPSTATEPARTIALUPDATE_PAYLOAD = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=5932,
-  serialized_end=6085,
+  serialized_start=5976,
+  serialized_end=6129,
 )
 
 _CS2TEAMMAPSTATEPARTIALUPDATE = _descriptor.Descriptor(
@@ -2006,8 +2106,8 @@ _CS2TEAMMAPSTATEPARTIALUPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5819,
-  serialized_end=6085,
+  serialized_start=5863,
+  serialized_end=6129,
 )
 
 
@@ -2045,8 +2145,8 @@ _CS2TEAMMAPSTATE_PLAYERMAPSTATESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6227,
-  serialized_end=6307,
+  serialized_start=6271,
+  serialized_end=6351,
 )
 
 _CS2TEAMMAPSTATE = _descriptor.Descriptor(
@@ -2090,8 +2190,8 @@ _CS2TEAMMAPSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6088,
-  serialized_end=6307,
+  serialized_start=6132,
+  serialized_end=6351,
 )
 
 
@@ -2134,8 +2234,8 @@ _CS2TEAMCURRENTROUNDSTATEPARTIALUPDATE_PAYLOAD = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=6441,
-  serialized_end=6614,
+  serialized_start=6485,
+  serialized_end=6658,
 )
 
 _CS2TEAMCURRENTROUNDSTATEPARTIALUPDATE = _descriptor.Descriptor(
@@ -2172,8 +2272,8 @@ _CS2TEAMCURRENTROUNDSTATEPARTIALUPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6310,
-  serialized_end=6614,
+  serialized_start=6354,
+  serialized_end=6658,
 )
 
 
@@ -2211,8 +2311,8 @@ _CS2TEAMCURRENTROUNDSTATE_PLAYERROUNDSTATESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6748,
-  serialized_end=6839,
+  serialized_start=6792,
+  serialized_end=6883,
 )
 
 _CS2TEAMCURRENTROUNDSTATE = _descriptor.Descriptor(
@@ -2249,8 +2349,8 @@ _CS2TEAMCURRENTROUNDSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6617,
-  serialized_end=6839,
+  serialized_start=6661,
+  serialized_end=6883,
 )
 
 
@@ -2288,8 +2388,8 @@ _CS2PREVIOUSTEAMROUNDSTATE_PLAYERSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6953,
-  serialized_end=7035,
+  serialized_start=6997,
+  serialized_end=7079,
 )
 
 _CS2PREVIOUSTEAMROUNDSTATE = _descriptor.Descriptor(
@@ -2326,8 +2426,8 @@ _CS2PREVIOUSTEAMROUNDSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6842,
-  serialized_end=7035,
+  serialized_start=6886,
+  serialized_end=7079,
 )
 
 
@@ -2363,8 +2463,8 @@ _CS2PLAYERMAPSTATEPARTIALUPDATE_PAYLOAD = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=7156,
-  serialized_end=7234,
+  serialized_start=7200,
+  serialized_end=7278,
 )
 
 _CS2PLAYERMAPSTATEPARTIALUPDATE = _descriptor.Descriptor(
@@ -2401,8 +2501,8 @@ _CS2PLAYERMAPSTATEPARTIALUPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7038,
-  serialized_end=7234,
+  serialized_start=7082,
+  serialized_end=7278,
 )
 
 
@@ -2454,8 +2554,8 @@ _CS2PLAYERMAPSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7237,
-  serialized_end=7370,
+  serialized_start=7281,
+  serialized_end=7414,
 )
 
 
@@ -2521,8 +2621,8 @@ _CS2PLAYERMAPSTATISTICSSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7373,
-  serialized_end=7573,
+  serialized_start=7417,
+  serialized_end=7617,
 )
 
 
@@ -2572,8 +2672,8 @@ _CS2PLAYERCURRENTROUNDSTATEPARTIALUPDATE_PAYLOAD = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=7713,
-  serialized_end=7896,
+  serialized_start=7757,
+  serialized_end=7940,
 )
 
 _CS2PLAYERCURRENTROUNDSTATEPARTIALUPDATE = _descriptor.Descriptor(
@@ -2610,8 +2710,8 @@ _CS2PLAYERCURRENTROUNDSTATEPARTIALUPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7576,
-  serialized_end=7896,
+  serialized_start=7620,
+  serialized_end=7940,
 )
 
 
@@ -2677,8 +2777,8 @@ _CS2PLAYERCURRENTROUNDSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7899,
-  serialized_end=8142,
+  serialized_start=7943,
+  serialized_end=8186,
 )
 
 
@@ -2756,8 +2856,8 @@ _CS2PLAYERCURRENTROUNDSTATISTICSSTATE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=8145,
-  serialized_end=8346,
+  serialized_start=8189,
+  serialized_end=8390,
 )
 
 
@@ -2802,8 +2902,8 @@ _CS2PLAYERITEMSSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8348,
-  serialized_end=8445,
+  serialized_start=8392,
+  serialized_end=8489,
 )
 
 
@@ -2848,8 +2948,8 @@ _CS2PLAYERPREVIOUSROUNDSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8447,
-  serialized_end=8565,
+  serialized_start=8491,
+  serialized_end=8609,
 )
 
 
@@ -2887,8 +2987,8 @@ _CS2PLAYERPOSITIONSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8567,
-  serialized_end=8649,
+  serialized_start=8611,
+  serialized_end=8693,
 )
 
 
@@ -3047,8 +3147,8 @@ _CS2PLAYERSTATISTICS = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=8652,
-  serialized_end=9287,
+  serialized_start=8696,
+  serialized_end=9331,
 )
 
 
@@ -3068,21 +3168,28 @@ _CS2ITEM = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='type', full_name='bragi.CS2Item.type', index=1,
+      name='weapon_type', full_name='bragi.CS2Item.weapon_type', index=1,
       number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b'\030\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='type', full_name='bragi.CS2Item.type', index=2,
+      number=5, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='count', full_name='bragi.CS2Item.count', index=2,
+      name='count', full_name='bragi.CS2Item.count', index=3,
       number=3, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='isActive', full_name='bragi.CS2Item.isActive', index=3,
+      name='isActive', full_name='bragi.CS2Item.isActive', index=4,
       number=4, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
@@ -3100,8 +3207,8 @@ _CS2ITEM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9289,
-  serialized_end=9381,
+  serialized_start=9334,
+  serialized_end=9471,
 )
 
 
@@ -3153,8 +3260,8 @@ _CS2POSITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9383,
-  serialized_end=9444,
+  serialized_start=9473,
+  serialized_end=9534,
 )
 
 
@@ -3330,8 +3437,8 @@ _CS2EVENT = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=9447,
-  serialized_end=10446,
+  serialized_start=9537,
+  serialized_end=10536,
 )
 
 
@@ -3376,8 +3483,8 @@ _CS2PLAYERBALANCE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10448,
-  serialized_end=10521,
+  serialized_start=10538,
+  serialized_end=10611,
 )
 
 
@@ -3429,8 +3536,8 @@ _CS2PLAYERITEMS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10523,
-  serialized_end=10633,
+  serialized_start=10613,
+  serialized_end=10723,
 )
 
 
@@ -3489,8 +3596,8 @@ _CS2BOMBDEFUSESTARTED = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10636,
-  serialized_end=10822,
+  serialized_start=10726,
+  serialized_end=10912,
 )
 
 
@@ -3549,8 +3656,8 @@ _CS2BOMBDEFUSED = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10825,
-  serialized_end=11005,
+  serialized_start=10915,
+  serialized_end=11095,
 )
 
 
@@ -3595,8 +3702,8 @@ _CS2BOMBEXPLODED = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11008,
-  serialized_end=11151,
+  serialized_start=11098,
+  serialized_end=11241,
 )
 
 
@@ -3655,8 +3762,8 @@ _CS2BOMBPLANTSTARTED = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11154,
-  serialized_end=11339,
+  serialized_start=11244,
+  serialized_end=11429,
 )
 
 
@@ -3715,8 +3822,8 @@ _CS2BOMBPLANTED = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11342,
-  serialized_end=11522,
+  serialized_start=11432,
+  serialized_end=11612,
 )
 
 
@@ -3845,8 +3952,8 @@ _CS2DAMAGEDEALT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11525,
-  serialized_end=11981,
+  serialized_start=11615,
+  serialized_end=12071,
 )
 
 
@@ -3884,8 +3991,8 @@ _CS2FREEZETIMEENDED_PLAYERBALANCESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12282,
-  serialized_end=12360,
+  serialized_start=12372,
+  serialized_end=12450,
 )
 
 _CS2FREEZETIMEENDED_PLAYERINVENTORIESENTRY = _descriptor.Descriptor(
@@ -3922,8 +4029,8 @@ _CS2FREEZETIMEENDED_PLAYERINVENTORIESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12362,
-  serialized_end=12441,
+  serialized_start=12452,
+  serialized_end=12531,
 )
 
 _CS2FREEZETIMEENDED = _descriptor.Descriptor(
@@ -3981,8 +4088,8 @@ _CS2FREEZETIMEENDED = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11984,
-  serialized_end=12441,
+  serialized_start=12074,
+  serialized_end=12531,
 )
 
 
@@ -4020,8 +4127,8 @@ _CS2FREEZETIMESTARTED_PLAYERBALANCESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12282,
-  serialized_end=12360,
+  serialized_start=12372,
+  serialized_end=12450,
 )
 
 _CS2FREEZETIMESTARTED_TEAMSROUNDINFOENTRY = _descriptor.Descriptor(
@@ -4058,8 +4165,8 @@ _CS2FREEZETIMESTARTED_TEAMSROUNDINFOENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12823,
-  serialized_end=12892,
+  serialized_start=12913,
+  serialized_end=12982,
 )
 
 _CS2FREEZETIMESTARTED = _descriptor.Descriptor(
@@ -4117,8 +4224,8 @@ _CS2FREEZETIMESTARTED = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12444,
-  serialized_end=12892,
+  serialized_start=12534,
+  serialized_end=12982,
 )
 
 
@@ -4191,8 +4298,8 @@ _CS2ITEMDROP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12895,
-  serialized_end=13124,
+  serialized_start=12985,
+  serialized_end=13214,
 )
 
 
@@ -4258,8 +4365,8 @@ _CS2ITEMPICKUP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13127,
-  serialized_end=13320,
+  serialized_start=13217,
+  serialized_end=13410,
 )
 
 
@@ -4339,8 +4446,8 @@ _CS2ITEMPURCHASE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13323,
-  serialized_end=13567,
+  serialized_start=13413,
+  serialized_end=13657,
 )
 
 
@@ -4413,8 +4520,8 @@ _CS2ITEMTHROW = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13570,
-  serialized_end=13800,
+  serialized_start=13660,
+  serialized_end=13890,
 )
 
 
@@ -4522,8 +4629,8 @@ _CS2KILL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13803,
-  serialized_end=14147,
+  serialized_start=13893,
+  serialized_end=14237,
 )
 
 
@@ -4610,8 +4717,8 @@ _CS2DEATH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14150,
-  serialized_end=14424,
+  serialized_start=14240,
+  serialized_end=14514,
 )
 
 
@@ -4663,8 +4770,8 @@ _CS2MAPEND = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14427,
-  serialized_end=14557,
+  serialized_start=14517,
+  serialized_end=14647,
 )
 
 
@@ -4702,8 +4809,8 @@ _CS2MAPSTART = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14559,
-  serialized_end=14635,
+  serialized_start=14649,
+  serialized_end=14725,
 )
 
 
@@ -4741,8 +4848,8 @@ _CS2ROUNDEND_PLAYERBALANCESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12282,
-  serialized_end=12360,
+  serialized_start=12372,
+  serialized_end=12450,
 )
 
 _CS2ROUNDEND_PLAYERINVENTORIESENTRY = _descriptor.Descriptor(
@@ -4779,8 +4886,8 @@ _CS2ROUNDEND_PLAYERINVENTORIESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12362,
-  serialized_end=12441,
+  serialized_start=12452,
+  serialized_end=12531,
 )
 
 _CS2ROUNDEND = _descriptor.Descriptor(
@@ -4852,8 +4959,8 @@ _CS2ROUNDEND = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14638,
-  serialized_end=15141,
+  serialized_start=14728,
+  serialized_end=15231,
 )
 
 
@@ -4898,8 +5005,8 @@ _CS2ROUNDPAUSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15144,
-  serialized_end=15285,
+  serialized_start=15234,
+  serialized_end=15375,
 )
 
 
@@ -4944,8 +5051,8 @@ _CS2ROUNDRESUME = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15288,
-  serialized_end=15430,
+  serialized_start=15378,
+  serialized_end=15520,
 )
 
 
@@ -4976,8 +5083,8 @@ _CS2ROUNDROLLBACK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15432,
-  serialized_end=15477,
+  serialized_start=15522,
+  serialized_end=15567,
 )
 
 
@@ -5022,8 +5129,8 @@ _CS2ROUNDSTART = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15480,
-  serialized_end=15621,
+  serialized_start=15570,
+  serialized_end=15711,
 )
 
 _CS2MATCHMESSAGE_PAYLOAD.fields_by_name['snapshot'].message_type = _CS2MATCHSNAPSHOT
@@ -5073,6 +5180,9 @@ _CS2MATCHSTATE.fields_by_name['score'].message_type = _CS2MATCHSCORESTATE
 _CS2MATCHSTATE.fields_by_name['match_status'].enum_type = bragi_dot_common__pb2._MATCHSTATUSTYPE
 _CS2MATCHSTATE.fields_by_name['current_map_state'].message_type = _CS2CURRENTMAPSTATE
 _CS2MATCHSTATE.fields_by_name['previous_map_states'].message_type = _CS2PREVIOUSMAPSTATE
+_CS2MATCHSTATE.oneofs_by_name['_win_team_urn'].fields.append(
+  _CS2MATCHSTATE.fields_by_name['win_team_urn'])
+_CS2MATCHSTATE.fields_by_name['win_team_urn'].containing_oneof = _CS2MATCHSTATE.oneofs_by_name['_win_team_urn']
 _CS2CURRENTMAPSTATEPARTIALUPDATE.fields_by_name['info'].message_type = _CS2MAPINFOSTATE
 _CS2CURRENTMAPSTATEPARTIALUPDATE.fields_by_name['score'].message_type = _CS2MAPSCORESTATE
 _CS2CURRENTMAPSTATEPARTIALUPDATE.fields_by_name['current_round_state'].message_type = _CS2CURRENTROUNDSTATE
@@ -5294,7 +5404,8 @@ _CS2PLAYERSTATISTICS.fields_by_name['enemy_damage_dealt_armor_raw'].containing_o
 _CS2PLAYERSTATISTICS.oneofs_by_name['_enemy_damage_dealt_health_raw'].fields.append(
   _CS2PLAYERSTATISTICS.fields_by_name['enemy_damage_dealt_health_raw'])
 _CS2PLAYERSTATISTICS.fields_by_name['enemy_damage_dealt_health_raw'].containing_oneof = _CS2PLAYERSTATISTICS.oneofs_by_name['_enemy_damage_dealt_health_raw']
-_CS2ITEM.fields_by_name['type'].enum_type = _CS2WEAPONTYPE
+_CS2ITEM.fields_by_name['weapon_type'].enum_type = _CS2WEAPONTYPE
+_CS2ITEM.fields_by_name['type'].enum_type = _CS2ITEMTYPE
 _CS2EVENT.fields_by_name['bomb_defuse_started'].message_type = _CS2BOMBDEFUSESTARTED
 _CS2EVENT.fields_by_name['bomb_defused'].message_type = _CS2BOMBDEFUSED
 _CS2EVENT.fields_by_name['bomb_exploded'].message_type = _CS2BOMBEXPLODED
@@ -5514,6 +5625,7 @@ DESCRIPTOR.enum_types_by_name['CS2Side'] = _CS2SIDE
 DESCRIPTOR.enum_types_by_name['CS2WinReason'] = _CS2WINREASON
 DESCRIPTOR.enum_types_by_name['CS2RoundStateType'] = _CS2ROUNDSTATETYPE
 DESCRIPTOR.enum_types_by_name['CS2WeaponType'] = _CS2WEAPONTYPE
+DESCRIPTOR.enum_types_by_name['CS2ItemType'] = _CS2ITEMTYPE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 CS2MatchMessage = _reflection.GeneratedProtocolMessageType('CS2MatchMessage', (_message.Message,), {
@@ -6139,6 +6251,7 @@ _sym_db.RegisterMessage(CS2RoundStart)
 
 
 DESCRIPTOR._options = None
+_CS2WEAPONTYPE._options = None
 _CS2MATCHUPDATE.fields_by_name['events']._options = None
 _CS2CURRENTMAPSTATE_TEAMMAPSTATESENTRY._options = None
 _CS2PREVIOUSMAPSTATE_TEAMMAPSTATESENTRY._options = None
@@ -6148,6 +6261,7 @@ _CS2TEAMMAPSTATE_PLAYERMAPSTATESENTRY._options = None
 _CS2TEAMCURRENTROUNDSTATE_PLAYERROUNDSTATESENTRY._options = None
 _CS2PREVIOUSTEAMROUNDSTATE_PLAYERSENTRY._options = None
 _CS2PLAYERSTATISTICS.fields_by_name['damage']._options = None
+_CS2ITEM.fields_by_name['weapon_type']._options = None
 _CS2EVENT._options = None
 _CS2FREEZETIMEENDED_PLAYERBALANCESENTRY._options = None
 _CS2FREEZETIMEENDED_PLAYERINVENTORIESENTRY._options = None

@@ -98,6 +98,7 @@ message CS2MatchState {
   CS2Team home_team = 3;
   CS2Team away_team = 4;
   CS2MatchScoreState score = 5;
+  optional string win_team_urn = 9;
   MatchStatusType match_status = 6;
   CS2CurrentMapState current_map_state = 7;
   repeated CS2PreviousMapState previous_map_states = 8;  //this property is updated only when whole CS2MatchState update is received
@@ -429,7 +430,8 @@ message CS2PlayerStatistics {
 
 message CS2Item {
   string name = 1;
-  CS2WeaponType type = 2;
+  CS2WeaponType weapon_type = 2 [deprecated = true];
+  CS2ItemType type = 5;
   uint32 count = 3;
   bool isActive = 4;
 }
@@ -700,6 +702,7 @@ enum CS2RoundStateType {
 }
 
 enum CS2WeaponType {
+  option deprecated = true; // use CS2ItemType
   CS2_WEAPON_TYPE_UNSPECIFIED = 0;
   CS2_WEAPON_TYPE_PISTOL = 1;
   CS2_WEAPON_TYPE_BOMB = 2;
@@ -711,4 +714,19 @@ enum CS2WeaponType {
   CS2_WEAPON_TYPE_SUBMACHINE_GUN = 8;
   CS2_WEAPON_TYPE_KNIFE = 9;
   CS2_WEAPON_TYPE_DEFUSE_KIT = 10;
+}
+
+enum CS2ItemType {
+  CS2_ITEM_TYPE_UNSPECIFIED = 0;
+  CS2_ITEM_TYPE_PISTOL = 1;
+  CS2_ITEM_TYPE_BOMB = 2;
+  CS2_ITEM_TYPE_GRENADE = 3;
+  CS2_ITEM_TYPE_MACHINE_GUN = 4;
+  CS2_ITEM_TYPE_RIFLE = 5;
+  CS2_ITEM_TYPE_SHOTGUN = 6;
+  CS2_ITEM_TYPE_SNIPER_RIFLE = 7;
+  CS2_ITEM_TYPE_SUBMACHINE_GUN = 8;
+  CS2_ITEM_TYPE_KNIFE = 9;
+  CS2_ITEM_TYPE_DEFUSE_KIT = 10;
+  CS2_ITEM_TYPE_ARMOR = 11;
 }

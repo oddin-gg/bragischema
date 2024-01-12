@@ -18,6 +18,8 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type BragiClient interface {
+	// Matches gRPC unary call returns all planned or currently played matches
+	MatchTimeline(ctx context.Context, in *MatchTimelineRequest, opts ...grpc.CallOption) (*MatchTimelineResponse, error)
 	// LiveDataFeed gRPC stream returning LiveDataFeedMessage one direction stream
 	LiveDataFeed(ctx context.Context, in *LiveDataFeedRequest, opts ...grpc.CallOption) (Bragi_LiveDataFeedClient, error)
 }
@@ -28,6 +30,15 @@ type bragiClient struct {
 
 func NewBragiClient(cc grpc.ClientConnInterface) BragiClient {
 	return &bragiClient{cc}
+}
+
+func (c *bragiClient) MatchTimeline(ctx context.Context, in *MatchTimelineRequest, opts ...grpc.CallOption) (*MatchTimelineResponse, error) {
+	out := new(MatchTimelineResponse)
+	err := c.cc.Invoke(ctx, "/bragi.Bragi/MatchTimeline", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *bragiClient) LiveDataFeed(ctx context.Context, in *LiveDataFeedRequest, opts ...grpc.CallOption) (Bragi_LiveDataFeedClient, error) {
@@ -66,6 +77,8 @@ func (x *bragiLiveDataFeedClient) Recv() (*LiveDataFeedMessage, error) {
 // All implementations must embed UnimplementedBragiServer
 // for forward compatibility
 type BragiServer interface {
+	// Matches gRPC unary call returns all planned or currently played matches
+	MatchTimeline(context.Context, *MatchTimelineRequest) (*MatchTimelineResponse, error)
 	// LiveDataFeed gRPC stream returning LiveDataFeedMessage one direction stream
 	LiveDataFeed(*LiveDataFeedRequest, Bragi_LiveDataFeedServer) error
 	mustEmbedUnimplementedBragiServer()
@@ -75,6 +88,9 @@ type BragiServer interface {
 type UnimplementedBragiServer struct {
 }
 
+func (UnimplementedBragiServer) MatchTimeline(context.Context, *MatchTimelineRequest) (*MatchTimelineResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MatchTimeline not implemented")
+}
 func (UnimplementedBragiServer) LiveDataFeed(*LiveDataFeedRequest, Bragi_LiveDataFeedServer) error {
 	return status.Errorf(codes.Unimplemented, "method LiveDataFeed not implemented")
 }
@@ -89,6 +105,24 @@ type UnsafeBragiServer interface {
 
 func RegisterBragiServer(s grpc.ServiceRegistrar, srv BragiServer) {
 	s.RegisterService(&Bragi_ServiceDesc, srv)
+}
+
+func _Bragi_MatchTimeline_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MatchTimelineRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BragiServer).MatchTimeline(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bragi.Bragi/MatchTimeline",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BragiServer).MatchTimeline(ctx, req.(*MatchTimelineRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _Bragi_LiveDataFeed_Handler(srv interface{}, stream grpc.ServerStream) error {
@@ -118,7 +152,12 @@ func (x *bragiLiveDataFeedServer) Send(m *LiveDataFeedMessage) error {
 var Bragi_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "bragi.Bragi",
 	HandlerType: (*BragiServer)(nil),
-	Methods:     []grpc.MethodDesc{},
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "MatchTimeline",
+			Handler:    _Bragi_MatchTimeline_Handler,
+		},
+	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "LiveDataFeed",

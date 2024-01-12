@@ -34,8 +34,42 @@ function deserialize_bragi_LiveDataFeedRequest(buffer_arg) {
   return bragi_bragi_service_pb.LiveDataFeedRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_bragi_MatchTimelineRequest(arg) {
+  if (!(arg instanceof bragi_bragi_service_pb.MatchTimelineRequest)) {
+    throw new Error('Expected argument of type bragi.MatchTimelineRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_MatchTimelineRequest(buffer_arg) {
+  return bragi_bragi_service_pb.MatchTimelineRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bragi_MatchTimelineResponse(arg) {
+  if (!(arg instanceof bragi_bragi_service_pb.MatchTimelineResponse)) {
+    throw new Error('Expected argument of type bragi.MatchTimelineResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_MatchTimelineResponse(buffer_arg) {
+  return bragi_bragi_service_pb.MatchTimelineResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 
 var BragiService = exports.BragiService = {
+  // Matches gRPC unary call returns all planned or currently played matches
+matchTimeline: {
+    path: '/bragi.Bragi/MatchTimeline',
+    requestStream: false,
+    responseStream: false,
+    requestType: bragi_bragi_service_pb.MatchTimelineRequest,
+    responseType: bragi_bragi_service_pb.MatchTimelineResponse,
+    requestSerialize: serialize_bragi_MatchTimelineRequest,
+    requestDeserialize: deserialize_bragi_MatchTimelineRequest,
+    responseSerialize: serialize_bragi_MatchTimelineResponse,
+    responseDeserialize: deserialize_bragi_MatchTimelineResponse,
+  },
   // LiveDataFeed gRPC stream returning LiveDataFeedMessage one direction stream
 liveDataFeed: {
     path: '/bragi.Bragi/LiveDataFeed',
