@@ -356,6 +356,11 @@ export class Dota2CurrentMapStatePartialUpdate extends jspb.Message {
   getBarracks(): Dota2Barracks | undefined;
   setBarracks(value?: Dota2Barracks): void;
 
+  hasRoshan(): boolean;
+  clearRoshan(): void;
+  getRoshan(): Roshan | undefined;
+  setRoshan(value?: Roshan): void;
+
   getUpdateCase(): Dota2CurrentMapStatePartialUpdate.UpdateCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Dota2CurrentMapStatePartialUpdate.AsObject;
@@ -374,6 +379,7 @@ export namespace Dota2CurrentMapStatePartialUpdate {
     teamCurrentMapPartialUpdate?: Dota2TeamCurrentMapStatePartialUpdate.AsObject,
     towers?: Dota2Towers.AsObject,
     barracks?: Dota2Barracks.AsObject,
+    roshan?: Roshan.AsObject,
   }
 
   export enum UpdateCase {
@@ -383,6 +389,7 @@ export namespace Dota2CurrentMapStatePartialUpdate {
     TEAM_CURRENT_MAP_PARTIAL_UPDATE = 3,
     TOWERS = 4,
     BARRACKS = 5,
+    ROSHAN = 8,
   }
 }
 
@@ -410,6 +417,14 @@ export class Dota2CurrentMapState extends jspb.Message {
   getBarracks(): Dota2Barracks | undefined;
   setBarracks(value?: Dota2Barracks): void;
 
+  hasRoshan(): boolean;
+  clearRoshan(): void;
+  getRoshan(): Roshan | undefined;
+  setRoshan(value?: Roshan): void;
+
+  getDayTime(): boolean;
+  setDayTime(value: boolean): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Dota2CurrentMapState.AsObject;
   static toObject(includeInstance: boolean, msg: Dota2CurrentMapState): Dota2CurrentMapState.AsObject;
@@ -428,6 +443,8 @@ export namespace Dota2CurrentMapState {
     teamsMap: Array<[string, Dota2TeamCurrentMapState.AsObject]>,
     towers?: Dota2Towers.AsObject,
     barracks?: Dota2Barracks.AsObject,
+    roshan?: Roshan.AsObject,
+    dayTime: boolean,
   }
 }
 
@@ -674,6 +691,16 @@ export namespace Dota2PlayerCurrentMapStatePartialUpdate {
     getPosition(): Dota2Position | undefined;
     setPosition(value?: Dota2Position): void;
 
+    hasItems(): boolean;
+    clearItems(): void;
+    getItems(): Dota2Items | undefined;
+    setItems(value?: Dota2Items): void;
+
+    hasAbilities(): boolean;
+    clearAbilities(): void;
+    getAbilities(): Dota2Abilities | undefined;
+    setAbilities(value?: Dota2Abilities): void;
+
     getPayloadCase(): Payload.PayloadCase;
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Payload.AsObject;
@@ -692,6 +719,8 @@ export namespace Dota2PlayerCurrentMapStatePartialUpdate {
       statistics?: Dota2PlayerStatisticsState.AsObject,
       mapStatistics?: Dota2PlayerCurrentMapStatisticsState.AsObject,
       position?: Dota2Position.AsObject,
+      items?: Dota2Items.AsObject,
+      abilities?: Dota2Abilities.AsObject,
     }
 
     export enum PayloadCase {
@@ -701,6 +730,8 @@ export namespace Dota2PlayerCurrentMapStatePartialUpdate {
       STATISTICS = 3,
       MAP_STATISTICS = 4,
       POSITION = 5,
+      ITEMS = 6,
+      ABILITIES = 7,
     }
   }
 }
@@ -734,6 +765,16 @@ export class Dota2PlayerCurrentMapState extends jspb.Message {
   getPosition(): Dota2Position | undefined;
   setPosition(value?: Dota2Position): void;
 
+  hasItems(): boolean;
+  clearItems(): void;
+  getItems(): Dota2Items | undefined;
+  setItems(value?: Dota2Items): void;
+
+  hasAbilities(): boolean;
+  clearAbilities(): void;
+  getAbilities(): Dota2Abilities | undefined;
+  setAbilities(value?: Dota2Abilities): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Dota2PlayerCurrentMapState.AsObject;
   static toObject(includeInstance: boolean, msg: Dota2PlayerCurrentMapState): Dota2PlayerCurrentMapState.AsObject;
@@ -752,6 +793,8 @@ export namespace Dota2PlayerCurrentMapState {
     statistics?: Dota2PlayerStatisticsState.AsObject,
     mapStatistics?: Dota2PlayerCurrentMapStatisticsState.AsObject,
     position?: Dota2Position.AsObject,
+    items?: Dota2Items.AsObject,
+    abilities?: Dota2Abilities.AsObject,
   }
 }
 
@@ -789,6 +832,21 @@ export class Dota2PlayerCurrentMapStatisticsState extends jspb.Message {
   getMaxMana(): number;
   setMaxMana(value: number): void;
 
+  getGoldReliable(): number;
+  setGoldReliable(value: number): void;
+
+  getGoldUnreliable(): number;
+  setGoldUnreliable(value: number): void;
+
+  getDenies(): number;
+  setDenies(value: number): void;
+
+  getLastHits(): number;
+  setLastHits(value: number): void;
+
+  getLevel(): number;
+  setLevel(value: number): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Dota2PlayerCurrentMapStatisticsState.AsObject;
   static toObject(includeInstance: boolean, msg: Dota2PlayerCurrentMapStatisticsState): Dota2PlayerCurrentMapStatisticsState.AsObject;
@@ -812,6 +870,11 @@ export namespace Dota2PlayerCurrentMapStatisticsState {
     hasAegis: boolean,
     mana: number,
     maxMana: number,
+    goldReliable: number,
+    goldUnreliable: number,
+    denies: number,
+    lastHits: number,
+    level: number,
   }
 }
 
@@ -1042,6 +1105,146 @@ export namespace Dota2Barracks {
   }
 }
 
+export class Dota2Abilities extends jspb.Message {
+  clearAbilitiesList(): void;
+  getAbilitiesList(): Array<Dota2Ability>;
+  setAbilitiesList(value: Array<Dota2Ability>): void;
+  addAbilities(value?: Dota2Ability, index?: number): Dota2Ability;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2Abilities.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2Abilities): Dota2Abilities.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2Abilities, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2Abilities;
+  static deserializeBinaryFromReader(message: Dota2Abilities, reader: jspb.BinaryReader): Dota2Abilities;
+}
+
+export namespace Dota2Abilities {
+  export type AsObject = {
+    abilitiesList: Array<Dota2Ability.AsObject>,
+  }
+}
+
+export class Dota2Items extends jspb.Message {
+  clearItemsList(): void;
+  getItemsList(): Array<Dota2Item>;
+  setItemsList(value: Array<Dota2Item>): void;
+  addItems(value?: Dota2Item, index?: number): Dota2Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2Items.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2Items): Dota2Items.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2Items, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2Items;
+  static deserializeBinaryFromReader(message: Dota2Items, reader: jspb.BinaryReader): Dota2Items;
+}
+
+export namespace Dota2Items {
+  export type AsObject = {
+    itemsList: Array<Dota2Item.AsObject>,
+  }
+}
+
+export class Dota2Item extends jspb.Message {
+  getName(): string;
+  setName(value: string): void;
+
+  hasCooldown(): boolean;
+  clearCooldown(): void;
+  getCooldown(): number;
+  setCooldown(value: number): void;
+
+  getPosition(): Dota2ItemPositionMap[keyof Dota2ItemPositionMap];
+  setPosition(value: Dota2ItemPositionMap[keyof Dota2ItemPositionMap]): void;
+
+  getLevel(): number;
+  setLevel(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2Item.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2Item): Dota2Item.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2Item, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2Item;
+  static deserializeBinaryFromReader(message: Dota2Item, reader: jspb.BinaryReader): Dota2Item;
+}
+
+export namespace Dota2Item {
+  export type AsObject = {
+    name: string,
+    cooldown: number,
+    position: Dota2ItemPositionMap[keyof Dota2ItemPositionMap],
+    level: number,
+  }
+}
+
+export class Dota2Ability extends jspb.Message {
+  getName(): string;
+  setName(value: string): void;
+
+  hasCooldown(): boolean;
+  clearCooldown(): void;
+  getCooldown(): number;
+  setCooldown(value: number): void;
+
+  getUltimate(): boolean;
+  setUltimate(value: boolean): void;
+
+  getPassive(): boolean;
+  setPassive(value: boolean): void;
+
+  getCanCast(): boolean;
+  setCanCast(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2Ability.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2Ability): Dota2Ability.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2Ability, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2Ability;
+  static deserializeBinaryFromReader(message: Dota2Ability, reader: jspb.BinaryReader): Dota2Ability;
+}
+
+export namespace Dota2Ability {
+  export type AsObject = {
+    name: string,
+    cooldown: number,
+    ultimate: boolean,
+    passive: boolean,
+    canCast: boolean,
+  }
+}
+
+export class Roshan extends jspb.Message {
+  getAlive(): boolean;
+  setAlive(value: boolean): void;
+
+  getRespawntime(): number;
+  setRespawntime(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Roshan.AsObject;
+  static toObject(includeInstance: boolean, msg: Roshan): Roshan.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Roshan, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Roshan;
+  static deserializeBinaryFromReader(message: Roshan, reader: jspb.BinaryReader): Roshan;
+}
+
+export namespace Roshan {
+  export type AsObject = {
+    alive: boolean,
+    respawntime: number,
+  }
+}
+
 export class Dota2Tower extends jspb.Message {
   getLane(): Dota2LaneMap[keyof Dota2LaneMap];
   setLane(value: Dota2LaneMap[keyof Dota2LaneMap]): void;
@@ -1164,4 +1367,27 @@ export interface Dota2BarrackTypeMap {
 }
 
 export const Dota2BarrackType: Dota2BarrackTypeMap;
+
+export interface Dota2ItemPositionMap {
+  DOTA2_ITEM_POSITION_UNSPECIFIED: 0;
+  DOTA2_ITEM_POSITION_NEUTRAL: 1;
+  DOTA2_ITEM_POSITION_STASH0: 2;
+  DOTA2_ITEM_POSITION_STASH1: 3;
+  DOTA2_ITEM_POSITION_STASH2: 4;
+  DOTA2_ITEM_POSITION_STASH3: 5;
+  DOTA2_ITEM_POSITION_STASH4: 6;
+  DOTA2_ITEM_POSITION_STASH5: 7;
+  DOTA2_ITEM_POSITION_TELEPORT: 8;
+  DOTA2_ITEM_POSITION_SLOT0: 9;
+  DOTA2_ITEM_POSITION_SLOT1: 10;
+  DOTA2_ITEM_POSITION_SLOT2: 11;
+  DOTA2_ITEM_POSITION_SLOT3: 12;
+  DOTA2_ITEM_POSITION_SLOT4: 13;
+  DOTA2_ITEM_POSITION_SLOT5: 14;
+  DOTA2_ITEM_POSITION_SLOT6: 15;
+  DOTA2_ITEM_POSITION_SLOT7: 16;
+  DOTA2_ITEM_POSITION_SLOT8: 17;
+}
+
+export const Dota2ItemPosition: Dota2ItemPositionMap;
 
