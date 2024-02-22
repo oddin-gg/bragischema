@@ -251,14 +251,14 @@ enum Dota2ItemPosition {
 
 message Dota2Item {
   string name = 1;
-  int32 cooldown = 2;
+  optional int32 cooldown = 2;
   Dota2ItemPosition position = 3;
   uint32 level = 4;
 }
 
 message Dota2Ability {
   string name = 1;
-  int32 cooldown = 2;
+  optional int32 cooldown = 2;
   bool ultimate = 3;
   bool passive = 4;
 }
