@@ -789,6 +789,31 @@ export class Dota2PlayerCurrentMapStatisticsState extends jspb.Message {
   getMaxMana(): number;
   setMaxMana(value: number): void;
 
+  clearItemsList(): void;
+  getItemsList(): Array<Dota2Item>;
+  setItemsList(value: Array<Dota2Item>): void;
+  addItems(value?: Dota2Item, index?: number): Dota2Item;
+
+  clearAbilitiesList(): void;
+  getAbilitiesList(): Array<Dota2Ability>;
+  setAbilitiesList(value: Array<Dota2Ability>): void;
+  addAbilities(value?: Dota2Ability, index?: number): Dota2Ability;
+
+  getGoldReliable(): number;
+  setGoldReliable(value: number): void;
+
+  getGoldUnreliable(): number;
+  setGoldUnreliable(value: number): void;
+
+  getDenies(): number;
+  setDenies(value: number): void;
+
+  getLastHits(): number;
+  setLastHits(value: number): void;
+
+  getLevel(): number;
+  setLevel(value: number): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Dota2PlayerCurrentMapStatisticsState.AsObject;
   static toObject(includeInstance: boolean, msg: Dota2PlayerCurrentMapStatisticsState): Dota2PlayerCurrentMapStatisticsState.AsObject;
@@ -812,6 +837,77 @@ export namespace Dota2PlayerCurrentMapStatisticsState {
     hasAegis: boolean,
     mana: number,
     maxMana: number,
+    itemsList: Array<Dota2Item.AsObject>,
+    abilitiesList: Array<Dota2Ability.AsObject>,
+    goldReliable: number,
+    goldUnreliable: number,
+    denies: number,
+    lastHits: number,
+    level: number,
+  }
+}
+
+export class Dota2Item extends jspb.Message {
+  getName(): string;
+  setName(value: string): void;
+
+  getCooldown(): number;
+  setCooldown(value: number): void;
+
+  getPosition(): Dota2ItemPositionMap[keyof Dota2ItemPositionMap];
+  setPosition(value: Dota2ItemPositionMap[keyof Dota2ItemPositionMap]): void;
+
+  getLevel(): number;
+  setLevel(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2Item.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2Item): Dota2Item.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2Item, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2Item;
+  static deserializeBinaryFromReader(message: Dota2Item, reader: jspb.BinaryReader): Dota2Item;
+}
+
+export namespace Dota2Item {
+  export type AsObject = {
+    name: string,
+    cooldown: number,
+    position: Dota2ItemPositionMap[keyof Dota2ItemPositionMap],
+    level: number,
+  }
+}
+
+export class Dota2Ability extends jspb.Message {
+  getName(): string;
+  setName(value: string): void;
+
+  getCooldown(): number;
+  setCooldown(value: number): void;
+
+  getUltimate(): boolean;
+  setUltimate(value: boolean): void;
+
+  getPassive(): boolean;
+  setPassive(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2Ability.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2Ability): Dota2Ability.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2Ability, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2Ability;
+  static deserializeBinaryFromReader(message: Dota2Ability, reader: jspb.BinaryReader): Dota2Ability;
+}
+
+export namespace Dota2Ability {
+  export type AsObject = {
+    name: string,
+    cooldown: number,
+    ultimate: boolean,
+    passive: boolean,
   }
 }
 
@@ -1129,6 +1225,29 @@ export namespace Dota2Position {
     y: number,
   }
 }
+
+export interface Dota2ItemPositionMap {
+  ITEM_POSITION_UNSPECIFIED: 0;
+  ITEM_POSITION_NEUTRAL: 1;
+  ITEM_POSITION_STASH0: 2;
+  ITEM_POSITION_STASH1: 3;
+  ITEM_POSITION_STASH2: 4;
+  ITEM_POSITION_STASH3: 5;
+  ITEM_POSITION_STASH4: 6;
+  ITEM_POSITION_STASH5: 7;
+  ITEM_POSITION_TELEPORT: 8;
+  ITEM_POSITION_SLOT0: 9;
+  ITEM_POSITION_SLOT1: 10;
+  ITEM_POSITION_SLOT2: 11;
+  ITEM_POSITION_SLOT3: 12;
+  ITEM_POSITION_SLOT4: 13;
+  ITEM_POSITION_SLOT5: 14;
+  ITEM_POSITION_SLOT6: 15;
+  ITEM_POSITION_SLOT7: 16;
+  ITEM_POSITION_SLOT8: 17;
+}
+
+export const Dota2ItemPosition: Dota2ItemPositionMap;
 
 export interface Dota2FactionMap {
   DOTA2_FACTION_UNSPECIFIED: 0;

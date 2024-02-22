@@ -34,7 +34,7 @@ sourceSets {
 protobuf {
   protoc {
     artifact = "com.google.protobuf:protoc:$protobufVersion"
-    // artifact = "com.google.protobuf:protoc:$protobufVersion:osx-x86_64" // !!! Important: uncomment this if you are using Apple M1 chip
+    artifact = "com.google.protobuf:protoc:$protobufVersion:osx-x86_64" // !!! Important: uncomment this if you are using Apple M1 chip
   }
   plugins {
     grpc {
