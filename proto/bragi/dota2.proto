@@ -106,7 +106,23 @@ message Dota2CurrentMapStatePartialUpdate {
 
     // Replaces "barracks" property in Dota2Barracks.
     Dota2Barracks barracks = 5;
+
+    // Replaces "items" property in Dota2Items.
+    Dota2Items items = 6;
+
+    // Replaces "abilities" property in Dota2Abilities.
+    Dota2Abilities abilities = 7;
+
+    Roshan roshan = 8;
   }
+}
+
+message Roshan {
+  // Whether is roshan alive or not
+  bool alive = 1;
+
+  // Roshan's respawn timer.
+  uint32 respawnTime = 2;
 }
 
 message Dota2CurrentMapState {
@@ -116,6 +132,10 @@ message Dota2CurrentMapState {
   map<string, Dota2TeamCurrentMapState> teams = 4;
   Dota2Towers towers = 5;
   Dota2Barracks barracks = 6;
+  Roshan roshan = 7;
+
+  // Flag that represents Dota2 in game day season: true => day, false => night
+  bool day_time = 8;
 }
 
 message Dota2CurrentMapTimeState {
@@ -199,6 +219,14 @@ message Dota2PlayerCurrentMapState{
   Dota2Position position = 6;
 }
 
+message Dota2Abilities {
+  repeated Dota2Ability abilities = 1;
+}
+
+message Dota2Items {
+  repeated Dota2Item items = 1;
+}
+
 message Dota2PlayerCurrentMapStatisticsState {
   string player_urn = 1;
   bool alive = 2;
@@ -214,8 +242,9 @@ message Dota2PlayerCurrentMapStatisticsState {
   uint32 mana = 10;
   uint32 max_mana = 11;
 
-  repeated Dota2Item items = 12;
-  repeated Dota2Ability abilities = 13;
+  Dota2Items items = 12;
+  Dota2Abilities abilities = 13;
+
   // Number of reliable Golds.
   uint32 gold_reliable = 14;
   // Number of unreliable Golds.
@@ -226,7 +255,6 @@ message Dota2PlayerCurrentMapStatisticsState {
   uint32 last_hits = 17;
   uint32 level = 18;
 }
-
 
 enum Dota2ItemPosition {
   DOTA2_ITEM_POSITION_UNSPECIFIED = 0;
