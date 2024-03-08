@@ -303,6 +303,7 @@ message Dota2Ability {
   optional int32 cooldown = 2;
   bool ultimate = 3;
   bool passive = 4;
+  bool can_cast = 5;
 }
 
 message Roshan {
