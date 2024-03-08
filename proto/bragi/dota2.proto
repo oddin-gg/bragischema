@@ -106,6 +106,14 @@ message Dota2CurrentMapStatePartialUpdate {
 
     // Replaces "barracks" property in Dota2Barracks.
     Dota2Barracks barracks = 5;
+
+    // Replaces "items" property in Dota2Items.
+    Dota2Items items = 6;
+
+    // Replaces "abilities" property in Dota2Abilities.
+    Dota2Abilities abilities = 7;
+
+    Roshan roshan = 8;
   }
 }
 
@@ -143,14 +151,6 @@ message Dota2TeamCurrentMapStatePartialUpdate {
 
       // Apply partial update on value under given key in player_map_states map property in Dota2TeamMapState.
       Dota2PlayerCurrentMapStatePartialUpdate player_current_map_partial_update = 3;
-
-      // Replaces "items" property in Dota2Items.
-      Dota2Items items = 4;
-
-      // Replaces "abilities" property in Dota2Abilities.
-      Dota2Abilities abilities = 5;
-
-      Roshan roshan = 6;
     }
   }
 
