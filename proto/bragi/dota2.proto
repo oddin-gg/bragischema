@@ -106,23 +106,7 @@ message Dota2CurrentMapStatePartialUpdate {
 
     // Replaces "barracks" property in Dota2Barracks.
     Dota2Barracks barracks = 5;
-
-    // Replaces "items" property in Dota2Items.
-    Dota2Items items = 6;
-
-    // Replaces "abilities" property in Dota2Abilities.
-    Dota2Abilities abilities = 7;
-
-    Roshan roshan = 8;
   }
-}
-
-message Roshan {
-  // Whether is roshan alive or not
-  bool alive = 1;
-
-  // Roshan's respawn timer.
-  uint32 respawnTime = 2;
 }
 
 message Dota2CurrentMapState {
@@ -133,7 +117,6 @@ message Dota2CurrentMapState {
   Dota2Towers towers = 5;
   Dota2Barracks barracks = 6;
   Roshan roshan = 7;
-
   // Flag that represents Dota2 in game day season: true => day, false => night
   bool day_time = 8;
 }
@@ -160,6 +143,14 @@ message Dota2TeamCurrentMapStatePartialUpdate {
 
       // Apply partial update on value under given key in player_map_states map property in Dota2TeamMapState.
       Dota2PlayerCurrentMapStatePartialUpdate player_current_map_partial_update = 3;
+
+      // Replaces "items" property in Dota2Items.
+      Dota2Items items = 4;
+
+      // Replaces "abilities" property in Dota2Abilities.
+      Dota2Abilities abilities = 5;
+
+      Roshan roshan = 6;
     }
   }
 
@@ -219,14 +210,6 @@ message Dota2PlayerCurrentMapState{
   Dota2Position position = 6;
 }
 
-message Dota2Abilities {
-  repeated Dota2Ability abilities = 1;
-}
-
-message Dota2Items {
-  repeated Dota2Item items = 1;
-}
-
 message Dota2PlayerCurrentMapStatisticsState {
   string player_urn = 1;
   bool alive = 2;
@@ -241,54 +224,17 @@ message Dota2PlayerCurrentMapStatisticsState {
   bool has_aegis = 9;
   uint32 mana = 10;
   uint32 max_mana = 11;
-
-  Dota2Items items = 12;
-  Dota2Abilities abilities = 13;
-
   // Number of reliable Golds.
-  uint32 gold_reliable = 14;
+  uint32 gold_reliable = 12;
   // Number of unreliable Golds.
-  uint32 gold_unreliable = 15;
+  uint32 gold_unreliable = 13;
   // Number of denied creeps (you can kill your own minion to prevent an enemy player getting gold from it).
-  uint32 denies = 16;
+  uint32 denies = 14;
   // Number of killed creeps.
-  uint32 last_hits = 17;
-  uint32 level = 18;
-}
-
-enum Dota2ItemPosition {
-  DOTA2_ITEM_POSITION_UNSPECIFIED = 0;
-  DOTA2_ITEM_POSITION_NEUTRAL = 1;
-  DOTA2_ITEM_POSITION_STASH0 = 2;
-  DOTA2_ITEM_POSITION_STASH1 = 3;
-  DOTA2_ITEM_POSITION_STASH2 = 4;
-  DOTA2_ITEM_POSITION_STASH3 = 5;
-  DOTA2_ITEM_POSITION_STASH4 = 6;
-  DOTA2_ITEM_POSITION_STASH5 = 7;
-  DOTA2_ITEM_POSITION_TELEPORT = 8;
-  DOTA2_ITEM_POSITION_SLOT0 = 9;
-  DOTA2_ITEM_POSITION_SLOT1 = 10;
-  DOTA2_ITEM_POSITION_SLOT2 = 11;
-  DOTA2_ITEM_POSITION_SLOT3 = 12;
-  DOTA2_ITEM_POSITION_SLOT4 = 13;
-  DOTA2_ITEM_POSITION_SLOT5 = 14;
-  DOTA2_ITEM_POSITION_SLOT6 = 15;
-  DOTA2_ITEM_POSITION_SLOT7 = 16;
-  DOTA2_ITEM_POSITION_SLOT8 = 17;
-}
-
-message Dota2Item {
-  string name = 1;
-  optional int32 cooldown = 2;
-  Dota2ItemPosition position = 3;
-  uint32 level = 4;
-}
-
-message Dota2Ability {
-  string name = 1;
-  optional int32 cooldown = 2;
-  bool ultimate = 3;
-  bool passive = 4;
+  uint32 last_hits = 15;
+  uint32 level = 16;
+  Dota2Items items = 17;
+  Dota2Abilities abilities = 18;
 }
 
 message Dota2PlayerCurrentMapTimersState {
@@ -337,6 +283,35 @@ message Dota2Barracks {
   repeated Dota2Barrack barracks = 1;
 }
 
+message Dota2Abilities {
+  repeated Dota2Ability abilities = 1;
+}
+
+message Dota2Items {
+  repeated Dota2Item items = 1;
+}
+
+message Dota2Item {
+  string name = 1;
+  optional int32 cooldown = 2;
+  Dota2ItemPosition position = 3;
+  uint32 level = 4;
+}
+
+message Dota2Ability {
+  string name = 1;
+  optional int32 cooldown = 2;
+  bool ultimate = 3;
+  bool passive = 4;
+}
+
+message Roshan {
+  // Whether is roshan alive or not
+  bool alive = 1;
+  // Roshan's respawn timer.
+  uint32 respawnTime = 2;
+}
+
 message Dota2Tower {
   Dota2Lane lane = 1;
   Dota2Faction faction = 2;
@@ -381,4 +356,25 @@ enum Dota2BarrackType {
   DOTA2_BARRACK_TYPE_UNSPECIFIED = 0;
   DOTA2_BARRACK_TYPE_RANGED = 1;
   DOTA2_BARRACK_TYPE_MELEE = 2;
+}
+
+enum Dota2ItemPosition {
+  DOTA2_ITEM_POSITION_UNSPECIFIED = 0;
+  DOTA2_ITEM_POSITION_NEUTRAL = 1;
+  DOTA2_ITEM_POSITION_STASH0 = 2;
+  DOTA2_ITEM_POSITION_STASH1 = 3;
+  DOTA2_ITEM_POSITION_STASH2 = 4;
+  DOTA2_ITEM_POSITION_STASH3 = 5;
+  DOTA2_ITEM_POSITION_STASH4 = 6;
+  DOTA2_ITEM_POSITION_STASH5 = 7;
+  DOTA2_ITEM_POSITION_TELEPORT = 8;
+  DOTA2_ITEM_POSITION_SLOT0 = 9;
+  DOTA2_ITEM_POSITION_SLOT1 = 10;
+  DOTA2_ITEM_POSITION_SLOT2 = 11;
+  DOTA2_ITEM_POSITION_SLOT3 = 12;
+  DOTA2_ITEM_POSITION_SLOT4 = 13;
+  DOTA2_ITEM_POSITION_SLOT5 = 14;
+  DOTA2_ITEM_POSITION_SLOT6 = 15;
+  DOTA2_ITEM_POSITION_SLOT7 = 16;
+  DOTA2_ITEM_POSITION_SLOT8 = 17;
 }
