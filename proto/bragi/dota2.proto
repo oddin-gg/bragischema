@@ -107,12 +107,6 @@ message Dota2CurrentMapStatePartialUpdate {
     // Replaces "barracks" property in Dota2Barracks.
     Dota2Barracks barracks = 5;
 
-    // Replaces "items" property in Dota2Items.
-    Dota2Items items = 6;
-
-    // Replaces "abilities" property in Dota2Abilities.
-    Dota2Abilities abilities = 7;
-
     Roshan roshan = 8;
   }
 }
@@ -194,6 +188,12 @@ message Dota2PlayerCurrentMapStatePartialUpdate {
 
       // Replaces "position" property in Dota2Position.
       Dota2Position position = 5;
+
+      // Replaces "items" property in Dota2Items.
+      Dota2Items items = 6;
+
+      // Replaces "abilities" property in Dota2Abilities.
+      Dota2Abilities abilities = 7;
     }
   }
 
@@ -208,6 +208,8 @@ message Dota2PlayerCurrentMapState{
   Dota2PlayerStatisticsState statistics = 4;
   Dota2PlayerCurrentMapStatisticsState map_statistics = 5;
   Dota2Position position = 6;
+  Dota2Items items = 7;
+  Dota2Abilities abilities = 8;
 }
 
 message Dota2PlayerCurrentMapStatisticsState {
@@ -233,8 +235,6 @@ message Dota2PlayerCurrentMapStatisticsState {
   // Number of killed creeps.
   uint32 last_hits = 15;
   uint32 level = 16;
-  Dota2Items items = 17;
-  Dota2Abilities abilities = 18;
 }
 
 message Dota2PlayerCurrentMapTimersState {
