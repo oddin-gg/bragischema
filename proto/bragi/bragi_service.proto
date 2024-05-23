@@ -17,8 +17,9 @@ import "bragi/valorant.proto";
 
 service Bragi {
 
-  // Matches gRPC unary call returns all planned or currently played matches
-  rpc MatchTimeline(MatchTimelineRequest) returns (MatchTimelineResponse) {}
+  // Matches gRPC stream call returns all planned or currently played matches,
+  // and match updates in realtime when a match changes
+  rpc MatchTimeline(MatchTimelineRequest) returns (stream MatchTimelineMessage) {}
 
   // LiveDataFeed gRPC stream returning LiveDataFeedMessage one direction stream
   rpc LiveDataFeed(LiveDataFeedRequest) returns (stream LiveDataFeedMessage) {}
@@ -27,8 +28,12 @@ service Bragi {
 
 message MatchTimelineRequest {}
 
-message MatchTimelineResponse {
-  repeated Match matches = 1;
+message MatchTimelineMessage {
+  oneof message {
+    Matches matches = 1;
+    MatchUpdate match_update = 2;
+  }
+  
 }
 
 message LiveDataFeedRequest {
