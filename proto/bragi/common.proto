@@ -65,13 +65,6 @@ message Matches {
   repeated Match matches = 1;
 }
 
-message MatchUpdate {
-  string match_urn = 1;
-  uint32 home_score = 2;
-  uint32 away_score = 3;
-  MatchStatusType match_status = 4;
-}
-
 message Team {
   string team_urn = 1;
   string team_name = 2;

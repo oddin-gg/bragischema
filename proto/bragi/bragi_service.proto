@@ -31,7 +31,7 @@ message MatchTimelineRequest {}
 message MatchTimelineMessage {
   oneof message {
     Matches matches = 1;
-    MatchUpdate match_update = 2;
+    Match match = 2;
   }
   
 }
