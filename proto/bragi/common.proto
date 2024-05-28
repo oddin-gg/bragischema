@@ -61,10 +61,6 @@ message Match {
   google.protobuf.Timestamp plannet_start = 9;
 }
 
-message Matches {
-  repeated Match matches = 1;
-}
-
 message Team {
   string team_urn = 1;
   string team_name = 2;
