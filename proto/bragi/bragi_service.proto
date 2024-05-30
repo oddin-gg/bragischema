@@ -20,6 +20,12 @@ service Bragi {
   // Matches gRPC unary call returns all planned or currently played matches
   rpc MatchTimeline(MatchTimelineRequest) returns (MatchTimelineResponse) {}
 
+  // The MatchTimelineFeed gRPC stream call provides all upcoming or currently in-progress matches. 
+  // It also sends real-time updates when the status of a match changes. 
+  // To ensure you have the latest match timeline information, you must remain connected to this stream.
+  // If the connection is lost, you need to reconnect to continue receiving up-to-date match data.
+  rpc MatchTimelineFeed(MatchTimelineFeedRequest) returns (stream MatchTimelineFeedMessage) {}
+
   // LiveDataFeed gRPC stream returning LiveDataFeedMessage one direction stream
   rpc LiveDataFeed(LiveDataFeedRequest) returns (stream LiveDataFeedMessage) {}
 
@@ -29,6 +35,16 @@ message MatchTimelineRequest {}
 
 message MatchTimelineResponse {
   repeated Match matches = 1;
+}
+
+message MatchTimelineFeedRequest {}
+
+message MatchTimelineFeedMessage {
+  oneof payload {
+    KeepAlive keepalive = 1;
+    MatchTimeline timeline = 2;
+    Match match_update = 3;
+  }
 }
 
 message LiveDataFeedRequest {
