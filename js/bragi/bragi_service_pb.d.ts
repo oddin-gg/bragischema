@@ -49,6 +49,64 @@ export namespace MatchTimelineResponse {
   }
 }
 
+export class MatchTimelineFeedRequest extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MatchTimelineFeedRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: MatchTimelineFeedRequest): MatchTimelineFeedRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MatchTimelineFeedRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MatchTimelineFeedRequest;
+  static deserializeBinaryFromReader(message: MatchTimelineFeedRequest, reader: jspb.BinaryReader): MatchTimelineFeedRequest;
+}
+
+export namespace MatchTimelineFeedRequest {
+  export type AsObject = {
+  }
+}
+
+export class MatchTimelineFeedMessage extends jspb.Message {
+  hasKeepalive(): boolean;
+  clearKeepalive(): void;
+  getKeepalive(): KeepAlive | undefined;
+  setKeepalive(value?: KeepAlive): void;
+
+  hasTimeline(): boolean;
+  clearTimeline(): void;
+  getTimeline(): bragi_common_pb.MatchTimeline | undefined;
+  setTimeline(value?: bragi_common_pb.MatchTimeline): void;
+
+  hasMatchUpdate(): boolean;
+  clearMatchUpdate(): void;
+  getMatchUpdate(): bragi_common_pb.Match | undefined;
+  setMatchUpdate(value?: bragi_common_pb.Match): void;
+
+  getPayloadCase(): MatchTimelineFeedMessage.PayloadCase;
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MatchTimelineFeedMessage.AsObject;
+  static toObject(includeInstance: boolean, msg: MatchTimelineFeedMessage): MatchTimelineFeedMessage.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MatchTimelineFeedMessage, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MatchTimelineFeedMessage;
+  static deserializeBinaryFromReader(message: MatchTimelineFeedMessage, reader: jspb.BinaryReader): MatchTimelineFeedMessage;
+}
+
+export namespace MatchTimelineFeedMessage {
+  export type AsObject = {
+    keepalive?: KeepAlive.AsObject,
+    timeline?: bragi_common_pb.MatchTimeline.AsObject,
+    matchUpdate?: bragi_common_pb.Match.AsObject,
+  }
+
+  export enum PayloadCase {
+    PAYLOAD_NOT_SET = 0,
+    KEEPALIVE = 1,
+    TIMELINE = 2,
+    MATCH_UPDATE = 3,
+  }
+}
+
 export class LiveDataFeedRequest extends jspb.Message {
   hasAfter(): boolean;
   clearAfter(): void;

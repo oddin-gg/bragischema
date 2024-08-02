@@ -34,6 +34,28 @@ function deserialize_bragi_LiveDataFeedRequest(buffer_arg) {
   return bragi_bragi_service_pb.LiveDataFeedRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_bragi_MatchTimelineFeedMessage(arg) {
+  if (!(arg instanceof bragi_bragi_service_pb.MatchTimelineFeedMessage)) {
+    throw new Error('Expected argument of type bragi.MatchTimelineFeedMessage');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_MatchTimelineFeedMessage(buffer_arg) {
+  return bragi_bragi_service_pb.MatchTimelineFeedMessage.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bragi_MatchTimelineFeedRequest(arg) {
+  if (!(arg instanceof bragi_bragi_service_pb.MatchTimelineFeedRequest)) {
+    throw new Error('Expected argument of type bragi.MatchTimelineFeedRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_MatchTimelineFeedRequest(buffer_arg) {
+  return bragi_bragi_service_pb.MatchTimelineFeedRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_bragi_MatchTimelineRequest(arg) {
   if (!(arg instanceof bragi_bragi_service_pb.MatchTimelineRequest)) {
     throw new Error('Expected argument of type bragi.MatchTimelineRequest');
@@ -69,6 +91,21 @@ matchTimeline: {
     requestDeserialize: deserialize_bragi_MatchTimelineRequest,
     responseSerialize: serialize_bragi_MatchTimelineResponse,
     responseDeserialize: deserialize_bragi_MatchTimelineResponse,
+  },
+  // The MatchTimelineFeed gRPC stream call provides all upcoming or currently in-progress matches. 
+// It also sends real-time updates when the status of a match changes. 
+// To ensure you have the latest match timeline information, you must remain connected to this stream.
+// If the connection is lost, you need to reconnect to continue receiving up-to-date match data.
+matchTimelineFeed: {
+    path: '/bragi.Bragi/MatchTimelineFeed',
+    requestStream: false,
+    responseStream: true,
+    requestType: bragi_bragi_service_pb.MatchTimelineFeedRequest,
+    responseType: bragi_bragi_service_pb.MatchTimelineFeedMessage,
+    requestSerialize: serialize_bragi_MatchTimelineFeedRequest,
+    requestDeserialize: deserialize_bragi_MatchTimelineFeedRequest,
+    responseSerialize: serialize_bragi_MatchTimelineFeedMessage,
+    responseDeserialize: deserialize_bragi_MatchTimelineFeedMessage,
   },
   // LiveDataFeed gRPC stream returning LiveDataFeedMessage one direction stream
 liveDataFeed: {

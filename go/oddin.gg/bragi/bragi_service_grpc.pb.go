@@ -24,6 +24,11 @@ const _ = grpc.SupportPackageIsVersion7
 type BragiClient interface {
 	// Matches gRPC unary call returns all planned or currently played matches
 	MatchTimeline(ctx context.Context, in *MatchTimelineRequest, opts ...grpc.CallOption) (*MatchTimelineResponse, error)
+	// The MatchTimelineFeed gRPC stream call provides all upcoming or currently in-progress matches.
+	// It also sends real-time updates when the status of a match changes.
+	// To ensure you have the latest match timeline information, you must remain connected to this stream.
+	// If the connection is lost, you need to reconnect to continue receiving up-to-date match data.
+	MatchTimelineFeed(ctx context.Context, in *MatchTimelineFeedRequest, opts ...grpc.CallOption) (Bragi_MatchTimelineFeedClient, error)
 	// LiveDataFeed gRPC stream returning LiveDataFeedMessage one direction stream
 	LiveDataFeed(ctx context.Context, in *LiveDataFeedRequest, opts ...grpc.CallOption) (Bragi_LiveDataFeedClient, error)
 }
@@ -45,8 +50,40 @@ func (c *bragiClient) MatchTimeline(ctx context.Context, in *MatchTimelineReques
 	return out, nil
 }
 
+func (c *bragiClient) MatchTimelineFeed(ctx context.Context, in *MatchTimelineFeedRequest, opts ...grpc.CallOption) (Bragi_MatchTimelineFeedClient, error) {
+	stream, err := c.cc.NewStream(ctx, &Bragi_ServiceDesc.Streams[0], "/bragi.Bragi/MatchTimelineFeed", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &bragiMatchTimelineFeedClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type Bragi_MatchTimelineFeedClient interface {
+	Recv() (*MatchTimelineFeedMessage, error)
+	grpc.ClientStream
+}
+
+type bragiMatchTimelineFeedClient struct {
+	grpc.ClientStream
+}
+
+func (x *bragiMatchTimelineFeedClient) Recv() (*MatchTimelineFeedMessage, error) {
+	m := new(MatchTimelineFeedMessage)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 func (c *bragiClient) LiveDataFeed(ctx context.Context, in *LiveDataFeedRequest, opts ...grpc.CallOption) (Bragi_LiveDataFeedClient, error) {
-	stream, err := c.cc.NewStream(ctx, &Bragi_ServiceDesc.Streams[0], "/bragi.Bragi/LiveDataFeed", opts...)
+	stream, err := c.cc.NewStream(ctx, &Bragi_ServiceDesc.Streams[1], "/bragi.Bragi/LiveDataFeed", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -83,6 +120,11 @@ func (x *bragiLiveDataFeedClient) Recv() (*LiveDataFeedMessage, error) {
 type BragiServer interface {
 	// Matches gRPC unary call returns all planned or currently played matches
 	MatchTimeline(context.Context, *MatchTimelineRequest) (*MatchTimelineResponse, error)
+	// The MatchTimelineFeed gRPC stream call provides all upcoming or currently in-progress matches.
+	// It also sends real-time updates when the status of a match changes.
+	// To ensure you have the latest match timeline information, you must remain connected to this stream.
+	// If the connection is lost, you need to reconnect to continue receiving up-to-date match data.
+	MatchTimelineFeed(*MatchTimelineFeedRequest, Bragi_MatchTimelineFeedServer) error
 	// LiveDataFeed gRPC stream returning LiveDataFeedMessage one direction stream
 	LiveDataFeed(*LiveDataFeedRequest, Bragi_LiveDataFeedServer) error
 	mustEmbedUnimplementedBragiServer()
@@ -94,6 +136,9 @@ type UnimplementedBragiServer struct {
 
 func (UnimplementedBragiServer) MatchTimeline(context.Context, *MatchTimelineRequest) (*MatchTimelineResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MatchTimeline not implemented")
+}
+func (UnimplementedBragiServer) MatchTimelineFeed(*MatchTimelineFeedRequest, Bragi_MatchTimelineFeedServer) error {
+	return status.Errorf(codes.Unimplemented, "method MatchTimelineFeed not implemented")
 }
 func (UnimplementedBragiServer) LiveDataFeed(*LiveDataFeedRequest, Bragi_LiveDataFeedServer) error {
 	return status.Errorf(codes.Unimplemented, "method LiveDataFeed not implemented")
@@ -127,6 +172,27 @@ func _Bragi_MatchTimeline_Handler(srv interface{}, ctx context.Context, dec func
 		return srv.(BragiServer).MatchTimeline(ctx, req.(*MatchTimelineRequest))
 	}
 	return interceptor(ctx, in, info, handler)
+}
+
+func _Bragi_MatchTimelineFeed_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(MatchTimelineFeedRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(BragiServer).MatchTimelineFeed(m, &bragiMatchTimelineFeedServer{stream})
+}
+
+type Bragi_MatchTimelineFeedServer interface {
+	Send(*MatchTimelineFeedMessage) error
+	grpc.ServerStream
+}
+
+type bragiMatchTimelineFeedServer struct {
+	grpc.ServerStream
+}
+
+func (x *bragiMatchTimelineFeedServer) Send(m *MatchTimelineFeedMessage) error {
+	return x.ServerStream.SendMsg(m)
 }
 
 func _Bragi_LiveDataFeed_Handler(srv interface{}, stream grpc.ServerStream) error {
@@ -163,6 +229,11 @@ var Bragi_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "MatchTimelineFeed",
+			Handler:       _Bragi_MatchTimelineFeed_Handler,
+			ServerStreams: true,
+		},
 		{
 			StreamName:    "LiveDataFeed",
 			Handler:       _Bragi_LiveDataFeed_Handler,
