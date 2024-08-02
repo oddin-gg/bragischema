@@ -221,6 +221,28 @@ export namespace Match {
   }
 }
 
+export class MatchTimeline extends jspb.Message {
+  clearMatchesList(): void;
+  getMatchesList(): Array<Match>;
+  setMatchesList(value: Array<Match>): void;
+  addMatches(value?: Match, index?: number): Match;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MatchTimeline.AsObject;
+  static toObject(includeInstance: boolean, msg: MatchTimeline): MatchTimeline.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MatchTimeline, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MatchTimeline;
+  static deserializeBinaryFromReader(message: MatchTimeline, reader: jspb.BinaryReader): MatchTimeline;
+}
+
+export namespace MatchTimeline {
+  export type AsObject = {
+    matchesList: Array<Match.AsObject>,
+  }
+}
+
 export class Team extends jspb.Message {
   getTeamUrn(): string;
   setTeamUrn(value: string): void;

@@ -19,6 +19,11 @@ class BragiStub(object):
                 request_serializer=bragi_dot_bragi__service__pb2.MatchTimelineRequest.SerializeToString,
                 response_deserializer=bragi_dot_bragi__service__pb2.MatchTimelineResponse.FromString,
                 )
+        self.MatchTimelineFeed = channel.unary_stream(
+                '/bragi.Bragi/MatchTimelineFeed',
+                request_serializer=bragi_dot_bragi__service__pb2.MatchTimelineFeedRequest.SerializeToString,
+                response_deserializer=bragi_dot_bragi__service__pb2.MatchTimelineFeedMessage.FromString,
+                )
         self.LiveDataFeed = channel.unary_stream(
                 '/bragi.Bragi/LiveDataFeed',
                 request_serializer=bragi_dot_bragi__service__pb2.LiveDataFeedRequest.SerializeToString,
@@ -31,6 +36,16 @@ class BragiServicer(object):
 
     def MatchTimeline(self, request, context):
         """Matches gRPC unary call returns all planned or currently played matches
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def MatchTimelineFeed(self, request, context):
+        """The MatchTimelineFeed gRPC stream call provides all upcoming or currently in-progress matches. 
+        It also sends real-time updates when the status of a match changes. 
+        To ensure you have the latest match timeline information, you must remain connected to this stream.
+        If the connection is lost, you need to reconnect to continue receiving up-to-date match data.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -50,6 +65,11 @@ def add_BragiServicer_to_server(servicer, server):
                     servicer.MatchTimeline,
                     request_deserializer=bragi_dot_bragi__service__pb2.MatchTimelineRequest.FromString,
                     response_serializer=bragi_dot_bragi__service__pb2.MatchTimelineResponse.SerializeToString,
+            ),
+            'MatchTimelineFeed': grpc.unary_stream_rpc_method_handler(
+                    servicer.MatchTimelineFeed,
+                    request_deserializer=bragi_dot_bragi__service__pb2.MatchTimelineFeedRequest.FromString,
+                    response_serializer=bragi_dot_bragi__service__pb2.MatchTimelineFeedMessage.SerializeToString,
             ),
             'LiveDataFeed': grpc.unary_stream_rpc_method_handler(
                     servicer.LiveDataFeed,
@@ -80,6 +100,23 @@ class Bragi(object):
         return grpc.experimental.unary_unary(request, target, '/bragi.Bragi/MatchTimeline',
             bragi_dot_bragi__service__pb2.MatchTimelineRequest.SerializeToString,
             bragi_dot_bragi__service__pb2.MatchTimelineResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def MatchTimelineFeed(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/bragi.Bragi/MatchTimelineFeed',
+            bragi_dot_bragi__service__pb2.MatchTimelineFeedRequest.SerializeToString,
+            bragi_dot_bragi__service__pb2.MatchTimelineFeedMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
