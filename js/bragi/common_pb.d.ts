@@ -167,6 +167,28 @@ export namespace ControlErrorAnnouncement {
   export const ControlErrorAnnouncementType: ControlErrorAnnouncementTypeMap;
 }
 
+export class MatchTimeline extends jspb.Message {
+  clearMatchesList(): void;
+  getMatchesList(): Array<Match>;
+  setMatchesList(value: Array<Match>): void;
+  addMatches(value?: Match, index?: number): Match;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MatchTimeline.AsObject;
+  static toObject(includeInstance: boolean, msg: MatchTimeline): MatchTimeline.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MatchTimeline, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MatchTimeline;
+  static deserializeBinaryFromReader(message: MatchTimeline, reader: jspb.BinaryReader): MatchTimeline;
+}
+
+export namespace MatchTimeline {
+  export type AsObject = {
+    matchesList: Array<Match.AsObject>,
+  }
+}
+
 export class Match extends jspb.Message {
   getMatchUrn(): string;
   setMatchUrn(value: string): void;
@@ -197,6 +219,21 @@ export class Match extends jspb.Message {
   getPlannetStart(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setPlannetStart(value?: google_protobuf_timestamp_pb.Timestamp): void;
 
+  hasTournament(): boolean;
+  clearTournament(): void;
+  getTournament(): Tournament | undefined;
+  setTournament(value?: Tournament): void;
+
+  clearTeamsList(): void;
+  getTeamsList(): Array<Team>;
+  setTeamsList(value: Array<Team>): void;
+  addTeams(value?: Team, index?: number): Team;
+
+  clearPlayersList(): void;
+  getPlayersList(): Array<Player>;
+  setPlayersList(value: Array<Player>): void;
+  addPlayers(value?: Player, index?: number): Player;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Match.AsObject;
   static toObject(includeInstance: boolean, msg: Match): Match.AsObject;
@@ -218,37 +255,45 @@ export namespace Match {
     awayScore: number,
     matchStatus: MatchStatusTypeMap[keyof MatchStatusTypeMap],
     plannetStart?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    tournament?: Tournament.AsObject,
+    teamsList: Array<Team.AsObject>,
+    playersList: Array<Player.AsObject>,
   }
 }
 
-export class MatchTimeline extends jspb.Message {
-  clearMatchesList(): void;
-  getMatchesList(): Array<Match>;
-  setMatchesList(value: Array<Match>): void;
-  addMatches(value?: Match, index?: number): Match;
+export class Tournament extends jspb.Message {
+  getUrn(): string;
+  setUrn(value: string): void;
+
+  getName(): string;
+  setName(value: string): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MatchTimeline.AsObject;
-  static toObject(includeInstance: boolean, msg: MatchTimeline): MatchTimeline.AsObject;
+  toObject(includeInstance?: boolean): Tournament.AsObject;
+  static toObject(includeInstance: boolean, msg: Tournament): Tournament.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: MatchTimeline, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MatchTimeline;
-  static deserializeBinaryFromReader(message: MatchTimeline, reader: jspb.BinaryReader): MatchTimeline;
+  static serializeBinaryToWriter(message: Tournament, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Tournament;
+  static deserializeBinaryFromReader(message: Tournament, reader: jspb.BinaryReader): Tournament;
 }
 
-export namespace MatchTimeline {
+export namespace Tournament {
   export type AsObject = {
-    matchesList: Array<Match.AsObject>,
+    urn: string,
+    name: string,
   }
 }
 
 export class Team extends jspb.Message {
-  getTeamUrn(): string;
-  setTeamUrn(value: string): void;
+  getUrn(): string;
+  setUrn(value: string): void;
 
-  getTeamName(): string;
-  setTeamName(value: string): void;
+  getName(): string;
+  setName(value: string): void;
+
+  getIsHome(): boolean;
+  setIsHome(value: boolean): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Team.AsObject;
@@ -262,8 +307,37 @@ export class Team extends jspb.Message {
 
 export namespace Team {
   export type AsObject = {
+    urn: string,
+    name: string,
+    isHome: boolean,
+  }
+}
+
+export class Player extends jspb.Message {
+  getUrn(): string;
+  setUrn(value: string): void;
+
+  getNickname(): string;
+  setNickname(value: string): void;
+
+  getTeamUrn(): string;
+  setTeamUrn(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Player.AsObject;
+  static toObject(includeInstance: boolean, msg: Player): Player.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Player, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Player;
+  static deserializeBinaryFromReader(message: Player, reader: jspb.BinaryReader): Player;
+}
+
+export namespace Player {
+  export type AsObject = {
+    urn: string,
+    nickname: string,
     teamUrn: string,
-    teamName: string,
   }
 }
 
@@ -298,6 +372,7 @@ export interface MatchStatusTypeMap {
   MATCH_STATUS_TYPE_LIVE: 2;
   MATCH_STATUS_TYPE_FINISHED: 3;
   MATCH_STATUS_TYPE_CANCELED: 4;
+  MATCH_STATUS_TYPE_PLACEHOLDER: 5;
 }
 
 export const MatchStatusType: MatchStatusTypeMap;

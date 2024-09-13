@@ -49,25 +49,42 @@ message ControlErrorAnnouncement {
   optional string message = 2;
 }
 
-message Match {
-  string match_urn = 1;
-  string tournament_urn = 2;
-  Sport sport = 3;
-  string home_team_urn = 4;
-  string away_team_urn = 5;
-  uint32 home_score = 6;
-  uint32 away_score = 7;
-  MatchStatusType match_status = 8;
-  google.protobuf.Timestamp plannet_start = 9;
-}
-
 message MatchTimeline {
   repeated Match matches = 1;
 }
 
+message Match {
+  string match_urn = 1;
+  string tournament_urn = 2 [deprecated=true]; // Deprecated. Use tournament.
+  Sport sport = 3;
+  string home_team_urn = 4 [deprecated=true]; // Deprecated. Use teams.
+  string away_team_urn = 5 [deprecated=true]; // Deprecated. Use teams.
+  uint32 home_score = 6;
+  uint32 away_score = 7;
+  MatchStatusType match_status = 8;
+  google.protobuf.Timestamp plannet_start = 9;
+  Tournament tournament  = 10;
+  repeated Team teams = 11;
+  repeated Player players = 12;
+}
+
+message Tournament {
+  string urn = 1;
+  string name = 2;
+}
+
 message Team {
-  string team_urn = 1;
-  string team_name = 2;
+  // urn in format e.g. 'od:team:123'
+  string urn = 1;
+  string name = 2;
+  bool is_home = 3;
+}
+
+message Player {
+  // urn in format e.g. 'od:player:123'
+  string urn = 1;
+  string nickname = 2;
+  string team_urn = 3;
 }
 
 enum Sport {
@@ -97,6 +114,7 @@ enum MatchStatusType {
   MATCH_STATUS_TYPE_LIVE = 2;
   MATCH_STATUS_TYPE_FINISHED = 3;
   MATCH_STATUS_TYPE_CANCELED = 4;
+  MATCH_STATUS_TYPE_PLACEHOLDER = 5;
 }
 
 enum DataStatus {
