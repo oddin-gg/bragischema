@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n\017com.oddin.bragiZ\016oddin.gg/bragi',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x12\x62ragi/common.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8e\x01\n\x12\x41nnouncementUpdate\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12$\n\x07payload\x18\x04 \x01(\x0b\x32\x13.bragi.Announcement\"\xe3\x01\n\x0c\x41nnouncement\x12.\n\ncreated_at\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12,\n\x07payload\x18\x02 \x01(\x0b\x32\x1b.bragi.Announcement.Payload\x1au\n\x07Payload\x12-\n\x07\x63ontrol\x18\x01 \x01(\x0b\x32\x1a.bragi.ControlAnnouncementH\x00\x12\x30\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x1f.bragi.ControlErrorAnnouncementH\x00\x42\t\n\x07payload\"\xbf\x01\n\x13\x43ontrolAnnouncement\x12@\n\x04type\x18\x01 \x01(\x0e\x32\x32.bragi.ControlAnnouncement.ControlAnnouncementType\x12\x14\n\x07message\x18\x02 \x01(\tH\x00\x88\x01\x01\"D\n\x17\x43ontrolAnnouncementType\x12)\n%CONTROL_ANNOUNCEMENT_TYPE_UNSPECIFIED\x10\x00\x42\n\n\x08_message\"\xd9\x01\n\x18\x43ontrolErrorAnnouncement\x12J\n\x04type\x18\x01 \x01(\x0e\x32<.bragi.ControlErrorAnnouncement.ControlErrorAnnouncementType\x12\x14\n\x07message\x18\x02 \x01(\tH\x00\x88\x01\x01\"O\n\x1c\x43ontrolErrorAnnouncementType\x12/\n+CONTROL_ERROR_ANNOUNCEMENT_TYPE_UNSPECIFIED\x10\x00\x42\n\n\x08_message\"\x86\x02\n\x05Match\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x16\n\x0etournament_urn\x18\x02 \x01(\t\x12\x1b\n\x05sport\x18\x03 \x01(\x0e\x32\x0c.bragi.Sport\x12\x15\n\rhome_team_urn\x18\x04 \x01(\t\x12\x15\n\raway_team_urn\x18\x05 \x01(\t\x12\x12\n\nhome_score\x18\x06 \x01(\r\x12\x12\n\naway_score\x18\x07 \x01(\r\x12,\n\x0cmatch_status\x18\x08 \x01(\x0e\x32\x16.bragi.MatchStatusType\x12\x31\n\rplannet_start\x18\t \x01(\x0b\x32\x1a.google.protobuf.Timestamp\".\n\rMatchTimeline\x12\x1d\n\x07matches\x18\x01 \x03(\x0b\x32\x0c.bragi.Match\"+\n\x04Team\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12\x11\n\tteam_name\x18\x02 \x01(\t*\x93\x01\n\x05Sport\x12\x15\n\x11SPORT_UNSPECIFIED\x10\x00\x12\r\n\tSPORT_CS2\x10\x01\x12\x0f\n\x0bSPORT_DOTA2\x10\x02\x12\r\n\tSPORT_LOL\x10\x03\x12\x12\n\x0eSPORT_VALORANT\x10\x04\x12\x15\n\x11SPORT_RUSH_SOCCER\x10\x05\x12\x19\n\x15SPORT_RUSH_BASKETBALL\x10\x06*\xc4\x01\n\nBestOfType\x12\x1c\n\x18\x42\x45ST_OF_TYPE_UNSPECIFIED\x10\x00\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO1\x10\x01\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO2\x10\x02\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO3\x10\x03\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO4\x10\x04\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO5\x10\x05\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO6\x10\x06\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO7\x10\x07*\xb3\x01\n\x0fMatchStatusType\x12!\n\x1dMATCH_STATUS_TYPE_UNSPECIFIED\x10\x00\x12!\n\x1dMATCH_STATUS_TYPE_NOT_STARTED\x10\x01\x12\x1a\n\x16MATCH_STATUS_TYPE_LIVE\x10\x02\x12\x1e\n\x1aMATCH_STATUS_TYPE_FINISHED\x10\x03\x12\x1e\n\x1aMATCH_STATUS_TYPE_CANCELED\x10\x04*\x84\x01\n\nDataStatus\x12\x1b\n\x17\x44\x41TA_STATUS_UNSPECIFIED\x10\x00\x12\x1d\n\x19\x44\x41TA_STATUS_DISABLED_DATA\x10\x01\x12\x1e\n\x1a\x44\x41TA_STATUS_CORRUPTED_DATA\x10\x02\x12\x1a\n\x16\x44\x41TA_STATUS_VALID_DATA\x10\x03\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
+  serialized_pb=b'\n\x12\x62ragi/common.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8e\x01\n\x12\x41nnouncementUpdate\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12$\n\x07payload\x18\x04 \x01(\x0b\x32\x13.bragi.Announcement\"\xe3\x01\n\x0c\x41nnouncement\x12.\n\ncreated_at\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12,\n\x07payload\x18\x02 \x01(\x0b\x32\x1b.bragi.Announcement.Payload\x1au\n\x07Payload\x12-\n\x07\x63ontrol\x18\x01 \x01(\x0b\x32\x1a.bragi.ControlAnnouncementH\x00\x12\x30\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x1f.bragi.ControlErrorAnnouncementH\x00\x42\t\n\x07payload\"\xbf\x01\n\x13\x43ontrolAnnouncement\x12@\n\x04type\x18\x01 \x01(\x0e\x32\x32.bragi.ControlAnnouncement.ControlAnnouncementType\x12\x14\n\x07message\x18\x02 \x01(\tH\x00\x88\x01\x01\"D\n\x17\x43ontrolAnnouncementType\x12)\n%CONTROL_ANNOUNCEMENT_TYPE_UNSPECIFIED\x10\x00\x42\n\n\x08_message\"\xd9\x01\n\x18\x43ontrolErrorAnnouncement\x12J\n\x04type\x18\x01 \x01(\x0e\x32<.bragi.ControlErrorAnnouncement.ControlErrorAnnouncementType\x12\x14\n\x07message\x18\x02 \x01(\tH\x00\x88\x01\x01\"O\n\x1c\x43ontrolErrorAnnouncementType\x12/\n+CONTROL_ERROR_ANNOUNCEMENT_TYPE_UNSPECIFIED\x10\x00\x42\n\n\x08_message\".\n\rMatchTimeline\x12\x1d\n\x07matches\x18\x01 \x03(\x0b\x32\x0c.bragi.Match\"\xf5\x02\n\x05Match\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x1a\n\x0etournament_urn\x18\x02 \x01(\tB\x02\x18\x01\x12\x1b\n\x05sport\x18\x03 \x01(\x0e\x32\x0c.bragi.Sport\x12\x19\n\rhome_team_urn\x18\x04 \x01(\tB\x02\x18\x01\x12\x19\n\raway_team_urn\x18\x05 \x01(\tB\x02\x18\x01\x12\x12\n\nhome_score\x18\x06 \x01(\r\x12\x12\n\naway_score\x18\x07 \x01(\r\x12,\n\x0cmatch_status\x18\x08 \x01(\x0e\x32\x16.bragi.MatchStatusType\x12\x31\n\rplannet_start\x18\t \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12%\n\ntournament\x18\n \x01(\x0b\x32\x11.bragi.Tournament\x12\x1a\n\x05teams\x18\x0b \x03(\x0b\x32\x0b.bragi.Team\x12\x1e\n\x07players\x18\x0c \x03(\x0b\x32\r.bragi.Player\"\'\n\nTournament\x12\x0b\n\x03urn\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"2\n\x04Team\x12\x0b\n\x03urn\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0f\n\x07is_home\x18\x03 \x01(\x08\"9\n\x06Player\x12\x0b\n\x03urn\x18\x01 \x01(\t\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x10\n\x08team_urn\x18\x03 \x01(\t*\x93\x01\n\x05Sport\x12\x15\n\x11SPORT_UNSPECIFIED\x10\x00\x12\r\n\tSPORT_CS2\x10\x01\x12\x0f\n\x0bSPORT_DOTA2\x10\x02\x12\r\n\tSPORT_LOL\x10\x03\x12\x12\n\x0eSPORT_VALORANT\x10\x04\x12\x15\n\x11SPORT_RUSH_SOCCER\x10\x05\x12\x19\n\x15SPORT_RUSH_BASKETBALL\x10\x06*\xc4\x01\n\nBestOfType\x12\x1c\n\x18\x42\x45ST_OF_TYPE_UNSPECIFIED\x10\x00\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO1\x10\x01\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO2\x10\x02\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO3\x10\x03\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO4\x10\x04\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO5\x10\x05\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO6\x10\x06\x12\x14\n\x10\x42\x45ST_OF_TYPE_BO7\x10\x07*\xd6\x01\n\x0fMatchStatusType\x12!\n\x1dMATCH_STATUS_TYPE_UNSPECIFIED\x10\x00\x12!\n\x1dMATCH_STATUS_TYPE_NOT_STARTED\x10\x01\x12\x1a\n\x16MATCH_STATUS_TYPE_LIVE\x10\x02\x12\x1e\n\x1aMATCH_STATUS_TYPE_FINISHED\x10\x03\x12\x1e\n\x1aMATCH_STATUS_TYPE_CANCELED\x10\x04\x12!\n\x1dMATCH_STATUS_TYPE_PLACEHOLDER\x10\x05*\x84\x01\n\nDataStatus\x12\x1b\n\x17\x44\x41TA_STATUS_UNSPECIFIED\x10\x00\x12\x1d\n\x19\x44\x41TA_STATUS_DISABLED_DATA\x10\x01\x12\x1e\n\x1a\x44\x41TA_STATUS_CORRUPTED_DATA\x10\x02\x12\x1a\n\x16\x44\x41TA_STATUS_VALID_DATA\x10\x03\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -70,8 +70,8 @@ _SPORT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1210,
-  serialized_end=1357,
+  serialized_start=1428,
+  serialized_end=1575,
 )
 _sym_db.RegisterEnumDescriptor(_SPORT)
 
@@ -126,8 +126,8 @@ _BESTOFTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1360,
-  serialized_end=1556,
+  serialized_start=1578,
+  serialized_end=1774,
 )
 _sym_db.RegisterEnumDescriptor(_BESTOFTYPE)
 
@@ -164,11 +164,16 @@ _MATCHSTATUSTYPE = _descriptor.EnumDescriptor(
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='MATCH_STATUS_TYPE_PLACEHOLDER', index=5, number=5,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1559,
-  serialized_end=1738,
+  serialized_start=1777,
+  serialized_end=1991,
 )
 _sym_db.RegisterEnumDescriptor(_MATCHSTATUSTYPE)
 
@@ -203,8 +208,8 @@ _DATASTATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1741,
-  serialized_end=1873,
+  serialized_start=1994,
+  serialized_end=2126,
 )
 _sym_db.RegisterEnumDescriptor(_DATASTATUS)
 
@@ -229,6 +234,7 @@ MATCH_STATUS_TYPE_NOT_STARTED = 1
 MATCH_STATUS_TYPE_LIVE = 2
 MATCH_STATUS_TYPE_FINISHED = 3
 MATCH_STATUS_TYPE_CANCELED = 4
+MATCH_STATUS_TYPE_PLACEHOLDER = 5
 DATA_STATUS_UNSPECIFIED = 0
 DATA_STATUS_DISABLED_DATA = 1
 DATA_STATUS_CORRUPTED_DATA = 2
@@ -501,6 +507,38 @@ _CONTROLERRORANNOUNCEMENT = _descriptor.Descriptor(
 )
 
 
+_MATCHTIMELINE = _descriptor.Descriptor(
+  name='MatchTimeline',
+  full_name='bragi.MatchTimeline',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='matches', full_name='bragi.MatchTimeline.matches', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=851,
+  serialized_end=897,
+)
+
+
 _MATCH = _descriptor.Descriptor(
   name='Match',
   full_name='bragi.Match',
@@ -522,7 +560,7 @@ _MATCH = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+      serialized_options=b'\030\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='sport', full_name='bragi.Match.sport', index=2,
       number=3, type=14, cpp_type=8, label=1,
@@ -536,14 +574,14 @@ _MATCH = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+      serialized_options=b'\030\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='away_team_urn', full_name='bragi.Match.away_team_urn', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+      serialized_options=b'\030\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='home_score', full_name='bragi.Match.home_score', index=5,
       number=6, type=13, cpp_type=3, label=1,
@@ -572,34 +610,23 @@ _MATCH = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=852,
-  serialized_end=1114,
-)
-
-
-_MATCHTIMELINE = _descriptor.Descriptor(
-  name='MatchTimeline',
-  full_name='bragi.MatchTimeline',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
     _descriptor.FieldDescriptor(
-      name='matches', full_name='bragi.MatchTimeline.matches', index=0,
-      number=1, type=11, cpp_type=10, label=3,
+      name='tournament', full_name='bragi.Match.tournament', index=9,
+      number=10, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='teams', full_name='bragi.Match.teams', index=10,
+      number=11, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='players', full_name='bragi.Match.players', index=11,
+      number=12, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -616,28 +643,28 @@ _MATCHTIMELINE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1116,
-  serialized_end=1162,
+  serialized_start=900,
+  serialized_end=1273,
 )
 
 
-_TEAM = _descriptor.Descriptor(
-  name='Team',
-  full_name='bragi.Team',
+_TOURNAMENT = _descriptor.Descriptor(
+  name='Tournament',
+  full_name='bragi.Tournament',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='team_urn', full_name='bragi.Team.team_urn', index=0,
+      name='urn', full_name='bragi.Tournament.urn', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='team_name', full_name='bragi.Team.team_name', index=1,
+      name='name', full_name='bragi.Tournament.name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -655,8 +682,100 @@ _TEAM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1164,
-  serialized_end=1207,
+  serialized_start=1275,
+  serialized_end=1314,
+)
+
+
+_TEAM = _descriptor.Descriptor(
+  name='Team',
+  full_name='bragi.Team',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='urn', full_name='bragi.Team.urn', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='name', full_name='bragi.Team.name', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='is_home', full_name='bragi.Team.is_home', index=2,
+      number=3, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1316,
+  serialized_end=1366,
+)
+
+
+_PLAYER = _descriptor.Descriptor(
+  name='Player',
+  full_name='bragi.Player',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='urn', full_name='bragi.Player.urn', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='nickname', full_name='bragi.Player.nickname', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='team_urn', full_name='bragi.Player.team_urn', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1368,
+  serialized_end=1425,
 )
 
 _ANNOUNCEMENTUPDATE.fields_by_name['timestamp'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
@@ -682,17 +801,22 @@ _CONTROLERRORANNOUNCEMENT_CONTROLERRORANNOUNCEMENTTYPE.containing_type = _CONTRO
 _CONTROLERRORANNOUNCEMENT.oneofs_by_name['_message'].fields.append(
   _CONTROLERRORANNOUNCEMENT.fields_by_name['message'])
 _CONTROLERRORANNOUNCEMENT.fields_by_name['message'].containing_oneof = _CONTROLERRORANNOUNCEMENT.oneofs_by_name['_message']
+_MATCHTIMELINE.fields_by_name['matches'].message_type = _MATCH
 _MATCH.fields_by_name['sport'].enum_type = _SPORT
 _MATCH.fields_by_name['match_status'].enum_type = _MATCHSTATUSTYPE
 _MATCH.fields_by_name['plannet_start'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_MATCHTIMELINE.fields_by_name['matches'].message_type = _MATCH
+_MATCH.fields_by_name['tournament'].message_type = _TOURNAMENT
+_MATCH.fields_by_name['teams'].message_type = _TEAM
+_MATCH.fields_by_name['players'].message_type = _PLAYER
 DESCRIPTOR.message_types_by_name['AnnouncementUpdate'] = _ANNOUNCEMENTUPDATE
 DESCRIPTOR.message_types_by_name['Announcement'] = _ANNOUNCEMENT
 DESCRIPTOR.message_types_by_name['ControlAnnouncement'] = _CONTROLANNOUNCEMENT
 DESCRIPTOR.message_types_by_name['ControlErrorAnnouncement'] = _CONTROLERRORANNOUNCEMENT
-DESCRIPTOR.message_types_by_name['Match'] = _MATCH
 DESCRIPTOR.message_types_by_name['MatchTimeline'] = _MATCHTIMELINE
+DESCRIPTOR.message_types_by_name['Match'] = _MATCH
+DESCRIPTOR.message_types_by_name['Tournament'] = _TOURNAMENT
 DESCRIPTOR.message_types_by_name['Team'] = _TEAM
+DESCRIPTOR.message_types_by_name['Player'] = _PLAYER
 DESCRIPTOR.enum_types_by_name['Sport'] = _SPORT
 DESCRIPTOR.enum_types_by_name['BestOfType'] = _BESTOFTYPE
 DESCRIPTOR.enum_types_by_name['MatchStatusType'] = _MATCHSTATUSTYPE
@@ -735,6 +859,13 @@ ControlErrorAnnouncement = _reflection.GeneratedProtocolMessageType('ControlErro
   })
 _sym_db.RegisterMessage(ControlErrorAnnouncement)
 
+MatchTimeline = _reflection.GeneratedProtocolMessageType('MatchTimeline', (_message.Message,), {
+  'DESCRIPTOR' : _MATCHTIMELINE,
+  '__module__' : 'bragi.common_pb2'
+  # @@protoc_insertion_point(class_scope:bragi.MatchTimeline)
+  })
+_sym_db.RegisterMessage(MatchTimeline)
+
 Match = _reflection.GeneratedProtocolMessageType('Match', (_message.Message,), {
   'DESCRIPTOR' : _MATCH,
   '__module__' : 'bragi.common_pb2'
@@ -742,12 +873,12 @@ Match = _reflection.GeneratedProtocolMessageType('Match', (_message.Message,), {
   })
 _sym_db.RegisterMessage(Match)
 
-MatchTimeline = _reflection.GeneratedProtocolMessageType('MatchTimeline', (_message.Message,), {
-  'DESCRIPTOR' : _MATCHTIMELINE,
+Tournament = _reflection.GeneratedProtocolMessageType('Tournament', (_message.Message,), {
+  'DESCRIPTOR' : _TOURNAMENT,
   '__module__' : 'bragi.common_pb2'
-  # @@protoc_insertion_point(class_scope:bragi.MatchTimeline)
+  # @@protoc_insertion_point(class_scope:bragi.Tournament)
   })
-_sym_db.RegisterMessage(MatchTimeline)
+_sym_db.RegisterMessage(Tournament)
 
 Team = _reflection.GeneratedProtocolMessageType('Team', (_message.Message,), {
   'DESCRIPTOR' : _TEAM,
@@ -756,6 +887,16 @@ Team = _reflection.GeneratedProtocolMessageType('Team', (_message.Message,), {
   })
 _sym_db.RegisterMessage(Team)
 
+Player = _reflection.GeneratedProtocolMessageType('Player', (_message.Message,), {
+  'DESCRIPTOR' : _PLAYER,
+  '__module__' : 'bragi.common_pb2'
+  # @@protoc_insertion_point(class_scope:bragi.Player)
+  })
+_sym_db.RegisterMessage(Player)
+
 
 DESCRIPTOR._options = None
+_MATCH.fields_by_name['tournament_urn']._options = None
+_MATCH.fields_by_name['home_team_urn']._options = None
+_MATCH.fields_by_name['away_team_urn']._options = None
 # @@protoc_insertion_point(module_scope)

@@ -41,7 +41,7 @@ message MatchTimelineFeedRequest {}
 
 message MatchTimelineFeedMessage {
   oneof payload {
-    KeepAlive keepalive = 1;
+    KeepAlive keepalive = 1 [deprecated=true]; // Deprecated. Replaced with the in-built gRPC keep alive
     MatchTimeline timeline = 2;
     Match match_update = 3;
   }
@@ -56,7 +56,7 @@ message LiveDataFeedRequest {
 message LiveDataFeedMessage{
 
   oneof message {
-    KeepAlive keepalive = 1;
+    KeepAlive keepalive = 1 [deprecated=true]; // Deprecated. Replaced with the in-built gRPC keep alive
     MatchMessage match = 2;
   }
 }
