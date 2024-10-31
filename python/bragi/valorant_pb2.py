@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n\017com.oddin.bragiZ\016oddin.gg/bragi',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x14\x62ragi/valorant.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x12\x62ragi/common.proto\"\xbe\x02\n\x14ValorantMatchMessage\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x0b\x64\x61ta_status\x18\x04 \x01(\x0e\x32\x11.bragi.DataStatus\x12\x34\n\x07payload\x18\x05 \x01(\x0b\x32#.bragi.ValorantMatchMessage.Payload\x1at\n\x07Payload\x12\x30\n\x08snapshot\x18\x01 \x01(\x0b\x32\x1c.bragi.ValorantMatchSnapshotH\x00\x12,\n\x06update\x18\x02 \x01(\x0b\x32\x1a.bragi.ValorantMatchUpdateH\x00\x42\t\n\x07payload\"\xef\x01\n\x15ValorantMatchSnapshot\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x0b\x64\x61ta_status\x18\x04 \x01(\x0e\x32\x11.bragi.DataStatus\x12*\n\rannouncements\x18\x05 \x03(\x0b\x32\x13.bragi.Announcement\x12.\n\x0bmatch_state\x18\x06 \x01(\x0b\x32\x19.bragi.ValorantMatchState\"\xd7\x01\n\x13ValorantMatchUpdate\x12\x33\n\x07payload\x18\x01 \x01(\x0b\x32\".bragi.ValorantMatchUpdate.Payload\x1a\x8a\x01\n\x07Payload\x12\x30\n\x0bmatch_state\x18\x01 \x01(\x0b\x32\x19.bragi.ValorantMatchStateH\x00\x12\x42\n\x0fpartial_updates\x18\x02 \x01(\x0b\x32\'.bragi.ValorantMatchStatePartialUpdatesH\x00\x42\t\n\x07payload\"[\n ValorantMatchStatePartialUpdates\x12\x37\n\x07updates\x18\x01 \x03(\x0b\x32&.bragi.ValorantMatchStatePartialUpdate\"\xe6\x01\n\x1fValorantMatchStatePartialUpdate\x12/\n\x05score\x18\x01 \x01(\x0b\x32\x1e.bragi.ValorantMatchScoreStateH\x00\x12\x35\n\x0b\x63urrent_map\x18\x02 \x01(\x0b\x32\x1e.bragi.ValorantCurrentMapStateH\x00\x12Q\n\x1a\x63urrent_map_partial_update\x18\x03 \x01(\x0b\x32+.bragi.ValorantCurrentMapStatePartialUpdateH\x00\x42\x08\n\x06update\"\xa0\x02\n\x12ValorantMatchState\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12%\n\nmatch_type\x18\x02 \x01(\x0e\x32\x11.bragi.BestOfType\x12\x1e\n\thome_team\x18\x03 \x01(\x0b\x32\x0b.bragi.Team\x12\x1e\n\taway_team\x18\x04 \x01(\x0b\x32\x0b.bragi.Team\x12-\n\x05score\x18\x05 \x01(\x0b\x32\x1e.bragi.ValorantMatchScoreState\x12,\n\x0cmatch_status\x18\x06 \x01(\x0e\x32\x16.bragi.MatchStatusType\x12\x33\n\x0b\x63urrent_map\x18\x07 \x01(\x0b\x32\x1e.bragi.ValorantCurrentMapState\"A\n\x17ValorantMatchScoreState\x12\x12\n\nhome_score\x18\x01 \x01(\r\x12\x12\n\naway_score\x18\x02 \x01(\r\"\xd2\x03\n$ValorantCurrentMapStatePartialUpdate\x12-\n\x05score\x18\x01 \x01(\x0b\x32\x1c.bragi.ValorantMapScoreStateH\x00\x12\x39\n\rcurrent_round\x18\x02 \x01(\x0b\x32 .bragi.ValorantCurrentRoundStateH\x00\x12U\n\x1c\x63urrent_round_partial_update\x18\x03 \x01(\x0b\x32-.bragi.ValorantCurrentRoundStatePartialUpdateH\x00\x12\x44\n\x16team_current_map_state\x18\x04 \x01(\x0b\x32\".bragi.ValorantTeamCurrentMapStateH\x00\x12Z\n\x1fteam_current_map_partial_update\x18\x05 \x01(\x0b\x32/.bragi.ValorantTeamCurrentMapStatePartialUpdateH\x00\x12=\n\x0fprevious_rounds\x18\x06 \x01(\x0b\x32\".bragi.ValorantPreviousRoundsStateH\x00\x42\x08\n\x06update\"\xad\x03\n\x17ValorantCurrentMapState\x12\x11\n\tmap_order\x18\x01 \x01(\r\x12\x12\n\nmap_paused\x18\x02 \x01(\x08\x12\x10\n\x08map_name\x18\x03 \x01(\t\x12\x19\n\x0cwin_team_urn\x18\x04 \x01(\tH\x00\x88\x01\x01\x12+\n\x05score\x18\x05 \x01(\x0b\x32\x1c.bragi.ValorantMapScoreState\x12\x37\n\rcurrent_round\x18\x06 \x01(\x0b\x32 .bragi.ValorantCurrentRoundState\x12\x38\n\x05teams\x18\x07 \x03(\x0b\x32).bragi.ValorantCurrentMapState.TeamsEntry\x12;\n\x0fprevious_rounds\x18\x08 \x01(\x0b\x32\".bragi.ValorantPreviousRoundsState\x1aP\n\nTeamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x31\n\x05value\x18\x02 \x01(\x0b\x32\".bragi.ValorantTeamCurrentMapState:\x02\x38\x01\x42\x0f\n\r_win_team_urn\"?\n\x15ValorantMapScoreState\x12\x12\n\nhome_score\x18\x01 \x01(\r\x12\x12\n\naway_score\x18\x02 \x01(\r\"K\n\x1bValorantPreviousRoundsState\x12,\n\x06rounds\x18\x01 \x03(\x0b\x32\x1c.bragi.ValorantPreviousRound\"\xc7\x02\n(ValorantTeamCurrentMapStatePartialUpdate\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12H\n\x07payload\x18\x02 \x01(\x0b\x32\x37.bragi.ValorantTeamCurrentMapStatePartialUpdate.Payload\x1a\xbe\x01\n\x07Payload\x12H\n\x18player_current_map_state\x18\x01 \x01(\x0b\x32$.bragi.ValorantPlayerCurrentMapStateH\x00\x12^\n!player_current_map_partial_update\x18\x02 \x01(\x0b\x32\x31.bragi.ValorantPlayerCurrentMapStatePartialUpdateH\x00\x42\t\n\x07payload\"\xea\x01\n\x1bValorantTeamCurrentMapState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12!\n\x04side\x18\x02 \x01(\x0e\x32\x13.bragi.ValorantSide\x12@\n\x07players\x18\x03 \x03(\x0b\x32/.bragi.ValorantTeamCurrentMapState.PlayersEntry\x1aT\n\x0cPlayersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x33\n\x05value\x18\x02 \x01(\x0b\x32$.bragi.ValorantPlayerCurrentMapState:\x02\x38\x01\"\xd4\x02\n*ValorantPlayerCurrentMapStatePartialUpdate\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12J\n\x07payload\x18\x02 \x01(\x0b\x32\x39.bragi.ValorantPlayerCurrentMapStatePartialUpdate.Payload\x1a\xc5\x01\n\x07Payload\x12\x35\n\x0bplayer_info\x18\x01 \x01(\x0b\x32\x1e.bragi.ValorantPlayerInfoStateH\x00\x12\x32\n\tabilities\x18\x02 \x01(\x0b\x32\x1d.bragi.ValorantAbilitiesStateH\x00\x12\x44\n\nstatistics\x18\x03 \x01(\x0b\x32..bragi.ValorantPlayerCurrentMapStatisticsStateH\x00\x42\t\n\x07payload\"\xf1\x01\n\x1dValorantPlayerCurrentMapState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x11\n\tagent_urn\x18\x02 \x01(\t\x12\x33\n\x0bplayer_info\x18\x03 \x01(\x0b\x32\x1e.bragi.ValorantPlayerInfoState\x12\x30\n\tabilities\x18\x04 \x01(\x0b\x32\x1d.bragi.ValorantAbilitiesState\x12\x42\n\nstatistics\x18\x05 \x01(\x0b\x32..bragi.ValorantPlayerCurrentMapStatisticsState\"m\n\'ValorantPlayerCurrentMapStatisticsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\r\n\x05kills\x18\x02 \x01(\r\x12\x0e\n\x06\x64\x65\x61ths\x18\x03 \x01(\r\x12\x0f\n\x07\x61ssists\x18\x04 \x01(\r\"\x83\x03\n&ValorantCurrentRoundStatePartialUpdate\x12\x33\n\nround_info\x18\x01 \x01(\x0b\x32\x1d.bragi.ValorantRoundInfoStateH\x00\x12\x34\n\x04time\x18\x02 \x01(\x0b\x32$.bragi.ValorantCurrentRoundTimeStateH\x00\x12:\n\x05spike\x18\x03 \x01(\x0b\x32).bragi.ValorantCurrentRoundTeamSpikeStateH\x00\x12H\n\x18team_current_round_state\x18\x04 \x01(\x0b\x32$.bragi.ValorantTeamCurrentRoundStateH\x00\x12^\n!team_current_round_partial_update\x18\x05 \x01(\x0b\x32\x31.bragi.ValorantTeamCurrentRoundStatePartialUpdateH\x00\x42\x08\n\x06update\"\xcc\x02\n\x19ValorantCurrentRoundState\x12\x31\n\nround_info\x18\x01 \x01(\x0b\x32\x1d.bragi.ValorantRoundInfoState\x12\x32\n\x04time\x18\x02 \x01(\x0b\x32$.bragi.ValorantCurrentRoundTimeState\x12\x38\n\x05spike\x18\x03 \x01(\x0b\x32).bragi.ValorantCurrentRoundTeamSpikeState\x12:\n\x05teams\x18\x04 \x03(\x0b\x32+.bragi.ValorantCurrentRoundState.TeamsEntry\x1aR\n\nTeamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x33\n\x05value\x18\x02 \x01(\x0b\x32$.bragi.ValorantTeamCurrentRoundState:\x02\x38\x01\"R\n\x16ValorantRoundInfoState\x12\x0e\n\x06number\x18\x01 \x01(\r\x12(\n\x05phase\x18\x02 \x01(\x0e\x32\x19.bragi.ValorantRoundPhase\"R\n\x1dValorantCurrentRoundTimeState\x12\x31\n\x0etime_remaining\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\"\x82\x01\n\"ValorantCurrentRoundTeamSpikeState\x12(\n\x05state\x18\x01 \x01(\x0e\x32\x19.bragi.ValorantSpikeState\x12\x32\n\x0ftime_to_defused\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\"\xd3\x02\n*ValorantTeamCurrentRoundStatePartialUpdate\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12J\n\x07payload\x18\x02 \x01(\x0b\x32\x39.bragi.ValorantTeamCurrentRoundStatePartialUpdate.Payload\x1a\xc6\x01\n\x07Payload\x12L\n\x1aplayer_current_round_state\x18\x03 \x01(\x0b\x32&.bragi.ValorantPlayerCurrentRoundStateH\x00\x12\x62\n#player_current_round_partial_update\x18\x02 \x01(\x0b\x32\x33.bragi.ValorantPlayerCurrentRoundStatePartialUpdateH\x00\x42\t\n\x07payload\"\xf0\x01\n\x1dValorantTeamCurrentRoundState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12!\n\x04side\x18\x02 \x01(\x0e\x32\x13.bragi.ValorantSide\x12\x42\n\x07players\x18\x03 \x03(\x0b\x32\x31.bragi.ValorantTeamCurrentRoundState.PlayersEntry\x1aV\n\x0cPlayersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x35\n\x05value\x18\x02 \x01(\x0b\x32&.bragi.ValorantPlayerCurrentRoundState:\x02\x38\x01\"\x88\x03\n,ValorantPlayerCurrentRoundStatePartialUpdate\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12L\n\x07payload\x18\x02 \x01(\x0b\x32;.bragi.ValorantPlayerCurrentRoundStatePartialUpdate.Payload\x1a\xf5\x01\n\x07Payload\x12\x35\n\x0bplayer_info\x18\x01 \x01(\x0b\x32\x1e.bragi.ValorantPlayerInfoStateH\x00\x12\x46\n\nstatistics\x18\x02 \x01(\x0b\x32\x30.bragi.ValorantPlayerCurrentRoundStatisticsStateH\x00\x12.\n\x07weapons\x18\x03 \x01(\x0b\x32\x1b.bragi.ValorantWeaponsStateH\x00\x12\x30\n\x08position\x18\x04 \x01(\x0b\x32\x1c.bragi.ValorantPositionStateH\x00\x42\t\n\x07payload\"\x8e\x02\n\x1fValorantPlayerCurrentRoundState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x33\n\x0bplayer_info\x18\x02 \x01(\x0b\x32\x1e.bragi.ValorantPlayerInfoState\x12\x44\n\nstatistics\x18\x03 \x01(\x0b\x32\x30.bragi.ValorantPlayerCurrentRoundStatisticsState\x12,\n\x07weapons\x18\x04 \x01(\x0b\x32\x1b.bragi.ValorantWeaponsState\x12.\n\x08position\x18\x05 \x01(\x0b\x32\x1c.bragi.ValorantPositionState\"Q\n)ValorantPlayerCurrentRoundStatisticsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x10\n\x08is_alive\x18\x02 \x01(\x08\"W\n\x16ValorantAbilitiesState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12)\n\tabilities\x18\x02 \x03(\x0b\x32\x16.bragi.ValorantAbility\"R\n\x14ValorantWeaponsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12&\n\x07weapons\x18\x02 \x03(\x0b\x32\x15.bragi.ValorantWeapon\"P\n\x17ValorantPlayerInfoState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x0f\n\x07slot_id\x18\x02 \x01(\r\x12\x10\n\x08\x65xt_name\x18\x03 \x01(\t\"A\n\x15ValorantPositionState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\t\n\x01x\x18\x02 \x01(\x02\x12\t\n\x01y\x18\x03 \x01(\x02\"g\n\x15ValorantPreviousRound\x12\x0e\n\x06number\x18\x01 \x01(\r\x12,\n\x07outcome\x18\x02 \x01(\x0e\x32\x1b.bragi.ValorantRoundOutcome\x12\x10\n\x08home_won\x18\x03 \x01(\x08\"\x1c\n\x0eValorantWeapon\x12\n\n\x02id\x18\x01 \x01(\t\"A\n\x0fValorantAbility\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05ready\x18\x02 \x01(\x08\x12\x13\n\x0bis_ultimate\x18\x03 \x01(\x08*\x8b\x01\n\x15ValorantUltimateState\x12(\n$VALORANT_ULTIMATE_STATE__UNSPECIFIED\x10\x00\x12!\n\x1dVALORANT_ULTIMATE_STATE_READY\x10\x01\x12%\n!VALORANT_ULTIMATE_STATE_NOT_READY\x10\x02*g\n\x0cValorantSide\x12\x1d\n\x19VALORANT_SIDE_UNSPECIFIED\x10\x00\x12\x1b\n\x17VALORANT_SIDE_DEFENDERS\x10\x01\x12\x1b\n\x17VALORANT_SIDE_ATTACKERS\x10\x02*\xbf\x02\n\x14ValorantRoundOutcome\x12&\n\"VALORANT_ROUND_OUTCOME_UNSPECIFIED\x10\x00\x12\x34\n0VALORANT_ROUND_OUTCOME_DEFENDERS_WIN_ELIMINATION\x10\x01\x12\x30\n,VALORANT_ROUND_OUTCOME_DEFENDERS_WIN_TIMEOUT\x10\x02\x12/\n+VALORANT_ROUND_OUTCOME_DEFENDERS_WIN_DEFUSE\x10\x03\x12\x34\n0VALORANT_ROUND_OUTCOME_ATTACKERS_WIN_ELIMINATION\x10\x04\x12\x30\n,VALORANT_ROUND_OUTCOME_ATTACKERS_WIN_EXPLODE\x10\x05*\x9f\x01\n\x12ValorantRoundPhase\x12$\n VALORANT_ROUND_PHASE_UNSPECIFIED\x10\x00\x12\"\n\x1eVALORANT_ROUND_PHASE_BUY_PHASE\x10\x01\x12 \n\x1cVALORANT_ROUND_PHASE_RUNNING\x10\x02\x12\x1d\n\x19VALORANT_ROUND_PHASE_OVER\x10\x03*\xab\x02\n\x12ValorantSpikeState\x12$\n VALORANT_SPIKE_STATE_UNSPECIFIED\x10\x00\x12 \n\x1cVALORANT_SPIKE_STATE_CARRIED\x10\x01\x12 \n\x1cVALORANT_SPIKE_STATE_DROPPED\x10\x02\x12!\n\x1dVALORANT_SPIKE_STATE_PLANTING\x10\x03\x12!\n\x1dVALORANT_SPIKE_STATE_DEFUSING\x10\x04\x12 \n\x1cVALORANT_SPIKE_STATE_PLANTED\x10\x05\x12!\n\x1dVALORANT_SPIKE_STATE_EXPLODED\x10\x06\x12 \n\x1cVALORANT_SPIKE_STATE_DEFUSED\x10\x07\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
+  serialized_pb=b'\n\x14\x62ragi/valorant.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x12\x62ragi/common.proto\"\xbe\x02\n\x14ValorantMatchMessage\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x0b\x64\x61ta_status\x18\x04 \x01(\x0e\x32\x11.bragi.DataStatus\x12\x34\n\x07payload\x18\x05 \x01(\x0b\x32#.bragi.ValorantMatchMessage.Payload\x1at\n\x07Payload\x12\x30\n\x08snapshot\x18\x01 \x01(\x0b\x32\x1c.bragi.ValorantMatchSnapshotH\x00\x12,\n\x06update\x18\x02 \x01(\x0b\x32\x1a.bragi.ValorantMatchUpdateH\x00\x42\t\n\x07payload\"\x96\x02\n\x15ValorantMatchSnapshot\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x0b\x64\x61ta_status\x18\x04 \x01(\x0e\x32\x11.bragi.DataStatus\x12*\n\rannouncements\x18\x05 \x03(\x0b\x32\x13.bragi.Announcement\x12.\n\x0bmatch_state\x18\x06 \x01(\x0b\x32\x19.bragi.ValorantMatchState\x12%\n\ntournament\x18\x07 \x01(\x0b\x32\x11.bragi.Tournament\"\xd7\x01\n\x13ValorantMatchUpdate\x12\x33\n\x07payload\x18\x01 \x01(\x0b\x32\".bragi.ValorantMatchUpdate.Payload\x1a\x8a\x01\n\x07Payload\x12\x30\n\x0bmatch_state\x18\x01 \x01(\x0b\x32\x19.bragi.ValorantMatchStateH\x00\x12\x42\n\x0fpartial_updates\x18\x02 \x01(\x0b\x32\'.bragi.ValorantMatchStatePartialUpdatesH\x00\x42\t\n\x07payload\"[\n ValorantMatchStatePartialUpdates\x12\x37\n\x07updates\x18\x01 \x03(\x0b\x32&.bragi.ValorantMatchStatePartialUpdate\"\xe6\x01\n\x1fValorantMatchStatePartialUpdate\x12/\n\x05score\x18\x01 \x01(\x0b\x32\x1e.bragi.ValorantMatchScoreStateH\x00\x12\x35\n\x0b\x63urrent_map\x18\x02 \x01(\x0b\x32\x1e.bragi.ValorantCurrentMapStateH\x00\x12Q\n\x1a\x63urrent_map_partial_update\x18\x03 \x01(\x0b\x32+.bragi.ValorantCurrentMapStatePartialUpdateH\x00\x42\x08\n\x06update\"\xa0\x02\n\x12ValorantMatchState\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12%\n\nmatch_type\x18\x02 \x01(\x0e\x32\x11.bragi.BestOfType\x12\x1e\n\thome_team\x18\x03 \x01(\x0b\x32\x0b.bragi.Team\x12\x1e\n\taway_team\x18\x04 \x01(\x0b\x32\x0b.bragi.Team\x12-\n\x05score\x18\x05 \x01(\x0b\x32\x1e.bragi.ValorantMatchScoreState\x12,\n\x0cmatch_status\x18\x06 \x01(\x0e\x32\x16.bragi.MatchStatusType\x12\x33\n\x0b\x63urrent_map\x18\x07 \x01(\x0b\x32\x1e.bragi.ValorantCurrentMapState\"A\n\x17ValorantMatchScoreState\x12\x12\n\nhome_score\x18\x01 \x01(\r\x12\x12\n\naway_score\x18\x02 \x01(\r\"\xd2\x03\n$ValorantCurrentMapStatePartialUpdate\x12-\n\x05score\x18\x01 \x01(\x0b\x32\x1c.bragi.ValorantMapScoreStateH\x00\x12\x39\n\rcurrent_round\x18\x02 \x01(\x0b\x32 .bragi.ValorantCurrentRoundStateH\x00\x12U\n\x1c\x63urrent_round_partial_update\x18\x03 \x01(\x0b\x32-.bragi.ValorantCurrentRoundStatePartialUpdateH\x00\x12\x44\n\x16team_current_map_state\x18\x04 \x01(\x0b\x32\".bragi.ValorantTeamCurrentMapStateH\x00\x12Z\n\x1fteam_current_map_partial_update\x18\x05 \x01(\x0b\x32/.bragi.ValorantTeamCurrentMapStatePartialUpdateH\x00\x12=\n\x0fprevious_rounds\x18\x06 \x01(\x0b\x32\".bragi.ValorantPreviousRoundsStateH\x00\x42\x08\n\x06update\"\xad\x03\n\x17ValorantCurrentMapState\x12\x11\n\tmap_order\x18\x01 \x01(\r\x12\x12\n\nmap_paused\x18\x02 \x01(\x08\x12\x10\n\x08map_name\x18\x03 \x01(\t\x12\x19\n\x0cwin_team_urn\x18\x04 \x01(\tH\x00\x88\x01\x01\x12+\n\x05score\x18\x05 \x01(\x0b\x32\x1c.bragi.ValorantMapScoreState\x12\x37\n\rcurrent_round\x18\x06 \x01(\x0b\x32 .bragi.ValorantCurrentRoundState\x12\x38\n\x05teams\x18\x07 \x03(\x0b\x32).bragi.ValorantCurrentMapState.TeamsEntry\x12;\n\x0fprevious_rounds\x18\x08 \x01(\x0b\x32\".bragi.ValorantPreviousRoundsState\x1aP\n\nTeamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x31\n\x05value\x18\x02 \x01(\x0b\x32\".bragi.ValorantTeamCurrentMapState:\x02\x38\x01\x42\x0f\n\r_win_team_urn\"?\n\x15ValorantMapScoreState\x12\x12\n\nhome_score\x18\x01 \x01(\r\x12\x12\n\naway_score\x18\x02 \x01(\r\"K\n\x1bValorantPreviousRoundsState\x12,\n\x06rounds\x18\x01 \x03(\x0b\x32\x1c.bragi.ValorantPreviousRound\"\xc7\x02\n(ValorantTeamCurrentMapStatePartialUpdate\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12H\n\x07payload\x18\x02 \x01(\x0b\x32\x37.bragi.ValorantTeamCurrentMapStatePartialUpdate.Payload\x1a\xbe\x01\n\x07Payload\x12H\n\x18player_current_map_state\x18\x01 \x01(\x0b\x32$.bragi.ValorantPlayerCurrentMapStateH\x00\x12^\n!player_current_map_partial_update\x18\x02 \x01(\x0b\x32\x31.bragi.ValorantPlayerCurrentMapStatePartialUpdateH\x00\x42\t\n\x07payload\"\xea\x01\n\x1bValorantTeamCurrentMapState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12!\n\x04side\x18\x02 \x01(\x0e\x32\x13.bragi.ValorantSide\x12@\n\x07players\x18\x03 \x03(\x0b\x32/.bragi.ValorantTeamCurrentMapState.PlayersEntry\x1aT\n\x0cPlayersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x33\n\x05value\x18\x02 \x01(\x0b\x32$.bragi.ValorantPlayerCurrentMapState:\x02\x38\x01\"\xd4\x02\n*ValorantPlayerCurrentMapStatePartialUpdate\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12J\n\x07payload\x18\x02 \x01(\x0b\x32\x39.bragi.ValorantPlayerCurrentMapStatePartialUpdate.Payload\x1a\xc5\x01\n\x07Payload\x12\x35\n\x0bplayer_info\x18\x01 \x01(\x0b\x32\x1e.bragi.ValorantPlayerInfoStateH\x00\x12\x32\n\tabilities\x18\x02 \x01(\x0b\x32\x1d.bragi.ValorantAbilitiesStateH\x00\x12\x44\n\nstatistics\x18\x03 \x01(\x0b\x32..bragi.ValorantPlayerCurrentMapStatisticsStateH\x00\x42\t\n\x07payload\"\xf1\x01\n\x1dValorantPlayerCurrentMapState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x11\n\tagent_urn\x18\x02 \x01(\t\x12\x33\n\x0bplayer_info\x18\x03 \x01(\x0b\x32\x1e.bragi.ValorantPlayerInfoState\x12\x30\n\tabilities\x18\x04 \x01(\x0b\x32\x1d.bragi.ValorantAbilitiesState\x12\x42\n\nstatistics\x18\x05 \x01(\x0b\x32..bragi.ValorantPlayerCurrentMapStatisticsState\"m\n\'ValorantPlayerCurrentMapStatisticsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\r\n\x05kills\x18\x02 \x01(\r\x12\x0e\n\x06\x64\x65\x61ths\x18\x03 \x01(\r\x12\x0f\n\x07\x61ssists\x18\x04 \x01(\r\"\x83\x03\n&ValorantCurrentRoundStatePartialUpdate\x12\x33\n\nround_info\x18\x01 \x01(\x0b\x32\x1d.bragi.ValorantRoundInfoStateH\x00\x12\x34\n\x04time\x18\x02 \x01(\x0b\x32$.bragi.ValorantCurrentRoundTimeStateH\x00\x12:\n\x05spike\x18\x03 \x01(\x0b\x32).bragi.ValorantCurrentRoundTeamSpikeStateH\x00\x12H\n\x18team_current_round_state\x18\x04 \x01(\x0b\x32$.bragi.ValorantTeamCurrentRoundStateH\x00\x12^\n!team_current_round_partial_update\x18\x05 \x01(\x0b\x32\x31.bragi.ValorantTeamCurrentRoundStatePartialUpdateH\x00\x42\x08\n\x06update\"\xcc\x02\n\x19ValorantCurrentRoundState\x12\x31\n\nround_info\x18\x01 \x01(\x0b\x32\x1d.bragi.ValorantRoundInfoState\x12\x32\n\x04time\x18\x02 \x01(\x0b\x32$.bragi.ValorantCurrentRoundTimeState\x12\x38\n\x05spike\x18\x03 \x01(\x0b\x32).bragi.ValorantCurrentRoundTeamSpikeState\x12:\n\x05teams\x18\x04 \x03(\x0b\x32+.bragi.ValorantCurrentRoundState.TeamsEntry\x1aR\n\nTeamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x33\n\x05value\x18\x02 \x01(\x0b\x32$.bragi.ValorantTeamCurrentRoundState:\x02\x38\x01\"R\n\x16ValorantRoundInfoState\x12\x0e\n\x06number\x18\x01 \x01(\r\x12(\n\x05phase\x18\x02 \x01(\x0e\x32\x19.bragi.ValorantRoundPhase\"R\n\x1dValorantCurrentRoundTimeState\x12\x31\n\x0etime_remaining\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\"\x82\x01\n\"ValorantCurrentRoundTeamSpikeState\x12(\n\x05state\x18\x01 \x01(\x0e\x32\x19.bragi.ValorantSpikeState\x12\x32\n\x0ftime_to_defused\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\"\xd3\x02\n*ValorantTeamCurrentRoundStatePartialUpdate\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12J\n\x07payload\x18\x02 \x01(\x0b\x32\x39.bragi.ValorantTeamCurrentRoundStatePartialUpdate.Payload\x1a\xc6\x01\n\x07Payload\x12L\n\x1aplayer_current_round_state\x18\x03 \x01(\x0b\x32&.bragi.ValorantPlayerCurrentRoundStateH\x00\x12\x62\n#player_current_round_partial_update\x18\x02 \x01(\x0b\x32\x33.bragi.ValorantPlayerCurrentRoundStatePartialUpdateH\x00\x42\t\n\x07payload\"\xf0\x01\n\x1dValorantTeamCurrentRoundState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12!\n\x04side\x18\x02 \x01(\x0e\x32\x13.bragi.ValorantSide\x12\x42\n\x07players\x18\x03 \x03(\x0b\x32\x31.bragi.ValorantTeamCurrentRoundState.PlayersEntry\x1aV\n\x0cPlayersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x35\n\x05value\x18\x02 \x01(\x0b\x32&.bragi.ValorantPlayerCurrentRoundState:\x02\x38\x01\"\x88\x03\n,ValorantPlayerCurrentRoundStatePartialUpdate\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12L\n\x07payload\x18\x02 \x01(\x0b\x32;.bragi.ValorantPlayerCurrentRoundStatePartialUpdate.Payload\x1a\xf5\x01\n\x07Payload\x12\x35\n\x0bplayer_info\x18\x01 \x01(\x0b\x32\x1e.bragi.ValorantPlayerInfoStateH\x00\x12\x46\n\nstatistics\x18\x02 \x01(\x0b\x32\x30.bragi.ValorantPlayerCurrentRoundStatisticsStateH\x00\x12.\n\x07weapons\x18\x03 \x01(\x0b\x32\x1b.bragi.ValorantWeaponsStateH\x00\x12\x30\n\x08position\x18\x04 \x01(\x0b\x32\x1c.bragi.ValorantPositionStateH\x00\x42\t\n\x07payload\"\x8e\x02\n\x1fValorantPlayerCurrentRoundState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x33\n\x0bplayer_info\x18\x02 \x01(\x0b\x32\x1e.bragi.ValorantPlayerInfoState\x12\x44\n\nstatistics\x18\x03 \x01(\x0b\x32\x30.bragi.ValorantPlayerCurrentRoundStatisticsState\x12,\n\x07weapons\x18\x04 \x01(\x0b\x32\x1b.bragi.ValorantWeaponsState\x12.\n\x08position\x18\x05 \x01(\x0b\x32\x1c.bragi.ValorantPositionState\"Q\n)ValorantPlayerCurrentRoundStatisticsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x10\n\x08is_alive\x18\x02 \x01(\x08\"W\n\x16ValorantAbilitiesState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12)\n\tabilities\x18\x02 \x03(\x0b\x32\x16.bragi.ValorantAbility\"R\n\x14ValorantWeaponsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12&\n\x07weapons\x18\x02 \x03(\x0b\x32\x15.bragi.ValorantWeapon\"P\n\x17ValorantPlayerInfoState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x0f\n\x07slot_id\x18\x02 \x01(\r\x12\x10\n\x08\x65xt_name\x18\x03 \x01(\t\"A\n\x15ValorantPositionState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\t\n\x01x\x18\x02 \x01(\x02\x12\t\n\x01y\x18\x03 \x01(\x02\"g\n\x15ValorantPreviousRound\x12\x0e\n\x06number\x18\x01 \x01(\r\x12,\n\x07outcome\x18\x02 \x01(\x0e\x32\x1b.bragi.ValorantRoundOutcome\x12\x10\n\x08home_won\x18\x03 \x01(\x08\"\x1c\n\x0eValorantWeapon\x12\n\n\x02id\x18\x01 \x01(\t\"A\n\x0fValorantAbility\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05ready\x18\x02 \x01(\x08\x12\x13\n\x0bis_ultimate\x18\x03 \x01(\x08*\x8b\x01\n\x15ValorantUltimateState\x12(\n$VALORANT_ULTIMATE_STATE__UNSPECIFIED\x10\x00\x12!\n\x1dVALORANT_ULTIMATE_STATE_READY\x10\x01\x12%\n!VALORANT_ULTIMATE_STATE_NOT_READY\x10\x02*g\n\x0cValorantSide\x12\x1d\n\x19VALORANT_SIDE_UNSPECIFIED\x10\x00\x12\x1b\n\x17VALORANT_SIDE_DEFENDERS\x10\x01\x12\x1b\n\x17VALORANT_SIDE_ATTACKERS\x10\x02*\xbf\x02\n\x14ValorantRoundOutcome\x12&\n\"VALORANT_ROUND_OUTCOME_UNSPECIFIED\x10\x00\x12\x34\n0VALORANT_ROUND_OUTCOME_DEFENDERS_WIN_ELIMINATION\x10\x01\x12\x30\n,VALORANT_ROUND_OUTCOME_DEFENDERS_WIN_TIMEOUT\x10\x02\x12/\n+VALORANT_ROUND_OUTCOME_DEFENDERS_WIN_DEFUSE\x10\x03\x12\x34\n0VALORANT_ROUND_OUTCOME_ATTACKERS_WIN_ELIMINATION\x10\x04\x12\x30\n,VALORANT_ROUND_OUTCOME_ATTACKERS_WIN_EXPLODE\x10\x05*\x9f\x01\n\x12ValorantRoundPhase\x12$\n VALORANT_ROUND_PHASE_UNSPECIFIED\x10\x00\x12\"\n\x1eVALORANT_ROUND_PHASE_BUY_PHASE\x10\x01\x12 \n\x1cVALORANT_ROUND_PHASE_RUNNING\x10\x02\x12\x1d\n\x19VALORANT_ROUND_PHASE_OVER\x10\x03*\xab\x02\n\x12ValorantSpikeState\x12$\n VALORANT_SPIKE_STATE_UNSPECIFIED\x10\x00\x12 \n\x1cVALORANT_SPIKE_STATE_CARRIED\x10\x01\x12 \n\x1cVALORANT_SPIKE_STATE_DROPPED\x10\x02\x12!\n\x1dVALORANT_SPIKE_STATE_PLANTING\x10\x03\x12!\n\x1dVALORANT_SPIKE_STATE_DEFUSING\x10\x04\x12 \n\x1cVALORANT_SPIKE_STATE_PLANTED\x10\x05\x12!\n\x1dVALORANT_SPIKE_STATE_EXPLODED\x10\x06\x12 \n\x1cVALORANT_SPIKE_STATE_DEFUSED\x10\x07\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,bragi_dot_common__pb2.DESCRIPTOR,])
 
@@ -52,8 +52,8 @@ _VALORANTULTIMATESTATE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6776,
-  serialized_end=6915,
+  serialized_start=6815,
+  serialized_end=6954,
 )
 _sym_db.RegisterEnumDescriptor(_VALORANTULTIMATESTATE)
 
@@ -83,8 +83,8 @@ _VALORANTSIDE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6917,
-  serialized_end=7020,
+  serialized_start=6956,
+  serialized_end=7059,
 )
 _sym_db.RegisterEnumDescriptor(_VALORANTSIDE)
 
@@ -129,8 +129,8 @@ _VALORANTROUNDOUTCOME = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=7023,
-  serialized_end=7342,
+  serialized_start=7062,
+  serialized_end=7381,
 )
 _sym_db.RegisterEnumDescriptor(_VALORANTROUNDOUTCOME)
 
@@ -165,8 +165,8 @@ _VALORANTROUNDPHASE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=7345,
-  serialized_end=7504,
+  serialized_start=7384,
+  serialized_end=7543,
 )
 _sym_db.RegisterEnumDescriptor(_VALORANTROUNDPHASE)
 
@@ -221,8 +221,8 @@ _VALORANTSPIKESTATE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=7507,
-  serialized_end=7806,
+  serialized_start=7546,
+  serialized_end=7845,
 )
 _sym_db.RegisterEnumDescriptor(_VALORANTSPIKESTATE)
 
@@ -407,6 +407,13 @@ _VALORANTMATCHSNAPSHOT = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='tournament', full_name='bragi.ValorantMatchSnapshot.tournament', index=6,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -420,7 +427,7 @@ _VALORANTMATCHSNAPSHOT = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=438,
-  serialized_end=677,
+  serialized_end=716,
 )
 
 
@@ -463,8 +470,8 @@ _VALORANTMATCHUPDATE_PAYLOAD = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=757,
-  serialized_end=895,
+  serialized_start=796,
+  serialized_end=934,
 )
 
 _VALORANTMATCHUPDATE = _descriptor.Descriptor(
@@ -494,8 +501,8 @@ _VALORANTMATCHUPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=680,
-  serialized_end=895,
+  serialized_start=719,
+  serialized_end=934,
 )
 
 
@@ -526,8 +533,8 @@ _VALORANTMATCHSTATEPARTIALUPDATES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=897,
-  serialized_end=988,
+  serialized_start=936,
+  serialized_end=1027,
 )
 
 
@@ -577,8 +584,8 @@ _VALORANTMATCHSTATEPARTIALUPDATE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=991,
-  serialized_end=1221,
+  serialized_start=1030,
+  serialized_end=1260,
 )
 
 
@@ -651,8 +658,8 @@ _VALORANTMATCHSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1224,
-  serialized_end=1512,
+  serialized_start=1263,
+  serialized_end=1551,
 )
 
 
@@ -690,8 +697,8 @@ _VALORANTMATCHSCORESTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1514,
-  serialized_end=1579,
+  serialized_start=1553,
+  serialized_end=1618,
 )
 
 
@@ -762,8 +769,8 @@ _VALORANTCURRENTMAPSTATEPARTIALUPDATE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1582,
-  serialized_end=2048,
+  serialized_start=1621,
+  serialized_end=2087,
 )
 
 
@@ -801,8 +808,8 @@ _VALORANTCURRENTMAPSTATE_TEAMSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2383,
-  serialized_end=2463,
+  serialized_start=2422,
+  serialized_end=2502,
 )
 
 _VALORANTCURRENTMAPSTATE = _descriptor.Descriptor(
@@ -886,8 +893,8 @@ _VALORANTCURRENTMAPSTATE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=2051,
-  serialized_end=2480,
+  serialized_start=2090,
+  serialized_end=2519,
 )
 
 
@@ -925,8 +932,8 @@ _VALORANTMAPSCORESTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2482,
-  serialized_end=2545,
+  serialized_start=2521,
+  serialized_end=2584,
 )
 
 
@@ -957,8 +964,8 @@ _VALORANTPREVIOUSROUNDSSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2547,
-  serialized_end=2622,
+  serialized_start=2586,
+  serialized_end=2661,
 )
 
 
@@ -1001,8 +1008,8 @@ _VALORANTTEAMCURRENTMAPSTATEPARTIALUPDATE_PAYLOAD = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=2762,
-  serialized_end=2952,
+  serialized_start=2801,
+  serialized_end=2991,
 )
 
 _VALORANTTEAMCURRENTMAPSTATEPARTIALUPDATE = _descriptor.Descriptor(
@@ -1039,8 +1046,8 @@ _VALORANTTEAMCURRENTMAPSTATEPARTIALUPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2625,
-  serialized_end=2952,
+  serialized_start=2664,
+  serialized_end=2991,
 )
 
 
@@ -1078,8 +1085,8 @@ _VALORANTTEAMCURRENTMAPSTATE_PLAYERSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3105,
-  serialized_end=3189,
+  serialized_start=3144,
+  serialized_end=3228,
 )
 
 _VALORANTTEAMCURRENTMAPSTATE = _descriptor.Descriptor(
@@ -1123,8 +1130,8 @@ _VALORANTTEAMCURRENTMAPSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2955,
-  serialized_end=3189,
+  serialized_start=2994,
+  serialized_end=3228,
 )
 
 
@@ -1174,8 +1181,8 @@ _VALORANTPLAYERCURRENTMAPSTATEPARTIALUPDATE_PAYLOAD = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=3335,
-  serialized_end=3532,
+  serialized_start=3374,
+  serialized_end=3571,
 )
 
 _VALORANTPLAYERCURRENTMAPSTATEPARTIALUPDATE = _descriptor.Descriptor(
@@ -1212,8 +1219,8 @@ _VALORANTPLAYERCURRENTMAPSTATEPARTIALUPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3192,
-  serialized_end=3532,
+  serialized_start=3231,
+  serialized_end=3571,
 )
 
 
@@ -1272,8 +1279,8 @@ _VALORANTPLAYERCURRENTMAPSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3535,
-  serialized_end=3776,
+  serialized_start=3574,
+  serialized_end=3815,
 )
 
 
@@ -1325,8 +1332,8 @@ _VALORANTPLAYERCURRENTMAPSTATISTICSSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3778,
-  serialized_end=3887,
+  serialized_start=3817,
+  serialized_end=3926,
 )
 
 
@@ -1390,8 +1397,8 @@ _VALORANTCURRENTROUNDSTATEPARTIALUPDATE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=3890,
-  serialized_end=4277,
+  serialized_start=3929,
+  serialized_end=4316,
 )
 
 
@@ -1429,8 +1436,8 @@ _VALORANTCURRENTROUNDSTATE_TEAMSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4530,
-  serialized_end=4612,
+  serialized_start=4569,
+  serialized_end=4651,
 )
 
 _VALORANTCURRENTROUNDSTATE = _descriptor.Descriptor(
@@ -1481,8 +1488,8 @@ _VALORANTCURRENTROUNDSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4280,
-  serialized_end=4612,
+  serialized_start=4319,
+  serialized_end=4651,
 )
 
 
@@ -1520,8 +1527,8 @@ _VALORANTROUNDINFOSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4614,
-  serialized_end=4696,
+  serialized_start=4653,
+  serialized_end=4735,
 )
 
 
@@ -1552,8 +1559,8 @@ _VALORANTCURRENTROUNDTIMESTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4698,
-  serialized_end=4780,
+  serialized_start=4737,
+  serialized_end=4819,
 )
 
 
@@ -1591,8 +1598,8 @@ _VALORANTCURRENTROUNDTEAMSPIKESTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4783,
-  serialized_end=4913,
+  serialized_start=4822,
+  serialized_end=4952,
 )
 
 
@@ -1635,8 +1642,8 @@ _VALORANTTEAMCURRENTROUNDSTATEPARTIALUPDATE_PAYLOAD = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=5057,
-  serialized_end=5255,
+  serialized_start=5096,
+  serialized_end=5294,
 )
 
 _VALORANTTEAMCURRENTROUNDSTATEPARTIALUPDATE = _descriptor.Descriptor(
@@ -1673,8 +1680,8 @@ _VALORANTTEAMCURRENTROUNDSTATEPARTIALUPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4916,
-  serialized_end=5255,
+  serialized_start=4955,
+  serialized_end=5294,
 )
 
 
@@ -1712,8 +1719,8 @@ _VALORANTTEAMCURRENTROUNDSTATE_PLAYERSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5412,
-  serialized_end=5498,
+  serialized_start=5451,
+  serialized_end=5537,
 )
 
 _VALORANTTEAMCURRENTROUNDSTATE = _descriptor.Descriptor(
@@ -1757,8 +1764,8 @@ _VALORANTTEAMCURRENTROUNDSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5258,
-  serialized_end=5498,
+  serialized_start=5297,
+  serialized_end=5537,
 )
 
 
@@ -1815,8 +1822,8 @@ _VALORANTPLAYERCURRENTROUNDSTATEPARTIALUPDATE_PAYLOAD = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=5648,
-  serialized_end=5893,
+  serialized_start=5687,
+  serialized_end=5932,
 )
 
 _VALORANTPLAYERCURRENTROUNDSTATEPARTIALUPDATE = _descriptor.Descriptor(
@@ -1853,8 +1860,8 @@ _VALORANTPLAYERCURRENTROUNDSTATEPARTIALUPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5501,
-  serialized_end=5893,
+  serialized_start=5540,
+  serialized_end=5932,
 )
 
 
@@ -1913,8 +1920,8 @@ _VALORANTPLAYERCURRENTROUNDSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5896,
-  serialized_end=6166,
+  serialized_start=5935,
+  serialized_end=6205,
 )
 
 
@@ -1952,8 +1959,8 @@ _VALORANTPLAYERCURRENTROUNDSTATISTICSSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6168,
-  serialized_end=6249,
+  serialized_start=6207,
+  serialized_end=6288,
 )
 
 
@@ -1991,8 +1998,8 @@ _VALORANTABILITIESSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6251,
-  serialized_end=6338,
+  serialized_start=6290,
+  serialized_end=6377,
 )
 
 
@@ -2030,8 +2037,8 @@ _VALORANTWEAPONSSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6340,
-  serialized_end=6422,
+  serialized_start=6379,
+  serialized_end=6461,
 )
 
 
@@ -2076,8 +2083,8 @@ _VALORANTPLAYERINFOSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6424,
-  serialized_end=6504,
+  serialized_start=6463,
+  serialized_end=6543,
 )
 
 
@@ -2122,8 +2129,8 @@ _VALORANTPOSITIONSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6506,
-  serialized_end=6571,
+  serialized_start=6545,
+  serialized_end=6610,
 )
 
 
@@ -2168,8 +2175,8 @@ _VALORANTPREVIOUSROUND = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6573,
-  serialized_end=6676,
+  serialized_start=6612,
+  serialized_end=6715,
 )
 
 
@@ -2200,8 +2207,8 @@ _VALORANTWEAPON = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6678,
-  serialized_end=6706,
+  serialized_start=6717,
+  serialized_end=6745,
 )
 
 
@@ -2246,8 +2253,8 @@ _VALORANTABILITY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6708,
-  serialized_end=6773,
+  serialized_start=6747,
+  serialized_end=6812,
 )
 
 _VALORANTMATCHMESSAGE_PAYLOAD.fields_by_name['snapshot'].message_type = _VALORANTMATCHSNAPSHOT
@@ -2266,6 +2273,7 @@ _VALORANTMATCHSNAPSHOT.fields_by_name['timestamp'].message_type = google_dot_pro
 _VALORANTMATCHSNAPSHOT.fields_by_name['data_status'].enum_type = bragi_dot_common__pb2._DATASTATUS
 _VALORANTMATCHSNAPSHOT.fields_by_name['announcements'].message_type = bragi_dot_common__pb2._ANNOUNCEMENT
 _VALORANTMATCHSNAPSHOT.fields_by_name['match_state'].message_type = _VALORANTMATCHSTATE
+_VALORANTMATCHSNAPSHOT.fields_by_name['tournament'].message_type = bragi_dot_common__pb2._TOURNAMENT
 _VALORANTMATCHUPDATE_PAYLOAD.fields_by_name['match_state'].message_type = _VALORANTMATCHSTATE
 _VALORANTMATCHUPDATE_PAYLOAD.fields_by_name['partial_updates'].message_type = _VALORANTMATCHSTATEPARTIALUPDATES
 _VALORANTMATCHUPDATE_PAYLOAD.containing_type = _VALORANTMATCHUPDATE

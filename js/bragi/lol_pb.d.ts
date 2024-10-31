@@ -106,6 +106,11 @@ export class LolMatchSnapshot extends jspb.Message {
   getMatchState(): LolMatchState | undefined;
   setMatchState(value?: LolMatchState): void;
 
+  hasTournament(): boolean;
+  clearTournament(): void;
+  getTournament(): bragi_common_pb.Tournament | undefined;
+  setTournament(value?: bragi_common_pb.Tournament): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): LolMatchSnapshot.AsObject;
   static toObject(includeInstance: boolean, msg: LolMatchSnapshot): LolMatchSnapshot.AsObject;
@@ -124,6 +129,7 @@ export namespace LolMatchSnapshot {
     dataStatus: bragi_common_pb.DataStatusMap[keyof bragi_common_pb.DataStatusMap],
     announcementsList: Array<bragi_common_pb.Announcement.AsObject>,
     matchState?: LolMatchState.AsObject,
+    tournament?: bragi_common_pb.Tournament.AsObject,
   }
 }
 

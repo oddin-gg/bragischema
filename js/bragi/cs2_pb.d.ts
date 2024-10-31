@@ -106,6 +106,11 @@ export class CS2MatchSnapshot extends jspb.Message {
   getMatchState(): CS2MatchState | undefined;
   setMatchState(value?: CS2MatchState): void;
 
+  hasTournament(): boolean;
+  clearTournament(): void;
+  getTournament(): bragi_common_pb.Tournament | undefined;
+  setTournament(value?: bragi_common_pb.Tournament): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CS2MatchSnapshot.AsObject;
   static toObject(includeInstance: boolean, msg: CS2MatchSnapshot): CS2MatchSnapshot.AsObject;
@@ -124,6 +129,7 @@ export namespace CS2MatchSnapshot {
     dataStatus: bragi_common_pb.DataStatusMap[keyof bragi_common_pb.DataStatusMap],
     announcementsList: Array<bragi_common_pb.Announcement.AsObject>,
     matchState?: CS2MatchState.AsObject,
+    tournament?: bragi_common_pb.Tournament.AsObject,
   }
 }
 

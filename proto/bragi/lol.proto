@@ -35,6 +35,7 @@ message LolMatchSnapshot {
   DataStatus data_status = 4;
   repeated Announcement announcements = 5;
   LolMatchState match_state = 6;
+  Tournament tournament  = 7;
 }
 
 message LolMatchUpdate {

@@ -1033,7 +1033,8 @@ proto.bragi.RushSoccerMatchSnapshot.toObject = function(includeInstance, msg) {
     dataStatus: jspb.Message.getFieldWithDefault(msg, 4, 0),
     announcementsList: jspb.Message.toObjectList(msg.getAnnouncementsList(),
     bragi_common_pb.Announcement.toObject, includeInstance),
-    matchState: (f = msg.getMatchState()) && proto.bragi.RushSoccerMatchState.toObject(includeInstance, f)
+    matchState: (f = msg.getMatchState()) && proto.bragi.RushSoccerMatchState.toObject(includeInstance, f),
+    tournament: (f = msg.getTournament()) && bragi_common_pb.Tournament.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1096,6 +1097,11 @@ proto.bragi.RushSoccerMatchSnapshot.deserializeBinaryFromReader = function(msg, 
       var value = new proto.bragi.RushSoccerMatchState;
       reader.readMessage(value,proto.bragi.RushSoccerMatchState.deserializeBinaryFromReader);
       msg.setMatchState(value);
+      break;
+    case 7:
+      var value = new bragi_common_pb.Tournament;
+      reader.readMessage(value,bragi_common_pb.Tournament.deserializeBinaryFromReader);
+      msg.setTournament(value);
       break;
     default:
       reader.skipField();
@@ -1169,6 +1175,14 @@ proto.bragi.RushSoccerMatchSnapshot.serializeBinaryToWriter = function(message, 
       6,
       f,
       proto.bragi.RushSoccerMatchState.serializeBinaryToWriter
+    );
+  }
+  f = message.getTournament();
+  if (f != null) {
+    writer.writeMessage(
+      7,
+      f,
+      bragi_common_pb.Tournament.serializeBinaryToWriter
     );
   }
 };
@@ -1337,6 +1351,43 @@ proto.bragi.RushSoccerMatchSnapshot.prototype.clearMatchState = function() {
  */
 proto.bragi.RushSoccerMatchSnapshot.prototype.hasMatchState = function() {
   return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional Tournament tournament = 7;
+ * @return {?proto.bragi.Tournament}
+ */
+proto.bragi.RushSoccerMatchSnapshot.prototype.getTournament = function() {
+  return /** @type{?proto.bragi.Tournament} */ (
+    jspb.Message.getWrapperField(this, bragi_common_pb.Tournament, 7));
+};
+
+
+/**
+ * @param {?proto.bragi.Tournament|undefined} value
+ * @return {!proto.bragi.RushSoccerMatchSnapshot} returns this
+*/
+proto.bragi.RushSoccerMatchSnapshot.prototype.setTournament = function(value) {
+  return jspb.Message.setWrapperField(this, 7, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.bragi.RushSoccerMatchSnapshot} returns this
+ */
+proto.bragi.RushSoccerMatchSnapshot.prototype.clearTournament = function() {
+  return this.setTournament(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.RushSoccerMatchSnapshot.prototype.hasTournament = function() {
+  return jspb.Message.getField(this, 7) != null;
 };
 
 

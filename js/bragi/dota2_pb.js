@@ -1389,7 +1389,8 @@ proto.bragi.Dota2MatchSnapshot.toObject = function(includeInstance, msg) {
     dataStatus: jspb.Message.getFieldWithDefault(msg, 4, 0),
     announcementsList: jspb.Message.toObjectList(msg.getAnnouncementsList(),
     bragi_common_pb.Announcement.toObject, includeInstance),
-    matchState: (f = msg.getMatchState()) && proto.bragi.Dota2MatchState.toObject(includeInstance, f)
+    matchState: (f = msg.getMatchState()) && proto.bragi.Dota2MatchState.toObject(includeInstance, f),
+    tournament: (f = msg.getTournament()) && bragi_common_pb.Tournament.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1452,6 +1453,11 @@ proto.bragi.Dota2MatchSnapshot.deserializeBinaryFromReader = function(msg, reade
       var value = new proto.bragi.Dota2MatchState;
       reader.readMessage(value,proto.bragi.Dota2MatchState.deserializeBinaryFromReader);
       msg.setMatchState(value);
+      break;
+    case 8:
+      var value = new bragi_common_pb.Tournament;
+      reader.readMessage(value,bragi_common_pb.Tournament.deserializeBinaryFromReader);
+      msg.setTournament(value);
       break;
     default:
       reader.skipField();
@@ -1525,6 +1531,14 @@ proto.bragi.Dota2MatchSnapshot.serializeBinaryToWriter = function(message, write
       7,
       f,
       proto.bragi.Dota2MatchState.serializeBinaryToWriter
+    );
+  }
+  f = message.getTournament();
+  if (f != null) {
+    writer.writeMessage(
+      8,
+      f,
+      bragi_common_pb.Tournament.serializeBinaryToWriter
     );
   }
 };
@@ -1693,6 +1707,43 @@ proto.bragi.Dota2MatchSnapshot.prototype.clearMatchState = function() {
  */
 proto.bragi.Dota2MatchSnapshot.prototype.hasMatchState = function() {
   return jspb.Message.getField(this, 7) != null;
+};
+
+
+/**
+ * optional Tournament tournament = 8;
+ * @return {?proto.bragi.Tournament}
+ */
+proto.bragi.Dota2MatchSnapshot.prototype.getTournament = function() {
+  return /** @type{?proto.bragi.Tournament} */ (
+    jspb.Message.getWrapperField(this, bragi_common_pb.Tournament, 8));
+};
+
+
+/**
+ * @param {?proto.bragi.Tournament|undefined} value
+ * @return {!proto.bragi.Dota2MatchSnapshot} returns this
+*/
+proto.bragi.Dota2MatchSnapshot.prototype.setTournament = function(value) {
+  return jspb.Message.setWrapperField(this, 8, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.bragi.Dota2MatchSnapshot} returns this
+ */
+proto.bragi.Dota2MatchSnapshot.prototype.clearTournament = function() {
+  return this.setTournament(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.Dota2MatchSnapshot.prototype.hasTournament = function() {
+  return jspb.Message.getField(this, 8) != null;
 };
 
 
