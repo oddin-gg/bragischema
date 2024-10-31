@@ -106,6 +106,11 @@ export class RushSoccerMatchSnapshot extends jspb.Message {
   getMatchState(): RushSoccerMatchState | undefined;
   setMatchState(value?: RushSoccerMatchState): void;
 
+  hasTournament(): boolean;
+  clearTournament(): void;
+  getTournament(): bragi_common_pb.Tournament | undefined;
+  setTournament(value?: bragi_common_pb.Tournament): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RushSoccerMatchSnapshot.AsObject;
   static toObject(includeInstance: boolean, msg: RushSoccerMatchSnapshot): RushSoccerMatchSnapshot.AsObject;
@@ -124,6 +129,7 @@ export namespace RushSoccerMatchSnapshot {
     dataStatus: bragi_common_pb.DataStatusMap[keyof bragi_common_pb.DataStatusMap],
     announcementsList: Array<bragi_common_pb.Announcement.AsObject>,
     matchState?: RushSoccerMatchState.AsObject,
+    tournament?: bragi_common_pb.Tournament.AsObject,
   }
 }
 

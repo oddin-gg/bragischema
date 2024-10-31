@@ -35,6 +35,7 @@ message ValorantMatchSnapshot {
   DataStatus data_status = 4;
   repeated Announcement announcements = 5;
   ValorantMatchState match_state = 6;
+  Tournament tournament  = 7;
 }
 
 message ValorantMatchUpdate {

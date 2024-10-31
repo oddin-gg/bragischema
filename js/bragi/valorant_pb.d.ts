@@ -106,6 +106,11 @@ export class ValorantMatchSnapshot extends jspb.Message {
   getMatchState(): ValorantMatchState | undefined;
   setMatchState(value?: ValorantMatchState): void;
 
+  hasTournament(): boolean;
+  clearTournament(): void;
+  getTournament(): bragi_common_pb.Tournament | undefined;
+  setTournament(value?: bragi_common_pb.Tournament): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ValorantMatchSnapshot.AsObject;
   static toObject(includeInstance: boolean, msg: ValorantMatchSnapshot): ValorantMatchSnapshot.AsObject;
@@ -124,6 +129,7 @@ export namespace ValorantMatchSnapshot {
     dataStatus: bragi_common_pb.DataStatusMap[keyof bragi_common_pb.DataStatusMap],
     announcementsList: Array<bragi_common_pb.Announcement.AsObject>,
     matchState?: ValorantMatchState.AsObject,
+    tournament?: bragi_common_pb.Tournament.AsObject,
   }
 }
 

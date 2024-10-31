@@ -106,6 +106,11 @@ export class Dota2MatchSnapshot extends jspb.Message {
   getMatchState(): Dota2MatchState | undefined;
   setMatchState(value?: Dota2MatchState): void;
 
+  hasTournament(): boolean;
+  clearTournament(): void;
+  getTournament(): bragi_common_pb.Tournament | undefined;
+  setTournament(value?: bragi_common_pb.Tournament): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Dota2MatchSnapshot.AsObject;
   static toObject(includeInstance: boolean, msg: Dota2MatchSnapshot): Dota2MatchSnapshot.AsObject;
@@ -124,6 +129,7 @@ export namespace Dota2MatchSnapshot {
     dataStatus: bragi_common_pb.DataStatusMap[keyof bragi_common_pb.DataStatusMap],
     announcementsList: Array<bragi_common_pb.Announcement.AsObject>,
     matchState?: Dota2MatchState.AsObject,
+    tournament?: bragi_common_pb.Tournament.AsObject,
   }
 }
 

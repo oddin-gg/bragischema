@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n\017com.oddin.bragiZ\016oddin.gg/bragi',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x11\x62ragi/dota2.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x12\x62ragi/common.proto\"\xb2\x02\n\x11\x44ota2MatchMessage\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x0b\x64\x61ta_status\x18\x05 \x01(\x0e\x32\x11.bragi.DataStatus\x12\x31\n\x07payload\x18\x04 \x01(\x0b\x32 .bragi.Dota2MatchMessage.Payload\x1an\n\x07Payload\x12-\n\x08snapshot\x18\x01 \x01(\x0b\x32\x19.bragi.Dota2MatchSnapshotH\x00\x12)\n\x06update\x18\x02 \x01(\x0b\x32\x17.bragi.Dota2MatchUpdateH\x00\x42\t\n\x07payload\"\xe9\x01\n\x12\x44ota2MatchSnapshot\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x0b\x64\x61ta_status\x18\x04 \x01(\x0e\x32\x11.bragi.DataStatus\x12*\n\rannouncements\x18\x06 \x03(\x0b\x32\x13.bragi.Announcement\x12+\n\x0bmatch_state\x18\x07 \x01(\x0b\x32\x16.bragi.Dota2MatchState\"\xcb\x01\n\x10\x44ota2MatchUpdate\x12\x30\n\x07payload\x18\x01 \x01(\x0b\x32\x1f.bragi.Dota2MatchUpdate.Payload\x1a\x84\x01\n\x07Payload\x12-\n\x0bmatch_state\x18\x01 \x01(\x0b\x32\x16.bragi.Dota2MatchStateH\x00\x12?\n\x0fpartial_updates\x18\x02 \x01(\x0b\x32$.bragi.Dota2MatchStatePartialUpdatesH\x00\x42\t\n\x07payload\"U\n\x1d\x44ota2MatchStatePartialUpdates\x12\x34\n\x07updates\x18\x01 \x03(\x0b\x32#.bragi.Dota2MatchStatePartialUpdate\"\xe6\x01\n\x1c\x44ota2MatchStatePartialUpdate\x12,\n\x05score\x18\x01 \x01(\x0b\x32\x1b.bragi.Dota2MatchScoreStateH\x00\x12\x38\n\x11\x63urrent_map_state\x18\x02 \x01(\x0b\x32\x1b.bragi.Dota2CurrentMapStateH\x00\x12T\n current_map_state_partial_update\x18\x03 \x01(\x0b\x32(.bragi.Dota2CurrentMapStatePartialUpdateH\x00\x42\x08\n\x06update\"\xcc\x02\n\x0f\x44ota2MatchState\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12%\n\nmatch_type\x18\x02 \x01(\x0e\x32\x11.bragi.BestOfType\x12\x1e\n\thome_team\x18\x03 \x01(\x0b\x32\x0b.bragi.Team\x12\x1e\n\taway_team\x18\x04 \x01(\x0b\x32\x0b.bragi.Team\x12*\n\x05score\x18\x05 \x01(\x0b\x32\x1b.bragi.Dota2MatchScoreState\x12,\n\x0cmatch_status\x18\x06 \x01(\x0e\x32\x16.bragi.MatchStatusType\x12\x30\n\x0b\x63urrent_map\x18\x07 \x01(\x0b\x32\x1b.bragi.Dota2CurrentMapState\x12\x33\n\rprevious_maps\x18\x08 \x03(\x0b\x32\x1c.bragi.Dota2PreviousMapState\">\n\x14\x44ota2MatchScoreState\x12\x12\n\nhome_score\x18\x01 \x01(\r\x12\x12\n\naway_score\x18\x02 \x01(\r\"\xf0\x02\n!Dota2CurrentMapStatePartialUpdate\x12\x34\n\tgame_time\x18\x01 \x01(\x0b\x32\x1f.bragi.Dota2CurrentMapTimeStateH\x00\x12\x41\n\x16team_current_map_state\x18\x02 \x01(\x0b\x32\x1f.bragi.Dota2TeamCurrentMapStateH\x00\x12W\n\x1fteam_current_map_partial_update\x18\x03 \x01(\x0b\x32,.bragi.Dota2TeamCurrentMapStatePartialUpdateH\x00\x12$\n\x06towers\x18\x04 \x01(\x0b\x32\x12.bragi.Dota2TowersH\x00\x12(\n\x08\x62\x61rracks\x18\x05 \x01(\x0b\x32\x14.bragi.Dota2BarracksH\x00\x12\x1f\n\x06roshan\x18\x08 \x01(\x0b\x32\r.bragi.RoshanH\x00\x42\x08\n\x06update\"\xf4\x02\n\x14\x44ota2CurrentMapState\x12\x11\n\tmap_order\x18\x01 \x01(\r\x12\x12\n\nmap_paused\x18\x02 \x01(\x08\x12\x32\n\tgame_time\x18\x03 \x01(\x0b\x32\x1f.bragi.Dota2CurrentMapTimeState\x12\x35\n\x05teams\x18\x04 \x03(\x0b\x32&.bragi.Dota2CurrentMapState.TeamsEntry\x12\"\n\x06towers\x18\x05 \x01(\x0b\x32\x12.bragi.Dota2Towers\x12&\n\x08\x62\x61rracks\x18\x06 \x01(\x0b\x32\x14.bragi.Dota2Barracks\x12\x1d\n\x06roshan\x18\x07 \x01(\x0b\x32\r.bragi.Roshan\x12\x10\n\x08\x64\x61y_time\x18\x08 \x01(\x08\x1aM\n\nTeamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12.\n\x05value\x18\x02 \x01(\x0b\x32\x1f.bragi.Dota2TeamCurrentMapState:\x02\x38\x01\"H\n\x18\x44ota2CurrentMapTimeState\x12,\n\tgame_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\"\xb2\x01\n\x15\x44ota2PreviousMapState\x12\x11\n\tmap_order\x18\x01 \x01(\r\x12\x36\n\x05teams\x18\x02 \x03(\x0b\x32\'.bragi.Dota2PreviousMapState.TeamsEntry\x1aN\n\nTeamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12/\n\x05value\x18\x02 \x01(\x0b\x32 .bragi.Dota2TeamPreviousMapState:\x02\x38\x01\"\xfc\x02\n%Dota2TeamCurrentMapStatePartialUpdate\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12\x45\n\x07payload\x18\x02 \x01(\x0b\x32\x34.bragi.Dota2TeamCurrentMapStatePartialUpdate.Payload\x1a\xf9\x01\n\x07Payload\x12?\n\nstatistics\x18\x01 \x01(\x0b\x32).bragi.Dota2TeamCurrentMapStatisticsStateH\x00\x12\x45\n\x18player_current_map_state\x18\x02 \x01(\x0b\x32!.bragi.Dota2PlayerCurrentMapStateH\x00\x12[\n!player_current_map_partial_update\x18\x03 \x01(\x0b\x32..bragi.Dota2PlayerCurrentMapStatePartialUpdateH\x00\x42\t\n\x07payload\"\xbd\x02\n\x18\x44ota2TeamCurrentMapState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12$\n\x07\x66\x61\x63tion\x18\x02 \x01(\x0e\x32\x13.bragi.Dota2Faction\x12=\n\nstatistics\x18\x03 \x01(\x0b\x32).bragi.Dota2TeamCurrentMapStatisticsState\x12\x10\n\x03won\x18\x04 \x01(\x08H\x00\x88\x01\x01\x12=\n\x07players\x18\x05 \x03(\x0b\x32,.bragi.Dota2TeamCurrentMapState.PlayersEntry\x1aQ\n\x0cPlayersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x30\n\x05value\x18\x02 \x01(\x0b\x32!.bragi.Dota2PlayerCurrentMapState:\x02\x38\x01\x42\x06\n\x04_won\"\x8b\x01\n\"Dota2TeamCurrentMapStatisticsState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12\x10\n\x08\x62\x61rracks\x18\x02 \x01(\r\x12\r\n\x05kills\x18\x03 \x01(\r\x12\x11\n\tnet_worth\x18\x04 \x01(\r\x12\x0f\n\x07roshans\x18\x05 \x01(\r\x12\x0e\n\x06towers\x18\x06 \x01(\r\"\x86\x04\n\'Dota2PlayerCurrentMapStatePartialUpdate\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12G\n\x07payload\x18\x02 \x01(\x0b\x32\x36.bragi.Dota2PlayerCurrentMapStatePartialUpdate.Payload\x1a\xfd\x02\n\x07Payload\x12\x32\n\x0bplayer_info\x18\x01 \x01(\x0b\x32\x1b.bragi.Dota2PlayerInfoStateH\x00\x12\x39\n\x06timers\x18\x02 \x01(\x0b\x32\'.bragi.Dota2PlayerCurrentMapTimersStateH\x00\x12\x37\n\nstatistics\x18\x03 \x01(\x0b\x32!.bragi.Dota2PlayerStatisticsStateH\x00\x12\x45\n\x0emap_statistics\x18\x04 \x01(\x0b\x32+.bragi.Dota2PlayerCurrentMapStatisticsStateH\x00\x12(\n\x08position\x18\x05 \x01(\x0b\x32\x14.bragi.Dota2PositionH\x00\x12\"\n\x05items\x18\x06 \x01(\x0b\x32\x11.bragi.Dota2ItemsH\x00\x12*\n\tabilities\x18\x07 \x01(\x0b\x32\x15.bragi.Dota2AbilitiesH\x00\x42\t\n\x07payload\"\x8b\x03\n\x1a\x44ota2PlayerCurrentMapState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x30\n\x0bplayer_info\x18\x02 \x01(\x0b\x32\x1b.bragi.Dota2PlayerInfoState\x12\x37\n\x06timers\x18\x03 \x01(\x0b\x32\'.bragi.Dota2PlayerCurrentMapTimersState\x12\x35\n\nstatistics\x18\x04 \x01(\x0b\x32!.bragi.Dota2PlayerStatisticsState\x12\x43\n\x0emap_statistics\x18\x05 \x01(\x0b\x32+.bragi.Dota2PlayerCurrentMapStatisticsState\x12&\n\x08position\x18\x06 \x01(\x0b\x32\x14.bragi.Dota2Position\x12 \n\x05items\x18\x07 \x01(\x0b\x32\x11.bragi.Dota2Items\x12(\n\tabilities\x18\x08 \x01(\x0b\x32\x15.bragi.Dota2Abilities\"\xd6\x02\n$Dota2PlayerCurrentMapStatisticsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\r\n\x05\x61live\x18\x02 \x01(\x08\x12\x0e\n\x06health\x18\x03 \x01(\r\x12\x12\n\nmax_health\x18\x04 \x01(\r\x12\x14\n\x0c\x63urrent_gold\x18\x05 \x01(\r\x12\x11\n\tnet_worth\x18\x06 \x01(\r\x12\x14\n\x0c\x62uyback_cost\x18\x07 \x01(\r\x12\x13\n\x0bhas_buyback\x18\x08 \x01(\x08\x12\x11\n\thas_aegis\x18\t \x01(\x08\x12\x0c\n\x04mana\x18\n \x01(\r\x12\x10\n\x08max_mana\x18\x0b \x01(\r\x12\x15\n\rgold_reliable\x18\x0c \x01(\r\x12\x17\n\x0fgold_unreliable\x18\r \x01(\r\x12\x0e\n\x06\x64\x65nies\x18\x0e \x01(\r\x12\x11\n\tlast_hits\x18\x0f \x01(\r\x12\r\n\x05level\x18\x10 \x01(\r\"\xb4\x01\n Dota2PlayerCurrentMapTimersState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x35\n\rrespawn_timer\x18\x02 \x01(\x0b\x32\x19.google.protobuf.DurationH\x00\x88\x01\x01\x12\x33\n\x10\x62uyback_cooldown\x18\x03 \x01(\x0b\x32\x19.google.protobuf.DurationB\x10\n\x0e_respawn_timer\"\xd6\x02\n\x19\x44ota2TeamPreviousMapState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12$\n\x07\x66\x61\x63tion\x18\x02 \x01(\x0e\x32\x13.bragi.Dota2Faction\x12\x10\n\x08\x62\x61rracks\x18\x03 \x01(\r\x12\r\n\x05kills\x18\x04 \x01(\r\x12\x11\n\tnet_worth\x18\x05 \x01(\r\x12\x0f\n\x07roshans\x18\x06 \x01(\r\x12\x0e\n\x06towers\x18\x07 \x01(\r\x12\x10\n\x03won\x18\x08 \x01(\x08H\x00\x88\x01\x01\x12>\n\x07players\x18\t \x03(\x0b\x32-.bragi.Dota2TeamPreviousMapState.PlayersEntry\x1aR\n\x0cPlayersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x31\n\x05value\x18\x02 \x01(\x0b\x32\".bragi.Dota2PlayerPreviousMapState:\x02\x38\x01\x42\x06\n\x04_won\"\x9a\x01\n\x1b\x44ota2PlayerPreviousMapState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x30\n\x0bplayer_info\x18\x02 \x01(\x0b\x32\x1b.bragi.Dota2PlayerInfoState\x12\x35\n\nstatistics\x18\x03 \x01(\x0b\x32!.bragi.Dota2PlayerStatisticsState\"o\n\x14\x44ota2PlayerInfoState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x0f\n\x07slot_id\x18\x02 \x01(\r\x12\x10\n\x08\x65xt_name\x18\x03 \x01(\t\x12\x14\n\x07hero_id\x18\x04 \x01(\rH\x00\x88\x01\x01\x42\n\n\x08_hero_id\"`\n\x1a\x44ota2PlayerStatisticsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\r\n\x05kills\x18\x02 \x01(\r\x12\x0e\n\x06\x64\x65\x61ths\x18\x03 \x01(\r\x12\x0f\n\x07\x61ssists\x18\x04 \x01(\r\"0\n\x0b\x44ota2Towers\x12!\n\x06towers\x18\x01 \x03(\x0b\x32\x11.bragi.Dota2Tower\"6\n\rDota2Barracks\x12%\n\x08\x62\x61rracks\x18\x01 \x03(\x0b\x32\x13.bragi.Dota2Barrack\"8\n\x0e\x44ota2Abilities\x12&\n\tabilities\x18\x01 \x03(\x0b\x32\x13.bragi.Dota2Ability\"-\n\nDota2Items\x12\x1f\n\x05items\x18\x01 \x03(\x0b\x32\x10.bragi.Dota2Item\"x\n\tDota2Item\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x15\n\x08\x63ooldown\x18\x02 \x01(\x05H\x00\x88\x01\x01\x12*\n\x08position\x18\x03 \x01(\x0e\x32\x18.bragi.Dota2ItemPosition\x12\r\n\x05level\x18\x04 \x01(\rB\x0b\n\t_cooldown\"u\n\x0c\x44ota2Ability\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x15\n\x08\x63ooldown\x18\x02 \x01(\x05H\x00\x88\x01\x01\x12\x10\n\x08ultimate\x18\x03 \x01(\x08\x12\x0f\n\x07passive\x18\x04 \x01(\x08\x12\x10\n\x08\x63\x61n_cast\x18\x05 \x01(\x08\x42\x0b\n\t_cooldown\",\n\x06Roshan\x12\r\n\x05\x61live\x18\x01 \x01(\x08\x12\x13\n\x0brespawnTime\x18\x02 \x01(\r\"\x86\x01\n\nDota2Tower\x12\x1e\n\x04lane\x18\x01 \x01(\x0e\x32\x10.bragi.Dota2Lane\x12$\n\x07\x66\x61\x63tion\x18\x02 \x01(\x0e\x32\x13.bragi.Dota2Faction\x12#\n\x04tier\x18\x03 \x01(\x0e\x32\x15.bragi.Dota2TowerTier\x12\r\n\x05\x61live\x18\x04 \x01(\x08\"\x8a\x01\n\x0c\x44ota2Barrack\x12\x1e\n\x04lane\x18\x01 \x01(\x0e\x32\x10.bragi.Dota2Lane\x12$\n\x07\x66\x61\x63tion\x18\x02 \x01(\x0e\x32\x13.bragi.Dota2Faction\x12%\n\x04type\x18\x03 \x01(\x0e\x32\x17.bragi.Dota2BarrackType\x12\r\n\x05\x61live\x18\x04 \x01(\x08\"%\n\rDota2Position\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02*`\n\x0c\x44ota2Faction\x12\x1d\n\x19\x44OTA2_FACTION_UNSPECIFIED\x10\x00\x12\x19\n\x15\x44OTA2_FACTION_RADIANT\x10\x01\x12\x16\n\x12\x44OTA2_FACTION_DIRE\x10\x02*c\n\tDota2Lane\x12\x1a\n\x16\x44OTA2_LANE_UNSPECIFIED\x10\x00\x12\x12\n\x0e\x44OTA2_LANE_TOP\x10\x01\x12\x12\n\x0e\x44OTA2_LANE_MID\x10\x02\x12\x12\n\x0e\x44OTA2_LANE_BOT\x10\x03*\x92\x01\n\x0e\x44ota2TowerTier\x12 \n\x1c\x44OTA2_TOWER_TIER_UNSPECIFIED\x10\x00\x12\x16\n\x12\x44OTA2_TOWER_TIER_1\x10\x01\x12\x16\n\x12\x44OTA2_TOWER_TIER_2\x10\x02\x12\x16\n\x12\x44OTA2_TOWER_TIER_3\x10\x03\x12\x16\n\x12\x44OTA2_TOWER_TIER_4\x10\x04*s\n\x10\x44ota2BarrackType\x12\"\n\x1e\x44OTA2_BARRACK_TYPE_UNSPECIFIED\x10\x00\x12\x1d\n\x19\x44OTA2_BARRACK_TYPE_RANGED\x10\x01\x12\x1c\n\x18\x44OTA2_BARRACK_TYPE_MELEE\x10\x02*\xd2\x04\n\x11\x44ota2ItemPosition\x12#\n\x1f\x44OTA2_ITEM_POSITION_UNSPECIFIED\x10\x00\x12\x1f\n\x1b\x44OTA2_ITEM_POSITION_NEUTRAL\x10\x01\x12\x1e\n\x1a\x44OTA2_ITEM_POSITION_STASH0\x10\x02\x12\x1e\n\x1a\x44OTA2_ITEM_POSITION_STASH1\x10\x03\x12\x1e\n\x1a\x44OTA2_ITEM_POSITION_STASH2\x10\x04\x12\x1e\n\x1a\x44OTA2_ITEM_POSITION_STASH3\x10\x05\x12\x1e\n\x1a\x44OTA2_ITEM_POSITION_STASH4\x10\x06\x12\x1e\n\x1a\x44OTA2_ITEM_POSITION_STASH5\x10\x07\x12 \n\x1c\x44OTA2_ITEM_POSITION_TELEPORT\x10\x08\x12\x1d\n\x19\x44OTA2_ITEM_POSITION_SLOT0\x10\t\x12\x1d\n\x19\x44OTA2_ITEM_POSITION_SLOT1\x10\n\x12\x1d\n\x19\x44OTA2_ITEM_POSITION_SLOT2\x10\x0b\x12\x1d\n\x19\x44OTA2_ITEM_POSITION_SLOT3\x10\x0c\x12\x1d\n\x19\x44OTA2_ITEM_POSITION_SLOT4\x10\r\x12\x1d\n\x19\x44OTA2_ITEM_POSITION_SLOT5\x10\x0e\x12\x1d\n\x19\x44OTA2_ITEM_POSITION_SLOT6\x10\x0f\x12\x1d\n\x19\x44OTA2_ITEM_POSITION_SLOT7\x10\x10\x12\x1d\n\x19\x44OTA2_ITEM_POSITION_SLOT8\x10\x11\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
+  serialized_pb=b'\n\x11\x62ragi/dota2.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x12\x62ragi/common.proto\"\xb2\x02\n\x11\x44ota2MatchMessage\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x0b\x64\x61ta_status\x18\x05 \x01(\x0e\x32\x11.bragi.DataStatus\x12\x31\n\x07payload\x18\x04 \x01(\x0b\x32 .bragi.Dota2MatchMessage.Payload\x1an\n\x07Payload\x12-\n\x08snapshot\x18\x01 \x01(\x0b\x32\x19.bragi.Dota2MatchSnapshotH\x00\x12)\n\x06update\x18\x02 \x01(\x0b\x32\x17.bragi.Dota2MatchUpdateH\x00\x42\t\n\x07payload\"\x90\x02\n\x12\x44ota2MatchSnapshot\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x0b\x64\x61ta_status\x18\x04 \x01(\x0e\x32\x11.bragi.DataStatus\x12*\n\rannouncements\x18\x06 \x03(\x0b\x32\x13.bragi.Announcement\x12+\n\x0bmatch_state\x18\x07 \x01(\x0b\x32\x16.bragi.Dota2MatchState\x12%\n\ntournament\x18\x08 \x01(\x0b\x32\x11.bragi.Tournament\"\xcb\x01\n\x10\x44ota2MatchUpdate\x12\x30\n\x07payload\x18\x01 \x01(\x0b\x32\x1f.bragi.Dota2MatchUpdate.Payload\x1a\x84\x01\n\x07Payload\x12-\n\x0bmatch_state\x18\x01 \x01(\x0b\x32\x16.bragi.Dota2MatchStateH\x00\x12?\n\x0fpartial_updates\x18\x02 \x01(\x0b\x32$.bragi.Dota2MatchStatePartialUpdatesH\x00\x42\t\n\x07payload\"U\n\x1d\x44ota2MatchStatePartialUpdates\x12\x34\n\x07updates\x18\x01 \x03(\x0b\x32#.bragi.Dota2MatchStatePartialUpdate\"\xe6\x01\n\x1c\x44ota2MatchStatePartialUpdate\x12,\n\x05score\x18\x01 \x01(\x0b\x32\x1b.bragi.Dota2MatchScoreStateH\x00\x12\x38\n\x11\x63urrent_map_state\x18\x02 \x01(\x0b\x32\x1b.bragi.Dota2CurrentMapStateH\x00\x12T\n current_map_state_partial_update\x18\x03 \x01(\x0b\x32(.bragi.Dota2CurrentMapStatePartialUpdateH\x00\x42\x08\n\x06update\"\xcc\x02\n\x0f\x44ota2MatchState\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12%\n\nmatch_type\x18\x02 \x01(\x0e\x32\x11.bragi.BestOfType\x12\x1e\n\thome_team\x18\x03 \x01(\x0b\x32\x0b.bragi.Team\x12\x1e\n\taway_team\x18\x04 \x01(\x0b\x32\x0b.bragi.Team\x12*\n\x05score\x18\x05 \x01(\x0b\x32\x1b.bragi.Dota2MatchScoreState\x12,\n\x0cmatch_status\x18\x06 \x01(\x0e\x32\x16.bragi.MatchStatusType\x12\x30\n\x0b\x63urrent_map\x18\x07 \x01(\x0b\x32\x1b.bragi.Dota2CurrentMapState\x12\x33\n\rprevious_maps\x18\x08 \x03(\x0b\x32\x1c.bragi.Dota2PreviousMapState\">\n\x14\x44ota2MatchScoreState\x12\x12\n\nhome_score\x18\x01 \x01(\r\x12\x12\n\naway_score\x18\x02 \x01(\r\"\xf0\x02\n!Dota2CurrentMapStatePartialUpdate\x12\x34\n\tgame_time\x18\x01 \x01(\x0b\x32\x1f.bragi.Dota2CurrentMapTimeStateH\x00\x12\x41\n\x16team_current_map_state\x18\x02 \x01(\x0b\x32\x1f.bragi.Dota2TeamCurrentMapStateH\x00\x12W\n\x1fteam_current_map_partial_update\x18\x03 \x01(\x0b\x32,.bragi.Dota2TeamCurrentMapStatePartialUpdateH\x00\x12$\n\x06towers\x18\x04 \x01(\x0b\x32\x12.bragi.Dota2TowersH\x00\x12(\n\x08\x62\x61rracks\x18\x05 \x01(\x0b\x32\x14.bragi.Dota2BarracksH\x00\x12\x1f\n\x06roshan\x18\x08 \x01(\x0b\x32\r.bragi.RoshanH\x00\x42\x08\n\x06update\"\xf4\x02\n\x14\x44ota2CurrentMapState\x12\x11\n\tmap_order\x18\x01 \x01(\r\x12\x12\n\nmap_paused\x18\x02 \x01(\x08\x12\x32\n\tgame_time\x18\x03 \x01(\x0b\x32\x1f.bragi.Dota2CurrentMapTimeState\x12\x35\n\x05teams\x18\x04 \x03(\x0b\x32&.bragi.Dota2CurrentMapState.TeamsEntry\x12\"\n\x06towers\x18\x05 \x01(\x0b\x32\x12.bragi.Dota2Towers\x12&\n\x08\x62\x61rracks\x18\x06 \x01(\x0b\x32\x14.bragi.Dota2Barracks\x12\x1d\n\x06roshan\x18\x07 \x01(\x0b\x32\r.bragi.Roshan\x12\x10\n\x08\x64\x61y_time\x18\x08 \x01(\x08\x1aM\n\nTeamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12.\n\x05value\x18\x02 \x01(\x0b\x32\x1f.bragi.Dota2TeamCurrentMapState:\x02\x38\x01\"H\n\x18\x44ota2CurrentMapTimeState\x12,\n\tgame_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\"\xb2\x01\n\x15\x44ota2PreviousMapState\x12\x11\n\tmap_order\x18\x01 \x01(\r\x12\x36\n\x05teams\x18\x02 \x03(\x0b\x32\'.bragi.Dota2PreviousMapState.TeamsEntry\x1aN\n\nTeamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12/\n\x05value\x18\x02 \x01(\x0b\x32 .bragi.Dota2TeamPreviousMapState:\x02\x38\x01\"\xfc\x02\n%Dota2TeamCurrentMapStatePartialUpdate\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12\x45\n\x07payload\x18\x02 \x01(\x0b\x32\x34.bragi.Dota2TeamCurrentMapStatePartialUpdate.Payload\x1a\xf9\x01\n\x07Payload\x12?\n\nstatistics\x18\x01 \x01(\x0b\x32).bragi.Dota2TeamCurrentMapStatisticsStateH\x00\x12\x45\n\x18player_current_map_state\x18\x02 \x01(\x0b\x32!.bragi.Dota2PlayerCurrentMapStateH\x00\x12[\n!player_current_map_partial_update\x18\x03 \x01(\x0b\x32..bragi.Dota2PlayerCurrentMapStatePartialUpdateH\x00\x42\t\n\x07payload\"\xbd\x02\n\x18\x44ota2TeamCurrentMapState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12$\n\x07\x66\x61\x63tion\x18\x02 \x01(\x0e\x32\x13.bragi.Dota2Faction\x12=\n\nstatistics\x18\x03 \x01(\x0b\x32).bragi.Dota2TeamCurrentMapStatisticsState\x12\x10\n\x03won\x18\x04 \x01(\x08H\x00\x88\x01\x01\x12=\n\x07players\x18\x05 \x03(\x0b\x32,.bragi.Dota2TeamCurrentMapState.PlayersEntry\x1aQ\n\x0cPlayersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x30\n\x05value\x18\x02 \x01(\x0b\x32!.bragi.Dota2PlayerCurrentMapState:\x02\x38\x01\x42\x06\n\x04_won\"\x8b\x01\n\"Dota2TeamCurrentMapStatisticsState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12\x10\n\x08\x62\x61rracks\x18\x02 \x01(\r\x12\r\n\x05kills\x18\x03 \x01(\r\x12\x11\n\tnet_worth\x18\x04 \x01(\r\x12\x0f\n\x07roshans\x18\x05 \x01(\r\x12\x0e\n\x06towers\x18\x06 \x01(\r\"\x86\x04\n\'Dota2PlayerCurrentMapStatePartialUpdate\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12G\n\x07payload\x18\x02 \x01(\x0b\x32\x36.bragi.Dota2PlayerCurrentMapStatePartialUpdate.Payload\x1a\xfd\x02\n\x07Payload\x12\x32\n\x0bplayer_info\x18\x01 \x01(\x0b\x32\x1b.bragi.Dota2PlayerInfoStateH\x00\x12\x39\n\x06timers\x18\x02 \x01(\x0b\x32\'.bragi.Dota2PlayerCurrentMapTimersStateH\x00\x12\x37\n\nstatistics\x18\x03 \x01(\x0b\x32!.bragi.Dota2PlayerStatisticsStateH\x00\x12\x45\n\x0emap_statistics\x18\x04 \x01(\x0b\x32+.bragi.Dota2PlayerCurrentMapStatisticsStateH\x00\x12(\n\x08position\x18\x05 \x01(\x0b\x32\x14.bragi.Dota2PositionH\x00\x12\"\n\x05items\x18\x06 \x01(\x0b\x32\x11.bragi.Dota2ItemsH\x00\x12*\n\tabilities\x18\x07 \x01(\x0b\x32\x15.bragi.Dota2AbilitiesH\x00\x42\t\n\x07payload\"\x8b\x03\n\x1a\x44ota2PlayerCurrentMapState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x30\n\x0bplayer_info\x18\x02 \x01(\x0b\x32\x1b.bragi.Dota2PlayerInfoState\x12\x37\n\x06timers\x18\x03 \x01(\x0b\x32\'.bragi.Dota2PlayerCurrentMapTimersState\x12\x35\n\nstatistics\x18\x04 \x01(\x0b\x32!.bragi.Dota2PlayerStatisticsState\x12\x43\n\x0emap_statistics\x18\x05 \x01(\x0b\x32+.bragi.Dota2PlayerCurrentMapStatisticsState\x12&\n\x08position\x18\x06 \x01(\x0b\x32\x14.bragi.Dota2Position\x12 \n\x05items\x18\x07 \x01(\x0b\x32\x11.bragi.Dota2Items\x12(\n\tabilities\x18\x08 \x01(\x0b\x32\x15.bragi.Dota2Abilities\"\xd6\x02\n$Dota2PlayerCurrentMapStatisticsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\r\n\x05\x61live\x18\x02 \x01(\x08\x12\x0e\n\x06health\x18\x03 \x01(\r\x12\x12\n\nmax_health\x18\x04 \x01(\r\x12\x14\n\x0c\x63urrent_gold\x18\x05 \x01(\r\x12\x11\n\tnet_worth\x18\x06 \x01(\r\x12\x14\n\x0c\x62uyback_cost\x18\x07 \x01(\r\x12\x13\n\x0bhas_buyback\x18\x08 \x01(\x08\x12\x11\n\thas_aegis\x18\t \x01(\x08\x12\x0c\n\x04mana\x18\n \x01(\r\x12\x10\n\x08max_mana\x18\x0b \x01(\r\x12\x15\n\rgold_reliable\x18\x0c \x01(\r\x12\x17\n\x0fgold_unreliable\x18\r \x01(\r\x12\x0e\n\x06\x64\x65nies\x18\x0e \x01(\r\x12\x11\n\tlast_hits\x18\x0f \x01(\r\x12\r\n\x05level\x18\x10 \x01(\r\"\xb4\x01\n Dota2PlayerCurrentMapTimersState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x35\n\rrespawn_timer\x18\x02 \x01(\x0b\x32\x19.google.protobuf.DurationH\x00\x88\x01\x01\x12\x33\n\x10\x62uyback_cooldown\x18\x03 \x01(\x0b\x32\x19.google.protobuf.DurationB\x10\n\x0e_respawn_timer\"\xd6\x02\n\x19\x44ota2TeamPreviousMapState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12$\n\x07\x66\x61\x63tion\x18\x02 \x01(\x0e\x32\x13.bragi.Dota2Faction\x12\x10\n\x08\x62\x61rracks\x18\x03 \x01(\r\x12\r\n\x05kills\x18\x04 \x01(\r\x12\x11\n\tnet_worth\x18\x05 \x01(\r\x12\x0f\n\x07roshans\x18\x06 \x01(\r\x12\x0e\n\x06towers\x18\x07 \x01(\r\x12\x10\n\x03won\x18\x08 \x01(\x08H\x00\x88\x01\x01\x12>\n\x07players\x18\t \x03(\x0b\x32-.bragi.Dota2TeamPreviousMapState.PlayersEntry\x1aR\n\x0cPlayersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x31\n\x05value\x18\x02 \x01(\x0b\x32\".bragi.Dota2PlayerPreviousMapState:\x02\x38\x01\x42\x06\n\x04_won\"\x9a\x01\n\x1b\x44ota2PlayerPreviousMapState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x30\n\x0bplayer_info\x18\x02 \x01(\x0b\x32\x1b.bragi.Dota2PlayerInfoState\x12\x35\n\nstatistics\x18\x03 \x01(\x0b\x32!.bragi.Dota2PlayerStatisticsState\"o\n\x14\x44ota2PlayerInfoState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x0f\n\x07slot_id\x18\x02 \x01(\r\x12\x10\n\x08\x65xt_name\x18\x03 \x01(\t\x12\x14\n\x07hero_id\x18\x04 \x01(\rH\x00\x88\x01\x01\x42\n\n\x08_hero_id\"`\n\x1a\x44ota2PlayerStatisticsState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\r\n\x05kills\x18\x02 \x01(\r\x12\x0e\n\x06\x64\x65\x61ths\x18\x03 \x01(\r\x12\x0f\n\x07\x61ssists\x18\x04 \x01(\r\"0\n\x0b\x44ota2Towers\x12!\n\x06towers\x18\x01 \x03(\x0b\x32\x11.bragi.Dota2Tower\"6\n\rDota2Barracks\x12%\n\x08\x62\x61rracks\x18\x01 \x03(\x0b\x32\x13.bragi.Dota2Barrack\"8\n\x0e\x44ota2Abilities\x12&\n\tabilities\x18\x01 \x03(\x0b\x32\x13.bragi.Dota2Ability\"-\n\nDota2Items\x12\x1f\n\x05items\x18\x01 \x03(\x0b\x32\x10.bragi.Dota2Item\"x\n\tDota2Item\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x15\n\x08\x63ooldown\x18\x02 \x01(\x05H\x00\x88\x01\x01\x12*\n\x08position\x18\x03 \x01(\x0e\x32\x18.bragi.Dota2ItemPosition\x12\r\n\x05level\x18\x04 \x01(\rB\x0b\n\t_cooldown\"u\n\x0c\x44ota2Ability\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x15\n\x08\x63ooldown\x18\x02 \x01(\x05H\x00\x88\x01\x01\x12\x10\n\x08ultimate\x18\x03 \x01(\x08\x12\x0f\n\x07passive\x18\x04 \x01(\x08\x12\x10\n\x08\x63\x61n_cast\x18\x05 \x01(\x08\x42\x0b\n\t_cooldown\",\n\x06Roshan\x12\r\n\x05\x61live\x18\x01 \x01(\x08\x12\x13\n\x0brespawnTime\x18\x02 \x01(\r\"\x86\x01\n\nDota2Tower\x12\x1e\n\x04lane\x18\x01 \x01(\x0e\x32\x10.bragi.Dota2Lane\x12$\n\x07\x66\x61\x63tion\x18\x02 \x01(\x0e\x32\x13.bragi.Dota2Faction\x12#\n\x04tier\x18\x03 \x01(\x0e\x32\x15.bragi.Dota2TowerTier\x12\r\n\x05\x61live\x18\x04 \x01(\x08\"\x8a\x01\n\x0c\x44ota2Barrack\x12\x1e\n\x04lane\x18\x01 \x01(\x0e\x32\x10.bragi.Dota2Lane\x12$\n\x07\x66\x61\x63tion\x18\x02 \x01(\x0e\x32\x13.bragi.Dota2Faction\x12%\n\x04type\x18\x03 \x01(\x0e\x32\x17.bragi.Dota2BarrackType\x12\r\n\x05\x61live\x18\x04 \x01(\x08\"%\n\rDota2Position\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02*`\n\x0c\x44ota2Faction\x12\x1d\n\x19\x44OTA2_FACTION_UNSPECIFIED\x10\x00\x12\x19\n\x15\x44OTA2_FACTION_RADIANT\x10\x01\x12\x16\n\x12\x44OTA2_FACTION_DIRE\x10\x02*c\n\tDota2Lane\x12\x1a\n\x16\x44OTA2_LANE_UNSPECIFIED\x10\x00\x12\x12\n\x0e\x44OTA2_LANE_TOP\x10\x01\x12\x12\n\x0e\x44OTA2_LANE_MID\x10\x02\x12\x12\n\x0e\x44OTA2_LANE_BOT\x10\x03*\x92\x01\n\x0e\x44ota2TowerTier\x12 \n\x1c\x44OTA2_TOWER_TIER_UNSPECIFIED\x10\x00\x12\x16\n\x12\x44OTA2_TOWER_TIER_1\x10\x01\x12\x16\n\x12\x44OTA2_TOWER_TIER_2\x10\x02\x12\x16\n\x12\x44OTA2_TOWER_TIER_3\x10\x03\x12\x16\n\x12\x44OTA2_TOWER_TIER_4\x10\x04*s\n\x10\x44ota2BarrackType\x12\"\n\x1e\x44OTA2_BARRACK_TYPE_UNSPECIFIED\x10\x00\x12\x1d\n\x19\x44OTA2_BARRACK_TYPE_RANGED\x10\x01\x12\x1c\n\x18\x44OTA2_BARRACK_TYPE_MELEE\x10\x02*\xd2\x04\n\x11\x44ota2ItemPosition\x12#\n\x1f\x44OTA2_ITEM_POSITION_UNSPECIFIED\x10\x00\x12\x1f\n\x1b\x44OTA2_ITEM_POSITION_NEUTRAL\x10\x01\x12\x1e\n\x1a\x44OTA2_ITEM_POSITION_STASH0\x10\x02\x12\x1e\n\x1a\x44OTA2_ITEM_POSITION_STASH1\x10\x03\x12\x1e\n\x1a\x44OTA2_ITEM_POSITION_STASH2\x10\x04\x12\x1e\n\x1a\x44OTA2_ITEM_POSITION_STASH3\x10\x05\x12\x1e\n\x1a\x44OTA2_ITEM_POSITION_STASH4\x10\x06\x12\x1e\n\x1a\x44OTA2_ITEM_POSITION_STASH5\x10\x07\x12 \n\x1c\x44OTA2_ITEM_POSITION_TELEPORT\x10\x08\x12\x1d\n\x19\x44OTA2_ITEM_POSITION_SLOT0\x10\t\x12\x1d\n\x19\x44OTA2_ITEM_POSITION_SLOT1\x10\n\x12\x1d\n\x19\x44OTA2_ITEM_POSITION_SLOT2\x10\x0b\x12\x1d\n\x19\x44OTA2_ITEM_POSITION_SLOT3\x10\x0c\x12\x1d\n\x19\x44OTA2_ITEM_POSITION_SLOT4\x10\r\x12\x1d\n\x19\x44OTA2_ITEM_POSITION_SLOT5\x10\x0e\x12\x1d\n\x19\x44OTA2_ITEM_POSITION_SLOT6\x10\x0f\x12\x1d\n\x19\x44OTA2_ITEM_POSITION_SLOT7\x10\x10\x12\x1d\n\x19\x44OTA2_ITEM_POSITION_SLOT8\x10\x11\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,bragi_dot_common__pb2.DESCRIPTOR,])
 
@@ -52,8 +52,8 @@ _DOTA2FACTION = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6404,
-  serialized_end=6500,
+  serialized_start=6443,
+  serialized_end=6539,
 )
 _sym_db.RegisterEnumDescriptor(_DOTA2FACTION)
 
@@ -88,8 +88,8 @@ _DOTA2LANE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6502,
-  serialized_end=6601,
+  serialized_start=6541,
+  serialized_end=6640,
 )
 _sym_db.RegisterEnumDescriptor(_DOTA2LANE)
 
@@ -129,8 +129,8 @@ _DOTA2TOWERTIER = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6604,
-  serialized_end=6750,
+  serialized_start=6643,
+  serialized_end=6789,
 )
 _sym_db.RegisterEnumDescriptor(_DOTA2TOWERTIER)
 
@@ -160,8 +160,8 @@ _DOTA2BARRACKTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6752,
-  serialized_end=6867,
+  serialized_start=6791,
+  serialized_end=6906,
 )
 _sym_db.RegisterEnumDescriptor(_DOTA2BARRACKTYPE)
 
@@ -266,8 +266,8 @@ _DOTA2ITEMPOSITION = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6870,
-  serialized_end=7464,
+  serialized_start=6909,
+  serialized_end=7503,
 )
 _sym_db.RegisterEnumDescriptor(_DOTA2ITEMPOSITION)
 
@@ -461,6 +461,13 @@ _DOTA2MATCHSNAPSHOT = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='tournament', full_name='bragi.Dota2MatchSnapshot.tournament', index=6,
+      number=8, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -474,7 +481,7 @@ _DOTA2MATCHSNAPSHOT = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=423,
-  serialized_end=656,
+  serialized_end=695,
 )
 
 
@@ -517,8 +524,8 @@ _DOTA2MATCHUPDATE_PAYLOAD = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=730,
-  serialized_end=862,
+  serialized_start=769,
+  serialized_end=901,
 )
 
 _DOTA2MATCHUPDATE = _descriptor.Descriptor(
@@ -548,8 +555,8 @@ _DOTA2MATCHUPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=659,
-  serialized_end=862,
+  serialized_start=698,
+  serialized_end=901,
 )
 
 
@@ -580,8 +587,8 @@ _DOTA2MATCHSTATEPARTIALUPDATES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=864,
-  serialized_end=949,
+  serialized_start=903,
+  serialized_end=988,
 )
 
 
@@ -631,8 +638,8 @@ _DOTA2MATCHSTATEPARTIALUPDATE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=952,
-  serialized_end=1182,
+  serialized_start=991,
+  serialized_end=1221,
 )
 
 
@@ -712,8 +719,8 @@ _DOTA2MATCHSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1185,
-  serialized_end=1517,
+  serialized_start=1224,
+  serialized_end=1556,
 )
 
 
@@ -751,8 +758,8 @@ _DOTA2MATCHSCORESTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1519,
-  serialized_end=1581,
+  serialized_start=1558,
+  serialized_end=1620,
 )
 
 
@@ -823,8 +830,8 @@ _DOTA2CURRENTMAPSTATEPARTIALUPDATE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1584,
-  serialized_end=1952,
+  serialized_start=1623,
+  serialized_end=1991,
 )
 
 
@@ -862,8 +869,8 @@ _DOTA2CURRENTMAPSTATE_TEAMSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2250,
-  serialized_end=2327,
+  serialized_start=2289,
+  serialized_end=2366,
 )
 
 _DOTA2CURRENTMAPSTATE = _descriptor.Descriptor(
@@ -942,8 +949,8 @@ _DOTA2CURRENTMAPSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1955,
-  serialized_end=2327,
+  serialized_start=1994,
+  serialized_end=2366,
 )
 
 
@@ -974,8 +981,8 @@ _DOTA2CURRENTMAPTIMESTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2329,
-  serialized_end=2401,
+  serialized_start=2368,
+  serialized_end=2440,
 )
 
 
@@ -1013,8 +1020,8 @@ _DOTA2PREVIOUSMAPSTATE_TEAMSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2504,
-  serialized_end=2582,
+  serialized_start=2543,
+  serialized_end=2621,
 )
 
 _DOTA2PREVIOUSMAPSTATE = _descriptor.Descriptor(
@@ -1051,8 +1058,8 @@ _DOTA2PREVIOUSMAPSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2404,
-  serialized_end=2582,
+  serialized_start=2443,
+  serialized_end=2621,
 )
 
 
@@ -1102,8 +1109,8 @@ _DOTA2TEAMCURRENTMAPSTATEPARTIALUPDATE_PAYLOAD = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=2716,
-  serialized_end=2965,
+  serialized_start=2755,
+  serialized_end=3004,
 )
 
 _DOTA2TEAMCURRENTMAPSTATEPARTIALUPDATE = _descriptor.Descriptor(
@@ -1140,8 +1147,8 @@ _DOTA2TEAMCURRENTMAPSTATEPARTIALUPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2585,
-  serialized_end=2965,
+  serialized_start=2624,
+  serialized_end=3004,
 )
 
 
@@ -1179,8 +1186,8 @@ _DOTA2TEAMCURRENTMAPSTATE_PLAYERSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3196,
-  serialized_end=3277,
+  serialized_start=3235,
+  serialized_end=3316,
 )
 
 _DOTA2TEAMCURRENTMAPSTATE = _descriptor.Descriptor(
@@ -1243,8 +1250,8 @@ _DOTA2TEAMCURRENTMAPSTATE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=2968,
-  serialized_end=3285,
+  serialized_start=3007,
+  serialized_end=3324,
 )
 
 
@@ -1310,8 +1317,8 @@ _DOTA2TEAMCURRENTMAPSTATISTICSSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3288,
-  serialized_end=3427,
+  serialized_start=3327,
+  serialized_end=3466,
 )
 
 
@@ -1389,8 +1396,8 @@ _DOTA2PLAYERCURRENTMAPSTATEPARTIALUPDATE_PAYLOAD = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=3567,
-  serialized_end=3948,
+  serialized_start=3606,
+  serialized_end=3987,
 )
 
 _DOTA2PLAYERCURRENTMAPSTATEPARTIALUPDATE = _descriptor.Descriptor(
@@ -1427,8 +1434,8 @@ _DOTA2PLAYERCURRENTMAPSTATEPARTIALUPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3430,
-  serialized_end=3948,
+  serialized_start=3469,
+  serialized_end=3987,
 )
 
 
@@ -1508,8 +1515,8 @@ _DOTA2PLAYERCURRENTMAPSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3951,
-  serialized_end=4346,
+  serialized_start=3990,
+  serialized_end=4385,
 )
 
 
@@ -1645,8 +1652,8 @@ _DOTA2PLAYERCURRENTMAPSTATISTICSSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4349,
-  serialized_end=4691,
+  serialized_start=4388,
+  serialized_end=4730,
 )
 
 
@@ -1696,8 +1703,8 @@ _DOTA2PLAYERCURRENTMAPTIMERSSTATE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=4694,
-  serialized_end=4874,
+  serialized_start=4733,
+  serialized_end=4913,
 )
 
 
@@ -1735,8 +1742,8 @@ _DOTA2TEAMPREVIOUSMAPSTATE_PLAYERSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5129,
-  serialized_end=5211,
+  serialized_start=5168,
+  serialized_end=5250,
 )
 
 _DOTA2TEAMPREVIOUSMAPSTATE = _descriptor.Descriptor(
@@ -1827,8 +1834,8 @@ _DOTA2TEAMPREVIOUSMAPSTATE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=4877,
-  serialized_end=5219,
+  serialized_start=4916,
+  serialized_end=5258,
 )
 
 
@@ -1873,8 +1880,8 @@ _DOTA2PLAYERPREVIOUSMAPSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5222,
-  serialized_end=5376,
+  serialized_start=5261,
+  serialized_end=5415,
 )
 
 
@@ -1931,8 +1938,8 @@ _DOTA2PLAYERINFOSTATE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=5378,
-  serialized_end=5489,
+  serialized_start=5417,
+  serialized_end=5528,
 )
 
 
@@ -1984,8 +1991,8 @@ _DOTA2PLAYERSTATISTICSSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5491,
-  serialized_end=5587,
+  serialized_start=5530,
+  serialized_end=5626,
 )
 
 
@@ -2016,8 +2023,8 @@ _DOTA2TOWERS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5589,
-  serialized_end=5637,
+  serialized_start=5628,
+  serialized_end=5676,
 )
 
 
@@ -2048,8 +2055,8 @@ _DOTA2BARRACKS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5639,
-  serialized_end=5693,
+  serialized_start=5678,
+  serialized_end=5732,
 )
 
 
@@ -2080,8 +2087,8 @@ _DOTA2ABILITIES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5695,
-  serialized_end=5751,
+  serialized_start=5734,
+  serialized_end=5790,
 )
 
 
@@ -2112,8 +2119,8 @@ _DOTA2ITEMS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5753,
-  serialized_end=5798,
+  serialized_start=5792,
+  serialized_end=5837,
 )
 
 
@@ -2170,8 +2177,8 @@ _DOTA2ITEM = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=5800,
-  serialized_end=5920,
+  serialized_start=5839,
+  serialized_end=5959,
 )
 
 
@@ -2235,8 +2242,8 @@ _DOTA2ABILITY = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=5922,
-  serialized_end=6039,
+  serialized_start=5961,
+  serialized_end=6078,
 )
 
 
@@ -2274,8 +2281,8 @@ _ROSHAN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6041,
-  serialized_end=6085,
+  serialized_start=6080,
+  serialized_end=6124,
 )
 
 
@@ -2327,8 +2334,8 @@ _DOTA2TOWER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6088,
-  serialized_end=6222,
+  serialized_start=6127,
+  serialized_end=6261,
 )
 
 
@@ -2380,8 +2387,8 @@ _DOTA2BARRACK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6225,
-  serialized_end=6363,
+  serialized_start=6264,
+  serialized_end=6402,
 )
 
 
@@ -2419,8 +2426,8 @@ _DOTA2POSITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6365,
-  serialized_end=6402,
+  serialized_start=6404,
+  serialized_end=6441,
 )
 
 _DOTA2MATCHMESSAGE_PAYLOAD.fields_by_name['snapshot'].message_type = _DOTA2MATCHSNAPSHOT
@@ -2439,6 +2446,7 @@ _DOTA2MATCHSNAPSHOT.fields_by_name['timestamp'].message_type = google_dot_protob
 _DOTA2MATCHSNAPSHOT.fields_by_name['data_status'].enum_type = bragi_dot_common__pb2._DATASTATUS
 _DOTA2MATCHSNAPSHOT.fields_by_name['announcements'].message_type = bragi_dot_common__pb2._ANNOUNCEMENT
 _DOTA2MATCHSNAPSHOT.fields_by_name['match_state'].message_type = _DOTA2MATCHSTATE
+_DOTA2MATCHSNAPSHOT.fields_by_name['tournament'].message_type = bragi_dot_common__pb2._TOURNAMENT
 _DOTA2MATCHUPDATE_PAYLOAD.fields_by_name['match_state'].message_type = _DOTA2MATCHSTATE
 _DOTA2MATCHUPDATE_PAYLOAD.fields_by_name['partial_updates'].message_type = _DOTA2MATCHSTATEPARTIALUPDATES
 _DOTA2MATCHUPDATE_PAYLOAD.containing_type = _DOTA2MATCHUPDATE

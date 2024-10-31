@@ -2208,7 +2208,8 @@ proto.bragi.CS2MatchSnapshot.toObject = function(includeInstance, msg) {
     dataStatus: jspb.Message.getFieldWithDefault(msg, 6, 0),
     announcementsList: jspb.Message.toObjectList(msg.getAnnouncementsList(),
     bragi_common_pb.Announcement.toObject, includeInstance),
-    matchState: (f = msg.getMatchState()) && proto.bragi.CS2MatchState.toObject(includeInstance, f)
+    matchState: (f = msg.getMatchState()) && proto.bragi.CS2MatchState.toObject(includeInstance, f),
+    tournament: (f = msg.getTournament()) && bragi_common_pb.Tournament.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2271,6 +2272,11 @@ proto.bragi.CS2MatchSnapshot.deserializeBinaryFromReader = function(msg, reader)
       var value = new proto.bragi.CS2MatchState;
       reader.readMessage(value,proto.bragi.CS2MatchState.deserializeBinaryFromReader);
       msg.setMatchState(value);
+      break;
+    case 7:
+      var value = new bragi_common_pb.Tournament;
+      reader.readMessage(value,bragi_common_pb.Tournament.deserializeBinaryFromReader);
+      msg.setTournament(value);
       break;
     default:
       reader.skipField();
@@ -2344,6 +2350,14 @@ proto.bragi.CS2MatchSnapshot.serializeBinaryToWriter = function(message, writer)
       5,
       f,
       proto.bragi.CS2MatchState.serializeBinaryToWriter
+    );
+  }
+  f = message.getTournament();
+  if (f != null) {
+    writer.writeMessage(
+      7,
+      f,
+      bragi_common_pb.Tournament.serializeBinaryToWriter
     );
   }
 };
@@ -2512,6 +2526,43 @@ proto.bragi.CS2MatchSnapshot.prototype.clearMatchState = function() {
  */
 proto.bragi.CS2MatchSnapshot.prototype.hasMatchState = function() {
   return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional Tournament tournament = 7;
+ * @return {?proto.bragi.Tournament}
+ */
+proto.bragi.CS2MatchSnapshot.prototype.getTournament = function() {
+  return /** @type{?proto.bragi.Tournament} */ (
+    jspb.Message.getWrapperField(this, bragi_common_pb.Tournament, 7));
+};
+
+
+/**
+ * @param {?proto.bragi.Tournament|undefined} value
+ * @return {!proto.bragi.CS2MatchSnapshot} returns this
+*/
+proto.bragi.CS2MatchSnapshot.prototype.setTournament = function(value) {
+  return jspb.Message.setWrapperField(this, 7, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.bragi.CS2MatchSnapshot} returns this
+ */
+proto.bragi.CS2MatchSnapshot.prototype.clearTournament = function() {
+  return this.setTournament(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.CS2MatchSnapshot.prototype.hasTournament = function() {
+  return jspb.Message.getField(this, 7) != null;
 };
 
 

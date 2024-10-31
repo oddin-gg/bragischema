@@ -45,6 +45,8 @@ message RushSoccerMatchSnapshot {
   repeated Announcement announcements = 5;
   // Match state.
   RushSoccerMatchState match_state = 6;
+  // Tournament details
+  Tournament tournament  = 7;
 }
 
 message RushSoccerMatchUpdate {

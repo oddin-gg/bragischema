@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n\017com.oddin.bragiZ\016oddin.gg/bragi',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x17\x62ragi/rush_soccer.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x12\x62ragi/common.proto\"\xc6\x02\n\x16RushSoccerMatchMessage\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x0b\x64\x61ta_status\x18\x04 \x01(\x0e\x32\x11.bragi.DataStatus\x12\x36\n\x07payload\x18\x05 \x01(\x0b\x32%.bragi.RushSoccerMatchMessage.Payload\x1ax\n\x07Payload\x12\x32\n\x08snapshot\x18\x01 \x01(\x0b\x32\x1e.bragi.RushSoccerMatchSnapshotH\x00\x12.\n\x06update\x18\x02 \x01(\x0b\x32\x1c.bragi.RushSoccerMatchUpdateH\x00\x42\t\n\x07payload\"\xf3\x01\n\x17RushSoccerMatchSnapshot\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x0b\x64\x61ta_status\x18\x04 \x01(\x0e\x32\x11.bragi.DataStatus\x12*\n\rannouncements\x18\x05 \x03(\x0b\x32\x13.bragi.Announcement\x12\x30\n\x0bmatch_state\x18\x06 \x01(\x0b\x32\x1b.bragi.RushSoccerMatchState\"\xdf\x01\n\x15RushSoccerMatchUpdate\x12\x35\n\x07payload\x18\x01 \x01(\x0b\x32$.bragi.RushSoccerMatchUpdate.Payload\x1a\x8e\x01\n\x07Payload\x12\x32\n\x0bmatch_state\x18\x01 \x01(\x0b\x32\x1b.bragi.RushSoccerMatchStateH\x00\x12\x44\n\x0fpartial_updates\x18\x02 \x01(\x0b\x32).bragi.RushSoccerMatchStatePartialUpdatesH\x00\x42\t\n\x07payload\"_\n\"RushSoccerMatchStatePartialUpdates\x12\x39\n\x07updates\x18\x01 \x03(\x0b\x32(.bragi.RushSoccerMatchStatePartialUpdate\"\xae\x02\n!RushSoccerMatchStatePartialUpdate\x12\x31\n\x05score\x18\x01 \x01(\x0b\x32 .bragi.RushSoccerMatchScoreStateH\x00\x12=\n\x11\x63urrent_map_state\x18\x02 \x01(\x0b\x32 .bragi.RushSoccerCurrentMapStateH\x00\x12Y\n current_map_state_partial_update\x18\x03 \x01(\x0b\x32-.bragi.RushSoccerCurrentMapStatePartialUpdateH\x00\x12\x32\n\x08timeline\x18\x04 \x01(\x0b\x32\x1e.bragi.RushSoccerTimelineStateH\x00\x42\x08\n\x06update\"\xd8\x02\n\x14RushSoccerMatchState\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12%\n\nmatch_type\x18\x02 \x01(\x0e\x32\x11.bragi.BestOfType\x12\x1e\n\thome_team\x18\x03 \x01(\x0b\x32\x0b.bragi.Team\x12\x1e\n\taway_team\x18\x04 \x01(\x0b\x32\x0b.bragi.Team\x12/\n\x05score\x18\x05 \x01(\x0b\x32 .bragi.RushSoccerMatchScoreState\x12,\n\x0cmatch_status\x18\x06 \x01(\x0e\x32\x16.bragi.MatchStatusType\x12\x30\n\x08timeline\x18\x07 \x01(\x0b\x32\x1e.bragi.RushSoccerTimelineState\x12\x35\n\x0b\x63urrent_map\x18\x08 \x01(\x0b\x32 .bragi.RushSoccerCurrentMapState\"C\n\x19RushSoccerMatchScoreState\x12\x12\n\nhome_score\x18\x01 \x01(\r\x12\x12\n\naway_score\x18\x02 \x01(\r\"H\n\x1eRushSoccerCurrentMapScoreState\x12\x12\n\nhome_goals\x18\x01 \x01(\r\x12\x12\n\naway_goals\x18\x02 \x01(\r\"I\n\x17RushSoccerTimelineState\x12.\n\x06\x65vents\x18\x01 \x03(\x0b\x32\x1e.bragi.RushSoccerTimelineEvent\"\xe0\x01\n\x17RushSoccerTimelineEvent\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12.\n\nevent_type\x18\x02 \x01(\x0e\x32\x1a.bragi.RushSoccerEventType\x12,\n\treal_time\x18\x03 \x01(\x0b\x32\x19.google.protobuf.Duration\x12,\n\tgame_time\x18\x04 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\'\n\x06period\x18\x05 \x01(\x0e\x32\x17.bragi.RushSoccerPeriod\"\xcb\x02\n&RushSoccerCurrentMapStatePartialUpdate\x12\x39\n\tgame_time\x18\x01 \x01(\x0b\x32$.bragi.RushSoccerCurrentMapTimeStateH\x00\x12\x36\n\x05score\x18\x02 \x01(\x0b\x32%.bragi.RushSoccerCurrentMapScoreStateH\x00\x12\x46\n\x16team_current_map_state\x18\x03 \x01(\x0b\x32$.bragi.RushSoccerTeamCurrentMapStateH\x00\x12\\\n\x1fteam_current_map_partial_update\x18\x04 \x01(\x0b\x32\x31.bragi.RushSoccerTeamCurrentMapStatePartialUpdateH\x00\x42\x08\n\x06update\"\xd7\x02\n\x19RushSoccerCurrentMapState\x12\'\n\x06period\x18\x01 \x01(\x0e\x32\x17.bragi.RushSoccerPeriod\x12\x37\n\tgame_time\x18\x02 \x01(\x0b\x32$.bragi.RushSoccerCurrentMapTimeState\x12\x34\n\x05score\x18\x03 \x01(\x0b\x32%.bragi.RushSoccerCurrentMapScoreState\x12\x12\n\nmap_paused\x18\x04 \x01(\x08\x12:\n\x05teams\x18\x05 \x03(\x0b\x32+.bragi.RushSoccerCurrentMapState.TeamsEntry\x1aR\n\nTeamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x33\n\x05value\x18\x02 \x01(\x0b\x32$.bragi.RushSoccerTeamCurrentMapState:\x02\x38\x01\"{\n\x1dRushSoccerCurrentMapTimeState\x12,\n\treal_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12,\n\tgame_time\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\"\xa5\x02\n*RushSoccerTeamCurrentMapStatePartialUpdate\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12J\n\x07payload\x18\x02 \x01(\x0b\x32\x39.bragi.RushSoccerTeamCurrentMapStatePartialUpdate.Payload\x1a\x98\x01\n\x07Payload\x12H\n\x0emap_statistics\x18\x01 \x01(\x0b\x32..bragi.RushSoccerTeamCurrentMapStatisticsStateH\x00\x12\x38\n\x06player\x18\x02 \x01(\x0b\x32&.bragi.RushSoccerPlayerCurrentMapStateH\x00\x42\t\n\x07payload\"\xb1\x01\n\x1dRushSoccerTeamCurrentMapState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12\x46\n\x0emap_statistics\x18\x02 \x01(\x0b\x32..bragi.RushSoccerTeamCurrentMapStatisticsState\x12\x36\n\x06player\x18\x03 \x01(\x0b\x32&.bragi.RushSoccerPlayerCurrentMapState\"G\n\x1fRushSoccerPlayerCurrentMapState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x10\n\x08\x65xt_name\x18\x02 \x01(\t\"\xb4\x01\n\'RushSoccerTeamCurrentMapStatisticsState\x12\r\n\x05goals\x18\x01 \x01(\r\x12\x10\n\x08goals_ht\x18\x02 \x01(\r\x12\x15\n\rpenalty_kicks\x18\x03 \x01(\r\x12\x11\n\tred_cards\x18\x04 \x01(\r\x12\x14\n\x0cyellow_cards\x18\x05 \x01(\r\x12\x12\n\nfree_kicks\x18\x06 \x01(\r\x12\x14\n\x0c\x63orner_kicks\x18\x07 \x01(\r*\xc7\x02\n\x13RushSoccerEventType\x12&\n\"RUSH_SOCCER_EVENT_TYPE_UNSPECIFIED\x10\x00\x12\x1f\n\x1bRUSH_SOCCER_EVENT_TYPE_GOAL\x10\x01\x12\"\n\x1eRUSH_SOCCER_EVENT_TYPE_PENALTY\x10\x02\x12#\n\x1fRUSH_SOCCER_EVENT_TYPE_RED_CARD\x10\x03\x12&\n\"RUSH_SOCCER_EVENT_TYPE_YELLOW_CARD\x10\x04\x12$\n RUSH_SOCCER_EVENT_TYPE_FREE_KICK\x10\x05\x12&\n\"RUSH_SOCCER_EVENT_TYPE_CORNER_KICK\x10\x06\x12(\n$RUSH_SOCCER_EVENT_TYPE_PERIOD_CHANGE\x10\x07*s\n\x10RushSoccerPeriod\x12\"\n\x1eRUSH_SOCCER_PERIOD_UNSPECIFIED\x10\x00\x12\x1c\n\x18RUSH_SOCCER_PERIOD_FIRST\x10\x01\x12\x1d\n\x19RUSH_SOCCER_PERIOD_SECOND\x10\x02\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
+  serialized_pb=b'\n\x17\x62ragi/rush_soccer.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x12\x62ragi/common.proto\"\xc6\x02\n\x16RushSoccerMatchMessage\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x0b\x64\x61ta_status\x18\x04 \x01(\x0e\x32\x11.bragi.DataStatus\x12\x36\n\x07payload\x18\x05 \x01(\x0b\x32%.bragi.RushSoccerMatchMessage.Payload\x1ax\n\x07Payload\x12\x32\n\x08snapshot\x18\x01 \x01(\x0b\x32\x1e.bragi.RushSoccerMatchSnapshotH\x00\x12.\n\x06update\x18\x02 \x01(\x0b\x32\x1c.bragi.RushSoccerMatchUpdateH\x00\x42\t\n\x07payload\"\x9a\x02\n\x17RushSoccerMatchSnapshot\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x04\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x0b\x64\x61ta_status\x18\x04 \x01(\x0e\x32\x11.bragi.DataStatus\x12*\n\rannouncements\x18\x05 \x03(\x0b\x32\x13.bragi.Announcement\x12\x30\n\x0bmatch_state\x18\x06 \x01(\x0b\x32\x1b.bragi.RushSoccerMatchState\x12%\n\ntournament\x18\x07 \x01(\x0b\x32\x11.bragi.Tournament\"\xdf\x01\n\x15RushSoccerMatchUpdate\x12\x35\n\x07payload\x18\x01 \x01(\x0b\x32$.bragi.RushSoccerMatchUpdate.Payload\x1a\x8e\x01\n\x07Payload\x12\x32\n\x0bmatch_state\x18\x01 \x01(\x0b\x32\x1b.bragi.RushSoccerMatchStateH\x00\x12\x44\n\x0fpartial_updates\x18\x02 \x01(\x0b\x32).bragi.RushSoccerMatchStatePartialUpdatesH\x00\x42\t\n\x07payload\"_\n\"RushSoccerMatchStatePartialUpdates\x12\x39\n\x07updates\x18\x01 \x03(\x0b\x32(.bragi.RushSoccerMatchStatePartialUpdate\"\xae\x02\n!RushSoccerMatchStatePartialUpdate\x12\x31\n\x05score\x18\x01 \x01(\x0b\x32 .bragi.RushSoccerMatchScoreStateH\x00\x12=\n\x11\x63urrent_map_state\x18\x02 \x01(\x0b\x32 .bragi.RushSoccerCurrentMapStateH\x00\x12Y\n current_map_state_partial_update\x18\x03 \x01(\x0b\x32-.bragi.RushSoccerCurrentMapStatePartialUpdateH\x00\x12\x32\n\x08timeline\x18\x04 \x01(\x0b\x32\x1e.bragi.RushSoccerTimelineStateH\x00\x42\x08\n\x06update\"\xd8\x02\n\x14RushSoccerMatchState\x12\x11\n\tmatch_urn\x18\x01 \x01(\t\x12%\n\nmatch_type\x18\x02 \x01(\x0e\x32\x11.bragi.BestOfType\x12\x1e\n\thome_team\x18\x03 \x01(\x0b\x32\x0b.bragi.Team\x12\x1e\n\taway_team\x18\x04 \x01(\x0b\x32\x0b.bragi.Team\x12/\n\x05score\x18\x05 \x01(\x0b\x32 .bragi.RushSoccerMatchScoreState\x12,\n\x0cmatch_status\x18\x06 \x01(\x0e\x32\x16.bragi.MatchStatusType\x12\x30\n\x08timeline\x18\x07 \x01(\x0b\x32\x1e.bragi.RushSoccerTimelineState\x12\x35\n\x0b\x63urrent_map\x18\x08 \x01(\x0b\x32 .bragi.RushSoccerCurrentMapState\"C\n\x19RushSoccerMatchScoreState\x12\x12\n\nhome_score\x18\x01 \x01(\r\x12\x12\n\naway_score\x18\x02 \x01(\r\"H\n\x1eRushSoccerCurrentMapScoreState\x12\x12\n\nhome_goals\x18\x01 \x01(\r\x12\x12\n\naway_goals\x18\x02 \x01(\r\"I\n\x17RushSoccerTimelineState\x12.\n\x06\x65vents\x18\x01 \x03(\x0b\x32\x1e.bragi.RushSoccerTimelineEvent\"\xe0\x01\n\x17RushSoccerTimelineEvent\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12.\n\nevent_type\x18\x02 \x01(\x0e\x32\x1a.bragi.RushSoccerEventType\x12,\n\treal_time\x18\x03 \x01(\x0b\x32\x19.google.protobuf.Duration\x12,\n\tgame_time\x18\x04 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\'\n\x06period\x18\x05 \x01(\x0e\x32\x17.bragi.RushSoccerPeriod\"\xcb\x02\n&RushSoccerCurrentMapStatePartialUpdate\x12\x39\n\tgame_time\x18\x01 \x01(\x0b\x32$.bragi.RushSoccerCurrentMapTimeStateH\x00\x12\x36\n\x05score\x18\x02 \x01(\x0b\x32%.bragi.RushSoccerCurrentMapScoreStateH\x00\x12\x46\n\x16team_current_map_state\x18\x03 \x01(\x0b\x32$.bragi.RushSoccerTeamCurrentMapStateH\x00\x12\\\n\x1fteam_current_map_partial_update\x18\x04 \x01(\x0b\x32\x31.bragi.RushSoccerTeamCurrentMapStatePartialUpdateH\x00\x42\x08\n\x06update\"\xd7\x02\n\x19RushSoccerCurrentMapState\x12\'\n\x06period\x18\x01 \x01(\x0e\x32\x17.bragi.RushSoccerPeriod\x12\x37\n\tgame_time\x18\x02 \x01(\x0b\x32$.bragi.RushSoccerCurrentMapTimeState\x12\x34\n\x05score\x18\x03 \x01(\x0b\x32%.bragi.RushSoccerCurrentMapScoreState\x12\x12\n\nmap_paused\x18\x04 \x01(\x08\x12:\n\x05teams\x18\x05 \x03(\x0b\x32+.bragi.RushSoccerCurrentMapState.TeamsEntry\x1aR\n\nTeamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x33\n\x05value\x18\x02 \x01(\x0b\x32$.bragi.RushSoccerTeamCurrentMapState:\x02\x38\x01\"{\n\x1dRushSoccerCurrentMapTimeState\x12,\n\treal_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12,\n\tgame_time\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\"\xa5\x02\n*RushSoccerTeamCurrentMapStatePartialUpdate\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12J\n\x07payload\x18\x02 \x01(\x0b\x32\x39.bragi.RushSoccerTeamCurrentMapStatePartialUpdate.Payload\x1a\x98\x01\n\x07Payload\x12H\n\x0emap_statistics\x18\x01 \x01(\x0b\x32..bragi.RushSoccerTeamCurrentMapStatisticsStateH\x00\x12\x38\n\x06player\x18\x02 \x01(\x0b\x32&.bragi.RushSoccerPlayerCurrentMapStateH\x00\x42\t\n\x07payload\"\xb1\x01\n\x1dRushSoccerTeamCurrentMapState\x12\x10\n\x08team_urn\x18\x01 \x01(\t\x12\x46\n\x0emap_statistics\x18\x02 \x01(\x0b\x32..bragi.RushSoccerTeamCurrentMapStatisticsState\x12\x36\n\x06player\x18\x03 \x01(\x0b\x32&.bragi.RushSoccerPlayerCurrentMapState\"G\n\x1fRushSoccerPlayerCurrentMapState\x12\x12\n\nplayer_urn\x18\x01 \x01(\t\x12\x10\n\x08\x65xt_name\x18\x02 \x01(\t\"\xb4\x01\n\'RushSoccerTeamCurrentMapStatisticsState\x12\r\n\x05goals\x18\x01 \x01(\r\x12\x10\n\x08goals_ht\x18\x02 \x01(\r\x12\x15\n\rpenalty_kicks\x18\x03 \x01(\r\x12\x11\n\tred_cards\x18\x04 \x01(\r\x12\x14\n\x0cyellow_cards\x18\x05 \x01(\r\x12\x12\n\nfree_kicks\x18\x06 \x01(\r\x12\x14\n\x0c\x63orner_kicks\x18\x07 \x01(\r*\xc7\x02\n\x13RushSoccerEventType\x12&\n\"RUSH_SOCCER_EVENT_TYPE_UNSPECIFIED\x10\x00\x12\x1f\n\x1bRUSH_SOCCER_EVENT_TYPE_GOAL\x10\x01\x12\"\n\x1eRUSH_SOCCER_EVENT_TYPE_PENALTY\x10\x02\x12#\n\x1fRUSH_SOCCER_EVENT_TYPE_RED_CARD\x10\x03\x12&\n\"RUSH_SOCCER_EVENT_TYPE_YELLOW_CARD\x10\x04\x12$\n RUSH_SOCCER_EVENT_TYPE_FREE_KICK\x10\x05\x12&\n\"RUSH_SOCCER_EVENT_TYPE_CORNER_KICK\x10\x06\x12(\n$RUSH_SOCCER_EVENT_TYPE_PERIOD_CHANGE\x10\x07*s\n\x10RushSoccerPeriod\x12\"\n\x1eRUSH_SOCCER_PERIOD_UNSPECIFIED\x10\x00\x12\x1c\n\x18RUSH_SOCCER_PERIOD_FIRST\x10\x01\x12\x1d\n\x19RUSH_SOCCER_PERIOD_SECOND\x10\x02\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,bragi_dot_common__pb2.DESCRIPTOR,])
 
@@ -77,8 +77,8 @@ _RUSHSOCCEREVENTTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3652,
-  serialized_end=3979,
+  serialized_start=3691,
+  serialized_end=4018,
 )
 _sym_db.RegisterEnumDescriptor(_RUSHSOCCEREVENTTYPE)
 
@@ -108,8 +108,8 @@ _RUSHSOCCERPERIOD = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3981,
-  serialized_end=4096,
+  serialized_start=4020,
+  serialized_end=4135,
 )
 _sym_db.RegisterEnumDescriptor(_RUSHSOCCERPERIOD)
 
@@ -281,6 +281,13 @@ _RUSHSOCCERMATCHSNAPSHOT = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='tournament', full_name='bragi.RushSoccerMatchSnapshot.tournament', index=6,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -294,7 +301,7 @@ _RUSHSOCCERMATCHSNAPSHOT = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=449,
-  serialized_end=692,
+  serialized_end=731,
 )
 
 
@@ -337,8 +344,8 @@ _RUSHSOCCERMATCHUPDATE_PAYLOAD = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=776,
-  serialized_end=918,
+  serialized_start=815,
+  serialized_end=957,
 )
 
 _RUSHSOCCERMATCHUPDATE = _descriptor.Descriptor(
@@ -368,8 +375,8 @@ _RUSHSOCCERMATCHUPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=695,
-  serialized_end=918,
+  serialized_start=734,
+  serialized_end=957,
 )
 
 
@@ -400,8 +407,8 @@ _RUSHSOCCERMATCHSTATEPARTIALUPDATES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=920,
-  serialized_end=1015,
+  serialized_start=959,
+  serialized_end=1054,
 )
 
 
@@ -458,8 +465,8 @@ _RUSHSOCCERMATCHSTATEPARTIALUPDATE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1018,
-  serialized_end=1320,
+  serialized_start=1057,
+  serialized_end=1359,
 )
 
 
@@ -539,8 +546,8 @@ _RUSHSOCCERMATCHSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1323,
-  serialized_end=1667,
+  serialized_start=1362,
+  serialized_end=1706,
 )
 
 
@@ -578,8 +585,8 @@ _RUSHSOCCERMATCHSCORESTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1669,
-  serialized_end=1736,
+  serialized_start=1708,
+  serialized_end=1775,
 )
 
 
@@ -617,8 +624,8 @@ _RUSHSOCCERCURRENTMAPSCORESTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1738,
-  serialized_end=1810,
+  serialized_start=1777,
+  serialized_end=1849,
 )
 
 
@@ -649,8 +656,8 @@ _RUSHSOCCERTIMELINESTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1812,
-  serialized_end=1885,
+  serialized_start=1851,
+  serialized_end=1924,
 )
 
 
@@ -709,8 +716,8 @@ _RUSHSOCCERTIMELINEEVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1888,
-  serialized_end=2112,
+  serialized_start=1927,
+  serialized_end=2151,
 )
 
 
@@ -767,8 +774,8 @@ _RUSHSOCCERCURRENTMAPSTATEPARTIALUPDATE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=2115,
-  serialized_end=2446,
+  serialized_start=2154,
+  serialized_end=2485,
 )
 
 
@@ -806,8 +813,8 @@ _RUSHSOCCERCURRENTMAPSTATE_TEAMSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2710,
-  serialized_end=2792,
+  serialized_start=2749,
+  serialized_end=2831,
 )
 
 _RUSHSOCCERCURRENTMAPSTATE = _descriptor.Descriptor(
@@ -865,8 +872,8 @@ _RUSHSOCCERCURRENTMAPSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2449,
-  serialized_end=2792,
+  serialized_start=2488,
+  serialized_end=2831,
 )
 
 
@@ -904,8 +911,8 @@ _RUSHSOCCERCURRENTMAPTIMESTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2794,
-  serialized_end=2917,
+  serialized_start=2833,
+  serialized_end=2956,
 )
 
 
@@ -948,8 +955,8 @@ _RUSHSOCCERTEAMCURRENTMAPSTATEPARTIALUPDATE_PAYLOAD = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=3061,
-  serialized_end=3213,
+  serialized_start=3100,
+  serialized_end=3252,
 )
 
 _RUSHSOCCERTEAMCURRENTMAPSTATEPARTIALUPDATE = _descriptor.Descriptor(
@@ -986,8 +993,8 @@ _RUSHSOCCERTEAMCURRENTMAPSTATEPARTIALUPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2920,
-  serialized_end=3213,
+  serialized_start=2959,
+  serialized_end=3252,
 )
 
 
@@ -1032,8 +1039,8 @@ _RUSHSOCCERTEAMCURRENTMAPSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3216,
-  serialized_end=3393,
+  serialized_start=3255,
+  serialized_end=3432,
 )
 
 
@@ -1071,8 +1078,8 @@ _RUSHSOCCERPLAYERCURRENTMAPSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3395,
-  serialized_end=3466,
+  serialized_start=3434,
+  serialized_end=3505,
 )
 
 
@@ -1145,8 +1152,8 @@ _RUSHSOCCERTEAMCURRENTMAPSTATISTICSSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3469,
-  serialized_end=3649,
+  serialized_start=3508,
+  serialized_end=3688,
 )
 
 _RUSHSOCCERMATCHMESSAGE_PAYLOAD.fields_by_name['snapshot'].message_type = _RUSHSOCCERMATCHSNAPSHOT
@@ -1165,6 +1172,7 @@ _RUSHSOCCERMATCHSNAPSHOT.fields_by_name['timestamp'].message_type = google_dot_p
 _RUSHSOCCERMATCHSNAPSHOT.fields_by_name['data_status'].enum_type = bragi_dot_common__pb2._DATASTATUS
 _RUSHSOCCERMATCHSNAPSHOT.fields_by_name['announcements'].message_type = bragi_dot_common__pb2._ANNOUNCEMENT
 _RUSHSOCCERMATCHSNAPSHOT.fields_by_name['match_state'].message_type = _RUSHSOCCERMATCHSTATE
+_RUSHSOCCERMATCHSNAPSHOT.fields_by_name['tournament'].message_type = bragi_dot_common__pb2._TOURNAMENT
 _RUSHSOCCERMATCHUPDATE_PAYLOAD.fields_by_name['match_state'].message_type = _RUSHSOCCERMATCHSTATE
 _RUSHSOCCERMATCHUPDATE_PAYLOAD.fields_by_name['partial_updates'].message_type = _RUSHSOCCERMATCHSTATEPARTIALUPDATES
 _RUSHSOCCERMATCHUPDATE_PAYLOAD.containing_type = _RUSHSOCCERMATCHUPDATE

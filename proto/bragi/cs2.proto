@@ -42,6 +42,7 @@ message CS2MatchSnapshot {
   DataStatus data_status = 6;
   repeated Announcement announcements = 4;
   CS2MatchState match_state = 5;
+  Tournament tournament  = 7;
 }
 
 // Represents an update message which "payload" property is supposed to be applied to update match_state property of

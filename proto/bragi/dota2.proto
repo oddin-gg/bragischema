@@ -35,6 +35,7 @@ message Dota2MatchSnapshot {
   DataStatus data_status = 4;
   repeated Announcement announcements = 6;
   Dota2MatchState match_state = 7;
+  Tournament tournament  = 8;
 }
 
 message Dota2MatchUpdate {
