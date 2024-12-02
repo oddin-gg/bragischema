@@ -133,6 +133,110 @@ export namespace Dota2MatchSnapshot {
   }
 }
 
+export class PicksAndBansSelections extends jspb.Message {
+  hasCurrentHeroSelection(): boolean;
+  clearCurrentHeroSelection(): void;
+  getCurrentHeroSelection(): PicksAndBansSelections.CurrentHeroSelection | undefined;
+  setCurrentHeroSelection(value?: PicksAndBansSelections.CurrentHeroSelection): void;
+
+  clearPicksAndBansList(): void;
+  getPicksAndBansList(): Array<PicksAndBansSelections.PickOrBan>;
+  setPicksAndBansList(value: Array<PicksAndBansSelections.PickOrBan>): void;
+  addPicksAndBans(value?: PicksAndBansSelections.PickOrBan, index?: number): PicksAndBansSelections.PickOrBan;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PicksAndBansSelections.AsObject;
+  static toObject(includeInstance: boolean, msg: PicksAndBansSelections): PicksAndBansSelections.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: PicksAndBansSelections, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PicksAndBansSelections;
+  static deserializeBinaryFromReader(message: PicksAndBansSelections, reader: jspb.BinaryReader): PicksAndBansSelections;
+}
+
+export namespace PicksAndBansSelections {
+  export type AsObject = {
+    currentHeroSelection?: PicksAndBansSelections.CurrentHeroSelection.AsObject,
+    picksAndBansList: Array<PicksAndBansSelections.PickOrBan.AsObject>,
+  }
+
+  export class CurrentHeroSelection extends jspb.Message {
+    getActiveTeam(): PicksAndBansSelections.TeamTypeMap[keyof PicksAndBansSelections.TeamTypeMap];
+    setActiveTeam(value: PicksAndBansSelections.TeamTypeMap[keyof PicksAndBansSelections.TeamTypeMap]): void;
+
+    getPick(): boolean;
+    setPick(value: boolean): void;
+
+    getActiveTeamTimeRemaining(): number;
+    setActiveTeamTimeRemaining(value: number): void;
+
+    getRadiantBonusTime(): number;
+    setRadiantBonusTime(value: number): void;
+
+    getDireBonusTime(): number;
+    setDireBonusTime(value: number): void;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): CurrentHeroSelection.AsObject;
+    static toObject(includeInstance: boolean, msg: CurrentHeroSelection): CurrentHeroSelection.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: CurrentHeroSelection, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CurrentHeroSelection;
+    static deserializeBinaryFromReader(message: CurrentHeroSelection, reader: jspb.BinaryReader): CurrentHeroSelection;
+  }
+
+  export namespace CurrentHeroSelection {
+    export type AsObject = {
+      activeTeam: PicksAndBansSelections.TeamTypeMap[keyof PicksAndBansSelections.TeamTypeMap],
+      pick: boolean,
+      activeTeamTimeRemaining: number,
+      radiantBonusTime: number,
+      direBonusTime: number,
+    }
+  }
+
+  export class PickOrBan extends jspb.Message {
+    getTeam(): PicksAndBansSelections.TeamTypeMap[keyof PicksAndBansSelections.TeamTypeMap];
+    setTeam(value: PicksAndBansSelections.TeamTypeMap[keyof PicksAndBansSelections.TeamTypeMap]): void;
+
+    getPick(): boolean;
+    setPick(value: boolean): void;
+
+    getHeroSteamId(): number;
+    setHeroSteamId(value: number): void;
+
+    getHeroKey(): string;
+    setHeroKey(value: string): void;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): PickOrBan.AsObject;
+    static toObject(includeInstance: boolean, msg: PickOrBan): PickOrBan.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: PickOrBan, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): PickOrBan;
+    static deserializeBinaryFromReader(message: PickOrBan, reader: jspb.BinaryReader): PickOrBan;
+  }
+
+  export namespace PickOrBan {
+    export type AsObject = {
+      team: PicksAndBansSelections.TeamTypeMap[keyof PicksAndBansSelections.TeamTypeMap],
+      pick: boolean,
+      heroSteamId: number,
+      heroKey: string,
+    }
+  }
+
+  export interface TeamTypeMap {
+    TEAM_TYPE_UNSPECIFIED: 0;
+    TEAM_TYPE_RADIANT: 1;
+    TEAM_TYPE_DIRE: 2;
+  }
+
+  export const TeamType: TeamTypeMap;
+}
+
 export class Dota2MatchUpdate extends jspb.Message {
   hasPayload(): boolean;
   clearPayload(): void;
@@ -228,6 +332,11 @@ export class Dota2MatchStatePartialUpdate extends jspb.Message {
   getCurrentMapStatePartialUpdate(): Dota2CurrentMapStatePartialUpdate | undefined;
   setCurrentMapStatePartialUpdate(value?: Dota2CurrentMapStatePartialUpdate): void;
 
+  hasPicksAndBansSelections(): boolean;
+  clearPicksAndBansSelections(): void;
+  getPicksAndBansSelections(): PicksAndBansSelections | undefined;
+  setPicksAndBansSelections(value?: PicksAndBansSelections): void;
+
   getUpdateCase(): Dota2MatchStatePartialUpdate.UpdateCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Dota2MatchStatePartialUpdate.AsObject;
@@ -244,6 +353,7 @@ export namespace Dota2MatchStatePartialUpdate {
     score?: Dota2MatchScoreState.AsObject,
     currentMapState?: Dota2CurrentMapState.AsObject,
     currentMapStatePartialUpdate?: Dota2CurrentMapStatePartialUpdate.AsObject,
+    picksAndBansSelections?: PicksAndBansSelections.AsObject,
   }
 
   export enum UpdateCase {
@@ -251,6 +361,7 @@ export namespace Dota2MatchStatePartialUpdate {
     SCORE = 1,
     CURRENT_MAP_STATE = 2,
     CURRENT_MAP_STATE_PARTIAL_UPDATE = 3,
+    PICKS_AND_BANS_SELECTIONS = 4,
   }
 }
 
@@ -289,6 +400,11 @@ export class Dota2MatchState extends jspb.Message {
   setPreviousMapsList(value: Array<Dota2PreviousMapState>): void;
   addPreviousMaps(value?: Dota2PreviousMapState, index?: number): Dota2PreviousMapState;
 
+  hasPicksAndBansSelections(): boolean;
+  clearPicksAndBansSelections(): void;
+  getPicksAndBansSelections(): PicksAndBansSelections | undefined;
+  setPicksAndBansSelections(value?: PicksAndBansSelections): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Dota2MatchState.AsObject;
   static toObject(includeInstance: boolean, msg: Dota2MatchState): Dota2MatchState.AsObject;
@@ -309,6 +425,7 @@ export namespace Dota2MatchState {
     matchStatus: bragi_common_pb.MatchStatusTypeMap[keyof bragi_common_pb.MatchStatusTypeMap],
     currentMap?: Dota2CurrentMapState.AsObject,
     previousMapsList: Array<Dota2PreviousMapState.AsObject>,
+    picksAndBansSelections?: PicksAndBansSelections.AsObject,
   }
 }
 
