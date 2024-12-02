@@ -36,6 +36,34 @@ message Dota2MatchSnapshot {
   repeated Announcement announcements = 6;
   Dota2MatchState match_state = 7;
   Tournament tournament  = 8;
+  PicksAndBansSelections picks_and_bans_selections = 9;
+}
+
+message PicksAndBansSelections {
+  enum TeamType {
+    TEAM_TYPE_UNSPECIFIED = 0;
+    TEAM_TYPE_RADIANT = 1;
+    TEAM_TYPE_DIRE = 2;
+  }
+
+  message CurrentHeroSelection {
+    TeamType active_team = 1;
+    bool pick = 2;
+    int32 active_team_time_remaining = 3;
+    int32 radiant_bonus_time = 4;
+    int32 dire_bonus_time = 5;
+  }
+
+  message PickOrBan {
+    TeamType team = 1;
+    bool pick = 2;
+    uint32 hero_steam_id = 3;
+    string hero_key = 4;
+  }
+
+  
+  CurrentHeroSelection current_hero_selection = 1;
+  repeated PickOrBan picks_and_bans = 2;
 }
 
 message Dota2MatchUpdate {
@@ -43,6 +71,7 @@ message Dota2MatchUpdate {
     oneof payload {
       Dota2MatchState match_state = 1;
       Dota2MatchStatePartialUpdates partial_updates = 2;
+      PicksAndBansSelections picks_and_bans_selections = 3;
     }
   }
 
