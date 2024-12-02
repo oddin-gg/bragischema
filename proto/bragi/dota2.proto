@@ -38,6 +38,33 @@ message Dota2MatchSnapshot {
   Tournament tournament  = 8;
 }
 
+message PicksAndBansSelections {
+  enum TeamType {
+    TEAM_TYPE_UNSPECIFIED = 0;
+    TEAM_TYPE_RADIANT = 1;
+    TEAM_TYPE_DIRE = 2;
+  }
+
+  message CurrentHeroSelection {
+    TeamType active_team = 1;
+    bool pick = 2;
+    int32 active_team_time_remaining = 3;
+    int32 radiant_bonus_time = 4;
+    int32 dire_bonus_time = 5;
+  }
+
+  message PickOrBan {
+    TeamType team = 1;
+    bool pick = 2;
+    uint32 hero_steam_id = 3;
+    string hero_key = 4;
+  }
+
+  
+  CurrentHeroSelection current_hero_selection = 1;
+  repeated PickOrBan picks_and_bans = 2;
+}
+
 message Dota2MatchUpdate {
   message Payload {
     oneof payload {
@@ -45,7 +72,6 @@ message Dota2MatchUpdate {
       Dota2MatchStatePartialUpdates partial_updates = 2;
     }
   }
-
   Payload payload = 1;
 }
 
@@ -68,6 +94,9 @@ message Dota2MatchStatePartialUpdate {
     // Apply partial update on "current_map_state" property in Dota2MapState.
     Dota2CurrentMapStatePartialUpdate current_map_state_partial_update = 3;
 
+    // Replace "picks_and_bans_selections" property in Dota2MatchState.
+    PicksAndBansSelections picks_and_bans_selections = 4;
+
     // There are no particular updates for eg. previous_map_states, whole current_map_state defined. In case when those
     // states are updated, then whole update with Dota2MatchState update is sent.
   }
@@ -82,6 +111,7 @@ message Dota2MatchState {
   MatchStatusType match_status = 6;
   Dota2CurrentMapState current_map = 7;
   repeated Dota2PreviousMapState previous_maps = 8;
+  PicksAndBansSelections picks_and_bans_selections = 9;
 }
 
 message Dota2MatchScoreState {
