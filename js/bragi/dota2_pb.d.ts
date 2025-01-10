@@ -144,6 +144,9 @@ export class PicksAndBansSelections extends jspb.Message {
   setPicksAndBansList(value: Array<PicksAndBansSelections.PickOrBan>): void;
   addPicksAndBans(value?: PicksAndBansSelections.PickOrBan, index?: number): PicksAndBansSelections.PickOrBan;
 
+  getState(): PicksAndBansSelections.StateMap[keyof PicksAndBansSelections.StateMap];
+  setState(value: PicksAndBansSelections.StateMap[keyof PicksAndBansSelections.StateMap]): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PicksAndBansSelections.AsObject;
   static toObject(includeInstance: boolean, msg: PicksAndBansSelections): PicksAndBansSelections.AsObject;
@@ -158,6 +161,7 @@ export namespace PicksAndBansSelections {
   export type AsObject = {
     currentHeroSelection?: PicksAndBansSelections.CurrentHeroSelection.AsObject,
     picksAndBansList: Array<PicksAndBansSelections.PickOrBan.AsObject>,
+    state: PicksAndBansSelections.StateMap[keyof PicksAndBansSelections.StateMap],
   }
 
   export class CurrentHeroSelection extends jspb.Message {
@@ -235,6 +239,14 @@ export namespace PicksAndBansSelections {
   }
 
   export const TeamType: TeamTypeMap;
+
+  export interface StateMap {
+    STATE_UNSPECIFIED: 0;
+    STATE_INPROGRESS: 1;
+    STATE_ENDED: 2;
+  }
+
+  export const State: StateMap;
 }
 
 export class Dota2MatchUpdate extends jspb.Message {
