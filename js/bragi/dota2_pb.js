@@ -76,6 +76,7 @@ goog.exportSymbol('proto.bragi.Dota2Towers', null, global);
 goog.exportSymbol('proto.bragi.PicksAndBansSelections', null, global);
 goog.exportSymbol('proto.bragi.PicksAndBansSelections.CurrentHeroSelection', null, global);
 goog.exportSymbol('proto.bragi.PicksAndBansSelections.PickOrBan', null, global);
+goog.exportSymbol('proto.bragi.PicksAndBansSelections.State', null, global);
 goog.exportSymbol('proto.bragi.PicksAndBansSelections.TeamType', null, global);
 goog.exportSymbol('proto.bragi.Roshan', null, global);
 /**
@@ -1861,7 +1862,8 @@ proto.bragi.PicksAndBansSelections.toObject = function(includeInstance, msg) {
   var f, obj = {
 currentHeroSelection: (f = msg.getCurrentHeroSelection()) && proto.bragi.PicksAndBansSelections.CurrentHeroSelection.toObject(includeInstance, f),
 picksAndBansList: jspb.Message.toObjectList(msg.getPicksAndBansList(),
-    proto.bragi.PicksAndBansSelections.PickOrBan.toObject, includeInstance)
+    proto.bragi.PicksAndBansSelections.PickOrBan.toObject, includeInstance),
+state: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -1908,6 +1910,10 @@ proto.bragi.PicksAndBansSelections.deserializeBinaryFromReader = function(msg, r
       reader.readMessage(value,proto.bragi.PicksAndBansSelections.PickOrBan.deserializeBinaryFromReader);
       msg.addPicksAndBans(value);
       break;
+    case 3:
+      var value = /** @type {!proto.bragi.PicksAndBansSelections.State} */ (reader.readEnum());
+      msg.setState(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1953,6 +1959,13 @@ proto.bragi.PicksAndBansSelections.serializeBinaryToWriter = function(message, w
       proto.bragi.PicksAndBansSelections.PickOrBan.serializeBinaryToWriter
     );
   }
+  f = message.getState();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -1963,6 +1976,15 @@ proto.bragi.PicksAndBansSelections.TeamType = {
   TEAM_TYPE_UNSPECIFIED: 0,
   TEAM_TYPE_RADIANT: 1,
   TEAM_TYPE_DIRE: 2
+};
+
+/**
+ * @enum {number}
+ */
+proto.bragi.PicksAndBansSelections.State = {
+  STATE_UNSPECIFIED: 0,
+  STATE_INPROGRESS: 1,
+  STATE_ENDED: 2
 };
 
 
@@ -2507,6 +2529,24 @@ proto.bragi.PicksAndBansSelections.prototype.addPicksAndBans = function(opt_valu
  */
 proto.bragi.PicksAndBansSelections.prototype.clearPicksAndBansList = function() {
   return this.setPicksAndBansList([]);
+};
+
+
+/**
+ * optional State state = 3;
+ * @return {!proto.bragi.PicksAndBansSelections.State}
+ */
+proto.bragi.PicksAndBansSelections.prototype.getState = function() {
+  return /** @type {!proto.bragi.PicksAndBansSelections.State} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {!proto.bragi.PicksAndBansSelections.State} value
+ * @return {!proto.bragi.PicksAndBansSelections} returns this
+ */
+proto.bragi.PicksAndBansSelections.prototype.setState = function(value) {
+  return jspb.Message.setProto3EnumField(this, 3, value);
 };
 
 

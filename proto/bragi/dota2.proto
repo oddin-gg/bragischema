@@ -60,9 +60,16 @@ message PicksAndBansSelections {
     string hero_key = 4;
   }
 
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    STATE_IN_PROGRESS = 1;
+    STATE_ENDED = 2;
+  }
+
   
   CurrentHeroSelection current_hero_selection = 1;
   repeated PickOrBan picks_and_bans = 2;
+  State state = 3;
 }
 
 message Dota2MatchUpdate {
