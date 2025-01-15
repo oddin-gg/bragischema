@@ -13,7 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var global =
+    (typeof globalThis !== 'undefined' && globalThis) ||
+    (typeof window !== 'undefined' && window) ||
+    (typeof global !== 'undefined' && global) ||
+    (typeof self !== 'undefined' && self) ||
+    (function () { return this; }).call(null) ||
+    Function('return this')();
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
@@ -4009,7 +4015,8 @@ proto.bragi.ValorantCurrentMapState.prototype.getTeamsMap = function(opt_noLazyC
  */
 proto.bragi.ValorantCurrentMapState.prototype.clearTeamsMap = function() {
   this.getTeamsMap().clear();
-  return this;};
+  return this;
+};
 
 
 /**
@@ -4968,7 +4975,8 @@ proto.bragi.ValorantTeamCurrentMapState.prototype.getPlayersMap = function(opt_n
  */
 proto.bragi.ValorantTeamCurrentMapState.prototype.clearPlayersMap = function() {
   this.getPlayersMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -6632,7 +6640,8 @@ proto.bragi.ValorantCurrentRoundState.prototype.getTeamsMap = function(opt_noLaz
  */
 proto.bragi.ValorantCurrentRoundState.prototype.clearTeamsMap = function() {
   this.getTeamsMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -7726,7 +7735,8 @@ proto.bragi.ValorantTeamCurrentRoundState.prototype.getPlayersMap = function(opt
  */
 proto.bragi.ValorantTeamCurrentRoundState.prototype.clearPlayersMap = function() {
   this.getPlayersMap().clear();
-  return this;};
+  return this;
+};
 
 
 

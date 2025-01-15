@@ -13,7 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var global =
+    (typeof globalThis !== 'undefined' && globalThis) ||
+    (typeof window !== 'undefined' && window) ||
+    (typeof global !== 'undefined' && global) ||
+    (typeof self !== 'undefined' && self) ||
+    (function () { return this; }).call(null) ||
+    Function('return this')();
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
@@ -4771,7 +4777,8 @@ proto.bragi.Dota2CurrentMapState.prototype.getTeamsMap = function(opt_noLazyCrea
  */
 proto.bragi.Dota2CurrentMapState.prototype.clearTeamsMap = function() {
   this.getTeamsMap().clear();
-  return this;};
+  return this;
+};
 
 
 /**
@@ -5214,7 +5221,8 @@ proto.bragi.Dota2PreviousMapState.prototype.getTeamsMap = function(opt_noLazyCre
  */
 proto.bragi.Dota2PreviousMapState.prototype.clearTeamsMap = function() {
   this.getTeamsMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -5967,7 +5975,8 @@ proto.bragi.Dota2TeamCurrentMapState.prototype.getPlayersMap = function(opt_noLa
  */
 proto.bragi.Dota2TeamCurrentMapState.prototype.clearPlayersMap = function() {
   this.getPlayersMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -8606,7 +8615,8 @@ proto.bragi.Dota2TeamPreviousMapState.prototype.getPlayersMap = function(opt_noL
  */
 proto.bragi.Dota2TeamPreviousMapState.prototype.clearPlayersMap = function() {
   this.getPlayersMap().clear();
-  return this;};
+  return this;
+};
 
 
 

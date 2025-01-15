@@ -13,7 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var global =
+    (typeof globalThis !== 'undefined' && globalThis) ||
+    (typeof window !== 'undefined' && window) ||
+    (typeof global !== 'undefined' && global) ||
+    (typeof self !== 'undefined' && self) ||
+    (function () { return this; }).call(null) ||
+    Function('return this')();
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
@@ -5024,7 +5030,8 @@ proto.bragi.CS2CurrentMapState.prototype.getTeamMapStatesMap = function(opt_noLa
  */
 proto.bragi.CS2CurrentMapState.prototype.clearTeamMapStatesMap = function() {
   this.getTeamMapStatesMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -5349,7 +5356,8 @@ proto.bragi.CS2PreviousMapState.prototype.getTeamMapStatesMap = function(opt_noL
  */
 proto.bragi.CS2PreviousMapState.prototype.clearTeamMapStatesMap = function() {
   this.getTeamMapStatesMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -6680,7 +6688,8 @@ proto.bragi.CS2CurrentRoundState.prototype.getTeamStatesMap = function(opt_noLaz
  */
 proto.bragi.CS2CurrentRoundState.prototype.clearTeamStatesMap = function() {
   this.getTeamStatesMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -6894,7 +6903,8 @@ proto.bragi.CS2PreviousRoundState.prototype.getTeamStatesMap = function(opt_noLa
  */
 proto.bragi.CS2PreviousRoundState.prototype.clearTeamStatesMap = function() {
   this.getTeamStatesMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -10105,7 +10115,8 @@ proto.bragi.CS2TeamMapState.prototype.getPlayerMapStatesMap = function(opt_noLaz
  */
 proto.bragi.CS2TeamMapState.prototype.clearPlayerMapStatesMap = function() {
   this.getPlayerMapStatesMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -10677,7 +10688,8 @@ proto.bragi.CS2TeamCurrentRoundState.prototype.getPlayerRoundStatesMap = functio
  */
 proto.bragi.CS2TeamCurrentRoundState.prototype.clearPlayerRoundStatesMap = function() {
   this.getPlayerRoundStatesMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -10840,7 +10852,8 @@ proto.bragi.CS2PreviousTeamRoundState.prototype.getPlayersMap = function(opt_noL
  */
 proto.bragi.CS2PreviousTeamRoundState.prototype.clearPlayersMap = function() {
   this.getPlayersMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -18598,7 +18611,8 @@ proto.bragi.CS2FreezeTimeEnded.prototype.getPlayerBalancesMap = function(opt_noL
  */
 proto.bragi.CS2FreezeTimeEnded.prototype.clearPlayerBalancesMap = function() {
   this.getPlayerBalancesMap().clear();
-  return this;};
+  return this;
+};
 
 
 /**
@@ -18620,7 +18634,8 @@ proto.bragi.CS2FreezeTimeEnded.prototype.getPlayerInventoriesMap = function(opt_
  */
 proto.bragi.CS2FreezeTimeEnded.prototype.clearPlayerInventoriesMap = function() {
   this.getPlayerInventoriesMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -18896,7 +18911,8 @@ proto.bragi.CS2FreezeTimeStarted.prototype.getPlayerBalancesMap = function(opt_n
  */
 proto.bragi.CS2FreezeTimeStarted.prototype.clearPlayerBalancesMap = function() {
   this.getPlayerBalancesMap().clear();
-  return this;};
+  return this;
+};
 
 
 /**
@@ -18918,7 +18934,8 @@ proto.bragi.CS2FreezeTimeStarted.prototype.getTeamsRoundInfoMap = function(opt_n
  */
 proto.bragi.CS2FreezeTimeStarted.prototype.clearTeamsRoundInfoMap = function() {
   this.getTeamsRoundInfoMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -22108,7 +22125,8 @@ proto.bragi.CS2RoundEnd.prototype.getPlayerBalancesMap = function(opt_noLazyCrea
  */
 proto.bragi.CS2RoundEnd.prototype.clearPlayerBalancesMap = function() {
   this.getPlayerBalancesMap().clear();
-  return this;};
+  return this;
+};
 
 
 /**
@@ -22130,7 +22148,8 @@ proto.bragi.CS2RoundEnd.prototype.getPlayerInventoriesMap = function(opt_noLazyC
  */
 proto.bragi.CS2RoundEnd.prototype.clearPlayerInventoriesMap = function() {
   this.getPlayerInventoriesMap().clear();
-  return this;};
+  return this;
+};
 
 
 

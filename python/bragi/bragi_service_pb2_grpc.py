@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from bragi_schema.bragi import bragi_service_pb2 as bragi_dot_bragi__service__pb2
+from bragi import bragi_service_pb2 as bragi_dot_bragi__service__pb2
 
 
 class BragiStub(object):

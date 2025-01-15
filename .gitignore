@@ -31,3 +31,5 @@ protoc-gen-grpc-java
 java/ots_schema.jar
 
 /examples/goconnector/goconnector
+
+.DS_Store

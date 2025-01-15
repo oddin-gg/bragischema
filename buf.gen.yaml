@@ -1,0 +1,39 @@
+# Documentation for this file at https://docs.buf.build/configuration/v1/buf-gen-yaml
+version: v1
+managed:
+  enabled: true
+
+# List of all plugins at https://buf.build/plugins
+plugins:
+    # GO plugins
+  - plugin: buf.build/protocolbuffers/go:v1.34.1
+    out: go/oddin.gg
+    opt: paths=source_relative
+  - plugin: buf.build/grpc/go:v1.3.0
+    out: go/oddin.gg
+    opt: paths=source_relative
+  - plugin: buf.build/community/planetscale-vtprotobuf:v0.6.0
+    out: go/oddin.gg
+    opt:
+      - paths=source_relative,features=equal+clone
+
+    # JS plugins
+  - plugin: buf.build/protocolbuffers/js:v3.21.2
+    out: js
+    opt: import_style=commonjs
+  - plugin: buf.build/grpc/web:v1.4.2
+    out: js
+    opt: import_style=commonjs,mode=grpcweb
+  - plugin: buf.build/grpc/node:v1.12.4
+    out: js
+
+  # Python plugins
+  - plugin: buf.build/protocolbuffers/python:v23.4
+    out: python
+    opt: pyi_out=python
+  - plugin: buf.build/grpc/python:v1.60.0
+    out: python
+
+  # Java
+  - plugin: buf.build/protocolbuffers/java:v29.3
+    out: java

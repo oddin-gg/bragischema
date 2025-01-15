@@ -13,7 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var global =
+    (typeof globalThis !== 'undefined' && globalThis) ||
+    (typeof window !== 'undefined' && window) ||
+    (typeof global !== 'undefined' && global) ||
+    (typeof self !== 'undefined' && self) ||
+    (function () { return this; }).call(null) ||
+    Function('return this')();
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
@@ -3721,7 +3727,8 @@ proto.bragi.LolCurrentMapState.prototype.getTeamsMap = function(opt_noLazyCreate
  */
 proto.bragi.LolCurrentMapState.prototype.clearTeamsMap = function() {
   this.getTeamsMap().clear();
-  return this;};
+  return this;
+};
 
 
 /**
@@ -4109,7 +4116,8 @@ proto.bragi.LolPreviousMapState.prototype.getTeamsMap = function(opt_noLazyCreat
  */
 proto.bragi.LolPreviousMapState.prototype.clearTeamsMap = function() {
   this.getTeamsMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -4862,7 +4870,8 @@ proto.bragi.LolTeamCurrentMapState.prototype.getPlayersMap = function(opt_noLazy
  */
 proto.bragi.LolTeamCurrentMapState.prototype.clearPlayersMap = function() {
   this.getPlayersMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -7034,7 +7043,8 @@ proto.bragi.LolTeamPreviousMapState.prototype.getPlayersMap = function(opt_noLaz
  */
 proto.bragi.LolTeamPreviousMapState.prototype.clearPlayersMap = function() {
   this.getPlayersMap().clear();
-  return this;};
+  return this;
+};
 
 
 
