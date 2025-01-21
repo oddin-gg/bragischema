@@ -13,7 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var global =
+    (typeof globalThis !== 'undefined' && globalThis) ||
+    (typeof window !== 'undefined' && window) ||
+    (typeof global !== 'undefined' && global) ||
+    (typeof self !== 'undefined' && self) ||
+    (function () { return this; }).call(null) ||
+    Function('return this')();
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
@@ -744,11 +750,11 @@ proto.bragi.LolMatchMessage.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.LolMatchMessage.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    dataStatus: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    payload: (f = msg.getPayload()) && proto.bragi.LolMatchMessage.Payload.toObject(includeInstance, f)
+matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
+timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+dataStatus: jspb.Message.getFieldWithDefault(msg, 4, 0),
+payload: (f = msg.getPayload()) && proto.bragi.LolMatchMessage.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -934,8 +940,8 @@ proto.bragi.LolMatchMessage.Payload.prototype.toObject = function(opt_includeIns
  */
 proto.bragi.LolMatchMessage.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    snapshot: (f = msg.getSnapshot()) && proto.bragi.LolMatchSnapshot.toObject(includeInstance, f),
-    update: (f = msg.getUpdate()) && proto.bragi.LolMatchUpdate.toObject(includeInstance, f)
+snapshot: (f = msg.getSnapshot()) && proto.bragi.LolMatchSnapshot.toObject(includeInstance, f),
+update: (f = msg.getUpdate()) && proto.bragi.LolMatchUpdate.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1271,14 +1277,14 @@ proto.bragi.LolMatchSnapshot.prototype.toObject = function(opt_includeInstance) 
  */
 proto.bragi.LolMatchSnapshot.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    dataStatus: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    announcementsList: jspb.Message.toObjectList(msg.getAnnouncementsList(),
+matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
+timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+dataStatus: jspb.Message.getFieldWithDefault(msg, 4, 0),
+announcementsList: jspb.Message.toObjectList(msg.getAnnouncementsList(),
     bragi_common_pb.Announcement.toObject, includeInstance),
-    matchState: (f = msg.getMatchState()) && proto.bragi.LolMatchState.toObject(includeInstance, f),
-    tournament: (f = msg.getTournament()) && bragi_common_pb.Tournament.toObject(includeInstance, f)
+matchState: (f = msg.getMatchState()) && proto.bragi.LolMatchState.toObject(includeInstance, f),
+tournament: (f = msg.getTournament()) && bragi_common_pb.Tournament.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1667,7 +1673,7 @@ proto.bragi.LolMatchUpdate.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.LolMatchUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    payload: (f = msg.getPayload()) && proto.bragi.LolMatchUpdate.Payload.toObject(includeInstance, f)
+payload: (f = msg.getPayload()) && proto.bragi.LolMatchUpdate.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1807,8 +1813,8 @@ proto.bragi.LolMatchUpdate.Payload.prototype.toObject = function(opt_includeInst
  */
 proto.bragi.LolMatchUpdate.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchState: (f = msg.getMatchState()) && proto.bragi.LolMatchState.toObject(includeInstance, f),
-    partialUpdates: (f = msg.getPartialUpdates()) && proto.bragi.LolMatchStatePartialUpdates.toObject(includeInstance, f)
+matchState: (f = msg.getMatchState()) && proto.bragi.LolMatchState.toObject(includeInstance, f),
+partialUpdates: (f = msg.getPartialUpdates()) && proto.bragi.LolMatchStatePartialUpdates.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2053,7 +2059,7 @@ proto.bragi.LolMatchStatePartialUpdates.prototype.toObject = function(opt_includ
  */
 proto.bragi.LolMatchStatePartialUpdates.toObject = function(includeInstance, msg) {
   var f, obj = {
-    updatesList: jspb.Message.toObjectList(msg.getUpdatesList(),
+updatesList: jspb.Message.toObjectList(msg.getUpdatesList(),
     proto.bragi.LolMatchStatePartialUpdate.toObject, includeInstance)
   };
 
@@ -2233,9 +2239,9 @@ proto.bragi.LolMatchStatePartialUpdate.prototype.toObject = function(opt_include
  */
 proto.bragi.LolMatchStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    score: (f = msg.getScore()) && proto.bragi.LolMatchScoreState.toObject(includeInstance, f),
-    currentMapState: (f = msg.getCurrentMapState()) && proto.bragi.LolCurrentMapState.toObject(includeInstance, f),
-    currentMapStatePartialUpdate: (f = msg.getCurrentMapStatePartialUpdate()) && proto.bragi.LolCurrentMapStatePartialUpdate.toObject(includeInstance, f)
+score: (f = msg.getScore()) && proto.bragi.LolMatchScoreState.toObject(includeInstance, f),
+currentMapState: (f = msg.getCurrentMapState()) && proto.bragi.LolCurrentMapState.toObject(includeInstance, f),
+currentMapStatePartialUpdate: (f = msg.getCurrentMapStatePartialUpdate()) && proto.bragi.LolCurrentMapStatePartialUpdate.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2493,14 +2499,14 @@ proto.bragi.LolMatchState.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.LolMatchState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    matchType: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    homeTeam: (f = msg.getHomeTeam()) && bragi_common_pb.Team.toObject(includeInstance, f),
-    awayTeam: (f = msg.getAwayTeam()) && bragi_common_pb.Team.toObject(includeInstance, f),
-    score: (f = msg.getScore()) && proto.bragi.LolMatchScoreState.toObject(includeInstance, f),
-    matchStatus: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    currentMap: (f = msg.getCurrentMap()) && proto.bragi.LolCurrentMapState.toObject(includeInstance, f),
-    previousMapsList: jspb.Message.toObjectList(msg.getPreviousMapsList(),
+matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+matchType: jspb.Message.getFieldWithDefault(msg, 2, 0),
+homeTeam: (f = msg.getHomeTeam()) && bragi_common_pb.Team.toObject(includeInstance, f),
+awayTeam: (f = msg.getAwayTeam()) && bragi_common_pb.Team.toObject(includeInstance, f),
+score: (f = msg.getScore()) && proto.bragi.LolMatchScoreState.toObject(includeInstance, f),
+matchStatus: jspb.Message.getFieldWithDefault(msg, 6, 0),
+currentMap: (f = msg.getCurrentMap()) && proto.bragi.LolCurrentMapState.toObject(includeInstance, f),
+previousMapsList: jspb.Message.toObjectList(msg.getPreviousMapsList(),
     proto.bragi.LolPreviousMapState.toObject, includeInstance)
   };
 
@@ -2940,8 +2946,8 @@ proto.bragi.LolMatchScoreState.prototype.toObject = function(opt_includeInstance
  */
 proto.bragi.LolMatchScoreState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    homeScore: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    awayScore: jspb.Message.getFieldWithDefault(msg, 2, 0)
+homeScore: jspb.Message.getFieldWithDefault(msg, 1, 0),
+awayScore: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -3129,11 +3135,11 @@ proto.bragi.LolCurrentMapStatePartialUpdate.prototype.toObject = function(opt_in
  */
 proto.bragi.LolCurrentMapStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    gameTime: (f = msg.getGameTime()) && proto.bragi.LolCurrentMapTimeState.toObject(includeInstance, f),
-    teamCurrentMapState: (f = msg.getTeamCurrentMapState()) && proto.bragi.LolTeamCurrentMapState.toObject(includeInstance, f),
-    teamCurrentMapPartialUpdate: (f = msg.getTeamCurrentMapPartialUpdate()) && proto.bragi.LolTeamCurrentMapStatePartialUpdate.toObject(includeInstance, f),
-    turrets: (f = msg.getTurrets()) && proto.bragi.LolTurrets.toObject(includeInstance, f),
-    inhibitors: (f = msg.getInhibitors()) && proto.bragi.LolInhibitors.toObject(includeInstance, f)
+gameTime: (f = msg.getGameTime()) && proto.bragi.LolCurrentMapTimeState.toObject(includeInstance, f),
+teamCurrentMapState: (f = msg.getTeamCurrentMapState()) && proto.bragi.LolTeamCurrentMapState.toObject(includeInstance, f),
+teamCurrentMapPartialUpdate: (f = msg.getTeamCurrentMapPartialUpdate()) && proto.bragi.LolTeamCurrentMapStatePartialUpdate.toObject(includeInstance, f),
+turrets: (f = msg.getTurrets()) && proto.bragi.LolTurrets.toObject(includeInstance, f),
+inhibitors: (f = msg.getInhibitors()) && proto.bragi.LolInhibitors.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3484,12 +3490,12 @@ proto.bragi.LolCurrentMapState.prototype.toObject = function(opt_includeInstance
  */
 proto.bragi.LolCurrentMapState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapOrder: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    mapPaused: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
-    gameTime: (f = msg.getGameTime()) && proto.bragi.LolCurrentMapTimeState.toObject(includeInstance, f),
-    teamsMap: (f = msg.getTeamsMap()) ? f.toObject(includeInstance, proto.bragi.LolTeamCurrentMapState.toObject) : [],
-    turrets: (f = msg.getTurrets()) && proto.bragi.LolTurrets.toObject(includeInstance, f),
-    inhibitors: (f = msg.getInhibitors()) && proto.bragi.LolInhibitors.toObject(includeInstance, f)
+mapOrder: jspb.Message.getFieldWithDefault(msg, 1, 0),
+mapPaused: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+gameTime: (f = msg.getGameTime()) && proto.bragi.LolCurrentMapTimeState.toObject(includeInstance, f),
+teamsMap: (f = msg.getTeamsMap()) ? f.toObject(includeInstance, proto.bragi.LolTeamCurrentMapState.toObject) : [],
+turrets: (f = msg.getTurrets()) && proto.bragi.LolTurrets.toObject(includeInstance, f),
+inhibitors: (f = msg.getInhibitors()) && proto.bragi.LolInhibitors.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3721,7 +3727,8 @@ proto.bragi.LolCurrentMapState.prototype.getTeamsMap = function(opt_noLazyCreate
  */
 proto.bragi.LolCurrentMapState.prototype.clearTeamsMap = function() {
   this.getTeamsMap().clear();
-  return this;};
+  return this;
+};
 
 
 /**
@@ -3830,7 +3837,7 @@ proto.bragi.LolCurrentMapTimeState.prototype.toObject = function(opt_includeInst
  */
 proto.bragi.LolCurrentMapTimeState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    gameTime: (f = msg.getGameTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
+gameTime: (f = msg.getGameTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3981,8 +3988,8 @@ proto.bragi.LolPreviousMapState.prototype.toObject = function(opt_includeInstanc
  */
 proto.bragi.LolPreviousMapState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapOrder: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    teamsMap: (f = msg.getTeamsMap()) ? f.toObject(includeInstance, proto.bragi.LolTeamPreviousMapState.toObject) : []
+mapOrder: jspb.Message.getFieldWithDefault(msg, 1, 0),
+teamsMap: (f = msg.getTeamsMap()) ? f.toObject(includeInstance, proto.bragi.LolTeamPreviousMapState.toObject) : []
   };
 
   if (includeInstance) {
@@ -4109,7 +4116,8 @@ proto.bragi.LolPreviousMapState.prototype.getTeamsMap = function(opt_noLazyCreat
  */
 proto.bragi.LolPreviousMapState.prototype.clearTeamsMap = function() {
   this.getTeamsMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -4144,8 +4152,8 @@ proto.bragi.LolTeamCurrentMapStatePartialUpdate.prototype.toObject = function(op
  */
 proto.bragi.LolTeamCurrentMapStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    payload: (f = msg.getPayload()) && proto.bragi.LolTeamCurrentMapStatePartialUpdate.Payload.toObject(includeInstance, f)
+teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+payload: (f = msg.getPayload()) && proto.bragi.LolTeamCurrentMapStatePartialUpdate.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4297,9 +4305,9 @@ proto.bragi.LolTeamCurrentMapStatePartialUpdate.Payload.prototype.toObject = fun
  */
 proto.bragi.LolTeamCurrentMapStatePartialUpdate.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    statistics: (f = msg.getStatistics()) && proto.bragi.LolTeamCurrentMapStatisticsState.toObject(includeInstance, f),
-    playerCurrentMapState: (f = msg.getPlayerCurrentMapState()) && proto.bragi.LolPlayerCurrentMapState.toObject(includeInstance, f),
-    playerCurrentMapPartialUpdate: (f = msg.getPlayerCurrentMapPartialUpdate()) && proto.bragi.LolPlayerCurrentMapStatePartialUpdate.toObject(includeInstance, f)
+statistics: (f = msg.getStatistics()) && proto.bragi.LolTeamCurrentMapStatisticsState.toObject(includeInstance, f),
+playerCurrentMapState: (f = msg.getPlayerCurrentMapState()) && proto.bragi.LolPlayerCurrentMapState.toObject(includeInstance, f),
+playerCurrentMapPartialUpdate: (f = msg.getPlayerCurrentMapPartialUpdate()) && proto.bragi.LolPlayerCurrentMapStatePartialUpdate.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4605,11 +4613,11 @@ proto.bragi.LolTeamCurrentMapState.prototype.toObject = function(opt_includeInst
  */
 proto.bragi.LolTeamCurrentMapState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    faction: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    statistics: (f = msg.getStatistics()) && proto.bragi.LolTeamCurrentMapStatisticsState.toObject(includeInstance, f),
-    won: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
-    playersMap: (f = msg.getPlayersMap()) ? f.toObject(includeInstance, proto.bragi.LolPlayerCurrentMapState.toObject) : []
+teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+faction: jspb.Message.getFieldWithDefault(msg, 2, 0),
+statistics: (f = msg.getStatistics()) && proto.bragi.LolTeamCurrentMapStatisticsState.toObject(includeInstance, f),
+won: (f = jspb.Message.getBooleanField(msg, 4)) == null ? undefined : f,
+playersMap: (f = msg.getPlayersMap()) ? f.toObject(includeInstance, proto.bragi.LolPlayerCurrentMapState.toObject) : []
   };
 
   if (includeInstance) {
@@ -4862,7 +4870,8 @@ proto.bragi.LolTeamCurrentMapState.prototype.getPlayersMap = function(opt_noLazy
  */
 proto.bragi.LolTeamCurrentMapState.prototype.clearPlayersMap = function() {
   this.getPlayersMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -4897,13 +4906,13 @@ proto.bragi.LolTeamCurrentMapStatisticsState.prototype.toObject = function(opt_i
  */
 proto.bragi.LolTeamCurrentMapStatisticsState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    kills: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    barons: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    dragons: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    turrets: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    inhibitors: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    gold: jspb.Message.getFieldWithDefault(msg, 7, 0)
+teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+kills: jspb.Message.getFieldWithDefault(msg, 2, 0),
+barons: jspb.Message.getFieldWithDefault(msg, 3, 0),
+dragons: jspb.Message.getFieldWithDefault(msg, 4, 0),
+turrets: jspb.Message.getFieldWithDefault(msg, 5, 0),
+inhibitors: jspb.Message.getFieldWithDefault(msg, 6, 0),
+gold: jspb.Message.getFieldWithDefault(msg, 7, 0)
   };
 
   if (includeInstance) {
@@ -5207,8 +5216,8 @@ proto.bragi.LolPlayerCurrentMapStatePartialUpdate.prototype.toObject = function(
  */
 proto.bragi.LolPlayerCurrentMapStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    payload: (f = msg.getPayload()) && proto.bragi.LolPlayerCurrentMapStatePartialUpdate.Payload.toObject(includeInstance, f)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+payload: (f = msg.getPayload()) && proto.bragi.LolPlayerCurrentMapStatePartialUpdate.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -5362,11 +5371,11 @@ proto.bragi.LolPlayerCurrentMapStatePartialUpdate.Payload.prototype.toObject = f
  */
 proto.bragi.LolPlayerCurrentMapStatePartialUpdate.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerInfo: (f = msg.getPlayerInfo()) && proto.bragi.LolPlayerInfoState.toObject(includeInstance, f),
-    timers: (f = msg.getTimers()) && proto.bragi.LolPlayerCurrentMapTimersState.toObject(includeInstance, f),
-    statistics: (f = msg.getStatistics()) && proto.bragi.LolPlayerStatisticsState.toObject(includeInstance, f),
-    mapStatistics: (f = msg.getMapStatistics()) && proto.bragi.LolPlayerCurrentMapStatisticsState.toObject(includeInstance, f),
-    position: (f = msg.getPosition()) && proto.bragi.LolPosition.toObject(includeInstance, f)
+playerInfo: (f = msg.getPlayerInfo()) && proto.bragi.LolPlayerInfoState.toObject(includeInstance, f),
+timers: (f = msg.getTimers()) && proto.bragi.LolPlayerCurrentMapTimersState.toObject(includeInstance, f),
+statistics: (f = msg.getStatistics()) && proto.bragi.LolPlayerStatisticsState.toObject(includeInstance, f),
+mapStatistics: (f = msg.getMapStatistics()) && proto.bragi.LolPlayerCurrentMapStatisticsState.toObject(includeInstance, f),
+position: (f = msg.getPosition()) && proto.bragi.LolPosition.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -5772,12 +5781,12 @@ proto.bragi.LolPlayerCurrentMapState.prototype.toObject = function(opt_includeIn
  */
 proto.bragi.LolPlayerCurrentMapState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    playerInfo: (f = msg.getPlayerInfo()) && proto.bragi.LolPlayerInfoState.toObject(includeInstance, f),
-    timers: (f = msg.getTimers()) && proto.bragi.LolPlayerCurrentMapTimersState.toObject(includeInstance, f),
-    statistics: (f = msg.getStatistics()) && proto.bragi.LolPlayerStatisticsState.toObject(includeInstance, f),
-    mapStatistics: (f = msg.getMapStatistics()) && proto.bragi.LolPlayerCurrentMapStatisticsState.toObject(includeInstance, f),
-    position: (f = msg.getPosition()) && proto.bragi.LolPosition.toObject(includeInstance, f)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+playerInfo: (f = msg.getPlayerInfo()) && proto.bragi.LolPlayerInfoState.toObject(includeInstance, f),
+timers: (f = msg.getTimers()) && proto.bragi.LolPlayerCurrentMapTimersState.toObject(includeInstance, f),
+statistics: (f = msg.getStatistics()) && proto.bragi.LolPlayerStatisticsState.toObject(includeInstance, f),
+mapStatistics: (f = msg.getMapStatistics()) && proto.bragi.LolPlayerCurrentMapStatisticsState.toObject(includeInstance, f),
+position: (f = msg.getPosition()) && proto.bragi.LolPosition.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -6157,13 +6166,13 @@ proto.bragi.LolPlayerCurrentMapStatisticsState.prototype.toObject = function(opt
  */
 proto.bragi.LolPlayerCurrentMapStatisticsState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    alive: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
-    health: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    maxHealth: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    totalGold: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    mana: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    maxMana: jspb.Message.getFieldWithDefault(msg, 7, 0)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+alive: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+health: jspb.Message.getFieldWithDefault(msg, 3, 0),
+maxHealth: jspb.Message.getFieldWithDefault(msg, 4, 0),
+totalGold: jspb.Message.getFieldWithDefault(msg, 5, 0),
+mana: jspb.Message.getFieldWithDefault(msg, 6, 0),
+maxMana: jspb.Message.getFieldWithDefault(msg, 7, 0)
   };
 
   if (includeInstance) {
@@ -6467,8 +6476,8 @@ proto.bragi.LolPlayerCurrentMapTimersState.prototype.toObject = function(opt_inc
  */
 proto.bragi.LolPlayerCurrentMapTimersState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    respawnTimer: (f = msg.getRespawnTimer()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+respawnTimer: (f = msg.getRespawnTimer()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -6648,16 +6657,16 @@ proto.bragi.LolTeamPreviousMapState.prototype.toObject = function(opt_includeIns
  */
 proto.bragi.LolTeamPreviousMapState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    faction: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    kills: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    barons: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    dragons: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    turrets: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    inhibitors: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    gold: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    won: jspb.Message.getBooleanFieldWithDefault(msg, 9, false),
-    playersMap: (f = msg.getPlayersMap()) ? f.toObject(includeInstance, proto.bragi.LolPlayerPreviousMapState.toObject) : []
+teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+faction: jspb.Message.getFieldWithDefault(msg, 2, 0),
+kills: jspb.Message.getFieldWithDefault(msg, 3, 0),
+barons: jspb.Message.getFieldWithDefault(msg, 4, 0),
+dragons: jspb.Message.getFieldWithDefault(msg, 5, 0),
+turrets: jspb.Message.getFieldWithDefault(msg, 6, 0),
+inhibitors: jspb.Message.getFieldWithDefault(msg, 7, 0),
+gold: jspb.Message.getFieldWithDefault(msg, 8, 0),
+won: (f = jspb.Message.getBooleanField(msg, 9)) == null ? undefined : f,
+playersMap: (f = msg.getPlayersMap()) ? f.toObject(includeInstance, proto.bragi.LolPlayerPreviousMapState.toObject) : []
   };
 
   if (includeInstance) {
@@ -7034,7 +7043,8 @@ proto.bragi.LolTeamPreviousMapState.prototype.getPlayersMap = function(opt_noLaz
  */
 proto.bragi.LolTeamPreviousMapState.prototype.clearPlayersMap = function() {
   this.getPlayersMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -7069,9 +7079,9 @@ proto.bragi.LolPlayerPreviousMapState.prototype.toObject = function(opt_includeI
  */
 proto.bragi.LolPlayerPreviousMapState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    playerInfo: (f = msg.getPlayerInfo()) && proto.bragi.LolPlayerInfoState.toObject(includeInstance, f),
-    statistics: (f = msg.getStatistics()) && proto.bragi.LolPlayerStatisticsState.toObject(includeInstance, f)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+playerInfo: (f = msg.getPlayerInfo()) && proto.bragi.LolPlayerInfoState.toObject(includeInstance, f),
+statistics: (f = msg.getStatistics()) && proto.bragi.LolPlayerStatisticsState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -7301,10 +7311,10 @@ proto.bragi.LolPlayerInfoState.prototype.toObject = function(opt_includeInstance
  */
 proto.bragi.LolPlayerInfoState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    slotId: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    extName: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    championId: jspb.Message.getFieldWithDefault(msg, 4, 0)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+slotId: jspb.Message.getFieldWithDefault(msg, 2, 0),
+extName: jspb.Message.getFieldWithDefault(msg, 3, ""),
+championId: (f = jspb.Message.getField(msg, 4)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -7539,11 +7549,11 @@ proto.bragi.LolPlayerStatisticsState.prototype.toObject = function(opt_includeIn
  */
 proto.bragi.LolPlayerStatisticsState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    kills: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    deaths: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    assists: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    creepScore: jspb.Message.getFieldWithDefault(msg, 5, 0)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+kills: jspb.Message.getFieldWithDefault(msg, 2, 0),
+deaths: jspb.Message.getFieldWithDefault(msg, 3, 0),
+assists: jspb.Message.getFieldWithDefault(msg, 4, 0),
+creepScore: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
   if (includeInstance) {
@@ -7796,7 +7806,7 @@ proto.bragi.LolTurrets.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.LolTurrets.toObject = function(includeInstance, msg) {
   var f, obj = {
-    turretsList: jspb.Message.toObjectList(msg.getTurretsList(),
+turretsList: jspb.Message.toObjectList(msg.getTurretsList(),
     proto.bragi.LolTurret.toObject, includeInstance)
   };
 
@@ -7956,7 +7966,7 @@ proto.bragi.LolInhibitors.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.LolInhibitors.toObject = function(includeInstance, msg) {
   var f, obj = {
-    inhibitorsList: jspb.Message.toObjectList(msg.getInhibitorsList(),
+inhibitorsList: jspb.Message.toObjectList(msg.getInhibitorsList(),
     proto.bragi.LolInhibitor.toObject, includeInstance)
   };
 
@@ -8109,10 +8119,10 @@ proto.bragi.LolTurret.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.LolTurret.toObject = function(includeInstance, msg) {
   var f, obj = {
-    lane: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    faction: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    tier: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    alive: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
+lane: jspb.Message.getFieldWithDefault(msg, 1, 0),
+faction: jspb.Message.getFieldWithDefault(msg, 2, 0),
+tier: jspb.Message.getFieldWithDefault(msg, 3, 0),
+alive: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -8329,9 +8339,9 @@ proto.bragi.LolInhibitor.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.LolInhibitor.toObject = function(includeInstance, msg) {
   var f, obj = {
-    lane: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    faction: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    alive: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+lane: jspb.Message.getFieldWithDefault(msg, 1, 0),
+faction: jspb.Message.getFieldWithDefault(msg, 2, 0),
+alive: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -8519,8 +8529,8 @@ proto.bragi.LolPosition.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.LolPosition.toObject = function(includeInstance, msg) {
   var f, obj = {
-    x: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
-    y: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0)
+x: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
+y: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0)
   };
 
   if (includeInstance) {

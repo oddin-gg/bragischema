@@ -13,7 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var global =
+    (typeof globalThis !== 'undefined' && globalThis) ||
+    (typeof window !== 'undefined' && window) ||
+    (typeof global !== 'undefined' && global) ||
+    (typeof self !== 'undefined' && self) ||
+    (function () { return this; }).call(null) ||
+    Function('return this')();
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
@@ -1675,11 +1681,11 @@ proto.bragi.CS2MatchMessage.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2MatchMessage.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    dataStatus: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    payload: (f = msg.getPayload()) && proto.bragi.CS2MatchMessage.Payload.toObject(includeInstance, f)
+matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
+timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+dataStatus: jspb.Message.getFieldWithDefault(msg, 5, 0),
+payload: (f = msg.getPayload()) && proto.bragi.CS2MatchMessage.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1865,8 +1871,8 @@ proto.bragi.CS2MatchMessage.Payload.prototype.toObject = function(opt_includeIns
  */
 proto.bragi.CS2MatchMessage.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    snapshot: (f = msg.getSnapshot()) && proto.bragi.CS2MatchSnapshot.toObject(includeInstance, f),
-    update: (f = msg.getUpdate()) && proto.bragi.CS2MatchUpdate.toObject(includeInstance, f)
+snapshot: (f = msg.getSnapshot()) && proto.bragi.CS2MatchSnapshot.toObject(includeInstance, f),
+update: (f = msg.getUpdate()) && proto.bragi.CS2MatchUpdate.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2202,14 +2208,14 @@ proto.bragi.CS2MatchSnapshot.prototype.toObject = function(opt_includeInstance) 
  */
 proto.bragi.CS2MatchSnapshot.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    dataStatus: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    announcementsList: jspb.Message.toObjectList(msg.getAnnouncementsList(),
+matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
+timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+dataStatus: jspb.Message.getFieldWithDefault(msg, 6, 0),
+announcementsList: jspb.Message.toObjectList(msg.getAnnouncementsList(),
     bragi_common_pb.Announcement.toObject, includeInstance),
-    matchState: (f = msg.getMatchState()) && proto.bragi.CS2MatchState.toObject(includeInstance, f),
-    tournament: (f = msg.getTournament()) && bragi_common_pb.Tournament.toObject(includeInstance, f)
+matchState: (f = msg.getMatchState()) && proto.bragi.CS2MatchState.toObject(includeInstance, f),
+tournament: (f = msg.getTournament()) && bragi_common_pb.Tournament.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2605,8 +2611,8 @@ proto.bragi.CS2MatchUpdate.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2MatchUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    payload: (f = msg.getPayload()) && proto.bragi.CS2MatchUpdate.Payload.toObject(includeInstance, f),
-    eventsList: jspb.Message.toObjectList(msg.getEventsList(),
+payload: (f = msg.getPayload()) && proto.bragi.CS2MatchUpdate.Payload.toObject(includeInstance, f),
+eventsList: jspb.Message.toObjectList(msg.getEventsList(),
     proto.bragi.CS2Event.toObject, includeInstance)
   };
 
@@ -2760,8 +2766,8 @@ proto.bragi.CS2MatchUpdate.Payload.prototype.toObject = function(opt_includeInst
  */
 proto.bragi.CS2MatchUpdate.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchState: (f = msg.getMatchState()) && proto.bragi.CS2MatchState.toObject(includeInstance, f),
-    partialUpdates: (f = msg.getPartialUpdates()) && proto.bragi.CS2MatchStatePartialUpdates.toObject(includeInstance, f)
+matchState: (f = msg.getMatchState()) && proto.bragi.CS2MatchState.toObject(includeInstance, f),
+partialUpdates: (f = msg.getPartialUpdates()) && proto.bragi.CS2MatchStatePartialUpdates.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3044,7 +3050,7 @@ proto.bragi.CS2MatchStatePartialUpdates.prototype.toObject = function(opt_includ
  */
 proto.bragi.CS2MatchStatePartialUpdates.toObject = function(includeInstance, msg) {
   var f, obj = {
-    updatesList: jspb.Message.toObjectList(msg.getUpdatesList(),
+updatesList: jspb.Message.toObjectList(msg.getUpdatesList(),
     proto.bragi.CS2MatchStatePartialUpdate.toObject, includeInstance)
   };
 
@@ -3224,9 +3230,9 @@ proto.bragi.CS2MatchStatePartialUpdate.prototype.toObject = function(opt_include
  */
 proto.bragi.CS2MatchStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    score: (f = msg.getScore()) && proto.bragi.CS2MatchScoreState.toObject(includeInstance, f),
-    currentMapState: (f = msg.getCurrentMapState()) && proto.bragi.CS2CurrentMapState.toObject(includeInstance, f),
-    currentMapStatePartialUpdate: (f = msg.getCurrentMapStatePartialUpdate()) && proto.bragi.CS2CurrentMapStatePartialUpdate.toObject(includeInstance, f)
+score: (f = msg.getScore()) && proto.bragi.CS2MatchScoreState.toObject(includeInstance, f),
+currentMapState: (f = msg.getCurrentMapState()) && proto.bragi.CS2CurrentMapState.toObject(includeInstance, f),
+currentMapStatePartialUpdate: (f = msg.getCurrentMapStatePartialUpdate()) && proto.bragi.CS2CurrentMapStatePartialUpdate.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3484,15 +3490,15 @@ proto.bragi.CS2MatchState.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2MatchState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    matchType: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    homeTeam: (f = msg.getHomeTeam()) && proto.bragi.CS2Team.toObject(includeInstance, f),
-    awayTeam: (f = msg.getAwayTeam()) && proto.bragi.CS2Team.toObject(includeInstance, f),
-    score: (f = msg.getScore()) && proto.bragi.CS2MatchScoreState.toObject(includeInstance, f),
-    winTeamUrn: jspb.Message.getFieldWithDefault(msg, 9, ""),
-    matchStatus: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    currentMapState: (f = msg.getCurrentMapState()) && proto.bragi.CS2CurrentMapState.toObject(includeInstance, f),
-    previousMapStatesList: jspb.Message.toObjectList(msg.getPreviousMapStatesList(),
+matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+matchType: jspb.Message.getFieldWithDefault(msg, 2, 0),
+homeTeam: (f = msg.getHomeTeam()) && proto.bragi.CS2Team.toObject(includeInstance, f),
+awayTeam: (f = msg.getAwayTeam()) && proto.bragi.CS2Team.toObject(includeInstance, f),
+score: (f = msg.getScore()) && proto.bragi.CS2MatchScoreState.toObject(includeInstance, f),
+winTeamUrn: (f = jspb.Message.getField(msg, 9)) == null ? undefined : f,
+matchStatus: jspb.Message.getFieldWithDefault(msg, 6, 0),
+currentMapState: (f = msg.getCurrentMapState()) && proto.bragi.CS2CurrentMapState.toObject(includeInstance, f),
+previousMapStatesList: jspb.Message.toObjectList(msg.getPreviousMapStatesList(),
     proto.bragi.CS2PreviousMapState.toObject, includeInstance)
   };
 
@@ -3979,8 +3985,8 @@ proto.bragi.CS2MatchScoreState.prototype.toObject = function(opt_includeInstance
  */
 proto.bragi.CS2MatchScoreState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    homeScore: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    awayScore: jspb.Message.getFieldWithDefault(msg, 2, 0)
+homeScore: jspb.Message.getFieldWithDefault(msg, 1, 0),
+awayScore: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -4139,8 +4145,8 @@ proto.bragi.CS2Team.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2Team.toObject = function(includeInstance, msg) {
   var f, obj = {
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    teamName: jspb.Message.getFieldWithDefault(msg, 2, "")
+teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+teamName: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -4328,11 +4334,11 @@ proto.bragi.CS2CurrentMapStatePartialUpdate.prototype.toObject = function(opt_in
  */
 proto.bragi.CS2CurrentMapStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    info: (f = msg.getInfo()) && proto.bragi.CS2MapInfoState.toObject(includeInstance, f),
-    score: (f = msg.getScore()) && proto.bragi.CS2MapScoreState.toObject(includeInstance, f),
-    currentRoundState: (f = msg.getCurrentRoundState()) && proto.bragi.CS2CurrentRoundState.toObject(includeInstance, f),
-    currentRoundStatePartialUpdate: (f = msg.getCurrentRoundStatePartialUpdate()) && proto.bragi.CS2CurrentRoundStatePartialUpdate.toObject(includeInstance, f),
-    teamMapStatesPartialUpdate: (f = msg.getTeamMapStatesPartialUpdate()) && proto.bragi.CS2TeamMapStatePartialUpdate.toObject(includeInstance, f)
+info: (f = msg.getInfo()) && proto.bragi.CS2MapInfoState.toObject(includeInstance, f),
+score: (f = msg.getScore()) && proto.bragi.CS2MapScoreState.toObject(includeInstance, f),
+currentRoundState: (f = msg.getCurrentRoundState()) && proto.bragi.CS2CurrentRoundState.toObject(includeInstance, f),
+currentRoundStatePartialUpdate: (f = msg.getCurrentRoundStatePartialUpdate()) && proto.bragi.CS2CurrentRoundStatePartialUpdate.toObject(includeInstance, f),
+teamMapStatesPartialUpdate: (f = msg.getTeamMapStatesPartialUpdate()) && proto.bragi.CS2TeamMapStatePartialUpdate.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4690,13 +4696,13 @@ proto.bragi.CS2CurrentMapState.prototype.toObject = function(opt_includeInstance
  */
 proto.bragi.CS2CurrentMapState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapOrder: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    info: (f = msg.getInfo()) && proto.bragi.CS2MapInfoState.toObject(includeInstance, f),
-    score: (f = msg.getScore()) && proto.bragi.CS2MapScoreState.toObject(includeInstance, f),
-    currentRoundState: (f = msg.getCurrentRoundState()) && proto.bragi.CS2CurrentRoundState.toObject(includeInstance, f),
-    previousRoundStatesList: jspb.Message.toObjectList(msg.getPreviousRoundStatesList(),
+mapOrder: jspb.Message.getFieldWithDefault(msg, 1, 0),
+info: (f = msg.getInfo()) && proto.bragi.CS2MapInfoState.toObject(includeInstance, f),
+score: (f = msg.getScore()) && proto.bragi.CS2MapScoreState.toObject(includeInstance, f),
+currentRoundState: (f = msg.getCurrentRoundState()) && proto.bragi.CS2CurrentRoundState.toObject(includeInstance, f),
+previousRoundStatesList: jspb.Message.toObjectList(msg.getPreviousRoundStatesList(),
     proto.bragi.CS2PreviousRoundState.toObject, includeInstance),
-    teamMapStatesMap: (f = msg.getTeamMapStatesMap()) ? f.toObject(includeInstance, proto.bragi.CS2TeamMapState.toObject) : []
+teamMapStatesMap: (f = msg.getTeamMapStatesMap()) ? f.toObject(includeInstance, proto.bragi.CS2TeamMapState.toObject) : []
   };
 
   if (includeInstance) {
@@ -5024,7 +5030,8 @@ proto.bragi.CS2CurrentMapState.prototype.getTeamMapStatesMap = function(opt_noLa
  */
 proto.bragi.CS2CurrentMapState.prototype.clearTeamMapStatesMap = function() {
   this.getTeamMapStatesMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -5066,12 +5073,12 @@ proto.bragi.CS2PreviousMapState.prototype.toObject = function(opt_includeInstanc
  */
 proto.bragi.CS2PreviousMapState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapOrder: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    info: (f = msg.getInfo()) && proto.bragi.CS2MapInfoState.toObject(includeInstance, f),
-    score: (f = msg.getScore()) && proto.bragi.CS2MapScoreState.toObject(includeInstance, f),
-    roundStatesList: jspb.Message.toObjectList(msg.getRoundStatesList(),
+mapOrder: jspb.Message.getFieldWithDefault(msg, 1, 0),
+info: (f = msg.getInfo()) && proto.bragi.CS2MapInfoState.toObject(includeInstance, f),
+score: (f = msg.getScore()) && proto.bragi.CS2MapScoreState.toObject(includeInstance, f),
+roundStatesList: jspb.Message.toObjectList(msg.getRoundStatesList(),
     proto.bragi.CS2PreviousRoundState.toObject, includeInstance),
-    teamMapStatesMap: (f = msg.getTeamMapStatesMap()) ? f.toObject(includeInstance, proto.bragi.CS2TeamMapState.toObject) : []
+teamMapStatesMap: (f = msg.getTeamMapStatesMap()) ? f.toObject(includeInstance, proto.bragi.CS2TeamMapState.toObject) : []
   };
 
   if (includeInstance) {
@@ -5349,7 +5356,8 @@ proto.bragi.CS2PreviousMapState.prototype.getTeamMapStatesMap = function(opt_noL
  */
 proto.bragi.CS2PreviousMapState.prototype.clearTeamMapStatesMap = function() {
   this.getTeamMapStatesMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -5384,16 +5392,16 @@ proto.bragi.CS2MapInfoState.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2MapInfoState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    maxRoundsDefault: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    maxRoundsOvertime: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    freezeTimeDuration: (f = msg.getFreezeTimeDuration()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    roundTimeDuration: (f = msg.getRoundTimeDuration()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    bombTimeDuration: (f = msg.getBombTimeDuration()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    startTime: (f = msg.getStartTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    endTime: (f = msg.getEndTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    mapEnded: jspb.Message.getBooleanFieldWithDefault(msg, 9, false),
-    winTeamUrn: jspb.Message.getFieldWithDefault(msg, 10, "")
+mapName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+maxRoundsDefault: jspb.Message.getFieldWithDefault(msg, 2, 0),
+maxRoundsOvertime: jspb.Message.getFieldWithDefault(msg, 3, 0),
+freezeTimeDuration: (f = msg.getFreezeTimeDuration()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+roundTimeDuration: (f = msg.getRoundTimeDuration()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+bombTimeDuration: (f = msg.getBombTimeDuration()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+startTime: (f = msg.getStartTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+endTime: (f = msg.getEndTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+mapEnded: jspb.Message.getBooleanFieldWithDefault(msg, 9, false),
+winTeamUrn: (f = jspb.Message.getField(msg, 10)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -5907,8 +5915,8 @@ proto.bragi.CS2MapScoreState.prototype.toObject = function(opt_includeInstance) 
  */
 proto.bragi.CS2MapScoreState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    homeScore: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    awayScore: jspb.Message.getFieldWithDefault(msg, 2, 0)
+homeScore: jspb.Message.getFieldWithDefault(msg, 1, 0),
+awayScore: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -6095,10 +6103,10 @@ proto.bragi.CS2CurrentRoundStatePartialUpdate.prototype.toObject = function(opt_
  */
 proto.bragi.CS2CurrentRoundStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    info: (f = msg.getInfo()) && proto.bragi.CS2RoundInfoState.toObject(includeInstance, f),
-    time: (f = msg.getTime()) && proto.bragi.CS2RoundTimeState.toObject(includeInstance, f),
-    bombState: (f = msg.getBombState()) && proto.bragi.CS2BombState.toObject(includeInstance, f),
-    teamStatesPartialUpdate: (f = msg.getTeamStatesPartialUpdate()) && proto.bragi.CS2TeamCurrentRoundStatePartialUpdate.toObject(includeInstance, f)
+info: (f = msg.getInfo()) && proto.bragi.CS2RoundInfoState.toObject(includeInstance, f),
+time: (f = msg.getTime()) && proto.bragi.CS2RoundTimeState.toObject(includeInstance, f),
+bombState: (f = msg.getBombState()) && proto.bragi.CS2BombState.toObject(includeInstance, f),
+teamStatesPartialUpdate: (f = msg.getTeamStatesPartialUpdate()) && proto.bragi.CS2TeamCurrentRoundStatePartialUpdate.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -6399,11 +6407,11 @@ proto.bragi.CS2CurrentRoundState.prototype.toObject = function(opt_includeInstan
  */
 proto.bragi.CS2CurrentRoundState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    roundNumber: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    info: (f = msg.getInfo()) && proto.bragi.CS2RoundInfoState.toObject(includeInstance, f),
-    time: (f = msg.getTime()) && proto.bragi.CS2RoundTimeState.toObject(includeInstance, f),
-    bombState: (f = msg.getBombState()) && proto.bragi.CS2BombState.toObject(includeInstance, f),
-    teamStatesMap: (f = msg.getTeamStatesMap()) ? f.toObject(includeInstance, proto.bragi.CS2TeamCurrentRoundState.toObject) : []
+roundNumber: jspb.Message.getFieldWithDefault(msg, 1, 0),
+info: (f = msg.getInfo()) && proto.bragi.CS2RoundInfoState.toObject(includeInstance, f),
+time: (f = msg.getTime()) && proto.bragi.CS2RoundTimeState.toObject(includeInstance, f),
+bombState: (f = msg.getBombState()) && proto.bragi.CS2BombState.toObject(includeInstance, f),
+teamStatesMap: (f = msg.getTeamStatesMap()) ? f.toObject(includeInstance, proto.bragi.CS2TeamCurrentRoundState.toObject) : []
   };
 
   if (includeInstance) {
@@ -6680,7 +6688,8 @@ proto.bragi.CS2CurrentRoundState.prototype.getTeamStatesMap = function(opt_noLaz
  */
 proto.bragi.CS2CurrentRoundState.prototype.clearTeamStatesMap = function() {
   this.getTeamStatesMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -6715,9 +6724,9 @@ proto.bragi.CS2PreviousRoundState.prototype.toObject = function(opt_includeInsta
  */
 proto.bragi.CS2PreviousRoundState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    roundNumber: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    info: (f = msg.getInfo()) && proto.bragi.CS2RoundInfoState.toObject(includeInstance, f),
-    teamStatesMap: (f = msg.getTeamStatesMap()) ? f.toObject(includeInstance, proto.bragi.CS2PreviousTeamRoundState.toObject) : []
+roundNumber: jspb.Message.getFieldWithDefault(msg, 1, 0),
+info: (f = msg.getInfo()) && proto.bragi.CS2RoundInfoState.toObject(includeInstance, f),
+teamStatesMap: (f = msg.getTeamStatesMap()) ? f.toObject(includeInstance, proto.bragi.CS2PreviousTeamRoundState.toObject) : []
   };
 
   if (includeInstance) {
@@ -6894,7 +6903,8 @@ proto.bragi.CS2PreviousRoundState.prototype.getTeamStatesMap = function(opt_noLa
  */
 proto.bragi.CS2PreviousRoundState.prototype.clearTeamStatesMap = function() {
   this.getTeamStatesMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -6929,12 +6939,12 @@ proto.bragi.CS2RoundInfoState.prototype.toObject = function(opt_includeInstance)
  */
 proto.bragi.CS2RoundInfoState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    roundType: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    startTime: (f = msg.getStartTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    endTime: (f = msg.getEndTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    winningTeamUrn: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    winReason: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    homeWon: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
+roundType: jspb.Message.getFieldWithDefault(msg, 1, 0),
+startTime: (f = msg.getStartTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+endTime: (f = msg.getEndTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+winningTeamUrn: (f = jspb.Message.getField(msg, 4)) == null ? undefined : f,
+winReason: (f = jspb.Message.getField(msg, 5)) == null ? undefined : f,
+homeWon: (f = jspb.Message.getBooleanField(msg, 6)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -7305,7 +7315,7 @@ proto.bragi.CS2RoundTimeState.prototype.toObject = function(opt_includeInstance)
  */
 proto.bragi.CS2RoundTimeState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
+timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -7487,13 +7497,13 @@ proto.bragi.CS2BombState.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2BombState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    carried: (f = msg.getCarried()) && proto.bragi.CS2BombCarriedState.toObject(includeInstance, f),
-    dropped: (f = msg.getDropped()) && proto.bragi.CS2BombDroppedState.toObject(includeInstance, f),
-    planting: (f = msg.getPlanting()) && proto.bragi.CS2BombPlantingState.toObject(includeInstance, f),
-    planted: (f = msg.getPlanted()) && proto.bragi.CS2BombPlantedState.toObject(includeInstance, f),
-    defusing: (f = msg.getDefusing()) && proto.bragi.CS2BombDefusingState.toObject(includeInstance, f),
-    defused: (f = msg.getDefused()) && proto.bragi.CS2BombDefusedState.toObject(includeInstance, f),
-    exploded: (f = msg.getExploded()) && proto.bragi.CS2BombExplodedState.toObject(includeInstance, f)
+carried: (f = msg.getCarried()) && proto.bragi.CS2BombCarriedState.toObject(includeInstance, f),
+dropped: (f = msg.getDropped()) && proto.bragi.CS2BombDroppedState.toObject(includeInstance, f),
+planting: (f = msg.getPlanting()) && proto.bragi.CS2BombPlantingState.toObject(includeInstance, f),
+planted: (f = msg.getPlanted()) && proto.bragi.CS2BombPlantedState.toObject(includeInstance, f),
+defusing: (f = msg.getDefusing()) && proto.bragi.CS2BombDefusingState.toObject(includeInstance, f),
+defused: (f = msg.getDefused()) && proto.bragi.CS2BombDefusedState.toObject(includeInstance, f),
+exploded: (f = msg.getExploded()) && proto.bragi.CS2BombExplodedState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -7944,8 +7954,8 @@ proto.bragi.CS2BombCarriedState.prototype.toObject = function(opt_includeInstanc
  */
 proto.bragi.CS2BombCarriedState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -8125,8 +8135,8 @@ proto.bragi.CS2BombDroppedState.prototype.toObject = function(opt_includeInstanc
  */
 proto.bragi.CS2BombDroppedState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    droppedByPlayerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f)
+droppedByPlayerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -8306,9 +8316,9 @@ proto.bragi.CS2BombPlantingState.prototype.toObject = function(opt_includeInstan
  */
 proto.bragi.CS2BombPlantingState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f),
-    countdown: (f = msg.getCountdown()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f),
+countdown: (f = msg.getCountdown()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -8538,10 +8548,10 @@ proto.bragi.CS2BombPlantedState.prototype.toObject = function(opt_includeInstanc
  */
 proto.bragi.CS2BombPlantedState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    plantedByPlayerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f),
-    plantedAt: (f = msg.getPlantedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    countdown: (f = msg.getCountdown()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
+plantedByPlayerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f),
+plantedAt: (f = msg.getPlantedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+countdown: (f = msg.getCountdown()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -8821,10 +8831,10 @@ proto.bragi.CS2BombDefusingState.prototype.toObject = function(opt_includeInstan
  */
 proto.bragi.CS2BombDefusingState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f),
-    countdown: (f = msg.getCountdown()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    defuseStartedAt: (f = msg.getDefuseStartedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f),
+countdown: (f = msg.getCountdown()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+defuseStartedAt: (f = msg.getDefuseStartedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -9104,9 +9114,9 @@ proto.bragi.CS2BombDefusedState.prototype.toObject = function(opt_includeInstanc
  */
 proto.bragi.CS2BombDefusedState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    defusedByPlayerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f),
-    defusedAt: (f = msg.getDefusedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+defusedByPlayerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f),
+defusedAt: (f = msg.getDefusedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -9336,8 +9346,8 @@ proto.bragi.CS2BombExplodedState.prototype.toObject = function(opt_includeInstan
  */
 proto.bragi.CS2BombExplodedState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f),
-    explodedAt: (f = msg.getExplodedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f),
+explodedAt: (f = msg.getExplodedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -9538,8 +9548,8 @@ proto.bragi.CS2TeamMapStatePartialUpdate.prototype.toObject = function(opt_inclu
  */
 proto.bragi.CS2TeamMapStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    payload: (f = msg.getPayload()) && proto.bragi.CS2TeamMapStatePartialUpdate.Payload.toObject(includeInstance, f)
+teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+payload: (f = msg.getPayload()) && proto.bragi.CS2TeamMapStatePartialUpdate.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -9690,8 +9700,8 @@ proto.bragi.CS2TeamMapStatePartialUpdate.Payload.prototype.toObject = function(o
  */
 proto.bragi.CS2TeamMapStatePartialUpdate.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerState: (f = msg.getPlayerState()) && proto.bragi.CS2PlayerMapState.toObject(includeInstance, f),
-    playerMapStatesPartialUpdate: (f = msg.getPlayerMapStatesPartialUpdate()) && proto.bragi.CS2PlayerMapStatePartialUpdate.toObject(includeInstance, f)
+playerState: (f = msg.getPlayerState()) && proto.bragi.CS2PlayerMapState.toObject(includeInstance, f),
+playerMapStatesPartialUpdate: (f = msg.getPlayerMapStatesPartialUpdate()) && proto.bragi.CS2PlayerMapStatePartialUpdate.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -9947,9 +9957,9 @@ proto.bragi.CS2TeamMapState.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2TeamMapState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    side: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    playerMapStatesMap: (f = msg.getPlayerMapStatesMap()) ? f.toObject(includeInstance, proto.bragi.CS2PlayerMapState.toObject) : []
+teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+side: jspb.Message.getFieldWithDefault(msg, 2, 0),
+playerMapStatesMap: (f = msg.getPlayerMapStatesMap()) ? f.toObject(includeInstance, proto.bragi.CS2PlayerMapState.toObject) : []
   };
 
   if (includeInstance) {
@@ -10105,7 +10115,8 @@ proto.bragi.CS2TeamMapState.prototype.getPlayerMapStatesMap = function(opt_noLaz
  */
 proto.bragi.CS2TeamMapState.prototype.clearPlayerMapStatesMap = function() {
   this.getPlayerMapStatesMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -10140,8 +10151,8 @@ proto.bragi.CS2TeamCurrentRoundStatePartialUpdate.prototype.toObject = function(
  */
 proto.bragi.CS2TeamCurrentRoundStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    payload: (f = msg.getPayload()) && proto.bragi.CS2TeamCurrentRoundStatePartialUpdate.Payload.toObject(includeInstance, f)
+teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+payload: (f = msg.getPayload()) && proto.bragi.CS2TeamCurrentRoundStatePartialUpdate.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -10292,8 +10303,8 @@ proto.bragi.CS2TeamCurrentRoundStatePartialUpdate.Payload.prototype.toObject = f
  */
 proto.bragi.CS2TeamCurrentRoundStatePartialUpdate.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerState: (f = msg.getPlayerState()) && proto.bragi.CS2PlayerCurrentRoundState.toObject(includeInstance, f),
-    playerRoundStatesPartialUpdate: (f = msg.getPlayerRoundStatesPartialUpdate()) && proto.bragi.CS2PlayerCurrentRoundStatePartialUpdate.toObject(includeInstance, f)
+playerState: (f = msg.getPlayerState()) && proto.bragi.CS2PlayerCurrentRoundState.toObject(includeInstance, f),
+playerRoundStatesPartialUpdate: (f = msg.getPlayerRoundStatesPartialUpdate()) && proto.bragi.CS2PlayerCurrentRoundStatePartialUpdate.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -10549,8 +10560,8 @@ proto.bragi.CS2TeamCurrentRoundState.prototype.toObject = function(opt_includeIn
  */
 proto.bragi.CS2TeamCurrentRoundState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    playerRoundStatesMap: (f = msg.getPlayerRoundStatesMap()) ? f.toObject(includeInstance, proto.bragi.CS2PlayerCurrentRoundState.toObject) : []
+teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+playerRoundStatesMap: (f = msg.getPlayerRoundStatesMap()) ? f.toObject(includeInstance, proto.bragi.CS2PlayerCurrentRoundState.toObject) : []
   };
 
   if (includeInstance) {
@@ -10677,7 +10688,8 @@ proto.bragi.CS2TeamCurrentRoundState.prototype.getPlayerRoundStatesMap = functio
  */
 proto.bragi.CS2TeamCurrentRoundState.prototype.clearPlayerRoundStatesMap = function() {
   this.getPlayerRoundStatesMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -10712,8 +10724,8 @@ proto.bragi.CS2PreviousTeamRoundState.prototype.toObject = function(opt_includeI
  */
 proto.bragi.CS2PreviousTeamRoundState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    playersMap: (f = msg.getPlayersMap()) ? f.toObject(includeInstance, proto.bragi.CS2PlayerPreviousRoundState.toObject) : []
+teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+playersMap: (f = msg.getPlayersMap()) ? f.toObject(includeInstance, proto.bragi.CS2PlayerPreviousRoundState.toObject) : []
   };
 
   if (includeInstance) {
@@ -10840,7 +10852,8 @@ proto.bragi.CS2PreviousTeamRoundState.prototype.getPlayersMap = function(opt_noL
  */
 proto.bragi.CS2PreviousTeamRoundState.prototype.clearPlayersMap = function() {
   this.getPlayersMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -10875,8 +10888,8 @@ proto.bragi.CS2PlayerMapStatePartialUpdate.prototype.toObject = function(opt_inc
  */
 proto.bragi.CS2PlayerMapStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    payload: (f = msg.getPayload()) && proto.bragi.CS2PlayerMapStatePartialUpdate.Payload.toObject(includeInstance, f)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+payload: (f = msg.getPayload()) && proto.bragi.CS2PlayerMapStatePartialUpdate.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -11026,7 +11039,7 @@ proto.bragi.CS2PlayerMapStatePartialUpdate.Payload.prototype.toObject = function
  */
 proto.bragi.CS2PlayerMapStatePartialUpdate.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    statistics: (f = msg.getStatistics()) && proto.bragi.CS2PlayerMapStatisticsState.toObject(includeInstance, f)
+statistics: (f = msg.getStatistics()) && proto.bragi.CS2PlayerMapStatisticsState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -11232,10 +11245,10 @@ proto.bragi.CS2PlayerMapState.prototype.toObject = function(opt_includeInstance)
  */
 proto.bragi.CS2PlayerMapState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    playerName: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    slotId: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    statistics: (f = msg.getStatistics()) && proto.bragi.CS2PlayerMapStatisticsState.toObject(includeInstance, f)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+playerName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+slotId: jspb.Message.getFieldWithDefault(msg, 4, 0),
+statistics: (f = msg.getStatistics()) && proto.bragi.CS2PlayerMapStatisticsState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -11473,12 +11486,12 @@ proto.bragi.CS2PlayerMapStatisticsState.prototype.toObject = function(opt_includ
  */
 proto.bragi.CS2PlayerMapStatisticsState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    openingKills: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    openingDeaths: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    totalDamage: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    averageDamagePerRound: jspb.Message.getFloatingPointFieldWithDefault(msg, 7, 0.0),
-    statistics: (f = msg.getStatistics()) && proto.bragi.CS2PlayerStatistics.toObject(includeInstance, f)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+openingKills: jspb.Message.getFieldWithDefault(msg, 4, 0),
+openingDeaths: jspb.Message.getFieldWithDefault(msg, 5, 0),
+totalDamage: jspb.Message.getFieldWithDefault(msg, 6, 0),
+averageDamagePerRound: jspb.Message.getFloatingPointFieldWithDefault(msg, 7, 0.0),
+statistics: (f = msg.getStatistics()) && proto.bragi.CS2PlayerStatistics.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -11774,8 +11787,8 @@ proto.bragi.CS2PlayerCurrentRoundStatePartialUpdate.prototype.toObject = functio
  */
 proto.bragi.CS2PlayerCurrentRoundStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    payload: (f = msg.getPayload()) && proto.bragi.CS2PlayerCurrentRoundStatePartialUpdate.Payload.toObject(includeInstance, f)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+payload: (f = msg.getPayload()) && proto.bragi.CS2PlayerCurrentRoundStatePartialUpdate.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -11927,9 +11940,9 @@ proto.bragi.CS2PlayerCurrentRoundStatePartialUpdate.Payload.prototype.toObject =
  */
 proto.bragi.CS2PlayerCurrentRoundStatePartialUpdate.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    statistics: (f = msg.getStatistics()) && proto.bragi.CS2PlayerCurrentRoundStatisticsState.toObject(includeInstance, f),
-    items: (f = msg.getItems()) && proto.bragi.CS2PlayerItemsState.toObject(includeInstance, f),
-    position: (f = msg.getPosition()) && proto.bragi.CS2PlayerPositionState.toObject(includeInstance, f)
+statistics: (f = msg.getStatistics()) && proto.bragi.CS2PlayerCurrentRoundStatisticsState.toObject(includeInstance, f),
+items: (f = msg.getItems()) && proto.bragi.CS2PlayerItemsState.toObject(includeInstance, f),
+position: (f = msg.getPosition()) && proto.bragi.CS2PlayerPositionState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -12235,12 +12248,12 @@ proto.bragi.CS2PlayerCurrentRoundState.prototype.toObject = function(opt_include
  */
 proto.bragi.CS2PlayerCurrentRoundState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    playerName: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    slotId: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    statistics: (f = msg.getStatistics()) && proto.bragi.CS2PlayerCurrentRoundStatisticsState.toObject(includeInstance, f),
-    items: (f = msg.getItems()) && proto.bragi.CS2PlayerItemsState.toObject(includeInstance, f),
-    position: (f = msg.getPosition()) && proto.bragi.CS2PlayerPositionState.toObject(includeInstance, f)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+playerName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+slotId: jspb.Message.getFieldWithDefault(msg, 6, 0),
+statistics: (f = msg.getStatistics()) && proto.bragi.CS2PlayerCurrentRoundStatisticsState.toObject(includeInstance, f),
+items: (f = msg.getItems()) && proto.bragi.CS2PlayerItemsState.toObject(includeInstance, f),
+position: (f = msg.getPosition()) && proto.bragi.CS2PlayerPositionState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -12578,13 +12591,13 @@ proto.bragi.CS2PlayerCurrentRoundStatisticsState.prototype.toObject = function(o
  */
 proto.bragi.CS2PlayerCurrentRoundStatisticsState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    alive: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
-    health: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    armor: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    balance: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    damage: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    statistics: (f = msg.getStatistics()) && proto.bragi.CS2PlayerStatistics.toObject(includeInstance, f)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+alive: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+health: jspb.Message.getFieldWithDefault(msg, 3, 0),
+armor: jspb.Message.getFieldWithDefault(msg, 4, 0),
+balance: jspb.Message.getFieldWithDefault(msg, 5, 0),
+damage: (f = jspb.Message.getField(msg, 7)) == null ? undefined : f,
+statistics: (f = msg.getStatistics()) && proto.bragi.CS2PlayerStatistics.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -12934,9 +12947,9 @@ proto.bragi.CS2PlayerItemsState.prototype.toObject = function(opt_includeInstanc
  */
 proto.bragi.CS2PlayerItemsState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    equipmentValue: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    itemsList: jspb.Message.toObjectList(msg.getItemsList(),
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+equipmentValue: jspb.Message.getFieldWithDefault(msg, 2, 0),
+itemsList: jspb.Message.toObjectList(msg.getItemsList(),
     proto.bragi.CS2Item.toObject, includeInstance)
   };
 
@@ -13147,9 +13160,9 @@ proto.bragi.CS2PlayerPreviousRoundState.prototype.toObject = function(opt_includ
  */
 proto.bragi.CS2PlayerPreviousRoundState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    playerName: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    statistics: (f = msg.getStatistics()) && proto.bragi.CS2PlayerStatistics.toObject(includeInstance, f)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+playerName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+statistics: (f = msg.getStatistics()) && proto.bragi.CS2PlayerStatistics.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -13358,8 +13371,8 @@ proto.bragi.CS2PlayerPositionState.prototype.toObject = function(opt_includeInst
  */
 proto.bragi.CS2PlayerPositionState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -13539,21 +13552,21 @@ proto.bragi.CS2PlayerStatistics.prototype.toObject = function(opt_includeInstanc
  */
 proto.bragi.CS2PlayerStatistics.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    kills: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    friendlyKills: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    enemyKills: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    selfKills: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    deaths: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    assists: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    headshots: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    damage: jspb.Message.getFieldWithDefault(msg, 15, 0),
-    friendlyDamageDealtArmor: jspb.Message.getFieldWithDefault(msg, 9, 0),
-    friendlyDamageDealtHealth: jspb.Message.getFieldWithDefault(msg, 10, 0),
-    enemyDamageDealtArmor: jspb.Message.getFieldWithDefault(msg, 11, 0),
-    enemyDamageDealtHealth: jspb.Message.getFieldWithDefault(msg, 12, 0),
-    enemyDamageDealtArmorRaw: jspb.Message.getFieldWithDefault(msg, 13, 0),
-    enemyDamageDealtHealthRaw: jspb.Message.getFieldWithDefault(msg, 14, 0)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+kills: jspb.Message.getFieldWithDefault(msg, 2, 0),
+friendlyKills: jspb.Message.getFieldWithDefault(msg, 3, 0),
+enemyKills: jspb.Message.getFieldWithDefault(msg, 4, 0),
+selfKills: jspb.Message.getFieldWithDefault(msg, 5, 0),
+deaths: jspb.Message.getFieldWithDefault(msg, 6, 0),
+assists: jspb.Message.getFieldWithDefault(msg, 7, 0),
+headshots: jspb.Message.getFieldWithDefault(msg, 8, 0),
+damage: jspb.Message.getFieldWithDefault(msg, 15, 0),
+friendlyDamageDealtArmor: (f = jspb.Message.getField(msg, 9)) == null ? undefined : f,
+friendlyDamageDealtHealth: (f = jspb.Message.getField(msg, 10)) == null ? undefined : f,
+enemyDamageDealtArmor: (f = jspb.Message.getField(msg, 11)) == null ? undefined : f,
+enemyDamageDealtHealth: (f = jspb.Message.getField(msg, 12)) == null ? undefined : f,
+enemyDamageDealtArmorRaw: (f = jspb.Message.getField(msg, 13)) == null ? undefined : f,
+enemyDamageDealtHealthRaw: (f = jspb.Message.getField(msg, 14)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -14197,11 +14210,11 @@ proto.bragi.CS2Item.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2Item.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    weaponType: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    type: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    count: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    isactive: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+weaponType: jspb.Message.getFieldWithDefault(msg, 2, 0),
+type: jspb.Message.getFieldWithDefault(msg, 5, 0),
+count: jspb.Message.getFieldWithDefault(msg, 3, 0),
+isactive: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -14447,10 +14460,10 @@ proto.bragi.CS2Position.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2Position.toObject = function(includeInstance, msg) {
   var f, obj = {
-    x: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
-    y: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
-    z: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
-    angle: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0)
+x: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
+y: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
+z: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
+angle: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0)
   };
 
   if (includeInstance) {
@@ -14712,27 +14725,27 @@ proto.bragi.CS2Event.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2Event.toObject = function(includeInstance, msg) {
   var f, obj = {
-    bombDefuseStarted: (f = msg.getBombDefuseStarted()) && proto.bragi.CS2BombDefuseStarted.toObject(includeInstance, f),
-    bombDefused: (f = msg.getBombDefused()) && proto.bragi.CS2BombDefused.toObject(includeInstance, f),
-    bombExploded: (f = msg.getBombExploded()) && proto.bragi.CS2BombExploded.toObject(includeInstance, f),
-    bombPlantStarted: (f = msg.getBombPlantStarted()) && proto.bragi.CS2BombPlantStarted.toObject(includeInstance, f),
-    bombPlanted: (f = msg.getBombPlanted()) && proto.bragi.CS2BombPlanted.toObject(includeInstance, f),
-    damageDealt: (f = msg.getDamageDealt()) && proto.bragi.CS2DamageDealt.toObject(includeInstance, f),
-    freezeTimeEnded: (f = msg.getFreezeTimeEnded()) && proto.bragi.CS2FreezeTimeEnded.toObject(includeInstance, f),
-    freezeTimeStarted: (f = msg.getFreezeTimeStarted()) && proto.bragi.CS2FreezeTimeStarted.toObject(includeInstance, f),
-    itemDrop: (f = msg.getItemDrop()) && proto.bragi.CS2ItemDrop.toObject(includeInstance, f),
-    itemPickUp: (f = msg.getItemPickUp()) && proto.bragi.CS2ItemPickUp.toObject(includeInstance, f),
-    itemPurchase: (f = msg.getItemPurchase()) && proto.bragi.CS2ItemPurchase.toObject(includeInstance, f),
-    itemThrow: (f = msg.getItemThrow()) && proto.bragi.CS2ItemThrow.toObject(includeInstance, f),
-    kill: (f = msg.getKill()) && proto.bragi.CS2Kill.toObject(includeInstance, f),
-    death: (f = msg.getDeath()) && proto.bragi.CS2Death.toObject(includeInstance, f),
-    mapEnd: (f = msg.getMapEnd()) && proto.bragi.CS2MapEnd.toObject(includeInstance, f),
-    mapStart: (f = msg.getMapStart()) && proto.bragi.CS2MapStart.toObject(includeInstance, f),
-    roundEnd: (f = msg.getRoundEnd()) && proto.bragi.CS2RoundEnd.toObject(includeInstance, f),
-    roundPause: (f = msg.getRoundPause()) && proto.bragi.CS2RoundPause.toObject(includeInstance, f),
-    roundResume: (f = msg.getRoundResume()) && proto.bragi.CS2RoundResume.toObject(includeInstance, f),
-    roundRollback: (f = msg.getRoundRollback()) && proto.bragi.CS2RoundRollback.toObject(includeInstance, f),
-    roundStart: (f = msg.getRoundStart()) && proto.bragi.CS2RoundStart.toObject(includeInstance, f)
+bombDefuseStarted: (f = msg.getBombDefuseStarted()) && proto.bragi.CS2BombDefuseStarted.toObject(includeInstance, f),
+bombDefused: (f = msg.getBombDefused()) && proto.bragi.CS2BombDefused.toObject(includeInstance, f),
+bombExploded: (f = msg.getBombExploded()) && proto.bragi.CS2BombExploded.toObject(includeInstance, f),
+bombPlantStarted: (f = msg.getBombPlantStarted()) && proto.bragi.CS2BombPlantStarted.toObject(includeInstance, f),
+bombPlanted: (f = msg.getBombPlanted()) && proto.bragi.CS2BombPlanted.toObject(includeInstance, f),
+damageDealt: (f = msg.getDamageDealt()) && proto.bragi.CS2DamageDealt.toObject(includeInstance, f),
+freezeTimeEnded: (f = msg.getFreezeTimeEnded()) && proto.bragi.CS2FreezeTimeEnded.toObject(includeInstance, f),
+freezeTimeStarted: (f = msg.getFreezeTimeStarted()) && proto.bragi.CS2FreezeTimeStarted.toObject(includeInstance, f),
+itemDrop: (f = msg.getItemDrop()) && proto.bragi.CS2ItemDrop.toObject(includeInstance, f),
+itemPickUp: (f = msg.getItemPickUp()) && proto.bragi.CS2ItemPickUp.toObject(includeInstance, f),
+itemPurchase: (f = msg.getItemPurchase()) && proto.bragi.CS2ItemPurchase.toObject(includeInstance, f),
+itemThrow: (f = msg.getItemThrow()) && proto.bragi.CS2ItemThrow.toObject(includeInstance, f),
+kill: (f = msg.getKill()) && proto.bragi.CS2Kill.toObject(includeInstance, f),
+death: (f = msg.getDeath()) && proto.bragi.CS2Death.toObject(includeInstance, f),
+mapEnd: (f = msg.getMapEnd()) && proto.bragi.CS2MapEnd.toObject(includeInstance, f),
+mapStart: (f = msg.getMapStart()) && proto.bragi.CS2MapStart.toObject(includeInstance, f),
+roundEnd: (f = msg.getRoundEnd()) && proto.bragi.CS2RoundEnd.toObject(includeInstance, f),
+roundPause: (f = msg.getRoundPause()) && proto.bragi.CS2RoundPause.toObject(includeInstance, f),
+roundResume: (f = msg.getRoundResume()) && proto.bragi.CS2RoundResume.toObject(includeInstance, f),
+roundRollback: (f = msg.getRoundRollback()) && proto.bragi.CS2RoundRollback.toObject(includeInstance, f),
+roundStart: (f = msg.getRoundStart()) && proto.bragi.CS2RoundStart.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -15883,9 +15896,9 @@ proto.bragi.CS2PlayerBalance.prototype.toObject = function(opt_includeInstance) 
  */
 proto.bragi.CS2PlayerBalance.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    balance: jspb.Message.getFieldWithDefault(msg, 3, 0)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+teamUrn: jspb.Message.getFieldWithDefault(msg, 2, ""),
+balance: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -16080,10 +16093,10 @@ proto.bragi.CS2PlayerItems.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2PlayerItems.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    equipmentValue: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    itemsList: jspb.Message.toObjectList(msg.getItemsList(),
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+teamUrn: jspb.Message.getFieldWithDefault(msg, 2, ""),
+equipmentValue: jspb.Message.getFieldWithDefault(msg, 3, 0),
+itemsList: jspb.Message.toObjectList(msg.getItemsList(),
     proto.bragi.CS2Item.toObject, includeInstance)
   };
 
@@ -16323,11 +16336,11 @@ proto.bragi.CS2BombDefuseStarted.prototype.toObject = function(opt_includeInstan
  */
 proto.bragi.CS2BombDefuseStarted.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 5, "")
+mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
+playerUrn: jspb.Message.getFieldWithDefault(msg, 4, ""),
+teamUrn: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -16615,11 +16628,11 @@ proto.bragi.CS2BombDefused.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2BombDefused.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 5, "")
+mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
+playerUrn: jspb.Message.getFieldWithDefault(msg, 4, ""),
+teamUrn: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -16907,9 +16920,9 @@ proto.bragi.CS2BombExploded.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2BombExploded.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0)
+mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -17139,11 +17152,11 @@ proto.bragi.CS2BombPlantStarted.prototype.toObject = function(opt_includeInstanc
  */
 proto.bragi.CS2BombPlantStarted.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 5, "")
+mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
+playerUrn: jspb.Message.getFieldWithDefault(msg, 4, ""),
+teamUrn: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -17431,11 +17444,11 @@ proto.bragi.CS2BombPlanted.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2BombPlanted.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 5, "")
+mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
+playerUrn: jspb.Message.getFieldWithDefault(msg, 4, ""),
+teamUrn: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -17723,21 +17736,21 @@ proto.bragi.CS2DamageDealt.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2DamageDealt.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    killerPosition: (f = msg.getKillerPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f),
-    killerUrn: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    killerTeamUrn: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    victimUrn: jspb.Message.getFieldWithDefault(msg, 7, ""),
-    victimTeamUrn: jspb.Message.getFieldWithDefault(msg, 8, ""),
-    weapon: jspb.Message.getFieldWithDefault(msg, 9, ""),
-    hitgroup: jspb.Message.getFieldWithDefault(msg, 10, ""),
-    healthDeducted: jspb.Message.getFieldWithDefault(msg, 11, 0),
-    healthRemaining: jspb.Message.getFieldWithDefault(msg, 12, 0),
-    armorDeducted: jspb.Message.getFieldWithDefault(msg, 13, 0),
-    armorRemaining: jspb.Message.getFieldWithDefault(msg, 14, 0),
-    victimPosition: (f = msg.getVictimPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f)
+mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
+killerPosition: (f = msg.getKillerPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f),
+killerUrn: jspb.Message.getFieldWithDefault(msg, 5, ""),
+killerTeamUrn: jspb.Message.getFieldWithDefault(msg, 6, ""),
+victimUrn: jspb.Message.getFieldWithDefault(msg, 7, ""),
+victimTeamUrn: jspb.Message.getFieldWithDefault(msg, 8, ""),
+weapon: jspb.Message.getFieldWithDefault(msg, 9, ""),
+hitgroup: jspb.Message.getFieldWithDefault(msg, 10, ""),
+healthDeducted: jspb.Message.getFieldWithDefault(msg, 11, 0),
+healthRemaining: jspb.Message.getFieldWithDefault(msg, 12, 0),
+armorDeducted: jspb.Message.getFieldWithDefault(msg, 13, 0),
+armorRemaining: jspb.Message.getFieldWithDefault(msg, 14, 0),
+victimPosition: (f = msg.getVictimPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -18357,11 +18370,11 @@ proto.bragi.CS2FreezeTimeEnded.prototype.toObject = function(opt_includeInstance
  */
 proto.bragi.CS2FreezeTimeEnded.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    playerBalancesMap: (f = msg.getPlayerBalancesMap()) ? f.toObject(includeInstance, proto.bragi.CS2PlayerBalance.toObject) : [],
-    playerInventoriesMap: (f = msg.getPlayerInventoriesMap()) ? f.toObject(includeInstance, proto.bragi.CS2PlayerItems.toObject) : []
+mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
+playerBalancesMap: (f = msg.getPlayerBalancesMap()) ? f.toObject(includeInstance, proto.bragi.CS2PlayerBalance.toObject) : [],
+playerInventoriesMap: (f = msg.getPlayerInventoriesMap()) ? f.toObject(includeInstance, proto.bragi.CS2PlayerItems.toObject) : []
   };
 
   if (includeInstance) {
@@ -18598,7 +18611,8 @@ proto.bragi.CS2FreezeTimeEnded.prototype.getPlayerBalancesMap = function(opt_noL
  */
 proto.bragi.CS2FreezeTimeEnded.prototype.clearPlayerBalancesMap = function() {
   this.getPlayerBalancesMap().clear();
-  return this;};
+  return this;
+};
 
 
 /**
@@ -18620,7 +18634,8 @@ proto.bragi.CS2FreezeTimeEnded.prototype.getPlayerInventoriesMap = function(opt_
  */
 proto.bragi.CS2FreezeTimeEnded.prototype.clearPlayerInventoriesMap = function() {
   this.getPlayerInventoriesMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -18655,11 +18670,11 @@ proto.bragi.CS2FreezeTimeStarted.prototype.toObject = function(opt_includeInstan
  */
 proto.bragi.CS2FreezeTimeStarted.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    playerBalancesMap: (f = msg.getPlayerBalancesMap()) ? f.toObject(includeInstance, proto.bragi.CS2PlayerBalance.toObject) : [],
-    teamsRoundInfoMap: (f = msg.getTeamsRoundInfoMap()) ? f.toObject(includeInstance, undefined) : []
+mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
+playerBalancesMap: (f = msg.getPlayerBalancesMap()) ? f.toObject(includeInstance, proto.bragi.CS2PlayerBalance.toObject) : [],
+teamsRoundInfoMap: (f = msg.getTeamsRoundInfoMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -18896,7 +18911,8 @@ proto.bragi.CS2FreezeTimeStarted.prototype.getPlayerBalancesMap = function(opt_n
  */
 proto.bragi.CS2FreezeTimeStarted.prototype.clearPlayerBalancesMap = function() {
   this.getPlayerBalancesMap().clear();
-  return this;};
+  return this;
+};
 
 
 /**
@@ -18918,7 +18934,8 @@ proto.bragi.CS2FreezeTimeStarted.prototype.getTeamsRoundInfoMap = function(opt_n
  */
 proto.bragi.CS2FreezeTimeStarted.prototype.clearTeamsRoundInfoMap = function() {
   this.getTeamsRoundInfoMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -18953,13 +18970,13 @@ proto.bragi.CS2ItemDrop.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2ItemDrop.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f),
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    item: jspb.Message.getFieldWithDefault(msg, 7, "")
+mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
+position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f),
+playerUrn: jspb.Message.getFieldWithDefault(msg, 5, ""),
+teamUrn: jspb.Message.getFieldWithDefault(msg, 6, ""),
+item: jspb.Message.getFieldWithDefault(msg, 7, "")
   };
 
   if (includeInstance) {
@@ -19326,12 +19343,12 @@ proto.bragi.CS2ItemPickUp.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2ItemPickUp.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    item: jspb.Message.getFieldWithDefault(msg, 6, "")
+mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
+playerUrn: jspb.Message.getFieldWithDefault(msg, 4, ""),
+teamUrn: jspb.Message.getFieldWithDefault(msg, 5, ""),
+item: jspb.Message.getFieldWithDefault(msg, 6, "")
   };
 
   if (includeInstance) {
@@ -19648,14 +19665,14 @@ proto.bragi.CS2ItemPurchase.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2ItemPurchase.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    item: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    playerBalance: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    equipmentValue: jspb.Message.getFieldWithDefault(msg, 8, 0)
+mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
+playerUrn: jspb.Message.getFieldWithDefault(msg, 4, ""),
+teamUrn: jspb.Message.getFieldWithDefault(msg, 5, ""),
+item: jspb.Message.getFieldWithDefault(msg, 6, ""),
+playerBalance: jspb.Message.getFieldWithDefault(msg, 7, 0),
+equipmentValue: jspb.Message.getFieldWithDefault(msg, 8, 0)
   };
 
   if (includeInstance) {
@@ -20030,13 +20047,13 @@ proto.bragi.CS2ItemThrow.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2ItemThrow.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f),
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    item: jspb.Message.getFieldWithDefault(msg, 7, "")
+mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
+position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f),
+playerUrn: jspb.Message.getFieldWithDefault(msg, 5, ""),
+teamUrn: jspb.Message.getFieldWithDefault(msg, 6, ""),
+item: jspb.Message.getFieldWithDefault(msg, 7, "")
   };
 
   if (includeInstance) {
@@ -20410,18 +20427,18 @@ proto.bragi.CS2Kill.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2Kill.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    killerPosition: (f = msg.getKillerPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f),
-    killerUrn: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    killerTeamUrn: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    victimUrn: jspb.Message.getFieldWithDefault(msg, 7, ""),
-    victimTeamUrn: jspb.Message.getFieldWithDefault(msg, 8, ""),
-    weapon: jspb.Message.getFieldWithDefault(msg, 9, ""),
-    headshot: jspb.Message.getBooleanFieldWithDefault(msg, 10, false),
-    penetrated: jspb.Message.getBooleanFieldWithDefault(msg, 11, false),
-    assistantsList: (f = jspb.Message.getRepeatedField(msg, 12)) == null ? undefined : f
+mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
+killerPosition: (f = msg.getKillerPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f),
+killerUrn: jspb.Message.getFieldWithDefault(msg, 5, ""),
+killerTeamUrn: jspb.Message.getFieldWithDefault(msg, 6, ""),
+victimUrn: jspb.Message.getFieldWithDefault(msg, 7, ""),
+victimTeamUrn: jspb.Message.getFieldWithDefault(msg, 8, ""),
+weapon: jspb.Message.getFieldWithDefault(msg, 9, ""),
+headshot: jspb.Message.getBooleanFieldWithDefault(msg, 10, false),
+penetrated: jspb.Message.getBooleanFieldWithDefault(msg, 11, false),
+assistantsList: (f = jspb.Message.getRepeatedField(msg, 12)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -20952,15 +20969,15 @@ proto.bragi.CS2Death.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2Death.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f),
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    totalDeaths: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    suicide: jspb.Message.getBooleanFieldWithDefault(msg, 9, false),
-    deathByBomb: jspb.Message.getBooleanFieldWithDefault(msg, 10, false)
+mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
+position: (f = msg.getPosition()) && proto.bragi.CS2Position.toObject(includeInstance, f),
+playerUrn: jspb.Message.getFieldWithDefault(msg, 5, ""),
+teamUrn: jspb.Message.getFieldWithDefault(msg, 6, ""),
+totalDeaths: jspb.Message.getFieldWithDefault(msg, 7, 0),
+suicide: jspb.Message.getBooleanFieldWithDefault(msg, 9, false),
+deathByBomb: jspb.Message.getBooleanFieldWithDefault(msg, 10, false)
   };
 
   if (includeInstance) {
@@ -21385,10 +21402,10 @@ proto.bragi.CS2MapEnd.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2MapEnd.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    mapName: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    winningTeamUrn: jspb.Message.getFieldWithDefault(msg, 5, "")
+mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
+mapName: jspb.Message.getFieldWithDefault(msg, 4, ""),
+winningTeamUrn: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -21626,8 +21643,8 @@ proto.bragi.CS2MapStart.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2MapStart.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    mapName: jspb.Message.getFieldWithDefault(msg, 2, "")
+mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+mapName: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -21807,13 +21824,13 @@ proto.bragi.CS2RoundEnd.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2RoundEnd.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    winningTeamUrn: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    winReason: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    playerBalancesMap: (f = msg.getPlayerBalancesMap()) ? f.toObject(includeInstance, proto.bragi.CS2PlayerBalance.toObject) : [],
-    playerInventoriesMap: (f = msg.getPlayerInventoriesMap()) ? f.toObject(includeInstance, proto.bragi.CS2PlayerItems.toObject) : []
+mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
+winningTeamUrn: jspb.Message.getFieldWithDefault(msg, 4, ""),
+winReason: jspb.Message.getFieldWithDefault(msg, 5, 0),
+playerBalancesMap: (f = msg.getPlayerBalancesMap()) ? f.toObject(includeInstance, proto.bragi.CS2PlayerBalance.toObject) : [],
+playerInventoriesMap: (f = msg.getPlayerInventoriesMap()) ? f.toObject(includeInstance, proto.bragi.CS2PlayerItems.toObject) : []
   };
 
   if (includeInstance) {
@@ -22108,7 +22125,8 @@ proto.bragi.CS2RoundEnd.prototype.getPlayerBalancesMap = function(opt_noLazyCrea
  */
 proto.bragi.CS2RoundEnd.prototype.clearPlayerBalancesMap = function() {
   this.getPlayerBalancesMap().clear();
-  return this;};
+  return this;
+};
 
 
 /**
@@ -22130,7 +22148,8 @@ proto.bragi.CS2RoundEnd.prototype.getPlayerInventoriesMap = function(opt_noLazyC
  */
 proto.bragi.CS2RoundEnd.prototype.clearPlayerInventoriesMap = function() {
   this.getPlayerInventoriesMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -22165,9 +22184,9 @@ proto.bragi.CS2RoundPause.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2RoundPause.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0)
+mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -22397,9 +22416,9 @@ proto.bragi.CS2RoundResume.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2RoundResume.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0)
+mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -22629,7 +22648,7 @@ proto.bragi.CS2RoundRollback.prototype.toObject = function(opt_includeInstance) 
  */
 proto.bragi.CS2RoundRollback.toObject = function(includeInstance, msg) {
   var f, obj = {
-    nextRoundNumber: jspb.Message.getFieldWithDefault(msg, 1, 0)
+nextRoundNumber: jspb.Message.getFieldWithDefault(msg, 1, 0)
   };
 
   if (includeInstance) {
@@ -22759,9 +22778,9 @@ proto.bragi.CS2RoundStart.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.CS2RoundStart.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0)
+mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {

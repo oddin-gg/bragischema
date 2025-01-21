@@ -13,7 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var global =
+    (typeof globalThis !== 'undefined' && globalThis) ||
+    (typeof window !== 'undefined' && window) ||
+    (typeof global !== 'undefined' && global) ||
+    (typeof self !== 'undefined' && self) ||
+    (function () { return this; }).call(null) ||
+    Function('return this')();
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
@@ -500,11 +506,11 @@ proto.bragi.RushBasketballMatchMessage.prototype.toObject = function(opt_include
  */
 proto.bragi.RushBasketballMatchMessage.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    dataStatus: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    payload: (f = msg.getPayload()) && proto.bragi.RushBasketballMatchMessage.Payload.toObject(includeInstance, f)
+matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
+timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+dataStatus: jspb.Message.getFieldWithDefault(msg, 4, 0),
+payload: (f = msg.getPayload()) && proto.bragi.RushBasketballMatchMessage.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -690,8 +696,8 @@ proto.bragi.RushBasketballMatchMessage.Payload.prototype.toObject = function(opt
  */
 proto.bragi.RushBasketballMatchMessage.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    snapshot: (f = msg.getSnapshot()) && proto.bragi.RushBasketballMatchSnapshot.toObject(includeInstance, f),
-    update: (f = msg.getUpdate()) && proto.bragi.RushBasketballMatchUpdate.toObject(includeInstance, f)
+snapshot: (f = msg.getSnapshot()) && proto.bragi.RushBasketballMatchSnapshot.toObject(includeInstance, f),
+update: (f = msg.getUpdate()) && proto.bragi.RushBasketballMatchUpdate.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1027,14 +1033,14 @@ proto.bragi.RushBasketballMatchSnapshot.prototype.toObject = function(opt_includ
  */
 proto.bragi.RushBasketballMatchSnapshot.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    dataStatus: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    announcementsList: jspb.Message.toObjectList(msg.getAnnouncementsList(),
+matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
+timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+dataStatus: jspb.Message.getFieldWithDefault(msg, 4, 0),
+announcementsList: jspb.Message.toObjectList(msg.getAnnouncementsList(),
     bragi_common_pb.Announcement.toObject, includeInstance),
-    matchState: (f = msg.getMatchState()) && proto.bragi.RushBasketballMatchState.toObject(includeInstance, f),
-    tournament: (f = msg.getTournament()) && bragi_common_pb.Tournament.toObject(includeInstance, f)
+matchState: (f = msg.getMatchState()) && proto.bragi.RushBasketballMatchState.toObject(includeInstance, f),
+tournament: (f = msg.getTournament()) && bragi_common_pb.Tournament.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1423,7 +1429,7 @@ proto.bragi.RushBasketballMatchUpdate.prototype.toObject = function(opt_includeI
  */
 proto.bragi.RushBasketballMatchUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    payload: (f = msg.getPayload()) && proto.bragi.RushBasketballMatchUpdate.Payload.toObject(includeInstance, f)
+payload: (f = msg.getPayload()) && proto.bragi.RushBasketballMatchUpdate.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1563,8 +1569,8 @@ proto.bragi.RushBasketballMatchUpdate.Payload.prototype.toObject = function(opt_
  */
 proto.bragi.RushBasketballMatchUpdate.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchState: (f = msg.getMatchState()) && proto.bragi.RushBasketballMatchState.toObject(includeInstance, f),
-    partialUpdates: (f = msg.getPartialUpdates()) && proto.bragi.RushBasketballMatchStatePartialUpdates.toObject(includeInstance, f)
+matchState: (f = msg.getMatchState()) && proto.bragi.RushBasketballMatchState.toObject(includeInstance, f),
+partialUpdates: (f = msg.getPartialUpdates()) && proto.bragi.RushBasketballMatchStatePartialUpdates.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1809,7 +1815,7 @@ proto.bragi.RushBasketballMatchStatePartialUpdates.prototype.toObject = function
  */
 proto.bragi.RushBasketballMatchStatePartialUpdates.toObject = function(includeInstance, msg) {
   var f, obj = {
-    updatesList: jspb.Message.toObjectList(msg.getUpdatesList(),
+updatesList: jspb.Message.toObjectList(msg.getUpdatesList(),
     proto.bragi.RushBasketballMatchStatePartialUpdate.toObject, includeInstance)
   };
 
@@ -1989,9 +1995,9 @@ proto.bragi.RushBasketballMatchStatePartialUpdate.prototype.toObject = function(
  */
 proto.bragi.RushBasketballMatchStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    currentMapState: (f = msg.getCurrentMapState()) && proto.bragi.RushBasketballCurrentMapState.toObject(includeInstance, f),
-    currentMapStatePartialUpdate: (f = msg.getCurrentMapStatePartialUpdate()) && proto.bragi.RushBasketballCurrentMapStatePartialUpdate.toObject(includeInstance, f),
-    timeline: (f = msg.getTimeline()) && proto.bragi.RushBasketballTimelineState.toObject(includeInstance, f)
+currentMapState: (f = msg.getCurrentMapState()) && proto.bragi.RushBasketballCurrentMapState.toObject(includeInstance, f),
+currentMapStatePartialUpdate: (f = msg.getCurrentMapStatePartialUpdate()) && proto.bragi.RushBasketballCurrentMapStatePartialUpdate.toObject(includeInstance, f),
+timeline: (f = msg.getTimeline()) && proto.bragi.RushBasketballTimelineState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2242,13 +2248,13 @@ proto.bragi.RushBasketballMatchState.prototype.toObject = function(opt_includeIn
  */
 proto.bragi.RushBasketballMatchState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    matchType: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    homeTeam: (f = msg.getHomeTeam()) && bragi_common_pb.Team.toObject(includeInstance, f),
-    awayTeam: (f = msg.getAwayTeam()) && bragi_common_pb.Team.toObject(includeInstance, f),
-    matchStatus: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    timeline: (f = msg.getTimeline()) && proto.bragi.RushBasketballTimelineState.toObject(includeInstance, f),
-    currentMap: (f = msg.getCurrentMap()) && proto.bragi.RushBasketballCurrentMapState.toObject(includeInstance, f)
+matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+matchType: jspb.Message.getFieldWithDefault(msg, 2, 0),
+homeTeam: (f = msg.getHomeTeam()) && bragi_common_pb.Team.toObject(includeInstance, f),
+awayTeam: (f = msg.getAwayTeam()) && bragi_common_pb.Team.toObject(includeInstance, f),
+matchStatus: jspb.Message.getFieldWithDefault(msg, 6, 0),
+timeline: (f = msg.getTimeline()) && proto.bragi.RushBasketballTimelineState.toObject(includeInstance, f),
+currentMap: (f = msg.getCurrentMap()) && proto.bragi.RushBasketballCurrentMapState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2643,7 +2649,7 @@ proto.bragi.RushBasketballTimelineState.prototype.toObject = function(opt_includ
  */
 proto.bragi.RushBasketballTimelineState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    eventsList: jspb.Message.toObjectList(msg.getEventsList(),
+eventsList: jspb.Message.toObjectList(msg.getEventsList(),
     proto.bragi.RushBasketballTimelineEvent.toObject, includeInstance)
   };
 
@@ -2796,10 +2802,10 @@ proto.bragi.RushBasketballTimelineEvent.prototype.toObject = function(opt_includ
  */
 proto.bragi.RushBasketballTimelineEvent.toObject = function(includeInstance, msg) {
   var f, obj = {
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    eventType: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    remainingTime: (f = msg.getRemainingTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    period: jspb.Message.getFieldWithDefault(msg, 4, 0)
+teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+eventType: jspb.Message.getFieldWithDefault(msg, 2, 0),
+remainingTime: (f = msg.getRemainingTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+period: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -3065,10 +3071,10 @@ proto.bragi.RushBasketballCurrentMapStatePartialUpdate.prototype.toObject = func
  */
 proto.bragi.RushBasketballCurrentMapStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    gameTime: (f = msg.getGameTime()) && proto.bragi.RushBasketballCurrentMapTimeState.toObject(includeInstance, f),
-    score: (f = msg.getScore()) && proto.bragi.RushBasketballCurrentMapScoreState.toObject(includeInstance, f),
-    teamCurrentMapState: (f = msg.getTeamCurrentMapState()) && proto.bragi.RushBasketballTeamCurrentMapState.toObject(includeInstance, f),
-    teamCurrentMapPartialUpdate: (f = msg.getTeamCurrentMapPartialUpdate()) && proto.bragi.RushBasketballTeamCurrentMapStatePartialUpdate.toObject(includeInstance, f)
+gameTime: (f = msg.getGameTime()) && proto.bragi.RushBasketballCurrentMapTimeState.toObject(includeInstance, f),
+score: (f = msg.getScore()) && proto.bragi.RushBasketballCurrentMapScoreState.toObject(includeInstance, f),
+teamCurrentMapState: (f = msg.getTeamCurrentMapState()) && proto.bragi.RushBasketballTeamCurrentMapState.toObject(includeInstance, f),
+teamCurrentMapPartialUpdate: (f = msg.getTeamCurrentMapPartialUpdate()) && proto.bragi.RushBasketballTeamCurrentMapStatePartialUpdate.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3369,11 +3375,11 @@ proto.bragi.RushBasketballCurrentMapState.prototype.toObject = function(opt_incl
  */
 proto.bragi.RushBasketballCurrentMapState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    period: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    gameTime: (f = msg.getGameTime()) && proto.bragi.RushBasketballCurrentMapTimeState.toObject(includeInstance, f),
-    score: (f = msg.getScore()) && proto.bragi.RushBasketballCurrentMapScoreState.toObject(includeInstance, f),
-    mapPaused: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
-    teamsMap: (f = msg.getTeamsMap()) ? f.toObject(includeInstance, proto.bragi.RushBasketballTeamCurrentMapState.toObject) : []
+period: jspb.Message.getFieldWithDefault(msg, 1, 0),
+gameTime: (f = msg.getGameTime()) && proto.bragi.RushBasketballCurrentMapTimeState.toObject(includeInstance, f),
+score: (f = msg.getScore()) && proto.bragi.RushBasketballCurrentMapScoreState.toObject(includeInstance, f),
+mapPaused: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
+teamsMap: (f = msg.getTeamsMap()) ? f.toObject(includeInstance, proto.bragi.RushBasketballTeamCurrentMapState.toObject) : []
   };
 
   if (includeInstance) {
@@ -3629,7 +3635,8 @@ proto.bragi.RushBasketballCurrentMapState.prototype.getTeamsMap = function(opt_n
  */
 proto.bragi.RushBasketballCurrentMapState.prototype.clearTeamsMap = function() {
   this.getTeamsMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -3664,7 +3671,7 @@ proto.bragi.RushBasketballCurrentMapTimeState.prototype.toObject = function(opt_
  */
 proto.bragi.RushBasketballCurrentMapTimeState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    remainingTime: (f = msg.getRemainingTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
+remainingTime: (f = msg.getRemainingTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3815,8 +3822,8 @@ proto.bragi.RushBasketballCurrentMapScoreState.prototype.toObject = function(opt
  */
 proto.bragi.RushBasketballCurrentMapScoreState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    homeScore: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    awayScore: jspb.Message.getFieldWithDefault(msg, 2, 0)
+homeScore: jspb.Message.getFieldWithDefault(msg, 1, 0),
+awayScore: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -3975,8 +3982,8 @@ proto.bragi.RushBasketballTeamCurrentMapStatePartialUpdate.prototype.toObject = 
  */
 proto.bragi.RushBasketballTeamCurrentMapStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    payload: (f = msg.getPayload()) && proto.bragi.RushBasketballTeamCurrentMapStatePartialUpdate.Payload.toObject(includeInstance, f)
+teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+payload: (f = msg.getPayload()) && proto.bragi.RushBasketballTeamCurrentMapStatePartialUpdate.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4127,8 +4134,8 @@ proto.bragi.RushBasketballTeamCurrentMapStatePartialUpdate.Payload.prototype.toO
  */
 proto.bragi.RushBasketballTeamCurrentMapStatePartialUpdate.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapStatistics: (f = msg.getMapStatistics()) && proto.bragi.RushBasketballTeamCurrentMapStatisticsState.toObject(includeInstance, f),
-    player: (f = msg.getPlayer()) && proto.bragi.RushBasketballPlayerCurrentMapState.toObject(includeInstance, f)
+mapStatistics: (f = msg.getMapStatistics()) && proto.bragi.RushBasketballTeamCurrentMapStatisticsState.toObject(includeInstance, f),
+player: (f = msg.getPlayer()) && proto.bragi.RushBasketballPlayerCurrentMapState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4384,9 +4391,9 @@ proto.bragi.RushBasketballTeamCurrentMapState.prototype.toObject = function(opt_
  */
 proto.bragi.RushBasketballTeamCurrentMapState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    mapStatistics: (f = msg.getMapStatistics()) && proto.bragi.RushBasketballTeamCurrentMapStatisticsState.toObject(includeInstance, f),
-    player: (f = msg.getPlayer()) && proto.bragi.RushBasketballPlayerCurrentMapState.toObject(includeInstance, f)
+teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+mapStatistics: (f = msg.getMapStatistics()) && proto.bragi.RushBasketballTeamCurrentMapStatisticsState.toObject(includeInstance, f),
+player: (f = msg.getPlayer()) && proto.bragi.RushBasketballPlayerCurrentMapState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4616,8 +4623,8 @@ proto.bragi.RushBasketballPlayerCurrentMapState.prototype.toObject = function(op
  */
 proto.bragi.RushBasketballPlayerCurrentMapState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    extName: jspb.Message.getFieldWithDefault(msg, 2, "")
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+extName: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -4783,15 +4790,15 @@ proto.bragi.RushBasketballTeamCurrentMapStatisticsState.prototype.toObject = fun
  */
 proto.bragi.RushBasketballTeamCurrentMapStatisticsState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    pointsTotal: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    pointsHt: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    periodPointsList: jspb.Message.toObjectList(msg.getPeriodPointsList(),
+pointsTotal: jspb.Message.getFieldWithDefault(msg, 1, 0),
+pointsHt: jspb.Message.getFieldWithDefault(msg, 2, 0),
+periodPointsList: jspb.Message.toObjectList(msg.getPeriodPointsList(),
     proto.bragi.RushBasketballPeriodPoints.toObject, includeInstance),
-    threePointers: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    twoPointers: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    freeThrowsSuccessful: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    freeThrowsMissed: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    fouls: jspb.Message.getFieldWithDefault(msg, 8, 0)
+threePointers: jspb.Message.getFieldWithDefault(msg, 4, 0),
+twoPointers: jspb.Message.getFieldWithDefault(msg, 5, 0),
+freeThrowsSuccessful: jspb.Message.getFieldWithDefault(msg, 6, 0),
+freeThrowsMissed: jspb.Message.getFieldWithDefault(msg, 7, 0),
+fouls: jspb.Message.getFieldWithDefault(msg, 8, 0)
   };
 
   if (includeInstance) {
@@ -5146,8 +5153,8 @@ proto.bragi.RushBasketballPeriodPoints.prototype.toObject = function(opt_include
  */
 proto.bragi.RushBasketballPeriodPoints.toObject = function(includeInstance, msg) {
   var f, obj = {
-    period: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    points: jspb.Message.getFieldWithDefault(msg, 2, 0)
+period: jspb.Message.getFieldWithDefault(msg, 1, 0),
+points: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
