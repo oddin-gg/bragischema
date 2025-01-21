@@ -1,4 +1,2 @@
-google
-googleapis-common-protos
-grpcio
-grpcio-tools
+grpcio-tools>=1.54.0
+protobuf>=4.22.3

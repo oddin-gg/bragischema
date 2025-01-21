@@ -13,7 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var global =
+    (typeof globalThis !== 'undefined' && globalThis) ||
+    (typeof window !== 'undefined' && window) ||
+    (typeof global !== 'undefined' && global) ||
+    (typeof self !== 'undefined' && self) ||
+    (function () { return this; }).call(null) ||
+    Function('return this')();
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
@@ -396,7 +402,7 @@ proto.bragi.MatchTimelineResponse.prototype.toObject = function(opt_includeInsta
  */
 proto.bragi.MatchTimelineResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchesList: jspb.Message.toObjectList(msg.getMatchesList(),
+matchesList: jspb.Message.toObjectList(msg.getMatchesList(),
     bragi_common_pb.Match.toObject, includeInstance)
   };
 
@@ -677,9 +683,9 @@ proto.bragi.MatchTimelineFeedMessage.prototype.toObject = function(opt_includeIn
  */
 proto.bragi.MatchTimelineFeedMessage.toObject = function(includeInstance, msg) {
   var f, obj = {
-    keepalive: (f = msg.getKeepalive()) && proto.bragi.KeepAlive.toObject(includeInstance, f),
-    timeline: (f = msg.getTimeline()) && bragi_common_pb.MatchTimeline.toObject(includeInstance, f),
-    matchUpdate: (f = msg.getMatchUpdate()) && bragi_common_pb.Match.toObject(includeInstance, f)
+keepalive: (f = msg.getKeepalive()) && proto.bragi.KeepAlive.toObject(includeInstance, f),
+timeline: (f = msg.getTimeline()) && bragi_common_pb.MatchTimeline.toObject(includeInstance, f),
+matchUpdate: (f = msg.getMatchUpdate()) && bragi_common_pb.Match.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -930,7 +936,7 @@ proto.bragi.LiveDataFeedRequest.prototype.toObject = function(opt_includeInstanc
  */
 proto.bragi.LiveDataFeedRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    after: (f = msg.getAfter()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+after: (f = msg.getAfter()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1107,8 +1113,8 @@ proto.bragi.LiveDataFeedMessage.prototype.toObject = function(opt_includeInstanc
  */
 proto.bragi.LiveDataFeedMessage.toObject = function(includeInstance, msg) {
   var f, obj = {
-    keepalive: (f = msg.getKeepalive()) && proto.bragi.KeepAlive.toObject(includeInstance, f),
-    match: (f = msg.getMatch()) && proto.bragi.MatchMessage.toObject(includeInstance, f)
+keepalive: (f = msg.getKeepalive()) && proto.bragi.KeepAlive.toObject(includeInstance, f),
+match: (f = msg.getMatch()) && proto.bragi.MatchMessage.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1309,7 +1315,7 @@ proto.bragi.KeepAlive.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.KeepAlive.toObject = function(includeInstance, msg) {
   var f, obj = {
-    timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1492,14 +1498,14 @@ proto.bragi.MatchMessage.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.MatchMessage.toObject = function(includeInstance, msg) {
   var f, obj = {
-    announcement: (f = msg.getAnnouncement()) && bragi_common_pb.AnnouncementUpdate.toObject(includeInstance, f),
-    cs2: (f = msg.getCs2()) && bragi_cs2_pb.CS2MatchMessage.toObject(includeInstance, f),
-    cs2Duels: (f = msg.getCs2Duels()) && bragi_cs2_pb.CS2MatchMessage.toObject(includeInstance, f),
-    dota2: (f = msg.getDota2()) && bragi_dota2_pb.Dota2MatchMessage.toObject(includeInstance, f),
-    rushSoccer: (f = msg.getRushSoccer()) && bragi_rush_soccer_pb.RushSoccerMatchMessage.toObject(includeInstance, f),
-    lol: (f = msg.getLol()) && bragi_lol_pb.LolMatchMessage.toObject(includeInstance, f),
-    rushBasketball: (f = msg.getRushBasketball()) && bragi_rush_basketball_pb.RushBasketballMatchMessage.toObject(includeInstance, f),
-    valorant: (f = msg.getValorant()) && bragi_valorant_pb.ValorantMatchMessage.toObject(includeInstance, f)
+announcement: (f = msg.getAnnouncement()) && bragi_common_pb.AnnouncementUpdate.toObject(includeInstance, f),
+cs2: (f = msg.getCs2()) && bragi_cs2_pb.CS2MatchMessage.toObject(includeInstance, f),
+cs2Duels: (f = msg.getCs2Duels()) && bragi_cs2_pb.CS2MatchMessage.toObject(includeInstance, f),
+dota2: (f = msg.getDota2()) && bragi_dota2_pb.Dota2MatchMessage.toObject(includeInstance, f),
+rushSoccer: (f = msg.getRushSoccer()) && bragi_rush_soccer_pb.RushSoccerMatchMessage.toObject(includeInstance, f),
+lol: (f = msg.getLol()) && bragi_lol_pb.LolMatchMessage.toObject(includeInstance, f),
+rushBasketball: (f = msg.getRushBasketball()) && bragi_rush_basketball_pb.RushBasketballMatchMessage.toObject(includeInstance, f),
+valorant: (f = msg.getValorant()) && bragi_valorant_pb.ValorantMatchMessage.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2031,13 +2037,13 @@ proto.bragi.MatchSnapshot.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.MatchSnapshot.toObject = function(includeInstance, msg) {
   var f, obj = {
-    cs2: (f = msg.getCs2()) && bragi_cs2_pb.CS2MatchSnapshot.toObject(includeInstance, f),
-    cs2Duels: (f = msg.getCs2Duels()) && bragi_cs2_pb.CS2MatchSnapshot.toObject(includeInstance, f),
-    dota2: (f = msg.getDota2()) && bragi_dota2_pb.Dota2MatchSnapshot.toObject(includeInstance, f),
-    rushSoccer: (f = msg.getRushSoccer()) && bragi_rush_soccer_pb.RushSoccerMatchSnapshot.toObject(includeInstance, f),
-    lol: (f = msg.getLol()) && bragi_lol_pb.LolMatchSnapshot.toObject(includeInstance, f),
-    rushBasketball: (f = msg.getRushBasketball()) && bragi_rush_basketball_pb.RushBasketballMatchSnapshot.toObject(includeInstance, f),
-    valorant: (f = msg.getValorant()) && bragi_valorant_pb.ValorantMatchSnapshot.toObject(includeInstance, f)
+cs2: (f = msg.getCs2()) && bragi_cs2_pb.CS2MatchSnapshot.toObject(includeInstance, f),
+cs2Duels: (f = msg.getCs2Duels()) && bragi_cs2_pb.CS2MatchSnapshot.toObject(includeInstance, f),
+dota2: (f = msg.getDota2()) && bragi_dota2_pb.Dota2MatchSnapshot.toObject(includeInstance, f),
+rushSoccer: (f = msg.getRushSoccer()) && bragi_rush_soccer_pb.RushSoccerMatchSnapshot.toObject(includeInstance, f),
+lol: (f = msg.getLol()) && bragi_lol_pb.LolMatchSnapshot.toObject(includeInstance, f),
+rushBasketball: (f = msg.getRushBasketball()) && bragi_rush_basketball_pb.RushBasketballMatchSnapshot.toObject(includeInstance, f),
+valorant: (f = msg.getValorant()) && bragi_valorant_pb.ValorantMatchSnapshot.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2519,13 +2525,13 @@ proto.bragi.MatchState.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.MatchState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    cs2: (f = msg.getCs2()) && bragi_cs2_pb.CS2MatchState.toObject(includeInstance, f),
-    cs2Duels: (f = msg.getCs2Duels()) && bragi_cs2_pb.CS2MatchState.toObject(includeInstance, f),
-    dota2: (f = msg.getDota2()) && bragi_dota2_pb.Dota2MatchState.toObject(includeInstance, f),
-    rushSoccer: (f = msg.getRushSoccer()) && bragi_rush_soccer_pb.RushSoccerMatchState.toObject(includeInstance, f),
-    lol: (f = msg.getLol()) && bragi_lol_pb.LolMatchState.toObject(includeInstance, f),
-    rushBasketball: (f = msg.getRushBasketball()) && bragi_rush_basketball_pb.RushBasketballMatchState.toObject(includeInstance, f),
-    valorant: (f = msg.getValorant()) && bragi_valorant_pb.ValorantMatchState.toObject(includeInstance, f)
+cs2: (f = msg.getCs2()) && bragi_cs2_pb.CS2MatchState.toObject(includeInstance, f),
+cs2Duels: (f = msg.getCs2Duels()) && bragi_cs2_pb.CS2MatchState.toObject(includeInstance, f),
+dota2: (f = msg.getDota2()) && bragi_dota2_pb.Dota2MatchState.toObject(includeInstance, f),
+rushSoccer: (f = msg.getRushSoccer()) && bragi_rush_soccer_pb.RushSoccerMatchState.toObject(includeInstance, f),
+lol: (f = msg.getLol()) && bragi_lol_pb.LolMatchState.toObject(includeInstance, f),
+rushBasketball: (f = msg.getRushBasketball()) && bragi_rush_basketball_pb.RushBasketballMatchState.toObject(includeInstance, f),
+valorant: (f = msg.getValorant()) && bragi_valorant_pb.ValorantMatchState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {

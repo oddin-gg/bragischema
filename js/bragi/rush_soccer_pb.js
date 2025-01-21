@@ -13,7 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var global =
+    (typeof globalThis !== 'undefined' && globalThis) ||
+    (typeof window !== 'undefined' && window) ||
+    (typeof global !== 'undefined' && global) ||
+    (typeof self !== 'undefined' && self) ||
+    (function () { return this; }).call(null) ||
+    Function('return this')();
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
@@ -500,11 +506,11 @@ proto.bragi.RushSoccerMatchMessage.prototype.toObject = function(opt_includeInst
  */
 proto.bragi.RushSoccerMatchMessage.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    dataStatus: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    payload: (f = msg.getPayload()) && proto.bragi.RushSoccerMatchMessage.Payload.toObject(includeInstance, f)
+matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
+timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+dataStatus: jspb.Message.getFieldWithDefault(msg, 4, 0),
+payload: (f = msg.getPayload()) && proto.bragi.RushSoccerMatchMessage.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -690,8 +696,8 @@ proto.bragi.RushSoccerMatchMessage.Payload.prototype.toObject = function(opt_inc
  */
 proto.bragi.RushSoccerMatchMessage.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    snapshot: (f = msg.getSnapshot()) && proto.bragi.RushSoccerMatchSnapshot.toObject(includeInstance, f),
-    update: (f = msg.getUpdate()) && proto.bragi.RushSoccerMatchUpdate.toObject(includeInstance, f)
+snapshot: (f = msg.getSnapshot()) && proto.bragi.RushSoccerMatchSnapshot.toObject(includeInstance, f),
+update: (f = msg.getUpdate()) && proto.bragi.RushSoccerMatchUpdate.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1027,14 +1033,14 @@ proto.bragi.RushSoccerMatchSnapshot.prototype.toObject = function(opt_includeIns
  */
 proto.bragi.RushSoccerMatchSnapshot.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    dataStatus: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    announcementsList: jspb.Message.toObjectList(msg.getAnnouncementsList(),
+matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
+timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+dataStatus: jspb.Message.getFieldWithDefault(msg, 4, 0),
+announcementsList: jspb.Message.toObjectList(msg.getAnnouncementsList(),
     bragi_common_pb.Announcement.toObject, includeInstance),
-    matchState: (f = msg.getMatchState()) && proto.bragi.RushSoccerMatchState.toObject(includeInstance, f),
-    tournament: (f = msg.getTournament()) && bragi_common_pb.Tournament.toObject(includeInstance, f)
+matchState: (f = msg.getMatchState()) && proto.bragi.RushSoccerMatchState.toObject(includeInstance, f),
+tournament: (f = msg.getTournament()) && bragi_common_pb.Tournament.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1423,7 +1429,7 @@ proto.bragi.RushSoccerMatchUpdate.prototype.toObject = function(opt_includeInsta
  */
 proto.bragi.RushSoccerMatchUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    payload: (f = msg.getPayload()) && proto.bragi.RushSoccerMatchUpdate.Payload.toObject(includeInstance, f)
+payload: (f = msg.getPayload()) && proto.bragi.RushSoccerMatchUpdate.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1563,8 +1569,8 @@ proto.bragi.RushSoccerMatchUpdate.Payload.prototype.toObject = function(opt_incl
  */
 proto.bragi.RushSoccerMatchUpdate.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchState: (f = msg.getMatchState()) && proto.bragi.RushSoccerMatchState.toObject(includeInstance, f),
-    partialUpdates: (f = msg.getPartialUpdates()) && proto.bragi.RushSoccerMatchStatePartialUpdates.toObject(includeInstance, f)
+matchState: (f = msg.getMatchState()) && proto.bragi.RushSoccerMatchState.toObject(includeInstance, f),
+partialUpdates: (f = msg.getPartialUpdates()) && proto.bragi.RushSoccerMatchStatePartialUpdates.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1809,7 +1815,7 @@ proto.bragi.RushSoccerMatchStatePartialUpdates.prototype.toObject = function(opt
  */
 proto.bragi.RushSoccerMatchStatePartialUpdates.toObject = function(includeInstance, msg) {
   var f, obj = {
-    updatesList: jspb.Message.toObjectList(msg.getUpdatesList(),
+updatesList: jspb.Message.toObjectList(msg.getUpdatesList(),
     proto.bragi.RushSoccerMatchStatePartialUpdate.toObject, includeInstance)
   };
 
@@ -1990,10 +1996,10 @@ proto.bragi.RushSoccerMatchStatePartialUpdate.prototype.toObject = function(opt_
  */
 proto.bragi.RushSoccerMatchStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    score: (f = msg.getScore()) && proto.bragi.RushSoccerMatchScoreState.toObject(includeInstance, f),
-    currentMapState: (f = msg.getCurrentMapState()) && proto.bragi.RushSoccerCurrentMapState.toObject(includeInstance, f),
-    currentMapStatePartialUpdate: (f = msg.getCurrentMapStatePartialUpdate()) && proto.bragi.RushSoccerCurrentMapStatePartialUpdate.toObject(includeInstance, f),
-    timeline: (f = msg.getTimeline()) && proto.bragi.RushSoccerTimelineState.toObject(includeInstance, f)
+score: (f = msg.getScore()) && proto.bragi.RushSoccerMatchScoreState.toObject(includeInstance, f),
+currentMapState: (f = msg.getCurrentMapState()) && proto.bragi.RushSoccerCurrentMapState.toObject(includeInstance, f),
+currentMapStatePartialUpdate: (f = msg.getCurrentMapStatePartialUpdate()) && proto.bragi.RushSoccerCurrentMapStatePartialUpdate.toObject(includeInstance, f),
+timeline: (f = msg.getTimeline()) && proto.bragi.RushSoccerTimelineState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2294,14 +2300,14 @@ proto.bragi.RushSoccerMatchState.prototype.toObject = function(opt_includeInstan
  */
 proto.bragi.RushSoccerMatchState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    matchType: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    homeTeam: (f = msg.getHomeTeam()) && bragi_common_pb.Team.toObject(includeInstance, f),
-    awayTeam: (f = msg.getAwayTeam()) && bragi_common_pb.Team.toObject(includeInstance, f),
-    score: (f = msg.getScore()) && proto.bragi.RushSoccerMatchScoreState.toObject(includeInstance, f),
-    matchStatus: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    timeline: (f = msg.getTimeline()) && proto.bragi.RushSoccerTimelineState.toObject(includeInstance, f),
-    currentMap: (f = msg.getCurrentMap()) && proto.bragi.RushSoccerCurrentMapState.toObject(includeInstance, f)
+matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+matchType: jspb.Message.getFieldWithDefault(msg, 2, 0),
+homeTeam: (f = msg.getHomeTeam()) && bragi_common_pb.Team.toObject(includeInstance, f),
+awayTeam: (f = msg.getAwayTeam()) && bragi_common_pb.Team.toObject(includeInstance, f),
+score: (f = msg.getScore()) && proto.bragi.RushSoccerMatchScoreState.toObject(includeInstance, f),
+matchStatus: jspb.Message.getFieldWithDefault(msg, 6, 0),
+timeline: (f = msg.getTimeline()) && proto.bragi.RushSoccerTimelineState.toObject(includeInstance, f),
+currentMap: (f = msg.getCurrentMap()) && proto.bragi.RushSoccerCurrentMapState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2739,8 +2745,8 @@ proto.bragi.RushSoccerMatchScoreState.prototype.toObject = function(opt_includeI
  */
 proto.bragi.RushSoccerMatchScoreState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    homeScore: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    awayScore: jspb.Message.getFieldWithDefault(msg, 2, 0)
+homeScore: jspb.Message.getFieldWithDefault(msg, 1, 0),
+awayScore: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -2899,8 +2905,8 @@ proto.bragi.RushSoccerCurrentMapScoreState.prototype.toObject = function(opt_inc
  */
 proto.bragi.RushSoccerCurrentMapScoreState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    homeGoals: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    awayGoals: jspb.Message.getFieldWithDefault(msg, 2, 0)
+homeGoals: jspb.Message.getFieldWithDefault(msg, 1, 0),
+awayGoals: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -3066,7 +3072,7 @@ proto.bragi.RushSoccerTimelineState.prototype.toObject = function(opt_includeIns
  */
 proto.bragi.RushSoccerTimelineState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    eventsList: jspb.Message.toObjectList(msg.getEventsList(),
+eventsList: jspb.Message.toObjectList(msg.getEventsList(),
     proto.bragi.RushSoccerTimelineEvent.toObject, includeInstance)
   };
 
@@ -3219,11 +3225,11 @@ proto.bragi.RushSoccerTimelineEvent.prototype.toObject = function(opt_includeIns
  */
 proto.bragi.RushSoccerTimelineEvent.toObject = function(includeInstance, msg) {
   var f, obj = {
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    eventType: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    realTime: (f = msg.getRealTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    gameTime: (f = msg.getGameTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    period: jspb.Message.getFieldWithDefault(msg, 5, 0)
+teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+eventType: jspb.Message.getFieldWithDefault(msg, 2, 0),
+realTime: (f = msg.getRealTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+gameTime: (f = msg.getGameTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+period: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
   if (includeInstance) {
@@ -3539,10 +3545,10 @@ proto.bragi.RushSoccerCurrentMapStatePartialUpdate.prototype.toObject = function
  */
 proto.bragi.RushSoccerCurrentMapStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    gameTime: (f = msg.getGameTime()) && proto.bragi.RushSoccerCurrentMapTimeState.toObject(includeInstance, f),
-    score: (f = msg.getScore()) && proto.bragi.RushSoccerCurrentMapScoreState.toObject(includeInstance, f),
-    teamCurrentMapState: (f = msg.getTeamCurrentMapState()) && proto.bragi.RushSoccerTeamCurrentMapState.toObject(includeInstance, f),
-    teamCurrentMapPartialUpdate: (f = msg.getTeamCurrentMapPartialUpdate()) && proto.bragi.RushSoccerTeamCurrentMapStatePartialUpdate.toObject(includeInstance, f)
+gameTime: (f = msg.getGameTime()) && proto.bragi.RushSoccerCurrentMapTimeState.toObject(includeInstance, f),
+score: (f = msg.getScore()) && proto.bragi.RushSoccerCurrentMapScoreState.toObject(includeInstance, f),
+teamCurrentMapState: (f = msg.getTeamCurrentMapState()) && proto.bragi.RushSoccerTeamCurrentMapState.toObject(includeInstance, f),
+teamCurrentMapPartialUpdate: (f = msg.getTeamCurrentMapPartialUpdate()) && proto.bragi.RushSoccerTeamCurrentMapStatePartialUpdate.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3843,11 +3849,11 @@ proto.bragi.RushSoccerCurrentMapState.prototype.toObject = function(opt_includeI
  */
 proto.bragi.RushSoccerCurrentMapState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    period: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    gameTime: (f = msg.getGameTime()) && proto.bragi.RushSoccerCurrentMapTimeState.toObject(includeInstance, f),
-    score: (f = msg.getScore()) && proto.bragi.RushSoccerCurrentMapScoreState.toObject(includeInstance, f),
-    mapPaused: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
-    teamsMap: (f = msg.getTeamsMap()) ? f.toObject(includeInstance, proto.bragi.RushSoccerTeamCurrentMapState.toObject) : []
+period: jspb.Message.getFieldWithDefault(msg, 1, 0),
+gameTime: (f = msg.getGameTime()) && proto.bragi.RushSoccerCurrentMapTimeState.toObject(includeInstance, f),
+score: (f = msg.getScore()) && proto.bragi.RushSoccerCurrentMapScoreState.toObject(includeInstance, f),
+mapPaused: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
+teamsMap: (f = msg.getTeamsMap()) ? f.toObject(includeInstance, proto.bragi.RushSoccerTeamCurrentMapState.toObject) : []
   };
 
   if (includeInstance) {
@@ -4103,7 +4109,8 @@ proto.bragi.RushSoccerCurrentMapState.prototype.getTeamsMap = function(opt_noLaz
  */
 proto.bragi.RushSoccerCurrentMapState.prototype.clearTeamsMap = function() {
   this.getTeamsMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -4138,8 +4145,8 @@ proto.bragi.RushSoccerCurrentMapTimeState.prototype.toObject = function(opt_incl
  */
 proto.bragi.RushSoccerCurrentMapTimeState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    realTime: (f = msg.getRealTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    gameTime: (f = msg.getGameTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
+realTime: (f = msg.getRealTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+gameTime: (f = msg.getGameTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4340,8 +4347,8 @@ proto.bragi.RushSoccerTeamCurrentMapStatePartialUpdate.prototype.toObject = func
  */
 proto.bragi.RushSoccerTeamCurrentMapStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    payload: (f = msg.getPayload()) && proto.bragi.RushSoccerTeamCurrentMapStatePartialUpdate.Payload.toObject(includeInstance, f)
+teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+payload: (f = msg.getPayload()) && proto.bragi.RushSoccerTeamCurrentMapStatePartialUpdate.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4492,8 +4499,8 @@ proto.bragi.RushSoccerTeamCurrentMapStatePartialUpdate.Payload.prototype.toObjec
  */
 proto.bragi.RushSoccerTeamCurrentMapStatePartialUpdate.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapStatistics: (f = msg.getMapStatistics()) && proto.bragi.RushSoccerTeamCurrentMapStatisticsState.toObject(includeInstance, f),
-    player: (f = msg.getPlayer()) && proto.bragi.RushSoccerPlayerCurrentMapState.toObject(includeInstance, f)
+mapStatistics: (f = msg.getMapStatistics()) && proto.bragi.RushSoccerTeamCurrentMapStatisticsState.toObject(includeInstance, f),
+player: (f = msg.getPlayer()) && proto.bragi.RushSoccerPlayerCurrentMapState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4749,9 +4756,9 @@ proto.bragi.RushSoccerTeamCurrentMapState.prototype.toObject = function(opt_incl
  */
 proto.bragi.RushSoccerTeamCurrentMapState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    mapStatistics: (f = msg.getMapStatistics()) && proto.bragi.RushSoccerTeamCurrentMapStatisticsState.toObject(includeInstance, f),
-    player: (f = msg.getPlayer()) && proto.bragi.RushSoccerPlayerCurrentMapState.toObject(includeInstance, f)
+teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+mapStatistics: (f = msg.getMapStatistics()) && proto.bragi.RushSoccerTeamCurrentMapStatisticsState.toObject(includeInstance, f),
+player: (f = msg.getPlayer()) && proto.bragi.RushSoccerPlayerCurrentMapState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4981,8 +4988,8 @@ proto.bragi.RushSoccerPlayerCurrentMapState.prototype.toObject = function(opt_in
  */
 proto.bragi.RushSoccerPlayerCurrentMapState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    extName: jspb.Message.getFieldWithDefault(msg, 2, "")
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+extName: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -5141,13 +5148,13 @@ proto.bragi.RushSoccerTeamCurrentMapStatisticsState.prototype.toObject = functio
  */
 proto.bragi.RushSoccerTeamCurrentMapStatisticsState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    goals: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    goalsHt: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    penaltyKicks: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    redCards: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    yellowCards: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    freeKicks: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    cornerKicks: jspb.Message.getFieldWithDefault(msg, 7, 0)
+goals: jspb.Message.getFieldWithDefault(msg, 1, 0),
+goalsHt: jspb.Message.getFieldWithDefault(msg, 2, 0),
+penaltyKicks: jspb.Message.getFieldWithDefault(msg, 3, 0),
+redCards: jspb.Message.getFieldWithDefault(msg, 4, 0),
+yellowCards: jspb.Message.getFieldWithDefault(msg, 5, 0),
+freeKicks: jspb.Message.getFieldWithDefault(msg, 6, 0),
+cornerKicks: jspb.Message.getFieldWithDefault(msg, 7, 0)
   };
 
   if (includeInstance) {

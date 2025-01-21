@@ -46,7 +46,4 @@ for dir in ${DEF}/*; do
     sed -i -E "s/from ${dir}/from ${PACKAGE_NAME}.${dir}/" ${PYTHON_PATH}/**/*.py
 done
 
-echo "deactivating venv"
-deactivate
-
 echo "PYTHON DONE"

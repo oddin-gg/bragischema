@@ -13,7 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var global =
+    (typeof globalThis !== 'undefined' && globalThis) ||
+    (typeof window !== 'undefined' && window) ||
+    (typeof global !== 'undefined' && global) ||
+    (typeof self !== 'undefined' && self) ||
+    (function () { return this; }).call(null) ||
+    Function('return this')();
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
@@ -925,11 +931,11 @@ proto.bragi.ValorantMatchMessage.prototype.toObject = function(opt_includeInstan
  */
 proto.bragi.ValorantMatchMessage.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    dataStatus: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    payload: (f = msg.getPayload()) && proto.bragi.ValorantMatchMessage.Payload.toObject(includeInstance, f)
+matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
+timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+dataStatus: jspb.Message.getFieldWithDefault(msg, 4, 0),
+payload: (f = msg.getPayload()) && proto.bragi.ValorantMatchMessage.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1115,8 +1121,8 @@ proto.bragi.ValorantMatchMessage.Payload.prototype.toObject = function(opt_inclu
  */
 proto.bragi.ValorantMatchMessage.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    snapshot: (f = msg.getSnapshot()) && proto.bragi.ValorantMatchSnapshot.toObject(includeInstance, f),
-    update: (f = msg.getUpdate()) && proto.bragi.ValorantMatchUpdate.toObject(includeInstance, f)
+snapshot: (f = msg.getSnapshot()) && proto.bragi.ValorantMatchSnapshot.toObject(includeInstance, f),
+update: (f = msg.getUpdate()) && proto.bragi.ValorantMatchUpdate.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1452,14 +1458,14 @@ proto.bragi.ValorantMatchSnapshot.prototype.toObject = function(opt_includeInsta
  */
 proto.bragi.ValorantMatchSnapshot.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    dataStatus: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    announcementsList: jspb.Message.toObjectList(msg.getAnnouncementsList(),
+matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
+timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+dataStatus: jspb.Message.getFieldWithDefault(msg, 4, 0),
+announcementsList: jspb.Message.toObjectList(msg.getAnnouncementsList(),
     bragi_common_pb.Announcement.toObject, includeInstance),
-    matchState: (f = msg.getMatchState()) && proto.bragi.ValorantMatchState.toObject(includeInstance, f),
-    tournament: (f = msg.getTournament()) && bragi_common_pb.Tournament.toObject(includeInstance, f)
+matchState: (f = msg.getMatchState()) && proto.bragi.ValorantMatchState.toObject(includeInstance, f),
+tournament: (f = msg.getTournament()) && bragi_common_pb.Tournament.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1848,7 +1854,7 @@ proto.bragi.ValorantMatchUpdate.prototype.toObject = function(opt_includeInstanc
  */
 proto.bragi.ValorantMatchUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    payload: (f = msg.getPayload()) && proto.bragi.ValorantMatchUpdate.Payload.toObject(includeInstance, f)
+payload: (f = msg.getPayload()) && proto.bragi.ValorantMatchUpdate.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1988,8 +1994,8 @@ proto.bragi.ValorantMatchUpdate.Payload.prototype.toObject = function(opt_includ
  */
 proto.bragi.ValorantMatchUpdate.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchState: (f = msg.getMatchState()) && proto.bragi.ValorantMatchState.toObject(includeInstance, f),
-    partialUpdates: (f = msg.getPartialUpdates()) && proto.bragi.ValorantMatchStatePartialUpdates.toObject(includeInstance, f)
+matchState: (f = msg.getMatchState()) && proto.bragi.ValorantMatchState.toObject(includeInstance, f),
+partialUpdates: (f = msg.getPartialUpdates()) && proto.bragi.ValorantMatchStatePartialUpdates.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2234,7 +2240,7 @@ proto.bragi.ValorantMatchStatePartialUpdates.prototype.toObject = function(opt_i
  */
 proto.bragi.ValorantMatchStatePartialUpdates.toObject = function(includeInstance, msg) {
   var f, obj = {
-    updatesList: jspb.Message.toObjectList(msg.getUpdatesList(),
+updatesList: jspb.Message.toObjectList(msg.getUpdatesList(),
     proto.bragi.ValorantMatchStatePartialUpdate.toObject, includeInstance)
   };
 
@@ -2414,9 +2420,9 @@ proto.bragi.ValorantMatchStatePartialUpdate.prototype.toObject = function(opt_in
  */
 proto.bragi.ValorantMatchStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    score: (f = msg.getScore()) && proto.bragi.ValorantMatchScoreState.toObject(includeInstance, f),
-    currentMap: (f = msg.getCurrentMap()) && proto.bragi.ValorantCurrentMapState.toObject(includeInstance, f),
-    currentMapPartialUpdate: (f = msg.getCurrentMapPartialUpdate()) && proto.bragi.ValorantCurrentMapStatePartialUpdate.toObject(includeInstance, f)
+score: (f = msg.getScore()) && proto.bragi.ValorantMatchScoreState.toObject(includeInstance, f),
+currentMap: (f = msg.getCurrentMap()) && proto.bragi.ValorantCurrentMapState.toObject(includeInstance, f),
+currentMapPartialUpdate: (f = msg.getCurrentMapPartialUpdate()) && proto.bragi.ValorantCurrentMapStatePartialUpdate.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2667,13 +2673,13 @@ proto.bragi.ValorantMatchState.prototype.toObject = function(opt_includeInstance
  */
 proto.bragi.ValorantMatchState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    matchType: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    homeTeam: (f = msg.getHomeTeam()) && bragi_common_pb.Team.toObject(includeInstance, f),
-    awayTeam: (f = msg.getAwayTeam()) && bragi_common_pb.Team.toObject(includeInstance, f),
-    score: (f = msg.getScore()) && proto.bragi.ValorantMatchScoreState.toObject(includeInstance, f),
-    matchStatus: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    currentMap: (f = msg.getCurrentMap()) && proto.bragi.ValorantCurrentMapState.toObject(includeInstance, f)
+matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+matchType: jspb.Message.getFieldWithDefault(msg, 2, 0),
+homeTeam: (f = msg.getHomeTeam()) && bragi_common_pb.Team.toObject(includeInstance, f),
+awayTeam: (f = msg.getAwayTeam()) && bragi_common_pb.Team.toObject(includeInstance, f),
+score: (f = msg.getScore()) && proto.bragi.ValorantMatchScoreState.toObject(includeInstance, f),
+matchStatus: jspb.Message.getFieldWithDefault(msg, 6, 0),
+currentMap: (f = msg.getCurrentMap()) && proto.bragi.ValorantCurrentMapState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3061,8 +3067,8 @@ proto.bragi.ValorantMatchScoreState.prototype.toObject = function(opt_includeIns
  */
 proto.bragi.ValorantMatchScoreState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    homeScore: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    awayScore: jspb.Message.getFieldWithDefault(msg, 2, 0)
+homeScore: jspb.Message.getFieldWithDefault(msg, 1, 0),
+awayScore: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -3251,12 +3257,12 @@ proto.bragi.ValorantCurrentMapStatePartialUpdate.prototype.toObject = function(o
  */
 proto.bragi.ValorantCurrentMapStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    score: (f = msg.getScore()) && proto.bragi.ValorantMapScoreState.toObject(includeInstance, f),
-    currentRound: (f = msg.getCurrentRound()) && proto.bragi.ValorantCurrentRoundState.toObject(includeInstance, f),
-    currentRoundPartialUpdate: (f = msg.getCurrentRoundPartialUpdate()) && proto.bragi.ValorantCurrentRoundStatePartialUpdate.toObject(includeInstance, f),
-    teamCurrentMapState: (f = msg.getTeamCurrentMapState()) && proto.bragi.ValorantTeamCurrentMapState.toObject(includeInstance, f),
-    teamCurrentMapPartialUpdate: (f = msg.getTeamCurrentMapPartialUpdate()) && proto.bragi.ValorantTeamCurrentMapStatePartialUpdate.toObject(includeInstance, f),
-    previousRounds: (f = msg.getPreviousRounds()) && proto.bragi.ValorantPreviousRoundsState.toObject(includeInstance, f)
+score: (f = msg.getScore()) && proto.bragi.ValorantMapScoreState.toObject(includeInstance, f),
+currentRound: (f = msg.getCurrentRound()) && proto.bragi.ValorantCurrentRoundState.toObject(includeInstance, f),
+currentRoundPartialUpdate: (f = msg.getCurrentRoundPartialUpdate()) && proto.bragi.ValorantCurrentRoundStatePartialUpdate.toObject(includeInstance, f),
+teamCurrentMapState: (f = msg.getTeamCurrentMapState()) && proto.bragi.ValorantTeamCurrentMapState.toObject(includeInstance, f),
+teamCurrentMapPartialUpdate: (f = msg.getTeamCurrentMapPartialUpdate()) && proto.bragi.ValorantTeamCurrentMapStatePartialUpdate.toObject(includeInstance, f),
+previousRounds: (f = msg.getPreviousRounds()) && proto.bragi.ValorantPreviousRoundsState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3657,14 +3663,14 @@ proto.bragi.ValorantCurrentMapState.prototype.toObject = function(opt_includeIns
  */
 proto.bragi.ValorantCurrentMapState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mapOrder: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    mapPaused: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
-    mapName: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    winTeamUrn: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    score: (f = msg.getScore()) && proto.bragi.ValorantMapScoreState.toObject(includeInstance, f),
-    currentRound: (f = msg.getCurrentRound()) && proto.bragi.ValorantCurrentRoundState.toObject(includeInstance, f),
-    teamsMap: (f = msg.getTeamsMap()) ? f.toObject(includeInstance, proto.bragi.ValorantTeamCurrentMapState.toObject) : [],
-    previousRounds: (f = msg.getPreviousRounds()) && proto.bragi.ValorantPreviousRoundsState.toObject(includeInstance, f)
+mapOrder: jspb.Message.getFieldWithDefault(msg, 1, 0),
+mapPaused: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+mapName: jspb.Message.getFieldWithDefault(msg, 3, ""),
+winTeamUrn: (f = jspb.Message.getField(msg, 4)) == null ? undefined : f,
+score: (f = msg.getScore()) && proto.bragi.ValorantMapScoreState.toObject(includeInstance, f),
+currentRound: (f = msg.getCurrentRound()) && proto.bragi.ValorantCurrentRoundState.toObject(includeInstance, f),
+teamsMap: (f = msg.getTeamsMap()) ? f.toObject(includeInstance, proto.bragi.ValorantTeamCurrentMapState.toObject) : [],
+previousRounds: (f = msg.getPreviousRounds()) && proto.bragi.ValorantPreviousRoundsState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4009,7 +4015,8 @@ proto.bragi.ValorantCurrentMapState.prototype.getTeamsMap = function(opt_noLazyC
  */
 proto.bragi.ValorantCurrentMapState.prototype.clearTeamsMap = function() {
   this.getTeamsMap().clear();
-  return this;};
+  return this;
+};
 
 
 /**
@@ -4081,8 +4088,8 @@ proto.bragi.ValorantMapScoreState.prototype.toObject = function(opt_includeInsta
  */
 proto.bragi.ValorantMapScoreState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    homeScore: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    awayScore: jspb.Message.getFieldWithDefault(msg, 2, 0)
+homeScore: jspb.Message.getFieldWithDefault(msg, 1, 0),
+awayScore: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -4248,7 +4255,7 @@ proto.bragi.ValorantPreviousRoundsState.prototype.toObject = function(opt_includ
  */
 proto.bragi.ValorantPreviousRoundsState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    roundsList: jspb.Message.toObjectList(msg.getRoundsList(),
+roundsList: jspb.Message.toObjectList(msg.getRoundsList(),
     proto.bragi.ValorantPreviousRound.toObject, includeInstance)
   };
 
@@ -4401,8 +4408,8 @@ proto.bragi.ValorantTeamCurrentMapStatePartialUpdate.prototype.toObject = functi
  */
 proto.bragi.ValorantTeamCurrentMapStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    payload: (f = msg.getPayload()) && proto.bragi.ValorantTeamCurrentMapStatePartialUpdate.Payload.toObject(includeInstance, f)
+teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+payload: (f = msg.getPayload()) && proto.bragi.ValorantTeamCurrentMapStatePartialUpdate.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4553,8 +4560,8 @@ proto.bragi.ValorantTeamCurrentMapStatePartialUpdate.Payload.prototype.toObject 
  */
 proto.bragi.ValorantTeamCurrentMapStatePartialUpdate.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerCurrentMapState: (f = msg.getPlayerCurrentMapState()) && proto.bragi.ValorantPlayerCurrentMapState.toObject(includeInstance, f),
-    playerCurrentMapPartialUpdate: (f = msg.getPlayerCurrentMapPartialUpdate()) && proto.bragi.ValorantPlayerCurrentMapStatePartialUpdate.toObject(includeInstance, f)
+playerCurrentMapState: (f = msg.getPlayerCurrentMapState()) && proto.bragi.ValorantPlayerCurrentMapState.toObject(includeInstance, f),
+playerCurrentMapPartialUpdate: (f = msg.getPlayerCurrentMapPartialUpdate()) && proto.bragi.ValorantPlayerCurrentMapStatePartialUpdate.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4810,9 +4817,9 @@ proto.bragi.ValorantTeamCurrentMapState.prototype.toObject = function(opt_includ
  */
 proto.bragi.ValorantTeamCurrentMapState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    side: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    playersMap: (f = msg.getPlayersMap()) ? f.toObject(includeInstance, proto.bragi.ValorantPlayerCurrentMapState.toObject) : []
+teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+side: jspb.Message.getFieldWithDefault(msg, 2, 0),
+playersMap: (f = msg.getPlayersMap()) ? f.toObject(includeInstance, proto.bragi.ValorantPlayerCurrentMapState.toObject) : []
   };
 
   if (includeInstance) {
@@ -4968,7 +4975,8 @@ proto.bragi.ValorantTeamCurrentMapState.prototype.getPlayersMap = function(opt_n
  */
 proto.bragi.ValorantTeamCurrentMapState.prototype.clearPlayersMap = function() {
   this.getPlayersMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -5003,8 +5011,8 @@ proto.bragi.ValorantPlayerCurrentMapStatePartialUpdate.prototype.toObject = func
  */
 proto.bragi.ValorantPlayerCurrentMapStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    payload: (f = msg.getPayload()) && proto.bragi.ValorantPlayerCurrentMapStatePartialUpdate.Payload.toObject(includeInstance, f)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+payload: (f = msg.getPayload()) && proto.bragi.ValorantPlayerCurrentMapStatePartialUpdate.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -5156,9 +5164,9 @@ proto.bragi.ValorantPlayerCurrentMapStatePartialUpdate.Payload.prototype.toObjec
  */
 proto.bragi.ValorantPlayerCurrentMapStatePartialUpdate.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerInfo: (f = msg.getPlayerInfo()) && proto.bragi.ValorantPlayerInfoState.toObject(includeInstance, f),
-    abilities: (f = msg.getAbilities()) && proto.bragi.ValorantAbilitiesState.toObject(includeInstance, f),
-    statistics: (f = msg.getStatistics()) && proto.bragi.ValorantPlayerCurrentMapStatisticsState.toObject(includeInstance, f)
+playerInfo: (f = msg.getPlayerInfo()) && proto.bragi.ValorantPlayerInfoState.toObject(includeInstance, f),
+abilities: (f = msg.getAbilities()) && proto.bragi.ValorantAbilitiesState.toObject(includeInstance, f),
+statistics: (f = msg.getStatistics()) && proto.bragi.ValorantPlayerCurrentMapStatisticsState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -5464,11 +5472,11 @@ proto.bragi.ValorantPlayerCurrentMapState.prototype.toObject = function(opt_incl
  */
 proto.bragi.ValorantPlayerCurrentMapState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    agentUrn: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    playerInfo: (f = msg.getPlayerInfo()) && proto.bragi.ValorantPlayerInfoState.toObject(includeInstance, f),
-    abilities: (f = msg.getAbilities()) && proto.bragi.ValorantAbilitiesState.toObject(includeInstance, f),
-    statistics: (f = msg.getStatistics()) && proto.bragi.ValorantPlayerCurrentMapStatisticsState.toObject(includeInstance, f)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+agentUrn: jspb.Message.getFieldWithDefault(msg, 2, ""),
+playerInfo: (f = msg.getPlayerInfo()) && proto.bragi.ValorantPlayerInfoState.toObject(includeInstance, f),
+abilities: (f = msg.getAbilities()) && proto.bragi.ValorantAbilitiesState.toObject(includeInstance, f),
+statistics: (f = msg.getStatistics()) && proto.bragi.ValorantPlayerCurrentMapStatisticsState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -5777,10 +5785,10 @@ proto.bragi.ValorantPlayerCurrentMapStatisticsState.prototype.toObject = functio
  */
 proto.bragi.ValorantPlayerCurrentMapStatisticsState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    kills: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    deaths: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    assists: jspb.Message.getFieldWithDefault(msg, 4, 0)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+kills: jspb.Message.getFieldWithDefault(msg, 2, 0),
+deaths: jspb.Message.getFieldWithDefault(msg, 3, 0),
+assists: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -6026,11 +6034,11 @@ proto.bragi.ValorantCurrentRoundStatePartialUpdate.prototype.toObject = function
  */
 proto.bragi.ValorantCurrentRoundStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    roundInfo: (f = msg.getRoundInfo()) && proto.bragi.ValorantRoundInfoState.toObject(includeInstance, f),
-    time: (f = msg.getTime()) && proto.bragi.ValorantCurrentRoundTimeState.toObject(includeInstance, f),
-    spike: (f = msg.getSpike()) && proto.bragi.ValorantCurrentRoundTeamSpikeState.toObject(includeInstance, f),
-    teamCurrentRoundState: (f = msg.getTeamCurrentRoundState()) && proto.bragi.ValorantTeamCurrentRoundState.toObject(includeInstance, f),
-    teamCurrentRoundPartialUpdate: (f = msg.getTeamCurrentRoundPartialUpdate()) && proto.bragi.ValorantTeamCurrentRoundStatePartialUpdate.toObject(includeInstance, f)
+roundInfo: (f = msg.getRoundInfo()) && proto.bragi.ValorantRoundInfoState.toObject(includeInstance, f),
+time: (f = msg.getTime()) && proto.bragi.ValorantCurrentRoundTimeState.toObject(includeInstance, f),
+spike: (f = msg.getSpike()) && proto.bragi.ValorantCurrentRoundTeamSpikeState.toObject(includeInstance, f),
+teamCurrentRoundState: (f = msg.getTeamCurrentRoundState()) && proto.bragi.ValorantTeamCurrentRoundState.toObject(includeInstance, f),
+teamCurrentRoundPartialUpdate: (f = msg.getTeamCurrentRoundPartialUpdate()) && proto.bragi.ValorantTeamCurrentRoundStatePartialUpdate.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -6381,10 +6389,10 @@ proto.bragi.ValorantCurrentRoundState.prototype.toObject = function(opt_includeI
  */
 proto.bragi.ValorantCurrentRoundState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    roundInfo: (f = msg.getRoundInfo()) && proto.bragi.ValorantRoundInfoState.toObject(includeInstance, f),
-    time: (f = msg.getTime()) && proto.bragi.ValorantCurrentRoundTimeState.toObject(includeInstance, f),
-    spike: (f = msg.getSpike()) && proto.bragi.ValorantCurrentRoundTeamSpikeState.toObject(includeInstance, f),
-    teamsMap: (f = msg.getTeamsMap()) ? f.toObject(includeInstance, proto.bragi.ValorantTeamCurrentRoundState.toObject) : []
+roundInfo: (f = msg.getRoundInfo()) && proto.bragi.ValorantRoundInfoState.toObject(includeInstance, f),
+time: (f = msg.getTime()) && proto.bragi.ValorantCurrentRoundTimeState.toObject(includeInstance, f),
+spike: (f = msg.getSpike()) && proto.bragi.ValorantCurrentRoundTeamSpikeState.toObject(includeInstance, f),
+teamsMap: (f = msg.getTeamsMap()) ? f.toObject(includeInstance, proto.bragi.ValorantTeamCurrentRoundState.toObject) : []
   };
 
   if (includeInstance) {
@@ -6632,7 +6640,8 @@ proto.bragi.ValorantCurrentRoundState.prototype.getTeamsMap = function(opt_noLaz
  */
 proto.bragi.ValorantCurrentRoundState.prototype.clearTeamsMap = function() {
   this.getTeamsMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -6667,8 +6676,8 @@ proto.bragi.ValorantRoundInfoState.prototype.toObject = function(opt_includeInst
  */
 proto.bragi.ValorantRoundInfoState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    number: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    phase: jspb.Message.getFieldWithDefault(msg, 2, 0)
+number: jspb.Message.getFieldWithDefault(msg, 1, 0),
+phase: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -6827,7 +6836,7 @@ proto.bragi.ValorantCurrentRoundTimeState.prototype.toObject = function(opt_incl
  */
 proto.bragi.ValorantCurrentRoundTimeState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
+timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -6978,8 +6987,8 @@ proto.bragi.ValorantCurrentRoundTeamSpikeState.prototype.toObject = function(opt
  */
 proto.bragi.ValorantCurrentRoundTeamSpikeState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    state: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    timeToDefused: (f = msg.getTimeToDefused()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
+state: jspb.Message.getFieldWithDefault(msg, 1, 0),
+timeToDefused: (f = msg.getTimeToDefused()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -7159,8 +7168,8 @@ proto.bragi.ValorantTeamCurrentRoundStatePartialUpdate.prototype.toObject = func
  */
 proto.bragi.ValorantTeamCurrentRoundStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    payload: (f = msg.getPayload()) && proto.bragi.ValorantTeamCurrentRoundStatePartialUpdate.Payload.toObject(includeInstance, f)
+teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+payload: (f = msg.getPayload()) && proto.bragi.ValorantTeamCurrentRoundStatePartialUpdate.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -7311,8 +7320,8 @@ proto.bragi.ValorantTeamCurrentRoundStatePartialUpdate.Payload.prototype.toObjec
  */
 proto.bragi.ValorantTeamCurrentRoundStatePartialUpdate.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerCurrentRoundState: (f = msg.getPlayerCurrentRoundState()) && proto.bragi.ValorantPlayerCurrentRoundState.toObject(includeInstance, f),
-    playerCurrentRoundPartialUpdate: (f = msg.getPlayerCurrentRoundPartialUpdate()) && proto.bragi.ValorantPlayerCurrentRoundStatePartialUpdate.toObject(includeInstance, f)
+playerCurrentRoundState: (f = msg.getPlayerCurrentRoundState()) && proto.bragi.ValorantPlayerCurrentRoundState.toObject(includeInstance, f),
+playerCurrentRoundPartialUpdate: (f = msg.getPlayerCurrentRoundPartialUpdate()) && proto.bragi.ValorantPlayerCurrentRoundStatePartialUpdate.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -7568,9 +7577,9 @@ proto.bragi.ValorantTeamCurrentRoundState.prototype.toObject = function(opt_incl
  */
 proto.bragi.ValorantTeamCurrentRoundState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    side: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    playersMap: (f = msg.getPlayersMap()) ? f.toObject(includeInstance, proto.bragi.ValorantPlayerCurrentRoundState.toObject) : []
+teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+side: jspb.Message.getFieldWithDefault(msg, 2, 0),
+playersMap: (f = msg.getPlayersMap()) ? f.toObject(includeInstance, proto.bragi.ValorantPlayerCurrentRoundState.toObject) : []
   };
 
   if (includeInstance) {
@@ -7726,7 +7735,8 @@ proto.bragi.ValorantTeamCurrentRoundState.prototype.getPlayersMap = function(opt
  */
 proto.bragi.ValorantTeamCurrentRoundState.prototype.clearPlayersMap = function() {
   this.getPlayersMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -7761,8 +7771,8 @@ proto.bragi.ValorantPlayerCurrentRoundStatePartialUpdate.prototype.toObject = fu
  */
 proto.bragi.ValorantPlayerCurrentRoundStatePartialUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    payload: (f = msg.getPayload()) && proto.bragi.ValorantPlayerCurrentRoundStatePartialUpdate.Payload.toObject(includeInstance, f)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+payload: (f = msg.getPayload()) && proto.bragi.ValorantPlayerCurrentRoundStatePartialUpdate.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -7915,10 +7925,10 @@ proto.bragi.ValorantPlayerCurrentRoundStatePartialUpdate.Payload.prototype.toObj
  */
 proto.bragi.ValorantPlayerCurrentRoundStatePartialUpdate.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerInfo: (f = msg.getPlayerInfo()) && proto.bragi.ValorantPlayerInfoState.toObject(includeInstance, f),
-    statistics: (f = msg.getStatistics()) && proto.bragi.ValorantPlayerCurrentRoundStatisticsState.toObject(includeInstance, f),
-    weapons: (f = msg.getWeapons()) && proto.bragi.ValorantWeaponsState.toObject(includeInstance, f),
-    position: (f = msg.getPosition()) && proto.bragi.ValorantPositionState.toObject(includeInstance, f)
+playerInfo: (f = msg.getPlayerInfo()) && proto.bragi.ValorantPlayerInfoState.toObject(includeInstance, f),
+statistics: (f = msg.getStatistics()) && proto.bragi.ValorantPlayerCurrentRoundStatisticsState.toObject(includeInstance, f),
+weapons: (f = msg.getWeapons()) && proto.bragi.ValorantWeaponsState.toObject(includeInstance, f),
+position: (f = msg.getPosition()) && proto.bragi.ValorantPositionState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -8274,11 +8284,11 @@ proto.bragi.ValorantPlayerCurrentRoundState.prototype.toObject = function(opt_in
  */
 proto.bragi.ValorantPlayerCurrentRoundState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    playerInfo: (f = msg.getPlayerInfo()) && proto.bragi.ValorantPlayerInfoState.toObject(includeInstance, f),
-    statistics: (f = msg.getStatistics()) && proto.bragi.ValorantPlayerCurrentRoundStatisticsState.toObject(includeInstance, f),
-    weapons: (f = msg.getWeapons()) && proto.bragi.ValorantWeaponsState.toObject(includeInstance, f),
-    position: (f = msg.getPosition()) && proto.bragi.ValorantPositionState.toObject(includeInstance, f)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+playerInfo: (f = msg.getPlayerInfo()) && proto.bragi.ValorantPlayerInfoState.toObject(includeInstance, f),
+statistics: (f = msg.getStatistics()) && proto.bragi.ValorantPlayerCurrentRoundStatisticsState.toObject(includeInstance, f),
+weapons: (f = msg.getWeapons()) && proto.bragi.ValorantWeaponsState.toObject(includeInstance, f),
+position: (f = msg.getPosition()) && proto.bragi.ValorantPositionState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -8608,8 +8618,8 @@ proto.bragi.ValorantPlayerCurrentRoundStatisticsState.prototype.toObject = funct
  */
 proto.bragi.ValorantPlayerCurrentRoundStatisticsState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    isAlive: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+isAlive: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
   };
 
   if (includeInstance) {
@@ -8775,8 +8785,8 @@ proto.bragi.ValorantAbilitiesState.prototype.toObject = function(opt_includeInst
  */
 proto.bragi.ValorantAbilitiesState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    abilitiesList: jspb.Message.toObjectList(msg.getAbilitiesList(),
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+abilitiesList: jspb.Message.toObjectList(msg.getAbilitiesList(),
     proto.bragi.ValorantAbility.toObject, includeInstance)
   };
 
@@ -8965,8 +8975,8 @@ proto.bragi.ValorantWeaponsState.prototype.toObject = function(opt_includeInstan
  */
 proto.bragi.ValorantWeaponsState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    weaponsList: jspb.Message.toObjectList(msg.getWeaponsList(),
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+weaponsList: jspb.Message.toObjectList(msg.getWeaponsList(),
     proto.bragi.ValorantWeapon.toObject, includeInstance)
   };
 
@@ -9148,9 +9158,9 @@ proto.bragi.ValorantPlayerInfoState.prototype.toObject = function(opt_includeIns
  */
 proto.bragi.ValorantPlayerInfoState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    slotId: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    extName: jspb.Message.getFieldWithDefault(msg, 3, "")
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+slotId: jspb.Message.getFieldWithDefault(msg, 2, 0),
+extName: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -9338,9 +9348,9 @@ proto.bragi.ValorantPositionState.prototype.toObject = function(opt_includeInsta
  */
 proto.bragi.ValorantPositionState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    x: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
-    y: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0)
+playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+x: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
+y: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0)
   };
 
   if (includeInstance) {
@@ -9528,9 +9538,9 @@ proto.bragi.ValorantPreviousRound.prototype.toObject = function(opt_includeInsta
  */
 proto.bragi.ValorantPreviousRound.toObject = function(includeInstance, msg) {
   var f, obj = {
-    number: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    outcome: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    homeWon: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+number: jspb.Message.getFieldWithDefault(msg, 1, 0),
+outcome: jspb.Message.getFieldWithDefault(msg, 2, 0),
+homeWon: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -9718,7 +9728,7 @@ proto.bragi.ValorantWeapon.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.ValorantWeapon.toObject = function(includeInstance, msg) {
   var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, "")
+id: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -9848,9 +9858,9 @@ proto.bragi.ValorantAbility.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.ValorantAbility.toObject = function(includeInstance, msg) {
   var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    ready: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
-    isUltimate: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+id: jspb.Message.getFieldWithDefault(msg, 1, ""),
+ready: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+isUltimate: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {

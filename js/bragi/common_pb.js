@@ -13,7 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var global =
+    (typeof globalThis !== 'undefined' && globalThis) ||
+    (typeof window !== 'undefined' && window) ||
+    (typeof global !== 'undefined' && global) ||
+    (typeof self !== 'undefined' && self) ||
+    (function () { return this; }).call(null) ||
+    Function('return this')();
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
@@ -276,10 +282,10 @@ proto.bragi.AnnouncementUpdate.prototype.toObject = function(opt_includeInstance
  */
 proto.bragi.AnnouncementUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    payload: (f = msg.getPayload()) && proto.bragi.Announcement.toObject(includeInstance, f)
+matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
+timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+payload: (f = msg.getPayload()) && proto.bragi.Announcement.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -538,8 +544,8 @@ proto.bragi.Announcement.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.Announcement.toObject = function(includeInstance, msg) {
   var f, obj = {
-    createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    payload: (f = msg.getPayload()) && proto.bragi.Announcement.Payload.toObject(includeInstance, f)
+createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+payload: (f = msg.getPayload()) && proto.bragi.Announcement.Payload.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -692,8 +698,8 @@ proto.bragi.Announcement.Payload.prototype.toObject = function(opt_includeInstan
  */
 proto.bragi.Announcement.Payload.toObject = function(includeInstance, msg) {
   var f, obj = {
-    control: (f = msg.getControl()) && proto.bragi.ControlAnnouncement.toObject(includeInstance, f),
-    error: (f = msg.getError()) && proto.bragi.ControlErrorAnnouncement.toObject(includeInstance, f)
+control: (f = msg.getControl()) && proto.bragi.ControlAnnouncement.toObject(includeInstance, f),
+error: (f = msg.getError()) && proto.bragi.ControlErrorAnnouncement.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -968,8 +974,8 @@ proto.bragi.ControlAnnouncement.prototype.toObject = function(opt_includeInstanc
  */
 proto.bragi.ControlAnnouncement.toObject = function(includeInstance, msg) {
   var f, obj = {
-    type: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    message: jspb.Message.getFieldWithDefault(msg, 2, "")
+type: jspb.Message.getFieldWithDefault(msg, 1, 0),
+message: (f = jspb.Message.getField(msg, 2)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1153,8 +1159,8 @@ proto.bragi.ControlErrorAnnouncement.prototype.toObject = function(opt_includeIn
  */
 proto.bragi.ControlErrorAnnouncement.toObject = function(includeInstance, msg) {
   var f, obj = {
-    type: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    message: jspb.Message.getFieldWithDefault(msg, 2, "")
+type: jspb.Message.getFieldWithDefault(msg, 1, 0),
+message: (f = jspb.Message.getField(msg, 2)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1345,7 +1351,7 @@ proto.bragi.MatchTimeline.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.MatchTimeline.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchesList: jspb.Message.toObjectList(msg.getMatchesList(),
+matchesList: jspb.Message.toObjectList(msg.getMatchesList(),
     proto.bragi.Match.toObject, includeInstance)
   };
 
@@ -1505,19 +1511,19 @@ proto.bragi.Match.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.Match.toObject = function(includeInstance, msg) {
   var f, obj = {
-    matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    tournamentUrn: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    sport: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    homeTeamUrn: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    awayTeamUrn: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    homeScore: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    awayScore: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    matchStatus: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    plannetStart: (f = msg.getPlannetStart()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    tournament: (f = msg.getTournament()) && proto.bragi.Tournament.toObject(includeInstance, f),
-    teamsList: jspb.Message.toObjectList(msg.getTeamsList(),
+matchUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+tournamentUrn: jspb.Message.getFieldWithDefault(msg, 2, ""),
+sport: jspb.Message.getFieldWithDefault(msg, 3, 0),
+homeTeamUrn: jspb.Message.getFieldWithDefault(msg, 4, ""),
+awayTeamUrn: jspb.Message.getFieldWithDefault(msg, 5, ""),
+homeScore: jspb.Message.getFieldWithDefault(msg, 6, 0),
+awayScore: jspb.Message.getFieldWithDefault(msg, 7, 0),
+matchStatus: jspb.Message.getFieldWithDefault(msg, 8, 0),
+plannetStart: (f = msg.getPlannetStart()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+tournament: (f = msg.getTournament()) && proto.bragi.Tournament.toObject(includeInstance, f),
+teamsList: jspb.Message.toObjectList(msg.getTeamsList(),
     proto.bragi.Team.toObject, includeInstance),
-    playersList: jspb.Message.toObjectList(msg.getPlayersList(),
+playersList: jspb.Message.toObjectList(msg.getPlayersList(),
     proto.bragi.Player.toObject, includeInstance)
   };
 
@@ -2053,8 +2059,8 @@ proto.bragi.Tournament.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.Tournament.toObject = function(includeInstance, msg) {
   var f, obj = {
-    urn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    name: jspb.Message.getFieldWithDefault(msg, 2, "")
+urn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+name: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -2213,9 +2219,9 @@ proto.bragi.Team.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.Team.toObject = function(includeInstance, msg) {
   var f, obj = {
-    urn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    isHome: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+urn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+name: jspb.Message.getFieldWithDefault(msg, 2, ""),
+isHome: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -2403,9 +2409,9 @@ proto.bragi.Player.prototype.toObject = function(opt_includeInstance) {
  */
 proto.bragi.Player.toObject = function(includeInstance, msg) {
   var f, obj = {
-    urn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    nickname: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    teamUrn: jspb.Message.getFieldWithDefault(msg, 3, "")
+urn: jspb.Message.getFieldWithDefault(msg, 1, ""),
+nickname: jspb.Message.getFieldWithDefault(msg, 2, ""),
+teamUrn: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
