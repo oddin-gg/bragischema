@@ -7,22 +7,18 @@ To check data stream definition check proto/bragi_service.proto and proto/stream
 
 ### Prerequisites
 
-#### Golang
-```bash
-go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-go get -u google.golang.org/protobuf
-```
+Ensure you have Docker installed
 
 ### How to generate Grpc files
  - **For x86 architecture** 
-   - run bash script
+   - run command
       ```
-      sh generate.sh
+      make generate
       ```
 
  - **For Apple silicon**
    - go to the java/build.gradle file and uncomment line where "!!! Important:" is written and comment line above.
-   - run bash script
+   - run command
      ```
-     sh generate.sh
+     make generate
      ```
