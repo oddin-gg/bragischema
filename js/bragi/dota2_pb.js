@@ -1983,7 +1983,7 @@ proto.bragi.PicksAndBansSelections.TeamType = {
  */
 proto.bragi.PicksAndBansSelections.State = {
   STATE_UNSPECIFIED: 0,
-  STATE_INPROGRESS: 1,
+  STATE_IN_PROGRESS: 1,
   STATE_ENDED: 2
 };
 
