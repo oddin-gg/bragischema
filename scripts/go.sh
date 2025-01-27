@@ -13,7 +13,11 @@ if [[ ! -x ${GO_PROTOC_GEN} ]]; then
   exit 1
 fi
 
-protoc ./proto/bragi/*.proto -I ./proto --go_out=./go --go-grpc_out=./go
+protoc ./proto/bragi/*.proto -I ./proto \
+    --go_out=./go \
+    --go-grpc_out=./go \
+    --go-vtproto_out=./go \
+    --go-vtproto_opt=features=equal
 
 if [ "$?" != "0" ]; then
   echo "protobuf files generation failed. \n"

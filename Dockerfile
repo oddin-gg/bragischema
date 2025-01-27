@@ -3,6 +3,7 @@ FROM golang:1.23
 
 ARG PROTOC_GEN_GO_VERSION="v1.36.3"
 ARG PROTOC_GEN_GO_GRPC_VERSION="v1.5.1"
+ARG PROTOC_GEN_GO_VTPROTO_VERSION="79df5c4"
 ARG NPM_VERSION="11"
 ARG OPEN_JDK_VERSION="17"
 ARG NODE_JS_VERSION="20"
@@ -16,7 +17,8 @@ RUN apt-get update && \
 
 # Install Go protobuf plugins
 RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@${PROTOC_GEN_GO_VERSION} && \
-    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@${PROTOC_GEN_GO_GRPC_VERSION}
+    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@${PROTOC_GEN_GO_GRPC_VERSION} && \
+    go install github.com/planetscale/vtprotobuf/cmd/protoc-gen-go-vtproto@${PROTOC_GEN_GO_VTPROTO_VERSION}
 
 # Find and set JAVA_HOME
 RUN update-alternatives --query java | grep 'Value: ' | grep -o '/.*$' | sed 's/\/bin\/java//' > /tmp/java_home && \
