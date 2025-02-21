@@ -1811,6 +1811,9 @@ func (this *Roshan) EqualVT(that *Roshan) bool {
 	if this.RespawnTime != that.RespawnTime {
 		return false
 	}
+	if !this.Position.EqualVT(that.Position) {
+		return false
+	}
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
