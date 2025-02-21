@@ -1363,6 +1363,11 @@ export class Roshan extends jspb.Message {
   getRespawntime(): number;
   setRespawntime(value: number): void;
 
+  hasPosition(): boolean;
+  clearPosition(): void;
+  getPosition(): Dota2Position | undefined;
+  setPosition(value?: Dota2Position): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Roshan.AsObject;
   static toObject(includeInstance: boolean, msg: Roshan): Roshan.AsObject;
@@ -1377,6 +1382,7 @@ export namespace Roshan {
   export type AsObject = {
     alive: boolean,
     respawntime: number,
+    position?: Dota2Position.AsObject,
   }
 }
 

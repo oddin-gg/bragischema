@@ -10528,7 +10528,8 @@ proto.bragi.Roshan.prototype.toObject = function(opt_includeInstance) {
 proto.bragi.Roshan.toObject = function(includeInstance, msg) {
   var f, obj = {
 alive: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
-respawntime: jspb.Message.getFieldWithDefault(msg, 2, 0)
+respawntime: jspb.Message.getFieldWithDefault(msg, 2, 0),
+position: (f = msg.getPosition()) && proto.bragi.Dota2Position.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -10573,6 +10574,11 @@ proto.bragi.Roshan.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {number} */ (reader.readUint32());
       msg.setRespawntime(value);
       break;
+    case 3:
+      var value = new proto.bragi.Dota2Position;
+      reader.readMessage(value,proto.bragi.Dota2Position.deserializeBinaryFromReader);
+      msg.setPosition(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -10616,6 +10622,14 @@ proto.bragi.Roshan.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getPosition();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      proto.bragi.Dota2Position.serializeBinaryToWriter
+    );
+  }
 };
 
 
@@ -10652,6 +10666,43 @@ proto.bragi.Roshan.prototype.getRespawntime = function() {
  */
 proto.bragi.Roshan.prototype.setRespawntime = function(value) {
   return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional Dota2Position position = 3;
+ * @return {?proto.bragi.Dota2Position}
+ */
+proto.bragi.Roshan.prototype.getPosition = function() {
+  return /** @type{?proto.bragi.Dota2Position} */ (
+    jspb.Message.getWrapperField(this, proto.bragi.Dota2Position, 3));
+};
+
+
+/**
+ * @param {?proto.bragi.Dota2Position|undefined} value
+ * @return {!proto.bragi.Roshan} returns this
+*/
+proto.bragi.Roshan.prototype.setPosition = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.bragi.Roshan} returns this
+ */
+proto.bragi.Roshan.prototype.clearPosition = function() {
+  return this.setPosition(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.Roshan.prototype.hasPosition = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 

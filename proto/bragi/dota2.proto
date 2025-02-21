@@ -349,6 +349,8 @@ message Roshan {
   bool alive = 1;
   // Roshan's respawn timer.
   uint32 respawnTime = 2;
+  // Roshan position
+  Dota2Position position = 3;
 }
 
 message Dota2Tower {

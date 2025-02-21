@@ -121,4 +121,4 @@ liveDataFeed: {
   },
 };
 
-exports.BragiClient = grpc.makeGenericClientConstructor(BragiService);
+exports.BragiClient = grpc.makeGenericClientConstructor(BragiService, 'Bragi');
