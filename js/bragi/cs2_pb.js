@@ -17448,7 +17448,8 @@ mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject
 timeRemaining: (f = msg.getTimeRemaining()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
 currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
 playerUrn: jspb.Message.getFieldWithDefault(msg, 4, ""),
-teamUrn: jspb.Message.getFieldWithDefault(msg, 5, "")
+teamUrn: jspb.Message.getFieldWithDefault(msg, 5, ""),
+bombSite: jspb.Message.getFieldWithDefault(msg, 6, "")
   };
 
   if (includeInstance) {
@@ -17506,6 +17507,10 @@ proto.bragi.CS2BombPlanted.deserializeBinaryFromReader = function(msg, reader) {
     case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setTeamUrn(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBombSite(value);
       break;
     default:
       reader.skipField();
@@ -17570,6 +17575,13 @@ proto.bragi.CS2BombPlanted.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       5,
+      f
+    );
+  }
+  f = message.getBombSite();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
       f
     );
   }
@@ -17701,6 +17713,24 @@ proto.bragi.CS2BombPlanted.prototype.getTeamUrn = function() {
  */
 proto.bragi.CS2BombPlanted.prototype.setTeamUrn = function(value) {
   return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional string bomb_site = 6;
+ * @return {string}
+ */
+proto.bragi.CS2BombPlanted.prototype.getBombSite = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.bragi.CS2BombPlanted} returns this
+ */
+proto.bragi.CS2BombPlanted.prototype.setBombSite = function(value) {
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
@@ -21405,7 +21435,9 @@ proto.bragi.CS2MapEnd.toObject = function(includeInstance, msg) {
 mapTime: (f = msg.getMapTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
 currentRoundNumber: jspb.Message.getFieldWithDefault(msg, 3, 0),
 mapName: jspb.Message.getFieldWithDefault(msg, 4, ""),
-winningTeamUrn: jspb.Message.getFieldWithDefault(msg, 5, "")
+winningTeamUrn: jspb.Message.getFieldWithDefault(msg, 5, ""),
+lightTeamScore: jspb.Message.getFieldWithDefault(msg, 6, 0),
+darkTeamScore: jspb.Message.getFieldWithDefault(msg, 7, 0)
   };
 
   if (includeInstance) {
@@ -21458,6 +21490,14 @@ proto.bragi.CS2MapEnd.deserializeBinaryFromReader = function(msg, reader) {
     case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setWinningTeamUrn(value);
+      break;
+    case 6:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setLightTeamScore(value);
+      break;
+    case 7:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setDarkTeamScore(value);
       break;
     default:
       reader.skipField();
@@ -21514,6 +21554,20 @@ proto.bragi.CS2MapEnd.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       5,
+      f
+    );
+  }
+  f = message.getLightTeamScore();
+  if (f !== 0) {
+    writer.writeUint32(
+      6,
+      f
+    );
+  }
+  f = message.getDarkTeamScore();
+  if (f !== 0) {
+    writer.writeUint32(
+      7,
       f
     );
   }
@@ -21608,6 +21662,42 @@ proto.bragi.CS2MapEnd.prototype.getWinningTeamUrn = function() {
  */
 proto.bragi.CS2MapEnd.prototype.setWinningTeamUrn = function(value) {
   return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional uint32 light_team_score = 6;
+ * @return {number}
+ */
+proto.bragi.CS2MapEnd.prototype.getLightTeamScore = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.bragi.CS2MapEnd} returns this
+ */
+proto.bragi.CS2MapEnd.prototype.setLightTeamScore = function(value) {
+  return jspb.Message.setProto3IntField(this, 6, value);
+};
+
+
+/**
+ * optional uint32 dark_team_score = 7;
+ * @return {number}
+ */
+proto.bragi.CS2MapEnd.prototype.getDarkTeamScore = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.bragi.CS2MapEnd} returns this
+ */
+proto.bragi.CS2MapEnd.prototype.setDarkTeamScore = function(value) {
+  return jspb.Message.setProto3IntField(this, 7, value);
 };
 
 

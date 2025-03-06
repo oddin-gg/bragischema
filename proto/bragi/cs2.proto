@@ -527,6 +527,7 @@ message CS2BombPlanted {
   uint32 current_round_number = 3;
   string player_urn = 4;
   string team_urn = 5;
+  string bomb_site = 6;
 }
 
 message CS2DamageDealt {
@@ -634,6 +635,8 @@ message CS2MapEnd {
   uint32 current_round_number = 3;
   string map_name = 4;
   string winning_team_urn = 5;
+  uint32 light_team_score = 6;
+  uint32 dark_team_score = 7;
 }
 
 message CS2MapStart {
