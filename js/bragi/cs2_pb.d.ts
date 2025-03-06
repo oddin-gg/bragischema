@@ -2220,6 +2220,9 @@ export class CS2BombPlanted extends jspb.Message {
   getTeamUrn(): string;
   setTeamUrn(value: string): void;
 
+  getBombSite(): string;
+  setBombSite(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CS2BombPlanted.AsObject;
   static toObject(includeInstance: boolean, msg: CS2BombPlanted): CS2BombPlanted.AsObject;
@@ -2237,6 +2240,7 @@ export namespace CS2BombPlanted {
     currentRoundNumber: number,
     playerUrn: string,
     teamUrn: string,
+    bombSite: string,
   }
 }
 
@@ -2741,6 +2745,12 @@ export class CS2MapEnd extends jspb.Message {
   getWinningTeamUrn(): string;
   setWinningTeamUrn(value: string): void;
 
+  getLightTeamScore(): number;
+  setLightTeamScore(value: number): void;
+
+  getDarkTeamScore(): number;
+  setDarkTeamScore(value: number): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CS2MapEnd.AsObject;
   static toObject(includeInstance: boolean, msg: CS2MapEnd): CS2MapEnd.AsObject;
@@ -2757,6 +2767,8 @@ export namespace CS2MapEnd {
     currentRoundNumber: number,
     mapName: string,
     winningTeamUrn: string,
+    lightTeamScore: number,
+    darkTeamScore: number,
   }
 }
 

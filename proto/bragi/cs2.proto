@@ -63,8 +63,8 @@ message CS2MatchUpdate {
 
   // Array of events (can be empty). Notifies about occurred situation in game. Those events are non-idempotent messages
   // ordered according timestamp and they are not supposed to be applied on cached match state. Those events represents
-  // a history of match. If any eventis missed there is no way how to recover missing events.
-  repeated CS2Event events = 2 [deprecated = true];
+  // a history of match. If any event is missed there is no way how to recover missing events.
+  repeated CS2Event events = 2;
 }
 
 // One CS2MatchUpdate contains non-empty array property called "updates". These updates represents idempotent updates
@@ -449,7 +449,6 @@ message CS2Position {
 // ---------------------------------------------------------------------------------------------------------------------
 
 message CS2Event {
-  option deprecated = true;
   oneof event {
     CS2BombDefuseStarted bomb_defuse_started = 1;
     CS2BombDefused bomb_defused = 2;
@@ -528,6 +527,7 @@ message CS2BombPlanted {
   uint32 current_round_number = 3;
   string player_urn = 4;
   string team_urn = 5;
+  string bomb_site = 6;
 }
 
 message CS2DamageDealt {
@@ -635,6 +635,8 @@ message CS2MapEnd {
   uint32 current_round_number = 3;
   string map_name = 4;
   string winning_team_urn = 5;
+  uint32 light_team_score = 6;
+  uint32 dark_team_score = 7;
 }
 
 message CS2MapStart {

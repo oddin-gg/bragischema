@@ -3139,6 +3139,9 @@ func (this *CS2BombPlanted) EqualVT(that *CS2BombPlanted) bool {
 	if this.TeamUrn != that.TeamUrn {
 		return false
 	}
+	if this.BombSite != that.BombSite {
+		return false
+	}
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
@@ -3597,6 +3600,12 @@ func (this *CS2MapEnd) EqualVT(that *CS2MapEnd) bool {
 		return false
 	}
 	if this.WinningTeamUrn != that.WinningTeamUrn {
+		return false
+	}
+	if this.LightTeamScore != that.LightTeamScore {
+		return false
+	}
+	if this.DarkTeamScore != that.DarkTeamScore {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
