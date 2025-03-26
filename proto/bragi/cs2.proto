@@ -449,6 +449,9 @@ message CS2Position {
 // ---------------------------------------------------------------------------------------------------------------------
 
 message CS2Event {
+  google.protobuf.Timestamp timestamp = 23;
+  uint64 map_id = 24;
+
   oneof event {
     CS2BombDefuseStarted bomb_defuse_started = 1;
     CS2BombDefused bomb_defused = 2;
@@ -471,6 +474,7 @@ message CS2Event {
     CS2RoundResume round_resume = 18;
     CS2RoundRollback round_rollback = 19;
     CS2RoundStart round_start = 20;
+    CS2WorldBomb world_bomb = 22;
   }
 }
 
@@ -492,7 +496,7 @@ message CS2PlayerItems {
 // ------------------------------------------------------------------------------
 
 message CS2BombDefuseStarted {
-  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration map_time = 1 [deprecated=true]; // Deprecated. Use CS2Event.timestamp.
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
   string player_urn = 4;
@@ -500,7 +504,7 @@ message CS2BombDefuseStarted {
 }
 
 message CS2BombDefused {
-  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration map_time = 1 [deprecated=true]; // Deprecated. Use CS2Event.timestamp.
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
   string player_urn = 4;
@@ -508,13 +512,13 @@ message CS2BombDefused {
 }
 
 message CS2BombExploded {
-  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration map_time = 1 [deprecated=true]; // Deprecated. Use CS2Event.timestamp.
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
 }
 
 message CS2BombPlantStarted {
-  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration map_time = 1 [deprecated=true]; // Deprecated. Use CS2Event.timestamp.
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
   string player_urn = 4;
@@ -522,7 +526,7 @@ message CS2BombPlantStarted {
 }
 
 message CS2BombPlanted {
-  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration map_time = 1 [deprecated=true]; // Deprecated. Use CS2Event.timestamp.
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
   string player_urn = 4;
@@ -531,7 +535,7 @@ message CS2BombPlanted {
 }
 
 message CS2DamageDealt {
-  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration map_time = 1 [deprecated=true]; // Deprecated. Use CS2Event.timestamp.
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
   CS2Position killer_position = 4;
@@ -549,7 +553,7 @@ message CS2DamageDealt {
 }
 
 message CS2FreezeTimeEnded {
-  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration map_time = 1 [deprecated=true]; // Deprecated. Use CS2Event.timestamp.
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
   map<string, CS2PlayerBalance> player_balances = 4; // keys are type of player_urn
@@ -557,14 +561,14 @@ message CS2FreezeTimeEnded {
 }
 
 message CS2FreezeTimeStarted {
-  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration map_time = 1 [deprecated=true]; // Deprecated. Use CS2Event.timestamp.
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
   map<string, CS2PlayerBalance> player_balances = 4; // keys are type of player_urn
   map<string, CS2Side> teams_round_info = 5; // keys are type of team_urn
 }
 message CS2ItemDrop {
-  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration map_time = 1 [deprecated=true]; // Deprecated. Use CS2Event.timestamp.
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
   CS2Position position = 4;
@@ -574,7 +578,7 @@ message CS2ItemDrop {
 }
 
 message CS2ItemPickUp {
-  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration map_time = 1 [deprecated=true]; // Deprecated. Use CS2Event.timestamp.
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
   string player_urn = 4;
@@ -583,7 +587,7 @@ message CS2ItemPickUp {
 }
 
 message CS2ItemPurchase {
-  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration map_time = 1 [deprecated=true]; // Deprecated. Use CS2Event.timestamp.
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
   string player_urn = 4;
@@ -594,7 +598,7 @@ message CS2ItemPurchase {
 }
 
 message CS2ItemThrow {
-  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration map_time = 1 [deprecated=true]; // Deprecated. Use CS2Event.timestamp.
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
   CS2Position position = 4;
@@ -604,7 +608,7 @@ message CS2ItemThrow {
 }
 
 message CS2Kill {
-  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration map_time = 1 [deprecated=true]; // Deprecated. Use CS2Event.timestamp.
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
   CS2Position killer_position = 4;
@@ -619,7 +623,7 @@ message CS2Kill {
 }
 
 message CS2Death {
-  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration map_time = 1 [deprecated=true]; // Deprecated. Use CS2Event.timestamp.
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
   CS2Position position = 4;
@@ -631,7 +635,7 @@ message CS2Death {
 }
 
 message CS2MapEnd {
-  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration map_time = 1 [deprecated=true]; // Deprecated. Use CS2Event.timestamp.
   uint32 current_round_number = 3;
   string map_name = 4;
   string winning_team_urn = 5;
@@ -640,12 +644,12 @@ message CS2MapEnd {
 }
 
 message CS2MapStart {
-  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration map_time = 1 [deprecated=true]; // Deprecated. Use CS2Event.timestamp.
   string map_name = 2;
 }
 
 message CS2RoundEnd {
-  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration map_time = 1 [deprecated=true]; // Deprecated. Use CS2Event.timestamp.
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
   string winning_team_urn = 4;
@@ -655,13 +659,13 @@ message CS2RoundEnd {
 }
 
 message CS2RoundPause {
-  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration map_time = 1 [deprecated=true]; // Deprecated. Use CS2Event.timestamp.
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
 }
 
 message CS2RoundResume {
-  google.protobuf.Duration map_time = 1;
+  google.protobuf.Duration map_time = 1 [deprecated=true]; // Deprecated. Use CS2Event.timestamp.
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
 }
@@ -671,9 +675,14 @@ message CS2RoundRollback {
 }
 
 message CS2RoundStart {
-  google.protobuf.Duration map_time = 1 ;
+  google.protobuf.Duration map_time = 1 [deprecated=true]; // Deprecated. Use CS2Event.timestamp.
   google.protobuf.Duration time_remaining = 2;
   uint32 current_round_number = 3;
+}
+
+message CS2WorldBomb {
+  google.protobuf.Duration time_remaining = 1;
+  CS2BombState state = 2;
 }
 
 // ------------------------------------------------------------------------------

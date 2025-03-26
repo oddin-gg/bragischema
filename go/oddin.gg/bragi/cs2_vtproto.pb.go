@@ -2398,6 +2398,12 @@ func (this *CS2Event) EqualVT(that *CS2Event) bool {
 			return false
 		}
 	}
+	if !(*timestamppb.Timestamp)(this.Timestamp).EqualVT((*timestamppb.Timestamp)(that.Timestamp)) {
+		return false
+	}
+	if this.MapId != that.MapId {
+		return false
+	}
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
@@ -2925,6 +2931,31 @@ func (this *CS2Event_BombPlantStarted) EqualVT(thatIface isCS2Event_Event) bool 
 		}
 		if q == nil {
 			q = &CS2BombPlantStarted{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *CS2Event_WorldBomb) EqualVT(thatIface isCS2Event_Event) bool {
+	that, ok := thatIface.(*CS2Event_WorldBomb)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.WorldBomb, that.WorldBomb; p != q {
+		if p == nil {
+			p = &CS2WorldBomb{}
+		}
+		if q == nil {
+			q = &CS2WorldBomb{}
 		}
 		if !p.EqualVT(q) {
 			return false
@@ -3800,6 +3831,28 @@ func (this *CS2RoundStart) EqualVT(that *CS2RoundStart) bool {
 
 func (this *CS2RoundStart) EqualMessageVT(thatMsg proto.Message) bool {
 	that, ok := thatMsg.(*CS2RoundStart)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *CS2WorldBomb) EqualVT(that *CS2WorldBomb) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+		return false
+	}
+	if !this.State.EqualVT(that.State) {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *CS2WorldBomb) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*CS2WorldBomb)
 	if !ok {
 		return false
 	}
