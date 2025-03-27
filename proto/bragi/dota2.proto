@@ -38,6 +38,46 @@ message Dota2MatchSnapshot {
   Tournament tournament  = 8;
 }
 
+message PicksAndBansSelectionsPerTeam {
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    STATE_IN_PROGRESS = 1;
+    STATE_ENDED = 2;
+  }
+
+  enum TeamType {
+    TEAM_TYPE_UNSPECIFIED = 0;
+    TEAM_TYPE_RADIANT = 1;
+    TEAM_TYPE_DIRE = 2;
+  }
+
+  message HeroSelection {
+    uint32 hero_steam_id = 1;
+    string hero_key = 2;
+  }
+
+  message RadiantSelections {
+    repeated HeroSelection bans = 1;
+    repeated HeroSelection picks = 2;
+  }
+
+  message DireSelections {
+    repeated HeroSelection bans = 1;
+    repeated HeroSelection picks = 2;
+  }
+
+  State state = 1;
+  TeamType active_team = 2;
+  bool pick = 3;
+  int32 active_team_time_remaining = 4;
+  int32 radiant_bonus_time = 5;
+  int32 dire_bonus_time = 6;
+  RadiantSelections radiant_selections = 7;
+  DireSelections dire_selections = 8;
+}
+
+// PicksAndBansSelections maintains the sequential order of both picks and bans.
+// Note: The sequence may become inconsistent if there is a human error when collecting the data.
 message PicksAndBansSelections {
   enum TeamType {
     TEAM_TYPE_UNSPECIFIED = 0;
@@ -104,6 +144,9 @@ message Dota2MatchStatePartialUpdate {
     // Replace "picks_and_bans_selections" property in Dota2MatchState.
     PicksAndBansSelections picks_and_bans_selections = 4;
 
+    // Replace "picks_and_bans_selections_per_team" property in Dota2MatchState.
+    PicksAndBansSelectionsPerTeam picks_and_bans_selections_per_team = 5;
+
     // There are no particular updates for eg. previous_map_states, whole current_map_state defined. In case when those
     // states are updated, then whole update with Dota2MatchState update is sent.
   }
@@ -119,6 +162,7 @@ message Dota2MatchState {
   Dota2CurrentMapState current_map = 7;
   repeated Dota2PreviousMapState previous_maps = 8;
   PicksAndBansSelections picks_and_bans_selections = 9;
+  PicksAndBansSelectionsPerTeam picks_and_bans_selections_per_team = 10;
 }
 
 message Dota2MatchScoreState {
