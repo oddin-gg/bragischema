@@ -1819,6 +1819,14 @@ export namespace CS2Position {
 }
 
 export class CS2Event extends jspb.Message {
+  hasTimestamp(): boolean;
+  clearTimestamp(): void;
+  getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
+  getMapId(): number;
+  setMapId(value: number): void;
+
   hasBombDefuseStarted(): boolean;
   clearBombDefuseStarted(): void;
   getBombDefuseStarted(): CS2BombDefuseStarted | undefined;
@@ -1924,6 +1932,11 @@ export class CS2Event extends jspb.Message {
   getRoundStart(): CS2RoundStart | undefined;
   setRoundStart(value?: CS2RoundStart): void;
 
+  hasWorldBomb(): boolean;
+  clearWorldBomb(): void;
+  getWorldBomb(): CS2WorldBomb | undefined;
+  setWorldBomb(value?: CS2WorldBomb): void;
+
   getEventCase(): CS2Event.EventCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CS2Event.AsObject;
@@ -1937,6 +1950,8 @@ export class CS2Event extends jspb.Message {
 
 export namespace CS2Event {
   export type AsObject = {
+    timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    mapId: number,
     bombDefuseStarted?: CS2BombDefuseStarted.AsObject,
     bombDefused?: CS2BombDefused.AsObject,
     bombExploded?: CS2BombExploded.AsObject,
@@ -1958,6 +1973,7 @@ export namespace CS2Event {
     roundResume?: CS2RoundResume.AsObject,
     roundRollback?: CS2RoundRollback.AsObject,
     roundStart?: CS2RoundStart.AsObject,
+    worldBomb?: CS2WorldBomb.AsObject,
   }
 
   export enum EventCase {
@@ -1983,6 +1999,7 @@ export namespace CS2Event {
     ROUND_RESUME = 18,
     ROUND_ROLLBACK = 19,
     ROUND_START = 20,
+    WORLD_BOMB = 22,
   }
 }
 
@@ -2957,6 +2974,34 @@ export namespace CS2RoundStart {
     mapTime?: google_protobuf_duration_pb.Duration.AsObject,
     timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
     currentRoundNumber: number,
+  }
+}
+
+export class CS2WorldBomb extends jspb.Message {
+  hasTimeRemaining(): boolean;
+  clearTimeRemaining(): void;
+  getTimeRemaining(): google_protobuf_duration_pb.Duration | undefined;
+  setTimeRemaining(value?: google_protobuf_duration_pb.Duration): void;
+
+  hasState(): boolean;
+  clearState(): void;
+  getState(): CS2BombState | undefined;
+  setState(value?: CS2BombState): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CS2WorldBomb.AsObject;
+  static toObject(includeInstance: boolean, msg: CS2WorldBomb): CS2WorldBomb.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: CS2WorldBomb, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CS2WorldBomb;
+  static deserializeBinaryFromReader(message: CS2WorldBomb, reader: jspb.BinaryReader): CS2WorldBomb;
+}
+
+export namespace CS2WorldBomb {
+  export type AsObject = {
+    timeRemaining?: google_protobuf_duration_pb.Duration.AsObject,
+    state?: CS2BombState.AsObject,
   }
 }
 
