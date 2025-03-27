@@ -178,6 +178,168 @@ func (this *Dota2MatchSnapshot) EqualMessageVT(thatMsg proto.Message) bool {
 	}
 	return this.EqualVT(that)
 }
+func (this *PicksAndBansSelectionsPerTeam_HeroSelection) EqualVT(that *PicksAndBansSelectionsPerTeam_HeroSelection) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.HeroSteamId != that.HeroSteamId {
+		return false
+	}
+	if this.HeroKey != that.HeroKey {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *PicksAndBansSelectionsPerTeam_HeroSelection) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*PicksAndBansSelectionsPerTeam_HeroSelection)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *PicksAndBansSelectionsPerTeam_RadiantSelections) EqualVT(that *PicksAndBansSelectionsPerTeam_RadiantSelections) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if len(this.Bans) != len(that.Bans) {
+		return false
+	}
+	for i, vx := range this.Bans {
+		vy := that.Bans[i]
+		if p, q := vx, vy; p != q {
+			if p == nil {
+				p = &PicksAndBansSelectionsPerTeam_HeroSelection{}
+			}
+			if q == nil {
+				q = &PicksAndBansSelectionsPerTeam_HeroSelection{}
+			}
+			if !p.EqualVT(q) {
+				return false
+			}
+		}
+	}
+	if len(this.Picks) != len(that.Picks) {
+		return false
+	}
+	for i, vx := range this.Picks {
+		vy := that.Picks[i]
+		if p, q := vx, vy; p != q {
+			if p == nil {
+				p = &PicksAndBansSelectionsPerTeam_HeroSelection{}
+			}
+			if q == nil {
+				q = &PicksAndBansSelectionsPerTeam_HeroSelection{}
+			}
+			if !p.EqualVT(q) {
+				return false
+			}
+		}
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *PicksAndBansSelectionsPerTeam_RadiantSelections) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*PicksAndBansSelectionsPerTeam_RadiantSelections)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *PicksAndBansSelectionsPerTeam_DireSelections) EqualVT(that *PicksAndBansSelectionsPerTeam_DireSelections) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if len(this.Bans) != len(that.Bans) {
+		return false
+	}
+	for i, vx := range this.Bans {
+		vy := that.Bans[i]
+		if p, q := vx, vy; p != q {
+			if p == nil {
+				p = &PicksAndBansSelectionsPerTeam_HeroSelection{}
+			}
+			if q == nil {
+				q = &PicksAndBansSelectionsPerTeam_HeroSelection{}
+			}
+			if !p.EqualVT(q) {
+				return false
+			}
+		}
+	}
+	if len(this.Picks) != len(that.Picks) {
+		return false
+	}
+	for i, vx := range this.Picks {
+		vy := that.Picks[i]
+		if p, q := vx, vy; p != q {
+			if p == nil {
+				p = &PicksAndBansSelectionsPerTeam_HeroSelection{}
+			}
+			if q == nil {
+				q = &PicksAndBansSelectionsPerTeam_HeroSelection{}
+			}
+			if !p.EqualVT(q) {
+				return false
+			}
+		}
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *PicksAndBansSelectionsPerTeam_DireSelections) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*PicksAndBansSelectionsPerTeam_DireSelections)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *PicksAndBansSelectionsPerTeam) EqualVT(that *PicksAndBansSelectionsPerTeam) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.State != that.State {
+		return false
+	}
+	if this.ActiveTeam != that.ActiveTeam {
+		return false
+	}
+	if this.SelectionType != that.SelectionType {
+		return false
+	}
+	if this.ActiveTeamTimeRemaining != that.ActiveTeamTimeRemaining {
+		return false
+	}
+	if this.RadiantBonusTime != that.RadiantBonusTime {
+		return false
+	}
+	if this.DireBonusTime != that.DireBonusTime {
+		return false
+	}
+	if !this.RadiantSelections.EqualVT(that.RadiantSelections) {
+		return false
+	}
+	if !this.DireSelections.EqualVT(that.DireSelections) {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *PicksAndBansSelectionsPerTeam) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*PicksAndBansSelectionsPerTeam)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
 func (this *PicksAndBansSelections_CurrentHeroSelection) EqualVT(that *PicksAndBansSelections_CurrentHeroSelection) bool {
 	if this == that {
 		return true
@@ -534,6 +696,31 @@ func (this *Dota2MatchStatePartialUpdate_PicksAndBansSelections) EqualVT(thatIfa
 	return true
 }
 
+func (this *Dota2MatchStatePartialUpdate_PicksAndBansSelectionsPerTeam) EqualVT(thatIface isDota2MatchStatePartialUpdate_Update) bool {
+	that, ok := thatIface.(*Dota2MatchStatePartialUpdate_PicksAndBansSelectionsPerTeam)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.PicksAndBansSelectionsPerTeam, that.PicksAndBansSelectionsPerTeam; p != q {
+		if p == nil {
+			p = &PicksAndBansSelectionsPerTeam{}
+		}
+		if q == nil {
+			q = &PicksAndBansSelectionsPerTeam{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
 func (this *Dota2MatchState) EqualVT(that *Dota2MatchState) bool {
 	if this == that {
 		return true
@@ -579,6 +766,9 @@ func (this *Dota2MatchState) EqualVT(that *Dota2MatchState) bool {
 		}
 	}
 	if !this.PicksAndBansSelections.EqualVT(that.PicksAndBansSelections) {
+		return false
+	}
+	if !this.PicksAndBansSelectionsPerTeam.EqualVT(that.PicksAndBansSelectionsPerTeam) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
