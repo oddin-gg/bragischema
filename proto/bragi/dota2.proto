@@ -142,7 +142,7 @@ message Dota2MatchStatePartialUpdate {
     Dota2CurrentMapStatePartialUpdate current_map_state_partial_update = 3;
 
     // Replace "picks_and_bans_selections" property in Dota2MatchState.
-    PicksAndBansSelections picks_and_bans_selections = 4;
+    PicksAndBansSelections picks_and_bans_selections = 4 [deprecated = true]; // use PicksAndBansSelectionsPerTeam
 
     // Replace "picks_and_bans_selections_per_team" property in Dota2MatchState.
     PicksAndBansSelectionsPerTeam picks_and_bans_selections_per_team = 5;
@@ -161,7 +161,7 @@ message Dota2MatchState {
   MatchStatusType match_status = 6;
   Dota2CurrentMapState current_map = 7;
   repeated Dota2PreviousMapState previous_maps = 8;
-  PicksAndBansSelections picks_and_bans_selections = 9;
+  PicksAndBansSelections picks_and_bans_selections = 9 [deprecated = true]; // use PicksAndBansSelectionsPerTeam
   PicksAndBansSelectionsPerTeam picks_and_bans_selections_per_team = 10;
 }
 
