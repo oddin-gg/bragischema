@@ -56,6 +56,11 @@ export namespace CS2MatchMessage {
     getUpdate(): CS2MatchUpdate | undefined;
     setUpdate(value?: CS2MatchUpdate): void;
 
+    hasEvents(): boolean;
+    clearEvents(): void;
+    getEvents(): CS2MatchMessage.Payload.CS2MatchEvents | undefined;
+    setEvents(value?: CS2MatchMessage.Payload.CS2MatchEvents): void;
+
     getPayloadCase(): Payload.PayloadCase;
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Payload.AsObject;
@@ -71,12 +76,40 @@ export namespace CS2MatchMessage {
     export type AsObject = {
       snapshot?: CS2MatchSnapshot.AsObject,
       update?: CS2MatchUpdate.AsObject,
+      events?: CS2MatchMessage.Payload.CS2MatchEvents.AsObject,
+    }
+
+    export class CS2MatchEvents extends jspb.Message {
+      getMatchUrn(): string;
+      setMatchUrn(value: string): void;
+
+      clearEventsList(): void;
+      getEventsList(): Array<CS2Event>;
+      setEventsList(value: Array<CS2Event>): void;
+      addEvents(value?: CS2Event, index?: number): CS2Event;
+
+      serializeBinary(): Uint8Array;
+      toObject(includeInstance?: boolean): CS2MatchEvents.AsObject;
+      static toObject(includeInstance: boolean, msg: CS2MatchEvents): CS2MatchEvents.AsObject;
+      static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+      static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+      static serializeBinaryToWriter(message: CS2MatchEvents, writer: jspb.BinaryWriter): void;
+      static deserializeBinary(bytes: Uint8Array): CS2MatchEvents;
+      static deserializeBinaryFromReader(message: CS2MatchEvents, reader: jspb.BinaryReader): CS2MatchEvents;
+    }
+
+    export namespace CS2MatchEvents {
+      export type AsObject = {
+        matchUrn: string,
+        eventsList: Array<CS2Event.AsObject>,
+      }
     }
 
     export enum PayloadCase {
       PAYLOAD_NOT_SET = 0,
       SNAPSHOT = 1,
       UPDATE = 2,
+      EVENTS = 3,
     }
   }
 }
