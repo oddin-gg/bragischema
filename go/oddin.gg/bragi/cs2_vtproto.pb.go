@@ -18,6 +18,42 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+func (this *CS2MatchMessage_Payload_CS2MatchEvents) EqualVT(that *CS2MatchMessage_Payload_CS2MatchEvents) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.MatchUrn != that.MatchUrn {
+		return false
+	}
+	if len(this.Events) != len(that.Events) {
+		return false
+	}
+	for i, vx := range this.Events {
+		vy := that.Events[i]
+		if p, q := vx, vy; p != q {
+			if p == nil {
+				p = &CS2Event{}
+			}
+			if q == nil {
+				q = &CS2Event{}
+			}
+			if !p.EqualVT(q) {
+				return false
+			}
+		}
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *CS2MatchMessage_Payload_CS2MatchEvents) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*CS2MatchMessage_Payload_CS2MatchEvents)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
 func (this *CS2MatchMessage_Payload) EqualVT(that *CS2MatchMessage_Payload) bool {
 	if this == that {
 		return true
@@ -88,6 +124,31 @@ func (this *CS2MatchMessage_Payload_Update) EqualVT(thatIface isCS2MatchMessage_
 		}
 		if q == nil {
 			q = &CS2MatchUpdate{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *CS2MatchMessage_Payload_Events) EqualVT(thatIface isCS2MatchMessage_Payload_Payload) bool {
+	that, ok := thatIface.(*CS2MatchMessage_Payload_Events)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.Events, that.Events; p != q {
+		if p == nil {
+			p = &CS2MatchMessage_Payload_CS2MatchEvents{}
+		}
+		if q == nil {
+			q = &CS2MatchMessage_Payload_CS2MatchEvents{}
 		}
 		if !p.EqualVT(q) {
 			return false
