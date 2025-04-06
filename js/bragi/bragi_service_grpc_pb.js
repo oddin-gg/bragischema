@@ -34,6 +34,28 @@ function deserialize_bragi_LiveDataFeedRequest(buffer_arg) {
   return bragi_bragi_service_pb.LiveDataFeedRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_bragi_MatchEventsFeedMessage(arg) {
+  if (!(arg instanceof bragi_bragi_service_pb.MatchEventsFeedMessage)) {
+    throw new Error('Expected argument of type bragi.MatchEventsFeedMessage');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_MatchEventsFeedMessage(buffer_arg) {
+  return bragi_bragi_service_pb.MatchEventsFeedMessage.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bragi_MatchEventsFeedRequest(arg) {
+  if (!(arg instanceof bragi_bragi_service_pb.MatchEventsFeedRequest)) {
+    throw new Error('Expected argument of type bragi.MatchEventsFeedRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_MatchEventsFeedRequest(buffer_arg) {
+  return bragi_bragi_service_pb.MatchEventsFeedRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_bragi_MatchTimelineFeedMessage(arg) {
   if (!(arg instanceof bragi_bragi_service_pb.MatchTimelineFeedMessage)) {
     throw new Error('Expected argument of type bragi.MatchTimelineFeedMessage');
@@ -118,6 +140,18 @@ liveDataFeed: {
     requestDeserialize: deserialize_bragi_LiveDataFeedRequest,
     responseSerialize: serialize_bragi_LiveDataFeedMessage,
     responseDeserialize: deserialize_bragi_LiveDataFeedMessage,
+  },
+  // Sends all historical events for currently played matches, then only real-time updates
+matchEventsFeed: {
+    path: '/bragi.Bragi/MatchEventsFeed',
+    requestStream: false,
+    responseStream: true,
+    requestType: bragi_bragi_service_pb.MatchEventsFeedRequest,
+    responseType: bragi_bragi_service_pb.MatchEventsFeedMessage,
+    requestSerialize: serialize_bragi_MatchEventsFeedRequest,
+    requestDeserialize: deserialize_bragi_MatchEventsFeedRequest,
+    responseSerialize: serialize_bragi_MatchEventsFeedMessage,
+    responseDeserialize: deserialize_bragi_MatchEventsFeedMessage,
   },
 };
 

@@ -29,6 +29,17 @@ service Bragi {
   // LiveDataFeed gRPC stream returning LiveDataFeedMessage one direction stream
   rpc LiveDataFeed(LiveDataFeedRequest) returns (stream LiveDataFeedMessage) {}
 
+  // Sends all historical events for currently played matches, then only real-time updates
+  rpc MatchEventsFeed(MatchEventsFeedRequest) returns (stream MatchEventsFeedMessage) {}
+
+}
+
+message MatchEventsFeedRequest {}
+
+message MatchEventsFeedMessage {
+  oneof payload {
+    CS2MatchEvents cs2 = 1;
+  }
 }
 
 message MatchTimelineRequest {}
