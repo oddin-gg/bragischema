@@ -64,7 +64,7 @@ message CS2MatchUpdate {
   // Array of events (can be empty). Notifies about occurred situation in game. Those events are non-idempotent messages
   // ordered according timestamp and they are not supposed to be applied on cached match state. Those events represents
   // a history of match. If any event is missed there is no way how to recover missing events.
-  repeated CS2Event events = 2;
+  repeated CS2Event events = 2 [deprecated=true]; // Deprecated. Use MatchEventsFeedMessage.payload.cs2;
 }
 
 // One CS2MatchUpdate contains non-empty array property called "updates". These updates represents idempotent updates
@@ -72,6 +72,12 @@ message CS2MatchUpdate {
 message CS2MatchStatePartialUpdates {
 
   repeated CS2MatchStatePartialUpdate updates = 1;
+}
+
+// Represents an array of events for a match
+message CS2MatchEvents {
+  string match_urn = 1;
+  repeated CS2Event events = 2;
 }
 
 // ---------------------------------------------------------------------------------------------------------------------

@@ -11,6 +11,50 @@ import * as bragi_lol_pb from "../bragi/lol_pb";
 import * as bragi_rush_basketball_pb from "../bragi/rush_basketball_pb";
 import * as bragi_valorant_pb from "../bragi/valorant_pb";
 
+export class MatchEventsFeedRequest extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MatchEventsFeedRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: MatchEventsFeedRequest): MatchEventsFeedRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MatchEventsFeedRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MatchEventsFeedRequest;
+  static deserializeBinaryFromReader(message: MatchEventsFeedRequest, reader: jspb.BinaryReader): MatchEventsFeedRequest;
+}
+
+export namespace MatchEventsFeedRequest {
+  export type AsObject = {
+  }
+}
+
+export class MatchEventsFeedMessage extends jspb.Message {
+  hasCs2(): boolean;
+  clearCs2(): void;
+  getCs2(): bragi_cs2_pb.CS2MatchEvents | undefined;
+  setCs2(value?: bragi_cs2_pb.CS2MatchEvents): void;
+
+  getPayloadCase(): MatchEventsFeedMessage.PayloadCase;
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MatchEventsFeedMessage.AsObject;
+  static toObject(includeInstance: boolean, msg: MatchEventsFeedMessage): MatchEventsFeedMessage.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MatchEventsFeedMessage, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MatchEventsFeedMessage;
+  static deserializeBinaryFromReader(message: MatchEventsFeedMessage, reader: jspb.BinaryReader): MatchEventsFeedMessage;
+}
+
+export namespace MatchEventsFeedMessage {
+  export type AsObject = {
+    cs2?: bragi_cs2_pb.CS2MatchEvents.AsObject,
+  }
+
+  export enum PayloadCase {
+    PAYLOAD_NOT_SET = 0,
+    CS2 = 1,
+  }
+}
+
 export class MatchTimelineRequest extends jspb.Message {
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MatchTimelineRequest.AsObject;

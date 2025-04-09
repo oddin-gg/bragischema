@@ -17,6 +17,75 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+func (this *MatchEventsFeedRequest) EqualVT(that *MatchEventsFeedRequest) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *MatchEventsFeedRequest) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*MatchEventsFeedRequest)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *MatchEventsFeedMessage) EqualVT(that *MatchEventsFeedMessage) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.Payload == nil && that.Payload != nil {
+		return false
+	} else if this.Payload != nil {
+		if that.Payload == nil {
+			return false
+		}
+		if !this.Payload.(interface {
+			EqualVT(isMatchEventsFeedMessage_Payload) bool
+		}).EqualVT(that.Payload) {
+			return false
+		}
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *MatchEventsFeedMessage) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*MatchEventsFeedMessage)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *MatchEventsFeedMessage_Cs2) EqualVT(thatIface isMatchEventsFeedMessage_Payload) bool {
+	that, ok := thatIface.(*MatchEventsFeedMessage_Cs2)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.Cs2, that.Cs2; p != q {
+		if p == nil {
+			p = &CS2MatchEvents{}
+		}
+		if q == nil {
+			q = &CS2MatchEvents{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
 func (this *MatchTimelineRequest) EqualVT(that *MatchTimelineRequest) bool {
 	if this == that {
 		return true

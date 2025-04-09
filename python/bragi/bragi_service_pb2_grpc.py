@@ -49,6 +49,11 @@ class BragiStub(object):
                 request_serializer=bragi_dot_bragi__service__pb2.LiveDataFeedRequest.SerializeToString,
                 response_deserializer=bragi_dot_bragi__service__pb2.LiveDataFeedMessage.FromString,
                 _registered_method=True)
+        self.MatchEventsFeed = channel.unary_stream(
+                '/bragi.Bragi/MatchEventsFeed',
+                request_serializer=bragi_dot_bragi__service__pb2.MatchEventsFeedRequest.SerializeToString,
+                response_deserializer=bragi_dot_bragi__service__pb2.MatchEventsFeedMessage.FromString,
+                _registered_method=True)
 
 
 class BragiServicer(object):
@@ -78,6 +83,13 @@ class BragiServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def MatchEventsFeed(self, request, context):
+        """Sends all historical events for currently played matches, then only real-time updates
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_BragiServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -95,6 +107,11 @@ def add_BragiServicer_to_server(servicer, server):
                     servicer.LiveDataFeed,
                     request_deserializer=bragi_dot_bragi__service__pb2.LiveDataFeedRequest.FromString,
                     response_serializer=bragi_dot_bragi__service__pb2.LiveDataFeedMessage.SerializeToString,
+            ),
+            'MatchEventsFeed': grpc.unary_stream_rpc_method_handler(
+                    servicer.MatchEventsFeed,
+                    request_deserializer=bragi_dot_bragi__service__pb2.MatchEventsFeedRequest.FromString,
+                    response_serializer=bragi_dot_bragi__service__pb2.MatchEventsFeedMessage.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -178,6 +195,33 @@ class Bragi(object):
             '/bragi.Bragi/LiveDataFeed',
             bragi_dot_bragi__service__pb2.LiveDataFeedRequest.SerializeToString,
             bragi_dot_bragi__service__pb2.LiveDataFeedMessage.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def MatchEventsFeed(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(
+            request,
+            target,
+            '/bragi.Bragi/MatchEventsFeed',
+            bragi_dot_bragi__service__pb2.MatchEventsFeedRequest.SerializeToString,
+            bragi_dot_bragi__service__pb2.MatchEventsFeedMessage.FromString,
             options,
             channel_credentials,
             insecure,

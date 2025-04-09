@@ -22,6 +22,7 @@ const (
 	Bragi_MatchTimeline_FullMethodName     = "/bragi.Bragi/MatchTimeline"
 	Bragi_MatchTimelineFeed_FullMethodName = "/bragi.Bragi/MatchTimelineFeed"
 	Bragi_LiveDataFeed_FullMethodName      = "/bragi.Bragi/LiveDataFeed"
+	Bragi_MatchEventsFeed_FullMethodName   = "/bragi.Bragi/MatchEventsFeed"
 )
 
 // BragiClient is the client API for Bragi service.
@@ -37,6 +38,8 @@ type BragiClient interface {
 	MatchTimelineFeed(ctx context.Context, in *MatchTimelineFeedRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[MatchTimelineFeedMessage], error)
 	// LiveDataFeed gRPC stream returning LiveDataFeedMessage one direction stream
 	LiveDataFeed(ctx context.Context, in *LiveDataFeedRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[LiveDataFeedMessage], error)
+	// Sends all historical events for currently played matches, then only real-time updates
+	MatchEventsFeed(ctx context.Context, in *MatchEventsFeedRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[MatchEventsFeedMessage], error)
 }
 
 type bragiClient struct {
@@ -95,6 +98,25 @@ func (c *bragiClient) LiveDataFeed(ctx context.Context, in *LiveDataFeedRequest,
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type Bragi_LiveDataFeedClient = grpc.ServerStreamingClient[LiveDataFeedMessage]
 
+func (c *bragiClient) MatchEventsFeed(ctx context.Context, in *MatchEventsFeedRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[MatchEventsFeedMessage], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &Bragi_ServiceDesc.Streams[2], Bragi_MatchEventsFeed_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[MatchEventsFeedRequest, MatchEventsFeedMessage]{ClientStream: stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type Bragi_MatchEventsFeedClient = grpc.ServerStreamingClient[MatchEventsFeedMessage]
+
 // BragiServer is the server API for Bragi service.
 // All implementations must embed UnimplementedBragiServer
 // for forward compatibility.
@@ -108,6 +130,8 @@ type BragiServer interface {
 	MatchTimelineFeed(*MatchTimelineFeedRequest, grpc.ServerStreamingServer[MatchTimelineFeedMessage]) error
 	// LiveDataFeed gRPC stream returning LiveDataFeedMessage one direction stream
 	LiveDataFeed(*LiveDataFeedRequest, grpc.ServerStreamingServer[LiveDataFeedMessage]) error
+	// Sends all historical events for currently played matches, then only real-time updates
+	MatchEventsFeed(*MatchEventsFeedRequest, grpc.ServerStreamingServer[MatchEventsFeedMessage]) error
 	mustEmbedUnimplementedBragiServer()
 }
 
@@ -126,6 +150,9 @@ func (UnimplementedBragiServer) MatchTimelineFeed(*MatchTimelineFeedRequest, grp
 }
 func (UnimplementedBragiServer) LiveDataFeed(*LiveDataFeedRequest, grpc.ServerStreamingServer[LiveDataFeedMessage]) error {
 	return status.Errorf(codes.Unimplemented, "method LiveDataFeed not implemented")
+}
+func (UnimplementedBragiServer) MatchEventsFeed(*MatchEventsFeedRequest, grpc.ServerStreamingServer[MatchEventsFeedMessage]) error {
+	return status.Errorf(codes.Unimplemented, "method MatchEventsFeed not implemented")
 }
 func (UnimplementedBragiServer) mustEmbedUnimplementedBragiServer() {}
 func (UnimplementedBragiServer) testEmbeddedByValue()               {}
@@ -188,6 +215,17 @@ func _Bragi_LiveDataFeed_Handler(srv interface{}, stream grpc.ServerStream) erro
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type Bragi_LiveDataFeedServer = grpc.ServerStreamingServer[LiveDataFeedMessage]
 
+func _Bragi_MatchEventsFeed_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(MatchEventsFeedRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(BragiServer).MatchEventsFeed(m, &grpc.GenericServerStream[MatchEventsFeedRequest, MatchEventsFeedMessage]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type Bragi_MatchEventsFeedServer = grpc.ServerStreamingServer[MatchEventsFeedMessage]
+
 // Bragi_ServiceDesc is the grpc.ServiceDesc for Bragi service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -209,6 +247,11 @@ var Bragi_ServiceDesc = grpc.ServiceDesc{
 		{
 			StreamName:    "LiveDataFeed",
 			Handler:       _Bragi_LiveDataFeed_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "MatchEventsFeed",
+			Handler:       _Bragi_MatchEventsFeed_Handler,
 			ServerStreams: true,
 		},
 	},

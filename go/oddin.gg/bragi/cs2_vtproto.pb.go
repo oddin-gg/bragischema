@@ -325,6 +325,42 @@ func (this *CS2MatchStatePartialUpdates) EqualMessageVT(thatMsg proto.Message) b
 	}
 	return this.EqualVT(that)
 }
+func (this *CS2MatchEvents) EqualVT(that *CS2MatchEvents) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.MatchUrn != that.MatchUrn {
+		return false
+	}
+	if len(this.Events) != len(that.Events) {
+		return false
+	}
+	for i, vx := range this.Events {
+		vy := that.Events[i]
+		if p, q := vx, vy; p != q {
+			if p == nil {
+				p = &CS2Event{}
+			}
+			if q == nil {
+				q = &CS2Event{}
+			}
+			if !p.EqualVT(q) {
+				return false
+			}
+		}
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *CS2MatchEvents) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*CS2MatchEvents)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
 func (this *CS2MatchStatePartialUpdate) EqualVT(that *CS2MatchStatePartialUpdate) bool {
 	if this == that {
 		return true
