@@ -11,6 +11,7 @@ var bragi_rush_soccer_pb = require('../bragi/rush_soccer_pb.js');
 var bragi_lol_pb = require('../bragi/lol_pb.js');
 var bragi_rush_basketball_pb = require('../bragi/rush_basketball_pb.js');
 var bragi_valorant_pb = require('../bragi/valorant_pb.js');
+var bragi_rush_cricket_pb = require('../bragi/rush_cricket_pb.js');
 
 function serialize_bragi_LiveDataFeedMessage(arg) {
   if (!(arg instanceof bragi_bragi_service_pb.LiveDataFeedMessage)) {
