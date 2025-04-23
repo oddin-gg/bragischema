@@ -598,6 +598,31 @@ func (this *MatchMessage_Valorant) EqualVT(thatIface isMatchMessage_Message) boo
 	return true
 }
 
+func (this *MatchMessage_RushCricket) EqualVT(thatIface isMatchMessage_Message) bool {
+	that, ok := thatIface.(*MatchMessage_RushCricket)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.RushCricket, that.RushCricket; p != q {
+		if p == nil {
+			p = &RushCricketMatchMessage{}
+		}
+		if q == nil {
+			q = &RushCricketMatchMessage{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
 func (this *MatchSnapshot) EqualVT(that *MatchSnapshot) bool {
 	if this == that {
 		return true
@@ -801,6 +826,31 @@ func (this *MatchSnapshot_Valorant) EqualVT(thatIface isMatchSnapshot_Snapshot) 
 	return true
 }
 
+func (this *MatchSnapshot_RushCricket) EqualVT(thatIface isMatchSnapshot_Snapshot) bool {
+	that, ok := thatIface.(*MatchSnapshot_RushCricket)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.RushCricket, that.RushCricket; p != q {
+		if p == nil {
+			p = &RushCricketMatchSnapshot{}
+		}
+		if q == nil {
+			q = &RushCricketMatchSnapshot{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
 func (this *MatchState) EqualVT(that *MatchState) bool {
 	if this == that {
 		return true
@@ -994,6 +1044,31 @@ func (this *MatchState_Valorant) EqualVT(thatIface isMatchState_State) bool {
 		}
 		if q == nil {
 			q = &ValorantMatchState{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *MatchState_RushCricket) EqualVT(thatIface isMatchState_State) bool {
+	that, ok := thatIface.(*MatchState_RushCricket)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.RushCricket, that.RushCricket; p != q {
+		if p == nil {
+			p = &RushCricketMatchState{}
+		}
+		if q == nil {
+			q = &RushCricketMatchState{}
 		}
 		if !p.EqualVT(q) {
 			return false
