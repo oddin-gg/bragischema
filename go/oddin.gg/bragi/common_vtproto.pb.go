@@ -314,6 +314,9 @@ func (this *Tournament) EqualVT(that *Tournament) bool {
 	if this.Name != that.Name {
 		return false
 	}
+	if this.IsOffline != that.IsOffline {
+		return false
+	}
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
