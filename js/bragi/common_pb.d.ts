@@ -268,6 +268,9 @@ export class Tournament extends jspb.Message {
   getName(): string;
   setName(value: string): void;
 
+  getIsOffline(): boolean;
+  setIsOffline(value: boolean): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Tournament.AsObject;
   static toObject(includeInstance: boolean, msg: Tournament): Tournament.AsObject;
@@ -282,6 +285,7 @@ export namespace Tournament {
   export type AsObject = {
     urn: string,
     name: string,
+    isOffline: boolean,
   }
 }
 

@@ -2060,7 +2060,8 @@ proto.bragi.Tournament.prototype.toObject = function(opt_includeInstance) {
 proto.bragi.Tournament.toObject = function(includeInstance, msg) {
   var f, obj = {
 urn: jspb.Message.getFieldWithDefault(msg, 1, ""),
-name: jspb.Message.getFieldWithDefault(msg, 2, "")
+name: jspb.Message.getFieldWithDefault(msg, 2, ""),
+isOffline: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -2105,6 +2106,10 @@ proto.bragi.Tournament.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
       break;
+    case 3:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsOffline(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -2148,6 +2153,13 @@ proto.bragi.Tournament.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getIsOffline();
+  if (f) {
+    writer.writeBool(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -2184,6 +2196,24 @@ proto.bragi.Tournament.prototype.getName = function() {
  */
 proto.bragi.Tournament.prototype.setName = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional bool is_offline = 3;
+ * @return {boolean}
+ */
+proto.bragi.Tournament.prototype.getIsOffline = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 3, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.bragi.Tournament} returns this
+ */
+proto.bragi.Tournament.prototype.setIsOffline = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 3, value);
 };
 
 
