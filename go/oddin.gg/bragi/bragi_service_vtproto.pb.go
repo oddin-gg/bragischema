@@ -5,9 +5,10 @@
 package bragi
 
 import (
-	timestamppb "github.com/planetscale/vtprotobuf/types/known/timestamppb"
+	timestamppb1 "github.com/planetscale/vtprotobuf/types/known/timestamppb"
 	proto "google.golang.org/protobuf/proto"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -16,6 +17,512 @@ const (
 	// Verify that runtime/protoimpl is sufficiently up-to-date.
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
+
+func (m *MatchEventsFeedRequest) CloneVT() *MatchEventsFeedRequest {
+	if m == nil {
+		return (*MatchEventsFeedRequest)(nil)
+	}
+	r := new(MatchEventsFeedRequest)
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *MatchEventsFeedRequest) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *MatchEventsFeedMessage) CloneVT() *MatchEventsFeedMessage {
+	if m == nil {
+		return (*MatchEventsFeedMessage)(nil)
+	}
+	r := new(MatchEventsFeedMessage)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isMatchEventsFeedMessage_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *MatchEventsFeedMessage) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *MatchEventsFeedMessage_Cs2) CloneVT() isMatchEventsFeedMessage_Payload {
+	if m == nil {
+		return (*MatchEventsFeedMessage_Cs2)(nil)
+	}
+	r := new(MatchEventsFeedMessage_Cs2)
+	r.Cs2 = m.Cs2.CloneVT()
+	return r
+}
+
+func (m *MatchTimelineRequest) CloneVT() *MatchTimelineRequest {
+	if m == nil {
+		return (*MatchTimelineRequest)(nil)
+	}
+	r := new(MatchTimelineRequest)
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *MatchTimelineRequest) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *MatchTimelineResponse) CloneVT() *MatchTimelineResponse {
+	if m == nil {
+		return (*MatchTimelineResponse)(nil)
+	}
+	r := new(MatchTimelineResponse)
+	if rhs := m.Matches; rhs != nil {
+		tmpContainer := make([]*Match, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Matches = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *MatchTimelineResponse) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *MatchTimelineFeedRequest) CloneVT() *MatchTimelineFeedRequest {
+	if m == nil {
+		return (*MatchTimelineFeedRequest)(nil)
+	}
+	r := new(MatchTimelineFeedRequest)
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *MatchTimelineFeedRequest) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *MatchTimelineFeedMessage) CloneVT() *MatchTimelineFeedMessage {
+	if m == nil {
+		return (*MatchTimelineFeedMessage)(nil)
+	}
+	r := new(MatchTimelineFeedMessage)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isMatchTimelineFeedMessage_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *MatchTimelineFeedMessage) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *MatchTimelineFeedMessage_Keepalive) CloneVT() isMatchTimelineFeedMessage_Payload {
+	if m == nil {
+		return (*MatchTimelineFeedMessage_Keepalive)(nil)
+	}
+	r := new(MatchTimelineFeedMessage_Keepalive)
+	r.Keepalive = m.Keepalive.CloneVT()
+	return r
+}
+
+func (m *MatchTimelineFeedMessage_Timeline) CloneVT() isMatchTimelineFeedMessage_Payload {
+	if m == nil {
+		return (*MatchTimelineFeedMessage_Timeline)(nil)
+	}
+	r := new(MatchTimelineFeedMessage_Timeline)
+	r.Timeline = m.Timeline.CloneVT()
+	return r
+}
+
+func (m *MatchTimelineFeedMessage_MatchUpdate) CloneVT() isMatchTimelineFeedMessage_Payload {
+	if m == nil {
+		return (*MatchTimelineFeedMessage_MatchUpdate)(nil)
+	}
+	r := new(MatchTimelineFeedMessage_MatchUpdate)
+	r.MatchUpdate = m.MatchUpdate.CloneVT()
+	return r
+}
+
+func (m *LiveDataFeedRequest) CloneVT() *LiveDataFeedRequest {
+	if m == nil {
+		return (*LiveDataFeedRequest)(nil)
+	}
+	r := new(LiveDataFeedRequest)
+	r.After = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.After).CloneVT())
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *LiveDataFeedRequest) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *LiveDataFeedMessage) CloneVT() *LiveDataFeedMessage {
+	if m == nil {
+		return (*LiveDataFeedMessage)(nil)
+	}
+	r := new(LiveDataFeedMessage)
+	if m.Message != nil {
+		r.Message = m.Message.(interface {
+			CloneVT() isLiveDataFeedMessage_Message
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *LiveDataFeedMessage) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *LiveDataFeedMessage_Keepalive) CloneVT() isLiveDataFeedMessage_Message {
+	if m == nil {
+		return (*LiveDataFeedMessage_Keepalive)(nil)
+	}
+	r := new(LiveDataFeedMessage_Keepalive)
+	r.Keepalive = m.Keepalive.CloneVT()
+	return r
+}
+
+func (m *LiveDataFeedMessage_Match) CloneVT() isLiveDataFeedMessage_Message {
+	if m == nil {
+		return (*LiveDataFeedMessage_Match)(nil)
+	}
+	r := new(LiveDataFeedMessage_Match)
+	r.Match = m.Match.CloneVT()
+	return r
+}
+
+func (m *KeepAlive) CloneVT() *KeepAlive {
+	if m == nil {
+		return (*KeepAlive)(nil)
+	}
+	r := new(KeepAlive)
+	r.Timestamp = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.Timestamp).CloneVT())
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *KeepAlive) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *MatchMessage) CloneVT() *MatchMessage {
+	if m == nil {
+		return (*MatchMessage)(nil)
+	}
+	r := new(MatchMessage)
+	if m.Message != nil {
+		r.Message = m.Message.(interface{ CloneVT() isMatchMessage_Message }).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *MatchMessage) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *MatchMessage_Announcement) CloneVT() isMatchMessage_Message {
+	if m == nil {
+		return (*MatchMessage_Announcement)(nil)
+	}
+	r := new(MatchMessage_Announcement)
+	r.Announcement = m.Announcement.CloneVT()
+	return r
+}
+
+func (m *MatchMessage_Cs2) CloneVT() isMatchMessage_Message {
+	if m == nil {
+		return (*MatchMessage_Cs2)(nil)
+	}
+	r := new(MatchMessage_Cs2)
+	r.Cs2 = m.Cs2.CloneVT()
+	return r
+}
+
+func (m *MatchMessage_Cs2Duels) CloneVT() isMatchMessage_Message {
+	if m == nil {
+		return (*MatchMessage_Cs2Duels)(nil)
+	}
+	r := new(MatchMessage_Cs2Duels)
+	r.Cs2Duels = m.Cs2Duels.CloneVT()
+	return r
+}
+
+func (m *MatchMessage_Dota2) CloneVT() isMatchMessage_Message {
+	if m == nil {
+		return (*MatchMessage_Dota2)(nil)
+	}
+	r := new(MatchMessage_Dota2)
+	r.Dota2 = m.Dota2.CloneVT()
+	return r
+}
+
+func (m *MatchMessage_RushSoccer) CloneVT() isMatchMessage_Message {
+	if m == nil {
+		return (*MatchMessage_RushSoccer)(nil)
+	}
+	r := new(MatchMessage_RushSoccer)
+	r.RushSoccer = m.RushSoccer.CloneVT()
+	return r
+}
+
+func (m *MatchMessage_Lol) CloneVT() isMatchMessage_Message {
+	if m == nil {
+		return (*MatchMessage_Lol)(nil)
+	}
+	r := new(MatchMessage_Lol)
+	r.Lol = m.Lol.CloneVT()
+	return r
+}
+
+func (m *MatchMessage_RushBasketball) CloneVT() isMatchMessage_Message {
+	if m == nil {
+		return (*MatchMessage_RushBasketball)(nil)
+	}
+	r := new(MatchMessage_RushBasketball)
+	r.RushBasketball = m.RushBasketball.CloneVT()
+	return r
+}
+
+func (m *MatchMessage_Valorant) CloneVT() isMatchMessage_Message {
+	if m == nil {
+		return (*MatchMessage_Valorant)(nil)
+	}
+	r := new(MatchMessage_Valorant)
+	r.Valorant = m.Valorant.CloneVT()
+	return r
+}
+
+func (m *MatchMessage_RushCricket) CloneVT() isMatchMessage_Message {
+	if m == nil {
+		return (*MatchMessage_RushCricket)(nil)
+	}
+	r := new(MatchMessage_RushCricket)
+	r.RushCricket = m.RushCricket.CloneVT()
+	return r
+}
+
+func (m *MatchSnapshot) CloneVT() *MatchSnapshot {
+	if m == nil {
+		return (*MatchSnapshot)(nil)
+	}
+	r := new(MatchSnapshot)
+	if m.Snapshot != nil {
+		r.Snapshot = m.Snapshot.(interface {
+			CloneVT() isMatchSnapshot_Snapshot
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *MatchSnapshot) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *MatchSnapshot_Cs2) CloneVT() isMatchSnapshot_Snapshot {
+	if m == nil {
+		return (*MatchSnapshot_Cs2)(nil)
+	}
+	r := new(MatchSnapshot_Cs2)
+	r.Cs2 = m.Cs2.CloneVT()
+	return r
+}
+
+func (m *MatchSnapshot_Cs2Duels) CloneVT() isMatchSnapshot_Snapshot {
+	if m == nil {
+		return (*MatchSnapshot_Cs2Duels)(nil)
+	}
+	r := new(MatchSnapshot_Cs2Duels)
+	r.Cs2Duels = m.Cs2Duels.CloneVT()
+	return r
+}
+
+func (m *MatchSnapshot_Dota2) CloneVT() isMatchSnapshot_Snapshot {
+	if m == nil {
+		return (*MatchSnapshot_Dota2)(nil)
+	}
+	r := new(MatchSnapshot_Dota2)
+	r.Dota2 = m.Dota2.CloneVT()
+	return r
+}
+
+func (m *MatchSnapshot_RushSoccer) CloneVT() isMatchSnapshot_Snapshot {
+	if m == nil {
+		return (*MatchSnapshot_RushSoccer)(nil)
+	}
+	r := new(MatchSnapshot_RushSoccer)
+	r.RushSoccer = m.RushSoccer.CloneVT()
+	return r
+}
+
+func (m *MatchSnapshot_Lol) CloneVT() isMatchSnapshot_Snapshot {
+	if m == nil {
+		return (*MatchSnapshot_Lol)(nil)
+	}
+	r := new(MatchSnapshot_Lol)
+	r.Lol = m.Lol.CloneVT()
+	return r
+}
+
+func (m *MatchSnapshot_RushBasketball) CloneVT() isMatchSnapshot_Snapshot {
+	if m == nil {
+		return (*MatchSnapshot_RushBasketball)(nil)
+	}
+	r := new(MatchSnapshot_RushBasketball)
+	r.RushBasketball = m.RushBasketball.CloneVT()
+	return r
+}
+
+func (m *MatchSnapshot_Valorant) CloneVT() isMatchSnapshot_Snapshot {
+	if m == nil {
+		return (*MatchSnapshot_Valorant)(nil)
+	}
+	r := new(MatchSnapshot_Valorant)
+	r.Valorant = m.Valorant.CloneVT()
+	return r
+}
+
+func (m *MatchSnapshot_RushCricket) CloneVT() isMatchSnapshot_Snapshot {
+	if m == nil {
+		return (*MatchSnapshot_RushCricket)(nil)
+	}
+	r := new(MatchSnapshot_RushCricket)
+	r.RushCricket = m.RushCricket.CloneVT()
+	return r
+}
+
+func (m *MatchState) CloneVT() *MatchState {
+	if m == nil {
+		return (*MatchState)(nil)
+	}
+	r := new(MatchState)
+	if m.State != nil {
+		r.State = m.State.(interface{ CloneVT() isMatchState_State }).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *MatchState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *MatchState_Cs2) CloneVT() isMatchState_State {
+	if m == nil {
+		return (*MatchState_Cs2)(nil)
+	}
+	r := new(MatchState_Cs2)
+	r.Cs2 = m.Cs2.CloneVT()
+	return r
+}
+
+func (m *MatchState_Cs2Duels) CloneVT() isMatchState_State {
+	if m == nil {
+		return (*MatchState_Cs2Duels)(nil)
+	}
+	r := new(MatchState_Cs2Duels)
+	r.Cs2Duels = m.Cs2Duels.CloneVT()
+	return r
+}
+
+func (m *MatchState_Dota2) CloneVT() isMatchState_State {
+	if m == nil {
+		return (*MatchState_Dota2)(nil)
+	}
+	r := new(MatchState_Dota2)
+	r.Dota2 = m.Dota2.CloneVT()
+	return r
+}
+
+func (m *MatchState_RushSoccer) CloneVT() isMatchState_State {
+	if m == nil {
+		return (*MatchState_RushSoccer)(nil)
+	}
+	r := new(MatchState_RushSoccer)
+	r.RushSoccer = m.RushSoccer.CloneVT()
+	return r
+}
+
+func (m *MatchState_Lol) CloneVT() isMatchState_State {
+	if m == nil {
+		return (*MatchState_Lol)(nil)
+	}
+	r := new(MatchState_Lol)
+	r.Lol = m.Lol.CloneVT()
+	return r
+}
+
+func (m *MatchState_RushBasketball) CloneVT() isMatchState_State {
+	if m == nil {
+		return (*MatchState_RushBasketball)(nil)
+	}
+	r := new(MatchState_RushBasketball)
+	r.RushBasketball = m.RushBasketball.CloneVT()
+	return r
+}
+
+func (m *MatchState_Valorant) CloneVT() isMatchState_State {
+	if m == nil {
+		return (*MatchState_Valorant)(nil)
+	}
+	r := new(MatchState_Valorant)
+	r.Valorant = m.Valorant.CloneVT()
+	return r
+}
+
+func (m *MatchState_RushCricket) CloneVT() isMatchState_State {
+	if m == nil {
+		return (*MatchState_RushCricket)(nil)
+	}
+	r := new(MatchState_RushCricket)
+	r.RushCricket = m.RushCricket.CloneVT()
+	return r
+}
 
 func (this *MatchEventsFeedRequest) EqualVT(that *MatchEventsFeedRequest) bool {
 	if this == that {
@@ -260,7 +767,7 @@ func (this *LiveDataFeedRequest) EqualVT(that *LiveDataFeedRequest) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*timestamppb.Timestamp)(this.After).EqualVT((*timestamppb.Timestamp)(that.After)) {
+	if !(*timestamppb1.Timestamp)(this.After).EqualVT((*timestamppb1.Timestamp)(that.After)) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
@@ -357,7 +864,7 @@ func (this *KeepAlive) EqualVT(that *KeepAlive) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*timestamppb.Timestamp)(this.Timestamp).EqualVT((*timestamppb.Timestamp)(that.Timestamp)) {
+	if !(*timestamppb1.Timestamp)(this.Timestamp).EqualVT((*timestamppb1.Timestamp)(that.Timestamp)) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)

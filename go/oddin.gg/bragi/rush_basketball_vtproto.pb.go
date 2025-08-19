@@ -5,10 +5,12 @@
 package bragi
 
 import (
-	durationpb "github.com/planetscale/vtprotobuf/types/known/durationpb"
-	timestamppb "github.com/planetscale/vtprotobuf/types/known/timestamppb"
+	durationpb1 "github.com/planetscale/vtprotobuf/types/known/durationpb"
+	timestamppb1 "github.com/planetscale/vtprotobuf/types/known/timestamppb"
 	proto "google.golang.org/protobuf/proto"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -17,6 +19,549 @@ const (
 	// Verify that runtime/protoimpl is sufficiently up-to-date.
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
+
+func (m *RushBasketballMatchMessage_Payload) CloneVT() *RushBasketballMatchMessage_Payload {
+	if m == nil {
+		return (*RushBasketballMatchMessage_Payload)(nil)
+	}
+	r := new(RushBasketballMatchMessage_Payload)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isRushBasketballMatchMessage_Payload_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushBasketballMatchMessage_Payload) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushBasketballMatchMessage_Payload_Snapshot) CloneVT() isRushBasketballMatchMessage_Payload_Payload {
+	if m == nil {
+		return (*RushBasketballMatchMessage_Payload_Snapshot)(nil)
+	}
+	r := new(RushBasketballMatchMessage_Payload_Snapshot)
+	r.Snapshot = m.Snapshot.CloneVT()
+	return r
+}
+
+func (m *RushBasketballMatchMessage_Payload_Update) CloneVT() isRushBasketballMatchMessage_Payload_Payload {
+	if m == nil {
+		return (*RushBasketballMatchMessage_Payload_Update)(nil)
+	}
+	r := new(RushBasketballMatchMessage_Payload_Update)
+	r.Update = m.Update.CloneVT()
+	return r
+}
+
+func (m *RushBasketballMatchMessage) CloneVT() *RushBasketballMatchMessage {
+	if m == nil {
+		return (*RushBasketballMatchMessage)(nil)
+	}
+	r := new(RushBasketballMatchMessage)
+	r.MatchUrn = m.MatchUrn
+	r.Sequence = m.Sequence
+	r.Timestamp = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.Timestamp).CloneVT())
+	r.DataStatus = m.DataStatus
+	r.Payload = m.Payload.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushBasketballMatchMessage) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushBasketballMatchSnapshot) CloneVT() *RushBasketballMatchSnapshot {
+	if m == nil {
+		return (*RushBasketballMatchSnapshot)(nil)
+	}
+	r := new(RushBasketballMatchSnapshot)
+	r.MatchUrn = m.MatchUrn
+	r.Sequence = m.Sequence
+	r.Timestamp = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.Timestamp).CloneVT())
+	r.DataStatus = m.DataStatus
+	r.MatchState = m.MatchState.CloneVT()
+	r.Tournament = m.Tournament.CloneVT()
+	if rhs := m.Announcements; rhs != nil {
+		tmpContainer := make([]*Announcement, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Announcements = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushBasketballMatchSnapshot) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushBasketballMatchUpdate_Payload) CloneVT() *RushBasketballMatchUpdate_Payload {
+	if m == nil {
+		return (*RushBasketballMatchUpdate_Payload)(nil)
+	}
+	r := new(RushBasketballMatchUpdate_Payload)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isRushBasketballMatchUpdate_Payload_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushBasketballMatchUpdate_Payload) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushBasketballMatchUpdate_Payload_MatchState) CloneVT() isRushBasketballMatchUpdate_Payload_Payload {
+	if m == nil {
+		return (*RushBasketballMatchUpdate_Payload_MatchState)(nil)
+	}
+	r := new(RushBasketballMatchUpdate_Payload_MatchState)
+	r.MatchState = m.MatchState.CloneVT()
+	return r
+}
+
+func (m *RushBasketballMatchUpdate_Payload_PartialUpdates) CloneVT() isRushBasketballMatchUpdate_Payload_Payload {
+	if m == nil {
+		return (*RushBasketballMatchUpdate_Payload_PartialUpdates)(nil)
+	}
+	r := new(RushBasketballMatchUpdate_Payload_PartialUpdates)
+	r.PartialUpdates = m.PartialUpdates.CloneVT()
+	return r
+}
+
+func (m *RushBasketballMatchUpdate) CloneVT() *RushBasketballMatchUpdate {
+	if m == nil {
+		return (*RushBasketballMatchUpdate)(nil)
+	}
+	r := new(RushBasketballMatchUpdate)
+	r.Payload = m.Payload.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushBasketballMatchUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushBasketballMatchStatePartialUpdates) CloneVT() *RushBasketballMatchStatePartialUpdates {
+	if m == nil {
+		return (*RushBasketballMatchStatePartialUpdates)(nil)
+	}
+	r := new(RushBasketballMatchStatePartialUpdates)
+	if rhs := m.Updates; rhs != nil {
+		tmpContainer := make([]*RushBasketballMatchStatePartialUpdate, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Updates = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushBasketballMatchStatePartialUpdates) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushBasketballMatchStatePartialUpdate) CloneVT() *RushBasketballMatchStatePartialUpdate {
+	if m == nil {
+		return (*RushBasketballMatchStatePartialUpdate)(nil)
+	}
+	r := new(RushBasketballMatchStatePartialUpdate)
+	if m.Update != nil {
+		r.Update = m.Update.(interface {
+			CloneVT() isRushBasketballMatchStatePartialUpdate_Update
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushBasketballMatchStatePartialUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushBasketballMatchStatePartialUpdate_CurrentMapState) CloneVT() isRushBasketballMatchStatePartialUpdate_Update {
+	if m == nil {
+		return (*RushBasketballMatchStatePartialUpdate_CurrentMapState)(nil)
+	}
+	r := new(RushBasketballMatchStatePartialUpdate_CurrentMapState)
+	r.CurrentMapState = m.CurrentMapState.CloneVT()
+	return r
+}
+
+func (m *RushBasketballMatchStatePartialUpdate_CurrentMapStatePartialUpdate) CloneVT() isRushBasketballMatchStatePartialUpdate_Update {
+	if m == nil {
+		return (*RushBasketballMatchStatePartialUpdate_CurrentMapStatePartialUpdate)(nil)
+	}
+	r := new(RushBasketballMatchStatePartialUpdate_CurrentMapStatePartialUpdate)
+	r.CurrentMapStatePartialUpdate = m.CurrentMapStatePartialUpdate.CloneVT()
+	return r
+}
+
+func (m *RushBasketballMatchStatePartialUpdate_Timeline) CloneVT() isRushBasketballMatchStatePartialUpdate_Update {
+	if m == nil {
+		return (*RushBasketballMatchStatePartialUpdate_Timeline)(nil)
+	}
+	r := new(RushBasketballMatchStatePartialUpdate_Timeline)
+	r.Timeline = m.Timeline.CloneVT()
+	return r
+}
+
+func (m *RushBasketballMatchState) CloneVT() *RushBasketballMatchState {
+	if m == nil {
+		return (*RushBasketballMatchState)(nil)
+	}
+	r := new(RushBasketballMatchState)
+	r.MatchUrn = m.MatchUrn
+	r.MatchType = m.MatchType
+	r.HomeTeam = m.HomeTeam.CloneVT()
+	r.AwayTeam = m.AwayTeam.CloneVT()
+	r.MatchStatus = m.MatchStatus
+	r.Timeline = m.Timeline.CloneVT()
+	r.CurrentMap = m.CurrentMap.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushBasketballMatchState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushBasketballTimelineState) CloneVT() *RushBasketballTimelineState {
+	if m == nil {
+		return (*RushBasketballTimelineState)(nil)
+	}
+	r := new(RushBasketballTimelineState)
+	if rhs := m.Events; rhs != nil {
+		tmpContainer := make([]*RushBasketballTimelineEvent, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Events = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushBasketballTimelineState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushBasketballTimelineEvent) CloneVT() *RushBasketballTimelineEvent {
+	if m == nil {
+		return (*RushBasketballTimelineEvent)(nil)
+	}
+	r := new(RushBasketballTimelineEvent)
+	r.TeamUrn = m.TeamUrn
+	r.EventType = m.EventType
+	r.RemainingTime = (*durationpb.Duration)((*durationpb1.Duration)(m.RemainingTime).CloneVT())
+	r.Period = m.Period
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushBasketballTimelineEvent) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushBasketballCurrentMapStatePartialUpdate) CloneVT() *RushBasketballCurrentMapStatePartialUpdate {
+	if m == nil {
+		return (*RushBasketballCurrentMapStatePartialUpdate)(nil)
+	}
+	r := new(RushBasketballCurrentMapStatePartialUpdate)
+	if m.Update != nil {
+		r.Update = m.Update.(interface {
+			CloneVT() isRushBasketballCurrentMapStatePartialUpdate_Update
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushBasketballCurrentMapStatePartialUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushBasketballCurrentMapStatePartialUpdate_GameTime) CloneVT() isRushBasketballCurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*RushBasketballCurrentMapStatePartialUpdate_GameTime)(nil)
+	}
+	r := new(RushBasketballCurrentMapStatePartialUpdate_GameTime)
+	r.GameTime = m.GameTime.CloneVT()
+	return r
+}
+
+func (m *RushBasketballCurrentMapStatePartialUpdate_Score) CloneVT() isRushBasketballCurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*RushBasketballCurrentMapStatePartialUpdate_Score)(nil)
+	}
+	r := new(RushBasketballCurrentMapStatePartialUpdate_Score)
+	r.Score = m.Score.CloneVT()
+	return r
+}
+
+func (m *RushBasketballCurrentMapStatePartialUpdate_TeamCurrentMapState) CloneVT() isRushBasketballCurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*RushBasketballCurrentMapStatePartialUpdate_TeamCurrentMapState)(nil)
+	}
+	r := new(RushBasketballCurrentMapStatePartialUpdate_TeamCurrentMapState)
+	r.TeamCurrentMapState = m.TeamCurrentMapState.CloneVT()
+	return r
+}
+
+func (m *RushBasketballCurrentMapStatePartialUpdate_TeamCurrentMapPartialUpdate) CloneVT() isRushBasketballCurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*RushBasketballCurrentMapStatePartialUpdate_TeamCurrentMapPartialUpdate)(nil)
+	}
+	r := new(RushBasketballCurrentMapStatePartialUpdate_TeamCurrentMapPartialUpdate)
+	r.TeamCurrentMapPartialUpdate = m.TeamCurrentMapPartialUpdate.CloneVT()
+	return r
+}
+
+func (m *RushBasketballCurrentMapState) CloneVT() *RushBasketballCurrentMapState {
+	if m == nil {
+		return (*RushBasketballCurrentMapState)(nil)
+	}
+	r := new(RushBasketballCurrentMapState)
+	r.Period = m.Period
+	r.GameTime = m.GameTime.CloneVT()
+	r.Score = m.Score.CloneVT()
+	r.MapPaused = m.MapPaused
+	if rhs := m.Teams; rhs != nil {
+		tmpContainer := make(map[string]*RushBasketballTeamCurrentMapState, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Teams = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushBasketballCurrentMapState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushBasketballCurrentMapTimeState) CloneVT() *RushBasketballCurrentMapTimeState {
+	if m == nil {
+		return (*RushBasketballCurrentMapTimeState)(nil)
+	}
+	r := new(RushBasketballCurrentMapTimeState)
+	r.RemainingTime = (*durationpb.Duration)((*durationpb1.Duration)(m.RemainingTime).CloneVT())
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushBasketballCurrentMapTimeState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushBasketballCurrentMapScoreState) CloneVT() *RushBasketballCurrentMapScoreState {
+	if m == nil {
+		return (*RushBasketballCurrentMapScoreState)(nil)
+	}
+	r := new(RushBasketballCurrentMapScoreState)
+	r.HomeScore = m.HomeScore
+	r.AwayScore = m.AwayScore
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushBasketballCurrentMapScoreState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushBasketballTeamCurrentMapStatePartialUpdate_Payload) CloneVT() *RushBasketballTeamCurrentMapStatePartialUpdate_Payload {
+	if m == nil {
+		return (*RushBasketballTeamCurrentMapStatePartialUpdate_Payload)(nil)
+	}
+	r := new(RushBasketballTeamCurrentMapStatePartialUpdate_Payload)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isRushBasketballTeamCurrentMapStatePartialUpdate_Payload_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushBasketballTeamCurrentMapStatePartialUpdate_Payload) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushBasketballTeamCurrentMapStatePartialUpdate_Payload_MapStatistics) CloneVT() isRushBasketballTeamCurrentMapStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*RushBasketballTeamCurrentMapStatePartialUpdate_Payload_MapStatistics)(nil)
+	}
+	r := new(RushBasketballTeamCurrentMapStatePartialUpdate_Payload_MapStatistics)
+	r.MapStatistics = m.MapStatistics.CloneVT()
+	return r
+}
+
+func (m *RushBasketballTeamCurrentMapStatePartialUpdate_Payload_Player) CloneVT() isRushBasketballTeamCurrentMapStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*RushBasketballTeamCurrentMapStatePartialUpdate_Payload_Player)(nil)
+	}
+	r := new(RushBasketballTeamCurrentMapStatePartialUpdate_Payload_Player)
+	r.Player = m.Player.CloneVT()
+	return r
+}
+
+func (m *RushBasketballTeamCurrentMapStatePartialUpdate) CloneVT() *RushBasketballTeamCurrentMapStatePartialUpdate {
+	if m == nil {
+		return (*RushBasketballTeamCurrentMapStatePartialUpdate)(nil)
+	}
+	r := new(RushBasketballTeamCurrentMapStatePartialUpdate)
+	r.TeamUrn = m.TeamUrn
+	r.Payload = m.Payload.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushBasketballTeamCurrentMapStatePartialUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushBasketballTeamCurrentMapState) CloneVT() *RushBasketballTeamCurrentMapState {
+	if m == nil {
+		return (*RushBasketballTeamCurrentMapState)(nil)
+	}
+	r := new(RushBasketballTeamCurrentMapState)
+	r.TeamUrn = m.TeamUrn
+	r.MapStatistics = m.MapStatistics.CloneVT()
+	r.Player = m.Player.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushBasketballTeamCurrentMapState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushBasketballPlayerCurrentMapState) CloneVT() *RushBasketballPlayerCurrentMapState {
+	if m == nil {
+		return (*RushBasketballPlayerCurrentMapState)(nil)
+	}
+	r := new(RushBasketballPlayerCurrentMapState)
+	r.PlayerUrn = m.PlayerUrn
+	r.ExtName = m.ExtName
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushBasketballPlayerCurrentMapState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushBasketballTeamCurrentMapStatisticsState) CloneVT() *RushBasketballTeamCurrentMapStatisticsState {
+	if m == nil {
+		return (*RushBasketballTeamCurrentMapStatisticsState)(nil)
+	}
+	r := new(RushBasketballTeamCurrentMapStatisticsState)
+	r.PointsTotal = m.PointsTotal
+	r.PointsHt = m.PointsHt
+	r.ThreePointers = m.ThreePointers
+	r.TwoPointers = m.TwoPointers
+	r.FreeThrowsSuccessful = m.FreeThrowsSuccessful
+	r.FreeThrowsMissed = m.FreeThrowsMissed
+	r.Fouls = m.Fouls
+	if rhs := m.PeriodPoints; rhs != nil {
+		tmpContainer := make([]*RushBasketballPeriodPoints, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.PeriodPoints = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushBasketballTeamCurrentMapStatisticsState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushBasketballPeriodPoints) CloneVT() *RushBasketballPeriodPoints {
+	if m == nil {
+		return (*RushBasketballPeriodPoints)(nil)
+	}
+	r := new(RushBasketballPeriodPoints)
+	r.Period = m.Period
+	r.Points = m.Points
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushBasketballPeriodPoints) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
 
 func (this *RushBasketballMatchMessage_Payload) EqualVT(that *RushBasketballMatchMessage_Payload) bool {
 	if this == that {
@@ -108,7 +653,7 @@ func (this *RushBasketballMatchMessage) EqualVT(that *RushBasketballMatchMessage
 	if this.Sequence != that.Sequence {
 		return false
 	}
-	if !(*timestamppb.Timestamp)(this.Timestamp).EqualVT((*timestamppb.Timestamp)(that.Timestamp)) {
+	if !(*timestamppb1.Timestamp)(this.Timestamp).EqualVT((*timestamppb1.Timestamp)(that.Timestamp)) {
 		return false
 	}
 	if this.DataStatus != that.DataStatus {
@@ -139,7 +684,7 @@ func (this *RushBasketballMatchSnapshot) EqualVT(that *RushBasketballMatchSnapsh
 	if this.Sequence != that.Sequence {
 		return false
 	}
-	if !(*timestamppb.Timestamp)(this.Timestamp).EqualVT((*timestamppb.Timestamp)(that.Timestamp)) {
+	if !(*timestamppb1.Timestamp)(this.Timestamp).EqualVT((*timestamppb1.Timestamp)(that.Timestamp)) {
 		return false
 	}
 	if this.DataStatus != that.DataStatus {
@@ -493,7 +1038,7 @@ func (this *RushBasketballTimelineEvent) EqualVT(that *RushBasketballTimelineEve
 	if this.EventType != that.EventType {
 		return false
 	}
-	if !(*durationpb.Duration)(this.RemainingTime).EqualVT((*durationpb.Duration)(that.RemainingTime)) {
+	if !(*durationpb1.Duration)(this.RemainingTime).EqualVT((*durationpb1.Duration)(that.RemainingTime)) {
 		return false
 	}
 	if this.Period != that.Period {
@@ -691,7 +1236,7 @@ func (this *RushBasketballCurrentMapTimeState) EqualVT(that *RushBasketballCurre
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.RemainingTime).EqualVT((*durationpb.Duration)(that.RemainingTime)) {
+	if !(*durationpb1.Duration)(this.RemainingTime).EqualVT((*durationpb1.Duration)(that.RemainingTime)) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)

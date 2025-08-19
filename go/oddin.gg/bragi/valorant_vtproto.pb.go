@@ -5,10 +5,12 @@
 package bragi
 
 import (
-	durationpb "github.com/planetscale/vtprotobuf/types/known/durationpb"
-	timestamppb "github.com/planetscale/vtprotobuf/types/known/timestamppb"
+	durationpb1 "github.com/planetscale/vtprotobuf/types/known/durationpb"
+	timestamppb1 "github.com/planetscale/vtprotobuf/types/known/timestamppb"
 	proto "google.golang.org/protobuf/proto"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -17,6 +19,1083 @@ const (
 	// Verify that runtime/protoimpl is sufficiently up-to-date.
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
+
+func (m *ValorantMatchMessage_Payload) CloneVT() *ValorantMatchMessage_Payload {
+	if m == nil {
+		return (*ValorantMatchMessage_Payload)(nil)
+	}
+	r := new(ValorantMatchMessage_Payload)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isValorantMatchMessage_Payload_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantMatchMessage_Payload) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantMatchMessage_Payload_Snapshot) CloneVT() isValorantMatchMessage_Payload_Payload {
+	if m == nil {
+		return (*ValorantMatchMessage_Payload_Snapshot)(nil)
+	}
+	r := new(ValorantMatchMessage_Payload_Snapshot)
+	r.Snapshot = m.Snapshot.CloneVT()
+	return r
+}
+
+func (m *ValorantMatchMessage_Payload_Update) CloneVT() isValorantMatchMessage_Payload_Payload {
+	if m == nil {
+		return (*ValorantMatchMessage_Payload_Update)(nil)
+	}
+	r := new(ValorantMatchMessage_Payload_Update)
+	r.Update = m.Update.CloneVT()
+	return r
+}
+
+func (m *ValorantMatchMessage) CloneVT() *ValorantMatchMessage {
+	if m == nil {
+		return (*ValorantMatchMessage)(nil)
+	}
+	r := new(ValorantMatchMessage)
+	r.MatchUrn = m.MatchUrn
+	r.Sequence = m.Sequence
+	r.Timestamp = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.Timestamp).CloneVT())
+	r.DataStatus = m.DataStatus
+	r.Payload = m.Payload.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantMatchMessage) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantMatchSnapshot) CloneVT() *ValorantMatchSnapshot {
+	if m == nil {
+		return (*ValorantMatchSnapshot)(nil)
+	}
+	r := new(ValorantMatchSnapshot)
+	r.MatchUrn = m.MatchUrn
+	r.Sequence = m.Sequence
+	r.Timestamp = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.Timestamp).CloneVT())
+	r.DataStatus = m.DataStatus
+	r.MatchState = m.MatchState.CloneVT()
+	r.Tournament = m.Tournament.CloneVT()
+	if rhs := m.Announcements; rhs != nil {
+		tmpContainer := make([]*Announcement, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Announcements = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantMatchSnapshot) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantMatchUpdate_Payload) CloneVT() *ValorantMatchUpdate_Payload {
+	if m == nil {
+		return (*ValorantMatchUpdate_Payload)(nil)
+	}
+	r := new(ValorantMatchUpdate_Payload)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isValorantMatchUpdate_Payload_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantMatchUpdate_Payload) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantMatchUpdate_Payload_MatchState) CloneVT() isValorantMatchUpdate_Payload_Payload {
+	if m == nil {
+		return (*ValorantMatchUpdate_Payload_MatchState)(nil)
+	}
+	r := new(ValorantMatchUpdate_Payload_MatchState)
+	r.MatchState = m.MatchState.CloneVT()
+	return r
+}
+
+func (m *ValorantMatchUpdate_Payload_PartialUpdates) CloneVT() isValorantMatchUpdate_Payload_Payload {
+	if m == nil {
+		return (*ValorantMatchUpdate_Payload_PartialUpdates)(nil)
+	}
+	r := new(ValorantMatchUpdate_Payload_PartialUpdates)
+	r.PartialUpdates = m.PartialUpdates.CloneVT()
+	return r
+}
+
+func (m *ValorantMatchUpdate) CloneVT() *ValorantMatchUpdate {
+	if m == nil {
+		return (*ValorantMatchUpdate)(nil)
+	}
+	r := new(ValorantMatchUpdate)
+	r.Payload = m.Payload.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantMatchUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantMatchStatePartialUpdates) CloneVT() *ValorantMatchStatePartialUpdates {
+	if m == nil {
+		return (*ValorantMatchStatePartialUpdates)(nil)
+	}
+	r := new(ValorantMatchStatePartialUpdates)
+	if rhs := m.Updates; rhs != nil {
+		tmpContainer := make([]*ValorantMatchStatePartialUpdate, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Updates = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantMatchStatePartialUpdates) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantMatchStatePartialUpdate) CloneVT() *ValorantMatchStatePartialUpdate {
+	if m == nil {
+		return (*ValorantMatchStatePartialUpdate)(nil)
+	}
+	r := new(ValorantMatchStatePartialUpdate)
+	if m.Update != nil {
+		r.Update = m.Update.(interface {
+			CloneVT() isValorantMatchStatePartialUpdate_Update
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantMatchStatePartialUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantMatchStatePartialUpdate_Score) CloneVT() isValorantMatchStatePartialUpdate_Update {
+	if m == nil {
+		return (*ValorantMatchStatePartialUpdate_Score)(nil)
+	}
+	r := new(ValorantMatchStatePartialUpdate_Score)
+	r.Score = m.Score.CloneVT()
+	return r
+}
+
+func (m *ValorantMatchStatePartialUpdate_CurrentMap) CloneVT() isValorantMatchStatePartialUpdate_Update {
+	if m == nil {
+		return (*ValorantMatchStatePartialUpdate_CurrentMap)(nil)
+	}
+	r := new(ValorantMatchStatePartialUpdate_CurrentMap)
+	r.CurrentMap = m.CurrentMap.CloneVT()
+	return r
+}
+
+func (m *ValorantMatchStatePartialUpdate_CurrentMapPartialUpdate) CloneVT() isValorantMatchStatePartialUpdate_Update {
+	if m == nil {
+		return (*ValorantMatchStatePartialUpdate_CurrentMapPartialUpdate)(nil)
+	}
+	r := new(ValorantMatchStatePartialUpdate_CurrentMapPartialUpdate)
+	r.CurrentMapPartialUpdate = m.CurrentMapPartialUpdate.CloneVT()
+	return r
+}
+
+func (m *ValorantMatchState) CloneVT() *ValorantMatchState {
+	if m == nil {
+		return (*ValorantMatchState)(nil)
+	}
+	r := new(ValorantMatchState)
+	r.MatchUrn = m.MatchUrn
+	r.MatchType = m.MatchType
+	r.HomeTeam = m.HomeTeam.CloneVT()
+	r.AwayTeam = m.AwayTeam.CloneVT()
+	r.Score = m.Score.CloneVT()
+	r.MatchStatus = m.MatchStatus
+	r.CurrentMap = m.CurrentMap.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantMatchState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantMatchScoreState) CloneVT() *ValorantMatchScoreState {
+	if m == nil {
+		return (*ValorantMatchScoreState)(nil)
+	}
+	r := new(ValorantMatchScoreState)
+	r.HomeScore = m.HomeScore
+	r.AwayScore = m.AwayScore
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantMatchScoreState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantCurrentMapStatePartialUpdate) CloneVT() *ValorantCurrentMapStatePartialUpdate {
+	if m == nil {
+		return (*ValorantCurrentMapStatePartialUpdate)(nil)
+	}
+	r := new(ValorantCurrentMapStatePartialUpdate)
+	if m.Update != nil {
+		r.Update = m.Update.(interface {
+			CloneVT() isValorantCurrentMapStatePartialUpdate_Update
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantCurrentMapStatePartialUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantCurrentMapStatePartialUpdate_Score) CloneVT() isValorantCurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*ValorantCurrentMapStatePartialUpdate_Score)(nil)
+	}
+	r := new(ValorantCurrentMapStatePartialUpdate_Score)
+	r.Score = m.Score.CloneVT()
+	return r
+}
+
+func (m *ValorantCurrentMapStatePartialUpdate_CurrentRound) CloneVT() isValorantCurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*ValorantCurrentMapStatePartialUpdate_CurrentRound)(nil)
+	}
+	r := new(ValorantCurrentMapStatePartialUpdate_CurrentRound)
+	r.CurrentRound = m.CurrentRound.CloneVT()
+	return r
+}
+
+func (m *ValorantCurrentMapStatePartialUpdate_CurrentRoundPartialUpdate) CloneVT() isValorantCurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*ValorantCurrentMapStatePartialUpdate_CurrentRoundPartialUpdate)(nil)
+	}
+	r := new(ValorantCurrentMapStatePartialUpdate_CurrentRoundPartialUpdate)
+	r.CurrentRoundPartialUpdate = m.CurrentRoundPartialUpdate.CloneVT()
+	return r
+}
+
+func (m *ValorantCurrentMapStatePartialUpdate_TeamCurrentMapState) CloneVT() isValorantCurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*ValorantCurrentMapStatePartialUpdate_TeamCurrentMapState)(nil)
+	}
+	r := new(ValorantCurrentMapStatePartialUpdate_TeamCurrentMapState)
+	r.TeamCurrentMapState = m.TeamCurrentMapState.CloneVT()
+	return r
+}
+
+func (m *ValorantCurrentMapStatePartialUpdate_TeamCurrentMapPartialUpdate) CloneVT() isValorantCurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*ValorantCurrentMapStatePartialUpdate_TeamCurrentMapPartialUpdate)(nil)
+	}
+	r := new(ValorantCurrentMapStatePartialUpdate_TeamCurrentMapPartialUpdate)
+	r.TeamCurrentMapPartialUpdate = m.TeamCurrentMapPartialUpdate.CloneVT()
+	return r
+}
+
+func (m *ValorantCurrentMapStatePartialUpdate_PreviousRounds) CloneVT() isValorantCurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*ValorantCurrentMapStatePartialUpdate_PreviousRounds)(nil)
+	}
+	r := new(ValorantCurrentMapStatePartialUpdate_PreviousRounds)
+	r.PreviousRounds = m.PreviousRounds.CloneVT()
+	return r
+}
+
+func (m *ValorantCurrentMapState) CloneVT() *ValorantCurrentMapState {
+	if m == nil {
+		return (*ValorantCurrentMapState)(nil)
+	}
+	r := new(ValorantCurrentMapState)
+	r.MapOrder = m.MapOrder
+	r.MapPaused = m.MapPaused
+	r.MapName = m.MapName
+	r.Score = m.Score.CloneVT()
+	r.CurrentRound = m.CurrentRound.CloneVT()
+	r.PreviousRounds = m.PreviousRounds.CloneVT()
+	if rhs := m.WinTeamUrn; rhs != nil {
+		tmpVal := *rhs
+		r.WinTeamUrn = &tmpVal
+	}
+	if rhs := m.Teams; rhs != nil {
+		tmpContainer := make(map[string]*ValorantTeamCurrentMapState, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Teams = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantCurrentMapState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantMapScoreState) CloneVT() *ValorantMapScoreState {
+	if m == nil {
+		return (*ValorantMapScoreState)(nil)
+	}
+	r := new(ValorantMapScoreState)
+	r.HomeScore = m.HomeScore
+	r.AwayScore = m.AwayScore
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantMapScoreState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantPreviousRoundsState) CloneVT() *ValorantPreviousRoundsState {
+	if m == nil {
+		return (*ValorantPreviousRoundsState)(nil)
+	}
+	r := new(ValorantPreviousRoundsState)
+	if rhs := m.Rounds; rhs != nil {
+		tmpContainer := make([]*ValorantPreviousRound, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Rounds = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantPreviousRoundsState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantTeamCurrentMapStatePartialUpdate_Payload) CloneVT() *ValorantTeamCurrentMapStatePartialUpdate_Payload {
+	if m == nil {
+		return (*ValorantTeamCurrentMapStatePartialUpdate_Payload)(nil)
+	}
+	r := new(ValorantTeamCurrentMapStatePartialUpdate_Payload)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isValorantTeamCurrentMapStatePartialUpdate_Payload_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantTeamCurrentMapStatePartialUpdate_Payload) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantTeamCurrentMapStatePartialUpdate_Payload_PlayerCurrentMapState) CloneVT() isValorantTeamCurrentMapStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*ValorantTeamCurrentMapStatePartialUpdate_Payload_PlayerCurrentMapState)(nil)
+	}
+	r := new(ValorantTeamCurrentMapStatePartialUpdate_Payload_PlayerCurrentMapState)
+	r.PlayerCurrentMapState = m.PlayerCurrentMapState.CloneVT()
+	return r
+}
+
+func (m *ValorantTeamCurrentMapStatePartialUpdate_Payload_PlayerCurrentMapPartialUpdate) CloneVT() isValorantTeamCurrentMapStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*ValorantTeamCurrentMapStatePartialUpdate_Payload_PlayerCurrentMapPartialUpdate)(nil)
+	}
+	r := new(ValorantTeamCurrentMapStatePartialUpdate_Payload_PlayerCurrentMapPartialUpdate)
+	r.PlayerCurrentMapPartialUpdate = m.PlayerCurrentMapPartialUpdate.CloneVT()
+	return r
+}
+
+func (m *ValorantTeamCurrentMapStatePartialUpdate) CloneVT() *ValorantTeamCurrentMapStatePartialUpdate {
+	if m == nil {
+		return (*ValorantTeamCurrentMapStatePartialUpdate)(nil)
+	}
+	r := new(ValorantTeamCurrentMapStatePartialUpdate)
+	r.TeamUrn = m.TeamUrn
+	r.Payload = m.Payload.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantTeamCurrentMapStatePartialUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantTeamCurrentMapState) CloneVT() *ValorantTeamCurrentMapState {
+	if m == nil {
+		return (*ValorantTeamCurrentMapState)(nil)
+	}
+	r := new(ValorantTeamCurrentMapState)
+	r.TeamUrn = m.TeamUrn
+	r.Side = m.Side
+	if rhs := m.Players; rhs != nil {
+		tmpContainer := make(map[string]*ValorantPlayerCurrentMapState, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Players = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantTeamCurrentMapState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantPlayerCurrentMapStatePartialUpdate_Payload) CloneVT() *ValorantPlayerCurrentMapStatePartialUpdate_Payload {
+	if m == nil {
+		return (*ValorantPlayerCurrentMapStatePartialUpdate_Payload)(nil)
+	}
+	r := new(ValorantPlayerCurrentMapStatePartialUpdate_Payload)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isValorantPlayerCurrentMapStatePartialUpdate_Payload_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantPlayerCurrentMapStatePartialUpdate_Payload) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantPlayerCurrentMapStatePartialUpdate_Payload_PlayerInfo) CloneVT() isValorantPlayerCurrentMapStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*ValorantPlayerCurrentMapStatePartialUpdate_Payload_PlayerInfo)(nil)
+	}
+	r := new(ValorantPlayerCurrentMapStatePartialUpdate_Payload_PlayerInfo)
+	r.PlayerInfo = m.PlayerInfo.CloneVT()
+	return r
+}
+
+func (m *ValorantPlayerCurrentMapStatePartialUpdate_Payload_Abilities) CloneVT() isValorantPlayerCurrentMapStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*ValorantPlayerCurrentMapStatePartialUpdate_Payload_Abilities)(nil)
+	}
+	r := new(ValorantPlayerCurrentMapStatePartialUpdate_Payload_Abilities)
+	r.Abilities = m.Abilities.CloneVT()
+	return r
+}
+
+func (m *ValorantPlayerCurrentMapStatePartialUpdate_Payload_Statistics) CloneVT() isValorantPlayerCurrentMapStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*ValorantPlayerCurrentMapStatePartialUpdate_Payload_Statistics)(nil)
+	}
+	r := new(ValorantPlayerCurrentMapStatePartialUpdate_Payload_Statistics)
+	r.Statistics = m.Statistics.CloneVT()
+	return r
+}
+
+func (m *ValorantPlayerCurrentMapStatePartialUpdate) CloneVT() *ValorantPlayerCurrentMapStatePartialUpdate {
+	if m == nil {
+		return (*ValorantPlayerCurrentMapStatePartialUpdate)(nil)
+	}
+	r := new(ValorantPlayerCurrentMapStatePartialUpdate)
+	r.PlayerUrn = m.PlayerUrn
+	r.Payload = m.Payload.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantPlayerCurrentMapStatePartialUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantPlayerCurrentMapState) CloneVT() *ValorantPlayerCurrentMapState {
+	if m == nil {
+		return (*ValorantPlayerCurrentMapState)(nil)
+	}
+	r := new(ValorantPlayerCurrentMapState)
+	r.PlayerUrn = m.PlayerUrn
+	r.AgentUrn = m.AgentUrn
+	r.PlayerInfo = m.PlayerInfo.CloneVT()
+	r.Abilities = m.Abilities.CloneVT()
+	r.Statistics = m.Statistics.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantPlayerCurrentMapState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantPlayerCurrentMapStatisticsState) CloneVT() *ValorantPlayerCurrentMapStatisticsState {
+	if m == nil {
+		return (*ValorantPlayerCurrentMapStatisticsState)(nil)
+	}
+	r := new(ValorantPlayerCurrentMapStatisticsState)
+	r.PlayerUrn = m.PlayerUrn
+	r.Kills = m.Kills
+	r.Deaths = m.Deaths
+	r.Assists = m.Assists
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantPlayerCurrentMapStatisticsState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantCurrentRoundStatePartialUpdate) CloneVT() *ValorantCurrentRoundStatePartialUpdate {
+	if m == nil {
+		return (*ValorantCurrentRoundStatePartialUpdate)(nil)
+	}
+	r := new(ValorantCurrentRoundStatePartialUpdate)
+	if m.Update != nil {
+		r.Update = m.Update.(interface {
+			CloneVT() isValorantCurrentRoundStatePartialUpdate_Update
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantCurrentRoundStatePartialUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantCurrentRoundStatePartialUpdate_RoundInfo) CloneVT() isValorantCurrentRoundStatePartialUpdate_Update {
+	if m == nil {
+		return (*ValorantCurrentRoundStatePartialUpdate_RoundInfo)(nil)
+	}
+	r := new(ValorantCurrentRoundStatePartialUpdate_RoundInfo)
+	r.RoundInfo = m.RoundInfo.CloneVT()
+	return r
+}
+
+func (m *ValorantCurrentRoundStatePartialUpdate_Time) CloneVT() isValorantCurrentRoundStatePartialUpdate_Update {
+	if m == nil {
+		return (*ValorantCurrentRoundStatePartialUpdate_Time)(nil)
+	}
+	r := new(ValorantCurrentRoundStatePartialUpdate_Time)
+	r.Time = m.Time.CloneVT()
+	return r
+}
+
+func (m *ValorantCurrentRoundStatePartialUpdate_Spike) CloneVT() isValorantCurrentRoundStatePartialUpdate_Update {
+	if m == nil {
+		return (*ValorantCurrentRoundStatePartialUpdate_Spike)(nil)
+	}
+	r := new(ValorantCurrentRoundStatePartialUpdate_Spike)
+	r.Spike = m.Spike.CloneVT()
+	return r
+}
+
+func (m *ValorantCurrentRoundStatePartialUpdate_TeamCurrentRoundState) CloneVT() isValorantCurrentRoundStatePartialUpdate_Update {
+	if m == nil {
+		return (*ValorantCurrentRoundStatePartialUpdate_TeamCurrentRoundState)(nil)
+	}
+	r := new(ValorantCurrentRoundStatePartialUpdate_TeamCurrentRoundState)
+	r.TeamCurrentRoundState = m.TeamCurrentRoundState.CloneVT()
+	return r
+}
+
+func (m *ValorantCurrentRoundStatePartialUpdate_TeamCurrentRoundPartialUpdate) CloneVT() isValorantCurrentRoundStatePartialUpdate_Update {
+	if m == nil {
+		return (*ValorantCurrentRoundStatePartialUpdate_TeamCurrentRoundPartialUpdate)(nil)
+	}
+	r := new(ValorantCurrentRoundStatePartialUpdate_TeamCurrentRoundPartialUpdate)
+	r.TeamCurrentRoundPartialUpdate = m.TeamCurrentRoundPartialUpdate.CloneVT()
+	return r
+}
+
+func (m *ValorantCurrentRoundState) CloneVT() *ValorantCurrentRoundState {
+	if m == nil {
+		return (*ValorantCurrentRoundState)(nil)
+	}
+	r := new(ValorantCurrentRoundState)
+	r.RoundInfo = m.RoundInfo.CloneVT()
+	r.Time = m.Time.CloneVT()
+	r.Spike = m.Spike.CloneVT()
+	if rhs := m.Teams; rhs != nil {
+		tmpContainer := make(map[string]*ValorantTeamCurrentRoundState, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Teams = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantCurrentRoundState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantRoundInfoState) CloneVT() *ValorantRoundInfoState {
+	if m == nil {
+		return (*ValorantRoundInfoState)(nil)
+	}
+	r := new(ValorantRoundInfoState)
+	r.Number = m.Number
+	r.Phase = m.Phase
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantRoundInfoState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantCurrentRoundTimeState) CloneVT() *ValorantCurrentRoundTimeState {
+	if m == nil {
+		return (*ValorantCurrentRoundTimeState)(nil)
+	}
+	r := new(ValorantCurrentRoundTimeState)
+	r.TimeRemaining = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeRemaining).CloneVT())
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantCurrentRoundTimeState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantCurrentRoundTeamSpikeState) CloneVT() *ValorantCurrentRoundTeamSpikeState {
+	if m == nil {
+		return (*ValorantCurrentRoundTeamSpikeState)(nil)
+	}
+	r := new(ValorantCurrentRoundTeamSpikeState)
+	r.State = m.State
+	r.TimeToDefused = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeToDefused).CloneVT())
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantCurrentRoundTeamSpikeState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantTeamCurrentRoundStatePartialUpdate_Payload) CloneVT() *ValorantTeamCurrentRoundStatePartialUpdate_Payload {
+	if m == nil {
+		return (*ValorantTeamCurrentRoundStatePartialUpdate_Payload)(nil)
+	}
+	r := new(ValorantTeamCurrentRoundStatePartialUpdate_Payload)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isValorantTeamCurrentRoundStatePartialUpdate_Payload_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantTeamCurrentRoundStatePartialUpdate_Payload) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantTeamCurrentRoundStatePartialUpdate_Payload_PlayerCurrentRoundState) CloneVT() isValorantTeamCurrentRoundStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*ValorantTeamCurrentRoundStatePartialUpdate_Payload_PlayerCurrentRoundState)(nil)
+	}
+	r := new(ValorantTeamCurrentRoundStatePartialUpdate_Payload_PlayerCurrentRoundState)
+	r.PlayerCurrentRoundState = m.PlayerCurrentRoundState.CloneVT()
+	return r
+}
+
+func (m *ValorantTeamCurrentRoundStatePartialUpdate_Payload_PlayerCurrentRoundPartialUpdate) CloneVT() isValorantTeamCurrentRoundStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*ValorantTeamCurrentRoundStatePartialUpdate_Payload_PlayerCurrentRoundPartialUpdate)(nil)
+	}
+	r := new(ValorantTeamCurrentRoundStatePartialUpdate_Payload_PlayerCurrentRoundPartialUpdate)
+	r.PlayerCurrentRoundPartialUpdate = m.PlayerCurrentRoundPartialUpdate.CloneVT()
+	return r
+}
+
+func (m *ValorantTeamCurrentRoundStatePartialUpdate) CloneVT() *ValorantTeamCurrentRoundStatePartialUpdate {
+	if m == nil {
+		return (*ValorantTeamCurrentRoundStatePartialUpdate)(nil)
+	}
+	r := new(ValorantTeamCurrentRoundStatePartialUpdate)
+	r.TeamUrn = m.TeamUrn
+	r.Payload = m.Payload.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantTeamCurrentRoundStatePartialUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantTeamCurrentRoundState) CloneVT() *ValorantTeamCurrentRoundState {
+	if m == nil {
+		return (*ValorantTeamCurrentRoundState)(nil)
+	}
+	r := new(ValorantTeamCurrentRoundState)
+	r.TeamUrn = m.TeamUrn
+	r.Side = m.Side
+	if rhs := m.Players; rhs != nil {
+		tmpContainer := make(map[string]*ValorantPlayerCurrentRoundState, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Players = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantTeamCurrentRoundState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantPlayerCurrentRoundStatePartialUpdate_Payload) CloneVT() *ValorantPlayerCurrentRoundStatePartialUpdate_Payload {
+	if m == nil {
+		return (*ValorantPlayerCurrentRoundStatePartialUpdate_Payload)(nil)
+	}
+	r := new(ValorantPlayerCurrentRoundStatePartialUpdate_Payload)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isValorantPlayerCurrentRoundStatePartialUpdate_Payload_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantPlayerCurrentRoundStatePartialUpdate_Payload) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantPlayerCurrentRoundStatePartialUpdate_Payload_PlayerInfo) CloneVT() isValorantPlayerCurrentRoundStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*ValorantPlayerCurrentRoundStatePartialUpdate_Payload_PlayerInfo)(nil)
+	}
+	r := new(ValorantPlayerCurrentRoundStatePartialUpdate_Payload_PlayerInfo)
+	r.PlayerInfo = m.PlayerInfo.CloneVT()
+	return r
+}
+
+func (m *ValorantPlayerCurrentRoundStatePartialUpdate_Payload_Statistics) CloneVT() isValorantPlayerCurrentRoundStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*ValorantPlayerCurrentRoundStatePartialUpdate_Payload_Statistics)(nil)
+	}
+	r := new(ValorantPlayerCurrentRoundStatePartialUpdate_Payload_Statistics)
+	r.Statistics = m.Statistics.CloneVT()
+	return r
+}
+
+func (m *ValorantPlayerCurrentRoundStatePartialUpdate_Payload_Weapons) CloneVT() isValorantPlayerCurrentRoundStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*ValorantPlayerCurrentRoundStatePartialUpdate_Payload_Weapons)(nil)
+	}
+	r := new(ValorantPlayerCurrentRoundStatePartialUpdate_Payload_Weapons)
+	r.Weapons = m.Weapons.CloneVT()
+	return r
+}
+
+func (m *ValorantPlayerCurrentRoundStatePartialUpdate_Payload_Position) CloneVT() isValorantPlayerCurrentRoundStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*ValorantPlayerCurrentRoundStatePartialUpdate_Payload_Position)(nil)
+	}
+	r := new(ValorantPlayerCurrentRoundStatePartialUpdate_Payload_Position)
+	r.Position = m.Position.CloneVT()
+	return r
+}
+
+func (m *ValorantPlayerCurrentRoundStatePartialUpdate) CloneVT() *ValorantPlayerCurrentRoundStatePartialUpdate {
+	if m == nil {
+		return (*ValorantPlayerCurrentRoundStatePartialUpdate)(nil)
+	}
+	r := new(ValorantPlayerCurrentRoundStatePartialUpdate)
+	r.PlayerUrn = m.PlayerUrn
+	r.Payload = m.Payload.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantPlayerCurrentRoundStatePartialUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantPlayerCurrentRoundState) CloneVT() *ValorantPlayerCurrentRoundState {
+	if m == nil {
+		return (*ValorantPlayerCurrentRoundState)(nil)
+	}
+	r := new(ValorantPlayerCurrentRoundState)
+	r.PlayerUrn = m.PlayerUrn
+	r.PlayerInfo = m.PlayerInfo.CloneVT()
+	r.Statistics = m.Statistics.CloneVT()
+	r.Weapons = m.Weapons.CloneVT()
+	r.Position = m.Position.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantPlayerCurrentRoundState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantPlayerCurrentRoundStatisticsState) CloneVT() *ValorantPlayerCurrentRoundStatisticsState {
+	if m == nil {
+		return (*ValorantPlayerCurrentRoundStatisticsState)(nil)
+	}
+	r := new(ValorantPlayerCurrentRoundStatisticsState)
+	r.PlayerUrn = m.PlayerUrn
+	r.IsAlive = m.IsAlive
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantPlayerCurrentRoundStatisticsState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantAbilitiesState) CloneVT() *ValorantAbilitiesState {
+	if m == nil {
+		return (*ValorantAbilitiesState)(nil)
+	}
+	r := new(ValorantAbilitiesState)
+	r.PlayerUrn = m.PlayerUrn
+	if rhs := m.Abilities; rhs != nil {
+		tmpContainer := make([]*ValorantAbility, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Abilities = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantAbilitiesState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantWeaponsState) CloneVT() *ValorantWeaponsState {
+	if m == nil {
+		return (*ValorantWeaponsState)(nil)
+	}
+	r := new(ValorantWeaponsState)
+	r.PlayerUrn = m.PlayerUrn
+	if rhs := m.Weapons; rhs != nil {
+		tmpContainer := make([]*ValorantWeapon, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Weapons = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantWeaponsState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantPlayerInfoState) CloneVT() *ValorantPlayerInfoState {
+	if m == nil {
+		return (*ValorantPlayerInfoState)(nil)
+	}
+	r := new(ValorantPlayerInfoState)
+	r.PlayerUrn = m.PlayerUrn
+	r.SlotId = m.SlotId
+	r.ExtName = m.ExtName
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantPlayerInfoState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantPositionState) CloneVT() *ValorantPositionState {
+	if m == nil {
+		return (*ValorantPositionState)(nil)
+	}
+	r := new(ValorantPositionState)
+	r.PlayerUrn = m.PlayerUrn
+	r.X = m.X
+	r.Y = m.Y
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantPositionState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantPreviousRound) CloneVT() *ValorantPreviousRound {
+	if m == nil {
+		return (*ValorantPreviousRound)(nil)
+	}
+	r := new(ValorantPreviousRound)
+	r.Number = m.Number
+	r.Outcome = m.Outcome
+	r.HomeWon = m.HomeWon
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantPreviousRound) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantWeapon) CloneVT() *ValorantWeapon {
+	if m == nil {
+		return (*ValorantWeapon)(nil)
+	}
+	r := new(ValorantWeapon)
+	r.Id = m.Id
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantWeapon) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ValorantAbility) CloneVT() *ValorantAbility {
+	if m == nil {
+		return (*ValorantAbility)(nil)
+	}
+	r := new(ValorantAbility)
+	r.Id = m.Id
+	r.Ready = m.Ready
+	r.IsUltimate = m.IsUltimate
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ValorantAbility) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
 
 func (this *ValorantMatchMessage_Payload) EqualVT(that *ValorantMatchMessage_Payload) bool {
 	if this == that {
@@ -108,7 +1187,7 @@ func (this *ValorantMatchMessage) EqualVT(that *ValorantMatchMessage) bool {
 	if this.Sequence != that.Sequence {
 		return false
 	}
-	if !(*timestamppb.Timestamp)(this.Timestamp).EqualVT((*timestamppb.Timestamp)(that.Timestamp)) {
+	if !(*timestamppb1.Timestamp)(this.Timestamp).EqualVT((*timestamppb1.Timestamp)(that.Timestamp)) {
 		return false
 	}
 	if this.DataStatus != that.DataStatus {
@@ -139,7 +1218,7 @@ func (this *ValorantMatchSnapshot) EqualVT(that *ValorantMatchSnapshot) bool {
 	if this.Sequence != that.Sequence {
 		return false
 	}
-	if !(*timestamppb.Timestamp)(this.Timestamp).EqualVT((*timestamppb.Timestamp)(that.Timestamp)) {
+	if !(*timestamppb1.Timestamp)(this.Timestamp).EqualVT((*timestamppb1.Timestamp)(that.Timestamp)) {
 		return false
 	}
 	if this.DataStatus != that.DataStatus {
@@ -1312,7 +2391,7 @@ func (this *ValorantCurrentRoundTimeState) EqualVT(that *ValorantCurrentRoundTim
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+	if !(*durationpb1.Duration)(this.TimeRemaining).EqualVT((*durationpb1.Duration)(that.TimeRemaining)) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
@@ -1334,7 +2413,7 @@ func (this *ValorantCurrentRoundTeamSpikeState) EqualVT(that *ValorantCurrentRou
 	if this.State != that.State {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeToDefused).EqualVT((*durationpb.Duration)(that.TimeToDefused)) {
+	if !(*durationpb1.Duration)(this.TimeToDefused).EqualVT((*durationpb1.Duration)(that.TimeToDefused)) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
