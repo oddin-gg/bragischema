@@ -5,10 +5,12 @@
 package bragi
 
 import (
-	durationpb "github.com/planetscale/vtprotobuf/types/known/durationpb"
-	timestamppb "github.com/planetscale/vtprotobuf/types/known/timestamppb"
+	durationpb1 "github.com/planetscale/vtprotobuf/types/known/durationpb"
+	timestamppb1 "github.com/planetscale/vtprotobuf/types/known/timestamppb"
 	proto "google.golang.org/protobuf/proto"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -17,6 +19,2198 @@ const (
 	// Verify that runtime/protoimpl is sufficiently up-to-date.
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
+
+func (m *CS2MatchMessage_Payload) CloneVT() *CS2MatchMessage_Payload {
+	if m == nil {
+		return (*CS2MatchMessage_Payload)(nil)
+	}
+	r := new(CS2MatchMessage_Payload)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isCS2MatchMessage_Payload_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2MatchMessage_Payload) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2MatchMessage_Payload_Snapshot) CloneVT() isCS2MatchMessage_Payload_Payload {
+	if m == nil {
+		return (*CS2MatchMessage_Payload_Snapshot)(nil)
+	}
+	r := new(CS2MatchMessage_Payload_Snapshot)
+	r.Snapshot = m.Snapshot.CloneVT()
+	return r
+}
+
+func (m *CS2MatchMessage_Payload_Update) CloneVT() isCS2MatchMessage_Payload_Payload {
+	if m == nil {
+		return (*CS2MatchMessage_Payload_Update)(nil)
+	}
+	r := new(CS2MatchMessage_Payload_Update)
+	r.Update = m.Update.CloneVT()
+	return r
+}
+
+func (m *CS2MatchMessage) CloneVT() *CS2MatchMessage {
+	if m == nil {
+		return (*CS2MatchMessage)(nil)
+	}
+	r := new(CS2MatchMessage)
+	r.MatchUrn = m.MatchUrn
+	r.Sequence = m.Sequence
+	r.Timestamp = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.Timestamp).CloneVT())
+	r.DataStatus = m.DataStatus
+	r.Payload = m.Payload.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2MatchMessage) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2MatchSnapshot) CloneVT() *CS2MatchSnapshot {
+	if m == nil {
+		return (*CS2MatchSnapshot)(nil)
+	}
+	r := new(CS2MatchSnapshot)
+	r.MatchUrn = m.MatchUrn
+	r.Sequence = m.Sequence
+	r.Timestamp = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.Timestamp).CloneVT())
+	r.DataStatus = m.DataStatus
+	r.MatchState = m.MatchState.CloneVT()
+	r.Tournament = m.Tournament.CloneVT()
+	if rhs := m.Announcements; rhs != nil {
+		tmpContainer := make([]*Announcement, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Announcements = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2MatchSnapshot) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2MatchUpdate_Payload) CloneVT() *CS2MatchUpdate_Payload {
+	if m == nil {
+		return (*CS2MatchUpdate_Payload)(nil)
+	}
+	r := new(CS2MatchUpdate_Payload)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isCS2MatchUpdate_Payload_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2MatchUpdate_Payload) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2MatchUpdate_Payload_MatchState) CloneVT() isCS2MatchUpdate_Payload_Payload {
+	if m == nil {
+		return (*CS2MatchUpdate_Payload_MatchState)(nil)
+	}
+	r := new(CS2MatchUpdate_Payload_MatchState)
+	r.MatchState = m.MatchState.CloneVT()
+	return r
+}
+
+func (m *CS2MatchUpdate_Payload_PartialUpdates) CloneVT() isCS2MatchUpdate_Payload_Payload {
+	if m == nil {
+		return (*CS2MatchUpdate_Payload_PartialUpdates)(nil)
+	}
+	r := new(CS2MatchUpdate_Payload_PartialUpdates)
+	r.PartialUpdates = m.PartialUpdates.CloneVT()
+	return r
+}
+
+func (m *CS2MatchUpdate) CloneVT() *CS2MatchUpdate {
+	if m == nil {
+		return (*CS2MatchUpdate)(nil)
+	}
+	r := new(CS2MatchUpdate)
+	r.Payload = m.Payload.CloneVT()
+	if rhs := m.Events; rhs != nil {
+		tmpContainer := make([]*CS2Event, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Events = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2MatchUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2MatchStatePartialUpdates) CloneVT() *CS2MatchStatePartialUpdates {
+	if m == nil {
+		return (*CS2MatchStatePartialUpdates)(nil)
+	}
+	r := new(CS2MatchStatePartialUpdates)
+	if rhs := m.Updates; rhs != nil {
+		tmpContainer := make([]*CS2MatchStatePartialUpdate, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Updates = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2MatchStatePartialUpdates) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2MatchEvents) CloneVT() *CS2MatchEvents {
+	if m == nil {
+		return (*CS2MatchEvents)(nil)
+	}
+	r := new(CS2MatchEvents)
+	r.MatchUrn = m.MatchUrn
+	if rhs := m.Events; rhs != nil {
+		tmpContainer := make([]*CS2Event, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Events = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2MatchEvents) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2MatchStatePartialUpdate) CloneVT() *CS2MatchStatePartialUpdate {
+	if m == nil {
+		return (*CS2MatchStatePartialUpdate)(nil)
+	}
+	r := new(CS2MatchStatePartialUpdate)
+	if m.Update != nil {
+		r.Update = m.Update.(interface {
+			CloneVT() isCS2MatchStatePartialUpdate_Update
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2MatchStatePartialUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2MatchStatePartialUpdate_Score) CloneVT() isCS2MatchStatePartialUpdate_Update {
+	if m == nil {
+		return (*CS2MatchStatePartialUpdate_Score)(nil)
+	}
+	r := new(CS2MatchStatePartialUpdate_Score)
+	r.Score = m.Score.CloneVT()
+	return r
+}
+
+func (m *CS2MatchStatePartialUpdate_CurrentMapState) CloneVT() isCS2MatchStatePartialUpdate_Update {
+	if m == nil {
+		return (*CS2MatchStatePartialUpdate_CurrentMapState)(nil)
+	}
+	r := new(CS2MatchStatePartialUpdate_CurrentMapState)
+	r.CurrentMapState = m.CurrentMapState.CloneVT()
+	return r
+}
+
+func (m *CS2MatchStatePartialUpdate_CurrentMapStatePartialUpdate) CloneVT() isCS2MatchStatePartialUpdate_Update {
+	if m == nil {
+		return (*CS2MatchStatePartialUpdate_CurrentMapStatePartialUpdate)(nil)
+	}
+	r := new(CS2MatchStatePartialUpdate_CurrentMapStatePartialUpdate)
+	r.CurrentMapStatePartialUpdate = m.CurrentMapStatePartialUpdate.CloneVT()
+	return r
+}
+
+func (m *CS2MatchState) CloneVT() *CS2MatchState {
+	if m == nil {
+		return (*CS2MatchState)(nil)
+	}
+	r := new(CS2MatchState)
+	r.MatchUrn = m.MatchUrn
+	r.MatchType = m.MatchType
+	r.HomeTeam = m.HomeTeam.CloneVT()
+	r.AwayTeam = m.AwayTeam.CloneVT()
+	r.Score = m.Score.CloneVT()
+	r.MatchStatus = m.MatchStatus
+	r.CurrentMapState = m.CurrentMapState.CloneVT()
+	if rhs := m.WinTeamUrn; rhs != nil {
+		tmpVal := *rhs
+		r.WinTeamUrn = &tmpVal
+	}
+	if rhs := m.PreviousMapStates; rhs != nil {
+		tmpContainer := make([]*CS2PreviousMapState, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.PreviousMapStates = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2MatchState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2MatchScoreState) CloneVT() *CS2MatchScoreState {
+	if m == nil {
+		return (*CS2MatchScoreState)(nil)
+	}
+	r := new(CS2MatchScoreState)
+	r.HomeScore = m.HomeScore
+	r.AwayScore = m.AwayScore
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2MatchScoreState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2Team) CloneVT() *CS2Team {
+	if m == nil {
+		return (*CS2Team)(nil)
+	}
+	r := new(CS2Team)
+	r.TeamUrn = m.TeamUrn
+	r.TeamName = m.TeamName
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2Team) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2CurrentMapStatePartialUpdate) CloneVT() *CS2CurrentMapStatePartialUpdate {
+	if m == nil {
+		return (*CS2CurrentMapStatePartialUpdate)(nil)
+	}
+	r := new(CS2CurrentMapStatePartialUpdate)
+	if m.Update != nil {
+		r.Update = m.Update.(interface {
+			CloneVT() isCS2CurrentMapStatePartialUpdate_Update
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2CurrentMapStatePartialUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2CurrentMapStatePartialUpdate_Info) CloneVT() isCS2CurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*CS2CurrentMapStatePartialUpdate_Info)(nil)
+	}
+	r := new(CS2CurrentMapStatePartialUpdate_Info)
+	r.Info = m.Info.CloneVT()
+	return r
+}
+
+func (m *CS2CurrentMapStatePartialUpdate_Score) CloneVT() isCS2CurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*CS2CurrentMapStatePartialUpdate_Score)(nil)
+	}
+	r := new(CS2CurrentMapStatePartialUpdate_Score)
+	r.Score = m.Score.CloneVT()
+	return r
+}
+
+func (m *CS2CurrentMapStatePartialUpdate_CurrentRoundState) CloneVT() isCS2CurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*CS2CurrentMapStatePartialUpdate_CurrentRoundState)(nil)
+	}
+	r := new(CS2CurrentMapStatePartialUpdate_CurrentRoundState)
+	r.CurrentRoundState = m.CurrentRoundState.CloneVT()
+	return r
+}
+
+func (m *CS2CurrentMapStatePartialUpdate_CurrentRoundStatePartialUpdate) CloneVT() isCS2CurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*CS2CurrentMapStatePartialUpdate_CurrentRoundStatePartialUpdate)(nil)
+	}
+	r := new(CS2CurrentMapStatePartialUpdate_CurrentRoundStatePartialUpdate)
+	r.CurrentRoundStatePartialUpdate = m.CurrentRoundStatePartialUpdate.CloneVT()
+	return r
+}
+
+func (m *CS2CurrentMapStatePartialUpdate_TeamMapStatesPartialUpdate) CloneVT() isCS2CurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*CS2CurrentMapStatePartialUpdate_TeamMapStatesPartialUpdate)(nil)
+	}
+	r := new(CS2CurrentMapStatePartialUpdate_TeamMapStatesPartialUpdate)
+	r.TeamMapStatesPartialUpdate = m.TeamMapStatesPartialUpdate.CloneVT()
+	return r
+}
+
+func (m *CS2CurrentMapState) CloneVT() *CS2CurrentMapState {
+	if m == nil {
+		return (*CS2CurrentMapState)(nil)
+	}
+	r := new(CS2CurrentMapState)
+	r.MapOrder = m.MapOrder
+	r.Info = m.Info.CloneVT()
+	r.Score = m.Score.CloneVT()
+	r.CurrentRoundState = m.CurrentRoundState.CloneVT()
+	if rhs := m.PreviousRoundStates; rhs != nil {
+		tmpContainer := make([]*CS2PreviousRoundState, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.PreviousRoundStates = tmpContainer
+	}
+	if rhs := m.TeamMapStates; rhs != nil {
+		tmpContainer := make(map[string]*CS2TeamMapState, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.TeamMapStates = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2CurrentMapState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2PreviousMapState) CloneVT() *CS2PreviousMapState {
+	if m == nil {
+		return (*CS2PreviousMapState)(nil)
+	}
+	r := new(CS2PreviousMapState)
+	r.MapOrder = m.MapOrder
+	r.Info = m.Info.CloneVT()
+	r.Score = m.Score.CloneVT()
+	if rhs := m.RoundStates; rhs != nil {
+		tmpContainer := make([]*CS2PreviousRoundState, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.RoundStates = tmpContainer
+	}
+	if rhs := m.TeamMapStates; rhs != nil {
+		tmpContainer := make(map[string]*CS2TeamMapState, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.TeamMapStates = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2PreviousMapState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2MapInfoState) CloneVT() *CS2MapInfoState {
+	if m == nil {
+		return (*CS2MapInfoState)(nil)
+	}
+	r := new(CS2MapInfoState)
+	r.MapName = m.MapName
+	r.MaxRoundsDefault = m.MaxRoundsDefault
+	r.MaxRoundsOvertime = m.MaxRoundsOvertime
+	r.FreezeTimeDuration = (*durationpb.Duration)((*durationpb1.Duration)(m.FreezeTimeDuration).CloneVT())
+	r.RoundTimeDuration = (*durationpb.Duration)((*durationpb1.Duration)(m.RoundTimeDuration).CloneVT())
+	r.BombTimeDuration = (*durationpb.Duration)((*durationpb1.Duration)(m.BombTimeDuration).CloneVT())
+	r.StartTime = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.StartTime).CloneVT())
+	r.EndTime = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.EndTime).CloneVT())
+	r.MapEnded = m.MapEnded
+	if rhs := m.WinTeamUrn; rhs != nil {
+		tmpVal := *rhs
+		r.WinTeamUrn = &tmpVal
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2MapInfoState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2MapScoreState) CloneVT() *CS2MapScoreState {
+	if m == nil {
+		return (*CS2MapScoreState)(nil)
+	}
+	r := new(CS2MapScoreState)
+	r.HomeScore = m.HomeScore
+	r.AwayScore = m.AwayScore
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2MapScoreState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2CurrentRoundStatePartialUpdate) CloneVT() *CS2CurrentRoundStatePartialUpdate {
+	if m == nil {
+		return (*CS2CurrentRoundStatePartialUpdate)(nil)
+	}
+	r := new(CS2CurrentRoundStatePartialUpdate)
+	if m.Update != nil {
+		r.Update = m.Update.(interface {
+			CloneVT() isCS2CurrentRoundStatePartialUpdate_Update
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2CurrentRoundStatePartialUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2CurrentRoundStatePartialUpdate_Info) CloneVT() isCS2CurrentRoundStatePartialUpdate_Update {
+	if m == nil {
+		return (*CS2CurrentRoundStatePartialUpdate_Info)(nil)
+	}
+	r := new(CS2CurrentRoundStatePartialUpdate_Info)
+	r.Info = m.Info.CloneVT()
+	return r
+}
+
+func (m *CS2CurrentRoundStatePartialUpdate_Time) CloneVT() isCS2CurrentRoundStatePartialUpdate_Update {
+	if m == nil {
+		return (*CS2CurrentRoundStatePartialUpdate_Time)(nil)
+	}
+	r := new(CS2CurrentRoundStatePartialUpdate_Time)
+	r.Time = m.Time.CloneVT()
+	return r
+}
+
+func (m *CS2CurrentRoundStatePartialUpdate_BombState) CloneVT() isCS2CurrentRoundStatePartialUpdate_Update {
+	if m == nil {
+		return (*CS2CurrentRoundStatePartialUpdate_BombState)(nil)
+	}
+	r := new(CS2CurrentRoundStatePartialUpdate_BombState)
+	r.BombState = m.BombState.CloneVT()
+	return r
+}
+
+func (m *CS2CurrentRoundStatePartialUpdate_TeamStatesPartialUpdate) CloneVT() isCS2CurrentRoundStatePartialUpdate_Update {
+	if m == nil {
+		return (*CS2CurrentRoundStatePartialUpdate_TeamStatesPartialUpdate)(nil)
+	}
+	r := new(CS2CurrentRoundStatePartialUpdate_TeamStatesPartialUpdate)
+	r.TeamStatesPartialUpdate = m.TeamStatesPartialUpdate.CloneVT()
+	return r
+}
+
+func (m *CS2CurrentRoundState) CloneVT() *CS2CurrentRoundState {
+	if m == nil {
+		return (*CS2CurrentRoundState)(nil)
+	}
+	r := new(CS2CurrentRoundState)
+	r.RoundNumber = m.RoundNumber
+	r.Info = m.Info.CloneVT()
+	r.Time = m.Time.CloneVT()
+	r.BombState = m.BombState.CloneVT()
+	if rhs := m.TeamStates; rhs != nil {
+		tmpContainer := make(map[string]*CS2TeamCurrentRoundState, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.TeamStates = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2CurrentRoundState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2PreviousRoundState) CloneVT() *CS2PreviousRoundState {
+	if m == nil {
+		return (*CS2PreviousRoundState)(nil)
+	}
+	r := new(CS2PreviousRoundState)
+	r.RoundNumber = m.RoundNumber
+	r.Info = m.Info.CloneVT()
+	if rhs := m.TeamStates; rhs != nil {
+		tmpContainer := make(map[string]*CS2PreviousTeamRoundState, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.TeamStates = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2PreviousRoundState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2RoundInfoState) CloneVT() *CS2RoundInfoState {
+	if m == nil {
+		return (*CS2RoundInfoState)(nil)
+	}
+	r := new(CS2RoundInfoState)
+	r.RoundType = m.RoundType
+	r.StartTime = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.StartTime).CloneVT())
+	r.EndTime = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.EndTime).CloneVT())
+	if rhs := m.WinningTeamUrn; rhs != nil {
+		tmpVal := *rhs
+		r.WinningTeamUrn = &tmpVal
+	}
+	if rhs := m.WinReason; rhs != nil {
+		tmpVal := *rhs
+		r.WinReason = &tmpVal
+	}
+	if rhs := m.HomeWon; rhs != nil {
+		tmpVal := *rhs
+		r.HomeWon = &tmpVal
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2RoundInfoState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2RoundTimeState) CloneVT() *CS2RoundTimeState {
+	if m == nil {
+		return (*CS2RoundTimeState)(nil)
+	}
+	r := new(CS2RoundTimeState)
+	r.TimeRemaining = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeRemaining).CloneVT())
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2RoundTimeState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2BombState) CloneVT() *CS2BombState {
+	if m == nil {
+		return (*CS2BombState)(nil)
+	}
+	r := new(CS2BombState)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface{ CloneVT() isCS2BombState_Payload }).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2BombState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2BombState_Carried) CloneVT() isCS2BombState_Payload {
+	if m == nil {
+		return (*CS2BombState_Carried)(nil)
+	}
+	r := new(CS2BombState_Carried)
+	r.Carried = m.Carried.CloneVT()
+	return r
+}
+
+func (m *CS2BombState_Dropped) CloneVT() isCS2BombState_Payload {
+	if m == nil {
+		return (*CS2BombState_Dropped)(nil)
+	}
+	r := new(CS2BombState_Dropped)
+	r.Dropped = m.Dropped.CloneVT()
+	return r
+}
+
+func (m *CS2BombState_Planting) CloneVT() isCS2BombState_Payload {
+	if m == nil {
+		return (*CS2BombState_Planting)(nil)
+	}
+	r := new(CS2BombState_Planting)
+	r.Planting = m.Planting.CloneVT()
+	return r
+}
+
+func (m *CS2BombState_Planted) CloneVT() isCS2BombState_Payload {
+	if m == nil {
+		return (*CS2BombState_Planted)(nil)
+	}
+	r := new(CS2BombState_Planted)
+	r.Planted = m.Planted.CloneVT()
+	return r
+}
+
+func (m *CS2BombState_Defusing) CloneVT() isCS2BombState_Payload {
+	if m == nil {
+		return (*CS2BombState_Defusing)(nil)
+	}
+	r := new(CS2BombState_Defusing)
+	r.Defusing = m.Defusing.CloneVT()
+	return r
+}
+
+func (m *CS2BombState_Defused) CloneVT() isCS2BombState_Payload {
+	if m == nil {
+		return (*CS2BombState_Defused)(nil)
+	}
+	r := new(CS2BombState_Defused)
+	r.Defused = m.Defused.CloneVT()
+	return r
+}
+
+func (m *CS2BombState_Exploded) CloneVT() isCS2BombState_Payload {
+	if m == nil {
+		return (*CS2BombState_Exploded)(nil)
+	}
+	r := new(CS2BombState_Exploded)
+	r.Exploded = m.Exploded.CloneVT()
+	return r
+}
+
+func (m *CS2BombCarriedState) CloneVT() *CS2BombCarriedState {
+	if m == nil {
+		return (*CS2BombCarriedState)(nil)
+	}
+	r := new(CS2BombCarriedState)
+	r.PlayerUrn = m.PlayerUrn
+	r.Position = m.Position.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2BombCarriedState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2BombDroppedState) CloneVT() *CS2BombDroppedState {
+	if m == nil {
+		return (*CS2BombDroppedState)(nil)
+	}
+	r := new(CS2BombDroppedState)
+	r.DroppedByPlayerUrn = m.DroppedByPlayerUrn
+	r.Position = m.Position.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2BombDroppedState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2BombPlantingState) CloneVT() *CS2BombPlantingState {
+	if m == nil {
+		return (*CS2BombPlantingState)(nil)
+	}
+	r := new(CS2BombPlantingState)
+	r.PlayerUrn = m.PlayerUrn
+	r.Position = m.Position.CloneVT()
+	r.Countdown = (*durationpb.Duration)((*durationpb1.Duration)(m.Countdown).CloneVT())
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2BombPlantingState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2BombPlantedState) CloneVT() *CS2BombPlantedState {
+	if m == nil {
+		return (*CS2BombPlantedState)(nil)
+	}
+	r := new(CS2BombPlantedState)
+	r.PlantedByPlayerUrn = m.PlantedByPlayerUrn
+	r.Position = m.Position.CloneVT()
+	r.PlantedAt = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.PlantedAt).CloneVT())
+	r.Countdown = (*durationpb.Duration)((*durationpb1.Duration)(m.Countdown).CloneVT())
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2BombPlantedState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2BombDefusingState) CloneVT() *CS2BombDefusingState {
+	if m == nil {
+		return (*CS2BombDefusingState)(nil)
+	}
+	r := new(CS2BombDefusingState)
+	r.PlayerUrn = m.PlayerUrn
+	r.Position = m.Position.CloneVT()
+	r.Countdown = (*durationpb.Duration)((*durationpb1.Duration)(m.Countdown).CloneVT())
+	r.DefuseStartedAt = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.DefuseStartedAt).CloneVT())
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2BombDefusingState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2BombDefusedState) CloneVT() *CS2BombDefusedState {
+	if m == nil {
+		return (*CS2BombDefusedState)(nil)
+	}
+	r := new(CS2BombDefusedState)
+	r.DefusedByPlayerUrn = m.DefusedByPlayerUrn
+	r.Position = m.Position.CloneVT()
+	r.DefusedAt = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.DefusedAt).CloneVT())
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2BombDefusedState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2BombExplodedState) CloneVT() *CS2BombExplodedState {
+	if m == nil {
+		return (*CS2BombExplodedState)(nil)
+	}
+	r := new(CS2BombExplodedState)
+	r.Position = m.Position.CloneVT()
+	r.ExplodedAt = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.ExplodedAt).CloneVT())
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2BombExplodedState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2TeamMapStatePartialUpdate_Payload) CloneVT() *CS2TeamMapStatePartialUpdate_Payload {
+	if m == nil {
+		return (*CS2TeamMapStatePartialUpdate_Payload)(nil)
+	}
+	r := new(CS2TeamMapStatePartialUpdate_Payload)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isCS2TeamMapStatePartialUpdate_Payload_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2TeamMapStatePartialUpdate_Payload) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2TeamMapStatePartialUpdate_Payload_PlayerState) CloneVT() isCS2TeamMapStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*CS2TeamMapStatePartialUpdate_Payload_PlayerState)(nil)
+	}
+	r := new(CS2TeamMapStatePartialUpdate_Payload_PlayerState)
+	r.PlayerState = m.PlayerState.CloneVT()
+	return r
+}
+
+func (m *CS2TeamMapStatePartialUpdate_Payload_PlayerMapStatesPartialUpdate) CloneVT() isCS2TeamMapStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*CS2TeamMapStatePartialUpdate_Payload_PlayerMapStatesPartialUpdate)(nil)
+	}
+	r := new(CS2TeamMapStatePartialUpdate_Payload_PlayerMapStatesPartialUpdate)
+	r.PlayerMapStatesPartialUpdate = m.PlayerMapStatesPartialUpdate.CloneVT()
+	return r
+}
+
+func (m *CS2TeamMapStatePartialUpdate) CloneVT() *CS2TeamMapStatePartialUpdate {
+	if m == nil {
+		return (*CS2TeamMapStatePartialUpdate)(nil)
+	}
+	r := new(CS2TeamMapStatePartialUpdate)
+	r.TeamUrn = m.TeamUrn
+	r.Payload = m.Payload.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2TeamMapStatePartialUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2TeamMapState) CloneVT() *CS2TeamMapState {
+	if m == nil {
+		return (*CS2TeamMapState)(nil)
+	}
+	r := new(CS2TeamMapState)
+	r.TeamUrn = m.TeamUrn
+	r.Side = m.Side
+	if rhs := m.PlayerMapStates; rhs != nil {
+		tmpContainer := make(map[string]*CS2PlayerMapState, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.PlayerMapStates = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2TeamMapState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2TeamCurrentRoundStatePartialUpdate_Payload) CloneVT() *CS2TeamCurrentRoundStatePartialUpdate_Payload {
+	if m == nil {
+		return (*CS2TeamCurrentRoundStatePartialUpdate_Payload)(nil)
+	}
+	r := new(CS2TeamCurrentRoundStatePartialUpdate_Payload)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isCS2TeamCurrentRoundStatePartialUpdate_Payload_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2TeamCurrentRoundStatePartialUpdate_Payload) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2TeamCurrentRoundStatePartialUpdate_Payload_PlayerState) CloneVT() isCS2TeamCurrentRoundStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*CS2TeamCurrentRoundStatePartialUpdate_Payload_PlayerState)(nil)
+	}
+	r := new(CS2TeamCurrentRoundStatePartialUpdate_Payload_PlayerState)
+	r.PlayerState = m.PlayerState.CloneVT()
+	return r
+}
+
+func (m *CS2TeamCurrentRoundStatePartialUpdate_Payload_PlayerRoundStatesPartialUpdate) CloneVT() isCS2TeamCurrentRoundStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*CS2TeamCurrentRoundStatePartialUpdate_Payload_PlayerRoundStatesPartialUpdate)(nil)
+	}
+	r := new(CS2TeamCurrentRoundStatePartialUpdate_Payload_PlayerRoundStatesPartialUpdate)
+	r.PlayerRoundStatesPartialUpdate = m.PlayerRoundStatesPartialUpdate.CloneVT()
+	return r
+}
+
+func (m *CS2TeamCurrentRoundStatePartialUpdate) CloneVT() *CS2TeamCurrentRoundStatePartialUpdate {
+	if m == nil {
+		return (*CS2TeamCurrentRoundStatePartialUpdate)(nil)
+	}
+	r := new(CS2TeamCurrentRoundStatePartialUpdate)
+	r.TeamUrn = m.TeamUrn
+	r.Payload = m.Payload.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2TeamCurrentRoundStatePartialUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2TeamCurrentRoundState) CloneVT() *CS2TeamCurrentRoundState {
+	if m == nil {
+		return (*CS2TeamCurrentRoundState)(nil)
+	}
+	r := new(CS2TeamCurrentRoundState)
+	r.TeamUrn = m.TeamUrn
+	if rhs := m.PlayerRoundStates; rhs != nil {
+		tmpContainer := make(map[string]*CS2PlayerCurrentRoundState, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.PlayerRoundStates = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2TeamCurrentRoundState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2PreviousTeamRoundState) CloneVT() *CS2PreviousTeamRoundState {
+	if m == nil {
+		return (*CS2PreviousTeamRoundState)(nil)
+	}
+	r := new(CS2PreviousTeamRoundState)
+	r.TeamUrn = m.TeamUrn
+	if rhs := m.Players; rhs != nil {
+		tmpContainer := make(map[string]*CS2PlayerPreviousRoundState, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Players = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2PreviousTeamRoundState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2PlayerMapStatePartialUpdate_Payload) CloneVT() *CS2PlayerMapStatePartialUpdate_Payload {
+	if m == nil {
+		return (*CS2PlayerMapStatePartialUpdate_Payload)(nil)
+	}
+	r := new(CS2PlayerMapStatePartialUpdate_Payload)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isCS2PlayerMapStatePartialUpdate_Payload_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2PlayerMapStatePartialUpdate_Payload) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2PlayerMapStatePartialUpdate_Payload_Statistics) CloneVT() isCS2PlayerMapStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*CS2PlayerMapStatePartialUpdate_Payload_Statistics)(nil)
+	}
+	r := new(CS2PlayerMapStatePartialUpdate_Payload_Statistics)
+	r.Statistics = m.Statistics.CloneVT()
+	return r
+}
+
+func (m *CS2PlayerMapStatePartialUpdate) CloneVT() *CS2PlayerMapStatePartialUpdate {
+	if m == nil {
+		return (*CS2PlayerMapStatePartialUpdate)(nil)
+	}
+	r := new(CS2PlayerMapStatePartialUpdate)
+	r.PlayerUrn = m.PlayerUrn
+	r.Payload = m.Payload.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2PlayerMapStatePartialUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2PlayerMapState) CloneVT() *CS2PlayerMapState {
+	if m == nil {
+		return (*CS2PlayerMapState)(nil)
+	}
+	r := new(CS2PlayerMapState)
+	r.PlayerUrn = m.PlayerUrn
+	r.PlayerName = m.PlayerName
+	r.SlotId = m.SlotId
+	r.Statistics = m.Statistics.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2PlayerMapState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2PlayerMapStatisticsState) CloneVT() *CS2PlayerMapStatisticsState {
+	if m == nil {
+		return (*CS2PlayerMapStatisticsState)(nil)
+	}
+	r := new(CS2PlayerMapStatisticsState)
+	r.PlayerUrn = m.PlayerUrn
+	r.OpeningKills = m.OpeningKills
+	r.OpeningDeaths = m.OpeningDeaths
+	r.TotalDamage = m.TotalDamage
+	r.AverageDamagePerRound = m.AverageDamagePerRound
+	r.Statistics = m.Statistics.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2PlayerMapStatisticsState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2PlayerCurrentRoundStatePartialUpdate_Payload) CloneVT() *CS2PlayerCurrentRoundStatePartialUpdate_Payload {
+	if m == nil {
+		return (*CS2PlayerCurrentRoundStatePartialUpdate_Payload)(nil)
+	}
+	r := new(CS2PlayerCurrentRoundStatePartialUpdate_Payload)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isCS2PlayerCurrentRoundStatePartialUpdate_Payload_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2PlayerCurrentRoundStatePartialUpdate_Payload) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2PlayerCurrentRoundStatePartialUpdate_Payload_Statistics) CloneVT() isCS2PlayerCurrentRoundStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*CS2PlayerCurrentRoundStatePartialUpdate_Payload_Statistics)(nil)
+	}
+	r := new(CS2PlayerCurrentRoundStatePartialUpdate_Payload_Statistics)
+	r.Statistics = m.Statistics.CloneVT()
+	return r
+}
+
+func (m *CS2PlayerCurrentRoundStatePartialUpdate_Payload_Items) CloneVT() isCS2PlayerCurrentRoundStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*CS2PlayerCurrentRoundStatePartialUpdate_Payload_Items)(nil)
+	}
+	r := new(CS2PlayerCurrentRoundStatePartialUpdate_Payload_Items)
+	r.Items = m.Items.CloneVT()
+	return r
+}
+
+func (m *CS2PlayerCurrentRoundStatePartialUpdate_Payload_Position) CloneVT() isCS2PlayerCurrentRoundStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*CS2PlayerCurrentRoundStatePartialUpdate_Payload_Position)(nil)
+	}
+	r := new(CS2PlayerCurrentRoundStatePartialUpdate_Payload_Position)
+	r.Position = m.Position.CloneVT()
+	return r
+}
+
+func (m *CS2PlayerCurrentRoundStatePartialUpdate) CloneVT() *CS2PlayerCurrentRoundStatePartialUpdate {
+	if m == nil {
+		return (*CS2PlayerCurrentRoundStatePartialUpdate)(nil)
+	}
+	r := new(CS2PlayerCurrentRoundStatePartialUpdate)
+	r.PlayerUrn = m.PlayerUrn
+	r.Payload = m.Payload.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2PlayerCurrentRoundStatePartialUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2PlayerCurrentRoundState) CloneVT() *CS2PlayerCurrentRoundState {
+	if m == nil {
+		return (*CS2PlayerCurrentRoundState)(nil)
+	}
+	r := new(CS2PlayerCurrentRoundState)
+	r.PlayerUrn = m.PlayerUrn
+	r.PlayerName = m.PlayerName
+	r.SlotId = m.SlotId
+	r.Statistics = m.Statistics.CloneVT()
+	r.Items = m.Items.CloneVT()
+	r.Position = m.Position.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2PlayerCurrentRoundState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2PlayerCurrentRoundStatisticsState) CloneVT() *CS2PlayerCurrentRoundStatisticsState {
+	if m == nil {
+		return (*CS2PlayerCurrentRoundStatisticsState)(nil)
+	}
+	r := new(CS2PlayerCurrentRoundStatisticsState)
+	r.PlayerUrn = m.PlayerUrn
+	r.Alive = m.Alive
+	r.Health = m.Health
+	r.Armor = m.Armor
+	r.Balance = m.Balance
+	r.Statistics = m.Statistics.CloneVT()
+	if rhs := m.Damage; rhs != nil {
+		tmpVal := *rhs
+		r.Damage = &tmpVal
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2PlayerCurrentRoundStatisticsState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2PlayerItemsState) CloneVT() *CS2PlayerItemsState {
+	if m == nil {
+		return (*CS2PlayerItemsState)(nil)
+	}
+	r := new(CS2PlayerItemsState)
+	r.PlayerUrn = m.PlayerUrn
+	r.EquipmentValue = m.EquipmentValue
+	if rhs := m.Items; rhs != nil {
+		tmpContainer := make([]*CS2Item, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Items = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2PlayerItemsState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2PlayerPreviousRoundState) CloneVT() *CS2PlayerPreviousRoundState {
+	if m == nil {
+		return (*CS2PlayerPreviousRoundState)(nil)
+	}
+	r := new(CS2PlayerPreviousRoundState)
+	r.PlayerUrn = m.PlayerUrn
+	r.PlayerName = m.PlayerName
+	r.Statistics = m.Statistics.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2PlayerPreviousRoundState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2PlayerPositionState) CloneVT() *CS2PlayerPositionState {
+	if m == nil {
+		return (*CS2PlayerPositionState)(nil)
+	}
+	r := new(CS2PlayerPositionState)
+	r.PlayerUrn = m.PlayerUrn
+	r.Position = m.Position.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2PlayerPositionState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2PlayerStatistics) CloneVT() *CS2PlayerStatistics {
+	if m == nil {
+		return (*CS2PlayerStatistics)(nil)
+	}
+	r := new(CS2PlayerStatistics)
+	r.PlayerUrn = m.PlayerUrn
+	r.Kills = m.Kills
+	r.FriendlyKills = m.FriendlyKills
+	r.EnemyKills = m.EnemyKills
+	r.SelfKills = m.SelfKills
+	r.Deaths = m.Deaths
+	r.Assists = m.Assists
+	r.Headshots = m.Headshots
+	r.Damage = m.Damage
+	if rhs := m.FriendlyDamageDealtArmor; rhs != nil {
+		tmpVal := *rhs
+		r.FriendlyDamageDealtArmor = &tmpVal
+	}
+	if rhs := m.FriendlyDamageDealtHealth; rhs != nil {
+		tmpVal := *rhs
+		r.FriendlyDamageDealtHealth = &tmpVal
+	}
+	if rhs := m.EnemyDamageDealtArmor; rhs != nil {
+		tmpVal := *rhs
+		r.EnemyDamageDealtArmor = &tmpVal
+	}
+	if rhs := m.EnemyDamageDealtHealth; rhs != nil {
+		tmpVal := *rhs
+		r.EnemyDamageDealtHealth = &tmpVal
+	}
+	if rhs := m.EnemyDamageDealtArmorRaw; rhs != nil {
+		tmpVal := *rhs
+		r.EnemyDamageDealtArmorRaw = &tmpVal
+	}
+	if rhs := m.EnemyDamageDealtHealthRaw; rhs != nil {
+		tmpVal := *rhs
+		r.EnemyDamageDealtHealthRaw = &tmpVal
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2PlayerStatistics) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2Item) CloneVT() *CS2Item {
+	if m == nil {
+		return (*CS2Item)(nil)
+	}
+	r := new(CS2Item)
+	r.Name = m.Name
+	r.WeaponType = m.WeaponType
+	r.Type = m.Type
+	r.Count = m.Count
+	r.IsActive = m.IsActive
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2Item) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2Position) CloneVT() *CS2Position {
+	if m == nil {
+		return (*CS2Position)(nil)
+	}
+	r := new(CS2Position)
+	r.X = m.X
+	r.Y = m.Y
+	r.Z = m.Z
+	r.Angle = m.Angle
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2Position) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2Event) CloneVT() *CS2Event {
+	if m == nil {
+		return (*CS2Event)(nil)
+	}
+	r := new(CS2Event)
+	r.Timestamp = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.Timestamp).CloneVT())
+	r.MapId = m.MapId
+	if m.Event != nil {
+		r.Event = m.Event.(interface{ CloneVT() isCS2Event_Event }).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2Event) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2Event_BombDefuseStarted) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_BombDefuseStarted)(nil)
+	}
+	r := new(CS2Event_BombDefuseStarted)
+	r.BombDefuseStarted = m.BombDefuseStarted.CloneVT()
+	return r
+}
+
+func (m *CS2Event_BombDefused) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_BombDefused)(nil)
+	}
+	r := new(CS2Event_BombDefused)
+	r.BombDefused = m.BombDefused.CloneVT()
+	return r
+}
+
+func (m *CS2Event_BombExploded) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_BombExploded)(nil)
+	}
+	r := new(CS2Event_BombExploded)
+	r.BombExploded = m.BombExploded.CloneVT()
+	return r
+}
+
+func (m *CS2Event_BombPlantStarted) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_BombPlantStarted)(nil)
+	}
+	r := new(CS2Event_BombPlantStarted)
+	r.BombPlantStarted = m.BombPlantStarted.CloneVT()
+	return r
+}
+
+func (m *CS2Event_BombPlanted) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_BombPlanted)(nil)
+	}
+	r := new(CS2Event_BombPlanted)
+	r.BombPlanted = m.BombPlanted.CloneVT()
+	return r
+}
+
+func (m *CS2Event_DamageDealt) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_DamageDealt)(nil)
+	}
+	r := new(CS2Event_DamageDealt)
+	r.DamageDealt = m.DamageDealt.CloneVT()
+	return r
+}
+
+func (m *CS2Event_FreezeTimeEnded) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_FreezeTimeEnded)(nil)
+	}
+	r := new(CS2Event_FreezeTimeEnded)
+	r.FreezeTimeEnded = m.FreezeTimeEnded.CloneVT()
+	return r
+}
+
+func (m *CS2Event_FreezeTimeStarted) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_FreezeTimeStarted)(nil)
+	}
+	r := new(CS2Event_FreezeTimeStarted)
+	r.FreezeTimeStarted = m.FreezeTimeStarted.CloneVT()
+	return r
+}
+
+func (m *CS2Event_ItemDrop) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_ItemDrop)(nil)
+	}
+	r := new(CS2Event_ItemDrop)
+	r.ItemDrop = m.ItemDrop.CloneVT()
+	return r
+}
+
+func (m *CS2Event_ItemPickUp) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_ItemPickUp)(nil)
+	}
+	r := new(CS2Event_ItemPickUp)
+	r.ItemPickUp = m.ItemPickUp.CloneVT()
+	return r
+}
+
+func (m *CS2Event_ItemPurchase) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_ItemPurchase)(nil)
+	}
+	r := new(CS2Event_ItemPurchase)
+	r.ItemPurchase = m.ItemPurchase.CloneVT()
+	return r
+}
+
+func (m *CS2Event_ItemThrow) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_ItemThrow)(nil)
+	}
+	r := new(CS2Event_ItemThrow)
+	r.ItemThrow = m.ItemThrow.CloneVT()
+	return r
+}
+
+func (m *CS2Event_Kill) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_Kill)(nil)
+	}
+	r := new(CS2Event_Kill)
+	r.Kill = m.Kill.CloneVT()
+	return r
+}
+
+func (m *CS2Event_Death) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_Death)(nil)
+	}
+	r := new(CS2Event_Death)
+	r.Death = m.Death.CloneVT()
+	return r
+}
+
+func (m *CS2Event_MapEnd) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_MapEnd)(nil)
+	}
+	r := new(CS2Event_MapEnd)
+	r.MapEnd = m.MapEnd.CloneVT()
+	return r
+}
+
+func (m *CS2Event_MapStart) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_MapStart)(nil)
+	}
+	r := new(CS2Event_MapStart)
+	r.MapStart = m.MapStart.CloneVT()
+	return r
+}
+
+func (m *CS2Event_RoundEnd) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_RoundEnd)(nil)
+	}
+	r := new(CS2Event_RoundEnd)
+	r.RoundEnd = m.RoundEnd.CloneVT()
+	return r
+}
+
+func (m *CS2Event_RoundPause) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_RoundPause)(nil)
+	}
+	r := new(CS2Event_RoundPause)
+	r.RoundPause = m.RoundPause.CloneVT()
+	return r
+}
+
+func (m *CS2Event_RoundResume) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_RoundResume)(nil)
+	}
+	r := new(CS2Event_RoundResume)
+	r.RoundResume = m.RoundResume.CloneVT()
+	return r
+}
+
+func (m *CS2Event_RoundRollback) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_RoundRollback)(nil)
+	}
+	r := new(CS2Event_RoundRollback)
+	r.RoundRollback = m.RoundRollback.CloneVT()
+	return r
+}
+
+func (m *CS2Event_RoundStart) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_RoundStart)(nil)
+	}
+	r := new(CS2Event_RoundStart)
+	r.RoundStart = m.RoundStart.CloneVT()
+	return r
+}
+
+func (m *CS2Event_WorldBomb) CloneVT() isCS2Event_Event {
+	if m == nil {
+		return (*CS2Event_WorldBomb)(nil)
+	}
+	r := new(CS2Event_WorldBomb)
+	r.WorldBomb = m.WorldBomb.CloneVT()
+	return r
+}
+
+func (m *CS2PlayerBalance) CloneVT() *CS2PlayerBalance {
+	if m == nil {
+		return (*CS2PlayerBalance)(nil)
+	}
+	r := new(CS2PlayerBalance)
+	r.PlayerUrn = m.PlayerUrn
+	r.TeamUrn = m.TeamUrn
+	r.Balance = m.Balance
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2PlayerBalance) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2PlayerItems) CloneVT() *CS2PlayerItems {
+	if m == nil {
+		return (*CS2PlayerItems)(nil)
+	}
+	r := new(CS2PlayerItems)
+	r.PlayerUrn = m.PlayerUrn
+	r.TeamUrn = m.TeamUrn
+	r.EquipmentValue = m.EquipmentValue
+	if rhs := m.Items; rhs != nil {
+		tmpContainer := make([]*CS2Item, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Items = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2PlayerItems) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2BombDefuseStarted) CloneVT() *CS2BombDefuseStarted {
+	if m == nil {
+		return (*CS2BombDefuseStarted)(nil)
+	}
+	r := new(CS2BombDefuseStarted)
+	r.MapTime = (*durationpb.Duration)((*durationpb1.Duration)(m.MapTime).CloneVT())
+	r.TimeRemaining = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeRemaining).CloneVT())
+	r.CurrentRoundNumber = m.CurrentRoundNumber
+	r.PlayerUrn = m.PlayerUrn
+	r.TeamUrn = m.TeamUrn
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2BombDefuseStarted) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2BombDefused) CloneVT() *CS2BombDefused {
+	if m == nil {
+		return (*CS2BombDefused)(nil)
+	}
+	r := new(CS2BombDefused)
+	r.MapTime = (*durationpb.Duration)((*durationpb1.Duration)(m.MapTime).CloneVT())
+	r.TimeRemaining = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeRemaining).CloneVT())
+	r.CurrentRoundNumber = m.CurrentRoundNumber
+	r.PlayerUrn = m.PlayerUrn
+	r.TeamUrn = m.TeamUrn
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2BombDefused) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2BombExploded) CloneVT() *CS2BombExploded {
+	if m == nil {
+		return (*CS2BombExploded)(nil)
+	}
+	r := new(CS2BombExploded)
+	r.MapTime = (*durationpb.Duration)((*durationpb1.Duration)(m.MapTime).CloneVT())
+	r.TimeRemaining = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeRemaining).CloneVT())
+	r.CurrentRoundNumber = m.CurrentRoundNumber
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2BombExploded) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2BombPlantStarted) CloneVT() *CS2BombPlantStarted {
+	if m == nil {
+		return (*CS2BombPlantStarted)(nil)
+	}
+	r := new(CS2BombPlantStarted)
+	r.MapTime = (*durationpb.Duration)((*durationpb1.Duration)(m.MapTime).CloneVT())
+	r.TimeRemaining = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeRemaining).CloneVT())
+	r.CurrentRoundNumber = m.CurrentRoundNumber
+	r.PlayerUrn = m.PlayerUrn
+	r.TeamUrn = m.TeamUrn
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2BombPlantStarted) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2BombPlanted) CloneVT() *CS2BombPlanted {
+	if m == nil {
+		return (*CS2BombPlanted)(nil)
+	}
+	r := new(CS2BombPlanted)
+	r.MapTime = (*durationpb.Duration)((*durationpb1.Duration)(m.MapTime).CloneVT())
+	r.TimeRemaining = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeRemaining).CloneVT())
+	r.CurrentRoundNumber = m.CurrentRoundNumber
+	r.PlayerUrn = m.PlayerUrn
+	r.TeamUrn = m.TeamUrn
+	r.BombSite = m.BombSite
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2BombPlanted) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2DamageDealt) CloneVT() *CS2DamageDealt {
+	if m == nil {
+		return (*CS2DamageDealt)(nil)
+	}
+	r := new(CS2DamageDealt)
+	r.MapTime = (*durationpb.Duration)((*durationpb1.Duration)(m.MapTime).CloneVT())
+	r.TimeRemaining = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeRemaining).CloneVT())
+	r.CurrentRoundNumber = m.CurrentRoundNumber
+	r.KillerPosition = m.KillerPosition.CloneVT()
+	r.KillerUrn = m.KillerUrn
+	r.KillerTeamUrn = m.KillerTeamUrn
+	r.VictimUrn = m.VictimUrn
+	r.VictimTeamUrn = m.VictimTeamUrn
+	r.Weapon = m.Weapon
+	r.Hitgroup = m.Hitgroup
+	r.HealthDeducted = m.HealthDeducted
+	r.HealthRemaining = m.HealthRemaining
+	r.ArmorDeducted = m.ArmorDeducted
+	r.ArmorRemaining = m.ArmorRemaining
+	r.VictimPosition = m.VictimPosition.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2DamageDealt) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2FreezeTimeEnded) CloneVT() *CS2FreezeTimeEnded {
+	if m == nil {
+		return (*CS2FreezeTimeEnded)(nil)
+	}
+	r := new(CS2FreezeTimeEnded)
+	r.MapTime = (*durationpb.Duration)((*durationpb1.Duration)(m.MapTime).CloneVT())
+	r.TimeRemaining = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeRemaining).CloneVT())
+	r.CurrentRoundNumber = m.CurrentRoundNumber
+	if rhs := m.PlayerBalances; rhs != nil {
+		tmpContainer := make(map[string]*CS2PlayerBalance, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.PlayerBalances = tmpContainer
+	}
+	if rhs := m.PlayerInventories; rhs != nil {
+		tmpContainer := make(map[string]*CS2PlayerItems, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.PlayerInventories = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2FreezeTimeEnded) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2FreezeTimeStarted) CloneVT() *CS2FreezeTimeStarted {
+	if m == nil {
+		return (*CS2FreezeTimeStarted)(nil)
+	}
+	r := new(CS2FreezeTimeStarted)
+	r.MapTime = (*durationpb.Duration)((*durationpb1.Duration)(m.MapTime).CloneVT())
+	r.TimeRemaining = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeRemaining).CloneVT())
+	r.CurrentRoundNumber = m.CurrentRoundNumber
+	if rhs := m.PlayerBalances; rhs != nil {
+		tmpContainer := make(map[string]*CS2PlayerBalance, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.PlayerBalances = tmpContainer
+	}
+	if rhs := m.TeamsRoundInfo; rhs != nil {
+		tmpContainer := make(map[string]CS2Side, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v
+		}
+		r.TeamsRoundInfo = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2FreezeTimeStarted) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2ItemDrop) CloneVT() *CS2ItemDrop {
+	if m == nil {
+		return (*CS2ItemDrop)(nil)
+	}
+	r := new(CS2ItemDrop)
+	r.MapTime = (*durationpb.Duration)((*durationpb1.Duration)(m.MapTime).CloneVT())
+	r.TimeRemaining = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeRemaining).CloneVT())
+	r.CurrentRoundNumber = m.CurrentRoundNumber
+	r.Position = m.Position.CloneVT()
+	r.PlayerUrn = m.PlayerUrn
+	r.TeamUrn = m.TeamUrn
+	r.Item = m.Item
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2ItemDrop) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2ItemPickUp) CloneVT() *CS2ItemPickUp {
+	if m == nil {
+		return (*CS2ItemPickUp)(nil)
+	}
+	r := new(CS2ItemPickUp)
+	r.MapTime = (*durationpb.Duration)((*durationpb1.Duration)(m.MapTime).CloneVT())
+	r.TimeRemaining = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeRemaining).CloneVT())
+	r.CurrentRoundNumber = m.CurrentRoundNumber
+	r.PlayerUrn = m.PlayerUrn
+	r.TeamUrn = m.TeamUrn
+	r.Item = m.Item
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2ItemPickUp) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2ItemPurchase) CloneVT() *CS2ItemPurchase {
+	if m == nil {
+		return (*CS2ItemPurchase)(nil)
+	}
+	r := new(CS2ItemPurchase)
+	r.MapTime = (*durationpb.Duration)((*durationpb1.Duration)(m.MapTime).CloneVT())
+	r.TimeRemaining = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeRemaining).CloneVT())
+	r.CurrentRoundNumber = m.CurrentRoundNumber
+	r.PlayerUrn = m.PlayerUrn
+	r.TeamUrn = m.TeamUrn
+	r.Item = m.Item
+	r.PlayerBalance = m.PlayerBalance
+	r.EquipmentValue = m.EquipmentValue
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2ItemPurchase) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2ItemThrow) CloneVT() *CS2ItemThrow {
+	if m == nil {
+		return (*CS2ItemThrow)(nil)
+	}
+	r := new(CS2ItemThrow)
+	r.MapTime = (*durationpb.Duration)((*durationpb1.Duration)(m.MapTime).CloneVT())
+	r.TimeRemaining = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeRemaining).CloneVT())
+	r.CurrentRoundNumber = m.CurrentRoundNumber
+	r.Position = m.Position.CloneVT()
+	r.PlayerUrn = m.PlayerUrn
+	r.TeamUrn = m.TeamUrn
+	r.Item = m.Item
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2ItemThrow) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2Kill) CloneVT() *CS2Kill {
+	if m == nil {
+		return (*CS2Kill)(nil)
+	}
+	r := new(CS2Kill)
+	r.MapTime = (*durationpb.Duration)((*durationpb1.Duration)(m.MapTime).CloneVT())
+	r.TimeRemaining = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeRemaining).CloneVT())
+	r.CurrentRoundNumber = m.CurrentRoundNumber
+	r.KillerPosition = m.KillerPosition.CloneVT()
+	r.KillerUrn = m.KillerUrn
+	r.KillerTeamUrn = m.KillerTeamUrn
+	r.VictimUrn = m.VictimUrn
+	r.VictimTeamUrn = m.VictimTeamUrn
+	r.Weapon = m.Weapon
+	r.Headshot = m.Headshot
+	r.Penetrated = m.Penetrated
+	if rhs := m.Assistants; rhs != nil {
+		tmpContainer := make([]string, len(rhs))
+		copy(tmpContainer, rhs)
+		r.Assistants = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2Kill) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2Death) CloneVT() *CS2Death {
+	if m == nil {
+		return (*CS2Death)(nil)
+	}
+	r := new(CS2Death)
+	r.MapTime = (*durationpb.Duration)((*durationpb1.Duration)(m.MapTime).CloneVT())
+	r.TimeRemaining = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeRemaining).CloneVT())
+	r.CurrentRoundNumber = m.CurrentRoundNumber
+	r.Position = m.Position.CloneVT()
+	r.PlayerUrn = m.PlayerUrn
+	r.TeamUrn = m.TeamUrn
+	r.TotalDeaths = m.TotalDeaths
+	r.Suicide = m.Suicide
+	r.DeathByBomb = m.DeathByBomb
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2Death) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2MapEnd) CloneVT() *CS2MapEnd {
+	if m == nil {
+		return (*CS2MapEnd)(nil)
+	}
+	r := new(CS2MapEnd)
+	r.MapTime = (*durationpb.Duration)((*durationpb1.Duration)(m.MapTime).CloneVT())
+	r.CurrentRoundNumber = m.CurrentRoundNumber
+	r.MapName = m.MapName
+	r.WinningTeamUrn = m.WinningTeamUrn
+	r.LightTeamScore = m.LightTeamScore
+	r.DarkTeamScore = m.DarkTeamScore
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2MapEnd) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2MapStart) CloneVT() *CS2MapStart {
+	if m == nil {
+		return (*CS2MapStart)(nil)
+	}
+	r := new(CS2MapStart)
+	r.MapTime = (*durationpb.Duration)((*durationpb1.Duration)(m.MapTime).CloneVT())
+	r.MapName = m.MapName
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2MapStart) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2RoundEnd) CloneVT() *CS2RoundEnd {
+	if m == nil {
+		return (*CS2RoundEnd)(nil)
+	}
+	r := new(CS2RoundEnd)
+	r.MapTime = (*durationpb.Duration)((*durationpb1.Duration)(m.MapTime).CloneVT())
+	r.TimeRemaining = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeRemaining).CloneVT())
+	r.CurrentRoundNumber = m.CurrentRoundNumber
+	r.WinningTeamUrn = m.WinningTeamUrn
+	r.WinReason = m.WinReason
+	if rhs := m.PlayerBalances; rhs != nil {
+		tmpContainer := make(map[string]*CS2PlayerBalance, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.PlayerBalances = tmpContainer
+	}
+	if rhs := m.PlayerInventories; rhs != nil {
+		tmpContainer := make(map[string]*CS2PlayerItems, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.PlayerInventories = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2RoundEnd) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2RoundPause) CloneVT() *CS2RoundPause {
+	if m == nil {
+		return (*CS2RoundPause)(nil)
+	}
+	r := new(CS2RoundPause)
+	r.MapTime = (*durationpb.Duration)((*durationpb1.Duration)(m.MapTime).CloneVT())
+	r.TimeRemaining = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeRemaining).CloneVT())
+	r.CurrentRoundNumber = m.CurrentRoundNumber
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2RoundPause) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2RoundResume) CloneVT() *CS2RoundResume {
+	if m == nil {
+		return (*CS2RoundResume)(nil)
+	}
+	r := new(CS2RoundResume)
+	r.MapTime = (*durationpb.Duration)((*durationpb1.Duration)(m.MapTime).CloneVT())
+	r.TimeRemaining = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeRemaining).CloneVT())
+	r.CurrentRoundNumber = m.CurrentRoundNumber
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2RoundResume) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2RoundRollback) CloneVT() *CS2RoundRollback {
+	if m == nil {
+		return (*CS2RoundRollback)(nil)
+	}
+	r := new(CS2RoundRollback)
+	r.NextRoundNumber = m.NextRoundNumber
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2RoundRollback) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2RoundStart) CloneVT() *CS2RoundStart {
+	if m == nil {
+		return (*CS2RoundStart)(nil)
+	}
+	r := new(CS2RoundStart)
+	r.MapTime = (*durationpb.Duration)((*durationpb1.Duration)(m.MapTime).CloneVT())
+	r.TimeRemaining = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeRemaining).CloneVT())
+	r.CurrentRoundNumber = m.CurrentRoundNumber
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2RoundStart) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *CS2WorldBomb) CloneVT() *CS2WorldBomb {
+	if m == nil {
+		return (*CS2WorldBomb)(nil)
+	}
+	r := new(CS2WorldBomb)
+	r.TimeRemaining = (*durationpb.Duration)((*durationpb1.Duration)(m.TimeRemaining).CloneVT())
+	r.State = m.State.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *CS2WorldBomb) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
 
 func (this *CS2MatchMessage_Payload) EqualVT(that *CS2MatchMessage_Payload) bool {
 	if this == that {
@@ -108,7 +2302,7 @@ func (this *CS2MatchMessage) EqualVT(that *CS2MatchMessage) bool {
 	if this.Sequence != that.Sequence {
 		return false
 	}
-	if !(*timestamppb.Timestamp)(this.Timestamp).EqualVT((*timestamppb.Timestamp)(that.Timestamp)) {
+	if !(*timestamppb1.Timestamp)(this.Timestamp).EqualVT((*timestamppb1.Timestamp)(that.Timestamp)) {
 		return false
 	}
 	if !this.Payload.EqualVT(that.Payload) {
@@ -139,7 +2333,7 @@ func (this *CS2MatchSnapshot) EqualVT(that *CS2MatchSnapshot) bool {
 	if this.Sequence != that.Sequence {
 		return false
 	}
-	if !(*timestamppb.Timestamp)(this.Timestamp).EqualVT((*timestamppb.Timestamp)(that.Timestamp)) {
+	if !(*timestamppb1.Timestamp)(this.Timestamp).EqualVT((*timestamppb1.Timestamp)(that.Timestamp)) {
 		return false
 	}
 	if len(this.Announcements) != len(that.Announcements) {
@@ -860,19 +3054,19 @@ func (this *CS2MapInfoState) EqualVT(that *CS2MapInfoState) bool {
 	if this.MaxRoundsOvertime != that.MaxRoundsOvertime {
 		return false
 	}
-	if !(*durationpb.Duration)(this.FreezeTimeDuration).EqualVT((*durationpb.Duration)(that.FreezeTimeDuration)) {
+	if !(*durationpb1.Duration)(this.FreezeTimeDuration).EqualVT((*durationpb1.Duration)(that.FreezeTimeDuration)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.RoundTimeDuration).EqualVT((*durationpb.Duration)(that.RoundTimeDuration)) {
+	if !(*durationpb1.Duration)(this.RoundTimeDuration).EqualVT((*durationpb1.Duration)(that.RoundTimeDuration)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.BombTimeDuration).EqualVT((*durationpb.Duration)(that.BombTimeDuration)) {
+	if !(*durationpb1.Duration)(this.BombTimeDuration).EqualVT((*durationpb1.Duration)(that.BombTimeDuration)) {
 		return false
 	}
-	if !(*timestamppb.Timestamp)(this.StartTime).EqualVT((*timestamppb.Timestamp)(that.StartTime)) {
+	if !(*timestamppb1.Timestamp)(this.StartTime).EqualVT((*timestamppb1.Timestamp)(that.StartTime)) {
 		return false
 	}
-	if !(*timestamppb.Timestamp)(this.EndTime).EqualVT((*timestamppb.Timestamp)(that.EndTime)) {
+	if !(*timestamppb1.Timestamp)(this.EndTime).EqualVT((*timestamppb1.Timestamp)(that.EndTime)) {
 		return false
 	}
 	if this.MapEnded != that.MapEnded {
@@ -1140,10 +3334,10 @@ func (this *CS2RoundInfoState) EqualVT(that *CS2RoundInfoState) bool {
 	if this.RoundType != that.RoundType {
 		return false
 	}
-	if !(*timestamppb.Timestamp)(this.StartTime).EqualVT((*timestamppb.Timestamp)(that.StartTime)) {
+	if !(*timestamppb1.Timestamp)(this.StartTime).EqualVT((*timestamppb1.Timestamp)(that.StartTime)) {
 		return false
 	}
-	if !(*timestamppb.Timestamp)(this.EndTime).EqualVT((*timestamppb.Timestamp)(that.EndTime)) {
+	if !(*timestamppb1.Timestamp)(this.EndTime).EqualVT((*timestamppb1.Timestamp)(that.EndTime)) {
 		return false
 	}
 	if p, q := this.WinningTeamUrn, that.WinningTeamUrn; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
@@ -1171,7 +3365,7 @@ func (this *CS2RoundTimeState) EqualVT(that *CS2RoundTimeState) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+	if !(*durationpb1.Duration)(this.TimeRemaining).EqualVT((*durationpb1.Duration)(that.TimeRemaining)) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
@@ -1443,7 +3637,7 @@ func (this *CS2BombPlantingState) EqualVT(that *CS2BombPlantingState) bool {
 	if !this.Position.EqualVT(that.Position) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.Countdown).EqualVT((*durationpb.Duration)(that.Countdown)) {
+	if !(*durationpb1.Duration)(this.Countdown).EqualVT((*durationpb1.Duration)(that.Countdown)) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
@@ -1468,10 +3662,10 @@ func (this *CS2BombPlantedState) EqualVT(that *CS2BombPlantedState) bool {
 	if !this.Position.EqualVT(that.Position) {
 		return false
 	}
-	if !(*timestamppb.Timestamp)(this.PlantedAt).EqualVT((*timestamppb.Timestamp)(that.PlantedAt)) {
+	if !(*timestamppb1.Timestamp)(this.PlantedAt).EqualVT((*timestamppb1.Timestamp)(that.PlantedAt)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.Countdown).EqualVT((*durationpb.Duration)(that.Countdown)) {
+	if !(*durationpb1.Duration)(this.Countdown).EqualVT((*durationpb1.Duration)(that.Countdown)) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
@@ -1496,10 +3690,10 @@ func (this *CS2BombDefusingState) EqualVT(that *CS2BombDefusingState) bool {
 	if !this.Position.EqualVT(that.Position) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.Countdown).EqualVT((*durationpb.Duration)(that.Countdown)) {
+	if !(*durationpb1.Duration)(this.Countdown).EqualVT((*durationpb1.Duration)(that.Countdown)) {
 		return false
 	}
-	if !(*timestamppb.Timestamp)(this.DefuseStartedAt).EqualVT((*timestamppb.Timestamp)(that.DefuseStartedAt)) {
+	if !(*timestamppb1.Timestamp)(this.DefuseStartedAt).EqualVT((*timestamppb1.Timestamp)(that.DefuseStartedAt)) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
@@ -1524,7 +3718,7 @@ func (this *CS2BombDefusedState) EqualVT(that *CS2BombDefusedState) bool {
 	if !this.Position.EqualVT(that.Position) {
 		return false
 	}
-	if !(*timestamppb.Timestamp)(this.DefusedAt).EqualVT((*timestamppb.Timestamp)(that.DefusedAt)) {
+	if !(*timestamppb1.Timestamp)(this.DefusedAt).EqualVT((*timestamppb1.Timestamp)(that.DefusedAt)) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
@@ -1546,7 +3740,7 @@ func (this *CS2BombExplodedState) EqualVT(that *CS2BombExplodedState) bool {
 	if !this.Position.EqualVT(that.Position) {
 		return false
 	}
-	if !(*timestamppb.Timestamp)(this.ExplodedAt).EqualVT((*timestamppb.Timestamp)(that.ExplodedAt)) {
+	if !(*timestamppb1.Timestamp)(this.ExplodedAt).EqualVT((*timestamppb1.Timestamp)(that.ExplodedAt)) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
@@ -2434,7 +4628,7 @@ func (this *CS2Event) EqualVT(that *CS2Event) bool {
 			return false
 		}
 	}
-	if !(*timestamppb.Timestamp)(this.Timestamp).EqualVT((*timestamppb.Timestamp)(that.Timestamp)) {
+	if !(*timestamppb1.Timestamp)(this.Timestamp).EqualVT((*timestamppb1.Timestamp)(that.Timestamp)) {
 		return false
 	}
 	if this.MapId != that.MapId {
@@ -3073,10 +5267,10 @@ func (this *CS2BombDefuseStarted) EqualVT(that *CS2BombDefuseStarted) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.MapTime).EqualVT((*durationpb.Duration)(that.MapTime)) {
+	if !(*durationpb1.Duration)(this.MapTime).EqualVT((*durationpb1.Duration)(that.MapTime)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+	if !(*durationpb1.Duration)(this.TimeRemaining).EqualVT((*durationpb1.Duration)(that.TimeRemaining)) {
 		return false
 	}
 	if this.CurrentRoundNumber != that.CurrentRoundNumber {
@@ -3104,10 +5298,10 @@ func (this *CS2BombDefused) EqualVT(that *CS2BombDefused) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.MapTime).EqualVT((*durationpb.Duration)(that.MapTime)) {
+	if !(*durationpb1.Duration)(this.MapTime).EqualVT((*durationpb1.Duration)(that.MapTime)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+	if !(*durationpb1.Duration)(this.TimeRemaining).EqualVT((*durationpb1.Duration)(that.TimeRemaining)) {
 		return false
 	}
 	if this.CurrentRoundNumber != that.CurrentRoundNumber {
@@ -3135,10 +5329,10 @@ func (this *CS2BombExploded) EqualVT(that *CS2BombExploded) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.MapTime).EqualVT((*durationpb.Duration)(that.MapTime)) {
+	if !(*durationpb1.Duration)(this.MapTime).EqualVT((*durationpb1.Duration)(that.MapTime)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+	if !(*durationpb1.Duration)(this.TimeRemaining).EqualVT((*durationpb1.Duration)(that.TimeRemaining)) {
 		return false
 	}
 	if this.CurrentRoundNumber != that.CurrentRoundNumber {
@@ -3160,10 +5354,10 @@ func (this *CS2BombPlantStarted) EqualVT(that *CS2BombPlantStarted) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.MapTime).EqualVT((*durationpb.Duration)(that.MapTime)) {
+	if !(*durationpb1.Duration)(this.MapTime).EqualVT((*durationpb1.Duration)(that.MapTime)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+	if !(*durationpb1.Duration)(this.TimeRemaining).EqualVT((*durationpb1.Duration)(that.TimeRemaining)) {
 		return false
 	}
 	if this.CurrentRoundNumber != that.CurrentRoundNumber {
@@ -3191,10 +5385,10 @@ func (this *CS2BombPlanted) EqualVT(that *CS2BombPlanted) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.MapTime).EqualVT((*durationpb.Duration)(that.MapTime)) {
+	if !(*durationpb1.Duration)(this.MapTime).EqualVT((*durationpb1.Duration)(that.MapTime)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+	if !(*durationpb1.Duration)(this.TimeRemaining).EqualVT((*durationpb1.Duration)(that.TimeRemaining)) {
 		return false
 	}
 	if this.CurrentRoundNumber != that.CurrentRoundNumber {
@@ -3225,10 +5419,10 @@ func (this *CS2DamageDealt) EqualVT(that *CS2DamageDealt) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.MapTime).EqualVT((*durationpb.Duration)(that.MapTime)) {
+	if !(*durationpb1.Duration)(this.MapTime).EqualVT((*durationpb1.Duration)(that.MapTime)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+	if !(*durationpb1.Duration)(this.TimeRemaining).EqualVT((*durationpb1.Duration)(that.TimeRemaining)) {
 		return false
 	}
 	if this.CurrentRoundNumber != that.CurrentRoundNumber {
@@ -3286,10 +5480,10 @@ func (this *CS2FreezeTimeEnded) EqualVT(that *CS2FreezeTimeEnded) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.MapTime).EqualVT((*durationpb.Duration)(that.MapTime)) {
+	if !(*durationpb1.Duration)(this.MapTime).EqualVT((*durationpb1.Duration)(that.MapTime)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+	if !(*durationpb1.Duration)(this.TimeRemaining).EqualVT((*durationpb1.Duration)(that.TimeRemaining)) {
 		return false
 	}
 	if this.CurrentRoundNumber != that.CurrentRoundNumber {
@@ -3351,10 +5545,10 @@ func (this *CS2FreezeTimeStarted) EqualVT(that *CS2FreezeTimeStarted) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.MapTime).EqualVT((*durationpb.Duration)(that.MapTime)) {
+	if !(*durationpb1.Duration)(this.MapTime).EqualVT((*durationpb1.Duration)(that.MapTime)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+	if !(*durationpb1.Duration)(this.TimeRemaining).EqualVT((*durationpb1.Duration)(that.TimeRemaining)) {
 		return false
 	}
 	if this.CurrentRoundNumber != that.CurrentRoundNumber {
@@ -3408,10 +5602,10 @@ func (this *CS2ItemDrop) EqualVT(that *CS2ItemDrop) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.MapTime).EqualVT((*durationpb.Duration)(that.MapTime)) {
+	if !(*durationpb1.Duration)(this.MapTime).EqualVT((*durationpb1.Duration)(that.MapTime)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+	if !(*durationpb1.Duration)(this.TimeRemaining).EqualVT((*durationpb1.Duration)(that.TimeRemaining)) {
 		return false
 	}
 	if this.CurrentRoundNumber != that.CurrentRoundNumber {
@@ -3445,10 +5639,10 @@ func (this *CS2ItemPickUp) EqualVT(that *CS2ItemPickUp) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.MapTime).EqualVT((*durationpb.Duration)(that.MapTime)) {
+	if !(*durationpb1.Duration)(this.MapTime).EqualVT((*durationpb1.Duration)(that.MapTime)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+	if !(*durationpb1.Duration)(this.TimeRemaining).EqualVT((*durationpb1.Duration)(that.TimeRemaining)) {
 		return false
 	}
 	if this.CurrentRoundNumber != that.CurrentRoundNumber {
@@ -3479,10 +5673,10 @@ func (this *CS2ItemPurchase) EqualVT(that *CS2ItemPurchase) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.MapTime).EqualVT((*durationpb.Duration)(that.MapTime)) {
+	if !(*durationpb1.Duration)(this.MapTime).EqualVT((*durationpb1.Duration)(that.MapTime)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+	if !(*durationpb1.Duration)(this.TimeRemaining).EqualVT((*durationpb1.Duration)(that.TimeRemaining)) {
 		return false
 	}
 	if this.CurrentRoundNumber != that.CurrentRoundNumber {
@@ -3519,10 +5713,10 @@ func (this *CS2ItemThrow) EqualVT(that *CS2ItemThrow) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.MapTime).EqualVT((*durationpb.Duration)(that.MapTime)) {
+	if !(*durationpb1.Duration)(this.MapTime).EqualVT((*durationpb1.Duration)(that.MapTime)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+	if !(*durationpb1.Duration)(this.TimeRemaining).EqualVT((*durationpb1.Duration)(that.TimeRemaining)) {
 		return false
 	}
 	if this.CurrentRoundNumber != that.CurrentRoundNumber {
@@ -3556,10 +5750,10 @@ func (this *CS2Kill) EqualVT(that *CS2Kill) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.MapTime).EqualVT((*durationpb.Duration)(that.MapTime)) {
+	if !(*durationpb1.Duration)(this.MapTime).EqualVT((*durationpb1.Duration)(that.MapTime)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+	if !(*durationpb1.Duration)(this.TimeRemaining).EqualVT((*durationpb1.Duration)(that.TimeRemaining)) {
 		return false
 	}
 	if this.CurrentRoundNumber != that.CurrentRoundNumber {
@@ -3614,10 +5808,10 @@ func (this *CS2Death) EqualVT(that *CS2Death) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.MapTime).EqualVT((*durationpb.Duration)(that.MapTime)) {
+	if !(*durationpb1.Duration)(this.MapTime).EqualVT((*durationpb1.Duration)(that.MapTime)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+	if !(*durationpb1.Duration)(this.TimeRemaining).EqualVT((*durationpb1.Duration)(that.TimeRemaining)) {
 		return false
 	}
 	if this.CurrentRoundNumber != that.CurrentRoundNumber {
@@ -3657,7 +5851,7 @@ func (this *CS2MapEnd) EqualVT(that *CS2MapEnd) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.MapTime).EqualVT((*durationpb.Duration)(that.MapTime)) {
+	if !(*durationpb1.Duration)(this.MapTime).EqualVT((*durationpb1.Duration)(that.MapTime)) {
 		return false
 	}
 	if this.CurrentRoundNumber != that.CurrentRoundNumber {
@@ -3691,7 +5885,7 @@ func (this *CS2MapStart) EqualVT(that *CS2MapStart) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.MapTime).EqualVT((*durationpb.Duration)(that.MapTime)) {
+	if !(*durationpb1.Duration)(this.MapTime).EqualVT((*durationpb1.Duration)(that.MapTime)) {
 		return false
 	}
 	if this.MapName != that.MapName {
@@ -3713,10 +5907,10 @@ func (this *CS2RoundEnd) EqualVT(that *CS2RoundEnd) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.MapTime).EqualVT((*durationpb.Duration)(that.MapTime)) {
+	if !(*durationpb1.Duration)(this.MapTime).EqualVT((*durationpb1.Duration)(that.MapTime)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+	if !(*durationpb1.Duration)(this.TimeRemaining).EqualVT((*durationpb1.Duration)(that.TimeRemaining)) {
 		return false
 	}
 	if this.CurrentRoundNumber != that.CurrentRoundNumber {
@@ -3784,10 +5978,10 @@ func (this *CS2RoundPause) EqualVT(that *CS2RoundPause) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.MapTime).EqualVT((*durationpb.Duration)(that.MapTime)) {
+	if !(*durationpb1.Duration)(this.MapTime).EqualVT((*durationpb1.Duration)(that.MapTime)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+	if !(*durationpb1.Duration)(this.TimeRemaining).EqualVT((*durationpb1.Duration)(that.TimeRemaining)) {
 		return false
 	}
 	if this.CurrentRoundNumber != that.CurrentRoundNumber {
@@ -3809,10 +6003,10 @@ func (this *CS2RoundResume) EqualVT(that *CS2RoundResume) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.MapTime).EqualVT((*durationpb.Duration)(that.MapTime)) {
+	if !(*durationpb1.Duration)(this.MapTime).EqualVT((*durationpb1.Duration)(that.MapTime)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+	if !(*durationpb1.Duration)(this.TimeRemaining).EqualVT((*durationpb1.Duration)(that.TimeRemaining)) {
 		return false
 	}
 	if this.CurrentRoundNumber != that.CurrentRoundNumber {
@@ -3853,10 +6047,10 @@ func (this *CS2RoundStart) EqualVT(that *CS2RoundStart) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.MapTime).EqualVT((*durationpb.Duration)(that.MapTime)) {
+	if !(*durationpb1.Duration)(this.MapTime).EqualVT((*durationpb1.Duration)(that.MapTime)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+	if !(*durationpb1.Duration)(this.TimeRemaining).EqualVT((*durationpb1.Duration)(that.TimeRemaining)) {
 		return false
 	}
 	if this.CurrentRoundNumber != that.CurrentRoundNumber {
@@ -3878,7 +6072,7 @@ func (this *CS2WorldBomb) EqualVT(that *CS2WorldBomb) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.TimeRemaining).EqualVT((*durationpb.Duration)(that.TimeRemaining)) {
+	if !(*durationpb1.Duration)(this.TimeRemaining).EqualVT((*durationpb1.Duration)(that.TimeRemaining)) {
 		return false
 	}
 	if !this.State.EqualVT(that.State) {

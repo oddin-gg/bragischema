@@ -5,9 +5,10 @@
 package bragi
 
 import (
-	timestamppb "github.com/planetscale/vtprotobuf/types/known/timestamppb"
+	timestamppb1 "github.com/planetscale/vtprotobuf/types/known/timestamppb"
 	proto "google.golang.org/protobuf/proto"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -16,6 +17,245 @@ const (
 	// Verify that runtime/protoimpl is sufficiently up-to-date.
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
+
+func (m *AnnouncementUpdate) CloneVT() *AnnouncementUpdate {
+	if m == nil {
+		return (*AnnouncementUpdate)(nil)
+	}
+	r := new(AnnouncementUpdate)
+	r.MatchUrn = m.MatchUrn
+	r.Sequence = m.Sequence
+	r.Timestamp = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.Timestamp).CloneVT())
+	r.Payload = m.Payload.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *AnnouncementUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Announcement_Payload) CloneVT() *Announcement_Payload {
+	if m == nil {
+		return (*Announcement_Payload)(nil)
+	}
+	r := new(Announcement_Payload)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isAnnouncement_Payload_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Announcement_Payload) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Announcement_Payload_Control) CloneVT() isAnnouncement_Payload_Payload {
+	if m == nil {
+		return (*Announcement_Payload_Control)(nil)
+	}
+	r := new(Announcement_Payload_Control)
+	r.Control = m.Control.CloneVT()
+	return r
+}
+
+func (m *Announcement_Payload_Error) CloneVT() isAnnouncement_Payload_Payload {
+	if m == nil {
+		return (*Announcement_Payload_Error)(nil)
+	}
+	r := new(Announcement_Payload_Error)
+	r.Error = m.Error.CloneVT()
+	return r
+}
+
+func (m *Announcement) CloneVT() *Announcement {
+	if m == nil {
+		return (*Announcement)(nil)
+	}
+	r := new(Announcement)
+	r.CreatedAt = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.CreatedAt).CloneVT())
+	r.Payload = m.Payload.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Announcement) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ControlAnnouncement) CloneVT() *ControlAnnouncement {
+	if m == nil {
+		return (*ControlAnnouncement)(nil)
+	}
+	r := new(ControlAnnouncement)
+	r.Type = m.Type
+	if rhs := m.Message; rhs != nil {
+		tmpVal := *rhs
+		r.Message = &tmpVal
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ControlAnnouncement) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ControlErrorAnnouncement) CloneVT() *ControlErrorAnnouncement {
+	if m == nil {
+		return (*ControlErrorAnnouncement)(nil)
+	}
+	r := new(ControlErrorAnnouncement)
+	r.Type = m.Type
+	if rhs := m.Message; rhs != nil {
+		tmpVal := *rhs
+		r.Message = &tmpVal
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ControlErrorAnnouncement) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *MatchTimeline) CloneVT() *MatchTimeline {
+	if m == nil {
+		return (*MatchTimeline)(nil)
+	}
+	r := new(MatchTimeline)
+	if rhs := m.Matches; rhs != nil {
+		tmpContainer := make([]*Match, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Matches = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *MatchTimeline) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Match) CloneVT() *Match {
+	if m == nil {
+		return (*Match)(nil)
+	}
+	r := new(Match)
+	r.MatchUrn = m.MatchUrn
+	r.TournamentUrn = m.TournamentUrn
+	r.Sport = m.Sport
+	r.HomeTeamUrn = m.HomeTeamUrn
+	r.AwayTeamUrn = m.AwayTeamUrn
+	r.HomeScore = m.HomeScore
+	r.AwayScore = m.AwayScore
+	r.MatchStatus = m.MatchStatus
+	r.PlannetStart = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.PlannetStart).CloneVT())
+	r.Tournament = m.Tournament.CloneVT()
+	if rhs := m.Teams; rhs != nil {
+		tmpContainer := make([]*Team, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Teams = tmpContainer
+	}
+	if rhs := m.Players; rhs != nil {
+		tmpContainer := make([]*Player, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Players = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Match) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Tournament) CloneVT() *Tournament {
+	if m == nil {
+		return (*Tournament)(nil)
+	}
+	r := new(Tournament)
+	r.Urn = m.Urn
+	r.Name = m.Name
+	r.IsOffline = m.IsOffline
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Tournament) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Team) CloneVT() *Team {
+	if m == nil {
+		return (*Team)(nil)
+	}
+	r := new(Team)
+	r.Urn = m.Urn
+	r.Name = m.Name
+	r.IsHome = m.IsHome
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Team) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Player) CloneVT() *Player {
+	if m == nil {
+		return (*Player)(nil)
+	}
+	r := new(Player)
+	r.Urn = m.Urn
+	r.Nickname = m.Nickname
+	r.TeamUrn = m.TeamUrn
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Player) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
 
 func (this *AnnouncementUpdate) EqualVT(that *AnnouncementUpdate) bool {
 	if this == that {
@@ -29,7 +269,7 @@ func (this *AnnouncementUpdate) EqualVT(that *AnnouncementUpdate) bool {
 	if this.Sequence != that.Sequence {
 		return false
 	}
-	if !(*timestamppb.Timestamp)(this.Timestamp).EqualVT((*timestamppb.Timestamp)(that.Timestamp)) {
+	if !(*timestamppb1.Timestamp)(this.Timestamp).EqualVT((*timestamppb1.Timestamp)(that.Timestamp)) {
 		return false
 	}
 	if !this.Payload.EqualVT(that.Payload) {
@@ -129,7 +369,7 @@ func (this *Announcement) EqualVT(that *Announcement) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*timestamppb.Timestamp)(this.CreatedAt).EqualVT((*timestamppb.Timestamp)(that.CreatedAt)) {
+	if !(*timestamppb1.Timestamp)(this.CreatedAt).EqualVT((*timestamppb1.Timestamp)(that.CreatedAt)) {
 		return false
 	}
 	if !this.Payload.EqualVT(that.Payload) {
@@ -252,7 +492,7 @@ func (this *Match) EqualVT(that *Match) bool {
 	if this.MatchStatus != that.MatchStatus {
 		return false
 	}
-	if !(*timestamppb.Timestamp)(this.PlannetStart).EqualVT((*timestamppb.Timestamp)(that.PlannetStart)) {
+	if !(*timestamppb1.Timestamp)(this.PlannetStart).EqualVT((*timestamppb1.Timestamp)(that.PlannetStart)) {
 		return false
 	}
 	if !this.Tournament.EqualVT(that.Tournament) {

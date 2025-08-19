@@ -17,7 +17,7 @@ protoc ./proto/bragi/*.proto -I ./proto \
     --go_out=./go \
     --go-grpc_out=./go \
     --go-vtproto_out=./go \
-    --go-vtproto_opt=features=equal
+    --go-vtproto_opt=features=equal+clone
 
 if [ "$?" != "0" ]; then
   echo "protobuf files generation failed. \n"

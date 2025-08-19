@@ -5,10 +5,12 @@
 package bragi
 
 import (
-	durationpb "github.com/planetscale/vtprotobuf/types/known/durationpb"
-	timestamppb "github.com/planetscale/vtprotobuf/types/known/timestamppb"
+	durationpb1 "github.com/planetscale/vtprotobuf/types/known/durationpb"
+	timestamppb1 "github.com/planetscale/vtprotobuf/types/known/timestamppb"
 	proto "google.golang.org/protobuf/proto"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -17,6 +19,1211 @@ const (
 	// Verify that runtime/protoimpl is sufficiently up-to-date.
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
+
+func (m *Dota2MatchMessage_Payload) CloneVT() *Dota2MatchMessage_Payload {
+	if m == nil {
+		return (*Dota2MatchMessage_Payload)(nil)
+	}
+	r := new(Dota2MatchMessage_Payload)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isDota2MatchMessage_Payload_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2MatchMessage_Payload) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2MatchMessage_Payload_Snapshot) CloneVT() isDota2MatchMessage_Payload_Payload {
+	if m == nil {
+		return (*Dota2MatchMessage_Payload_Snapshot)(nil)
+	}
+	r := new(Dota2MatchMessage_Payload_Snapshot)
+	r.Snapshot = m.Snapshot.CloneVT()
+	return r
+}
+
+func (m *Dota2MatchMessage_Payload_Update) CloneVT() isDota2MatchMessage_Payload_Payload {
+	if m == nil {
+		return (*Dota2MatchMessage_Payload_Update)(nil)
+	}
+	r := new(Dota2MatchMessage_Payload_Update)
+	r.Update = m.Update.CloneVT()
+	return r
+}
+
+func (m *Dota2MatchMessage) CloneVT() *Dota2MatchMessage {
+	if m == nil {
+		return (*Dota2MatchMessage)(nil)
+	}
+	r := new(Dota2MatchMessage)
+	r.MatchUrn = m.MatchUrn
+	r.Sequence = m.Sequence
+	r.Timestamp = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.Timestamp).CloneVT())
+	r.DataStatus = m.DataStatus
+	r.Payload = m.Payload.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2MatchMessage) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2MatchSnapshot) CloneVT() *Dota2MatchSnapshot {
+	if m == nil {
+		return (*Dota2MatchSnapshot)(nil)
+	}
+	r := new(Dota2MatchSnapshot)
+	r.MatchUrn = m.MatchUrn
+	r.Sequence = m.Sequence
+	r.Timestamp = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.Timestamp).CloneVT())
+	r.DataStatus = m.DataStatus
+	r.MatchState = m.MatchState.CloneVT()
+	r.Tournament = m.Tournament.CloneVT()
+	if rhs := m.Announcements; rhs != nil {
+		tmpContainer := make([]*Announcement, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Announcements = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2MatchSnapshot) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *PicksAndBansSelectionsPerTeam_HeroSelection) CloneVT() *PicksAndBansSelectionsPerTeam_HeroSelection {
+	if m == nil {
+		return (*PicksAndBansSelectionsPerTeam_HeroSelection)(nil)
+	}
+	r := new(PicksAndBansSelectionsPerTeam_HeroSelection)
+	r.HeroSteamId = m.HeroSteamId
+	r.HeroKey = m.HeroKey
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *PicksAndBansSelectionsPerTeam_HeroSelection) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *PicksAndBansSelectionsPerTeam_RadiantSelections) CloneVT() *PicksAndBansSelectionsPerTeam_RadiantSelections {
+	if m == nil {
+		return (*PicksAndBansSelectionsPerTeam_RadiantSelections)(nil)
+	}
+	r := new(PicksAndBansSelectionsPerTeam_RadiantSelections)
+	if rhs := m.Bans; rhs != nil {
+		tmpContainer := make([]*PicksAndBansSelectionsPerTeam_HeroSelection, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Bans = tmpContainer
+	}
+	if rhs := m.Picks; rhs != nil {
+		tmpContainer := make([]*PicksAndBansSelectionsPerTeam_HeroSelection, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Picks = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *PicksAndBansSelectionsPerTeam_RadiantSelections) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *PicksAndBansSelectionsPerTeam_DireSelections) CloneVT() *PicksAndBansSelectionsPerTeam_DireSelections {
+	if m == nil {
+		return (*PicksAndBansSelectionsPerTeam_DireSelections)(nil)
+	}
+	r := new(PicksAndBansSelectionsPerTeam_DireSelections)
+	if rhs := m.Bans; rhs != nil {
+		tmpContainer := make([]*PicksAndBansSelectionsPerTeam_HeroSelection, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Bans = tmpContainer
+	}
+	if rhs := m.Picks; rhs != nil {
+		tmpContainer := make([]*PicksAndBansSelectionsPerTeam_HeroSelection, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Picks = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *PicksAndBansSelectionsPerTeam_DireSelections) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *PicksAndBansSelectionsPerTeam) CloneVT() *PicksAndBansSelectionsPerTeam {
+	if m == nil {
+		return (*PicksAndBansSelectionsPerTeam)(nil)
+	}
+	r := new(PicksAndBansSelectionsPerTeam)
+	r.State = m.State
+	r.ActiveTeam = m.ActiveTeam
+	r.SelectionType = m.SelectionType
+	r.ActiveTeamTimeRemaining = m.ActiveTeamTimeRemaining
+	r.RadiantBonusTime = m.RadiantBonusTime
+	r.DireBonusTime = m.DireBonusTime
+	r.RadiantSelections = m.RadiantSelections.CloneVT()
+	r.DireSelections = m.DireSelections.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *PicksAndBansSelectionsPerTeam) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *PicksAndBansSelections_CurrentHeroSelection) CloneVT() *PicksAndBansSelections_CurrentHeroSelection {
+	if m == nil {
+		return (*PicksAndBansSelections_CurrentHeroSelection)(nil)
+	}
+	r := new(PicksAndBansSelections_CurrentHeroSelection)
+	r.ActiveTeam = m.ActiveTeam
+	r.Pick = m.Pick
+	r.ActiveTeamTimeRemaining = m.ActiveTeamTimeRemaining
+	r.RadiantBonusTime = m.RadiantBonusTime
+	r.DireBonusTime = m.DireBonusTime
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *PicksAndBansSelections_CurrentHeroSelection) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *PicksAndBansSelections_PickOrBan) CloneVT() *PicksAndBansSelections_PickOrBan {
+	if m == nil {
+		return (*PicksAndBansSelections_PickOrBan)(nil)
+	}
+	r := new(PicksAndBansSelections_PickOrBan)
+	r.Team = m.Team
+	r.Pick = m.Pick
+	r.HeroSteamId = m.HeroSteamId
+	r.HeroKey = m.HeroKey
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *PicksAndBansSelections_PickOrBan) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *PicksAndBansSelections) CloneVT() *PicksAndBansSelections {
+	if m == nil {
+		return (*PicksAndBansSelections)(nil)
+	}
+	r := new(PicksAndBansSelections)
+	r.CurrentHeroSelection = m.CurrentHeroSelection.CloneVT()
+	r.State = m.State
+	if rhs := m.PicksAndBans; rhs != nil {
+		tmpContainer := make([]*PicksAndBansSelections_PickOrBan, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.PicksAndBans = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *PicksAndBansSelections) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2MatchUpdate_Payload) CloneVT() *Dota2MatchUpdate_Payload {
+	if m == nil {
+		return (*Dota2MatchUpdate_Payload)(nil)
+	}
+	r := new(Dota2MatchUpdate_Payload)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isDota2MatchUpdate_Payload_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2MatchUpdate_Payload) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2MatchUpdate_Payload_MatchState) CloneVT() isDota2MatchUpdate_Payload_Payload {
+	if m == nil {
+		return (*Dota2MatchUpdate_Payload_MatchState)(nil)
+	}
+	r := new(Dota2MatchUpdate_Payload_MatchState)
+	r.MatchState = m.MatchState.CloneVT()
+	return r
+}
+
+func (m *Dota2MatchUpdate_Payload_PartialUpdates) CloneVT() isDota2MatchUpdate_Payload_Payload {
+	if m == nil {
+		return (*Dota2MatchUpdate_Payload_PartialUpdates)(nil)
+	}
+	r := new(Dota2MatchUpdate_Payload_PartialUpdates)
+	r.PartialUpdates = m.PartialUpdates.CloneVT()
+	return r
+}
+
+func (m *Dota2MatchUpdate) CloneVT() *Dota2MatchUpdate {
+	if m == nil {
+		return (*Dota2MatchUpdate)(nil)
+	}
+	r := new(Dota2MatchUpdate)
+	r.Payload = m.Payload.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2MatchUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2MatchStatePartialUpdates) CloneVT() *Dota2MatchStatePartialUpdates {
+	if m == nil {
+		return (*Dota2MatchStatePartialUpdates)(nil)
+	}
+	r := new(Dota2MatchStatePartialUpdates)
+	if rhs := m.Updates; rhs != nil {
+		tmpContainer := make([]*Dota2MatchStatePartialUpdate, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Updates = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2MatchStatePartialUpdates) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2MatchStatePartialUpdate) CloneVT() *Dota2MatchStatePartialUpdate {
+	if m == nil {
+		return (*Dota2MatchStatePartialUpdate)(nil)
+	}
+	r := new(Dota2MatchStatePartialUpdate)
+	if m.Update != nil {
+		r.Update = m.Update.(interface {
+			CloneVT() isDota2MatchStatePartialUpdate_Update
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2MatchStatePartialUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2MatchStatePartialUpdate_Score) CloneVT() isDota2MatchStatePartialUpdate_Update {
+	if m == nil {
+		return (*Dota2MatchStatePartialUpdate_Score)(nil)
+	}
+	r := new(Dota2MatchStatePartialUpdate_Score)
+	r.Score = m.Score.CloneVT()
+	return r
+}
+
+func (m *Dota2MatchStatePartialUpdate_CurrentMapState) CloneVT() isDota2MatchStatePartialUpdate_Update {
+	if m == nil {
+		return (*Dota2MatchStatePartialUpdate_CurrentMapState)(nil)
+	}
+	r := new(Dota2MatchStatePartialUpdate_CurrentMapState)
+	r.CurrentMapState = m.CurrentMapState.CloneVT()
+	return r
+}
+
+func (m *Dota2MatchStatePartialUpdate_CurrentMapStatePartialUpdate) CloneVT() isDota2MatchStatePartialUpdate_Update {
+	if m == nil {
+		return (*Dota2MatchStatePartialUpdate_CurrentMapStatePartialUpdate)(nil)
+	}
+	r := new(Dota2MatchStatePartialUpdate_CurrentMapStatePartialUpdate)
+	r.CurrentMapStatePartialUpdate = m.CurrentMapStatePartialUpdate.CloneVT()
+	return r
+}
+
+func (m *Dota2MatchStatePartialUpdate_PicksAndBansSelections) CloneVT() isDota2MatchStatePartialUpdate_Update {
+	if m == nil {
+		return (*Dota2MatchStatePartialUpdate_PicksAndBansSelections)(nil)
+	}
+	r := new(Dota2MatchStatePartialUpdate_PicksAndBansSelections)
+	r.PicksAndBansSelections = m.PicksAndBansSelections.CloneVT()
+	return r
+}
+
+func (m *Dota2MatchStatePartialUpdate_PicksAndBansSelectionsPerTeam) CloneVT() isDota2MatchStatePartialUpdate_Update {
+	if m == nil {
+		return (*Dota2MatchStatePartialUpdate_PicksAndBansSelectionsPerTeam)(nil)
+	}
+	r := new(Dota2MatchStatePartialUpdate_PicksAndBansSelectionsPerTeam)
+	r.PicksAndBansSelectionsPerTeam = m.PicksAndBansSelectionsPerTeam.CloneVT()
+	return r
+}
+
+func (m *Dota2MatchState) CloneVT() *Dota2MatchState {
+	if m == nil {
+		return (*Dota2MatchState)(nil)
+	}
+	r := new(Dota2MatchState)
+	r.MatchUrn = m.MatchUrn
+	r.MatchType = m.MatchType
+	r.HomeTeam = m.HomeTeam.CloneVT()
+	r.AwayTeam = m.AwayTeam.CloneVT()
+	r.Score = m.Score.CloneVT()
+	r.MatchStatus = m.MatchStatus
+	r.CurrentMap = m.CurrentMap.CloneVT()
+	r.PicksAndBansSelections = m.PicksAndBansSelections.CloneVT()
+	r.PicksAndBansSelectionsPerTeam = m.PicksAndBansSelectionsPerTeam.CloneVT()
+	if rhs := m.PreviousMaps; rhs != nil {
+		tmpContainer := make([]*Dota2PreviousMapState, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.PreviousMaps = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2MatchState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2MatchScoreState) CloneVT() *Dota2MatchScoreState {
+	if m == nil {
+		return (*Dota2MatchScoreState)(nil)
+	}
+	r := new(Dota2MatchScoreState)
+	r.HomeScore = m.HomeScore
+	r.AwayScore = m.AwayScore
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2MatchScoreState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2CurrentMapStatePartialUpdate) CloneVT() *Dota2CurrentMapStatePartialUpdate {
+	if m == nil {
+		return (*Dota2CurrentMapStatePartialUpdate)(nil)
+	}
+	r := new(Dota2CurrentMapStatePartialUpdate)
+	if m.Update != nil {
+		r.Update = m.Update.(interface {
+			CloneVT() isDota2CurrentMapStatePartialUpdate_Update
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2CurrentMapStatePartialUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2CurrentMapStatePartialUpdate_GameTime) CloneVT() isDota2CurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*Dota2CurrentMapStatePartialUpdate_GameTime)(nil)
+	}
+	r := new(Dota2CurrentMapStatePartialUpdate_GameTime)
+	r.GameTime = m.GameTime.CloneVT()
+	return r
+}
+
+func (m *Dota2CurrentMapStatePartialUpdate_TeamCurrentMapState) CloneVT() isDota2CurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*Dota2CurrentMapStatePartialUpdate_TeamCurrentMapState)(nil)
+	}
+	r := new(Dota2CurrentMapStatePartialUpdate_TeamCurrentMapState)
+	r.TeamCurrentMapState = m.TeamCurrentMapState.CloneVT()
+	return r
+}
+
+func (m *Dota2CurrentMapStatePartialUpdate_TeamCurrentMapPartialUpdate) CloneVT() isDota2CurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*Dota2CurrentMapStatePartialUpdate_TeamCurrentMapPartialUpdate)(nil)
+	}
+	r := new(Dota2CurrentMapStatePartialUpdate_TeamCurrentMapPartialUpdate)
+	r.TeamCurrentMapPartialUpdate = m.TeamCurrentMapPartialUpdate.CloneVT()
+	return r
+}
+
+func (m *Dota2CurrentMapStatePartialUpdate_Towers) CloneVT() isDota2CurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*Dota2CurrentMapStatePartialUpdate_Towers)(nil)
+	}
+	r := new(Dota2CurrentMapStatePartialUpdate_Towers)
+	r.Towers = m.Towers.CloneVT()
+	return r
+}
+
+func (m *Dota2CurrentMapStatePartialUpdate_Barracks) CloneVT() isDota2CurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*Dota2CurrentMapStatePartialUpdate_Barracks)(nil)
+	}
+	r := new(Dota2CurrentMapStatePartialUpdate_Barracks)
+	r.Barracks = m.Barracks.CloneVT()
+	return r
+}
+
+func (m *Dota2CurrentMapStatePartialUpdate_Roshan) CloneVT() isDota2CurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*Dota2CurrentMapStatePartialUpdate_Roshan)(nil)
+	}
+	r := new(Dota2CurrentMapStatePartialUpdate_Roshan)
+	r.Roshan = m.Roshan.CloneVT()
+	return r
+}
+
+func (m *Dota2CurrentMapState) CloneVT() *Dota2CurrentMapState {
+	if m == nil {
+		return (*Dota2CurrentMapState)(nil)
+	}
+	r := new(Dota2CurrentMapState)
+	r.MapOrder = m.MapOrder
+	r.MapPaused = m.MapPaused
+	r.GameTime = m.GameTime.CloneVT()
+	r.Towers = m.Towers.CloneVT()
+	r.Barracks = m.Barracks.CloneVT()
+	r.Roshan = m.Roshan.CloneVT()
+	r.DayTime = m.DayTime
+	if rhs := m.Teams; rhs != nil {
+		tmpContainer := make(map[string]*Dota2TeamCurrentMapState, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Teams = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2CurrentMapState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2CurrentMapTimeState) CloneVT() *Dota2CurrentMapTimeState {
+	if m == nil {
+		return (*Dota2CurrentMapTimeState)(nil)
+	}
+	r := new(Dota2CurrentMapTimeState)
+	r.GameTime = (*durationpb.Duration)((*durationpb1.Duration)(m.GameTime).CloneVT())
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2CurrentMapTimeState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2PreviousMapState) CloneVT() *Dota2PreviousMapState {
+	if m == nil {
+		return (*Dota2PreviousMapState)(nil)
+	}
+	r := new(Dota2PreviousMapState)
+	r.MapOrder = m.MapOrder
+	if rhs := m.Teams; rhs != nil {
+		tmpContainer := make(map[string]*Dota2TeamPreviousMapState, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Teams = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2PreviousMapState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2TeamCurrentMapStatePartialUpdate_Payload) CloneVT() *Dota2TeamCurrentMapStatePartialUpdate_Payload {
+	if m == nil {
+		return (*Dota2TeamCurrentMapStatePartialUpdate_Payload)(nil)
+	}
+	r := new(Dota2TeamCurrentMapStatePartialUpdate_Payload)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isDota2TeamCurrentMapStatePartialUpdate_Payload_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2TeamCurrentMapStatePartialUpdate_Payload) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2TeamCurrentMapStatePartialUpdate_Payload_Statistics) CloneVT() isDota2TeamCurrentMapStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*Dota2TeamCurrentMapStatePartialUpdate_Payload_Statistics)(nil)
+	}
+	r := new(Dota2TeamCurrentMapStatePartialUpdate_Payload_Statistics)
+	r.Statistics = m.Statistics.CloneVT()
+	return r
+}
+
+func (m *Dota2TeamCurrentMapStatePartialUpdate_Payload_PlayerCurrentMapState) CloneVT() isDota2TeamCurrentMapStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*Dota2TeamCurrentMapStatePartialUpdate_Payload_PlayerCurrentMapState)(nil)
+	}
+	r := new(Dota2TeamCurrentMapStatePartialUpdate_Payload_PlayerCurrentMapState)
+	r.PlayerCurrentMapState = m.PlayerCurrentMapState.CloneVT()
+	return r
+}
+
+func (m *Dota2TeamCurrentMapStatePartialUpdate_Payload_PlayerCurrentMapPartialUpdate) CloneVT() isDota2TeamCurrentMapStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*Dota2TeamCurrentMapStatePartialUpdate_Payload_PlayerCurrentMapPartialUpdate)(nil)
+	}
+	r := new(Dota2TeamCurrentMapStatePartialUpdate_Payload_PlayerCurrentMapPartialUpdate)
+	r.PlayerCurrentMapPartialUpdate = m.PlayerCurrentMapPartialUpdate.CloneVT()
+	return r
+}
+
+func (m *Dota2TeamCurrentMapStatePartialUpdate) CloneVT() *Dota2TeamCurrentMapStatePartialUpdate {
+	if m == nil {
+		return (*Dota2TeamCurrentMapStatePartialUpdate)(nil)
+	}
+	r := new(Dota2TeamCurrentMapStatePartialUpdate)
+	r.TeamUrn = m.TeamUrn
+	r.Payload = m.Payload.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2TeamCurrentMapStatePartialUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2TeamCurrentMapState) CloneVT() *Dota2TeamCurrentMapState {
+	if m == nil {
+		return (*Dota2TeamCurrentMapState)(nil)
+	}
+	r := new(Dota2TeamCurrentMapState)
+	r.TeamUrn = m.TeamUrn
+	r.Faction = m.Faction
+	r.Statistics = m.Statistics.CloneVT()
+	if rhs := m.Won; rhs != nil {
+		tmpVal := *rhs
+		r.Won = &tmpVal
+	}
+	if rhs := m.Players; rhs != nil {
+		tmpContainer := make(map[string]*Dota2PlayerCurrentMapState, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Players = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2TeamCurrentMapState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2TeamCurrentMapStatisticsState) CloneVT() *Dota2TeamCurrentMapStatisticsState {
+	if m == nil {
+		return (*Dota2TeamCurrentMapStatisticsState)(nil)
+	}
+	r := new(Dota2TeamCurrentMapStatisticsState)
+	r.TeamUrn = m.TeamUrn
+	r.Barracks = m.Barracks
+	r.Kills = m.Kills
+	r.NetWorth = m.NetWorth
+	r.Roshans = m.Roshans
+	r.Towers = m.Towers
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2TeamCurrentMapStatisticsState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2PlayerCurrentMapStatePartialUpdate_Payload) CloneVT() *Dota2PlayerCurrentMapStatePartialUpdate_Payload {
+	if m == nil {
+		return (*Dota2PlayerCurrentMapStatePartialUpdate_Payload)(nil)
+	}
+	r := new(Dota2PlayerCurrentMapStatePartialUpdate_Payload)
+	if m.Payload != nil {
+		r.Payload = m.Payload.(interface {
+			CloneVT() isDota2PlayerCurrentMapStatePartialUpdate_Payload_Payload
+		}).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2PlayerCurrentMapStatePartialUpdate_Payload) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2PlayerCurrentMapStatePartialUpdate_Payload_PlayerInfo) CloneVT() isDota2PlayerCurrentMapStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*Dota2PlayerCurrentMapStatePartialUpdate_Payload_PlayerInfo)(nil)
+	}
+	r := new(Dota2PlayerCurrentMapStatePartialUpdate_Payload_PlayerInfo)
+	r.PlayerInfo = m.PlayerInfo.CloneVT()
+	return r
+}
+
+func (m *Dota2PlayerCurrentMapStatePartialUpdate_Payload_Timers) CloneVT() isDota2PlayerCurrentMapStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*Dota2PlayerCurrentMapStatePartialUpdate_Payload_Timers)(nil)
+	}
+	r := new(Dota2PlayerCurrentMapStatePartialUpdate_Payload_Timers)
+	r.Timers = m.Timers.CloneVT()
+	return r
+}
+
+func (m *Dota2PlayerCurrentMapStatePartialUpdate_Payload_Statistics) CloneVT() isDota2PlayerCurrentMapStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*Dota2PlayerCurrentMapStatePartialUpdate_Payload_Statistics)(nil)
+	}
+	r := new(Dota2PlayerCurrentMapStatePartialUpdate_Payload_Statistics)
+	r.Statistics = m.Statistics.CloneVT()
+	return r
+}
+
+func (m *Dota2PlayerCurrentMapStatePartialUpdate_Payload_MapStatistics) CloneVT() isDota2PlayerCurrentMapStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*Dota2PlayerCurrentMapStatePartialUpdate_Payload_MapStatistics)(nil)
+	}
+	r := new(Dota2PlayerCurrentMapStatePartialUpdate_Payload_MapStatistics)
+	r.MapStatistics = m.MapStatistics.CloneVT()
+	return r
+}
+
+func (m *Dota2PlayerCurrentMapStatePartialUpdate_Payload_Position) CloneVT() isDota2PlayerCurrentMapStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*Dota2PlayerCurrentMapStatePartialUpdate_Payload_Position)(nil)
+	}
+	r := new(Dota2PlayerCurrentMapStatePartialUpdate_Payload_Position)
+	r.Position = m.Position.CloneVT()
+	return r
+}
+
+func (m *Dota2PlayerCurrentMapStatePartialUpdate_Payload_Items) CloneVT() isDota2PlayerCurrentMapStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*Dota2PlayerCurrentMapStatePartialUpdate_Payload_Items)(nil)
+	}
+	r := new(Dota2PlayerCurrentMapStatePartialUpdate_Payload_Items)
+	r.Items = m.Items.CloneVT()
+	return r
+}
+
+func (m *Dota2PlayerCurrentMapStatePartialUpdate_Payload_Abilities) CloneVT() isDota2PlayerCurrentMapStatePartialUpdate_Payload_Payload {
+	if m == nil {
+		return (*Dota2PlayerCurrentMapStatePartialUpdate_Payload_Abilities)(nil)
+	}
+	r := new(Dota2PlayerCurrentMapStatePartialUpdate_Payload_Abilities)
+	r.Abilities = m.Abilities.CloneVT()
+	return r
+}
+
+func (m *Dota2PlayerCurrentMapStatePartialUpdate) CloneVT() *Dota2PlayerCurrentMapStatePartialUpdate {
+	if m == nil {
+		return (*Dota2PlayerCurrentMapStatePartialUpdate)(nil)
+	}
+	r := new(Dota2PlayerCurrentMapStatePartialUpdate)
+	r.PlayerUrn = m.PlayerUrn
+	r.Payload = m.Payload.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2PlayerCurrentMapStatePartialUpdate) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2PlayerCurrentMapState) CloneVT() *Dota2PlayerCurrentMapState {
+	if m == nil {
+		return (*Dota2PlayerCurrentMapState)(nil)
+	}
+	r := new(Dota2PlayerCurrentMapState)
+	r.PlayerUrn = m.PlayerUrn
+	r.PlayerInfo = m.PlayerInfo.CloneVT()
+	r.Timers = m.Timers.CloneVT()
+	r.Statistics = m.Statistics.CloneVT()
+	r.MapStatistics = m.MapStatistics.CloneVT()
+	r.Position = m.Position.CloneVT()
+	r.Items = m.Items.CloneVT()
+	r.Abilities = m.Abilities.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2PlayerCurrentMapState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2PlayerCurrentMapStatisticsState) CloneVT() *Dota2PlayerCurrentMapStatisticsState {
+	if m == nil {
+		return (*Dota2PlayerCurrentMapStatisticsState)(nil)
+	}
+	r := new(Dota2PlayerCurrentMapStatisticsState)
+	r.PlayerUrn = m.PlayerUrn
+	r.Alive = m.Alive
+	r.Health = m.Health
+	r.MaxHealth = m.MaxHealth
+	r.CurrentGold = m.CurrentGold
+	r.NetWorth = m.NetWorth
+	r.BuybackCost = m.BuybackCost
+	r.HasBuyback = m.HasBuyback
+	r.HasAegis = m.HasAegis
+	r.Mana = m.Mana
+	r.MaxMana = m.MaxMana
+	r.GoldReliable = m.GoldReliable
+	r.GoldUnreliable = m.GoldUnreliable
+	r.Denies = m.Denies
+	r.LastHits = m.LastHits
+	r.Level = m.Level
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2PlayerCurrentMapStatisticsState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2PlayerCurrentMapTimersState) CloneVT() *Dota2PlayerCurrentMapTimersState {
+	if m == nil {
+		return (*Dota2PlayerCurrentMapTimersState)(nil)
+	}
+	r := new(Dota2PlayerCurrentMapTimersState)
+	r.PlayerUrn = m.PlayerUrn
+	r.RespawnTimer = (*durationpb.Duration)((*durationpb1.Duration)(m.RespawnTimer).CloneVT())
+	r.BuybackCooldown = (*durationpb.Duration)((*durationpb1.Duration)(m.BuybackCooldown).CloneVT())
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2PlayerCurrentMapTimersState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2TeamPreviousMapState) CloneVT() *Dota2TeamPreviousMapState {
+	if m == nil {
+		return (*Dota2TeamPreviousMapState)(nil)
+	}
+	r := new(Dota2TeamPreviousMapState)
+	r.TeamUrn = m.TeamUrn
+	r.Faction = m.Faction
+	r.Barracks = m.Barracks
+	r.Kills = m.Kills
+	r.NetWorth = m.NetWorth
+	r.Roshans = m.Roshans
+	r.Towers = m.Towers
+	if rhs := m.Won; rhs != nil {
+		tmpVal := *rhs
+		r.Won = &tmpVal
+	}
+	if rhs := m.Players; rhs != nil {
+		tmpContainer := make(map[string]*Dota2PlayerPreviousMapState, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Players = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2TeamPreviousMapState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2PlayerPreviousMapState) CloneVT() *Dota2PlayerPreviousMapState {
+	if m == nil {
+		return (*Dota2PlayerPreviousMapState)(nil)
+	}
+	r := new(Dota2PlayerPreviousMapState)
+	r.PlayerUrn = m.PlayerUrn
+	r.PlayerInfo = m.PlayerInfo.CloneVT()
+	r.Statistics = m.Statistics.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2PlayerPreviousMapState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2PlayerInfoState) CloneVT() *Dota2PlayerInfoState {
+	if m == nil {
+		return (*Dota2PlayerInfoState)(nil)
+	}
+	r := new(Dota2PlayerInfoState)
+	r.PlayerUrn = m.PlayerUrn
+	r.SlotId = m.SlotId
+	r.ExtName = m.ExtName
+	if rhs := m.HeroId; rhs != nil {
+		tmpVal := *rhs
+		r.HeroId = &tmpVal
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2PlayerInfoState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2PlayerStatisticsState) CloneVT() *Dota2PlayerStatisticsState {
+	if m == nil {
+		return (*Dota2PlayerStatisticsState)(nil)
+	}
+	r := new(Dota2PlayerStatisticsState)
+	r.PlayerUrn = m.PlayerUrn
+	r.Kills = m.Kills
+	r.Deaths = m.Deaths
+	r.Assists = m.Assists
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2PlayerStatisticsState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2Towers) CloneVT() *Dota2Towers {
+	if m == nil {
+		return (*Dota2Towers)(nil)
+	}
+	r := new(Dota2Towers)
+	if rhs := m.Towers; rhs != nil {
+		tmpContainer := make([]*Dota2Tower, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Towers = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2Towers) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2Barracks) CloneVT() *Dota2Barracks {
+	if m == nil {
+		return (*Dota2Barracks)(nil)
+	}
+	r := new(Dota2Barracks)
+	if rhs := m.Barracks; rhs != nil {
+		tmpContainer := make([]*Dota2Barrack, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Barracks = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2Barracks) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2Abilities) CloneVT() *Dota2Abilities {
+	if m == nil {
+		return (*Dota2Abilities)(nil)
+	}
+	r := new(Dota2Abilities)
+	if rhs := m.Abilities; rhs != nil {
+		tmpContainer := make([]*Dota2Ability, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Abilities = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2Abilities) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2Items) CloneVT() *Dota2Items {
+	if m == nil {
+		return (*Dota2Items)(nil)
+	}
+	r := new(Dota2Items)
+	if rhs := m.Items; rhs != nil {
+		tmpContainer := make([]*Dota2Item, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Items = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2Items) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2Item) CloneVT() *Dota2Item {
+	if m == nil {
+		return (*Dota2Item)(nil)
+	}
+	r := new(Dota2Item)
+	r.Name = m.Name
+	r.Position = m.Position
+	r.Level = m.Level
+	if rhs := m.Cooldown; rhs != nil {
+		tmpVal := *rhs
+		r.Cooldown = &tmpVal
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2Item) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2Ability) CloneVT() *Dota2Ability {
+	if m == nil {
+		return (*Dota2Ability)(nil)
+	}
+	r := new(Dota2Ability)
+	r.Name = m.Name
+	r.Ultimate = m.Ultimate
+	r.Passive = m.Passive
+	r.CanCast = m.CanCast
+	if rhs := m.Cooldown; rhs != nil {
+		tmpVal := *rhs
+		r.Cooldown = &tmpVal
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2Ability) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Roshan) CloneVT() *Roshan {
+	if m == nil {
+		return (*Roshan)(nil)
+	}
+	r := new(Roshan)
+	r.Alive = m.Alive
+	r.RespawnTime = m.RespawnTime
+	r.Position = m.Position.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Roshan) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2Tower) CloneVT() *Dota2Tower {
+	if m == nil {
+		return (*Dota2Tower)(nil)
+	}
+	r := new(Dota2Tower)
+	r.Lane = m.Lane
+	r.Faction = m.Faction
+	r.Tier = m.Tier
+	r.Alive = m.Alive
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2Tower) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2Barrack) CloneVT() *Dota2Barrack {
+	if m == nil {
+		return (*Dota2Barrack)(nil)
+	}
+	r := new(Dota2Barrack)
+	r.Lane = m.Lane
+	r.Faction = m.Faction
+	r.Type = m.Type
+	r.Alive = m.Alive
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2Barrack) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2Position) CloneVT() *Dota2Position {
+	if m == nil {
+		return (*Dota2Position)(nil)
+	}
+	r := new(Dota2Position)
+	r.X = m.X
+	r.Y = m.Y
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2Position) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
 
 func (this *Dota2MatchMessage_Payload) EqualVT(that *Dota2MatchMessage_Payload) bool {
 	if this == that {
@@ -108,7 +1315,7 @@ func (this *Dota2MatchMessage) EqualVT(that *Dota2MatchMessage) bool {
 	if this.Sequence != that.Sequence {
 		return false
 	}
-	if !(*timestamppb.Timestamp)(this.Timestamp).EqualVT((*timestamppb.Timestamp)(that.Timestamp)) {
+	if !(*timestamppb1.Timestamp)(this.Timestamp).EqualVT((*timestamppb1.Timestamp)(that.Timestamp)) {
 		return false
 	}
 	if !this.Payload.EqualVT(that.Payload) {
@@ -139,7 +1346,7 @@ func (this *Dota2MatchSnapshot) EqualVT(that *Dota2MatchSnapshot) bool {
 	if this.Sequence != that.Sequence {
 		return false
 	}
-	if !(*timestamppb.Timestamp)(this.Timestamp).EqualVT((*timestamppb.Timestamp)(that.Timestamp)) {
+	if !(*timestamppb1.Timestamp)(this.Timestamp).EqualVT((*timestamppb1.Timestamp)(that.Timestamp)) {
 		return false
 	}
 	if this.DataStatus != that.DataStatus {
@@ -1044,7 +2251,7 @@ func (this *Dota2CurrentMapTimeState) EqualVT(that *Dota2CurrentMapTimeState) bo
 	} else if this == nil || that == nil {
 		return false
 	}
-	if !(*durationpb.Duration)(this.GameTime).EqualVT((*durationpb.Duration)(that.GameTime)) {
+	if !(*durationpb1.Duration)(this.GameTime).EqualVT((*durationpb1.Duration)(that.GameTime)) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
@@ -1641,10 +2848,10 @@ func (this *Dota2PlayerCurrentMapTimersState) EqualVT(that *Dota2PlayerCurrentMa
 	if this.PlayerUrn != that.PlayerUrn {
 		return false
 	}
-	if !(*durationpb.Duration)(this.RespawnTimer).EqualVT((*durationpb.Duration)(that.RespawnTimer)) {
+	if !(*durationpb1.Duration)(this.RespawnTimer).EqualVT((*durationpb1.Duration)(that.RespawnTimer)) {
 		return false
 	}
-	if !(*durationpb.Duration)(this.BuybackCooldown).EqualVT((*durationpb.Duration)(that.BuybackCooldown)) {
+	if !(*durationpb1.Duration)(this.BuybackCooldown).EqualVT((*durationpb1.Duration)(that.BuybackCooldown)) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
