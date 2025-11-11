@@ -5,7 +5,7 @@ import warnings
 
 from bragi_schema.bragi import bragi_service_pb2 as bragi_dot_bragi__service__pb2
 
-GRPC_GENERATED_VERSION = '1.74.0'
+GRPC_GENERATED_VERSION = '1.76.0'
 GRPC_VERSION = grpc.__version__
 _version_not_supported = False
 
@@ -18,7 +18,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in bragi/bragi_service_pb2_grpc.py depends on'
+        + ' but the generated code in bragi/bragi_service_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -34,10 +34,30 @@ class BragiStub(object):
         Args:
             channel: A grpc.Channel.
         """
+        self.MatchTimelineSports = channel.unary_unary(
+                '/bragi.Bragi/MatchTimelineSports',
+                request_serializer=bragi_dot_bragi__service__pb2.MatchTimelineSportsRequest.SerializeToString,
+                response_deserializer=bragi_dot_bragi__service__pb2.MatchTimelineSportsResponse.FromString,
+                _registered_method=True)
+        self.MatchTimelineTournaments = channel.unary_unary(
+                '/bragi.Bragi/MatchTimelineTournaments',
+                request_serializer=bragi_dot_bragi__service__pb2.MatchTimelineTournamentsRequest.SerializeToString,
+                response_deserializer=bragi_dot_bragi__service__pb2.MatchTimelineTournamentsResponse.FromString,
+                _registered_method=True)
         self.MatchTimeline = channel.unary_unary(
                 '/bragi.Bragi/MatchTimeline',
                 request_serializer=bragi_dot_bragi__service__pb2.MatchTimelineRequest.SerializeToString,
                 response_deserializer=bragi_dot_bragi__service__pb2.MatchTimelineResponse.FromString,
+                _registered_method=True)
+        self.MatchTimelineSportsFeed = channel.unary_stream(
+                '/bragi.Bragi/MatchTimelineSportsFeed',
+                request_serializer=bragi_dot_bragi__service__pb2.MatchTimelineSportsFeedRequest.SerializeToString,
+                response_deserializer=bragi_dot_bragi__service__pb2.MatchTimelineSportsFeedResponse.FromString,
+                _registered_method=True)
+        self.MatchTimelineTournamentsFeed = channel.unary_stream(
+                '/bragi.Bragi/MatchTimelineTournamentsFeed',
+                request_serializer=bragi_dot_bragi__service__pb2.MatchTimelineTournamentsFeedRequest.SerializeToString,
+                response_deserializer=bragi_dot_bragi__service__pb2.MatchTimelineTournamentsFeedResponse.FromString,
                 _registered_method=True)
         self.MatchTimelineFeed = channel.unary_stream(
                 '/bragi.Bragi/MatchTimelineFeed',
@@ -59,8 +79,36 @@ class BragiStub(object):
 class BragiServicer(object):
     """Missing associated documentation comment in .proto file."""
 
+    def MatchTimelineSports(self, request, context):
+        """MatchTimelineSports gRPC unary call returns all sports with count of planned or currently played matches
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def MatchTimelineTournaments(self, request, context):
+        """MatchTimelineTournaments gRPC unary call returns all tournaments with count of planned or currently played matches
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def MatchTimeline(self, request, context):
         """Matches gRPC unary call returns all planned or currently played matches
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def MatchTimelineSportsFeed(self, request, context):
+        """MatchTimelineSportsFeed gRPC stream call provides real-time updates for all sports with planned or currently played matches.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def MatchTimelineTournamentsFeed(self, request, context):
+        """MatchTimelineTournamentsFeed gRPC stream call provides real-time updates for all tournaments with planned or currently played matches.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -93,10 +141,30 @@ class BragiServicer(object):
 
 def add_BragiServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'MatchTimelineSports': grpc.unary_unary_rpc_method_handler(
+                    servicer.MatchTimelineSports,
+                    request_deserializer=bragi_dot_bragi__service__pb2.MatchTimelineSportsRequest.FromString,
+                    response_serializer=bragi_dot_bragi__service__pb2.MatchTimelineSportsResponse.SerializeToString,
+            ),
+            'MatchTimelineTournaments': grpc.unary_unary_rpc_method_handler(
+                    servicer.MatchTimelineTournaments,
+                    request_deserializer=bragi_dot_bragi__service__pb2.MatchTimelineTournamentsRequest.FromString,
+                    response_serializer=bragi_dot_bragi__service__pb2.MatchTimelineTournamentsResponse.SerializeToString,
+            ),
             'MatchTimeline': grpc.unary_unary_rpc_method_handler(
                     servicer.MatchTimeline,
                     request_deserializer=bragi_dot_bragi__service__pb2.MatchTimelineRequest.FromString,
                     response_serializer=bragi_dot_bragi__service__pb2.MatchTimelineResponse.SerializeToString,
+            ),
+            'MatchTimelineSportsFeed': grpc.unary_stream_rpc_method_handler(
+                    servicer.MatchTimelineSportsFeed,
+                    request_deserializer=bragi_dot_bragi__service__pb2.MatchTimelineSportsFeedRequest.FromString,
+                    response_serializer=bragi_dot_bragi__service__pb2.MatchTimelineSportsFeedResponse.SerializeToString,
+            ),
+            'MatchTimelineTournamentsFeed': grpc.unary_stream_rpc_method_handler(
+                    servicer.MatchTimelineTournamentsFeed,
+                    request_deserializer=bragi_dot_bragi__service__pb2.MatchTimelineTournamentsFeedRequest.FromString,
+                    response_serializer=bragi_dot_bragi__service__pb2.MatchTimelineTournamentsFeedResponse.SerializeToString,
             ),
             'MatchTimelineFeed': grpc.unary_stream_rpc_method_handler(
                     servicer.MatchTimelineFeed,
@@ -125,6 +193,60 @@ class Bragi(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
+    def MatchTimelineSports(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/bragi.Bragi/MatchTimelineSports',
+            bragi_dot_bragi__service__pb2.MatchTimelineSportsRequest.SerializeToString,
+            bragi_dot_bragi__service__pb2.MatchTimelineSportsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def MatchTimelineTournaments(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/bragi.Bragi/MatchTimelineTournaments',
+            bragi_dot_bragi__service__pb2.MatchTimelineTournamentsRequest.SerializeToString,
+            bragi_dot_bragi__service__pb2.MatchTimelineTournamentsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
     def MatchTimeline(request,
             target,
             options=(),
@@ -141,6 +263,60 @@ class Bragi(object):
             '/bragi.Bragi/MatchTimeline',
             bragi_dot_bragi__service__pb2.MatchTimelineRequest.SerializeToString,
             bragi_dot_bragi__service__pb2.MatchTimelineResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def MatchTimelineSportsFeed(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(
+            request,
+            target,
+            '/bragi.Bragi/MatchTimelineSportsFeed',
+            bragi_dot_bragi__service__pb2.MatchTimelineSportsFeedRequest.SerializeToString,
+            bragi_dot_bragi__service__pb2.MatchTimelineSportsFeedResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def MatchTimelineTournamentsFeed(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(
+            request,
+            target,
+            '/bragi.Bragi/MatchTimelineTournamentsFeed',
+            bragi_dot_bragi__service__pb2.MatchTimelineTournamentsFeedRequest.SerializeToString,
+            bragi_dot_bragi__service__pb2.MatchTimelineTournamentsFeedResponse.FromString,
             options,
             channel_credentials,
             insecure,

@@ -56,7 +56,163 @@ export namespace MatchEventsFeedMessage {
   }
 }
 
+export class MatchTimelineSportsRequest extends jspb.Message {
+  getLiveOnly(): boolean;
+  setLiveOnly(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MatchTimelineSportsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: MatchTimelineSportsRequest): MatchTimelineSportsRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MatchTimelineSportsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MatchTimelineSportsRequest;
+  static deserializeBinaryFromReader(message: MatchTimelineSportsRequest, reader: jspb.BinaryReader): MatchTimelineSportsRequest;
+}
+
+export namespace MatchTimelineSportsRequest {
+  export type AsObject = {
+    liveOnly: boolean,
+  }
+}
+
+export class MatchTimelineSportsResponse extends jspb.Message {
+  clearSportsList(): void;
+  getSportsList(): Array<MatchTimelineSportsResponse.SportMatchCount>;
+  setSportsList(value: Array<MatchTimelineSportsResponse.SportMatchCount>): void;
+  addSports(value?: MatchTimelineSportsResponse.SportMatchCount, index?: number): MatchTimelineSportsResponse.SportMatchCount;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MatchTimelineSportsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: MatchTimelineSportsResponse): MatchTimelineSportsResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MatchTimelineSportsResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MatchTimelineSportsResponse;
+  static deserializeBinaryFromReader(message: MatchTimelineSportsResponse, reader: jspb.BinaryReader): MatchTimelineSportsResponse;
+}
+
+export namespace MatchTimelineSportsResponse {
+  export type AsObject = {
+    sportsList: Array<MatchTimelineSportsResponse.SportMatchCount.AsObject>,
+  }
+
+  export class SportMatchCount extends jspb.Message {
+    getSport(): bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap];
+    setSport(value: bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap]): void;
+
+    getMatchCount(): number;
+    setMatchCount(value: number): void;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): SportMatchCount.AsObject;
+    static toObject(includeInstance: boolean, msg: SportMatchCount): SportMatchCount.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: SportMatchCount, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): SportMatchCount;
+    static deserializeBinaryFromReader(message: SportMatchCount, reader: jspb.BinaryReader): SportMatchCount;
+  }
+
+  export namespace SportMatchCount {
+    export type AsObject = {
+      sport: bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap],
+      matchCount: number,
+    }
+  }
+}
+
+export class MatchTimelineTournamentsRequest extends jspb.Message {
+  getLiveOnly(): boolean;
+  setLiveOnly(value: boolean): void;
+
+  getSport(): bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap];
+  setSport(value: bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap]): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MatchTimelineTournamentsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: MatchTimelineTournamentsRequest): MatchTimelineTournamentsRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MatchTimelineTournamentsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MatchTimelineTournamentsRequest;
+  static deserializeBinaryFromReader(message: MatchTimelineTournamentsRequest, reader: jspb.BinaryReader): MatchTimelineTournamentsRequest;
+}
+
+export namespace MatchTimelineTournamentsRequest {
+  export type AsObject = {
+    liveOnly: boolean,
+    sport: bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap],
+  }
+}
+
+export class MatchTimelineTournamentsResponse extends jspb.Message {
+  clearTournamentsList(): void;
+  getTournamentsList(): Array<MatchTimelineTournamentsResponse.TournamentMatchCount>;
+  setTournamentsList(value: Array<MatchTimelineTournamentsResponse.TournamentMatchCount>): void;
+  addTournaments(value?: MatchTimelineTournamentsResponse.TournamentMatchCount, index?: number): MatchTimelineTournamentsResponse.TournamentMatchCount;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MatchTimelineTournamentsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: MatchTimelineTournamentsResponse): MatchTimelineTournamentsResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MatchTimelineTournamentsResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MatchTimelineTournamentsResponse;
+  static deserializeBinaryFromReader(message: MatchTimelineTournamentsResponse, reader: jspb.BinaryReader): MatchTimelineTournamentsResponse;
+}
+
+export namespace MatchTimelineTournamentsResponse {
+  export type AsObject = {
+    tournamentsList: Array<MatchTimelineTournamentsResponse.TournamentMatchCount.AsObject>,
+  }
+
+  export class TournamentMatchCount extends jspb.Message {
+    hasTournament(): boolean;
+    clearTournament(): void;
+    getTournament(): bragi_common_pb.Tournament | undefined;
+    setTournament(value?: bragi_common_pb.Tournament): void;
+
+    getMatchCount(): number;
+    setMatchCount(value: number): void;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): TournamentMatchCount.AsObject;
+    static toObject(includeInstance: boolean, msg: TournamentMatchCount): TournamentMatchCount.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: TournamentMatchCount, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): TournamentMatchCount;
+    static deserializeBinaryFromReader(message: TournamentMatchCount, reader: jspb.BinaryReader): TournamentMatchCount;
+  }
+
+  export namespace TournamentMatchCount {
+    export type AsObject = {
+      tournament?: bragi_common_pb.Tournament.AsObject,
+      matchCount: number,
+    }
+  }
+}
+
 export class MatchTimelineRequest extends jspb.Message {
+  getLiveOnly(): boolean;
+  setLiveOnly(value: boolean): void;
+
+  hasSport(): boolean;
+  clearSport(): void;
+  getSport(): bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap];
+  setSport(value: bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap]): void;
+
+  hasTournamentUrn(): boolean;
+  clearTournamentUrn(): void;
+  getTournamentUrn(): string;
+  setTournamentUrn(value: string): void;
+
+  hasMatchUrn(): boolean;
+  clearMatchUrn(): void;
+  getMatchUrn(): string;
+  setMatchUrn(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MatchTimelineRequest.AsObject;
   static toObject(includeInstance: boolean, msg: MatchTimelineRequest): MatchTimelineRequest.AsObject;
@@ -69,6 +225,10 @@ export class MatchTimelineRequest extends jspb.Message {
 
 export namespace MatchTimelineRequest {
   export type AsObject = {
+    liveOnly: boolean,
+    sport: bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap],
+    tournamentUrn: string,
+    matchUrn: string,
   }
 }
 
@@ -94,7 +254,163 @@ export namespace MatchTimelineResponse {
   }
 }
 
+export class MatchTimelineSportsFeedRequest extends jspb.Message {
+  getLiveOnly(): boolean;
+  setLiveOnly(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MatchTimelineSportsFeedRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: MatchTimelineSportsFeedRequest): MatchTimelineSportsFeedRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MatchTimelineSportsFeedRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MatchTimelineSportsFeedRequest;
+  static deserializeBinaryFromReader(message: MatchTimelineSportsFeedRequest, reader: jspb.BinaryReader): MatchTimelineSportsFeedRequest;
+}
+
+export namespace MatchTimelineSportsFeedRequest {
+  export type AsObject = {
+    liveOnly: boolean,
+  }
+}
+
+export class MatchTimelineSportsFeedResponse extends jspb.Message {
+  clearSportsList(): void;
+  getSportsList(): Array<MatchTimelineSportsFeedResponse.SportMatchCount>;
+  setSportsList(value: Array<MatchTimelineSportsFeedResponse.SportMatchCount>): void;
+  addSports(value?: MatchTimelineSportsFeedResponse.SportMatchCount, index?: number): MatchTimelineSportsFeedResponse.SportMatchCount;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MatchTimelineSportsFeedResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: MatchTimelineSportsFeedResponse): MatchTimelineSportsFeedResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MatchTimelineSportsFeedResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MatchTimelineSportsFeedResponse;
+  static deserializeBinaryFromReader(message: MatchTimelineSportsFeedResponse, reader: jspb.BinaryReader): MatchTimelineSportsFeedResponse;
+}
+
+export namespace MatchTimelineSportsFeedResponse {
+  export type AsObject = {
+    sportsList: Array<MatchTimelineSportsFeedResponse.SportMatchCount.AsObject>,
+  }
+
+  export class SportMatchCount extends jspb.Message {
+    getSport(): bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap];
+    setSport(value: bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap]): void;
+
+    getMatchCount(): number;
+    setMatchCount(value: number): void;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): SportMatchCount.AsObject;
+    static toObject(includeInstance: boolean, msg: SportMatchCount): SportMatchCount.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: SportMatchCount, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): SportMatchCount;
+    static deserializeBinaryFromReader(message: SportMatchCount, reader: jspb.BinaryReader): SportMatchCount;
+  }
+
+  export namespace SportMatchCount {
+    export type AsObject = {
+      sport: bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap],
+      matchCount: number,
+    }
+  }
+}
+
+export class MatchTimelineTournamentsFeedRequest extends jspb.Message {
+  getLiveOnly(): boolean;
+  setLiveOnly(value: boolean): void;
+
+  getSport(): bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap];
+  setSport(value: bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap]): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MatchTimelineTournamentsFeedRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: MatchTimelineTournamentsFeedRequest): MatchTimelineTournamentsFeedRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MatchTimelineTournamentsFeedRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MatchTimelineTournamentsFeedRequest;
+  static deserializeBinaryFromReader(message: MatchTimelineTournamentsFeedRequest, reader: jspb.BinaryReader): MatchTimelineTournamentsFeedRequest;
+}
+
+export namespace MatchTimelineTournamentsFeedRequest {
+  export type AsObject = {
+    liveOnly: boolean,
+    sport: bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap],
+  }
+}
+
+export class MatchTimelineTournamentsFeedResponse extends jspb.Message {
+  clearTournamentsList(): void;
+  getTournamentsList(): Array<MatchTimelineTournamentsFeedResponse.TournamentMatchCount>;
+  setTournamentsList(value: Array<MatchTimelineTournamentsFeedResponse.TournamentMatchCount>): void;
+  addTournaments(value?: MatchTimelineTournamentsFeedResponse.TournamentMatchCount, index?: number): MatchTimelineTournamentsFeedResponse.TournamentMatchCount;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MatchTimelineTournamentsFeedResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: MatchTimelineTournamentsFeedResponse): MatchTimelineTournamentsFeedResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MatchTimelineTournamentsFeedResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MatchTimelineTournamentsFeedResponse;
+  static deserializeBinaryFromReader(message: MatchTimelineTournamentsFeedResponse, reader: jspb.BinaryReader): MatchTimelineTournamentsFeedResponse;
+}
+
+export namespace MatchTimelineTournamentsFeedResponse {
+  export type AsObject = {
+    tournamentsList: Array<MatchTimelineTournamentsFeedResponse.TournamentMatchCount.AsObject>,
+  }
+
+  export class TournamentMatchCount extends jspb.Message {
+    hasTournament(): boolean;
+    clearTournament(): void;
+    getTournament(): bragi_common_pb.Tournament | undefined;
+    setTournament(value?: bragi_common_pb.Tournament): void;
+
+    getMatchCount(): number;
+    setMatchCount(value: number): void;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): TournamentMatchCount.AsObject;
+    static toObject(includeInstance: boolean, msg: TournamentMatchCount): TournamentMatchCount.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: TournamentMatchCount, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): TournamentMatchCount;
+    static deserializeBinaryFromReader(message: TournamentMatchCount, reader: jspb.BinaryReader): TournamentMatchCount;
+  }
+
+  export namespace TournamentMatchCount {
+    export type AsObject = {
+      tournament?: bragi_common_pb.Tournament.AsObject,
+      matchCount: number,
+    }
+  }
+}
+
 export class MatchTimelineFeedRequest extends jspb.Message {
+  getLiveOnly(): boolean;
+  setLiveOnly(value: boolean): void;
+
+  hasSport(): boolean;
+  clearSport(): void;
+  getSport(): bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap];
+  setSport(value: bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap]): void;
+
+  hasTournamentUrn(): boolean;
+  clearTournamentUrn(): void;
+  getTournamentUrn(): string;
+  setTournamentUrn(value: string): void;
+
+  hasMatchUrn(): boolean;
+  clearMatchUrn(): void;
+  getMatchUrn(): string;
+  setMatchUrn(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MatchTimelineFeedRequest.AsObject;
   static toObject(includeInstance: boolean, msg: MatchTimelineFeedRequest): MatchTimelineFeedRequest.AsObject;
@@ -107,6 +423,10 @@ export class MatchTimelineFeedRequest extends jspb.Message {
 
 export namespace MatchTimelineFeedRequest {
   export type AsObject = {
+    liveOnly: boolean,
+    sport: bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap],
+    tournamentUrn: string,
+    matchUrn: string,
   }
 }
 
