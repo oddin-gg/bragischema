@@ -13,94 +13,6 @@ var bragi_rush_basketball_pb = require('../bragi/rush_basketball_pb.js');
 var bragi_valorant_pb = require('../bragi/valorant_pb.js');
 var bragi_rush_cricket_pb = require('../bragi/rush_cricket_pb.js');
 
-function serialize_bragi_ListMatchTimelineSportsFeedRequest(arg) {
-  if (!(arg instanceof bragi_bragi_service_pb.ListMatchTimelineSportsFeedRequest)) {
-    throw new Error('Expected argument of type bragi.ListMatchTimelineSportsFeedRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bragi_ListMatchTimelineSportsFeedRequest(buffer_arg) {
-  return bragi_bragi_service_pb.ListMatchTimelineSportsFeedRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bragi_ListMatchTimelineSportsFeedResponse(arg) {
-  if (!(arg instanceof bragi_bragi_service_pb.ListMatchTimelineSportsFeedResponse)) {
-    throw new Error('Expected argument of type bragi.ListMatchTimelineSportsFeedResponse');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bragi_ListMatchTimelineSportsFeedResponse(buffer_arg) {
-  return bragi_bragi_service_pb.ListMatchTimelineSportsFeedResponse.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bragi_ListMatchTimelineSportsRequest(arg) {
-  if (!(arg instanceof bragi_bragi_service_pb.ListMatchTimelineSportsRequest)) {
-    throw new Error('Expected argument of type bragi.ListMatchTimelineSportsRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bragi_ListMatchTimelineSportsRequest(buffer_arg) {
-  return bragi_bragi_service_pb.ListMatchTimelineSportsRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bragi_ListMatchTimelineSportsResponse(arg) {
-  if (!(arg instanceof bragi_bragi_service_pb.ListMatchTimelineSportsResponse)) {
-    throw new Error('Expected argument of type bragi.ListMatchTimelineSportsResponse');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bragi_ListMatchTimelineSportsResponse(buffer_arg) {
-  return bragi_bragi_service_pb.ListMatchTimelineSportsResponse.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bragi_ListMatchTimelineTournamentsFeedRequest(arg) {
-  if (!(arg instanceof bragi_bragi_service_pb.ListMatchTimelineTournamentsFeedRequest)) {
-    throw new Error('Expected argument of type bragi.ListMatchTimelineTournamentsFeedRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bragi_ListMatchTimelineTournamentsFeedRequest(buffer_arg) {
-  return bragi_bragi_service_pb.ListMatchTimelineTournamentsFeedRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bragi_ListMatchTimelineTournamentsFeedResponse(arg) {
-  if (!(arg instanceof bragi_bragi_service_pb.ListMatchTimelineTournamentsFeedResponse)) {
-    throw new Error('Expected argument of type bragi.ListMatchTimelineTournamentsFeedResponse');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bragi_ListMatchTimelineTournamentsFeedResponse(buffer_arg) {
-  return bragi_bragi_service_pb.ListMatchTimelineTournamentsFeedResponse.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bragi_ListMatchTimelineTournamentsRequest(arg) {
-  if (!(arg instanceof bragi_bragi_service_pb.ListMatchTimelineTournamentsRequest)) {
-    throw new Error('Expected argument of type bragi.ListMatchTimelineTournamentsRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bragi_ListMatchTimelineTournamentsRequest(buffer_arg) {
-  return bragi_bragi_service_pb.ListMatchTimelineTournamentsRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_bragi_ListMatchTimelineTournamentsResponse(arg) {
-  if (!(arg instanceof bragi_bragi_service_pb.ListMatchTimelineTournamentsResponse)) {
-    throw new Error('Expected argument of type bragi.ListMatchTimelineTournamentsResponse');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_bragi_ListMatchTimelineTournamentsResponse(buffer_arg) {
-  return bragi_bragi_service_pb.ListMatchTimelineTournamentsResponse.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 function serialize_bragi_LiveDataFeedMessage(arg) {
   if (!(arg instanceof bragi_bragi_service_pb.LiveDataFeedMessage)) {
     throw new Error('Expected argument of type bragi.LiveDataFeedMessage');
@@ -189,29 +101,119 @@ function deserialize_bragi_MatchTimelineResponse(buffer_arg) {
   return bragi_bragi_service_pb.MatchTimelineResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_bragi_MatchTimelineSportsFeedRequest(arg) {
+  if (!(arg instanceof bragi_bragi_service_pb.MatchTimelineSportsFeedRequest)) {
+    throw new Error('Expected argument of type bragi.MatchTimelineSportsFeedRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_MatchTimelineSportsFeedRequest(buffer_arg) {
+  return bragi_bragi_service_pb.MatchTimelineSportsFeedRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bragi_MatchTimelineSportsFeedResponse(arg) {
+  if (!(arg instanceof bragi_bragi_service_pb.MatchTimelineSportsFeedResponse)) {
+    throw new Error('Expected argument of type bragi.MatchTimelineSportsFeedResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_MatchTimelineSportsFeedResponse(buffer_arg) {
+  return bragi_bragi_service_pb.MatchTimelineSportsFeedResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bragi_MatchTimelineSportsRequest(arg) {
+  if (!(arg instanceof bragi_bragi_service_pb.MatchTimelineSportsRequest)) {
+    throw new Error('Expected argument of type bragi.MatchTimelineSportsRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_MatchTimelineSportsRequest(buffer_arg) {
+  return bragi_bragi_service_pb.MatchTimelineSportsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bragi_MatchTimelineSportsResponse(arg) {
+  if (!(arg instanceof bragi_bragi_service_pb.MatchTimelineSportsResponse)) {
+    throw new Error('Expected argument of type bragi.MatchTimelineSportsResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_MatchTimelineSportsResponse(buffer_arg) {
+  return bragi_bragi_service_pb.MatchTimelineSportsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bragi_MatchTimelineTournamentsFeedRequest(arg) {
+  if (!(arg instanceof bragi_bragi_service_pb.MatchTimelineTournamentsFeedRequest)) {
+    throw new Error('Expected argument of type bragi.MatchTimelineTournamentsFeedRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_MatchTimelineTournamentsFeedRequest(buffer_arg) {
+  return bragi_bragi_service_pb.MatchTimelineTournamentsFeedRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bragi_MatchTimelineTournamentsFeedResponse(arg) {
+  if (!(arg instanceof bragi_bragi_service_pb.MatchTimelineTournamentsFeedResponse)) {
+    throw new Error('Expected argument of type bragi.MatchTimelineTournamentsFeedResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_MatchTimelineTournamentsFeedResponse(buffer_arg) {
+  return bragi_bragi_service_pb.MatchTimelineTournamentsFeedResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bragi_MatchTimelineTournamentsRequest(arg) {
+  if (!(arg instanceof bragi_bragi_service_pb.MatchTimelineTournamentsRequest)) {
+    throw new Error('Expected argument of type bragi.MatchTimelineTournamentsRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_MatchTimelineTournamentsRequest(buffer_arg) {
+  return bragi_bragi_service_pb.MatchTimelineTournamentsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bragi_MatchTimelineTournamentsResponse(arg) {
+  if (!(arg instanceof bragi_bragi_service_pb.MatchTimelineTournamentsResponse)) {
+    throw new Error('Expected argument of type bragi.MatchTimelineTournamentsResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_MatchTimelineTournamentsResponse(buffer_arg) {
+  return bragi_bragi_service_pb.MatchTimelineTournamentsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 
 var BragiService = exports.BragiService = {
-  listMatchTimelineSports: {
-    path: '/bragi.Bragi/ListMatchTimelineSports',
+  // MatchTimelineSports gRPC unary call returns all sports with count of planned or currently played matches
+matchTimelineSports: {
+    path: '/bragi.Bragi/MatchTimelineSports',
     requestStream: false,
     responseStream: false,
-    requestType: bragi_bragi_service_pb.ListMatchTimelineSportsRequest,
-    responseType: bragi_bragi_service_pb.ListMatchTimelineSportsResponse,
-    requestSerialize: serialize_bragi_ListMatchTimelineSportsRequest,
-    requestDeserialize: deserialize_bragi_ListMatchTimelineSportsRequest,
-    responseSerialize: serialize_bragi_ListMatchTimelineSportsResponse,
-    responseDeserialize: deserialize_bragi_ListMatchTimelineSportsResponse,
+    requestType: bragi_bragi_service_pb.MatchTimelineSportsRequest,
+    responseType: bragi_bragi_service_pb.MatchTimelineSportsResponse,
+    requestSerialize: serialize_bragi_MatchTimelineSportsRequest,
+    requestDeserialize: deserialize_bragi_MatchTimelineSportsRequest,
+    responseSerialize: serialize_bragi_MatchTimelineSportsResponse,
+    responseDeserialize: deserialize_bragi_MatchTimelineSportsResponse,
   },
-  listMatchTimelineTournaments: {
-    path: '/bragi.Bragi/ListMatchTimelineTournaments',
+  // MatchTimelineTournaments gRPC unary call returns all tournaments with count of planned or currently played matches
+matchTimelineTournaments: {
+    path: '/bragi.Bragi/MatchTimelineTournaments',
     requestStream: false,
     responseStream: false,
-    requestType: bragi_bragi_service_pb.ListMatchTimelineTournamentsRequest,
-    responseType: bragi_bragi_service_pb.ListMatchTimelineTournamentsResponse,
-    requestSerialize: serialize_bragi_ListMatchTimelineTournamentsRequest,
-    requestDeserialize: deserialize_bragi_ListMatchTimelineTournamentsRequest,
-    responseSerialize: serialize_bragi_ListMatchTimelineTournamentsResponse,
-    responseDeserialize: deserialize_bragi_ListMatchTimelineTournamentsResponse,
+    requestType: bragi_bragi_service_pb.MatchTimelineTournamentsRequest,
+    responseType: bragi_bragi_service_pb.MatchTimelineTournamentsResponse,
+    requestSerialize: serialize_bragi_MatchTimelineTournamentsRequest,
+    requestDeserialize: deserialize_bragi_MatchTimelineTournamentsRequest,
+    responseSerialize: serialize_bragi_MatchTimelineTournamentsResponse,
+    responseDeserialize: deserialize_bragi_MatchTimelineTournamentsResponse,
   },
   // Matches gRPC unary call returns all planned or currently played matches
 matchTimeline: {
@@ -225,27 +227,29 @@ matchTimeline: {
     responseSerialize: serialize_bragi_MatchTimelineResponse,
     responseDeserialize: deserialize_bragi_MatchTimelineResponse,
   },
-  listMatchTimelineSportsFeed: {
-    path: '/bragi.Bragi/ListMatchTimelineSportsFeed',
+  // MatchTimelineSportsFeed gRPC stream call provides real-time updates for all sports with planned or currently played matches.
+matchTimelineSportsFeed: {
+    path: '/bragi.Bragi/MatchTimelineSportsFeed',
     requestStream: false,
     responseStream: true,
-    requestType: bragi_bragi_service_pb.ListMatchTimelineSportsFeedRequest,
-    responseType: bragi_bragi_service_pb.ListMatchTimelineSportsFeedResponse,
-    requestSerialize: serialize_bragi_ListMatchTimelineSportsFeedRequest,
-    requestDeserialize: deserialize_bragi_ListMatchTimelineSportsFeedRequest,
-    responseSerialize: serialize_bragi_ListMatchTimelineSportsFeedResponse,
-    responseDeserialize: deserialize_bragi_ListMatchTimelineSportsFeedResponse,
+    requestType: bragi_bragi_service_pb.MatchTimelineSportsFeedRequest,
+    responseType: bragi_bragi_service_pb.MatchTimelineSportsFeedResponse,
+    requestSerialize: serialize_bragi_MatchTimelineSportsFeedRequest,
+    requestDeserialize: deserialize_bragi_MatchTimelineSportsFeedRequest,
+    responseSerialize: serialize_bragi_MatchTimelineSportsFeedResponse,
+    responseDeserialize: deserialize_bragi_MatchTimelineSportsFeedResponse,
   },
-  listMatchTimelineTournamentsFeed: {
-    path: '/bragi.Bragi/ListMatchTimelineTournamentsFeed',
+  // MatchTimelineTournamentsFeed gRPC stream call provides real-time updates for all tournaments with planned or currently played matches.
+matchTimelineTournamentsFeed: {
+    path: '/bragi.Bragi/MatchTimelineTournamentsFeed',
     requestStream: false,
     responseStream: true,
-    requestType: bragi_bragi_service_pb.ListMatchTimelineTournamentsFeedRequest,
-    responseType: bragi_bragi_service_pb.ListMatchTimelineTournamentsFeedResponse,
-    requestSerialize: serialize_bragi_ListMatchTimelineTournamentsFeedRequest,
-    requestDeserialize: deserialize_bragi_ListMatchTimelineTournamentsFeedRequest,
-    responseSerialize: serialize_bragi_ListMatchTimelineTournamentsFeedResponse,
-    responseDeserialize: deserialize_bragi_ListMatchTimelineTournamentsFeedResponse,
+    requestType: bragi_bragi_service_pb.MatchTimelineTournamentsFeedRequest,
+    responseType: bragi_bragi_service_pb.MatchTimelineTournamentsFeedResponse,
+    requestSerialize: serialize_bragi_MatchTimelineTournamentsFeedRequest,
+    requestDeserialize: deserialize_bragi_MatchTimelineTournamentsFeedRequest,
+    responseSerialize: serialize_bragi_MatchTimelineTournamentsFeedResponse,
+    responseDeserialize: deserialize_bragi_MatchTimelineTournamentsFeedResponse,
   },
   // The MatchTimelineFeed gRPC stream call provides all upcoming or currently in-progress matches. 
 // It also sends real-time updates when the status of a match changes. 

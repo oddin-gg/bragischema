@@ -64,11 +64,11 @@ func (m *MatchEventsFeedMessage_Cs2) CloneVT() isMatchEventsFeedMessage_Payload 
 	return r
 }
 
-func (m *ListMatchTimelineSportsRequest) CloneVT() *ListMatchTimelineSportsRequest {
+func (m *MatchTimelineSportsRequest) CloneVT() *MatchTimelineSportsRequest {
 	if m == nil {
-		return (*ListMatchTimelineSportsRequest)(nil)
+		return (*MatchTimelineSportsRequest)(nil)
 	}
-	r := new(ListMatchTimelineSportsRequest)
+	r := new(MatchTimelineSportsRequest)
 	r.LiveOnly = m.LiveOnly
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
@@ -77,15 +77,15 @@ func (m *ListMatchTimelineSportsRequest) CloneVT() *ListMatchTimelineSportsReque
 	return r
 }
 
-func (m *ListMatchTimelineSportsRequest) CloneMessageVT() proto.Message {
+func (m *MatchTimelineSportsRequest) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
-func (m *ListMatchTimelineSportsResponse_SportMatchCount) CloneVT() *ListMatchTimelineSportsResponse_SportMatchCount {
+func (m *MatchTimelineSportsResponse_SportMatchCount) CloneVT() *MatchTimelineSportsResponse_SportMatchCount {
 	if m == nil {
-		return (*ListMatchTimelineSportsResponse_SportMatchCount)(nil)
+		return (*MatchTimelineSportsResponse_SportMatchCount)(nil)
 	}
-	r := new(ListMatchTimelineSportsResponse_SportMatchCount)
+	r := new(MatchTimelineSportsResponse_SportMatchCount)
 	r.Sport = m.Sport
 	r.MatchCount = m.MatchCount
 	if len(m.unknownFields) > 0 {
@@ -95,17 +95,17 @@ func (m *ListMatchTimelineSportsResponse_SportMatchCount) CloneVT() *ListMatchTi
 	return r
 }
 
-func (m *ListMatchTimelineSportsResponse_SportMatchCount) CloneMessageVT() proto.Message {
+func (m *MatchTimelineSportsResponse_SportMatchCount) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
-func (m *ListMatchTimelineSportsResponse) CloneVT() *ListMatchTimelineSportsResponse {
+func (m *MatchTimelineSportsResponse) CloneVT() *MatchTimelineSportsResponse {
 	if m == nil {
-		return (*ListMatchTimelineSportsResponse)(nil)
+		return (*MatchTimelineSportsResponse)(nil)
 	}
-	r := new(ListMatchTimelineSportsResponse)
+	r := new(MatchTimelineSportsResponse)
 	if rhs := m.Sports; rhs != nil {
-		tmpContainer := make([]*ListMatchTimelineSportsResponse_SportMatchCount, len(rhs))
+		tmpContainer := make([]*MatchTimelineSportsResponse_SportMatchCount, len(rhs))
 		for k, v := range rhs {
 			tmpContainer[k] = v.CloneVT()
 		}
@@ -118,15 +118,15 @@ func (m *ListMatchTimelineSportsResponse) CloneVT() *ListMatchTimelineSportsResp
 	return r
 }
 
-func (m *ListMatchTimelineSportsResponse) CloneMessageVT() proto.Message {
+func (m *MatchTimelineSportsResponse) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
-func (m *ListMatchTimelineTournamentsRequest) CloneVT() *ListMatchTimelineTournamentsRequest {
+func (m *MatchTimelineTournamentsRequest) CloneVT() *MatchTimelineTournamentsRequest {
 	if m == nil {
-		return (*ListMatchTimelineTournamentsRequest)(nil)
+		return (*MatchTimelineTournamentsRequest)(nil)
 	}
-	r := new(ListMatchTimelineTournamentsRequest)
+	r := new(MatchTimelineTournamentsRequest)
 	r.LiveOnly = m.LiveOnly
 	r.Sport = m.Sport
 	if len(m.unknownFields) > 0 {
@@ -136,15 +136,15 @@ func (m *ListMatchTimelineTournamentsRequest) CloneVT() *ListMatchTimelineTourna
 	return r
 }
 
-func (m *ListMatchTimelineTournamentsRequest) CloneMessageVT() proto.Message {
+func (m *MatchTimelineTournamentsRequest) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
-func (m *ListMatchTimelineTournamentsResponse_TournamentMatchCount) CloneVT() *ListMatchTimelineTournamentsResponse_TournamentMatchCount {
+func (m *MatchTimelineTournamentsResponse_TournamentMatchCount) CloneVT() *MatchTimelineTournamentsResponse_TournamentMatchCount {
 	if m == nil {
-		return (*ListMatchTimelineTournamentsResponse_TournamentMatchCount)(nil)
+		return (*MatchTimelineTournamentsResponse_TournamentMatchCount)(nil)
 	}
-	r := new(ListMatchTimelineTournamentsResponse_TournamentMatchCount)
+	r := new(MatchTimelineTournamentsResponse_TournamentMatchCount)
 	r.Tournament = m.Tournament.CloneVT()
 	r.MatchCount = m.MatchCount
 	if len(m.unknownFields) > 0 {
@@ -154,17 +154,17 @@ func (m *ListMatchTimelineTournamentsResponse_TournamentMatchCount) CloneVT() *L
 	return r
 }
 
-func (m *ListMatchTimelineTournamentsResponse_TournamentMatchCount) CloneMessageVT() proto.Message {
+func (m *MatchTimelineTournamentsResponse_TournamentMatchCount) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
-func (m *ListMatchTimelineTournamentsResponse) CloneVT() *ListMatchTimelineTournamentsResponse {
+func (m *MatchTimelineTournamentsResponse) CloneVT() *MatchTimelineTournamentsResponse {
 	if m == nil {
-		return (*ListMatchTimelineTournamentsResponse)(nil)
+		return (*MatchTimelineTournamentsResponse)(nil)
 	}
-	r := new(ListMatchTimelineTournamentsResponse)
+	r := new(MatchTimelineTournamentsResponse)
 	if rhs := m.Tournaments; rhs != nil {
-		tmpContainer := make([]*ListMatchTimelineTournamentsResponse_TournamentMatchCount, len(rhs))
+		tmpContainer := make([]*MatchTimelineTournamentsResponse_TournamentMatchCount, len(rhs))
 		for k, v := range rhs {
 			tmpContainer[k] = v.CloneVT()
 		}
@@ -177,7 +177,7 @@ func (m *ListMatchTimelineTournamentsResponse) CloneVT() *ListMatchTimelineTourn
 	return r
 }
 
-func (m *ListMatchTimelineTournamentsResponse) CloneMessageVT() proto.Message {
+func (m *MatchTimelineTournamentsResponse) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
@@ -233,11 +233,11 @@ func (m *MatchTimelineResponse) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
-func (m *ListMatchTimelineSportsFeedRequest) CloneVT() *ListMatchTimelineSportsFeedRequest {
+func (m *MatchTimelineSportsFeedRequest) CloneVT() *MatchTimelineSportsFeedRequest {
 	if m == nil {
-		return (*ListMatchTimelineSportsFeedRequest)(nil)
+		return (*MatchTimelineSportsFeedRequest)(nil)
 	}
-	r := new(ListMatchTimelineSportsFeedRequest)
+	r := new(MatchTimelineSportsFeedRequest)
 	r.LiveOnly = m.LiveOnly
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
@@ -246,15 +246,15 @@ func (m *ListMatchTimelineSportsFeedRequest) CloneVT() *ListMatchTimelineSportsF
 	return r
 }
 
-func (m *ListMatchTimelineSportsFeedRequest) CloneMessageVT() proto.Message {
+func (m *MatchTimelineSportsFeedRequest) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
-func (m *ListMatchTimelineSportsFeedResponse_SportMatchCount) CloneVT() *ListMatchTimelineSportsFeedResponse_SportMatchCount {
+func (m *MatchTimelineSportsFeedResponse_SportMatchCount) CloneVT() *MatchTimelineSportsFeedResponse_SportMatchCount {
 	if m == nil {
-		return (*ListMatchTimelineSportsFeedResponse_SportMatchCount)(nil)
+		return (*MatchTimelineSportsFeedResponse_SportMatchCount)(nil)
 	}
-	r := new(ListMatchTimelineSportsFeedResponse_SportMatchCount)
+	r := new(MatchTimelineSportsFeedResponse_SportMatchCount)
 	r.Sport = m.Sport
 	r.MatchCount = m.MatchCount
 	if len(m.unknownFields) > 0 {
@@ -264,17 +264,17 @@ func (m *ListMatchTimelineSportsFeedResponse_SportMatchCount) CloneVT() *ListMat
 	return r
 }
 
-func (m *ListMatchTimelineSportsFeedResponse_SportMatchCount) CloneMessageVT() proto.Message {
+func (m *MatchTimelineSportsFeedResponse_SportMatchCount) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
-func (m *ListMatchTimelineSportsFeedResponse) CloneVT() *ListMatchTimelineSportsFeedResponse {
+func (m *MatchTimelineSportsFeedResponse) CloneVT() *MatchTimelineSportsFeedResponse {
 	if m == nil {
-		return (*ListMatchTimelineSportsFeedResponse)(nil)
+		return (*MatchTimelineSportsFeedResponse)(nil)
 	}
-	r := new(ListMatchTimelineSportsFeedResponse)
+	r := new(MatchTimelineSportsFeedResponse)
 	if rhs := m.Sports; rhs != nil {
-		tmpContainer := make([]*ListMatchTimelineSportsFeedResponse_SportMatchCount, len(rhs))
+		tmpContainer := make([]*MatchTimelineSportsFeedResponse_SportMatchCount, len(rhs))
 		for k, v := range rhs {
 			tmpContainer[k] = v.CloneVT()
 		}
@@ -287,15 +287,15 @@ func (m *ListMatchTimelineSportsFeedResponse) CloneVT() *ListMatchTimelineSports
 	return r
 }
 
-func (m *ListMatchTimelineSportsFeedResponse) CloneMessageVT() proto.Message {
+func (m *MatchTimelineSportsFeedResponse) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
-func (m *ListMatchTimelineTournamentsFeedRequest) CloneVT() *ListMatchTimelineTournamentsFeedRequest {
+func (m *MatchTimelineTournamentsFeedRequest) CloneVT() *MatchTimelineTournamentsFeedRequest {
 	if m == nil {
-		return (*ListMatchTimelineTournamentsFeedRequest)(nil)
+		return (*MatchTimelineTournamentsFeedRequest)(nil)
 	}
-	r := new(ListMatchTimelineTournamentsFeedRequest)
+	r := new(MatchTimelineTournamentsFeedRequest)
 	r.LiveOnly = m.LiveOnly
 	r.Sport = m.Sport
 	if len(m.unknownFields) > 0 {
@@ -305,15 +305,15 @@ func (m *ListMatchTimelineTournamentsFeedRequest) CloneVT() *ListMatchTimelineTo
 	return r
 }
 
-func (m *ListMatchTimelineTournamentsFeedRequest) CloneMessageVT() proto.Message {
+func (m *MatchTimelineTournamentsFeedRequest) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
-func (m *ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount) CloneVT() *ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount {
+func (m *MatchTimelineTournamentsFeedResponse_TournamentMatchCount) CloneVT() *MatchTimelineTournamentsFeedResponse_TournamentMatchCount {
 	if m == nil {
-		return (*ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount)(nil)
+		return (*MatchTimelineTournamentsFeedResponse_TournamentMatchCount)(nil)
 	}
-	r := new(ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount)
+	r := new(MatchTimelineTournamentsFeedResponse_TournamentMatchCount)
 	r.Tournament = m.Tournament.CloneVT()
 	r.MatchCount = m.MatchCount
 	if len(m.unknownFields) > 0 {
@@ -323,17 +323,17 @@ func (m *ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount) CloneVT(
 	return r
 }
 
-func (m *ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount) CloneMessageVT() proto.Message {
+func (m *MatchTimelineTournamentsFeedResponse_TournamentMatchCount) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
-func (m *ListMatchTimelineTournamentsFeedResponse) CloneVT() *ListMatchTimelineTournamentsFeedResponse {
+func (m *MatchTimelineTournamentsFeedResponse) CloneVT() *MatchTimelineTournamentsFeedResponse {
 	if m == nil {
-		return (*ListMatchTimelineTournamentsFeedResponse)(nil)
+		return (*MatchTimelineTournamentsFeedResponse)(nil)
 	}
-	r := new(ListMatchTimelineTournamentsFeedResponse)
+	r := new(MatchTimelineTournamentsFeedResponse)
 	if rhs := m.Tournaments; rhs != nil {
-		tmpContainer := make([]*ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount, len(rhs))
+		tmpContainer := make([]*MatchTimelineTournamentsFeedResponse_TournamentMatchCount, len(rhs))
 		for k, v := range rhs {
 			tmpContainer[k] = v.CloneVT()
 		}
@@ -346,7 +346,7 @@ func (m *ListMatchTimelineTournamentsFeedResponse) CloneVT() *ListMatchTimelineT
 	return r
 }
 
-func (m *ListMatchTimelineTournamentsFeedResponse) CloneMessageVT() proto.Message {
+func (m *MatchTimelineTournamentsFeedResponse) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
@@ -853,7 +853,7 @@ func (this *MatchEventsFeedMessage_Cs2) EqualVT(thatIface isMatchEventsFeedMessa
 	return true
 }
 
-func (this *ListMatchTimelineSportsRequest) EqualVT(that *ListMatchTimelineSportsRequest) bool {
+func (this *MatchTimelineSportsRequest) EqualVT(that *MatchTimelineSportsRequest) bool {
 	if this == that {
 		return true
 	} else if this == nil || that == nil {
@@ -865,14 +865,14 @@ func (this *ListMatchTimelineSportsRequest) EqualVT(that *ListMatchTimelineSport
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
-func (this *ListMatchTimelineSportsRequest) EqualMessageVT(thatMsg proto.Message) bool {
-	that, ok := thatMsg.(*ListMatchTimelineSportsRequest)
+func (this *MatchTimelineSportsRequest) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*MatchTimelineSportsRequest)
 	if !ok {
 		return false
 	}
 	return this.EqualVT(that)
 }
-func (this *ListMatchTimelineSportsResponse_SportMatchCount) EqualVT(that *ListMatchTimelineSportsResponse_SportMatchCount) bool {
+func (this *MatchTimelineSportsResponse_SportMatchCount) EqualVT(that *MatchTimelineSportsResponse_SportMatchCount) bool {
 	if this == that {
 		return true
 	} else if this == nil || that == nil {
@@ -887,14 +887,14 @@ func (this *ListMatchTimelineSportsResponse_SportMatchCount) EqualVT(that *ListM
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
-func (this *ListMatchTimelineSportsResponse_SportMatchCount) EqualMessageVT(thatMsg proto.Message) bool {
-	that, ok := thatMsg.(*ListMatchTimelineSportsResponse_SportMatchCount)
+func (this *MatchTimelineSportsResponse_SportMatchCount) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*MatchTimelineSportsResponse_SportMatchCount)
 	if !ok {
 		return false
 	}
 	return this.EqualVT(that)
 }
-func (this *ListMatchTimelineSportsResponse) EqualVT(that *ListMatchTimelineSportsResponse) bool {
+func (this *MatchTimelineSportsResponse) EqualVT(that *MatchTimelineSportsResponse) bool {
 	if this == that {
 		return true
 	} else if this == nil || that == nil {
@@ -907,10 +907,10 @@ func (this *ListMatchTimelineSportsResponse) EqualVT(that *ListMatchTimelineSpor
 		vy := that.Sports[i]
 		if p, q := vx, vy; p != q {
 			if p == nil {
-				p = &ListMatchTimelineSportsResponse_SportMatchCount{}
+				p = &MatchTimelineSportsResponse_SportMatchCount{}
 			}
 			if q == nil {
-				q = &ListMatchTimelineSportsResponse_SportMatchCount{}
+				q = &MatchTimelineSportsResponse_SportMatchCount{}
 			}
 			if !p.EqualVT(q) {
 				return false
@@ -920,14 +920,14 @@ func (this *ListMatchTimelineSportsResponse) EqualVT(that *ListMatchTimelineSpor
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
-func (this *ListMatchTimelineSportsResponse) EqualMessageVT(thatMsg proto.Message) bool {
-	that, ok := thatMsg.(*ListMatchTimelineSportsResponse)
+func (this *MatchTimelineSportsResponse) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*MatchTimelineSportsResponse)
 	if !ok {
 		return false
 	}
 	return this.EqualVT(that)
 }
-func (this *ListMatchTimelineTournamentsRequest) EqualVT(that *ListMatchTimelineTournamentsRequest) bool {
+func (this *MatchTimelineTournamentsRequest) EqualVT(that *MatchTimelineTournamentsRequest) bool {
 	if this == that {
 		return true
 	} else if this == nil || that == nil {
@@ -942,14 +942,14 @@ func (this *ListMatchTimelineTournamentsRequest) EqualVT(that *ListMatchTimeline
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
-func (this *ListMatchTimelineTournamentsRequest) EqualMessageVT(thatMsg proto.Message) bool {
-	that, ok := thatMsg.(*ListMatchTimelineTournamentsRequest)
+func (this *MatchTimelineTournamentsRequest) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*MatchTimelineTournamentsRequest)
 	if !ok {
 		return false
 	}
 	return this.EqualVT(that)
 }
-func (this *ListMatchTimelineTournamentsResponse_TournamentMatchCount) EqualVT(that *ListMatchTimelineTournamentsResponse_TournamentMatchCount) bool {
+func (this *MatchTimelineTournamentsResponse_TournamentMatchCount) EqualVT(that *MatchTimelineTournamentsResponse_TournamentMatchCount) bool {
 	if this == that {
 		return true
 	} else if this == nil || that == nil {
@@ -964,14 +964,14 @@ func (this *ListMatchTimelineTournamentsResponse_TournamentMatchCount) EqualVT(t
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
-func (this *ListMatchTimelineTournamentsResponse_TournamentMatchCount) EqualMessageVT(thatMsg proto.Message) bool {
-	that, ok := thatMsg.(*ListMatchTimelineTournamentsResponse_TournamentMatchCount)
+func (this *MatchTimelineTournamentsResponse_TournamentMatchCount) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*MatchTimelineTournamentsResponse_TournamentMatchCount)
 	if !ok {
 		return false
 	}
 	return this.EqualVT(that)
 }
-func (this *ListMatchTimelineTournamentsResponse) EqualVT(that *ListMatchTimelineTournamentsResponse) bool {
+func (this *MatchTimelineTournamentsResponse) EqualVT(that *MatchTimelineTournamentsResponse) bool {
 	if this == that {
 		return true
 	} else if this == nil || that == nil {
@@ -984,10 +984,10 @@ func (this *ListMatchTimelineTournamentsResponse) EqualVT(that *ListMatchTimelin
 		vy := that.Tournaments[i]
 		if p, q := vx, vy; p != q {
 			if p == nil {
-				p = &ListMatchTimelineTournamentsResponse_TournamentMatchCount{}
+				p = &MatchTimelineTournamentsResponse_TournamentMatchCount{}
 			}
 			if q == nil {
-				q = &ListMatchTimelineTournamentsResponse_TournamentMatchCount{}
+				q = &MatchTimelineTournamentsResponse_TournamentMatchCount{}
 			}
 			if !p.EqualVT(q) {
 				return false
@@ -997,8 +997,8 @@ func (this *ListMatchTimelineTournamentsResponse) EqualVT(that *ListMatchTimelin
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
-func (this *ListMatchTimelineTournamentsResponse) EqualMessageVT(thatMsg proto.Message) bool {
-	that, ok := thatMsg.(*ListMatchTimelineTournamentsResponse)
+func (this *MatchTimelineTournamentsResponse) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*MatchTimelineTournamentsResponse)
 	if !ok {
 		return false
 	}
@@ -1065,7 +1065,7 @@ func (this *MatchTimelineResponse) EqualMessageVT(thatMsg proto.Message) bool {
 	}
 	return this.EqualVT(that)
 }
-func (this *ListMatchTimelineSportsFeedRequest) EqualVT(that *ListMatchTimelineSportsFeedRequest) bool {
+func (this *MatchTimelineSportsFeedRequest) EqualVT(that *MatchTimelineSportsFeedRequest) bool {
 	if this == that {
 		return true
 	} else if this == nil || that == nil {
@@ -1077,14 +1077,14 @@ func (this *ListMatchTimelineSportsFeedRequest) EqualVT(that *ListMatchTimelineS
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
-func (this *ListMatchTimelineSportsFeedRequest) EqualMessageVT(thatMsg proto.Message) bool {
-	that, ok := thatMsg.(*ListMatchTimelineSportsFeedRequest)
+func (this *MatchTimelineSportsFeedRequest) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*MatchTimelineSportsFeedRequest)
 	if !ok {
 		return false
 	}
 	return this.EqualVT(that)
 }
-func (this *ListMatchTimelineSportsFeedResponse_SportMatchCount) EqualVT(that *ListMatchTimelineSportsFeedResponse_SportMatchCount) bool {
+func (this *MatchTimelineSportsFeedResponse_SportMatchCount) EqualVT(that *MatchTimelineSportsFeedResponse_SportMatchCount) bool {
 	if this == that {
 		return true
 	} else if this == nil || that == nil {
@@ -1099,14 +1099,14 @@ func (this *ListMatchTimelineSportsFeedResponse_SportMatchCount) EqualVT(that *L
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
-func (this *ListMatchTimelineSportsFeedResponse_SportMatchCount) EqualMessageVT(thatMsg proto.Message) bool {
-	that, ok := thatMsg.(*ListMatchTimelineSportsFeedResponse_SportMatchCount)
+func (this *MatchTimelineSportsFeedResponse_SportMatchCount) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*MatchTimelineSportsFeedResponse_SportMatchCount)
 	if !ok {
 		return false
 	}
 	return this.EqualVT(that)
 }
-func (this *ListMatchTimelineSportsFeedResponse) EqualVT(that *ListMatchTimelineSportsFeedResponse) bool {
+func (this *MatchTimelineSportsFeedResponse) EqualVT(that *MatchTimelineSportsFeedResponse) bool {
 	if this == that {
 		return true
 	} else if this == nil || that == nil {
@@ -1119,10 +1119,10 @@ func (this *ListMatchTimelineSportsFeedResponse) EqualVT(that *ListMatchTimeline
 		vy := that.Sports[i]
 		if p, q := vx, vy; p != q {
 			if p == nil {
-				p = &ListMatchTimelineSportsFeedResponse_SportMatchCount{}
+				p = &MatchTimelineSportsFeedResponse_SportMatchCount{}
 			}
 			if q == nil {
-				q = &ListMatchTimelineSportsFeedResponse_SportMatchCount{}
+				q = &MatchTimelineSportsFeedResponse_SportMatchCount{}
 			}
 			if !p.EqualVT(q) {
 				return false
@@ -1132,14 +1132,14 @@ func (this *ListMatchTimelineSportsFeedResponse) EqualVT(that *ListMatchTimeline
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
-func (this *ListMatchTimelineSportsFeedResponse) EqualMessageVT(thatMsg proto.Message) bool {
-	that, ok := thatMsg.(*ListMatchTimelineSportsFeedResponse)
+func (this *MatchTimelineSportsFeedResponse) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*MatchTimelineSportsFeedResponse)
 	if !ok {
 		return false
 	}
 	return this.EqualVT(that)
 }
-func (this *ListMatchTimelineTournamentsFeedRequest) EqualVT(that *ListMatchTimelineTournamentsFeedRequest) bool {
+func (this *MatchTimelineTournamentsFeedRequest) EqualVT(that *MatchTimelineTournamentsFeedRequest) bool {
 	if this == that {
 		return true
 	} else if this == nil || that == nil {
@@ -1154,14 +1154,14 @@ func (this *ListMatchTimelineTournamentsFeedRequest) EqualVT(that *ListMatchTime
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
-func (this *ListMatchTimelineTournamentsFeedRequest) EqualMessageVT(thatMsg proto.Message) bool {
-	that, ok := thatMsg.(*ListMatchTimelineTournamentsFeedRequest)
+func (this *MatchTimelineTournamentsFeedRequest) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*MatchTimelineTournamentsFeedRequest)
 	if !ok {
 		return false
 	}
 	return this.EqualVT(that)
 }
-func (this *ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount) EqualVT(that *ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount) bool {
+func (this *MatchTimelineTournamentsFeedResponse_TournamentMatchCount) EqualVT(that *MatchTimelineTournamentsFeedResponse_TournamentMatchCount) bool {
 	if this == that {
 		return true
 	} else if this == nil || that == nil {
@@ -1176,14 +1176,14 @@ func (this *ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount) Equal
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
-func (this *ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount) EqualMessageVT(thatMsg proto.Message) bool {
-	that, ok := thatMsg.(*ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount)
+func (this *MatchTimelineTournamentsFeedResponse_TournamentMatchCount) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*MatchTimelineTournamentsFeedResponse_TournamentMatchCount)
 	if !ok {
 		return false
 	}
 	return this.EqualVT(that)
 }
-func (this *ListMatchTimelineTournamentsFeedResponse) EqualVT(that *ListMatchTimelineTournamentsFeedResponse) bool {
+func (this *MatchTimelineTournamentsFeedResponse) EqualVT(that *MatchTimelineTournamentsFeedResponse) bool {
 	if this == that {
 		return true
 	} else if this == nil || that == nil {
@@ -1196,10 +1196,10 @@ func (this *ListMatchTimelineTournamentsFeedResponse) EqualVT(that *ListMatchTim
 		vy := that.Tournaments[i]
 		if p, q := vx, vy; p != q {
 			if p == nil {
-				p = &ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount{}
+				p = &MatchTimelineTournamentsFeedResponse_TournamentMatchCount{}
 			}
 			if q == nil {
-				q = &ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount{}
+				q = &MatchTimelineTournamentsFeedResponse_TournamentMatchCount{}
 			}
 			if !p.EqualVT(q) {
 				return false
@@ -1209,8 +1209,8 @@ func (this *ListMatchTimelineTournamentsFeedResponse) EqualVT(that *ListMatchTim
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
-func (this *ListMatchTimelineTournamentsFeedResponse) EqualMessageVT(thatMsg proto.Message) bool {
-	that, ok := thatMsg.(*ListMatchTimelineTournamentsFeedResponse)
+func (this *MatchTimelineTournamentsFeedResponse) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*MatchTimelineTournamentsFeedResponse)
 	if !ok {
 		return false
 	}
