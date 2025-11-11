@@ -18,8 +18,14 @@ import "bragi/rush_cricket.proto";
 
 service Bragi {
 
+  rpc ListMatchTimelineSports(ListMatchTimelineSportsRequest) returns (ListMatchTimelineSportsResponse) {}
+  rpc ListMatchTimelineTournaments(ListMatchTimelineTournamentsRequest) returns (ListMatchTimelineTournamentsResponse) {}
+
   // Matches gRPC unary call returns all planned or currently played matches
   rpc MatchTimeline(MatchTimelineRequest) returns (MatchTimelineResponse) {}
+
+ rpc ListMatchTimelineSportsFeed(ListMatchTimelineSportsFeedRequest) returns (stream ListMatchTimelineSportsFeedResponse) {}
+ rpc ListMatchTimelineTournamentsFeed(ListMatchTimelineTournamentsFeedRequest) returns (stream ListMatchTimelineTournamentsFeedResponse) {}
 
   // The MatchTimelineFeed gRPC stream call provides all upcoming or currently in-progress matches. 
   // It also sends real-time updates when the status of a match changes. 
@@ -43,13 +49,73 @@ message MatchEventsFeedMessage {
   }
 }
 
-message MatchTimelineRequest {}
+message ListMatchTimelineSportsRequest {
+  bool live_only = 1;
+}
+
+message ListMatchTimelineSportsResponse {
+  message SportMatchCount {
+    Sport sport = 1;
+    uint32 match_count = 2;
+  }
+  repeated SportMatchCount sports = 1;
+}
+
+message ListMatchTimelineTournamentsRequest {
+  bool live_only = 1;
+  Sport sport = 2;
+}
+
+message ListMatchTimelineTournamentsResponse {
+  message TournamentMatchCount {
+    Tournament tournament = 1;
+    uint32 match_count = 2;
+  }
+  repeated TournamentMatchCount tournaments = 1;
+}
+
+message MatchTimelineRequest {
+  bool live_only = 1;
+  optional Sport sport = 2;
+  optional string tournament_urn = 3;
+  optional string match_urn = 4;
+}
 
 message MatchTimelineResponse {
   repeated Match matches = 1;
 }
 
-message MatchTimelineFeedRequest {}
+message ListMatchTimelineSportsFeedRequest {
+  bool live_only = 1;
+}
+
+message ListMatchTimelineSportsFeedResponse {
+  message SportMatchCount {
+    Sport sport = 1;
+    uint32 match_count = 2;
+  }
+  repeated SportMatchCount sports = 1;
+}
+
+message ListMatchTimelineTournamentsFeedRequest {
+  bool live_only = 1;
+  Sport sport = 2;
+}
+
+message ListMatchTimelineTournamentsFeedResponse {
+  message TournamentMatchCount {
+    Tournament tournament = 1;
+    uint32 match_count = 2;
+  }
+  repeated TournamentMatchCount tournaments = 1;
+}
+
+message MatchTimelineFeedRequest {
+  bool live_only = 1;
+  optional Sport sport = 2;
+  optional string tournament_urn = 3;
+  optional string match_urn = 4;
+}
 
 message MatchTimelineFeedMessage {
   oneof payload {

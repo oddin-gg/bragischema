@@ -64,11 +64,141 @@ func (m *MatchEventsFeedMessage_Cs2) CloneVT() isMatchEventsFeedMessage_Payload 
 	return r
 }
 
+func (m *ListMatchTimelineSportsRequest) CloneVT() *ListMatchTimelineSportsRequest {
+	if m == nil {
+		return (*ListMatchTimelineSportsRequest)(nil)
+	}
+	r := new(ListMatchTimelineSportsRequest)
+	r.LiveOnly = m.LiveOnly
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ListMatchTimelineSportsRequest) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ListMatchTimelineSportsResponse_SportMatchCount) CloneVT() *ListMatchTimelineSportsResponse_SportMatchCount {
+	if m == nil {
+		return (*ListMatchTimelineSportsResponse_SportMatchCount)(nil)
+	}
+	r := new(ListMatchTimelineSportsResponse_SportMatchCount)
+	r.Sport = m.Sport
+	r.MatchCount = m.MatchCount
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ListMatchTimelineSportsResponse_SportMatchCount) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ListMatchTimelineSportsResponse) CloneVT() *ListMatchTimelineSportsResponse {
+	if m == nil {
+		return (*ListMatchTimelineSportsResponse)(nil)
+	}
+	r := new(ListMatchTimelineSportsResponse)
+	if rhs := m.Sports; rhs != nil {
+		tmpContainer := make([]*ListMatchTimelineSportsResponse_SportMatchCount, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Sports = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ListMatchTimelineSportsResponse) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ListMatchTimelineTournamentsRequest) CloneVT() *ListMatchTimelineTournamentsRequest {
+	if m == nil {
+		return (*ListMatchTimelineTournamentsRequest)(nil)
+	}
+	r := new(ListMatchTimelineTournamentsRequest)
+	r.LiveOnly = m.LiveOnly
+	r.Sport = m.Sport
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ListMatchTimelineTournamentsRequest) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ListMatchTimelineTournamentsResponse_TournamentMatchCount) CloneVT() *ListMatchTimelineTournamentsResponse_TournamentMatchCount {
+	if m == nil {
+		return (*ListMatchTimelineTournamentsResponse_TournamentMatchCount)(nil)
+	}
+	r := new(ListMatchTimelineTournamentsResponse_TournamentMatchCount)
+	r.Tournament = m.Tournament.CloneVT()
+	r.MatchCount = m.MatchCount
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ListMatchTimelineTournamentsResponse_TournamentMatchCount) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ListMatchTimelineTournamentsResponse) CloneVT() *ListMatchTimelineTournamentsResponse {
+	if m == nil {
+		return (*ListMatchTimelineTournamentsResponse)(nil)
+	}
+	r := new(ListMatchTimelineTournamentsResponse)
+	if rhs := m.Tournaments; rhs != nil {
+		tmpContainer := make([]*ListMatchTimelineTournamentsResponse_TournamentMatchCount, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Tournaments = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ListMatchTimelineTournamentsResponse) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
 func (m *MatchTimelineRequest) CloneVT() *MatchTimelineRequest {
 	if m == nil {
 		return (*MatchTimelineRequest)(nil)
 	}
 	r := new(MatchTimelineRequest)
+	r.LiveOnly = m.LiveOnly
+	if rhs := m.Sport; rhs != nil {
+		tmpVal := *rhs
+		r.Sport = &tmpVal
+	}
+	if rhs := m.TournamentUrn; rhs != nil {
+		tmpVal := *rhs
+		r.TournamentUrn = &tmpVal
+	}
+	if rhs := m.MatchUrn; rhs != nil {
+		tmpVal := *rhs
+		r.MatchUrn = &tmpVal
+	}
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -103,11 +233,141 @@ func (m *MatchTimelineResponse) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
+func (m *ListMatchTimelineSportsFeedRequest) CloneVT() *ListMatchTimelineSportsFeedRequest {
+	if m == nil {
+		return (*ListMatchTimelineSportsFeedRequest)(nil)
+	}
+	r := new(ListMatchTimelineSportsFeedRequest)
+	r.LiveOnly = m.LiveOnly
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ListMatchTimelineSportsFeedRequest) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ListMatchTimelineSportsFeedResponse_SportMatchCount) CloneVT() *ListMatchTimelineSportsFeedResponse_SportMatchCount {
+	if m == nil {
+		return (*ListMatchTimelineSportsFeedResponse_SportMatchCount)(nil)
+	}
+	r := new(ListMatchTimelineSportsFeedResponse_SportMatchCount)
+	r.Sport = m.Sport
+	r.MatchCount = m.MatchCount
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ListMatchTimelineSportsFeedResponse_SportMatchCount) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ListMatchTimelineSportsFeedResponse) CloneVT() *ListMatchTimelineSportsFeedResponse {
+	if m == nil {
+		return (*ListMatchTimelineSportsFeedResponse)(nil)
+	}
+	r := new(ListMatchTimelineSportsFeedResponse)
+	if rhs := m.Sports; rhs != nil {
+		tmpContainer := make([]*ListMatchTimelineSportsFeedResponse_SportMatchCount, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Sports = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ListMatchTimelineSportsFeedResponse) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ListMatchTimelineTournamentsFeedRequest) CloneVT() *ListMatchTimelineTournamentsFeedRequest {
+	if m == nil {
+		return (*ListMatchTimelineTournamentsFeedRequest)(nil)
+	}
+	r := new(ListMatchTimelineTournamentsFeedRequest)
+	r.LiveOnly = m.LiveOnly
+	r.Sport = m.Sport
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ListMatchTimelineTournamentsFeedRequest) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount) CloneVT() *ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount {
+	if m == nil {
+		return (*ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount)(nil)
+	}
+	r := new(ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount)
+	r.Tournament = m.Tournament.CloneVT()
+	r.MatchCount = m.MatchCount
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *ListMatchTimelineTournamentsFeedResponse) CloneVT() *ListMatchTimelineTournamentsFeedResponse {
+	if m == nil {
+		return (*ListMatchTimelineTournamentsFeedResponse)(nil)
+	}
+	r := new(ListMatchTimelineTournamentsFeedResponse)
+	if rhs := m.Tournaments; rhs != nil {
+		tmpContainer := make([]*ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Tournaments = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ListMatchTimelineTournamentsFeedResponse) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
 func (m *MatchTimelineFeedRequest) CloneVT() *MatchTimelineFeedRequest {
 	if m == nil {
 		return (*MatchTimelineFeedRequest)(nil)
 	}
 	r := new(MatchTimelineFeedRequest)
+	r.LiveOnly = m.LiveOnly
+	if rhs := m.Sport; rhs != nil {
+		tmpVal := *rhs
+		r.Sport = &tmpVal
+	}
+	if rhs := m.TournamentUrn; rhs != nil {
+		tmpVal := *rhs
+		r.TournamentUrn = &tmpVal
+	}
+	if rhs := m.MatchUrn; rhs != nil {
+		tmpVal := *rhs
+		r.MatchUrn = &tmpVal
+	}
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -593,10 +853,173 @@ func (this *MatchEventsFeedMessage_Cs2) EqualVT(thatIface isMatchEventsFeedMessa
 	return true
 }
 
+func (this *ListMatchTimelineSportsRequest) EqualVT(that *ListMatchTimelineSportsRequest) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.LiveOnly != that.LiveOnly {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *ListMatchTimelineSportsRequest) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*ListMatchTimelineSportsRequest)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *ListMatchTimelineSportsResponse_SportMatchCount) EqualVT(that *ListMatchTimelineSportsResponse_SportMatchCount) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.Sport != that.Sport {
+		return false
+	}
+	if this.MatchCount != that.MatchCount {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *ListMatchTimelineSportsResponse_SportMatchCount) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*ListMatchTimelineSportsResponse_SportMatchCount)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *ListMatchTimelineSportsResponse) EqualVT(that *ListMatchTimelineSportsResponse) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if len(this.Sports) != len(that.Sports) {
+		return false
+	}
+	for i, vx := range this.Sports {
+		vy := that.Sports[i]
+		if p, q := vx, vy; p != q {
+			if p == nil {
+				p = &ListMatchTimelineSportsResponse_SportMatchCount{}
+			}
+			if q == nil {
+				q = &ListMatchTimelineSportsResponse_SportMatchCount{}
+			}
+			if !p.EqualVT(q) {
+				return false
+			}
+		}
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *ListMatchTimelineSportsResponse) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*ListMatchTimelineSportsResponse)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *ListMatchTimelineTournamentsRequest) EqualVT(that *ListMatchTimelineTournamentsRequest) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.LiveOnly != that.LiveOnly {
+		return false
+	}
+	if this.Sport != that.Sport {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *ListMatchTimelineTournamentsRequest) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*ListMatchTimelineTournamentsRequest)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *ListMatchTimelineTournamentsResponse_TournamentMatchCount) EqualVT(that *ListMatchTimelineTournamentsResponse_TournamentMatchCount) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if !this.Tournament.EqualVT(that.Tournament) {
+		return false
+	}
+	if this.MatchCount != that.MatchCount {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *ListMatchTimelineTournamentsResponse_TournamentMatchCount) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*ListMatchTimelineTournamentsResponse_TournamentMatchCount)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *ListMatchTimelineTournamentsResponse) EqualVT(that *ListMatchTimelineTournamentsResponse) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if len(this.Tournaments) != len(that.Tournaments) {
+		return false
+	}
+	for i, vx := range this.Tournaments {
+		vy := that.Tournaments[i]
+		if p, q := vx, vy; p != q {
+			if p == nil {
+				p = &ListMatchTimelineTournamentsResponse_TournamentMatchCount{}
+			}
+			if q == nil {
+				q = &ListMatchTimelineTournamentsResponse_TournamentMatchCount{}
+			}
+			if !p.EqualVT(q) {
+				return false
+			}
+		}
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *ListMatchTimelineTournamentsResponse) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*ListMatchTimelineTournamentsResponse)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
 func (this *MatchTimelineRequest) EqualVT(that *MatchTimelineRequest) bool {
 	if this == that {
 		return true
 	} else if this == nil || that == nil {
+		return false
+	}
+	if this.LiveOnly != that.LiveOnly {
+		return false
+	}
+	if p, q := this.Sport, that.Sport; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
+		return false
+	}
+	if p, q := this.TournamentUrn, that.TournamentUrn; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
+		return false
+	}
+	if p, q := this.MatchUrn, that.MatchUrn; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
@@ -642,10 +1065,173 @@ func (this *MatchTimelineResponse) EqualMessageVT(thatMsg proto.Message) bool {
 	}
 	return this.EqualVT(that)
 }
+func (this *ListMatchTimelineSportsFeedRequest) EqualVT(that *ListMatchTimelineSportsFeedRequest) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.LiveOnly != that.LiveOnly {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *ListMatchTimelineSportsFeedRequest) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*ListMatchTimelineSportsFeedRequest)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *ListMatchTimelineSportsFeedResponse_SportMatchCount) EqualVT(that *ListMatchTimelineSportsFeedResponse_SportMatchCount) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.Sport != that.Sport {
+		return false
+	}
+	if this.MatchCount != that.MatchCount {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *ListMatchTimelineSportsFeedResponse_SportMatchCount) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*ListMatchTimelineSportsFeedResponse_SportMatchCount)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *ListMatchTimelineSportsFeedResponse) EqualVT(that *ListMatchTimelineSportsFeedResponse) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if len(this.Sports) != len(that.Sports) {
+		return false
+	}
+	for i, vx := range this.Sports {
+		vy := that.Sports[i]
+		if p, q := vx, vy; p != q {
+			if p == nil {
+				p = &ListMatchTimelineSportsFeedResponse_SportMatchCount{}
+			}
+			if q == nil {
+				q = &ListMatchTimelineSportsFeedResponse_SportMatchCount{}
+			}
+			if !p.EqualVT(q) {
+				return false
+			}
+		}
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *ListMatchTimelineSportsFeedResponse) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*ListMatchTimelineSportsFeedResponse)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *ListMatchTimelineTournamentsFeedRequest) EqualVT(that *ListMatchTimelineTournamentsFeedRequest) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.LiveOnly != that.LiveOnly {
+		return false
+	}
+	if this.Sport != that.Sport {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *ListMatchTimelineTournamentsFeedRequest) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*ListMatchTimelineTournamentsFeedRequest)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount) EqualVT(that *ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if !this.Tournament.EqualVT(that.Tournament) {
+		return false
+	}
+	if this.MatchCount != that.MatchCount {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *ListMatchTimelineTournamentsFeedResponse) EqualVT(that *ListMatchTimelineTournamentsFeedResponse) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if len(this.Tournaments) != len(that.Tournaments) {
+		return false
+	}
+	for i, vx := range this.Tournaments {
+		vy := that.Tournaments[i]
+		if p, q := vx, vy; p != q {
+			if p == nil {
+				p = &ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount{}
+			}
+			if q == nil {
+				q = &ListMatchTimelineTournamentsFeedResponse_TournamentMatchCount{}
+			}
+			if !p.EqualVT(q) {
+				return false
+			}
+		}
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *ListMatchTimelineTournamentsFeedResponse) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*ListMatchTimelineTournamentsFeedResponse)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
 func (this *MatchTimelineFeedRequest) EqualVT(that *MatchTimelineFeedRequest) bool {
 	if this == that {
 		return true
 	} else if this == nil || that == nil {
+		return false
+	}
+	if this.LiveOnly != that.LiveOnly {
+		return false
+	}
+	if p, q := this.Sport, that.Sport; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
+		return false
+	}
+	if p, q := this.TournamentUrn, that.TournamentUrn; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
+		return false
+	}
+	if p, q := this.MatchUrn, that.MatchUrn; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)

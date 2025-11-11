@@ -19,18 +19,26 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Bragi_MatchTimeline_FullMethodName     = "/bragi.Bragi/MatchTimeline"
-	Bragi_MatchTimelineFeed_FullMethodName = "/bragi.Bragi/MatchTimelineFeed"
-	Bragi_LiveDataFeed_FullMethodName      = "/bragi.Bragi/LiveDataFeed"
-	Bragi_MatchEventsFeed_FullMethodName   = "/bragi.Bragi/MatchEventsFeed"
+	Bragi_ListMatchTimelineSports_FullMethodName          = "/bragi.Bragi/ListMatchTimelineSports"
+	Bragi_ListMatchTimelineTournaments_FullMethodName     = "/bragi.Bragi/ListMatchTimelineTournaments"
+	Bragi_MatchTimeline_FullMethodName                    = "/bragi.Bragi/MatchTimeline"
+	Bragi_ListMatchTimelineSportsFeed_FullMethodName      = "/bragi.Bragi/ListMatchTimelineSportsFeed"
+	Bragi_ListMatchTimelineTournamentsFeed_FullMethodName = "/bragi.Bragi/ListMatchTimelineTournamentsFeed"
+	Bragi_MatchTimelineFeed_FullMethodName                = "/bragi.Bragi/MatchTimelineFeed"
+	Bragi_LiveDataFeed_FullMethodName                     = "/bragi.Bragi/LiveDataFeed"
+	Bragi_MatchEventsFeed_FullMethodName                  = "/bragi.Bragi/MatchEventsFeed"
 )
 
 // BragiClient is the client API for Bragi service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type BragiClient interface {
+	ListMatchTimelineSports(ctx context.Context, in *ListMatchTimelineSportsRequest, opts ...grpc.CallOption) (*ListMatchTimelineSportsResponse, error)
+	ListMatchTimelineTournaments(ctx context.Context, in *ListMatchTimelineTournamentsRequest, opts ...grpc.CallOption) (*ListMatchTimelineTournamentsResponse, error)
 	// Matches gRPC unary call returns all planned or currently played matches
 	MatchTimeline(ctx context.Context, in *MatchTimelineRequest, opts ...grpc.CallOption) (*MatchTimelineResponse, error)
+	ListMatchTimelineSportsFeed(ctx context.Context, in *ListMatchTimelineSportsFeedRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[ListMatchTimelineSportsFeedResponse], error)
+	ListMatchTimelineTournamentsFeed(ctx context.Context, in *ListMatchTimelineTournamentsFeedRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[ListMatchTimelineTournamentsFeedResponse], error)
 	// The MatchTimelineFeed gRPC stream call provides all upcoming or currently in-progress matches.
 	// It also sends real-time updates when the status of a match changes.
 	// To ensure you have the latest match timeline information, you must remain connected to this stream.
@@ -50,6 +58,26 @@ func NewBragiClient(cc grpc.ClientConnInterface) BragiClient {
 	return &bragiClient{cc}
 }
 
+func (c *bragiClient) ListMatchTimelineSports(ctx context.Context, in *ListMatchTimelineSportsRequest, opts ...grpc.CallOption) (*ListMatchTimelineSportsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListMatchTimelineSportsResponse)
+	err := c.cc.Invoke(ctx, Bragi_ListMatchTimelineSports_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bragiClient) ListMatchTimelineTournaments(ctx context.Context, in *ListMatchTimelineTournamentsRequest, opts ...grpc.CallOption) (*ListMatchTimelineTournamentsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListMatchTimelineTournamentsResponse)
+	err := c.cc.Invoke(ctx, Bragi_ListMatchTimelineTournaments_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *bragiClient) MatchTimeline(ctx context.Context, in *MatchTimelineRequest, opts ...grpc.CallOption) (*MatchTimelineResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(MatchTimelineResponse)
@@ -60,9 +88,47 @@ func (c *bragiClient) MatchTimeline(ctx context.Context, in *MatchTimelineReques
 	return out, nil
 }
 
+func (c *bragiClient) ListMatchTimelineSportsFeed(ctx context.Context, in *ListMatchTimelineSportsFeedRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[ListMatchTimelineSportsFeedResponse], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &Bragi_ServiceDesc.Streams[0], Bragi_ListMatchTimelineSportsFeed_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[ListMatchTimelineSportsFeedRequest, ListMatchTimelineSportsFeedResponse]{ClientStream: stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type Bragi_ListMatchTimelineSportsFeedClient = grpc.ServerStreamingClient[ListMatchTimelineSportsFeedResponse]
+
+func (c *bragiClient) ListMatchTimelineTournamentsFeed(ctx context.Context, in *ListMatchTimelineTournamentsFeedRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[ListMatchTimelineTournamentsFeedResponse], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &Bragi_ServiceDesc.Streams[1], Bragi_ListMatchTimelineTournamentsFeed_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[ListMatchTimelineTournamentsFeedRequest, ListMatchTimelineTournamentsFeedResponse]{ClientStream: stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type Bragi_ListMatchTimelineTournamentsFeedClient = grpc.ServerStreamingClient[ListMatchTimelineTournamentsFeedResponse]
+
 func (c *bragiClient) MatchTimelineFeed(ctx context.Context, in *MatchTimelineFeedRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[MatchTimelineFeedMessage], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &Bragi_ServiceDesc.Streams[0], Bragi_MatchTimelineFeed_FullMethodName, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &Bragi_ServiceDesc.Streams[2], Bragi_MatchTimelineFeed_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -81,7 +147,7 @@ type Bragi_MatchTimelineFeedClient = grpc.ServerStreamingClient[MatchTimelineFee
 
 func (c *bragiClient) LiveDataFeed(ctx context.Context, in *LiveDataFeedRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[LiveDataFeedMessage], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &Bragi_ServiceDesc.Streams[1], Bragi_LiveDataFeed_FullMethodName, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &Bragi_ServiceDesc.Streams[3], Bragi_LiveDataFeed_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -100,7 +166,7 @@ type Bragi_LiveDataFeedClient = grpc.ServerStreamingClient[LiveDataFeedMessage]
 
 func (c *bragiClient) MatchEventsFeed(ctx context.Context, in *MatchEventsFeedRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[MatchEventsFeedMessage], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &Bragi_ServiceDesc.Streams[2], Bragi_MatchEventsFeed_FullMethodName, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &Bragi_ServiceDesc.Streams[4], Bragi_MatchEventsFeed_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -121,8 +187,12 @@ type Bragi_MatchEventsFeedClient = grpc.ServerStreamingClient[MatchEventsFeedMes
 // All implementations must embed UnimplementedBragiServer
 // for forward compatibility.
 type BragiServer interface {
+	ListMatchTimelineSports(context.Context, *ListMatchTimelineSportsRequest) (*ListMatchTimelineSportsResponse, error)
+	ListMatchTimelineTournaments(context.Context, *ListMatchTimelineTournamentsRequest) (*ListMatchTimelineTournamentsResponse, error)
 	// Matches gRPC unary call returns all planned or currently played matches
 	MatchTimeline(context.Context, *MatchTimelineRequest) (*MatchTimelineResponse, error)
+	ListMatchTimelineSportsFeed(*ListMatchTimelineSportsFeedRequest, grpc.ServerStreamingServer[ListMatchTimelineSportsFeedResponse]) error
+	ListMatchTimelineTournamentsFeed(*ListMatchTimelineTournamentsFeedRequest, grpc.ServerStreamingServer[ListMatchTimelineTournamentsFeedResponse]) error
 	// The MatchTimelineFeed gRPC stream call provides all upcoming or currently in-progress matches.
 	// It also sends real-time updates when the status of a match changes.
 	// To ensure you have the latest match timeline information, you must remain connected to this stream.
@@ -142,8 +212,20 @@ type BragiServer interface {
 // pointer dereference when methods are called.
 type UnimplementedBragiServer struct{}
 
+func (UnimplementedBragiServer) ListMatchTimelineSports(context.Context, *ListMatchTimelineSportsRequest) (*ListMatchTimelineSportsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListMatchTimelineSports not implemented")
+}
+func (UnimplementedBragiServer) ListMatchTimelineTournaments(context.Context, *ListMatchTimelineTournamentsRequest) (*ListMatchTimelineTournamentsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListMatchTimelineTournaments not implemented")
+}
 func (UnimplementedBragiServer) MatchTimeline(context.Context, *MatchTimelineRequest) (*MatchTimelineResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MatchTimeline not implemented")
+}
+func (UnimplementedBragiServer) ListMatchTimelineSportsFeed(*ListMatchTimelineSportsFeedRequest, grpc.ServerStreamingServer[ListMatchTimelineSportsFeedResponse]) error {
+	return status.Errorf(codes.Unimplemented, "method ListMatchTimelineSportsFeed not implemented")
+}
+func (UnimplementedBragiServer) ListMatchTimelineTournamentsFeed(*ListMatchTimelineTournamentsFeedRequest, grpc.ServerStreamingServer[ListMatchTimelineTournamentsFeedResponse]) error {
+	return status.Errorf(codes.Unimplemented, "method ListMatchTimelineTournamentsFeed not implemented")
 }
 func (UnimplementedBragiServer) MatchTimelineFeed(*MatchTimelineFeedRequest, grpc.ServerStreamingServer[MatchTimelineFeedMessage]) error {
 	return status.Errorf(codes.Unimplemented, "method MatchTimelineFeed not implemented")
@@ -175,6 +257,42 @@ func RegisterBragiServer(s grpc.ServiceRegistrar, srv BragiServer) {
 	s.RegisterService(&Bragi_ServiceDesc, srv)
 }
 
+func _Bragi_ListMatchTimelineSports_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListMatchTimelineSportsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BragiServer).ListMatchTimelineSports(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Bragi_ListMatchTimelineSports_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BragiServer).ListMatchTimelineSports(ctx, req.(*ListMatchTimelineSportsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Bragi_ListMatchTimelineTournaments_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListMatchTimelineTournamentsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BragiServer).ListMatchTimelineTournaments(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Bragi_ListMatchTimelineTournaments_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BragiServer).ListMatchTimelineTournaments(ctx, req.(*ListMatchTimelineTournamentsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Bragi_MatchTimeline_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(MatchTimelineRequest)
 	if err := dec(in); err != nil {
@@ -192,6 +310,28 @@ func _Bragi_MatchTimeline_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	return interceptor(ctx, in, info, handler)
 }
+
+func _Bragi_ListMatchTimelineSportsFeed_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(ListMatchTimelineSportsFeedRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(BragiServer).ListMatchTimelineSportsFeed(m, &grpc.GenericServerStream[ListMatchTimelineSportsFeedRequest, ListMatchTimelineSportsFeedResponse]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type Bragi_ListMatchTimelineSportsFeedServer = grpc.ServerStreamingServer[ListMatchTimelineSportsFeedResponse]
+
+func _Bragi_ListMatchTimelineTournamentsFeed_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(ListMatchTimelineTournamentsFeedRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(BragiServer).ListMatchTimelineTournamentsFeed(m, &grpc.GenericServerStream[ListMatchTimelineTournamentsFeedRequest, ListMatchTimelineTournamentsFeedResponse]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type Bragi_ListMatchTimelineTournamentsFeedServer = grpc.ServerStreamingServer[ListMatchTimelineTournamentsFeedResponse]
 
 func _Bragi_MatchTimelineFeed_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(MatchTimelineFeedRequest)
@@ -234,11 +374,29 @@ var Bragi_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*BragiServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "ListMatchTimelineSports",
+			Handler:    _Bragi_ListMatchTimelineSports_Handler,
+		},
+		{
+			MethodName: "ListMatchTimelineTournaments",
+			Handler:    _Bragi_ListMatchTimelineTournaments_Handler,
+		},
+		{
 			MethodName: "MatchTimeline",
 			Handler:    _Bragi_MatchTimeline_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "ListMatchTimelineSportsFeed",
+			Handler:       _Bragi_ListMatchTimelineSportsFeed_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "ListMatchTimelineTournamentsFeed",
+			Handler:       _Bragi_ListMatchTimelineTournamentsFeed_Handler,
+			ServerStreams: true,
+		},
 		{
 			StreamName:    "MatchTimelineFeed",
 			Handler:       _Bragi_MatchTimelineFeed_Handler,
