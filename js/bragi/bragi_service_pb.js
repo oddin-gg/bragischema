@@ -1836,7 +1836,8 @@ proto.bragi.MatchTimelineRequest.toObject = function(includeInstance, msg) {
 liveOnly: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
 sport: (f = jspb.Message.getField(msg, 2)) == null ? undefined : f,
 tournamentUrn: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f,
-matchUrn: (f = jspb.Message.getField(msg, 4)) == null ? undefined : f
+matchUrn: (f = jspb.Message.getField(msg, 4)) == null ? undefined : f,
+teamName: (f = jspb.Message.getField(msg, 5)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1888,6 +1889,10 @@ proto.bragi.MatchTimelineRequest.deserializeBinaryFromReader = function(msg, rea
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setMatchUrn(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTeamName(value);
       break;
     default:
       reader.skipField();
@@ -1943,6 +1948,13 @@ proto.bragi.MatchTimelineRequest.serializeBinaryToWriter = function(message, wri
   if (f != null) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -2072,6 +2084,42 @@ proto.bragi.MatchTimelineRequest.prototype.clearMatchUrn = function() {
  */
 proto.bragi.MatchTimelineRequest.prototype.hasMatchUrn = function() {
   return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional string team_name = 5;
+ * @return {string}
+ */
+proto.bragi.MatchTimelineRequest.prototype.getTeamName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.bragi.MatchTimelineRequest} returns this
+ */
+proto.bragi.MatchTimelineRequest.prototype.setTeamName = function(value) {
+  return jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.bragi.MatchTimelineRequest} returns this
+ */
+proto.bragi.MatchTimelineRequest.prototype.clearTeamName = function() {
+  return jspb.Message.setField(this, 5, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.MatchTimelineRequest.prototype.hasTeamName = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 
@@ -3221,7 +3269,8 @@ proto.bragi.MatchTimelineFeedRequest.toObject = function(includeInstance, msg) {
 liveOnly: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
 sport: (f = jspb.Message.getField(msg, 2)) == null ? undefined : f,
 tournamentUrn: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f,
-matchUrn: (f = jspb.Message.getField(msg, 4)) == null ? undefined : f
+matchUrn: (f = jspb.Message.getField(msg, 4)) == null ? undefined : f,
+teamName: (f = jspb.Message.getField(msg, 5)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -3273,6 +3322,10 @@ proto.bragi.MatchTimelineFeedRequest.deserializeBinaryFromReader = function(msg,
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setMatchUrn(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTeamName(value);
       break;
     default:
       reader.skipField();
@@ -3328,6 +3381,13 @@ proto.bragi.MatchTimelineFeedRequest.serializeBinaryToWriter = function(message,
   if (f != null) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -3457,6 +3517,42 @@ proto.bragi.MatchTimelineFeedRequest.prototype.clearMatchUrn = function() {
  */
 proto.bragi.MatchTimelineFeedRequest.prototype.hasMatchUrn = function() {
   return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional string team_name = 5;
+ * @return {string}
+ */
+proto.bragi.MatchTimelineFeedRequest.prototype.getTeamName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.bragi.MatchTimelineFeedRequest} returns this
+ */
+proto.bragi.MatchTimelineFeedRequest.prototype.setTeamName = function(value) {
+  return jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.bragi.MatchTimelineFeedRequest} returns this
+ */
+proto.bragi.MatchTimelineFeedRequest.prototype.clearTeamName = function() {
+  return jspb.Message.setField(this, 5, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.MatchTimelineFeedRequest.prototype.hasTeamName = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 

@@ -199,6 +199,10 @@ func (m *MatchTimelineRequest) CloneVT() *MatchTimelineRequest {
 		tmpVal := *rhs
 		r.MatchUrn = &tmpVal
 	}
+	if rhs := m.TeamName; rhs != nil {
+		tmpVal := *rhs
+		r.TeamName = &tmpVal
+	}
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -367,6 +371,10 @@ func (m *MatchTimelineFeedRequest) CloneVT() *MatchTimelineFeedRequest {
 	if rhs := m.MatchUrn; rhs != nil {
 		tmpVal := *rhs
 		r.MatchUrn = &tmpVal
+	}
+	if rhs := m.TeamName; rhs != nil {
+		tmpVal := *rhs
+		r.TeamName = &tmpVal
 	}
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
@@ -1022,6 +1030,9 @@ func (this *MatchTimelineRequest) EqualVT(that *MatchTimelineRequest) bool {
 	if p, q := this.MatchUrn, that.MatchUrn; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
 		return false
 	}
+	if p, q := this.TeamName, that.TeamName; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
+		return false
+	}
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
@@ -1232,6 +1243,9 @@ func (this *MatchTimelineFeedRequest) EqualVT(that *MatchTimelineFeedRequest) bo
 		return false
 	}
 	if p, q := this.MatchUrn, that.MatchUrn; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
+		return false
+	}
+	if p, q := this.TeamName, that.TeamName; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
