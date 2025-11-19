@@ -84,6 +84,7 @@ message MatchTimelineRequest {
   optional Sport sport = 2;
   optional string tournament_urn = 3;
   optional string match_urn = 4;
+  optional string team_name = 5;
 }
 
 message MatchTimelineResponse {
@@ -120,6 +121,7 @@ message MatchTimelineFeedRequest {
   optional Sport sport = 2;
   optional string tournament_urn = 3;
   optional string match_urn = 4;
+  optional string team_name = 5;
 }
 
 message MatchTimelineFeedMessage {

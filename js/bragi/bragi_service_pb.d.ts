@@ -213,6 +213,11 @@ export class MatchTimelineRequest extends jspb.Message {
   getMatchUrn(): string;
   setMatchUrn(value: string): void;
 
+  hasTeamName(): boolean;
+  clearTeamName(): void;
+  getTeamName(): string;
+  setTeamName(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MatchTimelineRequest.AsObject;
   static toObject(includeInstance: boolean, msg: MatchTimelineRequest): MatchTimelineRequest.AsObject;
@@ -229,6 +234,7 @@ export namespace MatchTimelineRequest {
     sport: bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap],
     tournamentUrn: string,
     matchUrn: string,
+    teamName: string,
   }
 }
 
@@ -411,6 +417,11 @@ export class MatchTimelineFeedRequest extends jspb.Message {
   getMatchUrn(): string;
   setMatchUrn(value: string): void;
 
+  hasTeamName(): boolean;
+  clearTeamName(): void;
+  getTeamName(): string;
+  setTeamName(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MatchTimelineFeedRequest.AsObject;
   static toObject(includeInstance: boolean, msg: MatchTimelineFeedRequest): MatchTimelineFeedRequest.AsObject;
@@ -427,6 +438,7 @@ export namespace MatchTimelineFeedRequest {
     sport: bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap],
     tournamentUrn: string,
     matchUrn: string,
+    teamName: string,
   }
 }
 
