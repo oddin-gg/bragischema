@@ -72,6 +72,7 @@ message Tournament {
   string urn = 1;
   string name = 2;
   bool is_offline = 3;
+  google.protobuf.Timestamp start_date = 4;
 }
 
 message Team {
