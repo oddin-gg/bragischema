@@ -359,6 +359,15 @@ func (m *RushBasketballCurrentMapStatePartialUpdate_TeamCurrentMapPartialUpdate)
 	return r
 }
 
+func (m *RushBasketballCurrentMapStatePartialUpdate_BallPossession) CloneVT() isRushBasketballCurrentMapStatePartialUpdate_Update {
+	if m == nil {
+		return (*RushBasketballCurrentMapStatePartialUpdate_BallPossession)(nil)
+	}
+	r := new(RushBasketballCurrentMapStatePartialUpdate_BallPossession)
+	r.BallPossession = m.BallPossession
+	return r
+}
+
 func (m *RushBasketballCurrentMapState) CloneVT() *RushBasketballCurrentMapState {
 	if m == nil {
 		return (*RushBasketballCurrentMapState)(nil)
@@ -368,6 +377,7 @@ func (m *RushBasketballCurrentMapState) CloneVT() *RushBasketballCurrentMapState
 	r.GameTime = m.GameTime.CloneVT()
 	r.Score = m.Score.CloneVT()
 	r.MapPaused = m.MapPaused
+	r.BallPossession = m.BallPossession
 	if rhs := m.Teams; rhs != nil {
 		tmpContainer := make(map[string]*RushBasketballTeamCurrentMapState, len(rhs))
 		for k, v := range rhs {
@@ -1182,6 +1192,23 @@ func (this *RushBasketballCurrentMapStatePartialUpdate_TeamCurrentMapPartialUpda
 	return true
 }
 
+func (this *RushBasketballCurrentMapStatePartialUpdate_BallPossession) EqualVT(thatIface isRushBasketballCurrentMapStatePartialUpdate_Update) bool {
+	that, ok := thatIface.(*RushBasketballCurrentMapStatePartialUpdate_BallPossession)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if this.BallPossession != that.BallPossession {
+		return false
+	}
+	return true
+}
+
 func (this *RushBasketballCurrentMapState) EqualVT(that *RushBasketballCurrentMapState) bool {
 	if this == that {
 		return true
@@ -1219,6 +1246,9 @@ func (this *RushBasketballCurrentMapState) EqualVT(that *RushBasketballCurrentMa
 				return false
 			}
 		}
+	}
+	if this.BallPossession != that.BallPossession {
+		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
 }

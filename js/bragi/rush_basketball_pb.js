@@ -27,6 +27,7 @@ var google_protobuf_duration_pb = require('google-protobuf/google/protobuf/durat
 goog.object.extend(proto, google_protobuf_duration_pb);
 var bragi_common_pb = require('../bragi/common_pb.js');
 goog.object.extend(proto, bragi_common_pb);
+goog.exportSymbol('proto.bragi.RushBasketballBallPossession', null, global);
 goog.exportSymbol('proto.bragi.RushBasketballCurrentMapScoreState', null, global);
 goog.exportSymbol('proto.bragi.RushBasketballCurrentMapState', null, global);
 goog.exportSymbol('proto.bragi.RushBasketballCurrentMapStatePartialUpdate', null, global);
@@ -3020,7 +3021,7 @@ proto.bragi.RushBasketballTimelineEvent.prototype.setPeriod = function(value) {
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.bragi.RushBasketballCurrentMapStatePartialUpdate.oneofGroups_ = [[1,2,3,4]];
+proto.bragi.RushBasketballCurrentMapStatePartialUpdate.oneofGroups_ = [[1,2,3,4,5]];
 
 /**
  * @enum {number}
@@ -3030,7 +3031,8 @@ proto.bragi.RushBasketballCurrentMapStatePartialUpdate.UpdateCase = {
   GAME_TIME: 1,
   SCORE: 2,
   TEAM_CURRENT_MAP_STATE: 3,
-  TEAM_CURRENT_MAP_PARTIAL_UPDATE: 4
+  TEAM_CURRENT_MAP_PARTIAL_UPDATE: 4,
+  BALL_POSSESSION: 5
 };
 
 /**
@@ -3074,7 +3076,8 @@ proto.bragi.RushBasketballCurrentMapStatePartialUpdate.toObject = function(inclu
 gameTime: (f = msg.getGameTime()) && proto.bragi.RushBasketballCurrentMapTimeState.toObject(includeInstance, f),
 score: (f = msg.getScore()) && proto.bragi.RushBasketballCurrentMapScoreState.toObject(includeInstance, f),
 teamCurrentMapState: (f = msg.getTeamCurrentMapState()) && proto.bragi.RushBasketballTeamCurrentMapState.toObject(includeInstance, f),
-teamCurrentMapPartialUpdate: (f = msg.getTeamCurrentMapPartialUpdate()) && proto.bragi.RushBasketballTeamCurrentMapStatePartialUpdate.toObject(includeInstance, f)
+teamCurrentMapPartialUpdate: (f = msg.getTeamCurrentMapPartialUpdate()) && proto.bragi.RushBasketballTeamCurrentMapStatePartialUpdate.toObject(includeInstance, f),
+ballPossession: (f = jspb.Message.getField(msg, 5)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -3130,6 +3133,10 @@ proto.bragi.RushBasketballCurrentMapStatePartialUpdate.deserializeBinaryFromRead
       var value = new proto.bragi.RushBasketballTeamCurrentMapStatePartialUpdate;
       reader.readMessage(value,proto.bragi.RushBasketballTeamCurrentMapStatePartialUpdate.deserializeBinaryFromReader);
       msg.setTeamCurrentMapPartialUpdate(value);
+      break;
+    case 5:
+      var value = /** @type {!proto.bragi.RushBasketballBallPossession} */ (reader.readEnum());
+      msg.setBallPossession(value);
       break;
     default:
       reader.skipField();
@@ -3190,6 +3197,13 @@ proto.bragi.RushBasketballCurrentMapStatePartialUpdate.serializeBinaryToWriter =
       4,
       f,
       proto.bragi.RushBasketballTeamCurrentMapStatePartialUpdate.serializeBinaryToWriter
+    );
+  }
+  f = /** @type {!proto.bragi.RushBasketballBallPossession} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
+    writer.writeEnum(
+      5,
+      f
     );
   }
 };
@@ -3343,6 +3357,42 @@ proto.bragi.RushBasketballCurrentMapStatePartialUpdate.prototype.hasTeamCurrentM
 };
 
 
+/**
+ * optional RushBasketballBallPossession ball_possession = 5;
+ * @return {!proto.bragi.RushBasketballBallPossession}
+ */
+proto.bragi.RushBasketballCurrentMapStatePartialUpdate.prototype.getBallPossession = function() {
+  return /** @type {!proto.bragi.RushBasketballBallPossession} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {!proto.bragi.RushBasketballBallPossession} value
+ * @return {!proto.bragi.RushBasketballCurrentMapStatePartialUpdate} returns this
+ */
+proto.bragi.RushBasketballCurrentMapStatePartialUpdate.prototype.setBallPossession = function(value) {
+  return jspb.Message.setOneofField(this, 5, proto.bragi.RushBasketballCurrentMapStatePartialUpdate.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.bragi.RushBasketballCurrentMapStatePartialUpdate} returns this
+ */
+proto.bragi.RushBasketballCurrentMapStatePartialUpdate.prototype.clearBallPossession = function() {
+  return jspb.Message.setOneofField(this, 5, proto.bragi.RushBasketballCurrentMapStatePartialUpdate.oneofGroups_[0], undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.RushBasketballCurrentMapStatePartialUpdate.prototype.hasBallPossession = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
 
 
 
@@ -3379,7 +3429,8 @@ period: jspb.Message.getFieldWithDefault(msg, 1, 0),
 gameTime: (f = msg.getGameTime()) && proto.bragi.RushBasketballCurrentMapTimeState.toObject(includeInstance, f),
 score: (f = msg.getScore()) && proto.bragi.RushBasketballCurrentMapScoreState.toObject(includeInstance, f),
 mapPaused: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
-teamsMap: (f = msg.getTeamsMap()) ? f.toObject(includeInstance, proto.bragi.RushBasketballTeamCurrentMapState.toObject) : []
+teamsMap: (f = msg.getTeamsMap()) ? f.toObject(includeInstance, proto.bragi.RushBasketballTeamCurrentMapState.toObject) : [],
+ballPossession: jspb.Message.getFieldWithDefault(msg, 6, 0)
   };
 
   if (includeInstance) {
@@ -3439,6 +3490,10 @@ proto.bragi.RushBasketballCurrentMapState.deserializeBinaryFromReader = function
       reader.readMessage(value, function(message, reader) {
         jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readMessage, proto.bragi.RushBasketballTeamCurrentMapState.deserializeBinaryFromReader, "", new proto.bragi.RushBasketballTeamCurrentMapState());
          });
+      break;
+    case 6:
+      var value = /** @type {!proto.bragi.RushBasketballBallPossession} */ (reader.readEnum());
+      msg.setBallPossession(value);
       break;
     default:
       reader.skipField();
@@ -3502,6 +3557,13 @@ proto.bragi.RushBasketballCurrentMapState.serializeBinaryToWriter = function(mes
   f = message.getTeamsMap(true);
   if (f && f.getLength() > 0) {
     f.serializeBinary(5, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeMessage, proto.bragi.RushBasketballTeamCurrentMapState.serializeBinaryToWriter);
+  }
+  f = message.getBallPossession();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      6,
+      f
+    );
   }
 };
 
@@ -3636,6 +3698,24 @@ proto.bragi.RushBasketballCurrentMapState.prototype.getTeamsMap = function(opt_n
 proto.bragi.RushBasketballCurrentMapState.prototype.clearTeamsMap = function() {
   this.getTeamsMap().clear();
   return this;
+};
+
+
+/**
+ * optional RushBasketballBallPossession ball_possession = 6;
+ * @return {!proto.bragi.RushBasketballBallPossession}
+ */
+proto.bragi.RushBasketballCurrentMapState.prototype.getBallPossession = function() {
+  return /** @type {!proto.bragi.RushBasketballBallPossession} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/**
+ * @param {!proto.bragi.RushBasketballBallPossession} value
+ * @return {!proto.bragi.RushBasketballCurrentMapState} returns this
+ */
+proto.bragi.RushBasketballCurrentMapState.prototype.setBallPossession = function(value) {
+  return jspb.Message.setProto3EnumField(this, 6, value);
 };
 
 
@@ -5280,6 +5360,15 @@ proto.bragi.RushBasketballPeriodPoints.prototype.setPoints = function(value) {
   return jspb.Message.setProto3IntField(this, 2, value);
 };
 
+
+/**
+ * @enum {number}
+ */
+proto.bragi.RushBasketballBallPossession = {
+  RUSH_BASKETBALL_BALL_POSSESSION_UNSPECIFIED: 0,
+  RUSH_BASKETBALL_BALL_POSSESSION_LIGHT: 1,
+  RUSH_BASKETBALL_BALL_POSSESSION_DARK: 2
+};
 
 /**
  * @enum {number}
