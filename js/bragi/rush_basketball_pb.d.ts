@@ -383,6 +383,11 @@ export class RushBasketballCurrentMapStatePartialUpdate extends jspb.Message {
   getTeamCurrentMapPartialUpdate(): RushBasketballTeamCurrentMapStatePartialUpdate | undefined;
   setTeamCurrentMapPartialUpdate(value?: RushBasketballTeamCurrentMapStatePartialUpdate): void;
 
+  hasBallPossession(): boolean;
+  clearBallPossession(): void;
+  getBallPossession(): RushBasketballBallPossessionMap[keyof RushBasketballBallPossessionMap];
+  setBallPossession(value: RushBasketballBallPossessionMap[keyof RushBasketballBallPossessionMap]): void;
+
   getUpdateCase(): RushBasketballCurrentMapStatePartialUpdate.UpdateCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RushBasketballCurrentMapStatePartialUpdate.AsObject;
@@ -400,6 +405,7 @@ export namespace RushBasketballCurrentMapStatePartialUpdate {
     score?: RushBasketballCurrentMapScoreState.AsObject,
     teamCurrentMapState?: RushBasketballTeamCurrentMapState.AsObject,
     teamCurrentMapPartialUpdate?: RushBasketballTeamCurrentMapStatePartialUpdate.AsObject,
+    ballPossession: RushBasketballBallPossessionMap[keyof RushBasketballBallPossessionMap],
   }
 
   export enum UpdateCase {
@@ -408,6 +414,7 @@ export namespace RushBasketballCurrentMapStatePartialUpdate {
     SCORE = 2,
     TEAM_CURRENT_MAP_STATE = 3,
     TEAM_CURRENT_MAP_PARTIAL_UPDATE = 4,
+    BALL_POSSESSION = 5,
   }
 }
 
@@ -430,6 +437,9 @@ export class RushBasketballCurrentMapState extends jspb.Message {
 
   getTeamsMap(): jspb.Map<string, RushBasketballTeamCurrentMapState>;
   clearTeamsMap(): void;
+  getBallPossession(): RushBasketballBallPossessionMap[keyof RushBasketballBallPossessionMap];
+  setBallPossession(value: RushBasketballBallPossessionMap[keyof RushBasketballBallPossessionMap]): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RushBasketballCurrentMapState.AsObject;
   static toObject(includeInstance: boolean, msg: RushBasketballCurrentMapState): RushBasketballCurrentMapState.AsObject;
@@ -447,6 +457,7 @@ export namespace RushBasketballCurrentMapState {
     score?: RushBasketballCurrentMapScoreState.AsObject,
     mapPaused: boolean,
     teamsMap: Array<[string, RushBasketballTeamCurrentMapState.AsObject]>,
+    ballPossession: RushBasketballBallPossessionMap[keyof RushBasketballBallPossessionMap],
   }
 }
 
@@ -686,6 +697,14 @@ export namespace RushBasketballPeriodPoints {
     points: number,
   }
 }
+
+export interface RushBasketballBallPossessionMap {
+  RUSH_BASKETBALL_BALL_POSSESSION_UNSPECIFIED: 0;
+  RUSH_BASKETBALL_BALL_POSSESSION_LIGHT: 1;
+  RUSH_BASKETBALL_BALL_POSSESSION_DARK: 2;
+}
+
+export const RushBasketballBallPossession: RushBasketballBallPossessionMap;
 
 export interface RushBasketballEventTypeMap {
   RUSH_BASKETBALL_EVENT_TYPE_UNSPECIFIED: 0;

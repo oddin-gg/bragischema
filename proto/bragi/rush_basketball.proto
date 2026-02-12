@@ -132,6 +132,9 @@ message RushBasketballCurrentMapStatePartialUpdate {
 
     // Apply partial update on value under given key in teams map property in RushBasketballCurrentMapState.
     RushBasketballTeamCurrentMapStatePartialUpdate team_current_map_partial_update = 4;
+
+    // Apply partial update on "ball_possession" property in RushBasketballCurrentMapState.
+    RushBasketballBallPossession ball_possession = 5;
   }
 }
 
@@ -146,6 +149,8 @@ message RushBasketballCurrentMapState {
   bool map_paused = 4;
   // Teams.
   map<string, RushBasketballTeamCurrentMapState> teams = 5;
+  // Ball possession.
+  RushBasketballBallPossession ball_possession = 6;
 }
 
 message RushBasketballCurrentMapTimeState {
@@ -158,6 +163,12 @@ message RushBasketballCurrentMapScoreState {
   uint32 home_score = 1;
   // Number of points of away team.
   uint32 away_score = 2;
+}
+
+enum RushBasketballBallPossession {
+  RUSH_BASKETBALL_BALL_POSSESSION_UNSPECIFIED = 0;
+  RUSH_BASKETBALL_BALL_POSSESSION_LIGHT = 1;
+  RUSH_BASKETBALL_BALL_POSSESSION_DARK = 2;
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
