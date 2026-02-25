@@ -11482,6 +11482,7 @@ proto.bragi.CS2PlayerMapState.toObject = function(includeInstance, msg) {
 playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
 playerName: jspb.Message.getFieldWithDefault(msg, 2, ""),
 slotId: jspb.Message.getFieldWithDefault(msg, 4, 0),
+extId: jspb.Message.getFieldWithDefault(msg, 5, ""),
 statistics: (f = msg.getStatistics()) && proto.bragi.CS2PlayerMapStatisticsState.toObject(includeInstance, f)
   };
 
@@ -11530,6 +11531,10 @@ proto.bragi.CS2PlayerMapState.deserializeBinaryFromReader = function(msg, reader
     case 4:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setSlotId(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setExtId(value);
       break;
     case 3:
       var value = new proto.bragi.CS2PlayerMapStatisticsState;
@@ -11583,6 +11588,13 @@ proto.bragi.CS2PlayerMapState.serializeBinaryToWriter = function(message, writer
   if (f !== 0) {
     writer.writeUint32(
       4,
+      f
+    );
+  }
+  f = message.getExtId();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -11648,6 +11660,24 @@ proto.bragi.CS2PlayerMapState.prototype.getSlotId = function() {
  */
 proto.bragi.CS2PlayerMapState.prototype.setSlotId = function(value) {
   return jspb.Message.setProto3IntField(this, 4, value);
+};
+
+
+/**
+ * optional string ext_id = 5;
+ * @return {string}
+ */
+proto.bragi.CS2PlayerMapState.prototype.getExtId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.bragi.CS2PlayerMapState} returns this
+ */
+proto.bragi.CS2PlayerMapState.prototype.setExtId = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -12485,6 +12515,7 @@ proto.bragi.CS2PlayerCurrentRoundState.toObject = function(includeInstance, msg)
 playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
 playerName: jspb.Message.getFieldWithDefault(msg, 2, ""),
 slotId: jspb.Message.getFieldWithDefault(msg, 6, 0),
+extId: jspb.Message.getFieldWithDefault(msg, 7, ""),
 statistics: (f = msg.getStatistics()) && proto.bragi.CS2PlayerCurrentRoundStatisticsState.toObject(includeInstance, f),
 items: (f = msg.getItems()) && proto.bragi.CS2PlayerItemsState.toObject(includeInstance, f),
 position: (f = msg.getPosition()) && proto.bragi.CS2PlayerPositionState.toObject(includeInstance, f)
@@ -12535,6 +12566,10 @@ proto.bragi.CS2PlayerCurrentRoundState.deserializeBinaryFromReader = function(ms
     case 6:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setSlotId(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setExtId(value);
       break;
     case 3:
       var value = new proto.bragi.CS2PlayerCurrentRoundStatisticsState;
@@ -12598,6 +12633,13 @@ proto.bragi.CS2PlayerCurrentRoundState.serializeBinaryToWriter = function(messag
   if (f !== 0) {
     writer.writeUint32(
       6,
+      f
+    );
+  }
+  f = message.getExtId();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
       f
     );
   }
@@ -12679,6 +12721,24 @@ proto.bragi.CS2PlayerCurrentRoundState.prototype.getSlotId = function() {
  */
 proto.bragi.CS2PlayerCurrentRoundState.prototype.setSlotId = function(value) {
   return jspb.Message.setProto3IntField(this, 6, value);
+};
+
+
+/**
+ * optional string ext_id = 7;
+ * @return {string}
+ */
+proto.bragi.CS2PlayerCurrentRoundState.prototype.getExtId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.bragi.CS2PlayerCurrentRoundState} returns this
+ */
+proto.bragi.CS2PlayerCurrentRoundState.prototype.setExtId = function(value) {
+  return jspb.Message.setProto3StringField(this, 7, value);
 };
 
 
@@ -13396,7 +13456,8 @@ proto.bragi.CS2PlayerPreviousRoundState.toObject = function(includeInstance, msg
   var f, obj = {
 playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
 playerName: jspb.Message.getFieldWithDefault(msg, 2, ""),
-statistics: (f = msg.getStatistics()) && proto.bragi.CS2PlayerStatistics.toObject(includeInstance, f)
+statistics: (f = msg.getStatistics()) && proto.bragi.CS2PlayerStatistics.toObject(includeInstance, f),
+extId: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -13445,6 +13506,10 @@ proto.bragi.CS2PlayerPreviousRoundState.deserializeBinaryFromReader = function(m
       var value = new proto.bragi.CS2PlayerStatistics;
       reader.readMessage(value,proto.bragi.CS2PlayerStatistics.deserializeBinaryFromReader);
       msg.setStatistics(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setExtId(value);
       break;
     default:
       reader.skipField();
@@ -13495,6 +13560,13 @@ proto.bragi.CS2PlayerPreviousRoundState.serializeBinaryToWriter = function(messa
       3,
       f,
       proto.bragi.CS2PlayerStatistics.serializeBinaryToWriter
+    );
+  }
+  f = message.getExtId();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
     );
   }
 };
@@ -13570,6 +13642,24 @@ proto.bragi.CS2PlayerPreviousRoundState.prototype.clearStatistics = function() {
  */
 proto.bragi.CS2PlayerPreviousRoundState.prototype.hasStatistics = function() {
   return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional string ext_id = 4;
+ * @return {string}
+ */
+proto.bragi.CS2PlayerPreviousRoundState.prototype.getExtId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.bragi.CS2PlayerPreviousRoundState} returns this
+ */
+proto.bragi.CS2PlayerPreviousRoundState.prototype.setExtId = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 

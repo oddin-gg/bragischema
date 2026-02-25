@@ -747,6 +747,7 @@ func (m *LolPlayerInfoState) CloneVT() *LolPlayerInfoState {
 	r.PlayerUrn = m.PlayerUrn
 	r.SlotId = m.SlotId
 	r.ExtName = m.ExtName
+	r.ExtId = m.ExtId
 	if rhs := m.ChampionId; rhs != nil {
 		tmpVal := *rhs
 		r.ChampionId = &tmpVal
@@ -2199,6 +2200,9 @@ func (this *LolPlayerInfoState) EqualVT(that *LolPlayerInfoState) bool {
 		return false
 	}
 	if p, q := this.ChampionId, that.ChampionId; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
+		return false
+	}
+	if this.ExtId != that.ExtId {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)

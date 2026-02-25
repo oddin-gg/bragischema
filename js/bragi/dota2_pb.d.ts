@@ -1309,6 +1309,9 @@ export class Dota2PlayerInfoState extends jspb.Message {
   getExtName(): string;
   setExtName(value: string): void;
 
+  getExtId(): string;
+  setExtId(value: string): void;
+
   hasHeroId(): boolean;
   clearHeroId(): void;
   getHeroId(): number;
@@ -1329,6 +1332,7 @@ export namespace Dota2PlayerInfoState {
     playerUrn: string,
     slotId: number,
     extName: string,
+    extId: string,
     heroId: number,
   }
 }

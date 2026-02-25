@@ -363,6 +363,7 @@ message Dota2PlayerInfoState{
   string player_urn = 1;
   uint32 slot_id = 2;
   string ext_name = 3;
+  string ext_id = 5;
   optional uint32 hero_id = 4;
 }
 

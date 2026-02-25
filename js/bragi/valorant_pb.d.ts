@@ -1182,6 +1182,9 @@ export class ValorantPlayerInfoState extends jspb.Message {
   getExtName(): string;
   setExtName(value: string): void;
 
+  getExtId(): string;
+  setExtId(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ValorantPlayerInfoState.AsObject;
   static toObject(includeInstance: boolean, msg: ValorantPlayerInfoState): ValorantPlayerInfoState.AsObject;
@@ -1197,6 +1200,7 @@ export namespace ValorantPlayerInfoState {
     playerUrn: string,
     slotId: number,
     extName: string,
+    extId: string,
   }
 }
 

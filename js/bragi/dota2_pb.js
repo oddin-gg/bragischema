@@ -10115,6 +10115,7 @@ proto.bragi.Dota2PlayerInfoState.toObject = function(includeInstance, msg) {
 playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
 slotId: jspb.Message.getFieldWithDefault(msg, 2, 0),
 extName: jspb.Message.getFieldWithDefault(msg, 3, ""),
+extId: jspb.Message.getFieldWithDefault(msg, 5, ""),
 heroId: (f = jspb.Message.getField(msg, 4)) == null ? undefined : f
   };
 
@@ -10163,6 +10164,10 @@ proto.bragi.Dota2PlayerInfoState.deserializeBinaryFromReader = function(msg, rea
     case 3:
       var value = /** @type {string} */ (reader.readString());
       msg.setExtName(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setExtId(value);
       break;
     case 4:
       var value = /** @type {number} */ (reader.readUint32());
@@ -10215,6 +10220,13 @@ proto.bragi.Dota2PlayerInfoState.serializeBinaryToWriter = function(message, wri
   if (f.length > 0) {
     writer.writeString(
       3,
+      f
+    );
+  }
+  f = message.getExtId();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -10279,6 +10291,24 @@ proto.bragi.Dota2PlayerInfoState.prototype.getExtName = function() {
  */
 proto.bragi.Dota2PlayerInfoState.prototype.setExtName = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string ext_id = 5;
+ * @return {string}
+ */
+proto.bragi.Dota2PlayerInfoState.prototype.getExtId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.bragi.Dota2PlayerInfoState} returns this
+ */
+proto.bragi.Dota2PlayerInfoState.prototype.setExtId = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 

@@ -1374,6 +1374,9 @@ export class CS2PlayerMapState extends jspb.Message {
   getSlotId(): number;
   setSlotId(value: number): void;
 
+  getExtId(): string;
+  setExtId(value: string): void;
+
   hasStatistics(): boolean;
   clearStatistics(): void;
   getStatistics(): CS2PlayerMapStatisticsState | undefined;
@@ -1394,6 +1397,7 @@ export namespace CS2PlayerMapState {
     playerUrn: string,
     playerName: string,
     slotId: number,
+    extId: string,
     statistics?: CS2PlayerMapStatisticsState.AsObject,
   }
 }
@@ -1518,6 +1522,9 @@ export class CS2PlayerCurrentRoundState extends jspb.Message {
   getSlotId(): number;
   setSlotId(value: number): void;
 
+  getExtId(): string;
+  setExtId(value: string): void;
+
   hasStatistics(): boolean;
   clearStatistics(): void;
   getStatistics(): CS2PlayerCurrentRoundStatisticsState | undefined;
@@ -1548,6 +1555,7 @@ export namespace CS2PlayerCurrentRoundState {
     playerUrn: string,
     playerName: string,
     slotId: number,
+    extId: string,
     statistics?: CS2PlayerCurrentRoundStatisticsState.AsObject,
     items?: CS2PlayerItemsState.AsObject,
     position?: CS2PlayerPositionState.AsObject,
@@ -1644,6 +1652,9 @@ export class CS2PlayerPreviousRoundState extends jspb.Message {
   getStatistics(): CS2PlayerStatistics | undefined;
   setStatistics(value?: CS2PlayerStatistics): void;
 
+  getExtId(): string;
+  setExtId(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CS2PlayerPreviousRoundState.AsObject;
   static toObject(includeInstance: boolean, msg: CS2PlayerPreviousRoundState): CS2PlayerPreviousRoundState.AsObject;
@@ -1659,6 +1670,7 @@ export namespace CS2PlayerPreviousRoundState {
     playerUrn: string,
     playerName: string,
     statistics?: CS2PlayerStatistics.AsObject,
+    extId: string,
   }
 }
 
