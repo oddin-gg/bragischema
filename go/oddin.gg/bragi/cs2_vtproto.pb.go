@@ -1131,6 +1131,7 @@ func (m *CS2PlayerMapState) CloneVT() *CS2PlayerMapState {
 	r.PlayerUrn = m.PlayerUrn
 	r.PlayerName = m.PlayerName
 	r.SlotId = m.SlotId
+	r.ExtId = m.ExtId
 	r.Statistics = m.Statistics.CloneVT()
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
@@ -1239,6 +1240,7 @@ func (m *CS2PlayerCurrentRoundState) CloneVT() *CS2PlayerCurrentRoundState {
 	r.PlayerUrn = m.PlayerUrn
 	r.PlayerName = m.PlayerName
 	r.SlotId = m.SlotId
+	r.ExtId = m.ExtId
 	r.Statistics = m.Statistics.CloneVT()
 	r.Items = m.Items.CloneVT()
 	r.Position = m.Position.CloneVT()
@@ -1312,6 +1314,7 @@ func (m *CS2PlayerPreviousRoundState) CloneVT() *CS2PlayerPreviousRoundState {
 	r.PlayerUrn = m.PlayerUrn
 	r.PlayerName = m.PlayerName
 	r.Statistics = m.Statistics.CloneVT()
+	r.ExtId = m.ExtId
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -4166,6 +4169,9 @@ func (this *CS2PlayerMapState) EqualVT(that *CS2PlayerMapState) bool {
 	if this.SlotId != that.SlotId {
 		return false
 	}
+	if this.ExtId != that.ExtId {
+		return false
+	}
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
@@ -4359,6 +4365,9 @@ func (this *CS2PlayerCurrentRoundState) EqualVT(that *CS2PlayerCurrentRoundState
 	if this.SlotId != that.SlotId {
 		return false
 	}
+	if this.ExtId != that.ExtId {
+		return false
+	}
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
@@ -4458,6 +4467,9 @@ func (this *CS2PlayerPreviousRoundState) EqualVT(that *CS2PlayerPreviousRoundSta
 		return false
 	}
 	if !this.Statistics.EqualVT(that.Statistics) {
+		return false
+	}
+	if this.ExtId != that.ExtId {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)

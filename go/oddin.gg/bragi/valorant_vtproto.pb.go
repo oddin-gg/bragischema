@@ -1012,6 +1012,7 @@ func (m *ValorantPlayerInfoState) CloneVT() *ValorantPlayerInfoState {
 	r.PlayerUrn = m.PlayerUrn
 	r.SlotId = m.SlotId
 	r.ExtName = m.ExtName
+	r.ExtId = m.ExtId
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -2856,6 +2857,9 @@ func (this *ValorantPlayerInfoState) EqualVT(that *ValorantPlayerInfoState) bool
 		return false
 	}
 	if this.ExtName != that.ExtName {
+		return false
+	}
+	if this.ExtId != that.ExtId {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)

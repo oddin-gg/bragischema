@@ -934,6 +934,9 @@ export class LolPlayerInfoState extends jspb.Message {
   getExtName(): string;
   setExtName(value: string): void;
 
+  getExtId(): string;
+  setExtId(value: string): void;
+
   hasChampionId(): boolean;
   clearChampionId(): void;
   getChampionId(): number;
@@ -954,6 +957,7 @@ export namespace LolPlayerInfoState {
     playerUrn: string,
     slotId: number,
     extName: string,
+    extId: string,
     championId: number,
   }
 }

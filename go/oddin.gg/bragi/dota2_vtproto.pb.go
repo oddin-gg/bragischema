@@ -974,6 +974,7 @@ func (m *Dota2PlayerInfoState) CloneVT() *Dota2PlayerInfoState {
 	r.PlayerUrn = m.PlayerUrn
 	r.SlotId = m.SlotId
 	r.ExtName = m.ExtName
+	r.ExtId = m.ExtId
 	if rhs := m.HeroId; rhs != nil {
 		tmpVal := *rhs
 		r.HeroId = &tmpVal
@@ -2965,6 +2966,9 @@ func (this *Dota2PlayerInfoState) EqualVT(that *Dota2PlayerInfoState) bool {
 		return false
 	}
 	if p, q := this.HeroId, that.HeroId; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
+		return false
+	}
+	if this.ExtId != that.ExtId {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)

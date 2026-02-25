@@ -306,6 +306,7 @@ message ValorantPlayerInfoState{
   string player_urn = 1;
   uint32 slot_id = 2;
   string ext_name = 3;
+  string ext_id = 4;
 }
 
 message ValorantPositionState {

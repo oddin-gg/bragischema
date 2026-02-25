@@ -7314,6 +7314,7 @@ proto.bragi.LolPlayerInfoState.toObject = function(includeInstance, msg) {
 playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
 slotId: jspb.Message.getFieldWithDefault(msg, 2, 0),
 extName: jspb.Message.getFieldWithDefault(msg, 3, ""),
+extId: jspb.Message.getFieldWithDefault(msg, 5, ""),
 championId: (f = jspb.Message.getField(msg, 4)) == null ? undefined : f
   };
 
@@ -7362,6 +7363,10 @@ proto.bragi.LolPlayerInfoState.deserializeBinaryFromReader = function(msg, reade
     case 3:
       var value = /** @type {string} */ (reader.readString());
       msg.setExtName(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setExtId(value);
       break;
     case 4:
       var value = /** @type {number} */ (reader.readUint32());
@@ -7414,6 +7419,13 @@ proto.bragi.LolPlayerInfoState.serializeBinaryToWriter = function(message, write
   if (f.length > 0) {
     writer.writeString(
       3,
+      f
+    );
+  }
+  f = message.getExtId();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -7478,6 +7490,24 @@ proto.bragi.LolPlayerInfoState.prototype.getExtName = function() {
  */
 proto.bragi.LolPlayerInfoState.prototype.setExtName = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string ext_id = 5;
+ * @return {string}
+ */
+proto.bragi.LolPlayerInfoState.prototype.getExtId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.bragi.LolPlayerInfoState} returns this
+ */
+proto.bragi.LolPlayerInfoState.prototype.setExtId = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 

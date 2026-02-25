@@ -240,6 +240,7 @@ message LolPlayerInfoState{
   string player_urn = 1;
   uint32 slot_id = 2;
   string ext_name = 3;
+  string ext_id = 5;
   optional uint32 champion_id = 4;
 }
 

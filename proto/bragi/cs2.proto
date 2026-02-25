@@ -347,6 +347,7 @@ message CS2PlayerMapState {
   string player_urn = 1;
   string player_name = 2;
   uint32 slot_id = 4;
+  string ext_id = 5;
   CS2PlayerMapStatisticsState statistics = 3;
 }
 
@@ -383,6 +384,7 @@ message CS2PlayerCurrentRoundState {
   string player_urn = 1;
   string player_name = 2;
   uint32 slot_id = 6;
+  string ext_id = 7;
   CS2PlayerCurrentRoundStatisticsState statistics = 3;
   CS2PlayerItemsState items = 4;
   CS2PlayerPositionState position = 5;
@@ -408,6 +410,7 @@ message CS2PlayerPreviousRoundState {
   string player_urn = 1;
   string player_name = 2;
   CS2PlayerStatistics statistics = 3;
+  string ext_id = 4;
 }
 
 message CS2PlayerPositionState {

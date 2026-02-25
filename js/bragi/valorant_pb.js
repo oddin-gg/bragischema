@@ -9160,7 +9160,8 @@ proto.bragi.ValorantPlayerInfoState.toObject = function(includeInstance, msg) {
   var f, obj = {
 playerUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
 slotId: jspb.Message.getFieldWithDefault(msg, 2, 0),
-extName: jspb.Message.getFieldWithDefault(msg, 3, "")
+extName: jspb.Message.getFieldWithDefault(msg, 3, ""),
+extId: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -9209,6 +9210,10 @@ proto.bragi.ValorantPlayerInfoState.deserializeBinaryFromReader = function(msg, 
       var value = /** @type {string} */ (reader.readString());
       msg.setExtName(value);
       break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setExtId(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -9256,6 +9261,13 @@ proto.bragi.ValorantPlayerInfoState.serializeBinaryToWriter = function(message, 
   if (f.length > 0) {
     writer.writeString(
       3,
+      f
+    );
+  }
+  f = message.getExtId();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
       f
     );
   }
@@ -9313,6 +9325,24 @@ proto.bragi.ValorantPlayerInfoState.prototype.getExtName = function() {
  */
 proto.bragi.ValorantPlayerInfoState.prototype.setExtName = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string ext_id = 4;
+ * @return {string}
+ */
+proto.bragi.ValorantPlayerInfoState.prototype.getExtId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.bragi.ValorantPlayerInfoState} returns this
+ */
+proto.bragi.ValorantPlayerInfoState.prototype.setExtId = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
