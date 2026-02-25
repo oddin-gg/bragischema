@@ -258,6 +258,90 @@ func (m *Player) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
+func (m *TeamProfile) CloneVT() *TeamProfile {
+	if m == nil {
+		return (*TeamProfile)(nil)
+	}
+	r := new(TeamProfile)
+	r.Urn = m.Urn
+	r.Name = m.Name
+	if rhs := m.IconPath; rhs != nil {
+		tmpVal := *rhs
+		r.IconPath = &tmpVal
+	}
+	if rhs := m.ExternalIdentity; rhs != nil {
+		tmpContainer := make(map[string]string, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v
+		}
+		r.ExternalIdentity = tmpContainer
+	}
+	if rhs := m.Players; rhs != nil {
+		tmpContainer := make([]*PlayerProfile, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Players = tmpContainer
+	}
+	if rhs := m.CurrentMapRoster; rhs != nil {
+		tmpContainer := make([]*PlayerProfile, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.CurrentMapRoster = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *TeamProfile) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *PlayerProfile) CloneVT() *PlayerProfile {
+	if m == nil {
+		return (*PlayerProfile)(nil)
+	}
+	r := new(PlayerProfile)
+	r.Urn = m.Urn
+	r.Nickname = m.Nickname
+	if rhs := m.RealName; rhs != nil {
+		tmpVal := *rhs
+		r.RealName = &tmpVal
+	}
+	if rhs := m.Shortcut; rhs != nil {
+		tmpVal := *rhs
+		r.Shortcut = &tmpVal
+	}
+	if rhs := m.IconPath; rhs != nil {
+		tmpVal := *rhs
+		r.IconPath = &tmpVal
+	}
+	if rhs := m.Age; rhs != nil {
+		tmpVal := *rhs
+		r.Age = &tmpVal
+	}
+	if rhs := m.ExternalIdentity; rhs != nil {
+		tmpContainer := make(map[string]string, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v
+		}
+		r.ExternalIdentity = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *PlayerProfile) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
 func (this *AnnouncementUpdate) EqualVT(that *AnnouncementUpdate) bool {
 	if this == that {
 		return true
@@ -616,6 +700,123 @@ func (this *Player) EqualVT(that *Player) bool {
 
 func (this *Player) EqualMessageVT(thatMsg proto.Message) bool {
 	that, ok := thatMsg.(*Player)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *TeamProfile) EqualVT(that *TeamProfile) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.Urn != that.Urn {
+		return false
+	}
+	if this.Name != that.Name {
+		return false
+	}
+	if p, q := this.IconPath, that.IconPath; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
+		return false
+	}
+	if len(this.ExternalIdentity) != len(that.ExternalIdentity) {
+		return false
+	}
+	for i, vx := range this.ExternalIdentity {
+		vy, ok := that.ExternalIdentity[i]
+		if !ok {
+			return false
+		}
+		if vx != vy {
+			return false
+		}
+	}
+	if len(this.Players) != len(that.Players) {
+		return false
+	}
+	for i, vx := range this.Players {
+		vy := that.Players[i]
+		if p, q := vx, vy; p != q {
+			if p == nil {
+				p = &PlayerProfile{}
+			}
+			if q == nil {
+				q = &PlayerProfile{}
+			}
+			if !p.EqualVT(q) {
+				return false
+			}
+		}
+	}
+	if len(this.CurrentMapRoster) != len(that.CurrentMapRoster) {
+		return false
+	}
+	for i, vx := range this.CurrentMapRoster {
+		vy := that.CurrentMapRoster[i]
+		if p, q := vx, vy; p != q {
+			if p == nil {
+				p = &PlayerProfile{}
+			}
+			if q == nil {
+				q = &PlayerProfile{}
+			}
+			if !p.EqualVT(q) {
+				return false
+			}
+		}
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *TeamProfile) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*TeamProfile)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *PlayerProfile) EqualVT(that *PlayerProfile) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.Urn != that.Urn {
+		return false
+	}
+	if this.Nickname != that.Nickname {
+		return false
+	}
+	if p, q := this.RealName, that.RealName; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
+		return false
+	}
+	if p, q := this.Shortcut, that.Shortcut; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
+		return false
+	}
+	if p, q := this.IconPath, that.IconPath; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
+		return false
+	}
+	if p, q := this.Age, that.Age; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
+		return false
+	}
+	if len(this.ExternalIdentity) != len(that.ExternalIdentity) {
+		return false
+	}
+	for i, vx := range this.ExternalIdentity {
+		vy, ok := that.ExternalIdentity[i]
+		if !ok {
+			return false
+		}
+		if vx != vy {
+			return false
+		}
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *PlayerProfile) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*PlayerProfile)
 	if !ok {
 		return false
 	}

@@ -18,6 +18,40 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+func (m *TeamProfileRequest) CloneVT() *TeamProfileRequest {
+	if m == nil {
+		return (*TeamProfileRequest)(nil)
+	}
+	r := new(TeamProfileRequest)
+	r.TeamUrn = m.TeamUrn
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *TeamProfileRequest) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *TeamProfileResponse) CloneVT() *TeamProfileResponse {
+	if m == nil {
+		return (*TeamProfileResponse)(nil)
+	}
+	r := new(TeamProfileResponse)
+	r.Team = m.Team.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *TeamProfileResponse) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
 func (m *MatchEventsFeedRequest) CloneVT() *MatchEventsFeedRequest {
 	if m == nil {
 		return (*MatchEventsFeedRequest)(nil)
@@ -792,6 +826,44 @@ func (m *MatchState_RushCricket) CloneVT() isMatchState_State {
 	return r
 }
 
+func (this *TeamProfileRequest) EqualVT(that *TeamProfileRequest) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.TeamUrn != that.TeamUrn {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *TeamProfileRequest) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*TeamProfileRequest)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *TeamProfileResponse) EqualVT(that *TeamProfileResponse) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if !this.Team.EqualVT(that.Team) {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *TeamProfileResponse) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*TeamProfileResponse)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
 func (this *MatchEventsFeedRequest) EqualVT(that *MatchEventsFeedRequest) bool {
 	if this == that {
 		return true

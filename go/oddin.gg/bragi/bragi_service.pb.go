@@ -21,6 +21,94 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type TeamProfileRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TeamUrn       string                 `protobuf:"bytes,1,opt,name=team_urn,json=teamUrn,proto3" json:"team_urn,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TeamProfileRequest) Reset() {
+	*x = TeamProfileRequest{}
+	mi := &file_bragi_bragi_service_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TeamProfileRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TeamProfileRequest) ProtoMessage() {}
+
+func (x *TeamProfileRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_bragi_service_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TeamProfileRequest.ProtoReflect.Descriptor instead.
+func (*TeamProfileRequest) Descriptor() ([]byte, []int) {
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *TeamProfileRequest) GetTeamUrn() string {
+	if x != nil {
+		return x.TeamUrn
+	}
+	return ""
+}
+
+type TeamProfileResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Team          *TeamProfile           `protobuf:"bytes,1,opt,name=team,proto3" json:"team,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TeamProfileResponse) Reset() {
+	*x = TeamProfileResponse{}
+	mi := &file_bragi_bragi_service_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TeamProfileResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TeamProfileResponse) ProtoMessage() {}
+
+func (x *TeamProfileResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_bragi_service_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TeamProfileResponse.ProtoReflect.Descriptor instead.
+func (*TeamProfileResponse) Descriptor() ([]byte, []int) {
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *TeamProfileResponse) GetTeam() *TeamProfile {
+	if x != nil {
+		return x.Team
+	}
+	return nil
+}
+
 type MatchEventsFeedRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -29,7 +117,7 @@ type MatchEventsFeedRequest struct {
 
 func (x *MatchEventsFeedRequest) Reset() {
 	*x = MatchEventsFeedRequest{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[0]
+	mi := &file_bragi_bragi_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -41,7 +129,7 @@ func (x *MatchEventsFeedRequest) String() string {
 func (*MatchEventsFeedRequest) ProtoMessage() {}
 
 func (x *MatchEventsFeedRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[0]
+	mi := &file_bragi_bragi_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -54,7 +142,7 @@ func (x *MatchEventsFeedRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MatchEventsFeedRequest.ProtoReflect.Descriptor instead.
 func (*MatchEventsFeedRequest) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{0}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{2}
 }
 
 type MatchEventsFeedMessage struct {
@@ -69,7 +157,7 @@ type MatchEventsFeedMessage struct {
 
 func (x *MatchEventsFeedMessage) Reset() {
 	*x = MatchEventsFeedMessage{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[1]
+	mi := &file_bragi_bragi_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -81,7 +169,7 @@ func (x *MatchEventsFeedMessage) String() string {
 func (*MatchEventsFeedMessage) ProtoMessage() {}
 
 func (x *MatchEventsFeedMessage) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[1]
+	mi := &file_bragi_bragi_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -94,7 +182,7 @@ func (x *MatchEventsFeedMessage) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MatchEventsFeedMessage.ProtoReflect.Descriptor instead.
 func (*MatchEventsFeedMessage) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{1}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *MatchEventsFeedMessage) GetPayload() isMatchEventsFeedMessage_Payload {
@@ -132,7 +220,7 @@ type MatchTimelineSportsRequest struct {
 
 func (x *MatchTimelineSportsRequest) Reset() {
 	*x = MatchTimelineSportsRequest{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[2]
+	mi := &file_bragi_bragi_service_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -144,7 +232,7 @@ func (x *MatchTimelineSportsRequest) String() string {
 func (*MatchTimelineSportsRequest) ProtoMessage() {}
 
 func (x *MatchTimelineSportsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[2]
+	mi := &file_bragi_bragi_service_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -157,7 +245,7 @@ func (x *MatchTimelineSportsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MatchTimelineSportsRequest.ProtoReflect.Descriptor instead.
 func (*MatchTimelineSportsRequest) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{2}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *MatchTimelineSportsRequest) GetLiveOnly() bool {
@@ -176,7 +264,7 @@ type MatchTimelineSportsResponse struct {
 
 func (x *MatchTimelineSportsResponse) Reset() {
 	*x = MatchTimelineSportsResponse{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[3]
+	mi := &file_bragi_bragi_service_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -188,7 +276,7 @@ func (x *MatchTimelineSportsResponse) String() string {
 func (*MatchTimelineSportsResponse) ProtoMessage() {}
 
 func (x *MatchTimelineSportsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[3]
+	mi := &file_bragi_bragi_service_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -201,7 +289,7 @@ func (x *MatchTimelineSportsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MatchTimelineSportsResponse.ProtoReflect.Descriptor instead.
 func (*MatchTimelineSportsResponse) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{3}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *MatchTimelineSportsResponse) GetSports() []*MatchTimelineSportsResponse_SportMatchCount {
@@ -221,7 +309,7 @@ type MatchTimelineTournamentsRequest struct {
 
 func (x *MatchTimelineTournamentsRequest) Reset() {
 	*x = MatchTimelineTournamentsRequest{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[4]
+	mi := &file_bragi_bragi_service_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -233,7 +321,7 @@ func (x *MatchTimelineTournamentsRequest) String() string {
 func (*MatchTimelineTournamentsRequest) ProtoMessage() {}
 
 func (x *MatchTimelineTournamentsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[4]
+	mi := &file_bragi_bragi_service_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -246,7 +334,7 @@ func (x *MatchTimelineTournamentsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MatchTimelineTournamentsRequest.ProtoReflect.Descriptor instead.
 func (*MatchTimelineTournamentsRequest) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{4}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *MatchTimelineTournamentsRequest) GetLiveOnly() bool {
@@ -272,7 +360,7 @@ type MatchTimelineTournamentsResponse struct {
 
 func (x *MatchTimelineTournamentsResponse) Reset() {
 	*x = MatchTimelineTournamentsResponse{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[5]
+	mi := &file_bragi_bragi_service_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -284,7 +372,7 @@ func (x *MatchTimelineTournamentsResponse) String() string {
 func (*MatchTimelineTournamentsResponse) ProtoMessage() {}
 
 func (x *MatchTimelineTournamentsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[5]
+	mi := &file_bragi_bragi_service_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -297,7 +385,7 @@ func (x *MatchTimelineTournamentsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MatchTimelineTournamentsResponse.ProtoReflect.Descriptor instead.
 func (*MatchTimelineTournamentsResponse) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{5}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *MatchTimelineTournamentsResponse) GetTournaments() []*MatchTimelineTournamentsResponse_TournamentMatchCount {
@@ -320,7 +408,7 @@ type MatchTimelineRequest struct {
 
 func (x *MatchTimelineRequest) Reset() {
 	*x = MatchTimelineRequest{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[6]
+	mi := &file_bragi_bragi_service_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -332,7 +420,7 @@ func (x *MatchTimelineRequest) String() string {
 func (*MatchTimelineRequest) ProtoMessage() {}
 
 func (x *MatchTimelineRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[6]
+	mi := &file_bragi_bragi_service_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -345,7 +433,7 @@ func (x *MatchTimelineRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MatchTimelineRequest.ProtoReflect.Descriptor instead.
 func (*MatchTimelineRequest) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{6}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *MatchTimelineRequest) GetLiveOnly() bool {
@@ -392,7 +480,7 @@ type MatchTimelineResponse struct {
 
 func (x *MatchTimelineResponse) Reset() {
 	*x = MatchTimelineResponse{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[7]
+	mi := &file_bragi_bragi_service_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -404,7 +492,7 @@ func (x *MatchTimelineResponse) String() string {
 func (*MatchTimelineResponse) ProtoMessage() {}
 
 func (x *MatchTimelineResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[7]
+	mi := &file_bragi_bragi_service_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -417,7 +505,7 @@ func (x *MatchTimelineResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MatchTimelineResponse.ProtoReflect.Descriptor instead.
 func (*MatchTimelineResponse) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{7}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *MatchTimelineResponse) GetMatches() []*Match {
@@ -436,7 +524,7 @@ type MatchTimelineSportsFeedRequest struct {
 
 func (x *MatchTimelineSportsFeedRequest) Reset() {
 	*x = MatchTimelineSportsFeedRequest{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[8]
+	mi := &file_bragi_bragi_service_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -448,7 +536,7 @@ func (x *MatchTimelineSportsFeedRequest) String() string {
 func (*MatchTimelineSportsFeedRequest) ProtoMessage() {}
 
 func (x *MatchTimelineSportsFeedRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[8]
+	mi := &file_bragi_bragi_service_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -461,7 +549,7 @@ func (x *MatchTimelineSportsFeedRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MatchTimelineSportsFeedRequest.ProtoReflect.Descriptor instead.
 func (*MatchTimelineSportsFeedRequest) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{8}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *MatchTimelineSportsFeedRequest) GetLiveOnly() bool {
@@ -480,7 +568,7 @@ type MatchTimelineSportsFeedResponse struct {
 
 func (x *MatchTimelineSportsFeedResponse) Reset() {
 	*x = MatchTimelineSportsFeedResponse{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[9]
+	mi := &file_bragi_bragi_service_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -492,7 +580,7 @@ func (x *MatchTimelineSportsFeedResponse) String() string {
 func (*MatchTimelineSportsFeedResponse) ProtoMessage() {}
 
 func (x *MatchTimelineSportsFeedResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[9]
+	mi := &file_bragi_bragi_service_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -505,7 +593,7 @@ func (x *MatchTimelineSportsFeedResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MatchTimelineSportsFeedResponse.ProtoReflect.Descriptor instead.
 func (*MatchTimelineSportsFeedResponse) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{9}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *MatchTimelineSportsFeedResponse) GetSports() []*MatchTimelineSportsFeedResponse_SportMatchCount {
@@ -525,7 +613,7 @@ type MatchTimelineTournamentsFeedRequest struct {
 
 func (x *MatchTimelineTournamentsFeedRequest) Reset() {
 	*x = MatchTimelineTournamentsFeedRequest{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[10]
+	mi := &file_bragi_bragi_service_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -537,7 +625,7 @@ func (x *MatchTimelineTournamentsFeedRequest) String() string {
 func (*MatchTimelineTournamentsFeedRequest) ProtoMessage() {}
 
 func (x *MatchTimelineTournamentsFeedRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[10]
+	mi := &file_bragi_bragi_service_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -550,7 +638,7 @@ func (x *MatchTimelineTournamentsFeedRequest) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use MatchTimelineTournamentsFeedRequest.ProtoReflect.Descriptor instead.
 func (*MatchTimelineTournamentsFeedRequest) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{10}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *MatchTimelineTournamentsFeedRequest) GetLiveOnly() bool {
@@ -576,7 +664,7 @@ type MatchTimelineTournamentsFeedResponse struct {
 
 func (x *MatchTimelineTournamentsFeedResponse) Reset() {
 	*x = MatchTimelineTournamentsFeedResponse{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[11]
+	mi := &file_bragi_bragi_service_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -588,7 +676,7 @@ func (x *MatchTimelineTournamentsFeedResponse) String() string {
 func (*MatchTimelineTournamentsFeedResponse) ProtoMessage() {}
 
 func (x *MatchTimelineTournamentsFeedResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[11]
+	mi := &file_bragi_bragi_service_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -601,7 +689,7 @@ func (x *MatchTimelineTournamentsFeedResponse) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use MatchTimelineTournamentsFeedResponse.ProtoReflect.Descriptor instead.
 func (*MatchTimelineTournamentsFeedResponse) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{11}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *MatchTimelineTournamentsFeedResponse) GetTournaments() []*MatchTimelineTournamentsFeedResponse_TournamentMatchCount {
@@ -624,7 +712,7 @@ type MatchTimelineFeedRequest struct {
 
 func (x *MatchTimelineFeedRequest) Reset() {
 	*x = MatchTimelineFeedRequest{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[12]
+	mi := &file_bragi_bragi_service_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -636,7 +724,7 @@ func (x *MatchTimelineFeedRequest) String() string {
 func (*MatchTimelineFeedRequest) ProtoMessage() {}
 
 func (x *MatchTimelineFeedRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[12]
+	mi := &file_bragi_bragi_service_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -649,7 +737,7 @@ func (x *MatchTimelineFeedRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MatchTimelineFeedRequest.ProtoReflect.Descriptor instead.
 func (*MatchTimelineFeedRequest) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{12}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *MatchTimelineFeedRequest) GetLiveOnly() bool {
@@ -701,7 +789,7 @@ type MatchTimelineFeedMessage struct {
 
 func (x *MatchTimelineFeedMessage) Reset() {
 	*x = MatchTimelineFeedMessage{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[13]
+	mi := &file_bragi_bragi_service_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -713,7 +801,7 @@ func (x *MatchTimelineFeedMessage) String() string {
 func (*MatchTimelineFeedMessage) ProtoMessage() {}
 
 func (x *MatchTimelineFeedMessage) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[13]
+	mi := &file_bragi_bragi_service_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -726,7 +814,7 @@ func (x *MatchTimelineFeedMessage) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MatchTimelineFeedMessage.ProtoReflect.Descriptor instead.
 func (*MatchTimelineFeedMessage) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{13}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *MatchTimelineFeedMessage) GetPayload() isMatchTimelineFeedMessage_Payload {
@@ -798,7 +886,7 @@ type LiveDataFeedRequest struct {
 
 func (x *LiveDataFeedRequest) Reset() {
 	*x = LiveDataFeedRequest{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[14]
+	mi := &file_bragi_bragi_service_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -810,7 +898,7 @@ func (x *LiveDataFeedRequest) String() string {
 func (*LiveDataFeedRequest) ProtoMessage() {}
 
 func (x *LiveDataFeedRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[14]
+	mi := &file_bragi_bragi_service_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -823,7 +911,7 @@ func (x *LiveDataFeedRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LiveDataFeedRequest.ProtoReflect.Descriptor instead.
 func (*LiveDataFeedRequest) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{14}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *LiveDataFeedRequest) GetAfter() *timestamppb.Timestamp {
@@ -846,7 +934,7 @@ type LiveDataFeedMessage struct {
 
 func (x *LiveDataFeedMessage) Reset() {
 	*x = LiveDataFeedMessage{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[15]
+	mi := &file_bragi_bragi_service_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -858,7 +946,7 @@ func (x *LiveDataFeedMessage) String() string {
 func (*LiveDataFeedMessage) ProtoMessage() {}
 
 func (x *LiveDataFeedMessage) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[15]
+	mi := &file_bragi_bragi_service_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -871,7 +959,7 @@ func (x *LiveDataFeedMessage) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LiveDataFeedMessage.ProtoReflect.Descriptor instead.
 func (*LiveDataFeedMessage) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{15}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *LiveDataFeedMessage) GetMessage() isLiveDataFeedMessage_Message {
@@ -927,7 +1015,7 @@ type KeepAlive struct {
 
 func (x *KeepAlive) Reset() {
 	*x = KeepAlive{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[16]
+	mi := &file_bragi_bragi_service_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -939,7 +1027,7 @@ func (x *KeepAlive) String() string {
 func (*KeepAlive) ProtoMessage() {}
 
 func (x *KeepAlive) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[16]
+	mi := &file_bragi_bragi_service_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -952,7 +1040,7 @@ func (x *KeepAlive) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use KeepAlive.ProtoReflect.Descriptor instead.
 func (*KeepAlive) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{16}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *KeepAlive) GetTimestamp() *timestamppb.Timestamp {
@@ -990,7 +1078,7 @@ type MatchMessage struct {
 
 func (x *MatchMessage) Reset() {
 	*x = MatchMessage{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[17]
+	mi := &file_bragi_bragi_service_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1002,7 +1090,7 @@ func (x *MatchMessage) String() string {
 func (*MatchMessage) ProtoMessage() {}
 
 func (x *MatchMessage) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[17]
+	mi := &file_bragi_bragi_service_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1015,7 +1103,7 @@ func (x *MatchMessage) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MatchMessage.ProtoReflect.Descriptor instead.
 func (*MatchMessage) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{17}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *MatchMessage) GetMessage() isMatchMessage_Message {
@@ -1194,7 +1282,7 @@ type MatchSnapshot struct {
 
 func (x *MatchSnapshot) Reset() {
 	*x = MatchSnapshot{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[18]
+	mi := &file_bragi_bragi_service_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1206,7 +1294,7 @@ func (x *MatchSnapshot) String() string {
 func (*MatchSnapshot) ProtoMessage() {}
 
 func (x *MatchSnapshot) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[18]
+	mi := &file_bragi_bragi_service_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1219,7 +1307,7 @@ func (x *MatchSnapshot) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MatchSnapshot.ProtoReflect.Descriptor instead.
 func (*MatchSnapshot) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{18}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *MatchSnapshot) GetSnapshot() isMatchSnapshot_Snapshot {
@@ -1374,7 +1462,7 @@ type MatchState struct {
 
 func (x *MatchState) Reset() {
 	*x = MatchState{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[19]
+	mi := &file_bragi_bragi_service_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1386,7 +1474,7 @@ func (x *MatchState) String() string {
 func (*MatchState) ProtoMessage() {}
 
 func (x *MatchState) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[19]
+	mi := &file_bragi_bragi_service_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1399,7 +1487,7 @@ func (x *MatchState) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MatchState.ProtoReflect.Descriptor instead.
 func (*MatchState) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{19}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *MatchState) GetState() isMatchState_State {
@@ -1543,7 +1631,7 @@ type MatchTimelineSportsResponse_SportMatchCount struct {
 
 func (x *MatchTimelineSportsResponse_SportMatchCount) Reset() {
 	*x = MatchTimelineSportsResponse_SportMatchCount{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[20]
+	mi := &file_bragi_bragi_service_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1555,7 +1643,7 @@ func (x *MatchTimelineSportsResponse_SportMatchCount) String() string {
 func (*MatchTimelineSportsResponse_SportMatchCount) ProtoMessage() {}
 
 func (x *MatchTimelineSportsResponse_SportMatchCount) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[20]
+	mi := &file_bragi_bragi_service_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1568,7 +1656,7 @@ func (x *MatchTimelineSportsResponse_SportMatchCount) ProtoReflect() protoreflec
 
 // Deprecated: Use MatchTimelineSportsResponse_SportMatchCount.ProtoReflect.Descriptor instead.
 func (*MatchTimelineSportsResponse_SportMatchCount) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{3, 0}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{5, 0}
 }
 
 func (x *MatchTimelineSportsResponse_SportMatchCount) GetSport() Sport {
@@ -1595,7 +1683,7 @@ type MatchTimelineTournamentsResponse_TournamentMatchCount struct {
 
 func (x *MatchTimelineTournamentsResponse_TournamentMatchCount) Reset() {
 	*x = MatchTimelineTournamentsResponse_TournamentMatchCount{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[21]
+	mi := &file_bragi_bragi_service_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1607,7 +1695,7 @@ func (x *MatchTimelineTournamentsResponse_TournamentMatchCount) String() string 
 func (*MatchTimelineTournamentsResponse_TournamentMatchCount) ProtoMessage() {}
 
 func (x *MatchTimelineTournamentsResponse_TournamentMatchCount) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[21]
+	mi := &file_bragi_bragi_service_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1620,7 +1708,7 @@ func (x *MatchTimelineTournamentsResponse_TournamentMatchCount) ProtoReflect() p
 
 // Deprecated: Use MatchTimelineTournamentsResponse_TournamentMatchCount.ProtoReflect.Descriptor instead.
 func (*MatchTimelineTournamentsResponse_TournamentMatchCount) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{5, 0}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{7, 0}
 }
 
 func (x *MatchTimelineTournamentsResponse_TournamentMatchCount) GetTournament() *Tournament {
@@ -1647,7 +1735,7 @@ type MatchTimelineSportsFeedResponse_SportMatchCount struct {
 
 func (x *MatchTimelineSportsFeedResponse_SportMatchCount) Reset() {
 	*x = MatchTimelineSportsFeedResponse_SportMatchCount{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[22]
+	mi := &file_bragi_bragi_service_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1659,7 +1747,7 @@ func (x *MatchTimelineSportsFeedResponse_SportMatchCount) String() string {
 func (*MatchTimelineSportsFeedResponse_SportMatchCount) ProtoMessage() {}
 
 func (x *MatchTimelineSportsFeedResponse_SportMatchCount) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[22]
+	mi := &file_bragi_bragi_service_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1672,7 +1760,7 @@ func (x *MatchTimelineSportsFeedResponse_SportMatchCount) ProtoReflect() protore
 
 // Deprecated: Use MatchTimelineSportsFeedResponse_SportMatchCount.ProtoReflect.Descriptor instead.
 func (*MatchTimelineSportsFeedResponse_SportMatchCount) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{9, 0}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{11, 0}
 }
 
 func (x *MatchTimelineSportsFeedResponse_SportMatchCount) GetSport() Sport {
@@ -1699,7 +1787,7 @@ type MatchTimelineTournamentsFeedResponse_TournamentMatchCount struct {
 
 func (x *MatchTimelineTournamentsFeedResponse_TournamentMatchCount) Reset() {
 	*x = MatchTimelineTournamentsFeedResponse_TournamentMatchCount{}
-	mi := &file_bragi_bragi_service_proto_msgTypes[23]
+	mi := &file_bragi_bragi_service_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1711,7 +1799,7 @@ func (x *MatchTimelineTournamentsFeedResponse_TournamentMatchCount) String() str
 func (*MatchTimelineTournamentsFeedResponse_TournamentMatchCount) ProtoMessage() {}
 
 func (x *MatchTimelineTournamentsFeedResponse_TournamentMatchCount) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_bragi_service_proto_msgTypes[23]
+	mi := &file_bragi_bragi_service_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1724,7 +1812,7 @@ func (x *MatchTimelineTournamentsFeedResponse_TournamentMatchCount) ProtoReflect
 
 // Deprecated: Use MatchTimelineTournamentsFeedResponse_TournamentMatchCount.ProtoReflect.Descriptor instead.
 func (*MatchTimelineTournamentsFeedResponse_TournamentMatchCount) Descriptor() ([]byte, []int) {
-	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{11, 0}
+	return file_bragi_bragi_service_proto_rawDescGZIP(), []int{13, 0}
 }
 
 func (x *MatchTimelineTournamentsFeedResponse_TournamentMatchCount) GetTournament() *Tournament {
@@ -1759,7 +1847,14 @@ var file_bragi_bragi_service_proto_rawDesc = []byte{
 	0x74, 0x6f, 0x1a, 0x14, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2f, 0x76, 0x61, 0x6c, 0x6f, 0x72, 0x61,
 	0x6e, 0x74, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x18, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2f,
 	0x72, 0x75, 0x73, 0x68, 0x5f, 0x63, 0x72, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x2e, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x22, 0x18, 0x0a, 0x16, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x45, 0x76, 0x65, 0x6e, 0x74,
+	0x74, 0x6f, 0x22, 0x2f, 0x0a, 0x12, 0x54, 0x65, 0x61, 0x6d, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c,
+	0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x19, 0x0a, 0x08, 0x74, 0x65, 0x61, 0x6d,
+	0x5f, 0x75, 0x72, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x74, 0x65, 0x61, 0x6d,
+	0x55, 0x72, 0x6e, 0x22, 0x3d, 0x0a, 0x13, 0x54, 0x65, 0x61, 0x6d, 0x50, 0x72, 0x6f, 0x66, 0x69,
+	0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x26, 0x0a, 0x04, 0x74, 0x65,
+	0x61, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x12, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69,
+	0x2e, 0x54, 0x65, 0x61, 0x6d, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x52, 0x04, 0x74, 0x65,
+	0x61, 0x6d, 0x22, 0x18, 0x0a, 0x16, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x45, 0x76, 0x65, 0x6e, 0x74,
 	0x73, 0x46, 0x65, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x4e, 0x0a, 0x16,
 	0x4d, 0x61, 0x74, 0x63, 0x68, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x73, 0x46, 0x65, 0x65, 0x64, 0x4d,
 	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x12, 0x29, 0x0a, 0x03, 0x63, 0x73, 0x32, 0x18, 0x01, 0x20,
@@ -2005,7 +2100,7 @@ var file_bragi_bragi_service_proto_rawDesc = []byte{
 	0x01, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x52, 0x75, 0x73, 0x68,
 	0x43, 0x72, 0x69, 0x63, 0x6b, 0x65, 0x74, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x53, 0x74, 0x61, 0x74,
 	0x65, 0x48, 0x00, 0x52, 0x0b, 0x72, 0x75, 0x73, 0x68, 0x43, 0x72, 0x69, 0x63, 0x6b, 0x65, 0x74,
-	0x42, 0x07, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x32, 0x8b, 0x06, 0x0a, 0x05, 0x42, 0x72,
+	0x42, 0x07, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x32, 0xd3, 0x06, 0x0a, 0x05, 0x42, 0x72,
 	0x61, 0x67, 0x69, 0x12, 0x5e, 0x0a, 0x13, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x54, 0x69, 0x6d, 0x65,
 	0x6c, 0x69, 0x6e, 0x65, 0x53, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x12, 0x21, 0x2e, 0x62, 0x72, 0x61,
 	0x67, 0x69, 0x2e, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x54, 0x69, 0x6d, 0x65, 0x6c, 0x69, 0x6e, 0x65,
@@ -2024,40 +2119,44 @@ var file_bragi_bragi_service_proto_rawDesc = []byte{
 	0x68, 0x54, 0x69, 0x6d, 0x65, 0x6c, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
 	0x1a, 0x1c, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x54, 0x69,
 	0x6d, 0x65, 0x6c, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00,
-	0x12, 0x6c, 0x0a, 0x17, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x54, 0x69, 0x6d, 0x65, 0x6c, 0x69, 0x6e,
-	0x65, 0x53, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x46, 0x65, 0x65, 0x64, 0x12, 0x25, 0x2e, 0x62, 0x72,
-	0x61, 0x67, 0x69, 0x2e, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x54, 0x69, 0x6d, 0x65, 0x6c, 0x69, 0x6e,
-	0x65, 0x53, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x46, 0x65, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x1a, 0x26, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x4d, 0x61, 0x74, 0x63, 0x68,
-	0x54, 0x69, 0x6d, 0x65, 0x6c, 0x69, 0x6e, 0x65, 0x53, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x46, 0x65,
-	0x65, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x30, 0x01, 0x12, 0x7b,
-	0x0a, 0x1c, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x54, 0x69, 0x6d, 0x65, 0x6c, 0x69, 0x6e, 0x65, 0x54,
-	0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x46, 0x65, 0x65, 0x64, 0x12, 0x2a,
-	0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x54, 0x69, 0x6d, 0x65,
-	0x6c, 0x69, 0x6e, 0x65, 0x54, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x46,
-	0x65, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2b, 0x2e, 0x62, 0x72, 0x61,
+	0x12, 0x46, 0x0a, 0x0b, 0x54, 0x65, 0x61, 0x6d, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x12,
+	0x19, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x54, 0x65, 0x61, 0x6d, 0x50, 0x72, 0x6f, 0x66,
+	0x69, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1a, 0x2e, 0x62, 0x72, 0x61,
+	0x67, 0x69, 0x2e, 0x54, 0x65, 0x61, 0x6d, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x6c, 0x0a, 0x17, 0x4d, 0x61, 0x74, 0x63,
+	0x68, 0x54, 0x69, 0x6d, 0x65, 0x6c, 0x69, 0x6e, 0x65, 0x53, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x46,
+	0x65, 0x65, 0x64, 0x12, 0x25, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x4d, 0x61, 0x74, 0x63,
+	0x68, 0x54, 0x69, 0x6d, 0x65, 0x6c, 0x69, 0x6e, 0x65, 0x53, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x46,
+	0x65, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x26, 0x2e, 0x62, 0x72, 0x61,
 	0x67, 0x69, 0x2e, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x54, 0x69, 0x6d, 0x65, 0x6c, 0x69, 0x6e, 0x65,
-	0x54, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x46, 0x65, 0x65, 0x64, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x30, 0x01, 0x12, 0x59, 0x0a, 0x11, 0x4d,
-	0x61, 0x74, 0x63, 0x68, 0x54, 0x69, 0x6d, 0x65, 0x6c, 0x69, 0x6e, 0x65, 0x46, 0x65, 0x65, 0x64,
-	0x12, 0x1f, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x54, 0x69,
-	0x6d, 0x65, 0x6c, 0x69, 0x6e, 0x65, 0x46, 0x65, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x1a, 0x1f, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x54,
-	0x69, 0x6d, 0x65, 0x6c, 0x69, 0x6e, 0x65, 0x46, 0x65, 0x65, 0x64, 0x4d, 0x65, 0x73, 0x73, 0x61,
-	0x67, 0x65, 0x22, 0x00, 0x30, 0x01, 0x12, 0x4a, 0x0a, 0x0c, 0x4c, 0x69, 0x76, 0x65, 0x44, 0x61,
-	0x74, 0x61, 0x46, 0x65, 0x65, 0x64, 0x12, 0x1a, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x4c,
-	0x69, 0x76, 0x65, 0x44, 0x61, 0x74, 0x61, 0x46, 0x65, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x1a, 0x1a, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x4c, 0x69, 0x76, 0x65, 0x44,
-	0x61, 0x74, 0x61, 0x46, 0x65, 0x65, 0x64, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x00,
-	0x30, 0x01, 0x12, 0x53, 0x0a, 0x0f, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x45, 0x76, 0x65, 0x6e, 0x74,
-	0x73, 0x46, 0x65, 0x65, 0x64, 0x12, 0x1d, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x4d, 0x61,
-	0x74, 0x63, 0x68, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x73, 0x46, 0x65, 0x65, 0x64, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x4d, 0x61, 0x74,
-	0x63, 0x68, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x73, 0x46, 0x65, 0x65, 0x64, 0x4d, 0x65, 0x73, 0x73,
-	0x61, 0x67, 0x65, 0x22, 0x00, 0x30, 0x01, 0x42, 0x21, 0x0a, 0x0f, 0x63, 0x6f, 0x6d, 0x2e, 0x6f,
-	0x64, 0x64, 0x69, 0x6e, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x5a, 0x0e, 0x6f, 0x64, 0x64, 0x69,
-	0x6e, 0x2e, 0x67, 0x67, 0x2f, 0x62, 0x72, 0x61, 0x67, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x53, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x46, 0x65, 0x65, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x22, 0x00, 0x30, 0x01, 0x12, 0x7b, 0x0a, 0x1c, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x54,
+	0x69, 0x6d, 0x65, 0x6c, 0x69, 0x6e, 0x65, 0x54, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x6e,
+	0x74, 0x73, 0x46, 0x65, 0x65, 0x64, 0x12, 0x2a, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x4d,
+	0x61, 0x74, 0x63, 0x68, 0x54, 0x69, 0x6d, 0x65, 0x6c, 0x69, 0x6e, 0x65, 0x54, 0x6f, 0x75, 0x72,
+	0x6e, 0x61, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x46, 0x65, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x2b, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x4d, 0x61, 0x74, 0x63, 0x68,
+	0x54, 0x69, 0x6d, 0x65, 0x6c, 0x69, 0x6e, 0x65, 0x54, 0x6f, 0x75, 0x72, 0x6e, 0x61, 0x6d, 0x65,
+	0x6e, 0x74, 0x73, 0x46, 0x65, 0x65, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0x00, 0x30, 0x01, 0x12, 0x59, 0x0a, 0x11, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x54, 0x69, 0x6d, 0x65,
+	0x6c, 0x69, 0x6e, 0x65, 0x46, 0x65, 0x65, 0x64, 0x12, 0x1f, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69,
+	0x2e, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x54, 0x69, 0x6d, 0x65, 0x6c, 0x69, 0x6e, 0x65, 0x46, 0x65,
+	0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1f, 0x2e, 0x62, 0x72, 0x61, 0x67,
+	0x69, 0x2e, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x54, 0x69, 0x6d, 0x65, 0x6c, 0x69, 0x6e, 0x65, 0x46,
+	0x65, 0x65, 0x64, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x00, 0x30, 0x01, 0x12, 0x4a,
+	0x0a, 0x0c, 0x4c, 0x69, 0x76, 0x65, 0x44, 0x61, 0x74, 0x61, 0x46, 0x65, 0x65, 0x64, 0x12, 0x1a,
+	0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x4c, 0x69, 0x76, 0x65, 0x44, 0x61, 0x74, 0x61, 0x46,
+	0x65, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1a, 0x2e, 0x62, 0x72, 0x61,
+	0x67, 0x69, 0x2e, 0x4c, 0x69, 0x76, 0x65, 0x44, 0x61, 0x74, 0x61, 0x46, 0x65, 0x65, 0x64, 0x4d,
+	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x00, 0x30, 0x01, 0x12, 0x53, 0x0a, 0x0f, 0x4d, 0x61,
+	0x74, 0x63, 0x68, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x73, 0x46, 0x65, 0x65, 0x64, 0x12, 0x1d, 0x2e,
+	0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x45, 0x76, 0x65, 0x6e, 0x74,
+	0x73, 0x46, 0x65, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x62,
+	0x72, 0x61, 0x67, 0x69, 0x2e, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x73,
+	0x46, 0x65, 0x65, 0x64, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x00, 0x30, 0x01, 0x42,
+	0x21, 0x0a, 0x0f, 0x63, 0x6f, 0x6d, 0x2e, 0x6f, 0x64, 0x64, 0x69, 0x6e, 0x2e, 0x62, 0x72, 0x61,
+	0x67, 0x69, 0x5a, 0x0e, 0x6f, 0x64, 0x64, 0x69, 0x6e, 0x2e, 0x67, 0x67, 0x2f, 0x62, 0x72, 0x61,
+	0x67, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -2072,129 +2171,135 @@ func file_bragi_bragi_service_proto_rawDescGZIP() []byte {
 	return file_bragi_bragi_service_proto_rawDescData
 }
 
-var file_bragi_bragi_service_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
+var file_bragi_bragi_service_proto_msgTypes = make([]protoimpl.MessageInfo, 26)
 var file_bragi_bragi_service_proto_goTypes = []any{
-	(*MatchEventsFeedRequest)(nil),                                    // 0: bragi.MatchEventsFeedRequest
-	(*MatchEventsFeedMessage)(nil),                                    // 1: bragi.MatchEventsFeedMessage
-	(*MatchTimelineSportsRequest)(nil),                                // 2: bragi.MatchTimelineSportsRequest
-	(*MatchTimelineSportsResponse)(nil),                               // 3: bragi.MatchTimelineSportsResponse
-	(*MatchTimelineTournamentsRequest)(nil),                           // 4: bragi.MatchTimelineTournamentsRequest
-	(*MatchTimelineTournamentsResponse)(nil),                          // 5: bragi.MatchTimelineTournamentsResponse
-	(*MatchTimelineRequest)(nil),                                      // 6: bragi.MatchTimelineRequest
-	(*MatchTimelineResponse)(nil),                                     // 7: bragi.MatchTimelineResponse
-	(*MatchTimelineSportsFeedRequest)(nil),                            // 8: bragi.MatchTimelineSportsFeedRequest
-	(*MatchTimelineSportsFeedResponse)(nil),                           // 9: bragi.MatchTimelineSportsFeedResponse
-	(*MatchTimelineTournamentsFeedRequest)(nil),                       // 10: bragi.MatchTimelineTournamentsFeedRequest
-	(*MatchTimelineTournamentsFeedResponse)(nil),                      // 11: bragi.MatchTimelineTournamentsFeedResponse
-	(*MatchTimelineFeedRequest)(nil),                                  // 12: bragi.MatchTimelineFeedRequest
-	(*MatchTimelineFeedMessage)(nil),                                  // 13: bragi.MatchTimelineFeedMessage
-	(*LiveDataFeedRequest)(nil),                                       // 14: bragi.LiveDataFeedRequest
-	(*LiveDataFeedMessage)(nil),                                       // 15: bragi.LiveDataFeedMessage
-	(*KeepAlive)(nil),                                                 // 16: bragi.KeepAlive
-	(*MatchMessage)(nil),                                              // 17: bragi.MatchMessage
-	(*MatchSnapshot)(nil),                                             // 18: bragi.MatchSnapshot
-	(*MatchState)(nil),                                                // 19: bragi.MatchState
-	(*MatchTimelineSportsResponse_SportMatchCount)(nil),               // 20: bragi.MatchTimelineSportsResponse.SportMatchCount
-	(*MatchTimelineTournamentsResponse_TournamentMatchCount)(nil),     // 21: bragi.MatchTimelineTournamentsResponse.TournamentMatchCount
-	(*MatchTimelineSportsFeedResponse_SportMatchCount)(nil),           // 22: bragi.MatchTimelineSportsFeedResponse.SportMatchCount
-	(*MatchTimelineTournamentsFeedResponse_TournamentMatchCount)(nil), // 23: bragi.MatchTimelineTournamentsFeedResponse.TournamentMatchCount
-	(*CS2MatchEvents)(nil),                                            // 24: bragi.CS2MatchEvents
-	(Sport)(0),                                                        // 25: bragi.Sport
-	(*Match)(nil),                                                     // 26: bragi.Match
-	(*MatchTimeline)(nil),                                             // 27: bragi.MatchTimeline
-	(*timestamppb.Timestamp)(nil),                                     // 28: google.protobuf.Timestamp
-	(*AnnouncementUpdate)(nil),                                        // 29: bragi.AnnouncementUpdate
-	(*CS2MatchMessage)(nil),                                           // 30: bragi.CS2MatchMessage
-	(*Dota2MatchMessage)(nil),                                         // 31: bragi.Dota2MatchMessage
-	(*RushSoccerMatchMessage)(nil),                                    // 32: bragi.RushSoccerMatchMessage
-	(*LolMatchMessage)(nil),                                           // 33: bragi.LolMatchMessage
-	(*RushBasketballMatchMessage)(nil),                                // 34: bragi.RushBasketballMatchMessage
-	(*ValorantMatchMessage)(nil),                                      // 35: bragi.ValorantMatchMessage
-	(*RushCricketMatchMessage)(nil),                                   // 36: bragi.RushCricketMatchMessage
-	(*CS2MatchSnapshot)(nil),                                          // 37: bragi.CS2MatchSnapshot
-	(*Dota2MatchSnapshot)(nil),                                        // 38: bragi.Dota2MatchSnapshot
-	(*RushSoccerMatchSnapshot)(nil),                                   // 39: bragi.RushSoccerMatchSnapshot
-	(*LolMatchSnapshot)(nil),                                          // 40: bragi.LolMatchSnapshot
-	(*RushBasketballMatchSnapshot)(nil),                               // 41: bragi.RushBasketballMatchSnapshot
-	(*ValorantMatchSnapshot)(nil),                                     // 42: bragi.ValorantMatchSnapshot
-	(*RushCricketMatchSnapshot)(nil),                                  // 43: bragi.RushCricketMatchSnapshot
-	(*CS2MatchState)(nil),                                             // 44: bragi.CS2MatchState
-	(*Dota2MatchState)(nil),                                           // 45: bragi.Dota2MatchState
-	(*RushSoccerMatchState)(nil),                                      // 46: bragi.RushSoccerMatchState
-	(*LolMatchState)(nil),                                             // 47: bragi.LolMatchState
-	(*RushBasketballMatchState)(nil),                                  // 48: bragi.RushBasketballMatchState
-	(*ValorantMatchState)(nil),                                        // 49: bragi.ValorantMatchState
-	(*RushCricketMatchState)(nil),                                     // 50: bragi.RushCricketMatchState
-	(*Tournament)(nil),                                                // 51: bragi.Tournament
+	(*TeamProfileRequest)(nil),                                        // 0: bragi.TeamProfileRequest
+	(*TeamProfileResponse)(nil),                                       // 1: bragi.TeamProfileResponse
+	(*MatchEventsFeedRequest)(nil),                                    // 2: bragi.MatchEventsFeedRequest
+	(*MatchEventsFeedMessage)(nil),                                    // 3: bragi.MatchEventsFeedMessage
+	(*MatchTimelineSportsRequest)(nil),                                // 4: bragi.MatchTimelineSportsRequest
+	(*MatchTimelineSportsResponse)(nil),                               // 5: bragi.MatchTimelineSportsResponse
+	(*MatchTimelineTournamentsRequest)(nil),                           // 6: bragi.MatchTimelineTournamentsRequest
+	(*MatchTimelineTournamentsResponse)(nil),                          // 7: bragi.MatchTimelineTournamentsResponse
+	(*MatchTimelineRequest)(nil),                                      // 8: bragi.MatchTimelineRequest
+	(*MatchTimelineResponse)(nil),                                     // 9: bragi.MatchTimelineResponse
+	(*MatchTimelineSportsFeedRequest)(nil),                            // 10: bragi.MatchTimelineSportsFeedRequest
+	(*MatchTimelineSportsFeedResponse)(nil),                           // 11: bragi.MatchTimelineSportsFeedResponse
+	(*MatchTimelineTournamentsFeedRequest)(nil),                       // 12: bragi.MatchTimelineTournamentsFeedRequest
+	(*MatchTimelineTournamentsFeedResponse)(nil),                      // 13: bragi.MatchTimelineTournamentsFeedResponse
+	(*MatchTimelineFeedRequest)(nil),                                  // 14: bragi.MatchTimelineFeedRequest
+	(*MatchTimelineFeedMessage)(nil),                                  // 15: bragi.MatchTimelineFeedMessage
+	(*LiveDataFeedRequest)(nil),                                       // 16: bragi.LiveDataFeedRequest
+	(*LiveDataFeedMessage)(nil),                                       // 17: bragi.LiveDataFeedMessage
+	(*KeepAlive)(nil),                                                 // 18: bragi.KeepAlive
+	(*MatchMessage)(nil),                                              // 19: bragi.MatchMessage
+	(*MatchSnapshot)(nil),                                             // 20: bragi.MatchSnapshot
+	(*MatchState)(nil),                                                // 21: bragi.MatchState
+	(*MatchTimelineSportsResponse_SportMatchCount)(nil),               // 22: bragi.MatchTimelineSportsResponse.SportMatchCount
+	(*MatchTimelineTournamentsResponse_TournamentMatchCount)(nil),     // 23: bragi.MatchTimelineTournamentsResponse.TournamentMatchCount
+	(*MatchTimelineSportsFeedResponse_SportMatchCount)(nil),           // 24: bragi.MatchTimelineSportsFeedResponse.SportMatchCount
+	(*MatchTimelineTournamentsFeedResponse_TournamentMatchCount)(nil), // 25: bragi.MatchTimelineTournamentsFeedResponse.TournamentMatchCount
+	(*TeamProfile)(nil),                                               // 26: bragi.TeamProfile
+	(*CS2MatchEvents)(nil),                                            // 27: bragi.CS2MatchEvents
+	(Sport)(0),                                                        // 28: bragi.Sport
+	(*Match)(nil),                                                     // 29: bragi.Match
+	(*MatchTimeline)(nil),                                             // 30: bragi.MatchTimeline
+	(*timestamppb.Timestamp)(nil),                                     // 31: google.protobuf.Timestamp
+	(*AnnouncementUpdate)(nil),                                        // 32: bragi.AnnouncementUpdate
+	(*CS2MatchMessage)(nil),                                           // 33: bragi.CS2MatchMessage
+	(*Dota2MatchMessage)(nil),                                         // 34: bragi.Dota2MatchMessage
+	(*RushSoccerMatchMessage)(nil),                                    // 35: bragi.RushSoccerMatchMessage
+	(*LolMatchMessage)(nil),                                           // 36: bragi.LolMatchMessage
+	(*RushBasketballMatchMessage)(nil),                                // 37: bragi.RushBasketballMatchMessage
+	(*ValorantMatchMessage)(nil),                                      // 38: bragi.ValorantMatchMessage
+	(*RushCricketMatchMessage)(nil),                                   // 39: bragi.RushCricketMatchMessage
+	(*CS2MatchSnapshot)(nil),                                          // 40: bragi.CS2MatchSnapshot
+	(*Dota2MatchSnapshot)(nil),                                        // 41: bragi.Dota2MatchSnapshot
+	(*RushSoccerMatchSnapshot)(nil),                                   // 42: bragi.RushSoccerMatchSnapshot
+	(*LolMatchSnapshot)(nil),                                          // 43: bragi.LolMatchSnapshot
+	(*RushBasketballMatchSnapshot)(nil),                               // 44: bragi.RushBasketballMatchSnapshot
+	(*ValorantMatchSnapshot)(nil),                                     // 45: bragi.ValorantMatchSnapshot
+	(*RushCricketMatchSnapshot)(nil),                                  // 46: bragi.RushCricketMatchSnapshot
+	(*CS2MatchState)(nil),                                             // 47: bragi.CS2MatchState
+	(*Dota2MatchState)(nil),                                           // 48: bragi.Dota2MatchState
+	(*RushSoccerMatchState)(nil),                                      // 49: bragi.RushSoccerMatchState
+	(*LolMatchState)(nil),                                             // 50: bragi.LolMatchState
+	(*RushBasketballMatchState)(nil),                                  // 51: bragi.RushBasketballMatchState
+	(*ValorantMatchState)(nil),                                        // 52: bragi.ValorantMatchState
+	(*RushCricketMatchState)(nil),                                     // 53: bragi.RushCricketMatchState
+	(*Tournament)(nil),                                                // 54: bragi.Tournament
 }
 var file_bragi_bragi_service_proto_depIdxs = []int32{
-	24, // 0: bragi.MatchEventsFeedMessage.cs2:type_name -> bragi.CS2MatchEvents
-	20, // 1: bragi.MatchTimelineSportsResponse.sports:type_name -> bragi.MatchTimelineSportsResponse.SportMatchCount
-	25, // 2: bragi.MatchTimelineTournamentsRequest.sport:type_name -> bragi.Sport
-	21, // 3: bragi.MatchTimelineTournamentsResponse.tournaments:type_name -> bragi.MatchTimelineTournamentsResponse.TournamentMatchCount
-	25, // 4: bragi.MatchTimelineRequest.sport:type_name -> bragi.Sport
-	26, // 5: bragi.MatchTimelineResponse.matches:type_name -> bragi.Match
-	22, // 6: bragi.MatchTimelineSportsFeedResponse.sports:type_name -> bragi.MatchTimelineSportsFeedResponse.SportMatchCount
-	25, // 7: bragi.MatchTimelineTournamentsFeedRequest.sport:type_name -> bragi.Sport
-	23, // 8: bragi.MatchTimelineTournamentsFeedResponse.tournaments:type_name -> bragi.MatchTimelineTournamentsFeedResponse.TournamentMatchCount
-	25, // 9: bragi.MatchTimelineFeedRequest.sport:type_name -> bragi.Sport
-	16, // 10: bragi.MatchTimelineFeedMessage.keepalive:type_name -> bragi.KeepAlive
-	27, // 11: bragi.MatchTimelineFeedMessage.timeline:type_name -> bragi.MatchTimeline
-	26, // 12: bragi.MatchTimelineFeedMessage.match_update:type_name -> bragi.Match
-	28, // 13: bragi.LiveDataFeedRequest.after:type_name -> google.protobuf.Timestamp
-	16, // 14: bragi.LiveDataFeedMessage.keepalive:type_name -> bragi.KeepAlive
-	17, // 15: bragi.LiveDataFeedMessage.match:type_name -> bragi.MatchMessage
-	28, // 16: bragi.KeepAlive.timestamp:type_name -> google.protobuf.Timestamp
-	29, // 17: bragi.MatchMessage.announcement:type_name -> bragi.AnnouncementUpdate
-	30, // 18: bragi.MatchMessage.cs2:type_name -> bragi.CS2MatchMessage
-	30, // 19: bragi.MatchMessage.cs2_duels:type_name -> bragi.CS2MatchMessage
-	31, // 20: bragi.MatchMessage.dota2:type_name -> bragi.Dota2MatchMessage
-	32, // 21: bragi.MatchMessage.rush_soccer:type_name -> bragi.RushSoccerMatchMessage
-	33, // 22: bragi.MatchMessage.lol:type_name -> bragi.LolMatchMessage
-	34, // 23: bragi.MatchMessage.rush_basketball:type_name -> bragi.RushBasketballMatchMessage
-	35, // 24: bragi.MatchMessage.valorant:type_name -> bragi.ValorantMatchMessage
-	36, // 25: bragi.MatchMessage.rush_cricket:type_name -> bragi.RushCricketMatchMessage
-	37, // 26: bragi.MatchSnapshot.cs2:type_name -> bragi.CS2MatchSnapshot
-	37, // 27: bragi.MatchSnapshot.cs2_duels:type_name -> bragi.CS2MatchSnapshot
-	38, // 28: bragi.MatchSnapshot.dota2:type_name -> bragi.Dota2MatchSnapshot
-	39, // 29: bragi.MatchSnapshot.rush_soccer:type_name -> bragi.RushSoccerMatchSnapshot
-	40, // 30: bragi.MatchSnapshot.lol:type_name -> bragi.LolMatchSnapshot
-	41, // 31: bragi.MatchSnapshot.rush_basketball:type_name -> bragi.RushBasketballMatchSnapshot
-	42, // 32: bragi.MatchSnapshot.valorant:type_name -> bragi.ValorantMatchSnapshot
-	43, // 33: bragi.MatchSnapshot.rush_cricket:type_name -> bragi.RushCricketMatchSnapshot
-	44, // 34: bragi.MatchState.cs2:type_name -> bragi.CS2MatchState
-	44, // 35: bragi.MatchState.cs2_duels:type_name -> bragi.CS2MatchState
-	45, // 36: bragi.MatchState.dota2:type_name -> bragi.Dota2MatchState
-	46, // 37: bragi.MatchState.rush_soccer:type_name -> bragi.RushSoccerMatchState
-	47, // 38: bragi.MatchState.lol:type_name -> bragi.LolMatchState
-	48, // 39: bragi.MatchState.rush_basketball:type_name -> bragi.RushBasketballMatchState
-	49, // 40: bragi.MatchState.valorant:type_name -> bragi.ValorantMatchState
-	50, // 41: bragi.MatchState.rush_cricket:type_name -> bragi.RushCricketMatchState
-	25, // 42: bragi.MatchTimelineSportsResponse.SportMatchCount.sport:type_name -> bragi.Sport
-	51, // 43: bragi.MatchTimelineTournamentsResponse.TournamentMatchCount.tournament:type_name -> bragi.Tournament
-	25, // 44: bragi.MatchTimelineSportsFeedResponse.SportMatchCount.sport:type_name -> bragi.Sport
-	51, // 45: bragi.MatchTimelineTournamentsFeedResponse.TournamentMatchCount.tournament:type_name -> bragi.Tournament
-	2,  // 46: bragi.Bragi.MatchTimelineSports:input_type -> bragi.MatchTimelineSportsRequest
-	4,  // 47: bragi.Bragi.MatchTimelineTournaments:input_type -> bragi.MatchTimelineTournamentsRequest
-	6,  // 48: bragi.Bragi.MatchTimeline:input_type -> bragi.MatchTimelineRequest
-	8,  // 49: bragi.Bragi.MatchTimelineSportsFeed:input_type -> bragi.MatchTimelineSportsFeedRequest
-	10, // 50: bragi.Bragi.MatchTimelineTournamentsFeed:input_type -> bragi.MatchTimelineTournamentsFeedRequest
-	12, // 51: bragi.Bragi.MatchTimelineFeed:input_type -> bragi.MatchTimelineFeedRequest
-	14, // 52: bragi.Bragi.LiveDataFeed:input_type -> bragi.LiveDataFeedRequest
-	0,  // 53: bragi.Bragi.MatchEventsFeed:input_type -> bragi.MatchEventsFeedRequest
-	3,  // 54: bragi.Bragi.MatchTimelineSports:output_type -> bragi.MatchTimelineSportsResponse
-	5,  // 55: bragi.Bragi.MatchTimelineTournaments:output_type -> bragi.MatchTimelineTournamentsResponse
-	7,  // 56: bragi.Bragi.MatchTimeline:output_type -> bragi.MatchTimelineResponse
-	9,  // 57: bragi.Bragi.MatchTimelineSportsFeed:output_type -> bragi.MatchTimelineSportsFeedResponse
-	11, // 58: bragi.Bragi.MatchTimelineTournamentsFeed:output_type -> bragi.MatchTimelineTournamentsFeedResponse
-	13, // 59: bragi.Bragi.MatchTimelineFeed:output_type -> bragi.MatchTimelineFeedMessage
-	15, // 60: bragi.Bragi.LiveDataFeed:output_type -> bragi.LiveDataFeedMessage
-	1,  // 61: bragi.Bragi.MatchEventsFeed:output_type -> bragi.MatchEventsFeedMessage
-	54, // [54:62] is the sub-list for method output_type
-	46, // [46:54] is the sub-list for method input_type
-	46, // [46:46] is the sub-list for extension type_name
-	46, // [46:46] is the sub-list for extension extendee
-	0,  // [0:46] is the sub-list for field type_name
+	26, // 0: bragi.TeamProfileResponse.team:type_name -> bragi.TeamProfile
+	27, // 1: bragi.MatchEventsFeedMessage.cs2:type_name -> bragi.CS2MatchEvents
+	22, // 2: bragi.MatchTimelineSportsResponse.sports:type_name -> bragi.MatchTimelineSportsResponse.SportMatchCount
+	28, // 3: bragi.MatchTimelineTournamentsRequest.sport:type_name -> bragi.Sport
+	23, // 4: bragi.MatchTimelineTournamentsResponse.tournaments:type_name -> bragi.MatchTimelineTournamentsResponse.TournamentMatchCount
+	28, // 5: bragi.MatchTimelineRequest.sport:type_name -> bragi.Sport
+	29, // 6: bragi.MatchTimelineResponse.matches:type_name -> bragi.Match
+	24, // 7: bragi.MatchTimelineSportsFeedResponse.sports:type_name -> bragi.MatchTimelineSportsFeedResponse.SportMatchCount
+	28, // 8: bragi.MatchTimelineTournamentsFeedRequest.sport:type_name -> bragi.Sport
+	25, // 9: bragi.MatchTimelineTournamentsFeedResponse.tournaments:type_name -> bragi.MatchTimelineTournamentsFeedResponse.TournamentMatchCount
+	28, // 10: bragi.MatchTimelineFeedRequest.sport:type_name -> bragi.Sport
+	18, // 11: bragi.MatchTimelineFeedMessage.keepalive:type_name -> bragi.KeepAlive
+	30, // 12: bragi.MatchTimelineFeedMessage.timeline:type_name -> bragi.MatchTimeline
+	29, // 13: bragi.MatchTimelineFeedMessage.match_update:type_name -> bragi.Match
+	31, // 14: bragi.LiveDataFeedRequest.after:type_name -> google.protobuf.Timestamp
+	18, // 15: bragi.LiveDataFeedMessage.keepalive:type_name -> bragi.KeepAlive
+	19, // 16: bragi.LiveDataFeedMessage.match:type_name -> bragi.MatchMessage
+	31, // 17: bragi.KeepAlive.timestamp:type_name -> google.protobuf.Timestamp
+	32, // 18: bragi.MatchMessage.announcement:type_name -> bragi.AnnouncementUpdate
+	33, // 19: bragi.MatchMessage.cs2:type_name -> bragi.CS2MatchMessage
+	33, // 20: bragi.MatchMessage.cs2_duels:type_name -> bragi.CS2MatchMessage
+	34, // 21: bragi.MatchMessage.dota2:type_name -> bragi.Dota2MatchMessage
+	35, // 22: bragi.MatchMessage.rush_soccer:type_name -> bragi.RushSoccerMatchMessage
+	36, // 23: bragi.MatchMessage.lol:type_name -> bragi.LolMatchMessage
+	37, // 24: bragi.MatchMessage.rush_basketball:type_name -> bragi.RushBasketballMatchMessage
+	38, // 25: bragi.MatchMessage.valorant:type_name -> bragi.ValorantMatchMessage
+	39, // 26: bragi.MatchMessage.rush_cricket:type_name -> bragi.RushCricketMatchMessage
+	40, // 27: bragi.MatchSnapshot.cs2:type_name -> bragi.CS2MatchSnapshot
+	40, // 28: bragi.MatchSnapshot.cs2_duels:type_name -> bragi.CS2MatchSnapshot
+	41, // 29: bragi.MatchSnapshot.dota2:type_name -> bragi.Dota2MatchSnapshot
+	42, // 30: bragi.MatchSnapshot.rush_soccer:type_name -> bragi.RushSoccerMatchSnapshot
+	43, // 31: bragi.MatchSnapshot.lol:type_name -> bragi.LolMatchSnapshot
+	44, // 32: bragi.MatchSnapshot.rush_basketball:type_name -> bragi.RushBasketballMatchSnapshot
+	45, // 33: bragi.MatchSnapshot.valorant:type_name -> bragi.ValorantMatchSnapshot
+	46, // 34: bragi.MatchSnapshot.rush_cricket:type_name -> bragi.RushCricketMatchSnapshot
+	47, // 35: bragi.MatchState.cs2:type_name -> bragi.CS2MatchState
+	47, // 36: bragi.MatchState.cs2_duels:type_name -> bragi.CS2MatchState
+	48, // 37: bragi.MatchState.dota2:type_name -> bragi.Dota2MatchState
+	49, // 38: bragi.MatchState.rush_soccer:type_name -> bragi.RushSoccerMatchState
+	50, // 39: bragi.MatchState.lol:type_name -> bragi.LolMatchState
+	51, // 40: bragi.MatchState.rush_basketball:type_name -> bragi.RushBasketballMatchState
+	52, // 41: bragi.MatchState.valorant:type_name -> bragi.ValorantMatchState
+	53, // 42: bragi.MatchState.rush_cricket:type_name -> bragi.RushCricketMatchState
+	28, // 43: bragi.MatchTimelineSportsResponse.SportMatchCount.sport:type_name -> bragi.Sport
+	54, // 44: bragi.MatchTimelineTournamentsResponse.TournamentMatchCount.tournament:type_name -> bragi.Tournament
+	28, // 45: bragi.MatchTimelineSportsFeedResponse.SportMatchCount.sport:type_name -> bragi.Sport
+	54, // 46: bragi.MatchTimelineTournamentsFeedResponse.TournamentMatchCount.tournament:type_name -> bragi.Tournament
+	4,  // 47: bragi.Bragi.MatchTimelineSports:input_type -> bragi.MatchTimelineSportsRequest
+	6,  // 48: bragi.Bragi.MatchTimelineTournaments:input_type -> bragi.MatchTimelineTournamentsRequest
+	8,  // 49: bragi.Bragi.MatchTimeline:input_type -> bragi.MatchTimelineRequest
+	0,  // 50: bragi.Bragi.TeamProfile:input_type -> bragi.TeamProfileRequest
+	10, // 51: bragi.Bragi.MatchTimelineSportsFeed:input_type -> bragi.MatchTimelineSportsFeedRequest
+	12, // 52: bragi.Bragi.MatchTimelineTournamentsFeed:input_type -> bragi.MatchTimelineTournamentsFeedRequest
+	14, // 53: bragi.Bragi.MatchTimelineFeed:input_type -> bragi.MatchTimelineFeedRequest
+	16, // 54: bragi.Bragi.LiveDataFeed:input_type -> bragi.LiveDataFeedRequest
+	2,  // 55: bragi.Bragi.MatchEventsFeed:input_type -> bragi.MatchEventsFeedRequest
+	5,  // 56: bragi.Bragi.MatchTimelineSports:output_type -> bragi.MatchTimelineSportsResponse
+	7,  // 57: bragi.Bragi.MatchTimelineTournaments:output_type -> bragi.MatchTimelineTournamentsResponse
+	9,  // 58: bragi.Bragi.MatchTimeline:output_type -> bragi.MatchTimelineResponse
+	1,  // 59: bragi.Bragi.TeamProfile:output_type -> bragi.TeamProfileResponse
+	11, // 60: bragi.Bragi.MatchTimelineSportsFeed:output_type -> bragi.MatchTimelineSportsFeedResponse
+	13, // 61: bragi.Bragi.MatchTimelineTournamentsFeed:output_type -> bragi.MatchTimelineTournamentsFeedResponse
+	15, // 62: bragi.Bragi.MatchTimelineFeed:output_type -> bragi.MatchTimelineFeedMessage
+	17, // 63: bragi.Bragi.LiveDataFeed:output_type -> bragi.LiveDataFeedMessage
+	3,  // 64: bragi.Bragi.MatchEventsFeed:output_type -> bragi.MatchEventsFeedMessage
+	56, // [56:65] is the sub-list for method output_type
+	47, // [47:56] is the sub-list for method input_type
+	47, // [47:47] is the sub-list for extension type_name
+	47, // [47:47] is the sub-list for extension extendee
+	0,  // [0:47] is the sub-list for field type_name
 }
 
 func init() { file_bragi_bragi_service_proto_init() }
@@ -2210,22 +2315,22 @@ func file_bragi_bragi_service_proto_init() {
 	file_bragi_rush_basketball_proto_init()
 	file_bragi_valorant_proto_init()
 	file_bragi_rush_cricket_proto_init()
-	file_bragi_bragi_service_proto_msgTypes[1].OneofWrappers = []any{
+	file_bragi_bragi_service_proto_msgTypes[3].OneofWrappers = []any{
 		(*MatchEventsFeedMessage_Cs2)(nil),
 	}
-	file_bragi_bragi_service_proto_msgTypes[6].OneofWrappers = []any{}
-	file_bragi_bragi_service_proto_msgTypes[12].OneofWrappers = []any{}
-	file_bragi_bragi_service_proto_msgTypes[13].OneofWrappers = []any{
+	file_bragi_bragi_service_proto_msgTypes[8].OneofWrappers = []any{}
+	file_bragi_bragi_service_proto_msgTypes[14].OneofWrappers = []any{}
+	file_bragi_bragi_service_proto_msgTypes[15].OneofWrappers = []any{
 		(*MatchTimelineFeedMessage_Keepalive)(nil),
 		(*MatchTimelineFeedMessage_Timeline)(nil),
 		(*MatchTimelineFeedMessage_MatchUpdate)(nil),
 	}
-	file_bragi_bragi_service_proto_msgTypes[14].OneofWrappers = []any{}
-	file_bragi_bragi_service_proto_msgTypes[15].OneofWrappers = []any{
+	file_bragi_bragi_service_proto_msgTypes[16].OneofWrappers = []any{}
+	file_bragi_bragi_service_proto_msgTypes[17].OneofWrappers = []any{
 		(*LiveDataFeedMessage_Keepalive)(nil),
 		(*LiveDataFeedMessage_Match)(nil),
 	}
-	file_bragi_bragi_service_proto_msgTypes[17].OneofWrappers = []any{
+	file_bragi_bragi_service_proto_msgTypes[19].OneofWrappers = []any{
 		(*MatchMessage_Announcement)(nil),
 		(*MatchMessage_Cs2)(nil),
 		(*MatchMessage_Cs2Duels)(nil),
@@ -2236,7 +2341,7 @@ func file_bragi_bragi_service_proto_init() {
 		(*MatchMessage_Valorant)(nil),
 		(*MatchMessage_RushCricket)(nil),
 	}
-	file_bragi_bragi_service_proto_msgTypes[18].OneofWrappers = []any{
+	file_bragi_bragi_service_proto_msgTypes[20].OneofWrappers = []any{
 		(*MatchSnapshot_Cs2)(nil),
 		(*MatchSnapshot_Cs2Duels)(nil),
 		(*MatchSnapshot_Dota2)(nil),
@@ -2246,7 +2351,7 @@ func file_bragi_bragi_service_proto_init() {
 		(*MatchSnapshot_Valorant)(nil),
 		(*MatchSnapshot_RushCricket)(nil),
 	}
-	file_bragi_bragi_service_proto_msgTypes[19].OneofWrappers = []any{
+	file_bragi_bragi_service_proto_msgTypes[21].OneofWrappers = []any{
 		(*MatchState_Cs2)(nil),
 		(*MatchState_Cs2Duels)(nil),
 		(*MatchState_Dota2)(nil),
@@ -2262,7 +2367,7 @@ func file_bragi_bragi_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_bragi_bragi_service_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   24,
+			NumMessages:   26,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
