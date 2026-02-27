@@ -89,6 +89,29 @@ message Player {
   string team_urn = 3;
 }
 
+message TeamProfile {
+  string urn = 1;
+  string name = 2;
+  optional string icon_path = 3;
+  // External identity contains key-value pairs of external identity providers and their corresponding team identifiers. 
+  // For example {"source": "LIQUIPEDIA", "id": "123"}
+  map<string, string> external_identity = 4;
+  repeated PlayerProfile players = 5;
+  repeated PlayerProfile current_map_roster = 6;
+}
+
+message PlayerProfile {
+  string urn = 1;
+  string nickname = 2;
+  optional string real_name = 3;
+  optional string shortcut = 4;
+  optional string icon_path = 5;
+  optional uint32 age = 6;
+  // External identity contains key-value pairs of external identity providers and their corresponding player identifiers. 
+  // For example {"source": "LIQUIPEDIA", "id": "456"}
+  map<string, string> external_identity = 7;
+}
+
 enum Sport {
   SPORT_UNSPECIFIED = 0;
   SPORT_CS2 = 1;

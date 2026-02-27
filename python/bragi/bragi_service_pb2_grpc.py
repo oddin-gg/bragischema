@@ -49,6 +49,11 @@ class BragiStub(object):
                 request_serializer=bragi_dot_bragi__service__pb2.MatchTimelineRequest.SerializeToString,
                 response_deserializer=bragi_dot_bragi__service__pb2.MatchTimelineResponse.FromString,
                 _registered_method=True)
+        self.TeamProfile = channel.unary_unary(
+                '/bragi.Bragi/TeamProfile',
+                request_serializer=bragi_dot_bragi__service__pb2.TeamProfileRequest.SerializeToString,
+                response_deserializer=bragi_dot_bragi__service__pb2.TeamProfileResponse.FromString,
+                _registered_method=True)
         self.MatchTimelineSportsFeed = channel.unary_stream(
                 '/bragi.Bragi/MatchTimelineSportsFeed',
                 request_serializer=bragi_dot_bragi__service__pb2.MatchTimelineSportsFeedRequest.SerializeToString,
@@ -95,6 +100,15 @@ class BragiServicer(object):
 
     def MatchTimeline(self, request, context):
         """Matches gRPC unary call returns all planned or currently played matches
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def TeamProfile(self, request, context):
+        """TeamInfo retrieves comprehensive information for a team identified by its URN.
+        The response includes the team's details, associated players with their external
+        identities, and the current map roster.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -155,6 +169,11 @@ def add_BragiServicer_to_server(servicer, server):
                     servicer.MatchTimeline,
                     request_deserializer=bragi_dot_bragi__service__pb2.MatchTimelineRequest.FromString,
                     response_serializer=bragi_dot_bragi__service__pb2.MatchTimelineResponse.SerializeToString,
+            ),
+            'TeamProfile': grpc.unary_unary_rpc_method_handler(
+                    servicer.TeamProfile,
+                    request_deserializer=bragi_dot_bragi__service__pb2.TeamProfileRequest.FromString,
+                    response_serializer=bragi_dot_bragi__service__pb2.TeamProfileResponse.SerializeToString,
             ),
             'MatchTimelineSportsFeed': grpc.unary_stream_rpc_method_handler(
                     servicer.MatchTimelineSportsFeed,
@@ -263,6 +282,33 @@ class Bragi(object):
             '/bragi.Bragi/MatchTimeline',
             bragi_dot_bragi__service__pb2.MatchTimelineRequest.SerializeToString,
             bragi_dot_bragi__service__pb2.MatchTimelineResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def TeamProfile(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/bragi.Bragi/TeamProfile',
+            bragi_dot_bragi__service__pb2.TeamProfileRequest.SerializeToString,
+            bragi_dot_bragi__service__pb2.TeamProfileResponse.FromString,
             options,
             channel_credentials,
             insecure,

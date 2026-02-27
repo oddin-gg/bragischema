@@ -351,6 +351,102 @@ export namespace Player {
   }
 }
 
+export class TeamProfile extends jspb.Message {
+  getUrn(): string;
+  setUrn(value: string): void;
+
+  getName(): string;
+  setName(value: string): void;
+
+  hasIconPath(): boolean;
+  clearIconPath(): void;
+  getIconPath(): string;
+  setIconPath(value: string): void;
+
+  getExternalIdentityMap(): jspb.Map<string, string>;
+  clearExternalIdentityMap(): void;
+  clearPlayersList(): void;
+  getPlayersList(): Array<PlayerProfile>;
+  setPlayersList(value: Array<PlayerProfile>): void;
+  addPlayers(value?: PlayerProfile, index?: number): PlayerProfile;
+
+  clearCurrentMapRosterList(): void;
+  getCurrentMapRosterList(): Array<PlayerProfile>;
+  setCurrentMapRosterList(value: Array<PlayerProfile>): void;
+  addCurrentMapRoster(value?: PlayerProfile, index?: number): PlayerProfile;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): TeamProfile.AsObject;
+  static toObject(includeInstance: boolean, msg: TeamProfile): TeamProfile.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: TeamProfile, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TeamProfile;
+  static deserializeBinaryFromReader(message: TeamProfile, reader: jspb.BinaryReader): TeamProfile;
+}
+
+export namespace TeamProfile {
+  export type AsObject = {
+    urn: string,
+    name: string,
+    iconPath: string,
+    externalIdentityMap: Array<[string, string]>,
+    playersList: Array<PlayerProfile.AsObject>,
+    currentMapRosterList: Array<PlayerProfile.AsObject>,
+  }
+}
+
+export class PlayerProfile extends jspb.Message {
+  getUrn(): string;
+  setUrn(value: string): void;
+
+  getNickname(): string;
+  setNickname(value: string): void;
+
+  hasRealName(): boolean;
+  clearRealName(): void;
+  getRealName(): string;
+  setRealName(value: string): void;
+
+  hasShortcut(): boolean;
+  clearShortcut(): void;
+  getShortcut(): string;
+  setShortcut(value: string): void;
+
+  hasIconPath(): boolean;
+  clearIconPath(): void;
+  getIconPath(): string;
+  setIconPath(value: string): void;
+
+  hasAge(): boolean;
+  clearAge(): void;
+  getAge(): number;
+  setAge(value: number): void;
+
+  getExternalIdentityMap(): jspb.Map<string, string>;
+  clearExternalIdentityMap(): void;
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PlayerProfile.AsObject;
+  static toObject(includeInstance: boolean, msg: PlayerProfile): PlayerProfile.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: PlayerProfile, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PlayerProfile;
+  static deserializeBinaryFromReader(message: PlayerProfile, reader: jspb.BinaryReader): PlayerProfile;
+}
+
+export namespace PlayerProfile {
+  export type AsObject = {
+    urn: string,
+    nickname: string,
+    realName: string,
+    shortcut: string,
+    iconPath: string,
+    age: number,
+    externalIdentityMap: Array<[string, string]>,
+  }
+}
+
 export interface SportMap {
   SPORT_UNSPECIFIED: 0;
   SPORT_CS2: 1;

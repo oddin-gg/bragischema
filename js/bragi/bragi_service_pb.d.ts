@@ -12,6 +12,48 @@ import * as bragi_rush_basketball_pb from "../bragi/rush_basketball_pb";
 import * as bragi_valorant_pb from "../bragi/valorant_pb";
 import * as bragi_rush_cricket_pb from "../bragi/rush_cricket_pb";
 
+export class TeamProfileRequest extends jspb.Message {
+  getTeamUrn(): string;
+  setTeamUrn(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): TeamProfileRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: TeamProfileRequest): TeamProfileRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: TeamProfileRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TeamProfileRequest;
+  static deserializeBinaryFromReader(message: TeamProfileRequest, reader: jspb.BinaryReader): TeamProfileRequest;
+}
+
+export namespace TeamProfileRequest {
+  export type AsObject = {
+    teamUrn: string,
+  }
+}
+
+export class TeamProfileResponse extends jspb.Message {
+  hasTeam(): boolean;
+  clearTeam(): void;
+  getTeam(): bragi_common_pb.TeamProfile | undefined;
+  setTeam(value?: bragi_common_pb.TeamProfile): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): TeamProfileResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: TeamProfileResponse): TeamProfileResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: TeamProfileResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TeamProfileResponse;
+  static deserializeBinaryFromReader(message: TeamProfileResponse, reader: jspb.BinaryReader): TeamProfileResponse;
+}
+
+export namespace TeamProfileResponse {
+  export type AsObject = {
+    team?: bragi_common_pb.TeamProfile.AsObject,
+  }
+}
+
 export class MatchEventsFeedRequest extends jspb.Message {
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MatchEventsFeedRequest.AsObject;

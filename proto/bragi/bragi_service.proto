@@ -26,6 +26,11 @@ service Bragi {
   // Matches gRPC unary call returns all planned or currently played matches
   rpc MatchTimeline(MatchTimelineRequest) returns (MatchTimelineResponse) {}
 
+  // TeamInfo retrieves comprehensive information for a team identified by its URN.
+  // The response includes the team's details, associated players with their external
+  // identities, and the current map roster.
+  rpc TeamProfile(TeamProfileRequest) returns (TeamProfileResponse) {}
+
   // MatchTimelineSportsFeed gRPC stream call provides real-time updates for all sports with planned or currently played matches.
   rpc MatchTimelineSportsFeed(MatchTimelineSportsFeedRequest) returns (stream MatchTimelineSportsFeedResponse) {}
   
@@ -43,7 +48,14 @@ service Bragi {
 
   // Sends all historical events for currently played matches, then only real-time updates
   rpc MatchEventsFeed(MatchEventsFeedRequest) returns (stream MatchEventsFeedMessage) {}
+}
 
+message TeamProfileRequest {
+  string team_urn = 1;
+}
+
+message TeamProfileResponse {
+  TeamProfile team = 1;
 }
 
 message MatchEventsFeedRequest {}

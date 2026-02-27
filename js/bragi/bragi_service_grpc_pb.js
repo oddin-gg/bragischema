@@ -189,6 +189,28 @@ function deserialize_bragi_MatchTimelineTournamentsResponse(buffer_arg) {
   return bragi_bragi_service_pb.MatchTimelineTournamentsResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_bragi_TeamProfileRequest(arg) {
+  if (!(arg instanceof bragi_bragi_service_pb.TeamProfileRequest)) {
+    throw new Error('Expected argument of type bragi.TeamProfileRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_TeamProfileRequest(buffer_arg) {
+  return bragi_bragi_service_pb.TeamProfileRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_bragi_TeamProfileResponse(arg) {
+  if (!(arg instanceof bragi_bragi_service_pb.TeamProfileResponse)) {
+    throw new Error('Expected argument of type bragi.TeamProfileResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_bragi_TeamProfileResponse(buffer_arg) {
+  return bragi_bragi_service_pb.TeamProfileResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 
 var BragiService = exports.BragiService = {
   // MatchTimelineSports gRPC unary call returns all sports with count of planned or currently played matches
@@ -226,6 +248,20 @@ matchTimeline: {
     requestDeserialize: deserialize_bragi_MatchTimelineRequest,
     responseSerialize: serialize_bragi_MatchTimelineResponse,
     responseDeserialize: deserialize_bragi_MatchTimelineResponse,
+  },
+  // TeamInfo retrieves comprehensive information for a team identified by its URN.
+// The response includes the team's details, associated players with their external
+// identities, and the current map roster.
+teamProfile: {
+    path: '/bragi.Bragi/TeamProfile',
+    requestStream: false,
+    responseStream: false,
+    requestType: bragi_bragi_service_pb.TeamProfileRequest,
+    responseType: bragi_bragi_service_pb.TeamProfileResponse,
+    requestSerialize: serialize_bragi_TeamProfileRequest,
+    requestDeserialize: deserialize_bragi_TeamProfileRequest,
+    responseSerialize: serialize_bragi_TeamProfileResponse,
+    responseDeserialize: deserialize_bragi_TeamProfileResponse,
   },
   // MatchTimelineSportsFeed gRPC stream call provides real-time updates for all sports with planned or currently played matches.
 matchTimelineSportsFeed: {
