@@ -351,6 +351,28 @@ export namespace Player {
   }
 }
 
+export class ExternalIdentityList extends jspb.Message {
+  clearIdsList(): void;
+  getIdsList(): Array<string>;
+  setIdsList(value: Array<string>): void;
+  addIds(value: string, index?: number): string;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ExternalIdentityList.AsObject;
+  static toObject(includeInstance: boolean, msg: ExternalIdentityList): ExternalIdentityList.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ExternalIdentityList, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ExternalIdentityList;
+  static deserializeBinaryFromReader(message: ExternalIdentityList, reader: jspb.BinaryReader): ExternalIdentityList;
+}
+
+export namespace ExternalIdentityList {
+  export type AsObject = {
+    idsList: Array<string>,
+  }
+}
+
 export class TeamProfile extends jspb.Message {
   getUrn(): string;
   setUrn(value: string): void;
@@ -363,8 +385,8 @@ export class TeamProfile extends jspb.Message {
   getIconPath(): string;
   setIconPath(value: string): void;
 
-  getExternalIdentityMap(): jspb.Map<string, string>;
-  clearExternalIdentityMap(): void;
+  getExternalIdentitiesMap(): jspb.Map<string, ExternalIdentityList>;
+  clearExternalIdentitiesMap(): void;
   clearPlayersList(): void;
   getPlayersList(): Array<PlayerProfile>;
   setPlayersList(value: Array<PlayerProfile>): void;
@@ -390,7 +412,7 @@ export namespace TeamProfile {
     urn: string,
     name: string,
     iconPath: string,
-    externalIdentityMap: Array<[string, string]>,
+    externalIdentitiesMap: Array<[string, ExternalIdentityList.AsObject]>,
     playersList: Array<PlayerProfile.AsObject>,
     currentMapRosterList: Array<PlayerProfile.AsObject>,
   }
@@ -423,8 +445,8 @@ export class PlayerProfile extends jspb.Message {
   getAge(): number;
   setAge(value: number): void;
 
-  getExternalIdentityMap(): jspb.Map<string, string>;
-  clearExternalIdentityMap(): void;
+  getExternalIdentitiesMap(): jspb.Map<string, ExternalIdentityList>;
+  clearExternalIdentitiesMap(): void;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PlayerProfile.AsObject;
   static toObject(includeInstance: boolean, msg: PlayerProfile): PlayerProfile.AsObject;
@@ -443,7 +465,7 @@ export namespace PlayerProfile {
     shortcut: string,
     iconPath: string,
     age: number,
-    externalIdentityMap: Array<[string, string]>,
+    externalIdentitiesMap: Array<[string, ExternalIdentityList.AsObject]>,
   }
 }
 
