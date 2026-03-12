@@ -258,6 +258,27 @@ func (m *Player) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
+func (m *ExternalIdentityList) CloneVT() *ExternalIdentityList {
+	if m == nil {
+		return (*ExternalIdentityList)(nil)
+	}
+	r := new(ExternalIdentityList)
+	if rhs := m.Ids; rhs != nil {
+		tmpContainer := make([]string, len(rhs))
+		copy(tmpContainer, rhs)
+		r.Ids = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *ExternalIdentityList) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
 func (m *TeamProfile) CloneVT() *TeamProfile {
 	if m == nil {
 		return (*TeamProfile)(nil)
@@ -269,12 +290,12 @@ func (m *TeamProfile) CloneVT() *TeamProfile {
 		tmpVal := *rhs
 		r.IconPath = &tmpVal
 	}
-	if rhs := m.ExternalIdentity; rhs != nil {
-		tmpContainer := make(map[string]string, len(rhs))
+	if rhs := m.ExternalIdentities; rhs != nil {
+		tmpContainer := make(map[string]*ExternalIdentityList, len(rhs))
 		for k, v := range rhs {
-			tmpContainer[k] = v
+			tmpContainer[k] = v.CloneVT()
 		}
-		r.ExternalIdentity = tmpContainer
+		r.ExternalIdentities = tmpContainer
 	}
 	if rhs := m.Players; rhs != nil {
 		tmpContainer := make([]*PlayerProfile, len(rhs))
@@ -324,12 +345,12 @@ func (m *PlayerProfile) CloneVT() *PlayerProfile {
 		tmpVal := *rhs
 		r.Age = &tmpVal
 	}
-	if rhs := m.ExternalIdentity; rhs != nil {
-		tmpContainer := make(map[string]string, len(rhs))
+	if rhs := m.ExternalIdentities; rhs != nil {
+		tmpContainer := make(map[string]*ExternalIdentityList, len(rhs))
 		for k, v := range rhs {
-			tmpContainer[k] = v
+			tmpContainer[k] = v.CloneVT()
 		}
-		r.ExternalIdentity = tmpContainer
+		r.ExternalIdentities = tmpContainer
 	}
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
@@ -705,6 +726,31 @@ func (this *Player) EqualMessageVT(thatMsg proto.Message) bool {
 	}
 	return this.EqualVT(that)
 }
+func (this *ExternalIdentityList) EqualVT(that *ExternalIdentityList) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if len(this.Ids) != len(that.Ids) {
+		return false
+	}
+	for i, vx := range this.Ids {
+		vy := that.Ids[i]
+		if vx != vy {
+			return false
+		}
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *ExternalIdentityList) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*ExternalIdentityList)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
 func (this *TeamProfile) EqualVT(that *TeamProfile) bool {
 	if this == that {
 		return true
@@ -720,16 +766,24 @@ func (this *TeamProfile) EqualVT(that *TeamProfile) bool {
 	if p, q := this.IconPath, that.IconPath; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
 		return false
 	}
-	if len(this.ExternalIdentity) != len(that.ExternalIdentity) {
+	if len(this.ExternalIdentities) != len(that.ExternalIdentities) {
 		return false
 	}
-	for i, vx := range this.ExternalIdentity {
-		vy, ok := that.ExternalIdentity[i]
+	for i, vx := range this.ExternalIdentities {
+		vy, ok := that.ExternalIdentities[i]
 		if !ok {
 			return false
 		}
-		if vx != vy {
-			return false
+		if p, q := vx, vy; p != q {
+			if p == nil {
+				p = &ExternalIdentityList{}
+			}
+			if q == nil {
+				q = &ExternalIdentityList{}
+			}
+			if !p.EqualVT(q) {
+				return false
+			}
 		}
 	}
 	if len(this.Players) != len(that.Players) {
@@ -800,16 +854,24 @@ func (this *PlayerProfile) EqualVT(that *PlayerProfile) bool {
 	if p, q := this.Age, that.Age; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
 		return false
 	}
-	if len(this.ExternalIdentity) != len(that.ExternalIdentity) {
+	if len(this.ExternalIdentities) != len(that.ExternalIdentities) {
 		return false
 	}
-	for i, vx := range this.ExternalIdentity {
-		vy, ok := that.ExternalIdentity[i]
+	for i, vx := range this.ExternalIdentities {
+		vy, ok := that.ExternalIdentities[i]
 		if !ok {
 			return false
 		}
-		if vx != vy {
-			return false
+		if p, q := vx, vy; p != q {
+			if p == nil {
+				p = &ExternalIdentityList{}
+			}
+			if q == nil {
+				q = &ExternalIdentityList{}
+			}
+			if !p.EqualVT(q) {
+				return false
+			}
 		}
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
