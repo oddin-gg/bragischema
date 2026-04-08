@@ -723,8 +723,11 @@ func (m *Dota2TeamCurrentMapStatisticsState) CloneVT() *Dota2TeamCurrentMapStati
 	r.Barracks = m.Barracks
 	r.Kills = m.Kills
 	r.NetWorth = m.NetWorth
-	r.Roshans = m.Roshans
 	r.Towers = m.Towers
+	if rhs := m.Roshans; rhs != nil {
+		tmpVal := *rhs
+		r.Roshans = &tmpVal
+	}
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -923,8 +926,11 @@ func (m *Dota2TeamPreviousMapState) CloneVT() *Dota2TeamPreviousMapState {
 	r.Barracks = m.Barracks
 	r.Kills = m.Kills
 	r.NetWorth = m.NetWorth
-	r.Roshans = m.Roshans
 	r.Towers = m.Towers
+	if rhs := m.Roshans; rhs != nil {
+		tmpVal := *rhs
+		r.Roshans = &tmpVal
+	}
 	if rhs := m.Won; rhs != nil {
 		tmpVal := *rhs
 		r.Won = &tmpVal
@@ -2495,7 +2501,7 @@ func (this *Dota2TeamCurrentMapStatisticsState) EqualVT(that *Dota2TeamCurrentMa
 	if this.NetWorth != that.NetWorth {
 		return false
 	}
-	if this.Roshans != that.Roshans {
+	if p, q := this.Roshans, that.Roshans; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
 		return false
 	}
 	if this.Towers != that.Towers {
@@ -2886,7 +2892,7 @@ func (this *Dota2TeamPreviousMapState) EqualVT(that *Dota2TeamPreviousMapState) 
 	if this.NetWorth != that.NetWorth {
 		return false
 	}
-	if this.Roshans != that.Roshans {
+	if p, q := this.Roshans, that.Roshans; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
 		return false
 	}
 	if this.Towers != that.Towers {
