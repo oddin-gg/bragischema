@@ -32,13 +32,15 @@ Automated gRPC integration tests for Bragi using [K6](https://k6.io/).
 `BRAGI_TOKEN` is required. Tests will fail immediately if it is not set.
 
 ```bash
-k6 run -e BRAGI_TOKEN=your-token k6/match_timeline_sports.js
+cd k6
+k6 run -e BRAGI_TOKEN=your-token match_timeline_sports.js
 ```
 
 To also override the endpoint:
 
 ```bash
-k6 run -e BRAGI_TOKEN=your-token -e BRAGI_ADDR=your-host:443 k6/match_timeline_sports.js
+cd k6
+k6 run -e BRAGI_TOKEN=your-token -e BRAGI_ADDR=your-host:443 match_timeline_sports.js
 ```
 
 ### Test files
