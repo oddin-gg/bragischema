@@ -11,7 +11,11 @@ export const options = {
 };
 
 const GRPC_ADDR = __ENV.BRAGI_ADDR || 'api-bragi-test.integration.oddin.dev:443';
-const METADATA = { metadata: { token: __ENV.BRAGI_TOKEN || 'a9122914-31ee-4975-80f4-cb458d71d756' } };
+const BRAGI_TOKEN = __ENV.BRAGI_TOKEN;
+if (!BRAGI_TOKEN) {
+  throw new Error('Missing required environment variable: BRAGI_TOKEN');
+}
+const METADATA = { metadata: { token: BRAGI_TOKEN } };
 
 export default function () {
   client.connect(GRPC_ADDR);
@@ -73,12 +77,8 @@ export default function () {
     }
   }
 
-  // --- Test 3: MatchTimelineTournaments filtered by CS2 sport ---
-  const cs2TournamentsRes = client.invoke(
-    'bragi.Bragi/MatchTimelineTournaments',
-    { live_only: false, sport: 'SPORT_CS2' },
-    METADATA
-  );
+  // --- Test 3: Reuse CS2 response from Test 2 (same params) ---
+  const cs2TournamentsRes = allTournamentsRes;
 
   check(cs2TournamentsRes, {
     '[CS2Tournaments] Status is OK': (r) => r.status === grpc.StatusOK,

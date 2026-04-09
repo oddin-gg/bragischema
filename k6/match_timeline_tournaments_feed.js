@@ -11,12 +11,16 @@ export const options = {
 };
 
 const GRPC_ADDR = __ENV.BRAGI_ADDR || 'api-bragi-test.integration.oddin.dev:443';
-const METADATA = { metadata: { token: __ENV.BRAGI_TOKEN || 'a9122914-31ee-4975-80f4-cb458d71d756' } };
+const BRAGI_TOKEN = __ENV.BRAGI_TOKEN;
+if (!BRAGI_TOKEN) {
+  throw new Error('Missing required environment variable: BRAGI_TOKEN');
+}
+const METADATA = { metadata: { token: BRAGI_TOKEN } };
 
 export default function () {
   client.connect(GRPC_ADDR);
 
-  // --- Test 1: MatchTimelineTournamentsFeed (all sports) ---
+  // --- Test 1: MatchTimelineTournamentsFeed (CS2) ---
   const stream = new Stream(client, 'bragi.Bragi/MatchTimelineTournamentsFeed', METADATA);
 
   const state = { messageReceived: false };

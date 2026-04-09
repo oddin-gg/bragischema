@@ -7,7 +7,7 @@ Covers all 9 RPCs: 4 unary calls and 5 server-streaming feeds.
 
 - **K6** installed (`winget install k6 --source winget`)
 - **VPN** connected (required to reach `api-bragi-test.integration.oddin.dev`)
-- Valid **auth token** set in each test file's `METADATA` constant
+- Valid **auth token** provided via the `BRAGI_TOKEN` environment variable (required; tests fail immediately if unset)
 
 ## Project Structure
 
@@ -66,11 +66,20 @@ All tests share the following configuration:
 | **Auth** | Token passed via `metadata.token` |
 | **Threshold** | `checks rate==1.0` (all checks must pass) |
 
-To change the endpoint or token, update the constants at the top of each file:
+To change the endpoint or token, pass them as environment variables:
+
+```bash
+k6 run -e BRAGI_TOKEN=your-token -e BRAGI_ADDR=your-host:443 match_timeline_sports.js
+```
+
+The token is read from `__ENV.BRAGI_TOKEN` at the top of each file:
 
 ```javascript
-const GRPC_ADDR = 'api-bragi-test.integration.oddin.dev:443';
-const METADATA = { metadata: { token: 'your-token-here' } };
+const BRAGI_TOKEN = __ENV.BRAGI_TOKEN;
+if (!BRAGI_TOKEN) {
+  throw new Error('Missing required environment variable: BRAGI_TOKEN');
+}
+const METADATA = { metadata: { token: BRAGI_TOKEN } };
 ```
 
 ---
@@ -278,7 +287,7 @@ const METADATA = { metadata: { token: 'your-token-here' } };
 | 8 | `[LiveDataFeed] Snapshot is not null` | Initial snapshot received |
 | 9 | `[LiveDataFeed] dataStatus is a valid enum` | DATA_STATUS enum validation |
 
-**Stream behavior:** Receives initial snapshots for all live matches, then real-time updates. Validates up to 5 messages covering multiple sport types (CS2, Dota2, LoL, Valorant, Rush Soccer, Rush Basketball, Rush Cricket).
+**Stream behavior:** Receives initial snapshots for all live matches, then real-time updates. Validates up to 5 messages covering multiple sport types (CS2, Dota2, LoL, Valorant, Rush Soccer, Rush Basketball).
 **Timeout:** 15 seconds.
 
 **Supported sport payloads validated:**
@@ -288,7 +297,6 @@ const METADATA = { metadata: { token: 'your-token-here' } };
 - `valorant` — ValorantMatchMessage
 - `rushSoccer` — RushSoccerMatchMessage
 - `rushBasketball` — RushBasketballMatchMessage
-- `rushCricket` — RushCricketMatchMessage
 - `announcement` — AnnouncementUpdate
 
 ---
@@ -341,7 +349,7 @@ const METADATA = { metadata: { token: 'your-token-here' } };
 
 | Symptom | Cause | Fix |
 |---------|-------|-----|
-| `code: 7, access denied` | Invalid token or VPN not connected | Connect VPN, update token in `METADATA` |
+| `code: 7, access denied` | Invalid token or VPN not connected | Connect VPN, verify `BRAGI_TOKEN` env var |
 | `k6: command not found` | K6 not in PATH | Restart terminal or use full path: `"/c/Program Files/k6/k6.exe"` |
 | Stream tests hang | Server not sending data | Check if live matches exist on the test environment |
 | `snake_case` field checks fail | K6 gRPC uses camelCase (protobuf JSON mapping) | Use `matchUrn` not `match_urn`, `homeScore` not `home_score` |

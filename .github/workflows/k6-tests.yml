@@ -4,6 +4,43 @@ on:
   schedule:
     - cron: '0 6 * * *' # Daily at 06:00 UTC
   workflow_dispatch:
+    inputs:
+      run_match_timeline_sports:
+        description: 'Run match_timeline_sports test'
+        type: boolean
+        default: true
+      run_match_timeline_tournaments:
+        description: 'Run match_timeline_tournaments test'
+        type: boolean
+        default: true
+      run_match_timeline_filters:
+        description: 'Run match_timeline_filters test'
+        type: boolean
+        default: true
+      run_team_profile:
+        description: 'Run team_profile test'
+        type: boolean
+        default: true
+      run_match_timeline_feed:
+        description: 'Run match_timeline_feed test'
+        type: boolean
+        default: true
+      run_match_timeline_sports_feed:
+        description: 'Run match_timeline_sports_feed test'
+        type: boolean
+        default: true
+      run_match_timeline_tournaments_feed:
+        description: 'Run match_timeline_tournaments_feed test'
+        type: boolean
+        default: true
+      run_live_data_feed:
+        description: 'Run live_data_feed test'
+        type: boolean
+        default: true
+      run_match_events_feed:
+        description: 'Run match_events_feed test'
+        type: boolean
+        default: true
 
 jobs:
   k6-tests:
@@ -22,46 +59,55 @@ jobs:
           sudo apt-get install -y k6
 
       - name: Run match_timeline_sports
+        if: ${{ inputs.run_match_timeline_sports != false }}
         run: k6 run k6/match_timeline_sports.js
         env:
           BRAGI_TOKEN: ${{ secrets.BRAGI_TOKEN }}
 
       - name: Run match_timeline_tournaments
+        if: ${{ inputs.run_match_timeline_tournaments != false }}
         run: k6 run k6/match_timeline_tournaments.js
         env:
           BRAGI_TOKEN: ${{ secrets.BRAGI_TOKEN }}
 
       - name: Run match_timeline_filters
+        if: ${{ inputs.run_match_timeline_filters != false }}
         run: k6 run k6/match_timeline_filters.js
         env:
           BRAGI_TOKEN: ${{ secrets.BRAGI_TOKEN }}
 
       - name: Run team_profile
+        if: ${{ inputs.run_team_profile != false }}
         run: k6 run k6/team_profile.js
         env:
           BRAGI_TOKEN: ${{ secrets.BRAGI_TOKEN }}
 
       - name: Run match_timeline_feed
+        if: ${{ inputs.run_match_timeline_feed != false }}
         run: k6 run k6/match_timeline_feed.js
         env:
           BRAGI_TOKEN: ${{ secrets.BRAGI_TOKEN }}
 
       - name: Run match_timeline_sports_feed
+        if: ${{ inputs.run_match_timeline_sports_feed != false }}
         run: k6 run k6/match_timeline_sports_feed.js
         env:
           BRAGI_TOKEN: ${{ secrets.BRAGI_TOKEN }}
 
       - name: Run match_timeline_tournaments_feed
+        if: ${{ inputs.run_match_timeline_tournaments_feed != false }}
         run: k6 run k6/match_timeline_tournaments_feed.js
         env:
           BRAGI_TOKEN: ${{ secrets.BRAGI_TOKEN }}
 
       - name: Run live_data_feed
+        if: ${{ inputs.run_live_data_feed != false }}
         run: k6 run k6/live_data_feed.js
         env:
           BRAGI_TOKEN: ${{ secrets.BRAGI_TOKEN }}
 
       - name: Run match_events_feed
+        if: ${{ inputs.run_match_events_feed != false }}
         run: k6 run k6/match_events_feed.js
         env:
           BRAGI_TOKEN: ${{ secrets.BRAGI_TOKEN }}
