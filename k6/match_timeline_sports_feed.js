@@ -68,7 +68,7 @@ export default function () {
     console.log('SportsFeed stream error:', err.message);
   });
 
-  stream.write({ live_only: false });
+  stream.write({ liveOnly: false });
 
   sleep(10);
 

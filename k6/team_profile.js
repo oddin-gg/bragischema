@@ -21,7 +21,7 @@ export default function () {
   client.connect(GRPC_ADDR);
 
   // --- Step 1: Get a real team URN from MatchTimeline ---
-  const timelineRes = client.invoke('bragi.Bragi/MatchTimeline', { live_only: false }, METADATA);
+  const timelineRes = client.invoke('bragi.Bragi/MatchTimeline', { liveOnly: false }, METADATA);
 
   check(timelineRes, {
     '[Setup] MatchTimeline status is OK': (r) => r.status === grpc.StatusOK,
@@ -45,7 +45,7 @@ export default function () {
 
   // --- Test 1: TeamProfile with valid team URN ---
   if (teamUrn) {
-    const profileRes = client.invoke('bragi.Bragi/TeamProfile', { team_urn: teamUrn }, METADATA);
+    const profileRes = client.invoke('bragi.Bragi/TeamProfile', { teamUrn: teamUrn }, METADATA);
 
     check(profileRes, {
       '[TeamProfile] Status is OK': (r) => r.status === grpc.StatusOK,
@@ -109,14 +109,14 @@ export default function () {
   }
 
   // --- Test 2: TeamProfile with invalid/nonexistent URN ---
-  const invalidRes = client.invoke('bragi.Bragi/TeamProfile', { team_urn: 'od:competitor:999999999' }, METADATA);
+  const invalidRes = client.invoke('bragi.Bragi/TeamProfile', { teamUrn: 'od:competitor:999999999' }, METADATA);
 
   check(invalidRes, {
     '[InvalidTeam] Request completes without crash': (r) => r.status !== undefined,
   });
 
   // --- Test 3: TeamProfile with empty URN ---
-  const emptyRes = client.invoke('bragi.Bragi/TeamProfile', { team_urn: '' }, METADATA);
+  const emptyRes = client.invoke('bragi.Bragi/TeamProfile', { teamUrn: '' }, METADATA);
 
   check(emptyRes, {
     '[EmptyTeam] Request completes without crash': (r) => r.status !== undefined,

@@ -21,7 +21,7 @@ export default function () {
   client.connect(GRPC_ADDR);
 
   // --- Baseline: Get all matches to extract filter values ---
-  const allRes = client.invoke('bragi.Bragi/MatchTimeline', { live_only: false }, METADATA);
+  const allRes = client.invoke('bragi.Bragi/MatchTimeline', { liveOnly: false }, METADATA);
 
   check(allRes, {
     '[Baseline] Status is OK': (r) => r.status === grpc.StatusOK,
@@ -50,7 +50,7 @@ export default function () {
   if (sampleSport) {
     const sportRes = client.invoke(
       'bragi.Bragi/MatchTimeline',
-      { live_only: false, sport: sampleSport },
+      { liveOnly: false, sport: sampleSport },
       METADATA
     );
 
@@ -73,7 +73,7 @@ export default function () {
   if (sampleTournamentUrn) {
     const tournamentRes = client.invoke(
       'bragi.Bragi/MatchTimeline',
-      { live_only: false, tournament_urn: sampleTournamentUrn },
+      { liveOnly: false, tournamentUrn: sampleTournamentUrn },
       METADATA
     );
 
@@ -96,7 +96,7 @@ export default function () {
   if (sampleMatchUrn) {
     const matchRes = client.invoke(
       'bragi.Bragi/MatchTimeline',
-      { live_only: false, match_urn: sampleMatchUrn },
+      { liveOnly: false, matchUrn: sampleMatchUrn },
       METADATA
     );
 
@@ -115,7 +115,7 @@ export default function () {
   if (sampleTeamName) {
     const teamRes = client.invoke(
       'bragi.Bragi/MatchTimeline',
-      { live_only: false, team_name: sampleTeamName },
+      { liveOnly: false, teamName: sampleTeamName },
       METADATA
     );
 
@@ -133,7 +133,7 @@ export default function () {
   }
 
   // --- Test 5: live_only=true ---
-  const liveRes = client.invoke('bragi.Bragi/MatchTimeline', { live_only: true }, METADATA);
+  const liveRes = client.invoke('bragi.Bragi/MatchTimeline', { liveOnly: true }, METADATA);
 
   check(liveRes, {
     '[LiveOnly] Status is OK': (r) => r.status === grpc.StatusOK,
@@ -152,7 +152,7 @@ export default function () {
   if (sampleSport) {
     const combinedRes = client.invoke(
       'bragi.Bragi/MatchTimeline',
-      { live_only: true, sport: sampleSport },
+      { liveOnly: true, sport: sampleSport },
       METADATA
     );
 
@@ -165,7 +165,7 @@ export default function () {
   // --- Test 7: Nonexistent tournament URN returns empty ---
   const emptyRes = client.invoke(
     'bragi.Bragi/MatchTimeline',
-    { live_only: false, tournament_urn: 'od:tournament:999999999' },
+    { liveOnly: false, tournamentUrn: 'od:tournament:999999999' },
     METADATA
   );
 

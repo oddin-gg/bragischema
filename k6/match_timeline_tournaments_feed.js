@@ -82,7 +82,7 @@ export default function () {
     console.log('TournamentsFeed stream error:', err.message);
   });
 
-  stream.write({ live_only: false, sport: 'SPORT_CS2' });
+  stream.write({ liveOnly: false, sport: 'SPORT_CS2' });
 
   sleep(10);
 

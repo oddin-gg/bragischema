@@ -21,7 +21,7 @@ export default function () {
   client.connect(GRPC_ADDR);
 
   // --- Test 1: MatchTimelineSports with live_only=false (all matches) ---
-  const allSportsRes = client.invoke('bragi.Bragi/MatchTimelineSports', { live_only: false }, METADATA);
+  const allSportsRes = client.invoke('bragi.Bragi/MatchTimelineSports', { liveOnly: false }, METADATA);
 
   check(allSportsRes, {
     '[AllSports] Status is OK': (r) => r.status === grpc.StatusOK,
@@ -62,7 +62,7 @@ export default function () {
   }
 
   // --- Test 2: MatchTimelineSports with live_only=true (live matches only) ---
-  const liveSportsRes = client.invoke('bragi.Bragi/MatchTimelineSports', { live_only: true }, METADATA);
+  const liveSportsRes = client.invoke('bragi.Bragi/MatchTimelineSports', { liveOnly: true }, METADATA);
 
   check(liveSportsRes, {
     '[LiveSports] Status is OK': (r) => r.status === grpc.StatusOK,

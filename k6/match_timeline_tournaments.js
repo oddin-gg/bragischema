@@ -21,7 +21,7 @@ export default function () {
   client.connect(GRPC_ADDR);
 
   // --- Test 1: Get all sports first so we can query tournaments per sport ---
-  const sportsRes = client.invoke('bragi.Bragi/MatchTimelineSports', { live_only: false }, METADATA);
+  const sportsRes = client.invoke('bragi.Bragi/MatchTimelineSports', { liveOnly: false }, METADATA);
 
   check(sportsRes, {
     '[Sports] Status is OK': (r) => r.status === grpc.StatusOK,
@@ -30,7 +30,7 @@ export default function () {
   // --- Test 2: MatchTimelineTournaments with CS2 sport (used as baseline) ---
   const allTournamentsRes = client.invoke(
     'bragi.Bragi/MatchTimelineTournaments',
-    { live_only: false, sport: 'SPORT_CS2' },
+    { liveOnly: false, sport: 'SPORT_CS2' },
     METADATA
   );
 
@@ -88,7 +88,7 @@ export default function () {
   // --- Test 4: MatchTimelineTournaments filtered by Dota2 sport ---
   const dota2TournamentsRes = client.invoke(
     'bragi.Bragi/MatchTimelineTournaments',
-    { live_only: false, sport: 'SPORT_DOTA2' },
+    { liveOnly: false, sport: 'SPORT_DOTA2' },
     METADATA
   );
 
@@ -100,7 +100,7 @@ export default function () {
   // --- Test 5: MatchTimelineTournaments with live_only=true ---
   const liveTournamentsRes = client.invoke(
     'bragi.Bragi/MatchTimelineTournaments',
-    { live_only: true, sport: 'SPORT_CS2' },
+    { liveOnly: true, sport: 'SPORT_CS2' },
     METADATA
   );
 

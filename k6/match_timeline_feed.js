@@ -78,7 +78,7 @@ export default function () {
   });
 
   // Send request
-  stream.write({ live_only: false });
+  stream.write({ liveOnly: false });
 
   // Wait for data handler to fire and close stream
   sleep(10);
