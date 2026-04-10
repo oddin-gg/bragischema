@@ -86,5 +86,9 @@ export default function () {
 
   sleep(10);
 
+  check(state, {
+    '[MatchTimelineTournamentsFeed] Received at least one message': (s) => s.messageReceived === true,
+  });
+
   client.close();
 }

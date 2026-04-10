@@ -72,5 +72,9 @@ export default function () {
 
   sleep(10);
 
+  check(state, {
+    '[MatchTimelineSportsFeed] Received at least one message': (s) => s.messageReceived === true,
+  });
+
   client.close();
 }

@@ -70,8 +70,8 @@ export default function () {
         ];
 
         check(firstEvent, {
-          '[MatchEventsFeed] Event has at least one event type': (e) =>
-            eventTypes.some(type => e[type] != null),
+          '[MatchEventsFeed] Event has exactly one event type': (e) =>
+            eventTypes.filter((type) => e[type] != null).length === 1,
         });
 
         // Validate specific event types if present

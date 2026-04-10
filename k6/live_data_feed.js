@@ -121,5 +121,9 @@ export default function () {
 
   sleep(15);
 
+  check(state, {
+    '[LiveDataFeed] Received at least one message': (s) => s.messageCount > 0,
+  });
+
   client.close();
 }

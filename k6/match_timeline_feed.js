@@ -22,7 +22,10 @@ export default function () {
 
   const stream = new Stream(client, 'bragi.Bragi/MatchTimelineFeed', METADATA);
 
+  const state = { messageReceived: false };
+
   stream.on('data', (msg) => {
+    state.messageReceived = true;
     // Every message should be non-null
     check(msg, {
       'gRPC stream received at least one message': (m) => m != null,
@@ -79,6 +82,10 @@ export default function () {
 
   // Wait for data handler to fire and close stream
   sleep(10);
+
+  check(state, {
+    '[MatchTimelineFeed] Received at least one message': (s) => s.messageReceived === true,
+  });
 
   client.close();
 }

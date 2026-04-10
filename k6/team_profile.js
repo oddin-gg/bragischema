@@ -36,6 +36,13 @@ export default function () {
     }
   }
 
+  check(teamUrn, {
+    '[Setup] Team URN resolved from Bragi': (u) => u !== undefined && u !== null && u !== '',
+  });
+  if (!teamUrn) {
+    throw new Error('No team URN available from Bragi; failing instead of skipping TeamProfile tests');
+  }
+
   // --- Test 1: TeamProfile with valid team URN ---
   if (teamUrn) {
     const profileRes = client.invoke('bragi.Bragi/TeamProfile', { team_urn: teamUrn }, METADATA);
