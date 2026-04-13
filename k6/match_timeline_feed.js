@@ -28,14 +28,14 @@ export default function () {
     state.messageReceived = true;
     // Every message should be non-null
     check(msg, {
-      'gRPC stream received at least one message': (m) => m != null,
+      '[MatchTimelineFeed] gRPC stream received a message': (m) => m != null,
     });
 
     // Only validate timeline messages (not matchUpdate)
     if (msg.timeline != null) {
       check(msg, {
-        'First message contains timeline': (m) => m.timeline != null,
-        'timeline has non-empty matches array': (m) =>
+        '[MatchTimelineFeed] First message contains timeline': (m) => m.timeline != null,
+        '[MatchTimelineFeed] timeline has non-empty matches array': (m) =>
           Array.isArray(m.timeline?.matches) && m.timeline.matches.length > 0,
       });
 
@@ -44,7 +44,7 @@ export default function () {
 
         // Each match has plannetStart
         check(matches, {
-          'Each match has plannetStart': (ms) =>
+          '[MatchTimelineFeed] Each match has plannetStart': (ms) =>
             ms.every(m => typeof m.plannetStart === 'string' && m.plannetStart.length > 0),
         });
 
@@ -54,7 +54,7 @@ export default function () {
           .filter(t => !Number.isNaN(t));
 
         check(timestamps, {
-          'Timestamps do not move backwards': (ts) => {
+          '[MatchTimelineFeed] Timestamps do not move backwards': (ts) => {
             for (let i = 1; i < ts.length; i++) {
               if (ts[i] < ts[i - 1]) return false;
             }
@@ -68,7 +68,7 @@ export default function () {
     } else if (msg.matchUpdate != null) {
       // matchUpdate messages are expected - just validate basic structure
       check(msg.matchUpdate, {
-        'matchUpdate has matchUrn': (m) => typeof m.matchUrn === 'string',
+        '[MatchTimelineFeed] matchUpdate has matchUrn': (m) => typeof m.matchUrn === 'string',
       });
     }
   });

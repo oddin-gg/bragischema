@@ -77,15 +77,7 @@ export default function () {
     }
   }
 
-  // --- Test 3: Reuse CS2 response from Test 2 (same params) ---
-  const cs2TournamentsRes = allTournamentsRes;
-
-  check(cs2TournamentsRes, {
-    '[CS2Tournaments] Status is OK': (r) => r.status === grpc.StatusOK,
-    '[CS2Tournaments] Response message is not null': (r) => r.message != null,
-  });
-
-  // --- Test 4: MatchTimelineTournaments filtered by Dota2 sport ---
+  // --- Test 3: MatchTimelineTournaments filtered by Dota2 sport ---
   const dota2TournamentsRes = client.invoke(
     'bragi.Bragi/MatchTimelineTournaments',
     { liveOnly: false, sport: 'SPORT_DOTA2' },
@@ -97,7 +89,7 @@ export default function () {
     '[Dota2Tournaments] Response message is not null': (r) => r.message != null,
   });
 
-  // --- Test 5: MatchTimelineTournaments with live_only=true ---
+  // --- Test 4: MatchTimelineTournaments with live_only=true ---
   const liveTournamentsRes = client.invoke(
     'bragi.Bragi/MatchTimelineTournaments',
     { liveOnly: true, sport: 'SPORT_CS2' },

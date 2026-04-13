@@ -59,6 +59,8 @@ jobs:
           sudo apt-get install -y k6
 
       - name: Run match_timeline_sports
+        id: test_match_timeline_sports
+        continue-on-error: true
         if: ${{ inputs.run_match_timeline_sports != false }}
         working-directory: k6
         run: k6 run match_timeline_sports.js
@@ -66,6 +68,8 @@ jobs:
           BRAGI_TOKEN: ${{ secrets.BRAGI_TOKEN }}
 
       - name: Run match_timeline_tournaments
+        id: test_match_timeline_tournaments
+        continue-on-error: true
         if: ${{ inputs.run_match_timeline_tournaments != false }}
         working-directory: k6
         run: k6 run match_timeline_tournaments.js
@@ -73,6 +77,8 @@ jobs:
           BRAGI_TOKEN: ${{ secrets.BRAGI_TOKEN }}
 
       - name: Run match_timeline_filters
+        id: test_match_timeline_filters
+        continue-on-error: true
         if: ${{ inputs.run_match_timeline_filters != false }}
         working-directory: k6
         run: k6 run match_timeline_filters.js
@@ -80,6 +86,8 @@ jobs:
           BRAGI_TOKEN: ${{ secrets.BRAGI_TOKEN }}
 
       - name: Run team_profile
+        id: test_team_profile
+        continue-on-error: true
         if: ${{ inputs.run_team_profile != false }}
         working-directory: k6
         run: k6 run team_profile.js
@@ -87,6 +95,8 @@ jobs:
           BRAGI_TOKEN: ${{ secrets.BRAGI_TOKEN }}
 
       - name: Run match_timeline_feed
+        id: test_match_timeline_feed
+        continue-on-error: true
         if: ${{ inputs.run_match_timeline_feed != false }}
         working-directory: k6
         run: k6 run match_timeline_feed.js
@@ -94,6 +104,8 @@ jobs:
           BRAGI_TOKEN: ${{ secrets.BRAGI_TOKEN }}
 
       - name: Run match_timeline_sports_feed
+        id: test_match_timeline_sports_feed
+        continue-on-error: true
         if: ${{ inputs.run_match_timeline_sports_feed != false }}
         working-directory: k6
         run: k6 run match_timeline_sports_feed.js
@@ -101,6 +113,8 @@ jobs:
           BRAGI_TOKEN: ${{ secrets.BRAGI_TOKEN }}
 
       - name: Run match_timeline_tournaments_feed
+        id: test_match_timeline_tournaments_feed
+        continue-on-error: true
         if: ${{ inputs.run_match_timeline_tournaments_feed != false }}
         working-directory: k6
         run: k6 run match_timeline_tournaments_feed.js
@@ -108,6 +122,8 @@ jobs:
           BRAGI_TOKEN: ${{ secrets.BRAGI_TOKEN }}
 
       - name: Run live_data_feed
+        id: test_live_data_feed
+        continue-on-error: true
         if: ${{ inputs.run_live_data_feed != false }}
         working-directory: k6
         run: k6 run live_data_feed.js
@@ -115,8 +131,29 @@ jobs:
           BRAGI_TOKEN: ${{ secrets.BRAGI_TOKEN }}
 
       - name: Run match_events_feed
+        id: test_match_events_feed
+        continue-on-error: true
         if: ${{ inputs.run_match_events_feed != false }}
         working-directory: k6
         run: k6 run match_events_feed.js
         env:
           BRAGI_TOKEN: ${{ secrets.BRAGI_TOKEN }}
+
+      - name: Check test results
+        if: always()
+        run: |
+          failed=false
+          # check each step outcome
+          if [ "${{ steps.test_match_timeline_sports.outcome }}" = "failure" ]; then failed=true; fi
+          if [ "${{ steps.test_match_timeline_tournaments.outcome }}" = "failure" ]; then failed=true; fi
+          if [ "${{ steps.test_match_timeline_filters.outcome }}" = "failure" ]; then failed=true; fi
+          if [ "${{ steps.test_team_profile.outcome }}" = "failure" ]; then failed=true; fi
+          if [ "${{ steps.test_match_timeline_feed.outcome }}" = "failure" ]; then failed=true; fi
+          if [ "${{ steps.test_match_timeline_sports_feed.outcome }}" = "failure" ]; then failed=true; fi
+          if [ "${{ steps.test_match_timeline_tournaments_feed.outcome }}" = "failure" ]; then failed=true; fi
+          if [ "${{ steps.test_live_data_feed.outcome }}" = "failure" ]; then failed=true; fi
+          if [ "${{ steps.test_match_events_feed.outcome }}" = "failure" ]; then failed=true; fi
+          if [ "$failed" = "true" ]; then
+            echo "One or more k6 tests failed"
+            exit 1
+          fi

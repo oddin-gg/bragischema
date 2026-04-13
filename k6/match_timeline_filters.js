@@ -29,6 +29,13 @@ export default function () {
       r.message != null && Array.isArray(r.message.matches) && r.message.matches.length > 0,
   });
 
+  check(allRes.message, {
+    '[Baseline] Returned at least one match': (m) => m.matches && m.matches.length > 0,
+  });
+  if (!allRes.message?.matches || allRes.message.matches.length === 0) {
+    throw new Error('No matches returned from baseline MatchTimeline; cannot test filters');
+  }
+
   const allMatches = allRes.message?.matches || [];
   let sampleMatch = null;
   let sampleTournamentUrn = null;
