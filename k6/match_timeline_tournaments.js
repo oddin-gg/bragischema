@@ -70,7 +70,7 @@ export default function () {
     }
   }
 
-  // --- Test 3: MatchTimelineTournaments filtered by Dota2 sport ---
+  // --- Test 2: MatchTimelineTournaments filtered by Dota2 sport ---
   const dota2TournamentsRes = client.invoke(
     'bragi.Bragi/MatchTimelineTournaments',
     { liveOnly: false, sport: 'SPORT_DOTA2' },
@@ -82,7 +82,7 @@ export default function () {
     '[Dota2Tournaments] Response message is not null': (r) => r.message != null,
   });
 
-  // --- Test 4: MatchTimelineTournaments with live_only=true ---
+  // --- Test 3: MatchTimelineTournaments with live_only=true ---
   const liveTournamentsRes = client.invoke(
     'bragi.Bragi/MatchTimelineTournaments',
     { liveOnly: true, sport: 'SPORT_CS2' },

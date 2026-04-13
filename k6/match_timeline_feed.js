@@ -43,16 +43,17 @@ export default function () {
       if (msg.timeline?.matches) {
         const matches = msg.timeline.matches;
 
-        // Each match has plannetStart
+        // Each match has plannetStart (protobuf Timestamp: {seconds, nanos})
         check(matches, {
           '[MatchTimelineFeed] Each match has plannetStart': (ms) =>
-            ms.every(m => typeof m.plannetStart === 'string' && m.plannetStart.length > 0),
+            ms.every(m => m.plannetStart != null && typeof m.plannetStart.seconds === 'string'),
         });
 
         // Timestamps do not move backwards
         const timestamps = matches
-          .map(m => Date.parse(m.plannetStart))
-          .filter(t => !Number.isNaN(t));
+          .map(m => m.plannetStart)
+          .filter(t => t != null && t.seconds != null)
+          .map(t => Number(t.seconds));
 
         check(timestamps, {
           '[MatchTimelineFeed] Timestamps do not move backwards': (ts) => {

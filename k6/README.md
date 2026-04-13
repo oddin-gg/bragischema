@@ -261,7 +261,7 @@ const METADATA = { metadata: { token: BRAGI_TOKEN } };
 | 1 | `gRPC stream received at least one message` | Stream delivers data |
 | 2 | `First message contains timeline` | Initial timeline snapshot present |
 | 3 | `timeline has non-empty matches array` | Matches in timeline |
-| 4 | `Each match has plannetStart` | Planned start timestamp present |
+| 4 | `Each match has plannetStart` | Planned start present as a protobuf `Timestamp` object (`seconds`/`nanos`) |
 | 5 | `Timestamps do not move backwards` | Chronological ordering |
 | 6 | `matchUpdate has matchUrn` | Update messages have match identifier |
 

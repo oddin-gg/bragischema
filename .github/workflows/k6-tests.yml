@@ -61,7 +61,7 @@ jobs:
       - name: Run match_timeline_sports
         id: test_match_timeline_sports
         continue-on-error: true
-        if: ${{ inputs.run_match_timeline_sports != false }}
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.run_match_timeline_sports }}
         working-directory: k6
         run: k6 run match_timeline_sports.js
         env:
@@ -70,7 +70,7 @@ jobs:
       - name: Run match_timeline_tournaments
         id: test_match_timeline_tournaments
         continue-on-error: true
-        if: ${{ inputs.run_match_timeline_tournaments != false }}
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.run_match_timeline_tournaments }}
         working-directory: k6
         run: k6 run match_timeline_tournaments.js
         env:
@@ -79,7 +79,7 @@ jobs:
       - name: Run match_timeline_filters
         id: test_match_timeline_filters
         continue-on-error: true
-        if: ${{ inputs.run_match_timeline_filters != false }}
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.run_match_timeline_filters }}
         working-directory: k6
         run: k6 run match_timeline_filters.js
         env:
@@ -88,7 +88,7 @@ jobs:
       - name: Run team_profile
         id: test_team_profile
         continue-on-error: true
-        if: ${{ inputs.run_team_profile != false }}
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.run_team_profile }}
         working-directory: k6
         run: k6 run team_profile.js
         env:
@@ -97,7 +97,7 @@ jobs:
       - name: Run match_timeline_feed
         id: test_match_timeline_feed
         continue-on-error: true
-        if: ${{ inputs.run_match_timeline_feed != false }}
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.run_match_timeline_feed }}
         working-directory: k6
         run: k6 run match_timeline_feed.js
         env:
@@ -106,7 +106,7 @@ jobs:
       - name: Run match_timeline_sports_feed
         id: test_match_timeline_sports_feed
         continue-on-error: true
-        if: ${{ inputs.run_match_timeline_sports_feed != false }}
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.run_match_timeline_sports_feed }}
         working-directory: k6
         run: k6 run match_timeline_sports_feed.js
         env:
@@ -115,7 +115,7 @@ jobs:
       - name: Run match_timeline_tournaments_feed
         id: test_match_timeline_tournaments_feed
         continue-on-error: true
-        if: ${{ inputs.run_match_timeline_tournaments_feed != false }}
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.run_match_timeline_tournaments_feed }}
         working-directory: k6
         run: k6 run match_timeline_tournaments_feed.js
         env:
@@ -124,7 +124,7 @@ jobs:
       - name: Run live_data_feed
         id: test_live_data_feed
         continue-on-error: true
-        if: ${{ inputs.run_live_data_feed != false }}
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.run_live_data_feed }}
         working-directory: k6
         run: k6 run live_data_feed.js
         env:
@@ -133,7 +133,7 @@ jobs:
       - name: Run match_events_feed
         id: test_match_events_feed
         continue-on-error: true
-        if: ${{ inputs.run_match_events_feed != false }}
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.run_match_events_feed }}
         working-directory: k6
         run: k6 run match_events_feed.js
         env:
