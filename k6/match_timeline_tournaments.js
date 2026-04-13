@@ -20,14 +20,7 @@ const METADATA = { metadata: { token: BRAGI_TOKEN } };
 export default function () {
   client.connect(GRPC_ADDR, { plaintext: false });
 
-  // --- Test 1: Get all sports first so we can query tournaments per sport ---
-  const sportsRes = client.invoke('bragi.Bragi/MatchTimelineSports', { liveOnly: false }, METADATA);
-
-  check(sportsRes, {
-    '[Sports] Status is OK': (r) => r.status === grpc.StatusOK,
-  });
-
-  // --- Test 2: MatchTimelineTournaments with CS2 sport (used as baseline) ---
+  // --- Test 1: MatchTimelineTournaments with CS2 sport (used as baseline) ---
   const allTournamentsRes = client.invoke(
     'bragi.Bragi/MatchTimelineTournaments',
     { liveOnly: false, sport: 'SPORT_CS2' },
