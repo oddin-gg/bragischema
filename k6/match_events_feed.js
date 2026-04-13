@@ -142,6 +142,8 @@ export default function () {
 
   sleep(15);
 
+  stream.end();
+
   console.log(`CS2 events received: ${state.cs2EventsReceived}`);
 
   client.close();

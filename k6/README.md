@@ -45,7 +45,7 @@ Run a single test:
 
 ```bash
 cd k6
-k6 run match_timeline_sports.js
+k6 run -e BRAGI_TOKEN=your-token match_timeline_sports.js
 ```
 
 Run all tests with summary:
