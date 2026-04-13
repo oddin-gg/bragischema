@@ -23,7 +23,7 @@ export default function () {
   // --- Test 1: MatchEventsFeed - receives historical events then real-time ---
   const stream = new Stream(client, 'bragi.Bragi/MatchEventsFeed', METADATA);
 
-  const state = { messageCount: 0, cs2EventsReceived: false };
+  const state = { messageCount: 0, cs2EventsReceived: false, ended: false };
   const maxMessages = 5;
 
   stream.on('data', (msg) => {
@@ -128,7 +128,8 @@ export default function () {
       }
     }
 
-    if (state.messageCount >= maxMessages) {
+    if (state.messageCount >= maxMessages && !state.ended) {
+      state.ended = true;
       stream.end();
     }
   });
@@ -142,7 +143,10 @@ export default function () {
 
   sleep(15);
 
-  stream.end();
+  if (!state.ended) {
+    state.ended = true;
+    stream.end();
+  }
 
   check(state, {
     '[MatchEventsFeed] Stream produced at least one message': (s) => s.messageCount > 0,
