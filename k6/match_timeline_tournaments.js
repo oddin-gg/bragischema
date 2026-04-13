@@ -18,7 +18,7 @@ if (!BRAGI_TOKEN) {
 const METADATA = { metadata: { token: BRAGI_TOKEN } };
 
 export default function () {
-  client.connect(GRPC_ADDR);
+  client.connect(GRPC_ADDR, { plaintext: false });
 
   // --- Test 1: Get all sports first so we can query tournaments per sport ---
   const sportsRes = client.invoke('bragi.Bragi/MatchTimelineSports', { liveOnly: false }, METADATA);

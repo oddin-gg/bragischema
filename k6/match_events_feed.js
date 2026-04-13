@@ -18,7 +18,7 @@ if (!BRAGI_TOKEN) {
 const METADATA = { metadata: { token: BRAGI_TOKEN } };
 
 export default function () {
-  client.connect(GRPC_ADDR);
+  client.connect(GRPC_ADDR, { plaintext: false });
 
   // --- Test 1: MatchEventsFeed - receives historical events then real-time ---
   const stream = new Stream(client, 'bragi.Bragi/MatchEventsFeed', METADATA);

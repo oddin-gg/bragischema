@@ -18,7 +18,7 @@ if (!BRAGI_TOKEN) {
 const METADATA = { metadata: { token: BRAGI_TOKEN } };
 
 export default function () {
-  client.connect(GRPC_ADDR);
+  client.connect(GRPC_ADDR, { plaintext: false });
 
   // --- Step 1: Get a real team URN from MatchTimeline ---
   const timelineRes = client.invoke('bragi.Bragi/MatchTimeline', { liveOnly: false }, METADATA);

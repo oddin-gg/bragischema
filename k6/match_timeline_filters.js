@@ -18,7 +18,7 @@ if (!BRAGI_TOKEN) {
 const METADATA = { metadata: { token: BRAGI_TOKEN } };
 
 export default function () {
-  client.connect(GRPC_ADDR);
+  client.connect(GRPC_ADDR, { plaintext: false });
 
   // --- Baseline: Get all matches to extract filter values ---
   const allRes = client.invoke('bragi.Bragi/MatchTimeline', { liveOnly: false }, METADATA);

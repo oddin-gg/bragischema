@@ -18,7 +18,7 @@ if (!BRAGI_TOKEN) {
 const METADATA = { metadata: { token: BRAGI_TOKEN } };
 
 export default function () {
-  client.connect(GRPC_ADDR);
+  client.connect(GRPC_ADDR, { plaintext: false });
 
   // --- Test 1: MatchTimelineSportsFeed with live_only=false ---
   const stream = new Stream(client, 'bragi.Bragi/MatchTimelineSportsFeed', METADATA);

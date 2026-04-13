@@ -18,7 +18,7 @@ if (!BRAGI_TOKEN) {
 const METADATA = { metadata: { token: BRAGI_TOKEN } };
 
 export default function () {
-  client.connect(GRPC_ADDR);
+  client.connect(GRPC_ADDR, { plaintext: false });
 
   // --- Test 1: LiveDataFeed without "after" timestamp (current matches) ---
   const stream = new Stream(client, 'bragi.Bragi/LiveDataFeed', METADATA);
