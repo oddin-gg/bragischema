@@ -22,7 +22,7 @@ export default function () {
 
   const stream = new Stream(client, 'bragi.Bragi/MatchTimelineFeed', METADATA);
 
-  const state = { messageReceived: false };
+  const state = { messageReceived: false, timelineReceived: false };
 
   stream.on('data', (msg) => {
     state.messageReceived = true;
@@ -33,6 +33,7 @@ export default function () {
 
     // Only validate timeline messages (not matchUpdate)
     if (msg.timeline != null) {
+      state.timelineReceived = true;
       check(msg, {
         '[MatchTimelineFeed] First message contains timeline': (m) => m.timeline != null,
         '[MatchTimelineFeed] timeline has non-empty matches array': (m) =>
@@ -85,6 +86,7 @@ export default function () {
 
   check(state, {
     '[MatchTimelineFeed] Received at least one message': (s) => s.messageReceived === true,
+    '[MatchTimelineFeed] Received a timeline snapshot': (s) => s.timelineReceived === true,
   });
 
   client.close();

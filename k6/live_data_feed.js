@@ -23,7 +23,7 @@ export default function () {
   // --- Test 1: LiveDataFeed without "after" timestamp (current matches) ---
   const stream = new Stream(client, 'bragi.Bragi/LiveDataFeed', METADATA);
 
-  const state = { snapshotReceived: false, messageCount: 0 };
+  const state = { snapshotReceived: false, matchReceived: false, messageCount: 0 };
   const maxMessages = 5;
 
   stream.on('data', (msg) => {
@@ -49,6 +49,7 @@ export default function () {
         matchMsg.rushBasketball || matchMsg.valorant || matchMsg.rushCricket;
 
       if (sportPayload && !matchMsg.announcement) {
+        state.matchReceived = true;
         // This is a game-specific message (e.g., CS2MatchMessage)
         check(sportPayload, {
           '[LiveDataFeed] Sport message has matchUrn': (m) =>
@@ -123,6 +124,7 @@ export default function () {
 
   check(state, {
     '[LiveDataFeed] Received at least one message': (s) => s.messageCount > 0,
+    '[LiveDataFeed] Received at least one match payload': (s) => s.matchReceived === true,
   });
 
   client.close();
