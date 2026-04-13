@@ -144,6 +144,10 @@ export default function () {
 
   stream.end();
 
+  check(state, {
+    '[MatchEventsFeed] Stream produced at least one message': (s) => s.messageCount > 0,
+  });
+
   console.log(`CS2 events received: ${state.cs2EventsReceived}`);
 
   client.close();

@@ -30,7 +30,8 @@ export default function () {
   });
 
   check(allRes.message, {
-    '[Baseline] Returned at least one match': (m) => m.matches && m.matches.length > 0,
+    '[Baseline] Returned at least one match': (m) =>
+      Array.isArray(m?.matches) && m.matches.length > 0,
   });
   if (!allRes.message?.matches || allRes.message.matches.length === 0) {
     throw new Error('No matches returned from baseline MatchTimeline; cannot test filters');
