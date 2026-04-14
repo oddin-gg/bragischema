@@ -122,23 +122,21 @@ const METADATA = { metadata: { token: BRAGI_TOKEN } };
 
 | # | Check | Description |
 |---|-------|-------------|
-| 1 | `[Sports] Status is OK` | Prerequisite sports call succeeds |
-| 2 | `[AllTournaments] Status is OK` | CS2 tournaments query returns OK |
-| 3 | `[AllTournaments] Response message is not null` | Response body present |
-| 4 | `[AllTournaments] tournaments is an array` | Tournaments field is array |
-| 5 | `[AllTournaments] At least one tournament returned` | Non-empty results |
-| 6 | `[AllTournaments] Has tournament object` | Nested tournament object exists |
-| 7 | `[AllTournaments] Has matchCount` | Match count is numeric |
-| 8 | `[AllTournaments] matchCount is positive` | At least 1 match per tournament |
-| 9 | `[AllTournaments] Tournament has urn` | URN is a non-empty string |
-| 10 | `[AllTournaments] Tournament has name` | Name is a non-empty string |
-| 11 | `[AllTournaments] Tournament urn starts with od:tournament:` | URN format validation |
-| 12 | `[AllTournaments] Tournament has isOffline boolean` | Boolean type check |
-| 13 | `[AllTournaments] All items have tournament and matchCount` | Bulk structure validation |
-| 14 | `[AllTournaments] No duplicate tournament URNs` | Uniqueness check |
-| 15–16 | `[CS2Tournaments]` | CS2-specific sport filter |
-| 17–18 | `[Dota2Tournaments]` | Dota2-specific sport filter |
-| 19–21 | `[LiveTournaments]` | Live-only filter + count comparison |
+| 1 | `[AllTournaments] Status is OK` | CS2 tournaments query returns OK |
+| 2 | `[AllTournaments] Response message is not null` | Response body present |
+| 3 | `[AllTournaments] tournaments is an array` | Tournaments field is array |
+| 4 | `[AllTournaments] At least one tournament returned` | Non-empty results |
+| 5 | `[AllTournaments] Has tournament object` | Nested tournament object exists |
+| 6 | `[AllTournaments] Has matchCount` | Match count is numeric |
+| 7 | `[AllTournaments] matchCount is positive` | At least 1 match per tournament |
+| 8 | `[AllTournaments] Tournament has urn` | URN is a non-empty string |
+| 9 | `[AllTournaments] Tournament has name` | Name is a non-empty string |
+| 10 | `[AllTournaments] Tournament urn starts with od:tournament:` | URN format validation |
+| 11 | `[AllTournaments] Tournament has isOffline boolean` | Boolean type check |
+| 12 | `[AllTournaments] All items have tournament and matchCount` | Bulk structure validation |
+| 13 | `[AllTournaments] No duplicate tournament URNs` | Uniqueness check |
+| 14–15 | `[Dota2Tournaments]` | Dota2-specific sport filter |
+| 16–18 | `[LiveTournaments]` | Live-only filter + count comparison |
 
 **Scenarios tested:**
 - CS2 sport filter (baseline)
@@ -335,7 +333,7 @@ const METADATA = { metadata: { token: BRAGI_TOKEN } };
 | RPC | Type | Test File | Checks |
 |-----|------|-----------|--------|
 | `MatchTimelineSports` | unary | `match_timeline_sports.js` | 14 |
-| `MatchTimelineTournaments` | unary | `match_timeline_tournaments.js` | 21 |
+| `MatchTimelineTournaments` | unary | `match_timeline_tournaments.js` | 18 |
 | `MatchTimeline` | unary | `match_timeline_filters.js` | 24 |
 | `TeamProfile` | unary | `team_profile.js` | 19 |
 | `MatchTimelineSportsFeed` | stream | `match_timeline_sports_feed.js` | 8 |
@@ -343,7 +341,7 @@ const METADATA = { metadata: { token: BRAGI_TOKEN } };
 | `MatchTimelineFeed` | stream | `match_timeline_feed.js` | 6 |
 | `LiveDataFeed` | stream | `live_data_feed.js` | 9 |
 | `MatchEventsFeed` | stream | `match_events_feed.js` | 7 |
-| **Total** | | **9 files** | **119** |
+| **Total** | | **9 files** | **116** |
 
 ## Troubleshooting
 

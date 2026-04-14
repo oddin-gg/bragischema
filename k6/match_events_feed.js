@@ -113,10 +113,11 @@ export default function () {
         if (events.length >= 2) {
           const timestamps = events
             .map(e => e.timestamp)
-            .filter(t => t != null);
+            .filter(t => t != null && t.seconds != null)
+            .map(t => Number(t.seconds));
 
           check(timestamps, {
-            '[MatchEventsFeed] Events have timestamps': (ts) => ts.length > 0,
+            '[MatchEventsFeed] Events have timestamps': (ts) => ts.length > 0 && ts.every(t => Number.isFinite(t)),
             '[MatchEventsFeed] Events are chronologically ordered': (ts) => {
               for (let i = 1; i < ts.length; i++) {
                 if (ts[i] < ts[i - 1]) return false;
