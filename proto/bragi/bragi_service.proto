@@ -213,6 +213,8 @@ message MatchMessage {
     // Message which wraps RushCricketMatchSnapshot or RushCricketMatchUpdate message with given match_urn and sequence for Cricket sport.
     RushCricketMatchMessage rush_cricket = 9;
   }
+
+  uint32 active_data_source_type = 10;
 }
 
 // This oneof joins together all possible (Game)MatchSnapshots. It servers as a helper wrapper for match snapshots, so

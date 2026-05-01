@@ -651,6 +651,9 @@ export class MatchMessage extends jspb.Message {
   getRushCricket(): bragi_rush_cricket_pb.RushCricketMatchMessage | undefined;
   setRushCricket(value?: bragi_rush_cricket_pb.RushCricketMatchMessage): void;
 
+  getActiveDataSourceType(): number;
+  setActiveDataSourceType(value: number): void;
+
   getMessageCase(): MatchMessage.MessageCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MatchMessage.AsObject;
@@ -673,6 +676,7 @@ export namespace MatchMessage {
     rushBasketball?: bragi_rush_basketball_pb.RushBasketballMatchMessage.AsObject,
     valorant?: bragi_valorant_pb.ValorantMatchMessage.AsObject,
     rushCricket?: bragi_rush_cricket_pb.RushCricketMatchMessage.AsObject,
+    activeDataSourceType: number,
   }
 
   export enum MessageCase {
