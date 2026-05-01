@@ -547,6 +547,7 @@ func (m *MatchMessage) CloneVT() *MatchMessage {
 		return (*MatchMessage)(nil)
 	}
 	r := new(MatchMessage)
+	r.ActiveDataSourceType = m.ActiveDataSourceType
 	if m.Message != nil {
 		r.Message = m.Message.(interface{ CloneVT() isMatchMessage_Message }).CloneVT()
 	}
@@ -1566,6 +1567,9 @@ func (this *MatchMessage) EqualVT(that *MatchMessage) bool {
 		}).EqualVT(that.Message) {
 			return false
 		}
+	}
+	if this.ActiveDataSourceType != that.ActiveDataSourceType {
+		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
 }
