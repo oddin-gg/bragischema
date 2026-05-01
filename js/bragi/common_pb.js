@@ -2128,7 +2128,9 @@ proto.bragi.Tournament.toObject = function(includeInstance, msg) {
 urn: jspb.Message.getFieldWithDefault(msg, 1, ""),
 name: jspb.Message.getFieldWithDefault(msg, 2, ""),
 isOffline: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
-startDate: (f = msg.getStartDate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+startDate: (f = msg.getStartDate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+organizerId: jspb.Message.getFieldWithDefault(msg, 5, 0),
+organizerName: jspb.Message.getFieldWithDefault(msg, 6, "")
   };
 
   if (includeInstance) {
@@ -2181,6 +2183,14 @@ proto.bragi.Tournament.deserializeBinaryFromReader = function(msg, reader) {
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setStartDate(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setOrganizerId(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setOrganizerName(value);
       break;
     default:
       reader.skipField();
@@ -2238,6 +2248,20 @@ proto.bragi.Tournament.serializeBinaryToWriter = function(message, writer) {
       4,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = message.getOrganizerId();
+  if (f !== 0) {
+    writer.writeUint32(
+      5,
+      f
+    );
+  }
+  f = message.getOrganizerName();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
+      f
     );
   }
 };
@@ -2331,6 +2355,42 @@ proto.bragi.Tournament.prototype.clearStartDate = function() {
  */
 proto.bragi.Tournament.prototype.hasStartDate = function() {
   return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional uint32 organizer_id = 5;
+ * @return {number}
+ */
+proto.bragi.Tournament.prototype.getOrganizerId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.bragi.Tournament} returns this
+ */
+proto.bragi.Tournament.prototype.setOrganizerId = function(value) {
+  return jspb.Message.setProto3IntField(this, 5, value);
+};
+
+
+/**
+ * optional string organizer_name = 6;
+ * @return {string}
+ */
+proto.bragi.Tournament.prototype.getOrganizerName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.bragi.Tournament} returns this
+ */
+proto.bragi.Tournament.prototype.setOrganizerName = function(value) {
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 

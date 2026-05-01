@@ -73,6 +73,8 @@ message Tournament {
   string name = 2;
   bool is_offline = 3;
   google.protobuf.Timestamp start_date = 4;
+  uint32 organizer_id = 5;
+  string organizer_name = 6;
 }
 
 message Team {
