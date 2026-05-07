@@ -917,8 +917,6 @@ export class Dota2TeamCurrentMapStatisticsState extends jspb.Message {
   getNetWorth(): number;
   setNetWorth(value: number): void;
 
-  hasRoshans(): boolean;
-  clearRoshans(): void;
   getRoshans(): number;
   setRoshans(value: number): void;
 
@@ -1232,8 +1230,6 @@ export class Dota2TeamPreviousMapState extends jspb.Message {
   getNetWorth(): number;
   setNetWorth(value: number): void;
 
-  hasRoshans(): boolean;
-  clearRoshans(): void;
   getRoshans(): number;
   setRoshans(value: number): void;
 
