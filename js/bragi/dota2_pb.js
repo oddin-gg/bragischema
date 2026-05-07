@@ -7244,7 +7244,7 @@ teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
 barracks: jspb.Message.getFieldWithDefault(msg, 2, 0),
 kills: jspb.Message.getFieldWithDefault(msg, 3, 0),
 netWorth: jspb.Message.getFieldWithDefault(msg, 4, 0),
-roshans: (f = jspb.Message.getField(msg, 5)) == null ? undefined : f,
+roshans: jspb.Message.getFieldWithDefault(msg, 5, 0),
 towers: jspb.Message.getFieldWithDefault(msg, 6, 0)
   };
 
@@ -7363,8 +7363,8 @@ proto.bragi.Dota2TeamCurrentMapStatisticsState.serializeBinaryToWriter = functio
       f
     );
   }
-  f = /** @type {number} */ (jspb.Message.getField(message, 5));
-  if (f != null) {
+  f = message.getRoshans();
+  if (f !== 0) {
     writer.writeUint32(
       5,
       f
@@ -7466,25 +7466,7 @@ proto.bragi.Dota2TeamCurrentMapStatisticsState.prototype.getRoshans = function()
  * @return {!proto.bragi.Dota2TeamCurrentMapStatisticsState} returns this
  */
 proto.bragi.Dota2TeamCurrentMapStatisticsState.prototype.setRoshans = function(value) {
-  return jspb.Message.setField(this, 5, value);
-};
-
-
-/**
- * Clears the field making it undefined.
- * @return {!proto.bragi.Dota2TeamCurrentMapStatisticsState} returns this
- */
-proto.bragi.Dota2TeamCurrentMapStatisticsState.prototype.clearRoshans = function() {
-  return jspb.Message.setField(this, 5, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.bragi.Dota2TeamCurrentMapStatisticsState.prototype.hasRoshans = function() {
-  return jspb.Message.getField(this, 5) != null;
+  return jspb.Message.setProto3IntField(this, 5, value);
 };
 
 
@@ -9511,7 +9493,7 @@ faction: jspb.Message.getFieldWithDefault(msg, 2, 0),
 barracks: jspb.Message.getFieldWithDefault(msg, 3, 0),
 kills: jspb.Message.getFieldWithDefault(msg, 4, 0),
 netWorth: jspb.Message.getFieldWithDefault(msg, 5, 0),
-roshans: (f = jspb.Message.getField(msg, 6)) == null ? undefined : f,
+roshans: jspb.Message.getFieldWithDefault(msg, 6, 0),
 towers: jspb.Message.getFieldWithDefault(msg, 7, 0),
 won: (f = jspb.Message.getBooleanField(msg, 8)) == null ? undefined : f,
 playersMap: (f = msg.getPlayersMap()) ? f.toObject(includeInstance, proto.bragi.Dota2PlayerPreviousMapState.toObject) : []
@@ -9653,8 +9635,8 @@ proto.bragi.Dota2TeamPreviousMapState.serializeBinaryToWriter = function(message
       f
     );
   }
-  f = /** @type {number} */ (jspb.Message.getField(message, 6));
-  if (f != null) {
+  f = message.getRoshans();
+  if (f !== 0) {
     writer.writeUint32(
       6,
       f
@@ -9785,25 +9767,7 @@ proto.bragi.Dota2TeamPreviousMapState.prototype.getRoshans = function() {
  * @return {!proto.bragi.Dota2TeamPreviousMapState} returns this
  */
 proto.bragi.Dota2TeamPreviousMapState.prototype.setRoshans = function(value) {
-  return jspb.Message.setField(this, 6, value);
-};
-
-
-/**
- * Clears the field making it undefined.
- * @return {!proto.bragi.Dota2TeamPreviousMapState} returns this
- */
-proto.bragi.Dota2TeamPreviousMapState.prototype.clearRoshans = function() {
-  return jspb.Message.setField(this, 6, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.bragi.Dota2TeamPreviousMapState.prototype.hasRoshans = function() {
-  return jspb.Message.getField(this, 6) != null;
+  return jspb.Message.setProto3IntField(this, 6, value);
 };
 
 
