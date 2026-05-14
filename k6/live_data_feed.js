@@ -117,15 +117,17 @@ export default function () {
     console.log('LiveDataFeed stream error:', err.message);
   });
 
+  stream.on('end', () => {
+    check(state, {
+      '[LiveDataFeed] Received at least one message': (s) => s.messageCount > 0,
+      '[LiveDataFeed] Received at least one match payload': (s) => s.matchReceived === true,
+    });
+  });
+
   // Send request without "after" - gets current live matches
   stream.write({});
 
   sleep(15);
-
-  check(state, {
-    '[LiveDataFeed] Received at least one message': (s) => s.messageCount > 0,
-    '[LiveDataFeed] Received at least one match payload': (s) => s.matchReceived === true,
-  });
 
   client.close();
 }

@@ -43,17 +43,16 @@ export default function () {
       if (msg.timeline?.matches) {
         const matches = msg.timeline.matches;
 
-        // Each match has plannetStart (protobuf Timestamp: {seconds, nanos})
+        // plannetStart is a protobuf Timestamp serialized as ISO 8601 string
         check(matches, {
           '[MatchTimelineFeed] Each match has plannetStart': (ms) =>
-            ms.every(m => m.plannetStart != null && typeof m.plannetStart.seconds === 'string'),
+            ms.every(m => typeof m.plannetStart === 'string' && m.plannetStart.length > 0),
         });
 
-        // Timestamps do not move backwards
         const timestamps = matches
           .map(m => m.plannetStart)
-          .filter(t => t != null && t.seconds != null)
-          .map(t => Number(t.seconds));
+          .filter(t => typeof t === 'string' && t.length > 0)
+          .map(t => Date.parse(t));
 
         check(timestamps, {
           '[MatchTimelineFeed] Timestamps do not move backwards': (ts) => {
@@ -79,16 +78,18 @@ export default function () {
     console.log('Stream error:', err.message);
   });
 
+  stream.on('end', () => {
+    check(state, {
+      '[MatchTimelineFeed] Received at least one message': (s) => s.messageReceived === true,
+      '[MatchTimelineFeed] Received a timeline snapshot': (s) => s.timelineReceived === true,
+    });
+  });
+
   // Send request
   stream.write({ liveOnly: false });
 
   // Wait for data handler to fire and close stream
   sleep(10);
-
-  check(state, {
-    '[MatchTimelineFeed] Received at least one message': (s) => s.messageReceived === true,
-    '[MatchTimelineFeed] Received a timeline snapshot': (s) => s.timelineReceived === true,
-  });
 
   client.close();
 }

@@ -109,12 +109,12 @@ export default function () {
           });
         }
 
-        // Validate timestamp ordering (events should be chronologically ordered)
+        // Validate timestamp ordering (timestamps are ISO 8601 strings)
         if (events.length >= 2) {
           const timestamps = events
             .map(e => e.timestamp)
-            .filter(t => t != null && t.seconds != null)
-            .map(t => Number(t.seconds));
+            .filter(t => typeof t === 'string' && t.length > 0)
+            .map(t => Date.parse(t));
 
           check(timestamps, {
             '[MatchEventsFeed] Events have timestamps': (ts) => ts.length > 0 && ts.every(t => Number.isFinite(t)),
@@ -139,6 +139,13 @@ export default function () {
     console.log('MatchEventsFeed stream error:', err.message);
   });
 
+  stream.on('end', () => {
+    check(state, {
+      '[MatchEventsFeed] Stream produced at least one message': (s) => s.messageCount > 0,
+      '[MatchEventsFeed] Received CS2 events': (s) => s.cs2EventsReceived === true,
+    });
+  });
+
   // MatchEventsFeedRequest has no parameters
   stream.write({});
 
@@ -148,11 +155,6 @@ export default function () {
     state.ended = true;
     stream.end();
   }
-
-  check(state, {
-    '[MatchEventsFeed] Stream produced at least one message': (s) => s.messageCount > 0,
-    '[MatchEventsFeed] Received CS2 events': (s) => s.cs2EventsReceived === true,
-  });
 
   client.close();
 }
