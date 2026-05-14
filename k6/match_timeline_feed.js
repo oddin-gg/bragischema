@@ -55,7 +55,10 @@ export default function () {
           .map(t => Date.parse(t));
 
         check(timestamps, {
+          '[MatchTimelineFeed] All timestamps are valid': (ts) =>
+            ts.every(t => Number.isFinite(t)),
           '[MatchTimelineFeed] Timestamps do not move backwards': (ts) => {
+            if (!ts.every(t => Number.isFinite(t))) return false;
             for (let i = 1; i < ts.length; i++) {
               if (ts[i] < ts[i - 1]) return false;
             }
