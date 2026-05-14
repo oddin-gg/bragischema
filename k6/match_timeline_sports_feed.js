@@ -68,13 +68,15 @@ export default function () {
     console.log('SportsFeed stream error:', err.message);
   });
 
+  stream.on('end', () => {
+    check(state, {
+      '[MatchTimelineSportsFeed] Received at least one message': (s) => s.messageReceived === true,
+    });
+  });
+
   stream.write({ liveOnly: false });
 
   sleep(10);
-
-  check(state, {
-    '[MatchTimelineSportsFeed] Received at least one message': (s) => s.messageReceived === true,
-  });
 
   client.close();
 }

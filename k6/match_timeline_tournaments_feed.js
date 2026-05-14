@@ -82,13 +82,15 @@ export default function () {
     console.log('TournamentsFeed stream error:', err.message);
   });
 
+  stream.on('end', () => {
+    check(state, {
+      '[MatchTimelineTournamentsFeed] Received at least one message': (s) => s.messageReceived === true,
+    });
+  });
+
   stream.write({ liveOnly: false, sport: 'SPORT_CS2' });
 
   sleep(10);
-
-  check(state, {
-    '[MatchTimelineTournamentsFeed] Received at least one message': (s) => s.messageReceived === true,
-  });
 
   client.close();
 }
