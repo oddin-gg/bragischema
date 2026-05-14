@@ -61,7 +61,7 @@ export default function () {
             '[TournamentsFeed] Tournament urn starts with od:tournament:': (t) =>
               t.urn.startsWith('od:tournament:'),
             '[TournamentsFeed] Tournament has isOffline boolean': (t) =>
-              typeof t.isOffline === 'boolean',
+              t.isOffline === undefined || typeof t.isOffline === 'boolean',
           });
         }
 
