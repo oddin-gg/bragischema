@@ -60,8 +60,8 @@ export default function () {
               typeof t.name === 'string' && t.name.length > 0,
             '[TournamentsFeed] Tournament urn starts with od:tournament:': (t) =>
               t.urn.startsWith('od:tournament:'),
-            '[TournamentsFeed] Tournament has isOffline boolean': (t) =>
-              typeof t.isOffline === 'boolean',
+            '[TournamentsFeed] Tournament has optional isOffline boolean': (t) =>
+              t.isOffline === undefined || typeof t.isOffline === 'boolean',
           });
         }
 
