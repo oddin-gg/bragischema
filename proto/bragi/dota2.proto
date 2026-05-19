@@ -265,6 +265,8 @@ message Dota2TeamCurrentMapStatisticsState {
   uint32 net_worth = 4;
   uint32 roshans = 5;
   uint32 towers = 6;
+  // When absent: data source does not provide this value. When present: 0 means no Roshan kills so far.
+  optional uint32 roshan_kills = 7;
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -351,6 +353,8 @@ message Dota2TeamPreviousMapState {
   uint32 towers = 7;
   optional bool won = 8;
   map<string, Dota2PlayerPreviousMapState> players = 9;
+  // When absent: data source does not provide this value. When present: 0 means no Roshan kills so far.
+  optional uint32 roshan_kills = 10;
 }
 
 message Dota2PlayerPreviousMapState{
