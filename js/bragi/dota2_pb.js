@@ -7246,7 +7246,7 @@ kills: jspb.Message.getFieldWithDefault(msg, 3, 0),
 netWorth: jspb.Message.getFieldWithDefault(msg, 4, 0),
 roshans: jspb.Message.getFieldWithDefault(msg, 5, 0),
 towers: jspb.Message.getFieldWithDefault(msg, 6, 0),
-roshanKills: (f = jspb.Message.getField(msg, 7)) == null ? undefined : f
+hasRoshans: jspb.Message.getBooleanFieldWithDefault(msg, 7, false)
   };
 
   if (includeInstance) {
@@ -7308,8 +7308,8 @@ proto.bragi.Dota2TeamCurrentMapStatisticsState.deserializeBinaryFromReader = fun
       msg.setTowers(value);
       break;
     case 7:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setRoshanKills(value);
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setHasRoshans(value);
       break;
     default:
       reader.skipField();
@@ -7382,9 +7382,9 @@ proto.bragi.Dota2TeamCurrentMapStatisticsState.serializeBinaryToWriter = functio
       f
     );
   }
-  f = /** @type {number} */ (jspb.Message.getField(message, 7));
-  if (f != null) {
-    writer.writeUint32(
+  f = message.getHasRoshans();
+  if (f) {
+    writer.writeBool(
       7,
       f
     );
@@ -7501,38 +7501,20 @@ proto.bragi.Dota2TeamCurrentMapStatisticsState.prototype.setTowers = function(va
 
 
 /**
- * optional uint32 roshan_kills = 7;
- * @return {number}
- */
-proto.bragi.Dota2TeamCurrentMapStatisticsState.prototype.getRoshanKills = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
-};
-
-
-/**
- * @param {number} value
- * @return {!proto.bragi.Dota2TeamCurrentMapStatisticsState} returns this
- */
-proto.bragi.Dota2TeamCurrentMapStatisticsState.prototype.setRoshanKills = function(value) {
-  return jspb.Message.setField(this, 7, value);
-};
-
-
-/**
- * Clears the field making it undefined.
- * @return {!proto.bragi.Dota2TeamCurrentMapStatisticsState} returns this
- */
-proto.bragi.Dota2TeamCurrentMapStatisticsState.prototype.clearRoshanKills = function() {
-  return jspb.Message.setField(this, 7, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
+ * optional bool has_roshans = 7;
  * @return {boolean}
  */
-proto.bragi.Dota2TeamCurrentMapStatisticsState.prototype.hasRoshanKills = function() {
-  return jspb.Message.getField(this, 7) != null;
+proto.bragi.Dota2TeamCurrentMapStatisticsState.prototype.getHasRoshans = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 7, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.bragi.Dota2TeamCurrentMapStatisticsState} returns this
+ */
+proto.bragi.Dota2TeamCurrentMapStatisticsState.prototype.setHasRoshans = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 7, value);
 };
 
 
@@ -9545,7 +9527,7 @@ roshans: jspb.Message.getFieldWithDefault(msg, 6, 0),
 towers: jspb.Message.getFieldWithDefault(msg, 7, 0),
 won: (f = jspb.Message.getBooleanField(msg, 8)) == null ? undefined : f,
 playersMap: (f = msg.getPlayersMap()) ? f.toObject(includeInstance, proto.bragi.Dota2PlayerPreviousMapState.toObject) : [],
-roshanKills: (f = jspb.Message.getField(msg, 10)) == null ? undefined : f
+hasRoshans: jspb.Message.getBooleanFieldWithDefault(msg, 10, false)
   };
 
   if (includeInstance) {
@@ -9621,8 +9603,8 @@ proto.bragi.Dota2TeamPreviousMapState.deserializeBinaryFromReader = function(msg
          });
       break;
     case 10:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setRoshanKills(value);
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setHasRoshans(value);
       break;
     default:
       reader.skipField();
@@ -9713,9 +9695,9 @@ proto.bragi.Dota2TeamPreviousMapState.serializeBinaryToWriter = function(message
   if (f && f.getLength() > 0) {
     f.serializeBinary(9, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeMessage, proto.bragi.Dota2PlayerPreviousMapState.serializeBinaryToWriter);
   }
-  f = /** @type {number} */ (jspb.Message.getField(message, 10));
-  if (f != null) {
-    writer.writeUint32(
+  f = message.getHasRoshans();
+  if (f) {
+    writer.writeBool(
       10,
       f
     );
@@ -9909,38 +9891,20 @@ proto.bragi.Dota2TeamPreviousMapState.prototype.clearPlayersMap = function() {
 
 
 /**
- * optional uint32 roshan_kills = 10;
- * @return {number}
- */
-proto.bragi.Dota2TeamPreviousMapState.prototype.getRoshanKills = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
-};
-
-
-/**
- * @param {number} value
- * @return {!proto.bragi.Dota2TeamPreviousMapState} returns this
- */
-proto.bragi.Dota2TeamPreviousMapState.prototype.setRoshanKills = function(value) {
-  return jspb.Message.setField(this, 10, value);
-};
-
-
-/**
- * Clears the field making it undefined.
- * @return {!proto.bragi.Dota2TeamPreviousMapState} returns this
- */
-proto.bragi.Dota2TeamPreviousMapState.prototype.clearRoshanKills = function() {
-  return jspb.Message.setField(this, 10, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
+ * optional bool has_roshans = 10;
  * @return {boolean}
  */
-proto.bragi.Dota2TeamPreviousMapState.prototype.hasRoshanKills = function() {
-  return jspb.Message.getField(this, 10) != null;
+proto.bragi.Dota2TeamPreviousMapState.prototype.getHasRoshans = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 10, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.bragi.Dota2TeamPreviousMapState} returns this
+ */
+proto.bragi.Dota2TeamPreviousMapState.prototype.setHasRoshans = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 10, value);
 };
 
 
