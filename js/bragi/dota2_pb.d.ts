@@ -923,6 +923,9 @@ export class Dota2TeamCurrentMapStatisticsState extends jspb.Message {
   getTowers(): number;
   setTowers(value: number): void;
 
+  getHasRoshans(): boolean;
+  setHasRoshans(value: boolean): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Dota2TeamCurrentMapStatisticsState.AsObject;
   static toObject(includeInstance: boolean, msg: Dota2TeamCurrentMapStatisticsState): Dota2TeamCurrentMapStatisticsState.AsObject;
@@ -941,6 +944,7 @@ export namespace Dota2TeamCurrentMapStatisticsState {
     netWorth: number,
     roshans: number,
     towers: number,
+    hasRoshans: boolean,
   }
 }
 
@@ -1243,6 +1247,9 @@ export class Dota2TeamPreviousMapState extends jspb.Message {
 
   getPlayersMap(): jspb.Map<string, Dota2PlayerPreviousMapState>;
   clearPlayersMap(): void;
+  getHasRoshans(): boolean;
+  setHasRoshans(value: boolean): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Dota2TeamPreviousMapState.AsObject;
   static toObject(includeInstance: boolean, msg: Dota2TeamPreviousMapState): Dota2TeamPreviousMapState.AsObject;
@@ -1264,6 +1271,7 @@ export namespace Dota2TeamPreviousMapState {
     towers: number,
     won: boolean,
     playersMap: Array<[string, Dota2PlayerPreviousMapState.AsObject]>,
+    hasRoshans: boolean,
   }
 }
 
