@@ -487,6 +487,7 @@ export interface SportMap {
   SPORT_RUSH_BASKETBALL: 6;
   SPORT_RUSH_CRICKET: 7;
   SPORT_CS2_DUELS: 8;
+  SPORT_VIRTUAL_SOCCER: 9;
 }
 
 export const Sport: SportMap;
