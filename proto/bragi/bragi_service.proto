@@ -230,6 +230,8 @@ message MatchSnapshot {
     ValorantMatchSnapshot valorant = 7;
     RushCricketMatchSnapshot rush_cricket = 8;
   }
+
+  uint32 active_data_source_type = 9;
 }
 
 // This oneof joins together all possible (Game)MatchStates. It servers as a helper wrapper for match states, so

@@ -648,6 +648,7 @@ func (m *MatchSnapshot) CloneVT() *MatchSnapshot {
 		return (*MatchSnapshot)(nil)
 	}
 	r := new(MatchSnapshot)
+	r.ActiveDataSourceType = m.ActiveDataSourceType
 	if m.Snapshot != nil {
 		r.Snapshot = m.Snapshot.(interface {
 			CloneVT() isMatchSnapshot_Snapshot
@@ -1823,6 +1824,9 @@ func (this *MatchSnapshot) EqualVT(that *MatchSnapshot) bool {
 		}).EqualVT(that.Snapshot) {
 			return false
 		}
+	}
+	if this.ActiveDataSourceType != that.ActiveDataSourceType {
+		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
 }
