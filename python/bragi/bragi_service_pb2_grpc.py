@@ -5,7 +5,7 @@ import warnings
 
 from bragi_schema.bragi import bragi_service_pb2 as bragi_dot_bragi__service__pb2
 
-GRPC_GENERATED_VERSION = '1.80.0'
+GRPC_GENERATED_VERSION = '1.81.0'
 GRPC_VERSION = grpc.__version__
 _version_not_supported = False
 
@@ -25,7 +25,7 @@ if _version_not_supported:
     )
 
 
-class BragiStub(object):
+class BragiStub:
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -81,7 +81,7 @@ class BragiStub(object):
                 _registered_method=True)
 
 
-class BragiServicer(object):
+class BragiServicer:
     """Missing associated documentation comment in .proto file."""
 
     def MatchTimelineSports(self, request, context):
@@ -208,7 +208,7 @@ def add_BragiServicer_to_server(servicer, server):
 
 
  # This class is part of an EXPERIMENTAL API.
-class Bragi(object):
+class Bragi:
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod

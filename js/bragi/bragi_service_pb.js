@@ -5384,7 +5384,8 @@ rushSoccer: (f = msg.getRushSoccer()) && bragi_rush_soccer_pb.RushSoccerMatchSna
 lol: (f = msg.getLol()) && bragi_lol_pb.LolMatchSnapshot.toObject(includeInstance, f),
 rushBasketball: (f = msg.getRushBasketball()) && bragi_rush_basketball_pb.RushBasketballMatchSnapshot.toObject(includeInstance, f),
 valorant: (f = msg.getValorant()) && bragi_valorant_pb.ValorantMatchSnapshot.toObject(includeInstance, f),
-rushCricket: (f = msg.getRushCricket()) && bragi_rush_cricket_pb.RushCricketMatchSnapshot.toObject(includeInstance, f)
+rushCricket: (f = msg.getRushCricket()) && bragi_rush_cricket_pb.RushCricketMatchSnapshot.toObject(includeInstance, f),
+activeDataSourceType: jspb.Message.getFieldWithDefault(msg, 9, 0)
   };
 
   if (includeInstance) {
@@ -5460,6 +5461,10 @@ proto.bragi.MatchSnapshot.deserializeBinaryFromReader = function(msg, reader) {
       var value = new bragi_rush_cricket_pb.RushCricketMatchSnapshot;
       reader.readMessage(value,bragi_rush_cricket_pb.RushCricketMatchSnapshot.deserializeBinaryFromReader);
       msg.setRushCricket(value);
+      break;
+    case 9:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setActiveDataSourceType(value);
       break;
     default:
       reader.skipField();
@@ -5552,6 +5557,13 @@ proto.bragi.MatchSnapshot.serializeBinaryToWriter = function(message, writer) {
       8,
       f,
       bragi_rush_cricket_pb.RushCricketMatchSnapshot.serializeBinaryToWriter
+    );
+  }
+  f = message.getActiveDataSourceType();
+  if (f !== 0) {
+    writer.writeUint32(
+      9,
+      f
     );
   }
 };
@@ -5850,6 +5862,24 @@ proto.bragi.MatchSnapshot.prototype.clearRushCricket = function() {
  */
 proto.bragi.MatchSnapshot.prototype.hasRushCricket = function() {
   return jspb.Message.getField(this, 8) != null;
+};
+
+
+/**
+ * optional uint32 active_data_source_type = 9;
+ * @return {number}
+ */
+proto.bragi.MatchSnapshot.prototype.getActiveDataSourceType = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.bragi.MatchSnapshot} returns this
+ */
+proto.bragi.MatchSnapshot.prototype.setActiveDataSourceType = function(value) {
+  return jspb.Message.setProto3IntField(this, 9, value);
 };
 
 

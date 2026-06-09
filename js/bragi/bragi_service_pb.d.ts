@@ -734,6 +734,9 @@ export class MatchSnapshot extends jspb.Message {
   getRushCricket(): bragi_rush_cricket_pb.RushCricketMatchSnapshot | undefined;
   setRushCricket(value?: bragi_rush_cricket_pb.RushCricketMatchSnapshot): void;
 
+  getActiveDataSourceType(): number;
+  setActiveDataSourceType(value: number): void;
+
   getSnapshotCase(): MatchSnapshot.SnapshotCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MatchSnapshot.AsObject;
@@ -755,6 +758,7 @@ export namespace MatchSnapshot {
     rushBasketball?: bragi_rush_basketball_pb.RushBasketballMatchSnapshot.AsObject,
     valorant?: bragi_valorant_pb.ValorantMatchSnapshot.AsObject,
     rushCricket?: bragi_rush_cricket_pb.RushCricketMatchSnapshot.AsObject,
+    activeDataSourceType: number,
   }
 
   export enum SnapshotCase {
