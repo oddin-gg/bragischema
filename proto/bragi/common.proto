@@ -75,6 +75,7 @@ message Tournament {
   google.protobuf.Timestamp start_date = 4;
   uint32 organizer_id = 5;
   string organizer_name = 6;
+  google.protobuf.Timestamp end_date = 7;
 }
 
 message Team {

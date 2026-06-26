@@ -2130,7 +2130,8 @@ name: jspb.Message.getFieldWithDefault(msg, 2, ""),
 isOffline: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
 startDate: (f = msg.getStartDate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
 organizerId: jspb.Message.getFieldWithDefault(msg, 5, 0),
-organizerName: jspb.Message.getFieldWithDefault(msg, 6, "")
+organizerName: jspb.Message.getFieldWithDefault(msg, 6, ""),
+endDate: (f = msg.getEndDate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2191,6 +2192,11 @@ proto.bragi.Tournament.deserializeBinaryFromReader = function(msg, reader) {
     case 6:
       var value = /** @type {string} */ (reader.readString());
       msg.setOrganizerName(value);
+      break;
+    case 7:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setEndDate(value);
       break;
     default:
       reader.skipField();
@@ -2262,6 +2268,14 @@ proto.bragi.Tournament.serializeBinaryToWriter = function(message, writer) {
     writer.writeString(
       6,
       f
+    );
+  }
+  f = message.getEndDate();
+  if (f != null) {
+    writer.writeMessage(
+      7,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
 };
@@ -2391,6 +2405,43 @@ proto.bragi.Tournament.prototype.getOrganizerName = function() {
  */
 proto.bragi.Tournament.prototype.setOrganizerName = function(value) {
   return jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp end_date = 7;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.bragi.Tournament.prototype.getEndDate = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 7));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.bragi.Tournament} returns this
+*/
+proto.bragi.Tournament.prototype.setEndDate = function(value) {
+  return jspb.Message.setWrapperField(this, 7, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.bragi.Tournament} returns this
+ */
+proto.bragi.Tournament.prototype.clearEndDate = function() {
+  return this.setEndDate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.Tournament.prototype.hasEndDate = function() {
+  return jspb.Message.getField(this, 7) != null;
 };
 
 
