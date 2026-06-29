@@ -282,6 +282,11 @@ export class Tournament extends jspb.Message {
   getOrganizerName(): string;
   setOrganizerName(value: string): void;
 
+  hasEndDate(): boolean;
+  clearEndDate(): void;
+  getEndDate(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setEndDate(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Tournament.AsObject;
   static toObject(includeInstance: boolean, msg: Tournament): Tournament.AsObject;
@@ -300,6 +305,7 @@ export namespace Tournament {
     startDate?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     organizerId: number,
     organizerName: string,
+    endDate?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
 
