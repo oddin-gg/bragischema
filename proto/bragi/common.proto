@@ -66,6 +66,7 @@ message Match {
   Tournament tournament  = 10;
   repeated Team teams = 11;
   repeated Player players = 12;
+  BestOfType best_of_type = 13;
 }
 
 message Tournament {

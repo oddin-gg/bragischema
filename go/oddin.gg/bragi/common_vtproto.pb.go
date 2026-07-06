@@ -175,6 +175,7 @@ func (m *Match) CloneVT() *Match {
 	r.MatchStatus = m.MatchStatus
 	r.PlannetStart = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.PlannetStart).CloneVT())
 	r.Tournament = m.Tournament.CloneVT()
+	r.BestOfType = m.BestOfType
 	if rhs := m.Teams; rhs != nil {
 		tmpContainer := make([]*Team, len(rhs))
 		for k, v := range rhs {
@@ -640,6 +641,9 @@ func (this *Match) EqualVT(that *Match) bool {
 				return false
 			}
 		}
+	}
+	if this.BestOfType != that.BestOfType {
+		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
 }

@@ -1590,7 +1590,8 @@ tournament: (f = msg.getTournament()) && proto.bragi.Tournament.toObject(include
 teamsList: jspb.Message.toObjectList(msg.getTeamsList(),
     proto.bragi.Team.toObject, includeInstance),
 playersList: jspb.Message.toObjectList(msg.getPlayersList(),
-    proto.bragi.Player.toObject, includeInstance)
+    proto.bragi.Player.toObject, includeInstance),
+bestOfType: jspb.Message.getFieldWithDefault(msg, 13, 0)
   };
 
   if (includeInstance) {
@@ -1678,6 +1679,10 @@ proto.bragi.Match.deserializeBinaryFromReader = function(msg, reader) {
       var value = new proto.bragi.Player;
       reader.readMessage(value,proto.bragi.Player.deserializeBinaryFromReader);
       msg.addPlayers(value);
+      break;
+    case 13:
+      var value = /** @type {!proto.bragi.BestOfType} */ (reader.readEnum());
+      msg.setBestOfType(value);
       break;
     default:
       reader.skipField();
@@ -1794,6 +1799,13 @@ proto.bragi.Match.serializeBinaryToWriter = function(message, writer) {
       12,
       f,
       proto.bragi.Player.serializeBinaryToWriter
+    );
+  }
+  f = message.getBestOfType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      13,
+      f
     );
   }
 };
@@ -2090,6 +2102,24 @@ proto.bragi.Match.prototype.addPlayers = function(opt_value, opt_index) {
  */
 proto.bragi.Match.prototype.clearPlayersList = function() {
   return this.setPlayersList([]);
+};
+
+
+/**
+ * optional BestOfType best_of_type = 13;
+ * @return {!proto.bragi.BestOfType}
+ */
+proto.bragi.Match.prototype.getBestOfType = function() {
+  return /** @type {!proto.bragi.BestOfType} */ (jspb.Message.getFieldWithDefault(this, 13, 0));
+};
+
+
+/**
+ * @param {!proto.bragi.BestOfType} value
+ * @return {!proto.bragi.Match} returns this
+ */
+proto.bragi.Match.prototype.setBestOfType = function(value) {
+  return jspb.Message.setProto3EnumField(this, 13, value);
 };
 
 

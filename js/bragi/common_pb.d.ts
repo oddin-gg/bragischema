@@ -234,6 +234,9 @@ export class Match extends jspb.Message {
   setPlayersList(value: Array<Player>): void;
   addPlayers(value?: Player, index?: number): Player;
 
+  getBestOfType(): BestOfTypeMap[keyof BestOfTypeMap];
+  setBestOfType(value: BestOfTypeMap[keyof BestOfTypeMap]): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Match.AsObject;
   static toObject(includeInstance: boolean, msg: Match): Match.AsObject;
@@ -258,6 +261,7 @@ export namespace Match {
     tournament?: Tournament.AsObject,
     teamsList: Array<Team.AsObject>,
     playersList: Array<Player.AsObject>,
+    bestOfType: BestOfTypeMap[keyof BestOfTypeMap],
   }
 }
 
