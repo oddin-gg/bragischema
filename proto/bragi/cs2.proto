@@ -602,8 +602,8 @@ message CS2ItemPurchase {
   string player_urn = 4;
   string team_urn = 5;
   string item = 6;
-  uint32 player_balance = 7;
-  uint32 equipment_value = 8;
+  uint32 player_balance = 7 [deprecated=true]; // Deprecated: not populated.
+  uint32 equipment_value = 8 [deprecated=true]; // Deprecated: not populated.
 }
 
 message CS2ItemThrow {
