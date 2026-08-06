@@ -141,19 +141,37 @@ jobs:
 
       - name: Check test results
         if: always()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
-          failed=false
-          # check each step outcome
-          if [ "${{ steps.test_match_timeline_sports.outcome }}" = "failure" ]; then failed=true; fi
-          if [ "${{ steps.test_match_timeline_tournaments.outcome }}" = "failure" ]; then failed=true; fi
-          if [ "${{ steps.test_match_timeline_filters.outcome }}" = "failure" ]; then failed=true; fi
-          if [ "${{ steps.test_team_profile.outcome }}" = "failure" ]; then failed=true; fi
-          if [ "${{ steps.test_match_timeline_feed.outcome }}" = "failure" ]; then failed=true; fi
-          if [ "${{ steps.test_match_timeline_sports_feed.outcome }}" = "failure" ]; then failed=true; fi
-          if [ "${{ steps.test_match_timeline_tournaments_feed.outcome }}" = "failure" ]; then failed=true; fi
-          if [ "${{ steps.test_live_data_feed.outcome }}" = "failure" ]; then failed=true; fi
-          if [ "${{ steps.test_match_events_feed.outcome }}" = "failure" ]; then failed=true; fi
-          if [ "$failed" = "true" ]; then
-            echo "One or more k6 tests failed"
-            exit 1
+          FAILED=""
+          add() { [ "$2" = "failure" ] && FAILED="${FAILED:+$FAILED, }$1" || true; }
+          add match_timeline_sports            "${{ steps.test_match_timeline_sports.outcome }}"
+          add match_timeline_tournaments       "${{ steps.test_match_timeline_tournaments.outcome }}"
+          add match_timeline_filters           "${{ steps.test_match_timeline_filters.outcome }}"
+          add team_profile                     "${{ steps.test_team_profile.outcome }}"
+          add match_timeline_feed              "${{ steps.test_match_timeline_feed.outcome }}"
+          add match_timeline_sports_feed       "${{ steps.test_match_timeline_sports_feed.outcome }}"
+          add match_timeline_tournaments_feed  "${{ steps.test_match_timeline_tournaments_feed.outcome }}"
+          add live_data_feed                   "${{ steps.test_live_data_feed.outcome }}"
+          add match_events_feed                "${{ steps.test_match_events_feed.outcome }}"
+
+          if [ -z "$FAILED" ]; then
+            echo "All k6 tests passed"
+            exit 0
           fi
+          echo "::error::Failed k6 suites: $FAILED"
+
+          # Notify Slack on failure (no-op if SLACK_WEBHOOK_URL is unset).
+          if [ -n "$SLACK_WEBHOOK_URL" ]; then
+            RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+            # Prefer python3 for correct JSON escaping; fall back to a manual
+            # payload (content here is controlled — static suite names + URL).
+            if command -v python3 >/dev/null 2>&1; then
+              PAYLOAD=$(FAILED="$FAILED" RUN_URL="$RUN_URL" python3 -c 'import json, os; print(json.dumps({"text": ":rotating_light: bragischema k6 gRPC tests FAILED\nSuites: {}\nRun: {}".format(os.environ["FAILED"], os.environ["RUN_URL"])}))')
+            else
+              PAYLOAD="{\"text\":\":rotating_light: bragischema k6 gRPC tests FAILED\nSuites: ${FAILED}\nRun: ${RUN_URL}\"}"
+            fi
+            curl -fsS -X POST "$SLACK_WEBHOOK_URL" -H 'Content-Type: application/json' -d "$PAYLOAD"
+          fi
+          exit 1
