@@ -40,9 +40,11 @@ type BragiClient interface {
 	MatchTimelineTournaments(ctx context.Context, in *MatchTimelineTournamentsRequest, opts ...grpc.CallOption) (*MatchTimelineTournamentsResponse, error)
 	// Matches gRPC unary call returns all planned or currently played matches
 	MatchTimeline(ctx context.Context, in *MatchTimelineRequest, opts ...grpc.CallOption) (*MatchTimelineResponse, error)
-	// TeamInfo retrieves comprehensive information for a team identified by its URN.
-	// The response includes the team's details, associated players with their external
-	// identities, and the current map roster.
+	// TeamProfile retrieves comprehensive information for a team identified by its URN.
+	// The response includes the team's details, its players with their external identities
+	// and the sports each of them plays, and the current map roster broken down per sport
+	// (current_map_roster_by_sport). The flat current_map_roster is deprecated: it only ever
+	// reflects the single most recently played map across all sports.
 	TeamProfile(ctx context.Context, in *TeamProfileRequest, opts ...grpc.CallOption) (*TeamProfileResponse, error)
 	// MatchTimelineSportsFeed gRPC stream call provides real-time updates for all sports with planned or currently played matches.
 	MatchTimelineSportsFeed(ctx context.Context, in *MatchTimelineSportsFeedRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[MatchTimelineSportsFeedResponse], error)
@@ -212,9 +214,11 @@ type BragiServer interface {
 	MatchTimelineTournaments(context.Context, *MatchTimelineTournamentsRequest) (*MatchTimelineTournamentsResponse, error)
 	// Matches gRPC unary call returns all planned or currently played matches
 	MatchTimeline(context.Context, *MatchTimelineRequest) (*MatchTimelineResponse, error)
-	// TeamInfo retrieves comprehensive information for a team identified by its URN.
-	// The response includes the team's details, associated players with their external
-	// identities, and the current map roster.
+	// TeamProfile retrieves comprehensive information for a team identified by its URN.
+	// The response includes the team's details, its players with their external identities
+	// and the sports each of them plays, and the current map roster broken down per sport
+	// (current_map_roster_by_sport). The flat current_map_roster is deprecated: it only ever
+	// reflects the single most recently played map across all sports.
 	TeamProfile(context.Context, *TeamProfileRequest) (*TeamProfileResponse, error)
 	// MatchTimelineSportsFeed gRPC stream call provides real-time updates for all sports with planned or currently played matches.
 	MatchTimelineSportsFeed(*MatchTimelineSportsFeedRequest, grpc.ServerStreamingServer[MatchTimelineSportsFeedResponse]) error

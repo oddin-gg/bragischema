@@ -249,9 +249,11 @@ matchTimeline: {
     responseSerialize: serialize_bragi_MatchTimelineResponse,
     responseDeserialize: deserialize_bragi_MatchTimelineResponse,
   },
-  // TeamInfo retrieves comprehensive information for a team identified by its URN.
-// The response includes the team's details, associated players with their external
-// identities, and the current map roster.
+  // TeamProfile retrieves comprehensive information for a team identified by its URN.
+// The response includes the team's details, its players with their external identities
+// and the sports each of them plays, and the current map roster broken down per sport
+// (current_map_roster_by_sport). The flat current_map_roster is deprecated: it only ever
+// reflects the single most recently played map across all sports.
 teamProfile: {
     path: '/bragi.Bragi/TeamProfile',
     requestStream: false,

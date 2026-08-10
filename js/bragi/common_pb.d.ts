@@ -391,6 +391,32 @@ export namespace ExternalIdentityList {
   }
 }
 
+export class SportRoster extends jspb.Message {
+  getSport(): SportMap[keyof SportMap];
+  setSport(value: SportMap[keyof SportMap]): void;
+
+  clearPlayersList(): void;
+  getPlayersList(): Array<PlayerProfile>;
+  setPlayersList(value: Array<PlayerProfile>): void;
+  addPlayers(value?: PlayerProfile, index?: number): PlayerProfile;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SportRoster.AsObject;
+  static toObject(includeInstance: boolean, msg: SportRoster): SportRoster.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: SportRoster, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SportRoster;
+  static deserializeBinaryFromReader(message: SportRoster, reader: jspb.BinaryReader): SportRoster;
+}
+
+export namespace SportRoster {
+  export type AsObject = {
+    sport: SportMap[keyof SportMap],
+    playersList: Array<PlayerProfile.AsObject>,
+  }
+}
+
 export class TeamProfile extends jspb.Message {
   getUrn(): string;
   setUrn(value: string): void;
@@ -415,6 +441,11 @@ export class TeamProfile extends jspb.Message {
   setCurrentMapRosterList(value: Array<PlayerProfile>): void;
   addCurrentMapRoster(value?: PlayerProfile, index?: number): PlayerProfile;
 
+  clearCurrentMapRosterBySportList(): void;
+  getCurrentMapRosterBySportList(): Array<SportRoster>;
+  setCurrentMapRosterBySportList(value: Array<SportRoster>): void;
+  addCurrentMapRosterBySport(value?: SportRoster, index?: number): SportRoster;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TeamProfile.AsObject;
   static toObject(includeInstance: boolean, msg: TeamProfile): TeamProfile.AsObject;
@@ -433,6 +464,7 @@ export namespace TeamProfile {
     externalIdentitiesMap: Array<[string, ExternalIdentityList.AsObject]>,
     playersList: Array<PlayerProfile.AsObject>,
     currentMapRosterList: Array<PlayerProfile.AsObject>,
+    currentMapRosterBySportList: Array<SportRoster.AsObject>,
   }
 }
 
@@ -465,6 +497,11 @@ export class PlayerProfile extends jspb.Message {
 
   getExternalIdentitiesMap(): jspb.Map<string, ExternalIdentityList>;
   clearExternalIdentitiesMap(): void;
+  clearSportsList(): void;
+  getSportsList(): Array<SportMap[keyof SportMap]>;
+  setSportsList(value: Array<SportMap[keyof SportMap]>): void;
+  addSports(value: SportMap[keyof SportMap], index?: number): SportMap[keyof SportMap];
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PlayerProfile.AsObject;
   static toObject(includeInstance: boolean, msg: PlayerProfile): PlayerProfile.AsObject;
@@ -484,6 +521,7 @@ export namespace PlayerProfile {
     iconPath: string,
     age: number,
     externalIdentitiesMap: Array<[string, ExternalIdentityList.AsObject]>,
+    sportsList: Array<SportMap[keyof SportMap]>,
   }
 }
 
