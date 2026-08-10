@@ -283,6 +283,30 @@ func (m *ExternalIdentityList) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
+func (m *SportRoster) CloneVT() *SportRoster {
+	if m == nil {
+		return (*SportRoster)(nil)
+	}
+	r := new(SportRoster)
+	r.Sport = m.Sport
+	if rhs := m.Players; rhs != nil {
+		tmpContainer := make([]*PlayerProfile, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Players = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *SportRoster) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
 func (m *TeamProfile) CloneVT() *TeamProfile {
 	if m == nil {
 		return (*TeamProfile)(nil)
@@ -314,6 +338,13 @@ func (m *TeamProfile) CloneVT() *TeamProfile {
 			tmpContainer[k] = v.CloneVT()
 		}
 		r.CurrentMapRoster = tmpContainer
+	}
+	if rhs := m.CurrentMapRosterBySport; rhs != nil {
+		tmpContainer := make([]*SportRoster, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.CurrentMapRosterBySport = tmpContainer
 	}
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
@@ -355,6 +386,11 @@ func (m *PlayerProfile) CloneVT() *PlayerProfile {
 			tmpContainer[k] = v.CloneVT()
 		}
 		r.ExternalIdentities = tmpContainer
+	}
+	if rhs := m.Sports; rhs != nil {
+		tmpContainer := make([]Sport, len(rhs))
+		copy(tmpContainer, rhs)
+		r.Sports = tmpContainer
 	}
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
@@ -767,6 +803,42 @@ func (this *ExternalIdentityList) EqualMessageVT(thatMsg proto.Message) bool {
 	}
 	return this.EqualVT(that)
 }
+func (this *SportRoster) EqualVT(that *SportRoster) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.Sport != that.Sport {
+		return false
+	}
+	if len(this.Players) != len(that.Players) {
+		return false
+	}
+	for i, vx := range this.Players {
+		vy := that.Players[i]
+		if p, q := vx, vy; p != q {
+			if p == nil {
+				p = &PlayerProfile{}
+			}
+			if q == nil {
+				q = &PlayerProfile{}
+			}
+			if !p.EqualVT(q) {
+				return false
+			}
+		}
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *SportRoster) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*SportRoster)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
 func (this *TeamProfile) EqualVT(that *TeamProfile) bool {
 	if this == that {
 		return true
@@ -836,6 +908,23 @@ func (this *TeamProfile) EqualVT(that *TeamProfile) bool {
 			}
 		}
 	}
+	if len(this.CurrentMapRosterBySport) != len(that.CurrentMapRosterBySport) {
+		return false
+	}
+	for i, vx := range this.CurrentMapRosterBySport {
+		vy := that.CurrentMapRosterBySport[i]
+		if p, q := vx, vy; p != q {
+			if p == nil {
+				p = &SportRoster{}
+			}
+			if q == nil {
+				q = &SportRoster{}
+			}
+			if !p.EqualVT(q) {
+				return false
+			}
+		}
+	}
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
@@ -888,6 +977,15 @@ func (this *PlayerProfile) EqualVT(that *PlayerProfile) bool {
 			if !p.EqualVT(q) {
 				return false
 			}
+		}
+	}
+	if len(this.Sports) != len(that.Sports) {
+		return false
+	}
+	for i, vx := range this.Sports {
+		vy := that.Sports[i]
+		if vx != vy {
+			return false
 		}
 	}
 	return string(this.unknownFields) == string(that.unknownFields)

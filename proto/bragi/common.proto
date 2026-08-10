@@ -97,6 +97,12 @@ message ExternalIdentityList {
   repeated string ids = 1;
 }
 
+// SportRoster is the current map roster of a single sport.
+message SportRoster {
+  Sport sport = 1;
+  repeated PlayerProfile players = 2;
+}
+
 message TeamProfile {
   string urn = 1;
   string name = 2;
@@ -105,7 +111,13 @@ message TeamProfile {
   // For example {"LIQUIPEDIA": ["456", "789"]}
   map<string, ExternalIdentityList> external_identities = 4;
   repeated PlayerProfile players = 5;
-  repeated PlayerProfile current_map_roster = 6;
+  // Deprecated: covers only the single most recently played map across all sports, so for a
+  // team that plays more than one sport the other sports' rosters are missing entirely.
+  // Use current_map_roster_by_sport instead.
+  repeated PlayerProfile current_map_roster = 6 [deprecated = true];
+  // Current map roster per sport — the latest roster for each sport the team plays.
+  // A sport is omitted when none of its latest roster's players are still team members.
+  repeated SportRoster current_map_roster_by_sport = 7;
 }
 
 message PlayerProfile {
@@ -118,6 +130,11 @@ message PlayerProfile {
   // External identities contains key-value pairs of external identity providers and their corresponding player identifiers.
   // For example {"LIQUIPEDIA": ["456", "789"]}
   map<string, ExternalIdentityList> external_identities = 7;
+  // Sports this player plays, derived from tournament participation and map appearances
+  // across all teams (not scoped to the team being requested), so a player active in
+  // several games returns several entries. Empty when the player has no recorded
+  // participation — this is a valid state, not an error.
+  repeated Sport sports = 8;
 }
 
 enum Sport {

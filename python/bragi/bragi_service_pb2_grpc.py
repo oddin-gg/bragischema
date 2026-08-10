@@ -5,7 +5,7 @@ import warnings
 
 from bragi_schema.bragi import bragi_service_pb2 as bragi_dot_bragi__service__pb2
 
-GRPC_GENERATED_VERSION = '1.81.0'
+GRPC_GENERATED_VERSION = '1.83.0'
 GRPC_VERSION = grpc.__version__
 _version_not_supported = False
 
@@ -106,9 +106,11 @@ class BragiServicer:
         raise NotImplementedError('Method not implemented!')
 
     def TeamProfile(self, request, context):
-        """TeamInfo retrieves comprehensive information for a team identified by its URN.
-        The response includes the team's details, associated players with their external
-        identities, and the current map roster.
+        """TeamProfile retrieves comprehensive information for a team identified by its URN.
+        The response includes the team's details, its players with their external identities
+        and the sports each of them plays, and the current map roster broken down per sport
+        (current_map_roster_by_sport). The flat current_map_roster is deprecated: it only ever
+        reflects the single most recently played map across all sports.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
