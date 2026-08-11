@@ -1687,14 +1687,16 @@ type VirtualSoccerTeamStatisticsValues struct {
 	FreeKicks uint32 `protobuf:"varint,5,opt,name=free_kicks,json=freeKicks,proto3" json:"free_kicks,omitempty"`
 	// Number of penalty kicks.
 	PenaltyKicks uint32 `protobuf:"varint,6,opt,name=penalty_kicks,json=penaltyKicks,proto3" json:"penalty_kicks,omitempty"`
-	// Number of shots on and off target. Unset until upstream shot events are available.
+	// Number of shots on and off target. Always 0 until upstream shot events are available.
 	TotalShots uint32 `protobuf:"varint,7,opt,name=total_shots,json=totalShots,proto3" json:"total_shots,omitempty"`
-	// Number of shots on target. Unset until upstream shot events are available.
+	// Number of shots on target. Always 0 until upstream shot events are available.
 	ShotsOnTarget uint32 `protobuf:"varint,8,opt,name=shots_on_target,json=shotsOnTarget,proto3" json:"shots_on_target,omitempty"`
 	// Number of attacks: the possession-holding team moved the ball into the opponent's half.
+	// Always 0 until the possession/attack accumulators land.
 	Attacks uint32 `protobuf:"varint,9,opt,name=attacks,proto3" json:"attacks,omitempty"`
 	// Number of dangerous attacks: the possession-holding team moved the ball into the opponent's final third,
 	// plus set pieces (corner, penalty, free kick) taken in the final third.
+	// Always 0 until the possession/attack accumulators land.
 	DangerousAttacks uint32 `protobuf:"varint,10,opt,name=dangerous_attacks,json=dangerousAttacks,proto3" json:"dangerous_attacks,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache

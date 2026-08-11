@@ -282,14 +282,16 @@ message VirtualSoccerTeamStatisticsValues {
   uint32 free_kicks = 5;
   // Number of penalty kicks.
   uint32 penalty_kicks = 6;
-  // Number of shots on and off target. Unset until upstream shot events are available.
+  // Number of shots on and off target. Always 0 until upstream shot events are available.
   uint32 total_shots = 7;
-  // Number of shots on target. Unset until upstream shot events are available.
+  // Number of shots on target. Always 0 until upstream shot events are available.
   uint32 shots_on_target = 8;
   // Number of attacks: the possession-holding team moved the ball into the opponent's half.
+  // Always 0 until the possession/attack accumulators land.
   uint32 attacks = 9;
   // Number of dangerous attacks: the possession-holding team moved the ball into the opponent's final third,
   // plus set pieces (corner, penalty, free kick) taken in the final third.
+  // Always 0 until the possession/attack accumulators land.
   uint32 dangerous_attacks = 10;
 }
 
