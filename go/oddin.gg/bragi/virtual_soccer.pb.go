@@ -927,7 +927,10 @@ type VirtualSoccerBallState struct {
 	// Ball position of the previously processed tick; unset on the first state and on the tick after tracking
 	// resumes from stale. May reference a tick that was folded into this update and never published on its own.
 	Previous *VirtualSoccerPitchPosition `protobuf:"bytes,2,opt,name=previous,proto3" json:"previous,omitempty"`
-	// Possession side; UNSPECIFIED = unknown (match paused or ball tracking stale).
+	// Possession side. HOME/AWAY reflect an explicit upstream attribution and are reported even while ball
+	// tracking is stale (current unset). CONTESTED means the ball is tracked but upstream attributes possession
+	// to neither side. UNSPECIFIED = unknown: either the match is paused (a pause always clears possession, even
+	// when upstream still attributes it), or possession is unattributed while ball tracking is stale.
 	Possession    VirtualSoccerPossessionSide `protobuf:"varint,3,opt,name=possession,proto3,enum=bragi.VirtualSoccerPossessionSide" json:"possession,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1104,7 +1107,8 @@ type VirtualSoccerTimelineEvent struct {
 	GameTime *durationpb.Duration `protobuf:"bytes,4,opt,name=game_time,json=gameTime,proto3" json:"game_time,omitempty"`
 	// Period.
 	Period VirtualSoccerPeriod `protobuf:"varint,5,opt,name=period,proto3,enum=bragi.VirtualSoccerPeriod" json:"period,omitempty"`
-	// Ball position at the moment of the event; unset when unknown.
+	// Ball position at the moment of the event; unset when unknown. Not stamped by the DATA-2212 baseline slice,
+	// so always unset until DATA-2213 lands (its attack-event synthesis already derives per-tick ball position).
 	Position      *VirtualSoccerPitchPosition `protobuf:"bytes,6,opt,name=position,proto3" json:"position,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

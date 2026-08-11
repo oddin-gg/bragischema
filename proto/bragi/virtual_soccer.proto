@@ -143,7 +143,10 @@ message VirtualSoccerBallState {
   // Ball position of the previously processed tick; unset on the first state and on the tick after tracking
   // resumes from stale. May reference a tick that was folded into this update and never published on its own.
   VirtualSoccerPitchPosition previous = 2;
-  // Possession side; UNSPECIFIED = unknown (match paused or ball tracking stale).
+  // Possession side. HOME/AWAY reflect an explicit upstream attribution and are reported even while ball
+  // tracking is stale (current unset). CONTESTED means the ball is tracked but upstream attributes possession
+  // to neither side. UNSPECIFIED = unknown: either the match is paused (a pause always clears possession, even
+  // when upstream still attributes it), or possession is unattributed while ball tracking is stale.
   VirtualSoccerPossessionSide possession = 3;
 }
 
@@ -180,7 +183,8 @@ message VirtualSoccerTimelineEvent {
   google.protobuf.Duration game_time = 4;
   // Period.
   VirtualSoccerPeriod period = 5;
-  // Ball position at the moment of the event; unset when unknown.
+  // Ball position at the moment of the event; unset when unknown. Not stamped by the DATA-2212 baseline slice,
+  // so always unset until DATA-2213 lands (its attack-event synthesis already derives per-tick ball position).
   VirtualSoccerPitchPosition position = 6;
 }
 
