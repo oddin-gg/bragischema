@@ -643,6 +643,15 @@ func (m *MatchMessage_RushCricket) CloneVT() isMatchMessage_Message {
 	return r
 }
 
+func (m *MatchMessage_VirtualSoccer) CloneVT() isMatchMessage_Message {
+	if m == nil {
+		return (*MatchMessage_VirtualSoccer)(nil)
+	}
+	r := new(MatchMessage_VirtualSoccer)
+	r.VirtualSoccer = m.VirtualSoccer.CloneVT()
+	return r
+}
+
 func (m *MatchSnapshot) CloneVT() *MatchSnapshot {
 	if m == nil {
 		return (*MatchSnapshot)(nil)
@@ -737,6 +746,15 @@ func (m *MatchSnapshot_RushCricket) CloneVT() isMatchSnapshot_Snapshot {
 	return r
 }
 
+func (m *MatchSnapshot_VirtualSoccer) CloneVT() isMatchSnapshot_Snapshot {
+	if m == nil {
+		return (*MatchSnapshot_VirtualSoccer)(nil)
+	}
+	r := new(MatchSnapshot_VirtualSoccer)
+	r.VirtualSoccer = m.VirtualSoccer.CloneVT()
+	return r
+}
+
 func (m *MatchState) CloneVT() *MatchState {
 	if m == nil {
 		return (*MatchState)(nil)
@@ -825,6 +843,15 @@ func (m *MatchState_RushCricket) CloneVT() isMatchState_State {
 	}
 	r := new(MatchState_RushCricket)
 	r.RushCricket = m.RushCricket.CloneVT()
+	return r
+}
+
+func (m *MatchState_VirtualSoccer) CloneVT() isMatchState_State {
+	if m == nil {
+		return (*MatchState_VirtualSoccer)(nil)
+	}
+	r := new(MatchState_VirtualSoccer)
+	r.VirtualSoccer = m.VirtualSoccer.CloneVT()
 	return r
 }
 
@@ -1807,6 +1834,31 @@ func (this *MatchMessage_RushCricket) EqualVT(thatIface isMatchMessage_Message) 
 	return true
 }
 
+func (this *MatchMessage_VirtualSoccer) EqualVT(thatIface isMatchMessage_Message) bool {
+	that, ok := thatIface.(*MatchMessage_VirtualSoccer)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.VirtualSoccer, that.VirtualSoccer; p != q {
+		if p == nil {
+			p = &VirtualSoccerMatchMessage{}
+		}
+		if q == nil {
+			q = &VirtualSoccerMatchMessage{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
 func (this *MatchSnapshot) EqualVT(that *MatchSnapshot) bool {
 	if this == that {
 		return true
@@ -2038,6 +2090,31 @@ func (this *MatchSnapshot_RushCricket) EqualVT(thatIface isMatchSnapshot_Snapsho
 	return true
 }
 
+func (this *MatchSnapshot_VirtualSoccer) EqualVT(thatIface isMatchSnapshot_Snapshot) bool {
+	that, ok := thatIface.(*MatchSnapshot_VirtualSoccer)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.VirtualSoccer, that.VirtualSoccer; p != q {
+		if p == nil {
+			p = &VirtualSoccerMatchSnapshot{}
+		}
+		if q == nil {
+			q = &VirtualSoccerMatchSnapshot{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
 func (this *MatchState) EqualVT(that *MatchState) bool {
 	if this == that {
 		return true
@@ -2256,6 +2333,31 @@ func (this *MatchState_RushCricket) EqualVT(thatIface isMatchState_State) bool {
 		}
 		if q == nil {
 			q = &RushCricketMatchState{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *MatchState_VirtualSoccer) EqualVT(thatIface isMatchState_State) bool {
+	that, ok := thatIface.(*MatchState_VirtualSoccer)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.VirtualSoccer, that.VirtualSoccer; p != q {
+		if p == nil {
+			p = &VirtualSoccerMatchState{}
+		}
+		if q == nil {
+			q = &VirtualSoccerMatchState{}
 		}
 		if !p.EqualVT(q) {
 			return false

@@ -11,6 +11,7 @@ import * as bragi_lol_pb from "../bragi/lol_pb";
 import * as bragi_rush_basketball_pb from "../bragi/rush_basketball_pb";
 import * as bragi_valorant_pb from "../bragi/valorant_pb";
 import * as bragi_rush_cricket_pb from "../bragi/rush_cricket_pb";
+import * as bragi_virtual_soccer_pb from "../bragi/virtual_soccer_pb";
 
 export class TeamProfileRequest extends jspb.Message {
   getTeamUrn(): string;
@@ -651,6 +652,11 @@ export class MatchMessage extends jspb.Message {
   getRushCricket(): bragi_rush_cricket_pb.RushCricketMatchMessage | undefined;
   setRushCricket(value?: bragi_rush_cricket_pb.RushCricketMatchMessage): void;
 
+  hasVirtualSoccer(): boolean;
+  clearVirtualSoccer(): void;
+  getVirtualSoccer(): bragi_virtual_soccer_pb.VirtualSoccerMatchMessage | undefined;
+  setVirtualSoccer(value?: bragi_virtual_soccer_pb.VirtualSoccerMatchMessage): void;
+
   getActiveDataSourceType(): number;
   setActiveDataSourceType(value: number): void;
 
@@ -676,6 +682,7 @@ export namespace MatchMessage {
     rushBasketball?: bragi_rush_basketball_pb.RushBasketballMatchMessage.AsObject,
     valorant?: bragi_valorant_pb.ValorantMatchMessage.AsObject,
     rushCricket?: bragi_rush_cricket_pb.RushCricketMatchMessage.AsObject,
+    virtualSoccer?: bragi_virtual_soccer_pb.VirtualSoccerMatchMessage.AsObject,
     activeDataSourceType: number,
   }
 
@@ -690,6 +697,7 @@ export namespace MatchMessage {
     RUSH_BASKETBALL = 7,
     VALORANT = 8,
     RUSH_CRICKET = 9,
+    VIRTUAL_SOCCER = 11,
   }
 }
 
@@ -734,6 +742,11 @@ export class MatchSnapshot extends jspb.Message {
   getRushCricket(): bragi_rush_cricket_pb.RushCricketMatchSnapshot | undefined;
   setRushCricket(value?: bragi_rush_cricket_pb.RushCricketMatchSnapshot): void;
 
+  hasVirtualSoccer(): boolean;
+  clearVirtualSoccer(): void;
+  getVirtualSoccer(): bragi_virtual_soccer_pb.VirtualSoccerMatchSnapshot | undefined;
+  setVirtualSoccer(value?: bragi_virtual_soccer_pb.VirtualSoccerMatchSnapshot): void;
+
   getActiveDataSourceType(): number;
   setActiveDataSourceType(value: number): void;
 
@@ -758,6 +771,7 @@ export namespace MatchSnapshot {
     rushBasketball?: bragi_rush_basketball_pb.RushBasketballMatchSnapshot.AsObject,
     valorant?: bragi_valorant_pb.ValorantMatchSnapshot.AsObject,
     rushCricket?: bragi_rush_cricket_pb.RushCricketMatchSnapshot.AsObject,
+    virtualSoccer?: bragi_virtual_soccer_pb.VirtualSoccerMatchSnapshot.AsObject,
     activeDataSourceType: number,
   }
 
@@ -771,6 +785,7 @@ export namespace MatchSnapshot {
     RUSH_BASKETBALL = 6,
     VALORANT = 7,
     RUSH_CRICKET = 8,
+    VIRTUAL_SOCCER = 10,
   }
 }
 
@@ -815,6 +830,11 @@ export class MatchState extends jspb.Message {
   getRushCricket(): bragi_rush_cricket_pb.RushCricketMatchState | undefined;
   setRushCricket(value?: bragi_rush_cricket_pb.RushCricketMatchState): void;
 
+  hasVirtualSoccer(): boolean;
+  clearVirtualSoccer(): void;
+  getVirtualSoccer(): bragi_virtual_soccer_pb.VirtualSoccerMatchState | undefined;
+  setVirtualSoccer(value?: bragi_virtual_soccer_pb.VirtualSoccerMatchState): void;
+
   getStateCase(): MatchState.StateCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MatchState.AsObject;
@@ -836,6 +856,7 @@ export namespace MatchState {
     rushBasketball?: bragi_rush_basketball_pb.RushBasketballMatchState.AsObject,
     valorant?: bragi_valorant_pb.ValorantMatchState.AsObject,
     rushCricket?: bragi_rush_cricket_pb.RushCricketMatchState.AsObject,
+    virtualSoccer?: bragi_virtual_soccer_pb.VirtualSoccerMatchState.AsObject,
   }
 
   export enum StateCase {
@@ -848,6 +869,7 @@ export namespace MatchState {
     RUSH_BASKETBALL = 6,
     VALORANT = 7,
     RUSH_CRICKET = 8,
+    VIRTUAL_SOCCER = 9,
   }
 }
 

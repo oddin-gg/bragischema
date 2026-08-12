@@ -1,0 +1,333 @@
+syntax = "proto3";
+
+package bragi;
+
+option go_package = "oddin.gg/bragi";
+option java_package = "com.oddin.bragi";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "bragi/common.proto";
+
+message VirtualSoccerMatchMessage {
+  message Payload {
+    oneof payload {
+      // Initial snapshot.
+      VirtualSoccerMatchSnapshot snapshot = 1;
+
+      // Particular updates which are applied on property match_state in MatchState.
+      VirtualSoccerMatchUpdate update = 2;
+    }
+  }
+
+  // Match urn.
+  string match_urn = 1;
+  // Message sequence.
+  uint64 sequence = 2;
+  // Message timestamp.
+  google.protobuf.Timestamp timestamp = 3;
+  // Data status.
+  DataStatus data_status = 4;
+  // Message payload.
+  Payload payload = 5;
+}
+
+message VirtualSoccerMatchSnapshot {
+  // Match urn.
+  string match_urn = 1;
+  // Message sequence.
+  uint64 sequence = 2;
+  // Message timestamp.
+  google.protobuf.Timestamp timestamp = 3;
+  // Data status.
+  DataStatus data_status = 4;
+  // Control announcements.
+  repeated Announcement announcements = 5;
+  // Match state.
+  VirtualSoccerMatchState match_state = 6;
+  // Tournament details
+  Tournament tournament  = 7;
+}
+
+message VirtualSoccerMatchUpdate {
+  message Payload {
+    oneof payload {
+      // Complete match state.
+      VirtualSoccerMatchState match_state = 1;
+      // Partial update.
+      VirtualSoccerMatchStatePartialUpdates partial_updates = 2;
+    }
+  }
+
+  // Update payload.
+  Payload payload = 1;
+}
+
+message VirtualSoccerMatchStatePartialUpdates {
+  // Partial updates.
+  repeated VirtualSoccerMatchStatePartialUpdate updates = 1;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+message VirtualSoccerMatchStatePartialUpdate {
+  oneof update {
+    // Replaces "score" property in VirtualSoccerMatchState.
+    VirtualSoccerMatchScoreState score = 1;
+
+    // Replaces "current_map" property in VirtualSoccerMatchState. To minimalize issues with incorrect updates application
+    // on current_map, server sends VirtualSoccerMatchStatePartialUpdate with VirtualSoccerCurrentMapState in periodic time set by customer.
+    VirtualSoccerCurrentMapState current_map_state = 2;
+
+    // Apply partial update on "current_map" property in VirtualSoccerMatchState.
+    VirtualSoccerCurrentMapStatePartialUpdate current_map_state_partial_update = 3;
+
+    // Replaces "timeline" property in VirtualSoccerMatchState.
+    VirtualSoccerTimelineState timeline = 4;
+
+    // Replaces "ball_state" property in VirtualSoccerMatchState. High-frequency: sent on every tick in which
+    // the current ball position, previous ball position or possession side changed.
+    VirtualSoccerBallState ball_state = 5;
+
+    // Replaces "possession_statistics" property in VirtualSoccerMatchState.
+    VirtualSoccerPossessionStatisticsState possession_statistics = 6;
+  }
+}
+
+message VirtualSoccerMatchState {
+  // Match urn.
+  string match_urn = 1;
+  // BO type.
+  BestOfType match_type = 2;
+  // Home team.
+  Team home_team = 3;
+  // Away team.
+  Team away_team = 4;
+  // Match score - number of maps won.
+  VirtualSoccerMatchScoreState score = 5;
+  // Match status.
+  MatchStatusType match_status = 6;
+  // Timeline state.
+  VirtualSoccerTimelineState timeline = 7;
+  // Current map state.
+  VirtualSoccerCurrentMapState current_map = 8;
+  // Ball position and possession state. Updated at tick frequency via the ball_state partial update.
+  VirtualSoccerBallState ball_state = 9;
+  // Cumulative possession share per team. Unset until populated.
+  VirtualSoccerPossessionStatisticsState possession_statistics = 10;
+}
+
+message VirtualSoccerMatchScoreState {
+  // Number of maps won by home team.
+  uint32 home_score = 1;
+  // Number of maps won by away team.
+  uint32 away_score = 2;
+}
+
+message VirtualSoccerCurrentMapScoreState {
+  // Number of home goals.
+  uint32 home_goals = 1;
+  // Number of away goals.
+  uint32 away_goals = 2;
+}
+
+// Normalized ball position on the pitch. x, y are in [-1, 1] (pitch coords; centre spot = (0, 0)).
+message VirtualSoccerPitchPosition {
+  float x = 1;
+  float y = 2;
+}
+
+message VirtualSoccerBallState {
+  // Current ball position; unset when ball tracking is stale.
+  VirtualSoccerPitchPosition current = 1;
+  // Ball position of the previously processed tick; unset on the first state and on the tick after tracking
+  // resumes from stale. May reference a tick that was folded into this update and never published on its own.
+  VirtualSoccerPitchPosition previous = 2;
+  // Possession side. HOME/AWAY reflect an explicit upstream attribution and are reported even while ball
+  // tracking is stale (current unset). CONTESTED means the ball is tracked but upstream attributes possession
+  // to neither side. UNSPECIFIED = unknown: either the match is paused (a pause always clears possession, even
+  // when upstream still attributes it), or possession is unattributed while ball tracking is stale.
+  VirtualSoccerPossessionSide possession = 3;
+}
+
+message VirtualSoccerPossessionStatisticsState {
+  message Values {
+    // Home team's share of attributed possession time within the scope, 0-100.
+    // home + away is approximately 100 within each scope; contested/unknown seconds are excluded.
+    float home_percentage = 1;
+    // Away team's share of attributed possession time within the scope, 0-100.
+    float away_percentage = 2;
+  }
+
+  // Whole match.
+  Values total = 1;
+  // First half only.
+  Values first_half = 2;
+  // Second half only.
+  Values second_half = 3;
+}
+
+message VirtualSoccerTimelineState {
+  // Timeline events.
+  repeated VirtualSoccerTimelineEvent events = 1;
+}
+
+message VirtualSoccerTimelineEvent {
+  // Team urn.
+  string team_urn = 1;
+  // Event type.
+  VirtualSoccerEventType event_type = 2;
+  // Real time in seconds (2x 4 minutes).
+  google.protobuf.Duration real_time = 3;
+  // Game time in seconds (2x 45 minutes).
+  google.protobuf.Duration game_time = 4;
+  // Period.
+  VirtualSoccerPeriod period = 5;
+  // Ball position at the moment of the event; unset when unknown. Not stamped by the DATA-2212 baseline slice,
+  // so always unset until DATA-2213 lands (its attack-event synthesis already derives per-tick ball position).
+  VirtualSoccerPitchPosition position = 6;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+message VirtualSoccerCurrentMapStatePartialUpdate {
+  oneof update {
+    // Replaces "game_time" property in VirtualSoccerCurrentMapState.
+    VirtualSoccerCurrentMapTimeState game_time = 1;
+
+    // Replaces "score" property in VirtualSoccerCurrentMapState.
+    VirtualSoccerCurrentMapScoreState score = 2;
+
+    // Replaces whole value under given key in teams map property in VirtualSoccerCurrentMapState.
+    VirtualSoccerTeamCurrentMapState team_current_map_state = 3;
+
+    // Apply partial update on value under given key in teams map property in VirtualSoccerCurrentMapState.
+    VirtualSoccerTeamCurrentMapStatePartialUpdate team_current_map_partial_update = 4;
+  }
+}
+
+message VirtualSoccerCurrentMapState {
+  // Period.
+  VirtualSoccerPeriod period = 1;
+  // Game time.
+  VirtualSoccerCurrentMapTimeState game_time = 2;
+  // Map score.
+  VirtualSoccerCurrentMapScoreState score = 3;
+  // Paused flag.
+  bool map_paused = 4;
+  // Teams.
+  map<string, VirtualSoccerTeamCurrentMapState> teams = 5;
+}
+
+message VirtualSoccerCurrentMapTimeState {
+  // Real time in seconds (2x 4 minutes).
+  google.protobuf.Duration real_time = 1;
+
+  // Game time in seconds (2x 45 minutes).
+  google.protobuf.Duration game_time = 2;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+message VirtualSoccerTeamCurrentMapStatePartialUpdate {
+  message Payload {
+    oneof payload {
+
+      // Replaces "map_statistics" property in VirtualSoccerTeamCurrentMapState.
+      VirtualSoccerTeamCurrentMapStatisticsState map_statistics = 1;
+
+      // Replaces "player" property in VirtualSoccerTeamCurrentMapState.
+      VirtualSoccerPlayerCurrentMapState player = 2;
+    }
+  }
+
+  // Team urn.
+  string team_urn = 1;
+
+  // Update payload.
+  Payload payload = 2;
+}
+
+message VirtualSoccerTeamCurrentMapState {
+  // Team urn.
+  string team_urn = 1;
+  // Current map statistics state.
+  VirtualSoccerTeamCurrentMapStatisticsState map_statistics = 2;
+  // Current map player state.
+  VirtualSoccerPlayerCurrentMapState player = 3;
+}
+
+message VirtualSoccerPlayerCurrentMapState{
+  // Player urn.
+  string player_urn = 1;
+  // Player ext name.
+  string ext_name = 2;
+}
+
+message VirtualSoccerTeamCurrentMapStatisticsState {
+  // Whole match counters.
+  VirtualSoccerTeamStatisticsValues total = 1;
+  // First half counters.
+  VirtualSoccerTeamStatisticsValues first_half = 2;
+  // Second half counters.
+  VirtualSoccerTeamStatisticsValues second_half = 3;
+}
+
+message VirtualSoccerTeamStatisticsValues {
+  // Number of goals.
+  uint32 goals = 1;
+  // Number of red cards.
+  uint32 red_cards = 2;
+  // Number of yellow cards.
+  uint32 yellow_cards = 3;
+  // Number of corner kicks.
+  uint32 corner_kicks = 4;
+  // Number of free kicks.
+  uint32 free_kicks = 5;
+  // Number of penalty kicks.
+  uint32 penalty_kicks = 6;
+  // Number of shots on and off target. Always 0 until upstream shot events are available.
+  uint32 total_shots = 7;
+  // Number of shots on target. Always 0 until upstream shot events are available.
+  uint32 shots_on_target = 8;
+  // Number of attacks: the possession-holding team moved the ball into the opponent's half.
+  // Always 0 until the possession/attack accumulators land.
+  uint32 attacks = 9;
+  // Number of dangerous attacks: the possession-holding team moved the ball into the opponent's final third,
+  // plus set pieces (corner, penalty, free kick) taken in the final third.
+  // Always 0 until the possession/attack accumulators land.
+  uint32 dangerous_attacks = 10;
+}
+
+enum VirtualSoccerEventType {
+  VIRTUAL_SOCCER_EVENT_TYPE_UNSPECIFIED = 0;
+  VIRTUAL_SOCCER_EVENT_TYPE_GOAL = 1;
+  VIRTUAL_SOCCER_EVENT_TYPE_PENALTY = 2;
+  VIRTUAL_SOCCER_EVENT_TYPE_RED_CARD = 3;
+  VIRTUAL_SOCCER_EVENT_TYPE_YELLOW_CARD = 4;
+  VIRTUAL_SOCCER_EVENT_TYPE_FREE_KICK = 5;
+  VIRTUAL_SOCCER_EVENT_TYPE_CORNER_KICK = 6;
+  VIRTUAL_SOCCER_EVENT_TYPE_PERIOD_CHANGE = 7;
+  // Shot events require upstream clean-data support; not emitted until it lands.
+  VIRTUAL_SOCCER_EVENT_TYPE_SHOT_ON_TARGET = 8;
+  VIRTUAL_SOCCER_EVENT_TYPE_SHOT_OFF_TARGET = 9;
+  // Synthetic: the possession-holding team moved the ball into the opponent's half.
+  VIRTUAL_SOCCER_EVENT_TYPE_ATTACK = 10;
+  // Synthetic: the possession-holding team moved the ball into the opponent's final third. Set pieces taken in
+  // the final third increment the dangerous_attacks counter only and keep their own event type in the timeline.
+  VIRTUAL_SOCCER_EVENT_TYPE_DANGEROUS_ATTACK = 11;
+}
+
+enum VirtualSoccerPossessionSide {
+  VIRTUAL_SOCCER_POSSESSION_SIDE_UNSPECIFIED = 0;
+  VIRTUAL_SOCCER_POSSESSION_SIDE_HOME = 1;
+  VIRTUAL_SOCCER_POSSESSION_SIDE_AWAY = 2;
+  // Ball in play but neither team in possession.
+  VIRTUAL_SOCCER_POSSESSION_SIDE_CONTESTED = 3;
+}
+
+enum VirtualSoccerPeriod {
+  VIRTUAL_SOCCER_PERIOD_UNSPECIFIED = 0;
+  VIRTUAL_SOCCER_PERIOD_FIRST = 1;
+  VIRTUAL_SOCCER_PERIOD_SECOND = 2;
+}
