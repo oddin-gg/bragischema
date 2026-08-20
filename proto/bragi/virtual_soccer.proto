@@ -113,7 +113,8 @@ message VirtualSoccerMatchState {
   VirtualSoccerCurrentMapState current_map = 8;
   // Ball position and possession state. Updated at tick frequency via the ball_state partial update.
   VirtualSoccerBallState ball_state = 9;
-  // Cumulative possession share per team. Unset until populated.
+  // Cumulative possession share per team. Always set on newly built states; percentages and the
+  // attributed-seconds accumulators update at tick frequency via the possession_statistics partial update.
   VirtualSoccerPossessionStatisticsState possession_statistics = 10;
 }
 
@@ -157,6 +158,11 @@ message VirtualSoccerPossessionStatisticsState {
     float home_percentage = 1;
     // Away team's share of attributed possession time within the scope, 0-100.
     float away_percentage = 2;
+    // Attributed possession time within the scope, in game-clock seconds. Contested, unknown and paused
+    // time is excluded, so home + away can be less than the scope's elapsed game time. These double as the
+    // accumulators persisted with each snapshot, so builder restarts resume from the last published totals.
+    uint32 home_possession_seconds = 3;
+    uint32 away_possession_seconds = 4;
   }
 
   // Whole match.
@@ -183,8 +189,8 @@ message VirtualSoccerTimelineEvent {
   google.protobuf.Duration game_time = 4;
   // Period.
   VirtualSoccerPeriod period = 5;
-  // Ball position at the moment of the event; unset when unknown. Not stamped by the DATA-2212 baseline slice,
-  // so always unset until DATA-2213 lands (its attack-event synthesis already derives per-tick ball position).
+  // Ball position at the tick the event was first observed; unset when unknown (ball tracking was stale at
+  // that tick, or the event predates the state the builder resumed from - positions are never backfilled).
   VirtualSoccerPitchPosition position = 6;
 }
 

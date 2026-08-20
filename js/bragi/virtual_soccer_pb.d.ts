@@ -489,6 +489,12 @@ export namespace VirtualSoccerPossessionStatisticsState {
     getAwayPercentage(): number;
     setAwayPercentage(value: number): void;
 
+    getHomePossessionSeconds(): number;
+    setHomePossessionSeconds(value: number): void;
+
+    getAwayPossessionSeconds(): number;
+    setAwayPossessionSeconds(value: number): void;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Values.AsObject;
     static toObject(includeInstance: boolean, msg: Values): Values.AsObject;
@@ -503,6 +509,8 @@ export namespace VirtualSoccerPossessionStatisticsState {
     export type AsObject = {
       homePercentage: number,
       awayPercentage: number,
+      homePossessionSeconds: number,
+      awayPossessionSeconds: number,
     }
   }
 }

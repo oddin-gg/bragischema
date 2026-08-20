@@ -369,6 +369,8 @@ func (m *VirtualSoccerPossessionStatisticsState_Values) CloneVT() *VirtualSoccer
 	r := new(VirtualSoccerPossessionStatisticsState_Values)
 	r.HomePercentage = m.HomePercentage
 	r.AwayPercentage = m.AwayPercentage
+	r.HomePossessionSeconds = m.HomePossessionSeconds
+	r.AwayPossessionSeconds = m.AwayPossessionSeconds
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -1300,6 +1302,12 @@ func (this *VirtualSoccerPossessionStatisticsState_Values) EqualVT(that *Virtual
 		return false
 	}
 	if this.AwayPercentage != that.AwayPercentage {
+		return false
+	}
+	if this.HomePossessionSeconds != that.HomePossessionSeconds {
+		return false
+	}
+	if this.AwayPossessionSeconds != that.AwayPossessionSeconds {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
