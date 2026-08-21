@@ -3917,7 +3917,9 @@ proto.bragi.VirtualSoccerPossessionStatisticsState.Values.prototype.toObject = f
 proto.bragi.VirtualSoccerPossessionStatisticsState.Values.toObject = function(includeInstance, msg) {
   var f, obj = {
 homePercentage: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
-awayPercentage: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0)
+awayPercentage: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
+homePossessionSeconds: jspb.Message.getFieldWithDefault(msg, 3, 0),
+awayPossessionSeconds: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -3962,6 +3964,14 @@ proto.bragi.VirtualSoccerPossessionStatisticsState.Values.deserializeBinaryFromR
       var value = /** @type {number} */ (reader.readFloat());
       msg.setAwayPercentage(value);
       break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setHomePossessionSeconds(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setAwayPossessionSeconds(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -4005,6 +4015,20 @@ proto.bragi.VirtualSoccerPossessionStatisticsState.Values.serializeBinaryToWrite
       f
     );
   }
+  f = message.getHomePossessionSeconds();
+  if (f !== 0) {
+    writer.writeUint32(
+      3,
+      f
+    );
+  }
+  f = message.getAwayPossessionSeconds();
+  if (f !== 0) {
+    writer.writeUint32(
+      4,
+      f
+    );
+  }
 };
 
 
@@ -4041,6 +4065,42 @@ proto.bragi.VirtualSoccerPossessionStatisticsState.Values.prototype.getAwayPerce
  */
 proto.bragi.VirtualSoccerPossessionStatisticsState.Values.prototype.setAwayPercentage = function(value) {
   return jspb.Message.setProto3FloatField(this, 2, value);
+};
+
+
+/**
+ * optional uint32 home_possession_seconds = 3;
+ * @return {number}
+ */
+proto.bragi.VirtualSoccerPossessionStatisticsState.Values.prototype.getHomePossessionSeconds = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.bragi.VirtualSoccerPossessionStatisticsState.Values} returns this
+ */
+proto.bragi.VirtualSoccerPossessionStatisticsState.Values.prototype.setHomePossessionSeconds = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional uint32 away_possession_seconds = 4;
+ * @return {number}
+ */
+proto.bragi.VirtualSoccerPossessionStatisticsState.Values.prototype.getAwayPossessionSeconds = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.bragi.VirtualSoccerPossessionStatisticsState.Values} returns this
+ */
+proto.bragi.VirtualSoccerPossessionStatisticsState.Values.prototype.setAwayPossessionSeconds = function(value) {
+  return jspb.Message.setProto3IntField(this, 4, value);
 };
 
 

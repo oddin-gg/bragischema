@@ -113,7 +113,8 @@ message VirtualSoccerMatchState {
   VirtualSoccerCurrentMapState current_map = 8;
   // Ball position and possession state. Updated at tick frequency via the ball_state partial update.
   VirtualSoccerBallState ball_state = 9;
-  // Cumulative possession share per team. Unset until populated.
+  // Cumulative possession share per team. Always set on newly built states; percentages and the
+  // attributed-seconds accumulators update at tick frequency via the possession_statistics partial update.
   VirtualSoccerPossessionStatisticsState possession_statistics = 10;
 }
 
@@ -132,6 +133,10 @@ message VirtualSoccerCurrentMapScoreState {
 }
 
 // Normalized ball position on the pitch. x, y are in [-1, 1] (pitch coords; centre spot = (0, 0)).
+// Orientation (confirmed by the upstream vision provider, constant across all matches): coordinates are
+// pitch-fixed, in the FIRST half the home goal is at x = -1 (home attacks toward +1), and the teams switch
+// ends at half-time, so in the SECOND half the home goal is at x = +1. Combine with the current period to
+// tell which end belongs to which team.
 message VirtualSoccerPitchPosition {
   float x = 1;
   float y = 2;
@@ -157,6 +162,11 @@ message VirtualSoccerPossessionStatisticsState {
     float home_percentage = 1;
     // Away team's share of attributed possession time within the scope, 0-100.
     float away_percentage = 2;
+    // Attributed possession time within the scope, in game-clock seconds. Contested, unknown and paused
+    // time is excluded, so home + away can be less than the scope's elapsed game time. These double as the
+    // accumulators persisted with each snapshot, so builder restarts resume from the last published totals.
+    uint32 home_possession_seconds = 3;
+    uint32 away_possession_seconds = 4;
   }
 
   // Whole match.
@@ -183,8 +193,8 @@ message VirtualSoccerTimelineEvent {
   google.protobuf.Duration game_time = 4;
   // Period.
   VirtualSoccerPeriod period = 5;
-  // Ball position at the moment of the event; unset when unknown. Not stamped by the DATA-2212 baseline slice,
-  // so always unset until DATA-2213 lands (its attack-event synthesis already derives per-tick ball position).
+  // Ball position at the tick the event was first observed; unset when unknown (ball tracking was stale at
+  // that tick, or the event predates the state the builder resumed from - positions are never backfilled).
   VirtualSoccerPitchPosition position = 6;
 }
 
@@ -290,12 +300,13 @@ message VirtualSoccerTeamStatisticsValues {
   uint32 total_shots = 7;
   // Number of shots on target. Always 0 until upstream shot events are available.
   uint32 shots_on_target = 8;
-  // Number of attacks: the possession-holding team moved the ball into the opponent's half.
-  // Always 0 until the possession/attack accumulators land.
+  // Number of attacks: the ball moved into the half this team's opponent defends. Zone-based (edge-triggered
+  // on the ball crossing the halfway line), regardless of which side upstream attributes possession to.
   uint32 attacks = 9;
-  // Number of dangerous attacks: the possession-holding team moved the ball into the opponent's final third,
-  // plus set pieces (corner, penalty, free kick) taken in the final third.
-  // Always 0 until the possession/attack accumulators land.
+  // Number of dangerous attacks: the ball moved into the final third in front of the opponent's goal, plus
+  // set pieces (corner, penalty, free kick) this team took in that final third (counter bump only - the
+  // timeline keeps the set piece's own event type). Because of the set-piece bumps and entries from inside
+  // the opponent's half, dangerous_attacks is not numerically a subset of attacks.
   uint32 dangerous_attacks = 10;
 }
 
@@ -311,10 +322,12 @@ enum VirtualSoccerEventType {
   // Shot events require upstream clean-data support; not emitted until it lands.
   VIRTUAL_SOCCER_EVENT_TYPE_SHOT_ON_TARGET = 8;
   VIRTUAL_SOCCER_EVENT_TYPE_SHOT_OFF_TARGET = 9;
-  // Synthetic: the possession-holding team moved the ball into the opponent's half.
+  // Synthetic: the ball entered the half the attributed team's opponent defends. Edge-triggered - leaving
+  // and re-entering the half emits a new event. Carries the ball position of the crossing tick.
   VIRTUAL_SOCCER_EVENT_TYPE_ATTACK = 10;
-  // Synthetic: the possession-holding team moved the ball into the opponent's final third. Set pieces taken in
-  // the final third increment the dangerous_attacks counter only and keep their own event type in the timeline.
+  // Synthetic: the ball entered the final third in front of the opponent's goal; one move can emit this
+  // together with ATTACK. Set pieces taken in the final third increment the dangerous_attacks counter only
+  // and keep their own event type in the timeline.
   VIRTUAL_SOCCER_EVENT_TYPE_DANGEROUS_ATTACK = 11;
 }
 
