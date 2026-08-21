@@ -36,10 +36,12 @@ const (
 	// Shot events require upstream clean-data support; not emitted until it lands.
 	VirtualSoccerEventType_VIRTUAL_SOCCER_EVENT_TYPE_SHOT_ON_TARGET  VirtualSoccerEventType = 8
 	VirtualSoccerEventType_VIRTUAL_SOCCER_EVENT_TYPE_SHOT_OFF_TARGET VirtualSoccerEventType = 9
-	// Synthetic: the possession-holding team moved the ball into the opponent's half.
+	// Synthetic: the ball entered the half the attributed team's opponent defends. Edge-triggered - leaving
+	// and re-entering the half emits a new event. Carries the ball position of the crossing tick.
 	VirtualSoccerEventType_VIRTUAL_SOCCER_EVENT_TYPE_ATTACK VirtualSoccerEventType = 10
-	// Synthetic: the possession-holding team moved the ball into the opponent's final third. Set pieces taken in
-	// the final third increment the dangerous_attacks counter only and keep their own event type in the timeline.
+	// Synthetic: the ball entered the final third in front of the opponent's goal; one move can emit this
+	// together with ATTACK. Set pieces taken in the final third increment the dangerous_attacks counter only
+	// and keep their own event type in the timeline.
 	VirtualSoccerEventType_VIRTUAL_SOCCER_EVENT_TYPE_DANGEROUS_ATTACK VirtualSoccerEventType = 11
 )
 
@@ -869,6 +871,10 @@ func (x *VirtualSoccerCurrentMapScoreState) GetAwayGoals() uint32 {
 }
 
 // Normalized ball position on the pitch. x, y are in [-1, 1] (pitch coords; centre spot = (0, 0)).
+// Orientation (confirmed by the upstream vision provider, constant across all matches): coordinates are
+// pitch-fixed, in the FIRST half the home goal is at x = -1 (home attacks toward +1), and the teams switch
+// ends at half-time, so in the SECOND half the home goal is at x = +1. Combine with the current period to
+// tell which end belongs to which team.
 type VirtualSoccerPitchPosition struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	X             float32                `protobuf:"fixed32,1,opt,name=x,proto3" json:"x,omitempty"`
@@ -1696,12 +1702,13 @@ type VirtualSoccerTeamStatisticsValues struct {
 	TotalShots uint32 `protobuf:"varint,7,opt,name=total_shots,json=totalShots,proto3" json:"total_shots,omitempty"`
 	// Number of shots on target. Always 0 until upstream shot events are available.
 	ShotsOnTarget uint32 `protobuf:"varint,8,opt,name=shots_on_target,json=shotsOnTarget,proto3" json:"shots_on_target,omitempty"`
-	// Number of attacks: the possession-holding team moved the ball into the opponent's half.
-	// Always 0 until the possession/attack accumulators land.
+	// Number of attacks: the ball moved into the half this team's opponent defends. Zone-based (edge-triggered
+	// on the ball crossing the halfway line), regardless of which side upstream attributes possession to.
 	Attacks uint32 `protobuf:"varint,9,opt,name=attacks,proto3" json:"attacks,omitempty"`
-	// Number of dangerous attacks: the possession-holding team moved the ball into the opponent's final third,
-	// plus set pieces (corner, penalty, free kick) taken in the final third.
-	// Always 0 until the possession/attack accumulators land.
+	// Number of dangerous attacks: the ball moved into the final third in front of the opponent's goal, plus
+	// set pieces (corner, penalty, free kick) this team took in that final third (counter bump only - the
+	// timeline keeps the set piece's own event type). Because of the set-piece bumps and entries from inside
+	// the opponent's half, dangerous_attacks is not numerically a subset of attacks.
 	DangerousAttacks uint32 `protobuf:"varint,10,opt,name=dangerous_attacks,json=dangerousAttacks,proto3" json:"dangerous_attacks,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
