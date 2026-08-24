@@ -538,6 +538,7 @@ export interface SportMap {
   SPORT_VIRTUAL_SOCCER: 9;
   SPORT_DOTA2_DUELS: 10;
   SPORT_RUSH_MADDEN: 11;
+  SPORT_TABLE_TENNIS: 12;
 }
 
 export const Sport: SportMap;
