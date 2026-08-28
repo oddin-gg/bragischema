@@ -67,6 +67,8 @@ message Match {
   repeated Team teams = 11;
   repeated Player players = 12;
   BestOfType best_of_type = 13;
+  // Public video streams of the match, ordered by id; empty when none are available.
+  repeated VideoStream video_streams = 14;
 }
 
 message Tournament {
@@ -91,6 +93,15 @@ message Player {
   string urn = 1;
   string nickname = 2;
   string team_urn = 3;
+}
+
+// VideoStream is a public video stream of a match.
+message VideoStream {
+  string url = 1;
+  // Language of the stream as Oddin's language code (languages.code). Mostly ISO 639-1
+  // two-letter codes such as "en", but not strictly (e.g. "br" = Brazilian Portuguese,
+  // "aa" = Arabic). Empty when the language is unknown.
+  string language = 2;
 }
 
 message ExternalIdentityList {

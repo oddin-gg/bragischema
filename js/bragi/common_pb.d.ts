@@ -237,6 +237,11 @@ export class Match extends jspb.Message {
   getBestOfType(): BestOfTypeMap[keyof BestOfTypeMap];
   setBestOfType(value: BestOfTypeMap[keyof BestOfTypeMap]): void;
 
+  clearVideoStreamsList(): void;
+  getVideoStreamsList(): Array<VideoStream>;
+  setVideoStreamsList(value: Array<VideoStream>): void;
+  addVideoStreams(value?: VideoStream, index?: number): VideoStream;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Match.AsObject;
   static toObject(includeInstance: boolean, msg: Match): Match.AsObject;
@@ -262,6 +267,7 @@ export namespace Match {
     teamsList: Array<Team.AsObject>,
     playersList: Array<Player.AsObject>,
     bestOfType: BestOfTypeMap[keyof BestOfTypeMap],
+    videoStreamsList: Array<VideoStream.AsObject>,
   }
 }
 
@@ -366,6 +372,30 @@ export namespace Player {
     urn: string,
     nickname: string,
     teamUrn: string,
+  }
+}
+
+export class VideoStream extends jspb.Message {
+  getUrl(): string;
+  setUrl(value: string): void;
+
+  getLanguage(): string;
+  setLanguage(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): VideoStream.AsObject;
+  static toObject(includeInstance: boolean, msg: VideoStream): VideoStream.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: VideoStream, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): VideoStream;
+  static deserializeBinaryFromReader(message: VideoStream, reader: jspb.BinaryReader): VideoStream;
+}
+
+export namespace VideoStream {
+  export type AsObject = {
+    url: string,
+    language: string,
   }
 }
 
