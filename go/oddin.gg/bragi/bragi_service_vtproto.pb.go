@@ -652,6 +652,15 @@ func (m *MatchMessage_VirtualSoccer) CloneVT() isMatchMessage_Message {
 	return r
 }
 
+func (m *MatchMessage_RushMadden) CloneVT() isMatchMessage_Message {
+	if m == nil {
+		return (*MatchMessage_RushMadden)(nil)
+	}
+	r := new(MatchMessage_RushMadden)
+	r.RushMadden = m.RushMadden.CloneVT()
+	return r
+}
+
 func (m *MatchSnapshot) CloneVT() *MatchSnapshot {
 	if m == nil {
 		return (*MatchSnapshot)(nil)
@@ -755,6 +764,15 @@ func (m *MatchSnapshot_VirtualSoccer) CloneVT() isMatchSnapshot_Snapshot {
 	return r
 }
 
+func (m *MatchSnapshot_RushMadden) CloneVT() isMatchSnapshot_Snapshot {
+	if m == nil {
+		return (*MatchSnapshot_RushMadden)(nil)
+	}
+	r := new(MatchSnapshot_RushMadden)
+	r.RushMadden = m.RushMadden.CloneVT()
+	return r
+}
+
 func (m *MatchState) CloneVT() *MatchState {
 	if m == nil {
 		return (*MatchState)(nil)
@@ -852,6 +870,15 @@ func (m *MatchState_VirtualSoccer) CloneVT() isMatchState_State {
 	}
 	r := new(MatchState_VirtualSoccer)
 	r.VirtualSoccer = m.VirtualSoccer.CloneVT()
+	return r
+}
+
+func (m *MatchState_RushMadden) CloneVT() isMatchState_State {
+	if m == nil {
+		return (*MatchState_RushMadden)(nil)
+	}
+	r := new(MatchState_RushMadden)
+	r.RushMadden = m.RushMadden.CloneVT()
 	return r
 }
 
@@ -1859,6 +1886,31 @@ func (this *MatchMessage_VirtualSoccer) EqualVT(thatIface isMatchMessage_Message
 	return true
 }
 
+func (this *MatchMessage_RushMadden) EqualVT(thatIface isMatchMessage_Message) bool {
+	that, ok := thatIface.(*MatchMessage_RushMadden)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.RushMadden, that.RushMadden; p != q {
+		if p == nil {
+			p = &RushMaddenMatchMessage{}
+		}
+		if q == nil {
+			q = &RushMaddenMatchMessage{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
 func (this *MatchSnapshot) EqualVT(that *MatchSnapshot) bool {
 	if this == that {
 		return true
@@ -2115,6 +2167,31 @@ func (this *MatchSnapshot_VirtualSoccer) EqualVT(thatIface isMatchSnapshot_Snaps
 	return true
 }
 
+func (this *MatchSnapshot_RushMadden) EqualVT(thatIface isMatchSnapshot_Snapshot) bool {
+	that, ok := thatIface.(*MatchSnapshot_RushMadden)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.RushMadden, that.RushMadden; p != q {
+		if p == nil {
+			p = &RushMaddenMatchSnapshot{}
+		}
+		if q == nil {
+			q = &RushMaddenMatchSnapshot{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
 func (this *MatchState) EqualVT(that *MatchState) bool {
 	if this == that {
 		return true
@@ -2358,6 +2435,31 @@ func (this *MatchState_VirtualSoccer) EqualVT(thatIface isMatchState_State) bool
 		}
 		if q == nil {
 			q = &VirtualSoccerMatchState{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *MatchState_RushMadden) EqualVT(thatIface isMatchState_State) bool {
+	that, ok := thatIface.(*MatchState_RushMadden)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.RushMadden, that.RushMadden; p != q {
+		if p == nil {
+			p = &RushMaddenMatchState{}
+		}
+		if q == nil {
+			q = &RushMaddenMatchState{}
 		}
 		if !p.EqualVT(q) {
 			return false
