@@ -190,6 +190,13 @@ func (m *Match) CloneVT() *Match {
 		}
 		r.Players = tmpContainer
 	}
+	if rhs := m.VideoStreams; rhs != nil {
+		tmpContainer := make([]*VideoStream, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.VideoStreams = tmpContainer
+	}
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -259,6 +266,24 @@ func (m *Player) CloneVT() *Player {
 }
 
 func (m *Player) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *VideoStream) CloneVT() *VideoStream {
+	if m == nil {
+		return (*VideoStream)(nil)
+	}
+	r := new(VideoStream)
+	r.Url = m.Url
+	r.Language = m.Language
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *VideoStream) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
@@ -681,6 +706,23 @@ func (this *Match) EqualVT(that *Match) bool {
 	if this.BestOfType != that.BestOfType {
 		return false
 	}
+	if len(this.VideoStreams) != len(that.VideoStreams) {
+		return false
+	}
+	for i, vx := range this.VideoStreams {
+		vy := that.VideoStreams[i]
+		if p, q := vx, vy; p != q {
+			if p == nil {
+				p = &VideoStream{}
+			}
+			if q == nil {
+				q = &VideoStream{}
+			}
+			if !p.EqualVT(q) {
+				return false
+			}
+		}
+	}
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
@@ -773,6 +815,28 @@ func (this *Player) EqualVT(that *Player) bool {
 
 func (this *Player) EqualMessageVT(thatMsg proto.Message) bool {
 	that, ok := thatMsg.(*Player)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *VideoStream) EqualVT(that *VideoStream) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.Url != that.Url {
+		return false
+	}
+	if this.Language != that.Language {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *VideoStream) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*VideoStream)
 	if !ok {
 		return false
 	}
