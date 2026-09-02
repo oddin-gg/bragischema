@@ -1,0 +1,340 @@
+syntax = "proto3";
+
+package bragi;
+
+option go_package = "oddin.gg/bragi";
+option java_package = "com.oddin.bragi";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "bragi/common.proto";
+
+message RushMaddenMatchMessage {
+  message Payload {
+    oneof payload {
+      // Initial snapshot.
+      RushMaddenMatchSnapshot snapshot = 1;
+
+      // Particular updates which are applied on property match_state in MatchState.
+      RushMaddenMatchUpdate update = 2;
+    }
+  }
+
+  // Match urn.
+  string match_urn = 1;
+  // Message sequence.
+  uint64 sequence = 2;
+  // Message timestamp.
+  google.protobuf.Timestamp timestamp = 3;
+  // Data status.
+  DataStatus data_status = 4;
+  // Message payload.
+  Payload payload = 5;
+}
+
+message RushMaddenMatchSnapshot {
+  // Match urn.
+  string match_urn = 1;
+  // Message sequence.
+  uint64 sequence = 2;
+  // Message timestamp.
+  google.protobuf.Timestamp timestamp = 3;
+  // Data status.
+  DataStatus data_status = 4;
+  // Control announcements.
+  repeated Announcement announcements = 5;
+  // Match state.
+  RushMaddenMatchState match_state = 6;
+  // Tournament details.
+  Tournament tournament = 7;
+}
+
+message RushMaddenMatchUpdate {
+  message Payload {
+    oneof payload {
+      // Complete match state.
+      RushMaddenMatchState match_state = 1;
+      // Partial update.
+      RushMaddenMatchStatePartialUpdates partial_updates = 2;
+    }
+  }
+
+  // Update payload.
+  Payload payload = 1;
+}
+
+message RushMaddenMatchStatePartialUpdates {
+  // Partial updates.
+  repeated RushMaddenMatchStatePartialUpdate updates = 1;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+message RushMaddenMatchStatePartialUpdate {
+  oneof update {
+    // Replaces "current_game" property in RushMaddenMatchState. To minimalize issues with incorrect updates application
+    // on current_game, server sends RushMaddenMatchStatePartialUpdate with RushMaddenCurrentGameState in periodic time
+    // set by customer.
+    RushMaddenCurrentGameState current_game_state = 1;
+
+    // Applies a partial update on "current_game" property in RushMaddenMatchState.
+    RushMaddenCurrentGameStatePartialUpdate current_game_state_partial_update = 2;
+
+    // Replaces "timeline" property in RushMaddenMatchState.
+    RushMaddenTimelineState timeline = 3;
+  }
+}
+
+message RushMaddenMatchState {
+  // Match urn.
+  string match_urn = 1;
+  // BO type.
+  BestOfType match_type = 2;
+  // Home team.
+  Team home_team = 3;
+  // Away team.
+  Team away_team = 4;
+  // Match status.
+  MatchStatusType match_status = 5;
+  // Timeline state.
+  RushMaddenTimelineState timeline = 6;
+  // Current game state.
+  RushMaddenCurrentGameState current_game = 7;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+message RushMaddenCurrentGameStatePartialUpdate {
+  oneof update {
+    // Replaces "game_time" property in RushMaddenCurrentGameState.
+    RushMaddenCurrentGameTimeState game_time = 1;
+
+    // Replaces "score" property in RushMaddenCurrentGameState.
+    RushMaddenCurrentGameScoreState score = 2;
+
+    // Replaces whole value under given key in teams map property in RushMaddenCurrentGameState.
+    RushMaddenTeamCurrentGameState team_current_game_state = 3;
+
+    // Applies a partial update on value under given key in teams map property in RushMaddenCurrentGameState.
+    RushMaddenTeamCurrentGameStatePartialUpdate team_current_game_partial_update = 4;
+
+    // Replaces "possession_side" property in RushMaddenCurrentGameState.
+    RushMaddenPossessionSide possession_side = 5;
+
+    // Replaces "down" property in RushMaddenCurrentGameState.
+    uint32 down = 6;
+
+    // Replaces "first_down_distance" property in RushMaddenCurrentGameState.
+    RushMaddenFirstDownDistance first_down_distance = 7;
+
+    // Replaces "yards_to_endzone" property in RushMaddenCurrentGameState.
+    uint32 yards_to_endzone = 8;
+
+    // Replaces "quarter" property in RushMaddenCurrentGameState.
+    RushMaddenQuarter quarter = 9;
+  }
+}
+
+message RushMaddenCurrentGameState {
+  // Quarter.
+  RushMaddenQuarter quarter = 1;
+  // Game time.
+  RushMaddenCurrentGameTimeState game_time = 2;
+  // Game score.
+  RushMaddenCurrentGameScoreState score = 3;
+  // Paused flag.
+  bool game_paused = 4;
+  // Teams.
+  map<string, RushMaddenTeamCurrentGameState> teams = 5;
+  // Which side is in possession of the ball.
+  RushMaddenPossessionSide possession_side = 6;
+  // Current down, 1-4. Zero when not in a drive.
+  uint32 down = 7;
+  // Distance to the first-down marker.
+  RushMaddenFirstDownDistance first_down_distance = 8;
+  // Yards from the possessing team's position to the endzone, 0-100.
+  uint32 yards_to_endzone = 9;
+}
+
+message RushMaddenCurrentGameTimeState {
+  // Remaining game time. Quarters run ~180 seconds each, not real-time NFL quarters.
+  google.protobuf.Duration remaining_time = 1;
+}
+
+message RushMaddenCurrentGameScoreState {
+  // Number of points of home team.
+  uint32 home_score = 1;
+  // Number of points of away team.
+  uint32 away_score = 2;
+}
+
+// Distance to the first-down marker. A oneof rather than a flattened pair so that "0 yards" stays
+// distinguishable from GOAL.
+message RushMaddenFirstDownDistance {
+  oneof value {
+    // Distance in whole yards.
+    uint32 yards = 1;
+    // Symbolic distance, used when a yard count would not express it.
+    RushMaddenFirstDownDistanceType type = 2;
+  }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+message RushMaddenTeamCurrentGameStatePartialUpdate {
+  message Payload {
+    oneof payload {
+
+      // Replaces "game_statistics" property in RushMaddenTeamCurrentGameState.
+      RushMaddenTeamCurrentGameStatisticsState game_statistics = 1;
+
+      // Replaces "player" property in RushMaddenTeamCurrentGameState.
+      RushMaddenPlayerCurrentGameState player = 2;
+    }
+  }
+
+  // Team urn.
+  string team_urn = 1;
+
+  // Update payload.
+  Payload payload = 2;
+}
+
+message RushMaddenTeamCurrentGameState {
+  // Team urn.
+  string team_urn = 1;
+  // Current game statistics state.
+  RushMaddenTeamCurrentGameStatisticsState game_statistics = 2;
+  // Current game player state.
+  RushMaddenPlayerCurrentGameState player = 3;
+}
+
+message RushMaddenPlayerCurrentGameState {
+  // Player urn.
+  string player_urn = 1;
+  // Player ext name.
+  string ext_name = 2;
+}
+
+message RushMaddenTeamCurrentGameStatisticsState {
+  // Number of points scored so far.
+  uint32 score = 1;
+  // Number of points scored in each quarter.
+  repeated RushMaddenQuarterPoints quarter_points = 2;
+  // Number of timeouts the team has left.
+  uint32 timeouts_left = 3;
+}
+
+message RushMaddenQuarterPoints {
+  RushMaddenQuarter quarter = 1;
+  uint32 points = 2;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+message RushMaddenTimelineState {
+  // Timeline events.
+  repeated RushMaddenTimelineEvent events = 1;
+}
+
+// Every upstream event is an empty marker, so all context lives on the wrapper: there are no
+// per-event-type fields, no made/missed flag and no points value.
+message RushMaddenTimelineEvent {
+  // Team urn. Empty when upstream attributes the event to neither side, which is common for
+  // kickoffs, flags, the generic timeout and possession changes - consumers must not assume it is
+  // always populated.
+  string team_urn = 1;
+  // Event type.
+  RushMaddenEventType event_type = 2;
+  // Remaining game time at the moment of the event.
+  google.protobuf.Duration remaining_time = 3;
+  // Quarter in which the event happened.
+  RushMaddenQuarter quarter = 4;
+  // Down at the moment of the event, 1-4. Zero when not in a drive.
+  uint32 down = 5;
+  // Distance to the first-down marker at the moment of the event.
+  RushMaddenFirstDownDistance first_down_distance = 6;
+  // Yards to the endzone at the moment of the event, 0-100.
+  uint32 yards_to_endzone = 7;
+  // Which side was in possession at the moment of the event.
+  RushMaddenPossessionSide possession_side = 8;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+// Side in possession of the ball. Upstream expresses this as a jersey colour; it is resolved to a
+// side server-side via home_is_dark, so consumers never re-derive it.
+enum RushMaddenPossessionSide {
+  RUSH_MADDEN_POSSESSION_SIDE_UNSPECIFIED = 0;
+  RUSH_MADDEN_POSSESSION_SIDE_HOME = 1;
+  RUSH_MADDEN_POSSESSION_SIDE_AWAY = 2;
+}
+
+enum RushMaddenFirstDownDistanceType {
+  RUSH_MADDEN_FIRST_DOWN_DISTANCE_TYPE_UNSPECIFIED = 0;
+  RUSH_MADDEN_FIRST_DOWN_DISTANCE_TYPE_INCHES = 1;
+  RUSH_MADDEN_FIRST_DOWN_DISTANCE_TYPE_GOAL = 2;
+}
+
+enum RushMaddenQuarter {
+  RUSH_MADDEN_QUARTER_UNSPECIFIED = 0;
+  RUSH_MADDEN_QUARTER_1 = 1;
+  RUSH_MADDEN_QUARTER_2 = 2;
+  RUSH_MADDEN_QUARTER_3 = 3;
+  RUSH_MADDEN_QUARTER_4 = 4;
+  // Clean data carries a single, undifferentiated overtime quarter today, so only OVERTIME_1 is
+  // populatable. OVERTIME_2 through OVERTIME_10 exist for parity with RushBasketballPeriod and are
+  // not an existing capability.
+  RUSH_MADDEN_QUARTER_OVERTIME_1 = 5;
+  RUSH_MADDEN_QUARTER_OVERTIME_2 = 6;
+  RUSH_MADDEN_QUARTER_OVERTIME_3 = 7;
+  RUSH_MADDEN_QUARTER_OVERTIME_4 = 8;
+  RUSH_MADDEN_QUARTER_OVERTIME_5 = 9;
+  RUSH_MADDEN_QUARTER_OVERTIME_6 = 10;
+  RUSH_MADDEN_QUARTER_OVERTIME_7 = 11;
+  RUSH_MADDEN_QUARTER_OVERTIME_8 = 12;
+  RUSH_MADDEN_QUARTER_OVERTIME_9 = 13;
+  RUSH_MADDEN_QUARTER_OVERTIME_10 = 14;
+}
+
+// Ordinals 1-14 mirror an upstream event variant, with 1-13 matching the deprecated upstream
+// match-situation enum so the mapping stays checkable by eye. Ordinals 15 and up are synthesised
+// server-side and have no upstream counterpart.
+//
+// PAT and FIELD_GOAL are attempts only - upstream carries no made/missed flag and no points value for
+// any event, so consumers must not annotate points. Side-specific variants are named by side, not
+// jersey colour.
+enum RushMaddenEventType {
+  RUSH_MADDEN_EVENT_TYPE_UNSPECIFIED = 0;
+  RUSH_MADDEN_EVENT_TYPE_PLAY = 1;
+  RUSH_MADDEN_EVENT_TYPE_FLAG = 2;
+  RUSH_MADDEN_EVENT_TYPE_PAT = 3;
+  RUSH_MADDEN_EVENT_TYPE_FIELD_GOAL = 4;
+  RUSH_MADDEN_EVENT_TYPE_PUNT = 5;
+  RUSH_MADDEN_EVENT_TYPE_KICKOFF = 6;
+  RUSH_MADDEN_EVENT_TYPE_TWO_POINT_ATTEMPT = 7;
+  RUSH_MADDEN_EVENT_TYPE_TIMEOUT_HOME = 8;
+  RUSH_MADDEN_EVENT_TYPE_TIMEOUT_AWAY = 9;
+  RUSH_MADDEN_EVENT_TYPE_SAFETY_HOME = 10;
+  RUSH_MADDEN_EVENT_TYPE_SAFETY_AWAY = 11;
+  // Generic timeout, carrying the side on team_urn. Upstream emits it alongside TIMEOUT_HOME /
+  // TIMEOUT_AWAY; the relationship is unconfirmed, so all three are mirrored rather than collapsed.
+  RUSH_MADDEN_EVENT_TYPE_TIMEOUT = 12;
+  RUSH_MADDEN_EVENT_TYPE_TOUCHDOWN = 13;
+  RUSH_MADDEN_EVENT_TYPE_POSSESSION_CHANGE = 14;
+
+  // Synthetic: the quarter advanced. Upstream carries no period-change event, and a quarter with no
+  // plays in it would otherwise leave no trace, so this is derived from the quarter rather than
+  // mirrored. Every boundary the match has passed is retained, not only the most recent one. Carries
+  // the quarter it STARTS, and no team; the clock is unset because the edge is only resolvable to the
+  // rate at which state arrives.
+  RUSH_MADDEN_EVENT_TYPE_QUARTER_CHANGE = 15;
+  // Synthetic: the boundary between the second and third quarters, emitted INSTEAD of QUARTER_CHANGE
+  // there so the break appears once rather than as a duplicate-looking pair. Carries quarter 3, the
+  // one it starts. Upstream has no half-time representation at all.
+  RUSH_MADDEN_EVENT_TYPE_HALFTIME = 16;
+  // Synthetic: the game ended. Derived from the match state, since the play data carries no
+  // end-of-game signal; always agrees with match_status = MATCH_STATUS_TYPE_FINISHED, and is absent
+  // for a cancelled match. It exists so the timeline reads as the match record on its own.
+  RUSH_MADDEN_EVENT_TYPE_GAME_END = 17;
+}

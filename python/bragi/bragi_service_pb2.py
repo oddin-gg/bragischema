@@ -32,9 +32,10 @@ from bragi_schema.bragi import rush_basketball_pb2 as bragi_dot_rush__basketball
 from bragi_schema.bragi import valorant_pb2 as bragi_dot_valorant__pb2
 from bragi_schema.bragi import rush_cricket_pb2 as bragi_dot_rush__cricket__pb2
 from bragi_schema.bragi import virtual_soccer_pb2 as bragi_dot_virtual__soccer__pb2
+from bragi_schema.bragi import rush_madden_pb2 as bragi_dot_rush__madden__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19\x62ragi/bragi_service.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x12\x62ragi/common.proto\x1a\x0f\x62ragi/cs2.proto\x1a\x11\x62ragi/dota2.proto\x1a\x17\x62ragi/rush_soccer.proto\x1a\x0f\x62ragi/lol.proto\x1a\x1b\x62ragi/rush_basketball.proto\x1a\x14\x62ragi/valorant.proto\x1a\x18\x62ragi/rush_cricket.proto\x1a\x1a\x62ragi/virtual_soccer.proto\"&\n\x12TeamProfileRequest\x12\x10\n\x08team_urn\x18\x01 \x01(\t\"7\n\x13TeamProfileResponse\x12 \n\x04team\x18\x01 \x01(\x0b\x32\x12.bragi.TeamProfile\"\x18\n\x16MatchEventsFeedRequest\"I\n\x16MatchEventsFeedMessage\x12$\n\x03\x63s2\x18\x01 \x01(\x0b\x32\x15.bragi.CS2MatchEventsH\x00\x42\t\n\x07payload\"/\n\x1aMatchTimelineSportsRequest\x12\x11\n\tlive_only\x18\x01 \x01(\x08\"\xa6\x01\n\x1bMatchTimelineSportsResponse\x12\x42\n\x06sports\x18\x01 \x03(\x0b\x32\x32.bragi.MatchTimelineSportsResponse.SportMatchCount\x1a\x43\n\x0fSportMatchCount\x12\x1b\n\x05sport\x18\x01 \x01(\x0e\x32\x0c.bragi.Sport\x12\x13\n\x0bmatch_count\x18\x02 \x01(\r\"Q\n\x1fMatchTimelineTournamentsRequest\x12\x11\n\tlive_only\x18\x01 \x01(\x08\x12\x1b\n\x05sport\x18\x02 \x01(\x0e\x32\x0c.bragi.Sport\"\xc9\x01\n MatchTimelineTournamentsResponse\x12Q\n\x0btournaments\x18\x01 \x03(\x0b\x32<.bragi.MatchTimelineTournamentsResponse.TournamentMatchCount\x1aR\n\x14TournamentMatchCount\x12%\n\ntournament\x18\x01 \x01(\x0b\x32\x11.bragi.Tournament\x12\x13\n\x0bmatch_count\x18\x02 \x01(\r\"\xd1\x01\n\x14MatchTimelineRequest\x12\x11\n\tlive_only\x18\x01 \x01(\x08\x12 \n\x05sport\x18\x02 \x01(\x0e\x32\x0c.bragi.SportH\x00\x88\x01\x01\x12\x1b\n\x0etournament_urn\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x16\n\tmatch_urn\x18\x04 \x01(\tH\x02\x88\x01\x01\x12\x16\n\tteam_name\x18\x05 \x01(\tH\x03\x88\x01\x01\x42\x08\n\x06_sportB\x11\n\x0f_tournament_urnB\x0c\n\n_match_urnB\x0c\n\n_team_name\"6\n\x15MatchTimelineResponse\x12\x1d\n\x07matches\x18\x01 \x03(\x0b\x32\x0c.bragi.Match\"3\n\x1eMatchTimelineSportsFeedRequest\x12\x11\n\tlive_only\x18\x01 \x01(\x08\"\xae\x01\n\x1fMatchTimelineSportsFeedResponse\x12\x46\n\x06sports\x18\x01 \x03(\x0b\x32\x36.bragi.MatchTimelineSportsFeedResponse.SportMatchCount\x1a\x43\n\x0fSportMatchCount\x12\x1b\n\x05sport\x18\x01 \x01(\x0e\x32\x0c.bragi.Sport\x12\x13\n\x0bmatch_count\x18\x02 \x01(\r\"U\n#MatchTimelineTournamentsFeedRequest\x12\x11\n\tlive_only\x18\x01 \x01(\x08\x12\x1b\n\x05sport\x18\x02 \x01(\x0e\x32\x0c.bragi.Sport\"\xd1\x01\n$MatchTimelineTournamentsFeedResponse\x12U\n\x0btournaments\x18\x01 \x03(\x0b\x32@.bragi.MatchTimelineTournamentsFeedResponse.TournamentMatchCount\x1aR\n\x14TournamentMatchCount\x12%\n\ntournament\x18\x01 \x01(\x0b\x32\x11.bragi.Tournament\x12\x13\n\x0bmatch_count\x18\x02 \x01(\r\"\xd5\x01\n\x18MatchTimelineFeedRequest\x12\x11\n\tlive_only\x18\x01 \x01(\x08\x12 \n\x05sport\x18\x02 \x01(\x0e\x32\x0c.bragi.SportH\x00\x88\x01\x01\x12\x1b\n\x0etournament_urn\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x16\n\tmatch_urn\x18\x04 \x01(\tH\x02\x88\x01\x01\x12\x16\n\tteam_name\x18\x05 \x01(\tH\x03\x88\x01\x01\x42\x08\n\x06_sportB\x11\n\x0f_tournament_urnB\x0c\n\n_match_urnB\x0c\n\n_team_name\"\xa0\x01\n\x18MatchTimelineFeedMessage\x12)\n\tkeepalive\x18\x01 \x01(\x0b\x32\x10.bragi.KeepAliveB\x02\x18\x01H\x00\x12(\n\x08timeline\x18\x02 \x01(\x0b\x32\x14.bragi.MatchTimelineH\x00\x12$\n\x0cmatch_update\x18\x03 \x01(\x0b\x32\x0c.bragi.MatchH\x00\x42\t\n\x07payload\"O\n\x13LiveDataFeedRequest\x12.\n\x05\x61\x66ter\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x00\x88\x01\x01\x42\x08\n\x06_after\"q\n\x13LiveDataFeedMessage\x12)\n\tkeepalive\x18\x01 \x01(\x0b\x32\x10.bragi.KeepAliveB\x02\x18\x01H\x00\x12$\n\x05match\x18\x02 \x01(\x0b\x32\x13.bragi.MatchMessageH\x00\x42\t\n\x07message\":\n\tKeepAlive\x12-\n\ttimestamp\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xac\x04\n\x0cMatchMessage\x12\x31\n\x0c\x61nnouncement\x18\x01 \x01(\x0b\x32\x19.bragi.AnnouncementUpdateH\x00\x12%\n\x03\x63s2\x18\x02 \x01(\x0b\x32\x16.bragi.CS2MatchMessageH\x00\x12+\n\tcs2_duels\x18\x03 \x01(\x0b\x32\x16.bragi.CS2MatchMessageH\x00\x12)\n\x05\x64ota2\x18\x04 \x01(\x0b\x32\x18.bragi.Dota2MatchMessageH\x00\x12\x34\n\x0brush_soccer\x18\x05 \x01(\x0b\x32\x1d.bragi.RushSoccerMatchMessageH\x00\x12%\n\x03lol\x18\x06 \x01(\x0b\x32\x16.bragi.LolMatchMessageH\x00\x12<\n\x0frush_basketball\x18\x07 \x01(\x0b\x32!.bragi.RushBasketballMatchMessageH\x00\x12/\n\x08valorant\x18\x08 \x01(\x0b\x32\x1b.bragi.ValorantMatchMessageH\x00\x12\x36\n\x0crush_cricket\x18\t \x01(\x0b\x32\x1e.bragi.RushCricketMatchMessageH\x00\x12:\n\x0evirtual_soccer\x18\x0b \x01(\x0b\x32 .bragi.VirtualSoccerMatchMessageH\x00\x12\x1f\n\x17\x61\x63tive_data_source_type\x18\n \x01(\rB\t\n\x07message\"\x84\x04\n\rMatchSnapshot\x12&\n\x03\x63s2\x18\x01 \x01(\x0b\x32\x17.bragi.CS2MatchSnapshotH\x00\x12,\n\tcs2_duels\x18\x02 \x01(\x0b\x32\x17.bragi.CS2MatchSnapshotH\x00\x12*\n\x05\x64ota2\x18\x03 \x01(\x0b\x32\x19.bragi.Dota2MatchSnapshotH\x00\x12\x35\n\x0brush_soccer\x18\x04 \x01(\x0b\x32\x1e.bragi.RushSoccerMatchSnapshotH\x00\x12&\n\x03lol\x18\x05 \x01(\x0b\x32\x17.bragi.LolMatchSnapshotH\x00\x12=\n\x0frush_basketball\x18\x06 \x01(\x0b\x32\".bragi.RushBasketballMatchSnapshotH\x00\x12\x30\n\x08valorant\x18\x07 \x01(\x0b\x32\x1c.bragi.ValorantMatchSnapshotH\x00\x12\x37\n\x0crush_cricket\x18\x08 \x01(\x0b\x32\x1f.bragi.RushCricketMatchSnapshotH\x00\x12;\n\x0evirtual_soccer\x18\n \x01(\x0b\x32!.bragi.VirtualSoccerMatchSnapshotH\x00\x12\x1f\n\x17\x61\x63tive_data_source_type\x18\t \x01(\rB\n\n\x08snapshot\"\xc2\x03\n\nMatchState\x12#\n\x03\x63s2\x18\x01 \x01(\x0b\x32\x14.bragi.CS2MatchStateH\x00\x12)\n\tcs2_duels\x18\x02 \x01(\x0b\x32\x14.bragi.CS2MatchStateH\x00\x12\'\n\x05\x64ota2\x18\x03 \x01(\x0b\x32\x16.bragi.Dota2MatchStateH\x00\x12\x32\n\x0brush_soccer\x18\x04 \x01(\x0b\x32\x1b.bragi.RushSoccerMatchStateH\x00\x12#\n\x03lol\x18\x05 \x01(\x0b\x32\x14.bragi.LolMatchStateH\x00\x12:\n\x0frush_basketball\x18\x06 \x01(\x0b\x32\x1f.bragi.RushBasketballMatchStateH\x00\x12-\n\x08valorant\x18\x07 \x01(\x0b\x32\x19.bragi.ValorantMatchStateH\x00\x12\x34\n\x0crush_cricket\x18\x08 \x01(\x0b\x32\x1c.bragi.RushCricketMatchStateH\x00\x12\x38\n\x0evirtual_soccer\x18\t \x01(\x0b\x32\x1e.bragi.VirtualSoccerMatchStateH\x00\x42\x07\n\x05state2\xd3\x06\n\x05\x42ragi\x12^\n\x13MatchTimelineSports\x12!.bragi.MatchTimelineSportsRequest\x1a\".bragi.MatchTimelineSportsResponse\"\x00\x12m\n\x18MatchTimelineTournaments\x12&.bragi.MatchTimelineTournamentsRequest\x1a\'.bragi.MatchTimelineTournamentsResponse\"\x00\x12L\n\rMatchTimeline\x12\x1b.bragi.MatchTimelineRequest\x1a\x1c.bragi.MatchTimelineResponse\"\x00\x12\x46\n\x0bTeamProfile\x12\x19.bragi.TeamProfileRequest\x1a\x1a.bragi.TeamProfileResponse\"\x00\x12l\n\x17MatchTimelineSportsFeed\x12%.bragi.MatchTimelineSportsFeedRequest\x1a&.bragi.MatchTimelineSportsFeedResponse\"\x00\x30\x01\x12{\n\x1cMatchTimelineTournamentsFeed\x12*.bragi.MatchTimelineTournamentsFeedRequest\x1a+.bragi.MatchTimelineTournamentsFeedResponse\"\x00\x30\x01\x12Y\n\x11MatchTimelineFeed\x12\x1f.bragi.MatchTimelineFeedRequest\x1a\x1f.bragi.MatchTimelineFeedMessage\"\x00\x30\x01\x12J\n\x0cLiveDataFeed\x12\x1a.bragi.LiveDataFeedRequest\x1a\x1a.bragi.LiveDataFeedMessage\"\x00\x30\x01\x12S\n\x0fMatchEventsFeed\x12\x1d.bragi.MatchEventsFeedRequest\x1a\x1d.bragi.MatchEventsFeedMessage\"\x00\x30\x01\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19\x62ragi/bragi_service.proto\x12\x05\x62ragi\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x12\x62ragi/common.proto\x1a\x0f\x62ragi/cs2.proto\x1a\x11\x62ragi/dota2.proto\x1a\x17\x62ragi/rush_soccer.proto\x1a\x0f\x62ragi/lol.proto\x1a\x1b\x62ragi/rush_basketball.proto\x1a\x14\x62ragi/valorant.proto\x1a\x18\x62ragi/rush_cricket.proto\x1a\x1a\x62ragi/virtual_soccer.proto\x1a\x17\x62ragi/rush_madden.proto\"&\n\x12TeamProfileRequest\x12\x10\n\x08team_urn\x18\x01 \x01(\t\"7\n\x13TeamProfileResponse\x12 \n\x04team\x18\x01 \x01(\x0b\x32\x12.bragi.TeamProfile\"\x18\n\x16MatchEventsFeedRequest\"I\n\x16MatchEventsFeedMessage\x12$\n\x03\x63s2\x18\x01 \x01(\x0b\x32\x15.bragi.CS2MatchEventsH\x00\x42\t\n\x07payload\"/\n\x1aMatchTimelineSportsRequest\x12\x11\n\tlive_only\x18\x01 \x01(\x08\"\xa6\x01\n\x1bMatchTimelineSportsResponse\x12\x42\n\x06sports\x18\x01 \x03(\x0b\x32\x32.bragi.MatchTimelineSportsResponse.SportMatchCount\x1a\x43\n\x0fSportMatchCount\x12\x1b\n\x05sport\x18\x01 \x01(\x0e\x32\x0c.bragi.Sport\x12\x13\n\x0bmatch_count\x18\x02 \x01(\r\"Q\n\x1fMatchTimelineTournamentsRequest\x12\x11\n\tlive_only\x18\x01 \x01(\x08\x12\x1b\n\x05sport\x18\x02 \x01(\x0e\x32\x0c.bragi.Sport\"\xc9\x01\n MatchTimelineTournamentsResponse\x12Q\n\x0btournaments\x18\x01 \x03(\x0b\x32<.bragi.MatchTimelineTournamentsResponse.TournamentMatchCount\x1aR\n\x14TournamentMatchCount\x12%\n\ntournament\x18\x01 \x01(\x0b\x32\x11.bragi.Tournament\x12\x13\n\x0bmatch_count\x18\x02 \x01(\r\"\xd1\x01\n\x14MatchTimelineRequest\x12\x11\n\tlive_only\x18\x01 \x01(\x08\x12 \n\x05sport\x18\x02 \x01(\x0e\x32\x0c.bragi.SportH\x00\x88\x01\x01\x12\x1b\n\x0etournament_urn\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x16\n\tmatch_urn\x18\x04 \x01(\tH\x02\x88\x01\x01\x12\x16\n\tteam_name\x18\x05 \x01(\tH\x03\x88\x01\x01\x42\x08\n\x06_sportB\x11\n\x0f_tournament_urnB\x0c\n\n_match_urnB\x0c\n\n_team_name\"6\n\x15MatchTimelineResponse\x12\x1d\n\x07matches\x18\x01 \x03(\x0b\x32\x0c.bragi.Match\"3\n\x1eMatchTimelineSportsFeedRequest\x12\x11\n\tlive_only\x18\x01 \x01(\x08\"\xae\x01\n\x1fMatchTimelineSportsFeedResponse\x12\x46\n\x06sports\x18\x01 \x03(\x0b\x32\x36.bragi.MatchTimelineSportsFeedResponse.SportMatchCount\x1a\x43\n\x0fSportMatchCount\x12\x1b\n\x05sport\x18\x01 \x01(\x0e\x32\x0c.bragi.Sport\x12\x13\n\x0bmatch_count\x18\x02 \x01(\r\"U\n#MatchTimelineTournamentsFeedRequest\x12\x11\n\tlive_only\x18\x01 \x01(\x08\x12\x1b\n\x05sport\x18\x02 \x01(\x0e\x32\x0c.bragi.Sport\"\xd1\x01\n$MatchTimelineTournamentsFeedResponse\x12U\n\x0btournaments\x18\x01 \x03(\x0b\x32@.bragi.MatchTimelineTournamentsFeedResponse.TournamentMatchCount\x1aR\n\x14TournamentMatchCount\x12%\n\ntournament\x18\x01 \x01(\x0b\x32\x11.bragi.Tournament\x12\x13\n\x0bmatch_count\x18\x02 \x01(\r\"\xd5\x01\n\x18MatchTimelineFeedRequest\x12\x11\n\tlive_only\x18\x01 \x01(\x08\x12 \n\x05sport\x18\x02 \x01(\x0e\x32\x0c.bragi.SportH\x00\x88\x01\x01\x12\x1b\n\x0etournament_urn\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x16\n\tmatch_urn\x18\x04 \x01(\tH\x02\x88\x01\x01\x12\x16\n\tteam_name\x18\x05 \x01(\tH\x03\x88\x01\x01\x42\x08\n\x06_sportB\x11\n\x0f_tournament_urnB\x0c\n\n_match_urnB\x0c\n\n_team_name\"\xa0\x01\n\x18MatchTimelineFeedMessage\x12)\n\tkeepalive\x18\x01 \x01(\x0b\x32\x10.bragi.KeepAliveB\x02\x18\x01H\x00\x12(\n\x08timeline\x18\x02 \x01(\x0b\x32\x14.bragi.MatchTimelineH\x00\x12$\n\x0cmatch_update\x18\x03 \x01(\x0b\x32\x0c.bragi.MatchH\x00\x42\t\n\x07payload\"O\n\x13LiveDataFeedRequest\x12.\n\x05\x61\x66ter\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampH\x00\x88\x01\x01\x42\x08\n\x06_after\"q\n\x13LiveDataFeedMessage\x12)\n\tkeepalive\x18\x01 \x01(\x0b\x32\x10.bragi.KeepAliveB\x02\x18\x01H\x00\x12$\n\x05match\x18\x02 \x01(\x0b\x32\x13.bragi.MatchMessageH\x00\x42\t\n\x07message\":\n\tKeepAlive\x12-\n\ttimestamp\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xe2\x04\n\x0cMatchMessage\x12\x31\n\x0c\x61nnouncement\x18\x01 \x01(\x0b\x32\x19.bragi.AnnouncementUpdateH\x00\x12%\n\x03\x63s2\x18\x02 \x01(\x0b\x32\x16.bragi.CS2MatchMessageH\x00\x12+\n\tcs2_duels\x18\x03 \x01(\x0b\x32\x16.bragi.CS2MatchMessageH\x00\x12)\n\x05\x64ota2\x18\x04 \x01(\x0b\x32\x18.bragi.Dota2MatchMessageH\x00\x12\x34\n\x0brush_soccer\x18\x05 \x01(\x0b\x32\x1d.bragi.RushSoccerMatchMessageH\x00\x12%\n\x03lol\x18\x06 \x01(\x0b\x32\x16.bragi.LolMatchMessageH\x00\x12<\n\x0frush_basketball\x18\x07 \x01(\x0b\x32!.bragi.RushBasketballMatchMessageH\x00\x12/\n\x08valorant\x18\x08 \x01(\x0b\x32\x1b.bragi.ValorantMatchMessageH\x00\x12\x36\n\x0crush_cricket\x18\t \x01(\x0b\x32\x1e.bragi.RushCricketMatchMessageH\x00\x12:\n\x0evirtual_soccer\x18\x0b \x01(\x0b\x32 .bragi.VirtualSoccerMatchMessageH\x00\x12\x34\n\x0brush_madden\x18\x0c \x01(\x0b\x32\x1d.bragi.RushMaddenMatchMessageH\x00\x12\x1f\n\x17\x61\x63tive_data_source_type\x18\n \x01(\rB\t\n\x07message\"\xbb\x04\n\rMatchSnapshot\x12&\n\x03\x63s2\x18\x01 \x01(\x0b\x32\x17.bragi.CS2MatchSnapshotH\x00\x12,\n\tcs2_duels\x18\x02 \x01(\x0b\x32\x17.bragi.CS2MatchSnapshotH\x00\x12*\n\x05\x64ota2\x18\x03 \x01(\x0b\x32\x19.bragi.Dota2MatchSnapshotH\x00\x12\x35\n\x0brush_soccer\x18\x04 \x01(\x0b\x32\x1e.bragi.RushSoccerMatchSnapshotH\x00\x12&\n\x03lol\x18\x05 \x01(\x0b\x32\x17.bragi.LolMatchSnapshotH\x00\x12=\n\x0frush_basketball\x18\x06 \x01(\x0b\x32\".bragi.RushBasketballMatchSnapshotH\x00\x12\x30\n\x08valorant\x18\x07 \x01(\x0b\x32\x1c.bragi.ValorantMatchSnapshotH\x00\x12\x37\n\x0crush_cricket\x18\x08 \x01(\x0b\x32\x1f.bragi.RushCricketMatchSnapshotH\x00\x12;\n\x0evirtual_soccer\x18\n \x01(\x0b\x32!.bragi.VirtualSoccerMatchSnapshotH\x00\x12\x35\n\x0brush_madden\x18\x0b \x01(\x0b\x32\x1e.bragi.RushMaddenMatchSnapshotH\x00\x12\x1f\n\x17\x61\x63tive_data_source_type\x18\t \x01(\rB\n\n\x08snapshot\"\xf6\x03\n\nMatchState\x12#\n\x03\x63s2\x18\x01 \x01(\x0b\x32\x14.bragi.CS2MatchStateH\x00\x12)\n\tcs2_duels\x18\x02 \x01(\x0b\x32\x14.bragi.CS2MatchStateH\x00\x12\'\n\x05\x64ota2\x18\x03 \x01(\x0b\x32\x16.bragi.Dota2MatchStateH\x00\x12\x32\n\x0brush_soccer\x18\x04 \x01(\x0b\x32\x1b.bragi.RushSoccerMatchStateH\x00\x12#\n\x03lol\x18\x05 \x01(\x0b\x32\x14.bragi.LolMatchStateH\x00\x12:\n\x0frush_basketball\x18\x06 \x01(\x0b\x32\x1f.bragi.RushBasketballMatchStateH\x00\x12-\n\x08valorant\x18\x07 \x01(\x0b\x32\x19.bragi.ValorantMatchStateH\x00\x12\x34\n\x0crush_cricket\x18\x08 \x01(\x0b\x32\x1c.bragi.RushCricketMatchStateH\x00\x12\x38\n\x0evirtual_soccer\x18\t \x01(\x0b\x32\x1e.bragi.VirtualSoccerMatchStateH\x00\x12\x32\n\x0brush_madden\x18\n \x01(\x0b\x32\x1b.bragi.RushMaddenMatchStateH\x00\x42\x07\n\x05state2\xd3\x06\n\x05\x42ragi\x12^\n\x13MatchTimelineSports\x12!.bragi.MatchTimelineSportsRequest\x1a\".bragi.MatchTimelineSportsResponse\"\x00\x12m\n\x18MatchTimelineTournaments\x12&.bragi.MatchTimelineTournamentsRequest\x1a\'.bragi.MatchTimelineTournamentsResponse\"\x00\x12L\n\rMatchTimeline\x12\x1b.bragi.MatchTimelineRequest\x1a\x1c.bragi.MatchTimelineResponse\"\x00\x12\x46\n\x0bTeamProfile\x12\x19.bragi.TeamProfileRequest\x1a\x1a.bragi.TeamProfileResponse\"\x00\x12l\n\x17MatchTimelineSportsFeed\x12%.bragi.MatchTimelineSportsFeedRequest\x1a&.bragi.MatchTimelineSportsFeedResponse\"\x00\x30\x01\x12{\n\x1cMatchTimelineTournamentsFeed\x12*.bragi.MatchTimelineTournamentsFeedRequest\x1a+.bragi.MatchTimelineTournamentsFeedResponse\"\x00\x30\x01\x12Y\n\x11MatchTimelineFeed\x12\x1f.bragi.MatchTimelineFeedRequest\x1a\x1f.bragi.MatchTimelineFeedMessage\"\x00\x30\x01\x12J\n\x0cLiveDataFeed\x12\x1a.bragi.LiveDataFeedRequest\x1a\x1a.bragi.LiveDataFeedMessage\"\x00\x30\x01\x12S\n\x0fMatchEventsFeed\x12\x1d.bragi.MatchEventsFeedRequest\x1a\x1d.bragi.MatchEventsFeedMessage\"\x00\x30\x01\x42!\n\x0f\x63om.oddin.bragiZ\x0eoddin.gg/bragib\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -46,58 +47,58 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_MATCHTIMELINEFEEDMESSAGE'].fields_by_name['keepalive']._serialized_options = b'\030\001'
   _globals['_LIVEDATAFEEDMESSAGE'].fields_by_name['keepalive']._loaded_options = None
   _globals['_LIVEDATAFEEDMESSAGE'].fields_by_name['keepalive']._serialized_options = b'\030\001'
-  _globals['_TEAMPROFILEREQUEST']._serialized_start=272
-  _globals['_TEAMPROFILEREQUEST']._serialized_end=310
-  _globals['_TEAMPROFILERESPONSE']._serialized_start=312
-  _globals['_TEAMPROFILERESPONSE']._serialized_end=367
-  _globals['_MATCHEVENTSFEEDREQUEST']._serialized_start=369
-  _globals['_MATCHEVENTSFEEDREQUEST']._serialized_end=393
-  _globals['_MATCHEVENTSFEEDMESSAGE']._serialized_start=395
-  _globals['_MATCHEVENTSFEEDMESSAGE']._serialized_end=468
-  _globals['_MATCHTIMELINESPORTSREQUEST']._serialized_start=470
-  _globals['_MATCHTIMELINESPORTSREQUEST']._serialized_end=517
-  _globals['_MATCHTIMELINESPORTSRESPONSE']._serialized_start=520
-  _globals['_MATCHTIMELINESPORTSRESPONSE']._serialized_end=686
-  _globals['_MATCHTIMELINESPORTSRESPONSE_SPORTMATCHCOUNT']._serialized_start=619
-  _globals['_MATCHTIMELINESPORTSRESPONSE_SPORTMATCHCOUNT']._serialized_end=686
-  _globals['_MATCHTIMELINETOURNAMENTSREQUEST']._serialized_start=688
-  _globals['_MATCHTIMELINETOURNAMENTSREQUEST']._serialized_end=769
-  _globals['_MATCHTIMELINETOURNAMENTSRESPONSE']._serialized_start=772
-  _globals['_MATCHTIMELINETOURNAMENTSRESPONSE']._serialized_end=973
-  _globals['_MATCHTIMELINETOURNAMENTSRESPONSE_TOURNAMENTMATCHCOUNT']._serialized_start=891
-  _globals['_MATCHTIMELINETOURNAMENTSRESPONSE_TOURNAMENTMATCHCOUNT']._serialized_end=973
-  _globals['_MATCHTIMELINEREQUEST']._serialized_start=976
-  _globals['_MATCHTIMELINEREQUEST']._serialized_end=1185
-  _globals['_MATCHTIMELINERESPONSE']._serialized_start=1187
-  _globals['_MATCHTIMELINERESPONSE']._serialized_end=1241
-  _globals['_MATCHTIMELINESPORTSFEEDREQUEST']._serialized_start=1243
-  _globals['_MATCHTIMELINESPORTSFEEDREQUEST']._serialized_end=1294
-  _globals['_MATCHTIMELINESPORTSFEEDRESPONSE']._serialized_start=1297
-  _globals['_MATCHTIMELINESPORTSFEEDRESPONSE']._serialized_end=1471
-  _globals['_MATCHTIMELINESPORTSFEEDRESPONSE_SPORTMATCHCOUNT']._serialized_start=619
-  _globals['_MATCHTIMELINESPORTSFEEDRESPONSE_SPORTMATCHCOUNT']._serialized_end=686
-  _globals['_MATCHTIMELINETOURNAMENTSFEEDREQUEST']._serialized_start=1473
-  _globals['_MATCHTIMELINETOURNAMENTSFEEDREQUEST']._serialized_end=1558
-  _globals['_MATCHTIMELINETOURNAMENTSFEEDRESPONSE']._serialized_start=1561
-  _globals['_MATCHTIMELINETOURNAMENTSFEEDRESPONSE']._serialized_end=1770
-  _globals['_MATCHTIMELINETOURNAMENTSFEEDRESPONSE_TOURNAMENTMATCHCOUNT']._serialized_start=891
-  _globals['_MATCHTIMELINETOURNAMENTSFEEDRESPONSE_TOURNAMENTMATCHCOUNT']._serialized_end=973
-  _globals['_MATCHTIMELINEFEEDREQUEST']._serialized_start=1773
-  _globals['_MATCHTIMELINEFEEDREQUEST']._serialized_end=1986
-  _globals['_MATCHTIMELINEFEEDMESSAGE']._serialized_start=1989
-  _globals['_MATCHTIMELINEFEEDMESSAGE']._serialized_end=2149
-  _globals['_LIVEDATAFEEDREQUEST']._serialized_start=2151
-  _globals['_LIVEDATAFEEDREQUEST']._serialized_end=2230
-  _globals['_LIVEDATAFEEDMESSAGE']._serialized_start=2232
-  _globals['_LIVEDATAFEEDMESSAGE']._serialized_end=2345
-  _globals['_KEEPALIVE']._serialized_start=2347
-  _globals['_KEEPALIVE']._serialized_end=2405
-  _globals['_MATCHMESSAGE']._serialized_start=2408
-  _globals['_MATCHMESSAGE']._serialized_end=2964
-  _globals['_MATCHSNAPSHOT']._serialized_start=2967
-  _globals['_MATCHSNAPSHOT']._serialized_end=3483
-  _globals['_MATCHSTATE']._serialized_start=3486
-  _globals['_MATCHSTATE']._serialized_end=3936
-  _globals['_BRAGI']._serialized_start=3939
-  _globals['_BRAGI']._serialized_end=4790
+  _globals['_TEAMPROFILEREQUEST']._serialized_start=297
+  _globals['_TEAMPROFILEREQUEST']._serialized_end=335
+  _globals['_TEAMPROFILERESPONSE']._serialized_start=337
+  _globals['_TEAMPROFILERESPONSE']._serialized_end=392
+  _globals['_MATCHEVENTSFEEDREQUEST']._serialized_start=394
+  _globals['_MATCHEVENTSFEEDREQUEST']._serialized_end=418
+  _globals['_MATCHEVENTSFEEDMESSAGE']._serialized_start=420
+  _globals['_MATCHEVENTSFEEDMESSAGE']._serialized_end=493
+  _globals['_MATCHTIMELINESPORTSREQUEST']._serialized_start=495
+  _globals['_MATCHTIMELINESPORTSREQUEST']._serialized_end=542
+  _globals['_MATCHTIMELINESPORTSRESPONSE']._serialized_start=545
+  _globals['_MATCHTIMELINESPORTSRESPONSE']._serialized_end=711
+  _globals['_MATCHTIMELINESPORTSRESPONSE_SPORTMATCHCOUNT']._serialized_start=644
+  _globals['_MATCHTIMELINESPORTSRESPONSE_SPORTMATCHCOUNT']._serialized_end=711
+  _globals['_MATCHTIMELINETOURNAMENTSREQUEST']._serialized_start=713
+  _globals['_MATCHTIMELINETOURNAMENTSREQUEST']._serialized_end=794
+  _globals['_MATCHTIMELINETOURNAMENTSRESPONSE']._serialized_start=797
+  _globals['_MATCHTIMELINETOURNAMENTSRESPONSE']._serialized_end=998
+  _globals['_MATCHTIMELINETOURNAMENTSRESPONSE_TOURNAMENTMATCHCOUNT']._serialized_start=916
+  _globals['_MATCHTIMELINETOURNAMENTSRESPONSE_TOURNAMENTMATCHCOUNT']._serialized_end=998
+  _globals['_MATCHTIMELINEREQUEST']._serialized_start=1001
+  _globals['_MATCHTIMELINEREQUEST']._serialized_end=1210
+  _globals['_MATCHTIMELINERESPONSE']._serialized_start=1212
+  _globals['_MATCHTIMELINERESPONSE']._serialized_end=1266
+  _globals['_MATCHTIMELINESPORTSFEEDREQUEST']._serialized_start=1268
+  _globals['_MATCHTIMELINESPORTSFEEDREQUEST']._serialized_end=1319
+  _globals['_MATCHTIMELINESPORTSFEEDRESPONSE']._serialized_start=1322
+  _globals['_MATCHTIMELINESPORTSFEEDRESPONSE']._serialized_end=1496
+  _globals['_MATCHTIMELINESPORTSFEEDRESPONSE_SPORTMATCHCOUNT']._serialized_start=644
+  _globals['_MATCHTIMELINESPORTSFEEDRESPONSE_SPORTMATCHCOUNT']._serialized_end=711
+  _globals['_MATCHTIMELINETOURNAMENTSFEEDREQUEST']._serialized_start=1498
+  _globals['_MATCHTIMELINETOURNAMENTSFEEDREQUEST']._serialized_end=1583
+  _globals['_MATCHTIMELINETOURNAMENTSFEEDRESPONSE']._serialized_start=1586
+  _globals['_MATCHTIMELINETOURNAMENTSFEEDRESPONSE']._serialized_end=1795
+  _globals['_MATCHTIMELINETOURNAMENTSFEEDRESPONSE_TOURNAMENTMATCHCOUNT']._serialized_start=916
+  _globals['_MATCHTIMELINETOURNAMENTSFEEDRESPONSE_TOURNAMENTMATCHCOUNT']._serialized_end=998
+  _globals['_MATCHTIMELINEFEEDREQUEST']._serialized_start=1798
+  _globals['_MATCHTIMELINEFEEDREQUEST']._serialized_end=2011
+  _globals['_MATCHTIMELINEFEEDMESSAGE']._serialized_start=2014
+  _globals['_MATCHTIMELINEFEEDMESSAGE']._serialized_end=2174
+  _globals['_LIVEDATAFEEDREQUEST']._serialized_start=2176
+  _globals['_LIVEDATAFEEDREQUEST']._serialized_end=2255
+  _globals['_LIVEDATAFEEDMESSAGE']._serialized_start=2257
+  _globals['_LIVEDATAFEEDMESSAGE']._serialized_end=2370
+  _globals['_KEEPALIVE']._serialized_start=2372
+  _globals['_KEEPALIVE']._serialized_end=2430
+  _globals['_MATCHMESSAGE']._serialized_start=2433
+  _globals['_MATCHMESSAGE']._serialized_end=3043
+  _globals['_MATCHSNAPSHOT']._serialized_start=3046
+  _globals['_MATCHSNAPSHOT']._serialized_end=3617
+  _globals['_MATCHSTATE']._serialized_start=3620
+  _globals['_MATCHSTATE']._serialized_end=4122
+  _globals['_BRAGI']._serialized_start=4125
+  _globals['_BRAGI']._serialized_end=4976
 # @@protoc_insertion_point(module_scope)
