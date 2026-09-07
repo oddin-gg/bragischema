@@ -569,6 +569,7 @@ export interface SportMap {
   SPORT_DOTA2_DUELS: 10;
   SPORT_RUSH_MADDEN: 11;
   SPORT_TABLE_TENNIS: 12;
+  SPORT_RUSH_HOCKEY: 13;
 }
 
 export const Sport: SportMap;

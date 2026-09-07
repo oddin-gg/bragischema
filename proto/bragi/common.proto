@@ -162,6 +162,7 @@ enum Sport {
   SPORT_DOTA2_DUELS = 10;
   SPORT_RUSH_MADDEN = 11;
   SPORT_TABLE_TENNIS = 12;
+  SPORT_RUSH_HOCKEY = 13;
 }
 
 enum BestOfType {

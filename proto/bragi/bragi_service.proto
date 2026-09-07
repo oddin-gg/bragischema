@@ -16,6 +16,7 @@ import "bragi/valorant.proto";
 import "bragi/rush_cricket.proto";
 import "bragi/virtual_soccer.proto";
 import "bragi/rush_madden.proto";
+import "bragi/rush_hockey.proto";
 
 
 service Bragi {
@@ -222,6 +223,9 @@ message MatchMessage {
 
     // Message which wraps RushMaddenMatchSnapshot or RushMaddenMatchUpdate message with given match_urn and sequence for RushMadden sport.
     RushMaddenMatchMessage rush_madden = 12;
+
+    // Message which wraps RushHockeyMatchSnapshot or RushHockeyMatchUpdate message with given match_urn and sequence for RushHockey sport.
+    RushHockeyMatchMessage rush_hockey = 13;
   }
 
   uint32 active_data_source_type = 10;
@@ -241,6 +245,7 @@ message MatchSnapshot {
     RushCricketMatchSnapshot rush_cricket = 8;
     VirtualSoccerMatchSnapshot virtual_soccer = 10;
     RushMaddenMatchSnapshot rush_madden = 11;
+    RushHockeyMatchSnapshot rush_hockey = 12;
   }
 
   uint32 active_data_source_type = 9;
@@ -260,5 +265,6 @@ message MatchState {
     RushCricketMatchState rush_cricket = 8;
     VirtualSoccerMatchState virtual_soccer = 9;
     RushMaddenMatchState rush_madden = 10;
+    RushHockeyMatchState rush_hockey = 11;
   }
 }

@@ -1,0 +1,408 @@
+syntax = "proto3";
+
+package bragi;
+
+option go_package = "oddin.gg/bragi";
+option java_package = "com.oddin.bragi";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "bragi/common.proto";
+
+message RushHockeyMatchMessage {
+  message Payload {
+    oneof payload {
+      // Initial snapshot.
+      RushHockeyMatchSnapshot snapshot = 1;
+
+      // Particular updates which are applied on property match_state in MatchState.
+      RushHockeyMatchUpdate update = 2;
+    }
+  }
+
+  // Match urn.
+  string match_urn = 1;
+  // Message sequence.
+  uint64 sequence = 2;
+  // Message timestamp.
+  google.protobuf.Timestamp timestamp = 3;
+  // Data status.
+  DataStatus data_status = 4;
+  // Message payload.
+  Payload payload = 5;
+}
+
+message RushHockeyMatchSnapshot {
+  // Match urn.
+  string match_urn = 1;
+  // Message sequence.
+  uint64 sequence = 2;
+  // Message timestamp.
+  google.protobuf.Timestamp timestamp = 3;
+  // Data status.
+  DataStatus data_status = 4;
+  // Control announcements.
+  repeated Announcement announcements = 5;
+  // Match state.
+  RushHockeyMatchState match_state = 6;
+  // Tournament details.
+  Tournament tournament = 7;
+}
+
+message RushHockeyMatchUpdate {
+  message Payload {
+    oneof payload {
+      // Complete match state.
+      RushHockeyMatchState match_state = 1;
+      // Partial update.
+      RushHockeyMatchStatePartialUpdates partial_updates = 2;
+    }
+  }
+
+  // Update payload.
+  Payload payload = 1;
+}
+
+message RushHockeyMatchStatePartialUpdates {
+  // Partial updates.
+  repeated RushHockeyMatchStatePartialUpdate updates = 1;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+message RushHockeyMatchStatePartialUpdate {
+  oneof update {
+    // Replaces "current_game" property in RushHockeyMatchState. To minimalize issues with incorrect updates application
+    // on current_game, server sends RushHockeyMatchStatePartialUpdate with RushHockeyCurrentGameState in periodic time
+    // set by customer.
+    RushHockeyCurrentGameState current_game_state = 1;
+
+    // Applies a partial update on "current_game" property in RushHockeyMatchState.
+    RushHockeyCurrentGameStatePartialUpdate current_game_state_partial_update = 2;
+
+    // Replaces "timeline" property in RushHockeyMatchState.
+    RushHockeyTimelineState timeline = 3;
+  }
+}
+
+message RushHockeyMatchState {
+  // Match urn.
+  string match_urn = 1;
+  // BO type.
+  BestOfType match_type = 2;
+  // Home team.
+  Team home_team = 3;
+  // Away team.
+  Team away_team = 4;
+  // Match status.
+  MatchStatusType match_status = 5;
+  // Timeline state.
+  RushHockeyTimelineState timeline = 6;
+  // Current game state.
+  RushHockeyCurrentGameState current_game = 7;
+  // Nominal game-clock geometry for this match.
+  RushHockeyRegulation regulation = 8;
+}
+
+// Nominal lengths on the game clock, published so consumers do not hardcode them. The source states
+// them only in prose and never per match, so these are asserted rather than observed and will not
+// reflect a non-standard configuration; regulation time is periods x period_length.
+//
+// Carried on the match state rather than on the game time, since it is constant for a match and would
+// otherwise ride every clock tick.
+message RushHockeyRegulation {
+  // Length of one period on the game clock.
+  google.protobuf.Duration period_length = 1;
+  // Number of periods in regulation.
+  uint32 periods = 2;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+message RushHockeyCurrentGameStatePartialUpdate {
+  oneof update {
+    // Replaces "game_time" property in RushHockeyCurrentGameState.
+    RushHockeyCurrentGameTimeState game_time = 1;
+
+    // Replaces "score" property in RushHockeyCurrentGameState.
+    RushHockeyCurrentGameScoreState score = 2;
+
+    // Replaces whole value under given key in teams map property in RushHockeyCurrentGameState.
+    RushHockeyTeamCurrentGameState team_current_game_state = 3;
+
+    // Applies a partial update on value under given key in teams map property in RushHockeyCurrentGameState.
+    RushHockeyTeamCurrentGameStatePartialUpdate team_current_game_partial_update = 4;
+
+    // Replaces "puck_possession" property in RushHockeyCurrentGameState.
+    RushHockeyPossessionSide puck_possession = 5;
+
+    // Replaces "manpower" property in RushHockeyCurrentGameState.
+    RushHockeyManpower manpower = 6;
+
+    // Replaces "active_penalties" property in RushHockeyCurrentGameState.
+    RushHockeyActivePenaltiesState active_penalties = 7;
+
+    // Replace "period" and "intermission" in RushHockeyCurrentGameState. Neither is emitted by the
+    // server - a change to either resets the whole game state, so it is sent as a
+    // RushHockeyCurrentGameState replacement - but both apply, so a cached state can still be
+    // brought forward field by field.
+    RushHockeyPeriod period = 8;
+    bool intermission = 9;
+  }
+}
+
+message RushHockeyCurrentGameState {
+  // Period.
+  RushHockeyPeriod period = 1;
+  // Whether play is stopped between periods. True from the moment a period's clock runs out until
+  // the next one starts, and for an ended game.
+  bool intermission = 2;
+  // Game time.
+  RushHockeyCurrentGameTimeState game_time = 3;
+  // Game score.
+  RushHockeyCurrentGameScoreState score = 4;
+  // Paused flag.
+  bool game_paused = 5;
+  // Teams.
+  map<string, RushHockeyTeamCurrentGameState> teams = 6;
+  // Which side is in possession of the puck.
+  RushHockeyPossessionSide puck_possession = 7;
+  // On-ice strength both sides are currently playing at.
+  RushHockeyManpower manpower = 8;
+  // Penalties currently being served. Empty at even strength.
+  RushHockeyActivePenaltiesState active_penalties = 9;
+}
+
+message RushHockeyCurrentGameTimeState {
+  // Game time elapsed since the start of the match, counting up and accumulating across periods.
+  // A period is nominally 20 minutes, but that length is indicative rather than fixed, so any
+  // per-period countdown has to be derived by the consumer that knows the configured length.
+  google.protobuf.Duration elapsed_time = 1;
+}
+
+message RushHockeyCurrentGameScoreState {
+  // Number of goals of home team.
+  uint32 home_score = 1;
+  // Number of goals of away team.
+  uint32 away_score = 2;
+}
+
+// Wraps the list so a partial update can replace it as a unit: a bare repeated field cannot be a
+// oneof member.
+message RushHockeyActivePenaltiesState {
+  // Penalties currently being served, in the order they were called.
+  repeated RushHockeyActivePenalty penalties = 1;
+}
+
+// A penalty currently being served, derived from the timeline against the current game time so that
+// consumers neither fold it themselves nor disagree with "manpower".
+message RushHockeyActivePenalty {
+  // Urn of the PENALIZED team. Empty when the source attributed the penalty to neither side.
+  string team_urn = 1;
+  // Penalty type, which determines the nominal power-play length.
+  RushHockeyPenaltyType type = 2;
+  // Game time at which the penalty was called and the power play began.
+  google.protobuf.Duration start_time = 3;
+  // Game time at which the power play ends. Authoritative: it is rewritten when a power-play goal
+  // ends a minor early. Deliberately no remaining-time field - it would change on every clock tick
+  // and force an update on every message; compute the countdown as end_time minus the elapsed_time
+  // carried on the same state.
+  google.protobuf.Duration end_time = 4;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+message RushHockeyTeamCurrentGameStatePartialUpdate {
+  message Payload {
+    oneof payload {
+
+      // Replaces "game_statistics" property in RushHockeyTeamCurrentGameState.
+      RushHockeyTeamCurrentGameStatisticsState game_statistics = 1;
+
+      // Replaces "player" property in RushHockeyTeamCurrentGameState.
+      RushHockeyPlayerCurrentGameState player = 2;
+    }
+  }
+
+  // Team urn.
+  string team_urn = 1;
+
+  // Update payload.
+  Payload payload = 2;
+}
+
+message RushHockeyTeamCurrentGameState {
+  // Team urn.
+  string team_urn = 1;
+  // Current game statistics state.
+  RushHockeyTeamCurrentGameStatisticsState game_statistics = 2;
+  // Current game player state.
+  RushHockeyPlayerCurrentGameState player = 3;
+}
+
+message RushHockeyPlayerCurrentGameState {
+  // Player urn.
+  string player_urn = 1;
+  // Player ext name.
+  string ext_name = 2;
+}
+
+message RushHockeyTeamCurrentGameStatisticsState {
+  // Whole-match statistics.
+  RushHockeyTeamStatisticsValues total = 1;
+  // The same statistics per period, keyed by period so overtime periods are additive. A period the
+  // team has nothing to report in is omitted rather than sent as zeros.
+  //
+  // Goals here are stated by the source, as in "total"; every other counter is folded from the
+  // timeline, so after an operator corrects a total without a matching timeline event the per-period
+  // breakdown can lag it. Only goals are guaranteed to sum to the total.
+  repeated RushHockeyPeriodStatistics periods = 2;
+}
+
+message RushHockeyPeriodStatistics {
+  RushHockeyPeriod period = 1;
+  RushHockeyTeamStatisticsValues values = 2;
+}
+
+// One scope's worth of a team's statistics, used for both the whole match and a single period so
+// consumers render them from one shape.
+message RushHockeyTeamStatisticsValues {
+  // Goals scored, as stated by the source rather than counted off the timeline.
+  uint32 goals = 1;
+  // Shots on goal. A goal counts as a shot on goal, so this is always at least "goals". Stated by
+  // the source for the whole match; folded from the timeline per period.
+  uint32 shots_on_goal = 2;
+  // Penalties called against this team, penalty shots included.
+  uint32 penalties = 3;
+  // Penalty minutes assessed against this team: 2 per minor, 5 per major, 0 for a penalty shot,
+  // which is awarded in lieu of a penalty and serves no time. An unspecified type is assessed as a
+  // minor, matching how the source treats it. Assessed from the type rather than from time actually
+  // served, so a power play ending early does not reduce it.
+  uint32 penalty_minutes = 4;
+  // Power plays awarded to this team, i.e. penalties against the opponent, penalty shots excluded
+  // since they open no power-play window. Stacked penalties count once each, so a two-skater
+  // advantage counts two.
+  uint32 power_plays = 5;
+  // Goals this team scored while at least one penalty against the opponent was being served. A goal
+  // that itself ends a minor early counts, which is why this is published rather than left to
+  // consumers: the penalty's end is rewritten to that goal, so an exclusive comparison would miss it.
+  uint32 power_play_goals = 6;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+message RushHockeyTimelineState {
+  // Timeline events.
+  repeated RushHockeyTimelineEvent events = 1;
+}
+
+message RushHockeyTimelineEvent {
+  // Team urn. For a penalty this is the PENALIZED team; otherwise the team that scored or shot.
+  // Empty when the source attributed the event to neither side, and empty on the synthesised
+  // structural markers - consumers must not assume it is always populated.
+  string team_urn = 1;
+  // Event type.
+  RushHockeyEventType event_type = 2;
+  // Game time elapsed when the event happened, on the same count-up scale as
+  // RushHockeyCurrentGameTimeState. Unset on the synthesised structural markers.
+  google.protobuf.Duration elapsed_time = 3;
+  // Period in which the event happened.
+  RushHockeyPeriod period = 4;
+  // Penalty detail. Set on PENALTY events only.
+  RushHockeyPenalty penalty = 5;
+}
+
+// Detail of a penalty as it was called. Unlike RushHockeyActivePenalty it stays on the timeline once
+// the power play is over: the record of what happened, not of what is happening.
+message RushHockeyPenalty {
+  // Penalty type, which determines the nominal power-play length.
+  RushHockeyPenaltyType type = 1;
+  // Game time at which the penalty was called and the power play began. Can differ from the
+  // event's own elapsed_time, which is when the event was recorded.
+  google.protobuf.Duration start_time = 2;
+  // Game time at which the power play ends or ended. Carries the same early-end rewrite as
+  // RushHockeyActivePenalty.end_time: when a power-play goal ends a minor early this becomes that
+  // goal's game time, so it is the end that actually happened, not the end that was scheduled. Zero
+  // for a penalty shot, which has no power-play window at all.
+  google.protobuf.Duration end_time = 3;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+enum RushHockeyPeriod {
+  RUSH_HOCKEY_PERIOD_UNSPECIFIED = 0;
+  RUSH_HOCKEY_PERIOD_1 = 1;
+  RUSH_HOCKEY_PERIOD_2 = 2;
+  RUSH_HOCKEY_PERIOD_3 = 3;
+  // The source models a three-period game with no overtime and no shootout, so there are
+  // deliberately no further values rather than unpopulatable ones. Overtime periods would be added
+  // from 4 upwards if that ever changes.
+}
+
+// Side in possession of the puck. The source expresses this as a jersey colour; it is resolved to a
+// side server-side, so consumers never re-derive it. There is no contested value: the source does
+// not distinguish a loose puck from an unknown one.
+enum RushHockeyPossessionSide {
+  RUSH_HOCKEY_POSSESSION_SIDE_UNSPECIFIED = 0;
+  RUSH_HOCKEY_POSSESSION_SIDE_HOME = 1;
+  RUSH_HOCKEY_POSSESSION_SIDE_AWAY = 2;
+}
+
+// Penalty severity, which fully determines the nominal power-play length, so no separate duration
+// is carried on the wire.
+enum RushHockeyPenaltyType {
+  // Treated as MINOR.
+  RUSH_HOCKEY_PENALTY_TYPE_UNSPECIFIED = 0;
+  // Two-minute power play.
+  RUSH_HOCKEY_PENALTY_TYPE_MINOR = 1;
+  // Five-minute power play.
+  RUSH_HOCKEY_PENALTY_TYPE_MAJOR = 2;
+  // One-off penalty shot: an immediate scoring chance, with no power-play window.
+  RUSH_HOCKEY_PENALTY_TYPE_PENALTY_SHOT = 3;
+}
+
+// On-ice strength as a resolved home-versus-away pair of skater counts; the source states it by
+// jersey colour, so the pair is swapped server-side when the home team is the dark one.
+//
+// This is the strength actually being played, not what the penalty intervals imply: it accounts for a
+// power play that ended early after a goal, for stacked penalties, and for a penalty shot.
+enum RushHockeyManpower {
+  RUSH_HOCKEY_MANPOWER_UNSPECIFIED = 0;
+  // Even strength.
+  RUSH_HOCKEY_MANPOWER_HOME_5_AWAY_5 = 1;
+  // A penalty shot is in progress, during which skater counts do not apply. The shooting team is
+  // carried by the corresponding timeline event.
+  RUSH_HOCKEY_MANPOWER_PENALTY_SHOT = 2;
+  RUSH_HOCKEY_MANPOWER_HOME_5_AWAY_4 = 3;
+  RUSH_HOCKEY_MANPOWER_HOME_4_AWAY_5 = 4;
+  RUSH_HOCKEY_MANPOWER_HOME_5_AWAY_3 = 5;
+  RUSH_HOCKEY_MANPOWER_HOME_3_AWAY_5 = 6;
+  RUSH_HOCKEY_MANPOWER_HOME_4_AWAY_4 = 7;
+  RUSH_HOCKEY_MANPOWER_HOME_4_AWAY_3 = 8;
+  RUSH_HOCKEY_MANPOWER_HOME_3_AWAY_4 = 9;
+  RUSH_HOCKEY_MANPOWER_HOME_3_AWAY_3 = 10;
+}
+
+// Ordinals 1-3 mirror a source event variant one for one; 4-9 are reserved for variants the source
+// may add. Ordinals 10 and up are synthesised server-side and have no source counterpart.
+enum RushHockeyEventType {
+  RUSH_HOCKEY_EVENT_TYPE_UNSPECIFIED = 0;
+  RUSH_HOCKEY_EVENT_TYPE_GOAL = 1;
+  // A penalty was called against the team on team_urn. The detail rides on the event's "penalty"
+  // property; the row stays on the timeline after the power play ends.
+  RUSH_HOCKEY_EVENT_TYPE_PENALTY = 2;
+  // A shot on goal that was saved, or that scored. A goal implies a shot on goal but is reported as
+  // its own GOAL event, so a scoring shot appears as both.
+  RUSH_HOCKEY_EVENT_TYPE_SHOT_ON_GOAL = 3;
+
+  // Synthetic: the period advanced. The source carries no period-change event, and a period in
+  // which nothing happened would otherwise leave no trace, so this is derived from the period
+  // rather than mirrored. Every boundary the match has passed is retained, not only the most recent
+  // one. Carries the period it STARTS, no team and no clock - the boundary is only resolvable to
+  // the rate at which state arrives, so any time would be invented precision.
+  RUSH_HOCKEY_EVENT_TYPE_PERIOD_CHANGE = 10;
+  // Synthetic: the game ended. Derived from the match status, since the play data carries no
+  // end-of-game signal; always agrees with match_status = MATCH_STATUS_TYPE_FINISHED, and is absent
+  // for a cancelled match. It exists so the timeline reads as the match record on its own.
+  RUSH_HOCKEY_EVENT_TYPE_GAME_END = 11;
+}
