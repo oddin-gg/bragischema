@@ -872,7 +872,7 @@ func (x *RushSoccerCurrentMapScoreState) GetAwayGoals() uint32 {
 // the upstream minimap grid cell. Orientation: coordinates are pitch-fixed; in the FIRST half the home goal is at
 // x = -1 (home attacks toward +1), and the teams switch ends at half-time, so in the SECOND half the home goal is
 // at x = +1. Combine with the current period to tell which end belongs to which team. The convention is encoded
-// in one place on the server (bragi rush_soccer_pitch_zones.go) and is being verified against live eFootball data.
+// in one place on the server (bragi rush_soccer_pitch_zones.go).
 type RushSoccerPitchPosition struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	X             float32                `protobuf:"fixed32,1,opt,name=x,proto3" json:"x,omitempty"`
