@@ -75,15 +75,22 @@ message RushSoccerMatchStatePartialUpdate {
     // Replaces "score" property in RushSoccerMatchState.
     RushSoccerMatchScoreState score = 1;
 
-    // Replaces "current_map_state" property in RushSoccerCurrentMapState. To minimalize issues with incorrect updates application
-    // on current_map_state, server sends RushSoccerMatchStatePartialUpdate with RushSoccerCurrentMapState in periodic time set by customer.
+    // Replaces "current_map" property in RushSoccerMatchState. To minimalize issues with incorrect updates application
+    // on current_map, server sends RushSoccerMatchStatePartialUpdate with RushSoccerCurrentMapState in periodic time set by customer.
     RushSoccerCurrentMapState current_map_state = 2;
 
-    // Apply partial update on "current_map_state" property in RushSoccerMapState.
+    // Apply partial update on "current_map" property in RushSoccerMatchState.
     RushSoccerCurrentMapStatePartialUpdate current_map_state_partial_update = 3;
 
     // Replaces "timeline" property in RushSoccerMatchState.
     RushSoccerTimelineState timeline = 4;
+
+    // Replaces "ball_state" property in RushSoccerMatchState. High-frequency: sent on every tick in which
+    // the current ball position, previous ball position or possession side changed.
+    RushSoccerBallState ball_state = 5;
+
+    // Replaces "possession_statistics" property in RushSoccerMatchState.
+    RushSoccerPossessionStatisticsState possession_statistics = 6;
   }
 }
 
@@ -104,6 +111,11 @@ message RushSoccerMatchState {
   RushSoccerTimelineState timeline = 7;
   // Current map state.
   RushSoccerCurrentMapState current_map = 8;
+  // Ball position and possession state. Updated at tick frequency via the ball_state partial update.
+  RushSoccerBallState ball_state = 9;
+  // Cumulative possession share per team. Always set on newly built states; percentages and the
+  // attributed-seconds accumulators update at tick frequency via the possession_statistics partial update.
+  RushSoccerPossessionStatisticsState possession_statistics = 10;
 }
 
 message RushSoccerMatchScoreState {
@@ -118,6 +130,51 @@ message RushSoccerCurrentMapScoreState {
   uint32 home_goals = 1;
   // Number of away goals.
   uint32 away_goals = 2;
+}
+
+// Normalized ball position on the pitch. x, y are in [-1, 1] (pitch coords; centre spot = (0, 0)), derived from
+// the upstream minimap grid cell. Orientation: coordinates are pitch-fixed; in the FIRST half the home goal is at
+// x = -1 (home attacks toward +1), and the teams switch ends at half-time, so in the SECOND half the home goal is
+// at x = +1. Combine with the current period to tell which end belongs to which team. The convention is encoded
+// in one place on the server (bragi rush_soccer_pitch_zones.go) and is being verified against live eFootball data.
+message RushSoccerPitchPosition {
+  float x = 1;
+  float y = 2;
+}
+
+message RushSoccerBallState {
+  // Current ball position; unset when ball tracking is stale.
+  RushSoccerPitchPosition current = 1;
+  // Ball position of the previously processed tick; unset on the first state and on the tick after tracking
+  // resumes from stale. May reference a tick that was folded into this update and never published on its own.
+  RushSoccerPitchPosition previous = 2;
+  // Possession side. HOME/AWAY reflect an explicit upstream attribution and are reported even while ball
+  // tracking is stale (current unset). CONTESTED means the ball is tracked but upstream attributes possession
+  // to neither side. UNSPECIFIED = unknown: either the match is paused (a pause always clears possession, even
+  // when upstream still attributes it), or possession is unattributed while ball tracking is stale.
+  RushSoccerPossessionSide possession = 3;
+}
+
+message RushSoccerPossessionStatisticsState {
+  message Values {
+    // Home team's share of attributed possession time within the scope, 0-100.
+    // home + away is approximately 100 within each scope; contested/unknown seconds are excluded.
+    float home_percentage = 1;
+    // Away team's share of attributed possession time within the scope, 0-100.
+    float away_percentage = 2;
+    // Attributed possession time within the scope, in game-clock seconds. Contested, unknown and paused
+    // time is excluded, so home + away can be less than the scope's elapsed game time. These double as the
+    // accumulators persisted with each snapshot, so builder restarts resume from the last published totals.
+    uint32 home_possession_seconds = 3;
+    uint32 away_possession_seconds = 4;
+  }
+
+  // Whole match.
+  Values total = 1;
+  // First half only.
+  Values first_half = 2;
+  // Second half only.
+  Values second_half = 3;
 }
 
 message RushSoccerTimelineState {
@@ -136,6 +193,9 @@ message RushSoccerTimelineEvent {
   google.protobuf.Duration game_time = 4;
   // Period.
   RushSoccerPeriod period = 5;
+  // Ball position at the tick the event was first observed; unset when unknown (ball tracking was stale at
+  // that tick, or the event predates the state the builder resumed from - positions are never backfilled).
+  RushSoccerPitchPosition position = 6;
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -148,7 +208,7 @@ message RushSoccerCurrentMapStatePartialUpdate {
     // Replaces "score" property in RushSoccerCurrentMapState.
     RushSoccerCurrentMapScoreState score = 2;
 
-    // Replaces whole value under given key in teams map property in RushSoccerTeamCurrentMapState.
+    // Replaces whole value under given key in teams map property in RushSoccerCurrentMapState.
     RushSoccerTeamCurrentMapState team_current_map_state = 3;
 
     // Apply partial update on value under given key in teams map property in RushSoccerCurrentMapState.
@@ -183,7 +243,7 @@ message RushSoccerTeamCurrentMapStatePartialUpdate {
   message Payload {
     oneof payload {
 
-      // Replaces "statistics" property in RushSoccerTeamCurrentMapState.
+      // Replaces "map_statistics" property in RushSoccerTeamCurrentMapState.
       RushSoccerTeamCurrentMapStatisticsState map_statistics = 1;
 
       // Replaces "player" property in RushSoccerTeamCurrentMapState.
@@ -215,6 +275,9 @@ message RushSoccerPlayerCurrentMapState{
 }
 
 message RushSoccerTeamCurrentMapStatisticsState {
+  // Fields 1-7 are the legacy whole-match view kept for existing consumers. They always agree with the scoped
+  // counters below: goals = total.goals, goals_ht = first_half.goals, and every other counter = its total.
+
   //  Number of goals.
   uint32 goals = 1;
   // Number of goals in the first period.
@@ -229,6 +292,40 @@ message RushSoccerTeamCurrentMapStatisticsState {
   uint32 free_kicks = 6;
   // Number of corner kicks.
   uint32 corner_kicks = 7;
+
+  // Whole match counters.
+  RushSoccerTeamStatisticsValues total = 8;
+  // First half counters.
+  RushSoccerTeamStatisticsValues first_half = 9;
+  // Second half counters.
+  RushSoccerTeamStatisticsValues second_half = 10;
+}
+
+message RushSoccerTeamStatisticsValues {
+  // Number of goals.
+  uint32 goals = 1;
+  // Number of red cards.
+  uint32 red_cards = 2;
+  // Number of yellow cards.
+  uint32 yellow_cards = 3;
+  // Number of corner kicks.
+  uint32 corner_kicks = 4;
+  // Number of free kicks.
+  uint32 free_kicks = 5;
+  // Number of penalty kicks.
+  uint32 penalty_kicks = 6;
+  // Number of shots on and off target. Always 0 until upstream shot events are available.
+  uint32 total_shots = 7;
+  // Number of shots on target. Always 0 until upstream shot events are available.
+  uint32 shots_on_target = 8;
+  // Number of attacks: the ball moved into the half this team's opponent defends. Zone-based (edge-triggered
+  // on the ball crossing the halfway line), regardless of which side upstream attributes possession to.
+  uint32 attacks = 9;
+  // Number of dangerous attacks: the ball moved into the final third in front of the opponent's goal, plus
+  // set pieces (corner, penalty, free kick) this team took in that final third (counter bump only - the
+  // timeline keeps the set piece's own event type). Because of the set-piece bumps and entries from inside
+  // the opponent's half, dangerous_attacks is not numerically a subset of attacks.
+  uint32 dangerous_attacks = 10;
 }
 
 enum RushSoccerEventType {
@@ -240,6 +337,24 @@ enum RushSoccerEventType {
   RUSH_SOCCER_EVENT_TYPE_FREE_KICK = 5;
   RUSH_SOCCER_EVENT_TYPE_CORNER_KICK = 6;
   RUSH_SOCCER_EVENT_TYPE_PERIOD_CHANGE = 7;
+  // Shot events require upstream clean-data support; not emitted until it lands.
+  RUSH_SOCCER_EVENT_TYPE_SHOT_ON_TARGET = 8;
+  RUSH_SOCCER_EVENT_TYPE_SHOT_OFF_TARGET = 9;
+  // Synthetic: the ball entered the half the attributed team's opponent defends. Edge-triggered - leaving
+  // and re-entering the half emits a new event. Carries the ball position of the crossing tick.
+  RUSH_SOCCER_EVENT_TYPE_ATTACK = 10;
+  // Synthetic: the ball entered the final third in front of the opponent's goal; one move can emit this
+  // together with ATTACK. Set pieces taken in the final third increment the dangerous_attacks counter only
+  // and keep their own event type in the timeline.
+  RUSH_SOCCER_EVENT_TYPE_DANGEROUS_ATTACK = 11;
+}
+
+enum RushSoccerPossessionSide {
+  RUSH_SOCCER_POSSESSION_SIDE_UNSPECIFIED = 0;
+  RUSH_SOCCER_POSSESSION_SIDE_HOME = 1;
+  RUSH_SOCCER_POSSESSION_SIDE_AWAY = 2;
+  // Ball in play but neither team in possession.
+  RUSH_SOCCER_POSSESSION_SIDE_CONTESTED = 3;
 }
 
 enum RushSoccerPeriod {

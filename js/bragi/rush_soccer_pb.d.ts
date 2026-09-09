@@ -233,6 +233,16 @@ export class RushSoccerMatchStatePartialUpdate extends jspb.Message {
   getTimeline(): RushSoccerTimelineState | undefined;
   setTimeline(value?: RushSoccerTimelineState): void;
 
+  hasBallState(): boolean;
+  clearBallState(): void;
+  getBallState(): RushSoccerBallState | undefined;
+  setBallState(value?: RushSoccerBallState): void;
+
+  hasPossessionStatistics(): boolean;
+  clearPossessionStatistics(): void;
+  getPossessionStatistics(): RushSoccerPossessionStatisticsState | undefined;
+  setPossessionStatistics(value?: RushSoccerPossessionStatisticsState): void;
+
   getUpdateCase(): RushSoccerMatchStatePartialUpdate.UpdateCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RushSoccerMatchStatePartialUpdate.AsObject;
@@ -250,6 +260,8 @@ export namespace RushSoccerMatchStatePartialUpdate {
     currentMapState?: RushSoccerCurrentMapState.AsObject,
     currentMapStatePartialUpdate?: RushSoccerCurrentMapStatePartialUpdate.AsObject,
     timeline?: RushSoccerTimelineState.AsObject,
+    ballState?: RushSoccerBallState.AsObject,
+    possessionStatistics?: RushSoccerPossessionStatisticsState.AsObject,
   }
 
   export enum UpdateCase {
@@ -258,6 +270,8 @@ export namespace RushSoccerMatchStatePartialUpdate {
     CURRENT_MAP_STATE = 2,
     CURRENT_MAP_STATE_PARTIAL_UPDATE = 3,
     TIMELINE = 4,
+    BALL_STATE = 5,
+    POSSESSION_STATISTICS = 6,
   }
 }
 
@@ -296,6 +310,16 @@ export class RushSoccerMatchState extends jspb.Message {
   getCurrentMap(): RushSoccerCurrentMapState | undefined;
   setCurrentMap(value?: RushSoccerCurrentMapState): void;
 
+  hasBallState(): boolean;
+  clearBallState(): void;
+  getBallState(): RushSoccerBallState | undefined;
+  setBallState(value?: RushSoccerBallState): void;
+
+  hasPossessionStatistics(): boolean;
+  clearPossessionStatistics(): void;
+  getPossessionStatistics(): RushSoccerPossessionStatisticsState | undefined;
+  setPossessionStatistics(value?: RushSoccerPossessionStatisticsState): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RushSoccerMatchState.AsObject;
   static toObject(includeInstance: boolean, msg: RushSoccerMatchState): RushSoccerMatchState.AsObject;
@@ -316,6 +340,8 @@ export namespace RushSoccerMatchState {
     matchStatus: bragi_common_pb.MatchStatusTypeMap[keyof bragi_common_pb.MatchStatusTypeMap],
     timeline?: RushSoccerTimelineState.AsObject,
     currentMap?: RushSoccerCurrentMapState.AsObject,
+    ballState?: RushSoccerBallState.AsObject,
+    possessionStatistics?: RushSoccerPossessionStatisticsState.AsObject,
   }
 }
 
@@ -367,6 +393,128 @@ export namespace RushSoccerCurrentMapScoreState {
   }
 }
 
+export class RushSoccerPitchPosition extends jspb.Message {
+  getX(): number;
+  setX(value: number): void;
+
+  getY(): number;
+  setY(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RushSoccerPitchPosition.AsObject;
+  static toObject(includeInstance: boolean, msg: RushSoccerPitchPosition): RushSoccerPitchPosition.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: RushSoccerPitchPosition, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RushSoccerPitchPosition;
+  static deserializeBinaryFromReader(message: RushSoccerPitchPosition, reader: jspb.BinaryReader): RushSoccerPitchPosition;
+}
+
+export namespace RushSoccerPitchPosition {
+  export type AsObject = {
+    x: number,
+    y: number,
+  }
+}
+
+export class RushSoccerBallState extends jspb.Message {
+  hasCurrent(): boolean;
+  clearCurrent(): void;
+  getCurrent(): RushSoccerPitchPosition | undefined;
+  setCurrent(value?: RushSoccerPitchPosition): void;
+
+  hasPrevious(): boolean;
+  clearPrevious(): void;
+  getPrevious(): RushSoccerPitchPosition | undefined;
+  setPrevious(value?: RushSoccerPitchPosition): void;
+
+  getPossession(): RushSoccerPossessionSideMap[keyof RushSoccerPossessionSideMap];
+  setPossession(value: RushSoccerPossessionSideMap[keyof RushSoccerPossessionSideMap]): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RushSoccerBallState.AsObject;
+  static toObject(includeInstance: boolean, msg: RushSoccerBallState): RushSoccerBallState.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: RushSoccerBallState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RushSoccerBallState;
+  static deserializeBinaryFromReader(message: RushSoccerBallState, reader: jspb.BinaryReader): RushSoccerBallState;
+}
+
+export namespace RushSoccerBallState {
+  export type AsObject = {
+    current?: RushSoccerPitchPosition.AsObject,
+    previous?: RushSoccerPitchPosition.AsObject,
+    possession: RushSoccerPossessionSideMap[keyof RushSoccerPossessionSideMap],
+  }
+}
+
+export class RushSoccerPossessionStatisticsState extends jspb.Message {
+  hasTotal(): boolean;
+  clearTotal(): void;
+  getTotal(): RushSoccerPossessionStatisticsState.Values | undefined;
+  setTotal(value?: RushSoccerPossessionStatisticsState.Values): void;
+
+  hasFirstHalf(): boolean;
+  clearFirstHalf(): void;
+  getFirstHalf(): RushSoccerPossessionStatisticsState.Values | undefined;
+  setFirstHalf(value?: RushSoccerPossessionStatisticsState.Values): void;
+
+  hasSecondHalf(): boolean;
+  clearSecondHalf(): void;
+  getSecondHalf(): RushSoccerPossessionStatisticsState.Values | undefined;
+  setSecondHalf(value?: RushSoccerPossessionStatisticsState.Values): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RushSoccerPossessionStatisticsState.AsObject;
+  static toObject(includeInstance: boolean, msg: RushSoccerPossessionStatisticsState): RushSoccerPossessionStatisticsState.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: RushSoccerPossessionStatisticsState, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RushSoccerPossessionStatisticsState;
+  static deserializeBinaryFromReader(message: RushSoccerPossessionStatisticsState, reader: jspb.BinaryReader): RushSoccerPossessionStatisticsState;
+}
+
+export namespace RushSoccerPossessionStatisticsState {
+  export type AsObject = {
+    total?: RushSoccerPossessionStatisticsState.Values.AsObject,
+    firstHalf?: RushSoccerPossessionStatisticsState.Values.AsObject,
+    secondHalf?: RushSoccerPossessionStatisticsState.Values.AsObject,
+  }
+
+  export class Values extends jspb.Message {
+    getHomePercentage(): number;
+    setHomePercentage(value: number): void;
+
+    getAwayPercentage(): number;
+    setAwayPercentage(value: number): void;
+
+    getHomePossessionSeconds(): number;
+    setHomePossessionSeconds(value: number): void;
+
+    getAwayPossessionSeconds(): number;
+    setAwayPossessionSeconds(value: number): void;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Values.AsObject;
+    static toObject(includeInstance: boolean, msg: Values): Values.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: Values, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Values;
+    static deserializeBinaryFromReader(message: Values, reader: jspb.BinaryReader): Values;
+  }
+
+  export namespace Values {
+    export type AsObject = {
+      homePercentage: number,
+      awayPercentage: number,
+      homePossessionSeconds: number,
+      awayPossessionSeconds: number,
+    }
+  }
+}
+
 export class RushSoccerTimelineState extends jspb.Message {
   clearEventsList(): void;
   getEventsList(): Array<RushSoccerTimelineEvent>;
@@ -409,6 +557,11 @@ export class RushSoccerTimelineEvent extends jspb.Message {
   getPeriod(): RushSoccerPeriodMap[keyof RushSoccerPeriodMap];
   setPeriod(value: RushSoccerPeriodMap[keyof RushSoccerPeriodMap]): void;
 
+  hasPosition(): boolean;
+  clearPosition(): void;
+  getPosition(): RushSoccerPitchPosition | undefined;
+  setPosition(value?: RushSoccerPitchPosition): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RushSoccerTimelineEvent.AsObject;
   static toObject(includeInstance: boolean, msg: RushSoccerTimelineEvent): RushSoccerTimelineEvent.AsObject;
@@ -426,6 +579,7 @@ export namespace RushSoccerTimelineEvent {
     realTime?: google_protobuf_duration_pb.Duration.AsObject,
     gameTime?: google_protobuf_duration_pb.Duration.AsObject,
     period: RushSoccerPeriodMap[keyof RushSoccerPeriodMap],
+    position?: RushSoccerPitchPosition.AsObject,
   }
 }
 
@@ -684,6 +838,21 @@ export class RushSoccerTeamCurrentMapStatisticsState extends jspb.Message {
   getCornerKicks(): number;
   setCornerKicks(value: number): void;
 
+  hasTotal(): boolean;
+  clearTotal(): void;
+  getTotal(): RushSoccerTeamStatisticsValues | undefined;
+  setTotal(value?: RushSoccerTeamStatisticsValues): void;
+
+  hasFirstHalf(): boolean;
+  clearFirstHalf(): void;
+  getFirstHalf(): RushSoccerTeamStatisticsValues | undefined;
+  setFirstHalf(value?: RushSoccerTeamStatisticsValues): void;
+
+  hasSecondHalf(): boolean;
+  clearSecondHalf(): void;
+  getSecondHalf(): RushSoccerTeamStatisticsValues | undefined;
+  setSecondHalf(value?: RushSoccerTeamStatisticsValues): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RushSoccerTeamCurrentMapStatisticsState.AsObject;
   static toObject(includeInstance: boolean, msg: RushSoccerTeamCurrentMapStatisticsState): RushSoccerTeamCurrentMapStatisticsState.AsObject;
@@ -703,6 +872,65 @@ export namespace RushSoccerTeamCurrentMapStatisticsState {
     yellowCards: number,
     freeKicks: number,
     cornerKicks: number,
+    total?: RushSoccerTeamStatisticsValues.AsObject,
+    firstHalf?: RushSoccerTeamStatisticsValues.AsObject,
+    secondHalf?: RushSoccerTeamStatisticsValues.AsObject,
+  }
+}
+
+export class RushSoccerTeamStatisticsValues extends jspb.Message {
+  getGoals(): number;
+  setGoals(value: number): void;
+
+  getRedCards(): number;
+  setRedCards(value: number): void;
+
+  getYellowCards(): number;
+  setYellowCards(value: number): void;
+
+  getCornerKicks(): number;
+  setCornerKicks(value: number): void;
+
+  getFreeKicks(): number;
+  setFreeKicks(value: number): void;
+
+  getPenaltyKicks(): number;
+  setPenaltyKicks(value: number): void;
+
+  getTotalShots(): number;
+  setTotalShots(value: number): void;
+
+  getShotsOnTarget(): number;
+  setShotsOnTarget(value: number): void;
+
+  getAttacks(): number;
+  setAttacks(value: number): void;
+
+  getDangerousAttacks(): number;
+  setDangerousAttacks(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RushSoccerTeamStatisticsValues.AsObject;
+  static toObject(includeInstance: boolean, msg: RushSoccerTeamStatisticsValues): RushSoccerTeamStatisticsValues.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: RushSoccerTeamStatisticsValues, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RushSoccerTeamStatisticsValues;
+  static deserializeBinaryFromReader(message: RushSoccerTeamStatisticsValues, reader: jspb.BinaryReader): RushSoccerTeamStatisticsValues;
+}
+
+export namespace RushSoccerTeamStatisticsValues {
+  export type AsObject = {
+    goals: number,
+    redCards: number,
+    yellowCards: number,
+    cornerKicks: number,
+    freeKicks: number,
+    penaltyKicks: number,
+    totalShots: number,
+    shotsOnTarget: number,
+    attacks: number,
+    dangerousAttacks: number,
   }
 }
 
@@ -715,9 +943,22 @@ export interface RushSoccerEventTypeMap {
   RUSH_SOCCER_EVENT_TYPE_FREE_KICK: 5;
   RUSH_SOCCER_EVENT_TYPE_CORNER_KICK: 6;
   RUSH_SOCCER_EVENT_TYPE_PERIOD_CHANGE: 7;
+  RUSH_SOCCER_EVENT_TYPE_SHOT_ON_TARGET: 8;
+  RUSH_SOCCER_EVENT_TYPE_SHOT_OFF_TARGET: 9;
+  RUSH_SOCCER_EVENT_TYPE_ATTACK: 10;
+  RUSH_SOCCER_EVENT_TYPE_DANGEROUS_ATTACK: 11;
 }
 
 export const RushSoccerEventType: RushSoccerEventTypeMap;
+
+export interface RushSoccerPossessionSideMap {
+  RUSH_SOCCER_POSSESSION_SIDE_UNSPECIFIED: 0;
+  RUSH_SOCCER_POSSESSION_SIDE_HOME: 1;
+  RUSH_SOCCER_POSSESSION_SIDE_AWAY: 2;
+  RUSH_SOCCER_POSSESSION_SIDE_CONTESTED: 3;
+}
+
+export const RushSoccerPossessionSide: RushSoccerPossessionSideMap;
 
 export interface RushSoccerPeriodMap {
   RUSH_SOCCER_PERIOD_UNSPECIFIED: 0;
