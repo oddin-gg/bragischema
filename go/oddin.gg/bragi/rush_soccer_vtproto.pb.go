@@ -245,6 +245,24 @@ func (m *RushSoccerMatchStatePartialUpdate_Timeline) CloneVT() isRushSoccerMatch
 	return r
 }
 
+func (m *RushSoccerMatchStatePartialUpdate_BallState) CloneVT() isRushSoccerMatchStatePartialUpdate_Update {
+	if m == nil {
+		return (*RushSoccerMatchStatePartialUpdate_BallState)(nil)
+	}
+	r := new(RushSoccerMatchStatePartialUpdate_BallState)
+	r.BallState = m.BallState.CloneVT()
+	return r
+}
+
+func (m *RushSoccerMatchStatePartialUpdate_PossessionStatistics) CloneVT() isRushSoccerMatchStatePartialUpdate_Update {
+	if m == nil {
+		return (*RushSoccerMatchStatePartialUpdate_PossessionStatistics)(nil)
+	}
+	r := new(RushSoccerMatchStatePartialUpdate_PossessionStatistics)
+	r.PossessionStatistics = m.PossessionStatistics.CloneVT()
+	return r
+}
+
 func (m *RushSoccerMatchState) CloneVT() *RushSoccerMatchState {
 	if m == nil {
 		return (*RushSoccerMatchState)(nil)
@@ -258,6 +276,8 @@ func (m *RushSoccerMatchState) CloneVT() *RushSoccerMatchState {
 	r.MatchStatus = m.MatchStatus
 	r.Timeline = m.Timeline.CloneVT()
 	r.CurrentMap = m.CurrentMap.CloneVT()
+	r.BallState = m.BallState.CloneVT()
+	r.PossessionStatistics = m.PossessionStatistics.CloneVT()
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -305,6 +325,82 @@ func (m *RushSoccerCurrentMapScoreState) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
+func (m *RushSoccerPitchPosition) CloneVT() *RushSoccerPitchPosition {
+	if m == nil {
+		return (*RushSoccerPitchPosition)(nil)
+	}
+	r := new(RushSoccerPitchPosition)
+	r.X = m.X
+	r.Y = m.Y
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushSoccerPitchPosition) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushSoccerBallState) CloneVT() *RushSoccerBallState {
+	if m == nil {
+		return (*RushSoccerBallState)(nil)
+	}
+	r := new(RushSoccerBallState)
+	r.Current = m.Current.CloneVT()
+	r.Previous = m.Previous.CloneVT()
+	r.Possession = m.Possession
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushSoccerBallState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushSoccerPossessionStatisticsState_Values) CloneVT() *RushSoccerPossessionStatisticsState_Values {
+	if m == nil {
+		return (*RushSoccerPossessionStatisticsState_Values)(nil)
+	}
+	r := new(RushSoccerPossessionStatisticsState_Values)
+	r.HomePercentage = m.HomePercentage
+	r.AwayPercentage = m.AwayPercentage
+	r.HomePossessionSeconds = m.HomePossessionSeconds
+	r.AwayPossessionSeconds = m.AwayPossessionSeconds
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushSoccerPossessionStatisticsState_Values) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushSoccerPossessionStatisticsState) CloneVT() *RushSoccerPossessionStatisticsState {
+	if m == nil {
+		return (*RushSoccerPossessionStatisticsState)(nil)
+	}
+	r := new(RushSoccerPossessionStatisticsState)
+	r.Total = m.Total.CloneVT()
+	r.FirstHalf = m.FirstHalf.CloneVT()
+	r.SecondHalf = m.SecondHalf.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushSoccerPossessionStatisticsState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
 func (m *RushSoccerTimelineState) CloneVT() *RushSoccerTimelineState {
 	if m == nil {
 		return (*RushSoccerTimelineState)(nil)
@@ -338,6 +434,7 @@ func (m *RushSoccerTimelineEvent) CloneVT() *RushSoccerTimelineEvent {
 	r.RealTime = (*durationpb.Duration)((*durationpb1.Duration)(m.RealTime).CloneVT())
 	r.GameTime = (*durationpb.Duration)((*durationpb1.Duration)(m.GameTime).CloneVT())
 	r.Period = m.Period
+	r.Position = m.Position.CloneVT()
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -557,6 +654,9 @@ func (m *RushSoccerTeamCurrentMapStatisticsState) CloneVT() *RushSoccerTeamCurre
 	r.YellowCards = m.YellowCards
 	r.FreeKicks = m.FreeKicks
 	r.CornerKicks = m.CornerKicks
+	r.Total = m.Total.CloneVT()
+	r.FirstHalf = m.FirstHalf.CloneVT()
+	r.SecondHalf = m.SecondHalf.CloneVT()
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -565,6 +665,32 @@ func (m *RushSoccerTeamCurrentMapStatisticsState) CloneVT() *RushSoccerTeamCurre
 }
 
 func (m *RushSoccerTeamCurrentMapStatisticsState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushSoccerTeamStatisticsValues) CloneVT() *RushSoccerTeamStatisticsValues {
+	if m == nil {
+		return (*RushSoccerTeamStatisticsValues)(nil)
+	}
+	r := new(RushSoccerTeamStatisticsValues)
+	r.Goals = m.Goals
+	r.RedCards = m.RedCards
+	r.YellowCards = m.YellowCards
+	r.CornerKicks = m.CornerKicks
+	r.FreeKicks = m.FreeKicks
+	r.PenaltyKicks = m.PenaltyKicks
+	r.TotalShots = m.TotalShots
+	r.ShotsOnTarget = m.ShotsOnTarget
+	r.Attacks = m.Attacks
+	r.DangerousAttacks = m.DangerousAttacks
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushSoccerTeamStatisticsValues) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
@@ -986,6 +1112,56 @@ func (this *RushSoccerMatchStatePartialUpdate_Timeline) EqualVT(thatIface isRush
 	return true
 }
 
+func (this *RushSoccerMatchStatePartialUpdate_BallState) EqualVT(thatIface isRushSoccerMatchStatePartialUpdate_Update) bool {
+	that, ok := thatIface.(*RushSoccerMatchStatePartialUpdate_BallState)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.BallState, that.BallState; p != q {
+		if p == nil {
+			p = &RushSoccerBallState{}
+		}
+		if q == nil {
+			q = &RushSoccerBallState{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *RushSoccerMatchStatePartialUpdate_PossessionStatistics) EqualVT(thatIface isRushSoccerMatchStatePartialUpdate_Update) bool {
+	that, ok := thatIface.(*RushSoccerMatchStatePartialUpdate_PossessionStatistics)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.PossessionStatistics, that.PossessionStatistics; p != q {
+		if p == nil {
+			p = &RushSoccerPossessionStatisticsState{}
+		}
+		if q == nil {
+			q = &RushSoccerPossessionStatisticsState{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
 func (this *RushSoccerMatchState) EqualVT(that *RushSoccerMatchState) bool {
 	if this == that {
 		return true
@@ -1014,6 +1190,12 @@ func (this *RushSoccerMatchState) EqualVT(that *RushSoccerMatchState) bool {
 		return false
 	}
 	if !this.CurrentMap.EqualVT(that.CurrentMap) {
+		return false
+	}
+	if !this.BallState.EqualVT(that.BallState) {
+		return false
+	}
+	if !this.PossessionStatistics.EqualVT(that.PossessionStatistics) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
@@ -1065,6 +1247,106 @@ func (this *RushSoccerCurrentMapScoreState) EqualVT(that *RushSoccerCurrentMapSc
 
 func (this *RushSoccerCurrentMapScoreState) EqualMessageVT(thatMsg proto.Message) bool {
 	that, ok := thatMsg.(*RushSoccerCurrentMapScoreState)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *RushSoccerPitchPosition) EqualVT(that *RushSoccerPitchPosition) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.X != that.X {
+		return false
+	}
+	if this.Y != that.Y {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *RushSoccerPitchPosition) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*RushSoccerPitchPosition)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *RushSoccerBallState) EqualVT(that *RushSoccerBallState) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if !this.Current.EqualVT(that.Current) {
+		return false
+	}
+	if !this.Previous.EqualVT(that.Previous) {
+		return false
+	}
+	if this.Possession != that.Possession {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *RushSoccerBallState) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*RushSoccerBallState)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *RushSoccerPossessionStatisticsState_Values) EqualVT(that *RushSoccerPossessionStatisticsState_Values) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.HomePercentage != that.HomePercentage {
+		return false
+	}
+	if this.AwayPercentage != that.AwayPercentage {
+		return false
+	}
+	if this.HomePossessionSeconds != that.HomePossessionSeconds {
+		return false
+	}
+	if this.AwayPossessionSeconds != that.AwayPossessionSeconds {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *RushSoccerPossessionStatisticsState_Values) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*RushSoccerPossessionStatisticsState_Values)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *RushSoccerPossessionStatisticsState) EqualVT(that *RushSoccerPossessionStatisticsState) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if !this.Total.EqualVT(that.Total) {
+		return false
+	}
+	if !this.FirstHalf.EqualVT(that.FirstHalf) {
+		return false
+	}
+	if !this.SecondHalf.EqualVT(that.SecondHalf) {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *RushSoccerPossessionStatisticsState) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*RushSoccerPossessionStatisticsState)
 	if !ok {
 		return false
 	}
@@ -1122,6 +1404,9 @@ func (this *RushSoccerTimelineEvent) EqualVT(that *RushSoccerTimelineEvent) bool
 		return false
 	}
 	if this.Period != that.Period {
+		return false
+	}
+	if !this.Position.EqualVT(that.Position) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
@@ -1506,11 +1791,66 @@ func (this *RushSoccerTeamCurrentMapStatisticsState) EqualVT(that *RushSoccerTea
 	if this.CornerKicks != that.CornerKicks {
 		return false
 	}
+	if !this.Total.EqualVT(that.Total) {
+		return false
+	}
+	if !this.FirstHalf.EqualVT(that.FirstHalf) {
+		return false
+	}
+	if !this.SecondHalf.EqualVT(that.SecondHalf) {
+		return false
+	}
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
 func (this *RushSoccerTeamCurrentMapStatisticsState) EqualMessageVT(thatMsg proto.Message) bool {
 	that, ok := thatMsg.(*RushSoccerTeamCurrentMapStatisticsState)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *RushSoccerTeamStatisticsValues) EqualVT(that *RushSoccerTeamStatisticsValues) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.Goals != that.Goals {
+		return false
+	}
+	if this.RedCards != that.RedCards {
+		return false
+	}
+	if this.YellowCards != that.YellowCards {
+		return false
+	}
+	if this.CornerKicks != that.CornerKicks {
+		return false
+	}
+	if this.FreeKicks != that.FreeKicks {
+		return false
+	}
+	if this.PenaltyKicks != that.PenaltyKicks {
+		return false
+	}
+	if this.TotalShots != that.TotalShots {
+		return false
+	}
+	if this.ShotsOnTarget != that.ShotsOnTarget {
+		return false
+	}
+	if this.Attacks != that.Attacks {
+		return false
+	}
+	if this.DangerousAttacks != that.DangerousAttacks {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *RushSoccerTeamStatisticsValues) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*RushSoccerTeamStatisticsValues)
 	if !ok {
 		return false
 	}
