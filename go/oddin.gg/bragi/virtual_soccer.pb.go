@@ -33,7 +33,9 @@ const (
 	VirtualSoccerEventType_VIRTUAL_SOCCER_EVENT_TYPE_FREE_KICK     VirtualSoccerEventType = 5
 	VirtualSoccerEventType_VIRTUAL_SOCCER_EVENT_TYPE_CORNER_KICK   VirtualSoccerEventType = 6
 	VirtualSoccerEventType_VIRTUAL_SOCCER_EVENT_TYPE_PERIOD_CHANGE VirtualSoccerEventType = 7
-	// Shot events require upstream clean-data support; not emitted until it lands.
+	// Deprecated. Mapped from the vision provider's shot outcome situations (keeper caught / did not catch the
+	// ball), which the provider retired on 2026-09-09; not emitted since. Kept for wire compatibility. Shot
+	// attempts have no event type and are only counted (total_shots).
 	VirtualSoccerEventType_VIRTUAL_SOCCER_EVENT_TYPE_SHOT_ON_TARGET  VirtualSoccerEventType = 8
 	VirtualSoccerEventType_VIRTUAL_SOCCER_EVENT_TYPE_SHOT_OFF_TARGET VirtualSoccerEventType = 9
 	// Synthetic: the ball entered the half the attributed team's opponent defends. Edge-triggered - leaving
@@ -1698,9 +1700,14 @@ type VirtualSoccerTeamStatisticsValues struct {
 	FreeKicks uint32 `protobuf:"varint,5,opt,name=free_kicks,json=freeKicks,proto3" json:"free_kicks,omitempty"`
 	// Number of penalty kicks.
 	PenaltyKicks uint32 `protobuf:"varint,6,opt,name=penalty_kicks,json=penaltyKicks,proto3" json:"penalty_kicks,omitempty"`
-	// Number of shots on and off target. Always 0 until upstream shot events are available.
+	// Number of strikes at goal, derived from the vision provider's shot attempts: a team's attempts and goals
+	// reported within ~2 real seconds of each other are one strike. On the provider's own validation against
+	// the game's statistics screen this is ~0.84x the true shot count (headers are mostly missed, some hard
+	// crosses fire) at a per-match correlation of +0.70 - a volume indicator, not a statistics-screen number.
 	TotalShots uint32 `protobuf:"varint,7,opt,name=total_shots,json=totalShots,proto3" json:"total_shots,omitempty"`
-	// Number of shots on target. Always 0 until upstream shot events are available.
+	// Deprecated, always 0. The vision provider retired the shot outcome situations (2026-09-09) and the only
+	// shot outcome the stream carries is the goal; a scored strike is published as a goal, not relabelled on
+	// target. Saved versus off target is not recoverable from the stream.
 	ShotsOnTarget uint32 `protobuf:"varint,8,opt,name=shots_on_target,json=shotsOnTarget,proto3" json:"shots_on_target,omitempty"`
 	// Number of attacks: the ball moved into the half this team's opponent defends. Zone-based (edge-triggered
 	// on the ball crossing the halfway line), regardless of which side upstream attributes possession to.
