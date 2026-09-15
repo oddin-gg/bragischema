@@ -5565,7 +5565,8 @@ quarter: jspb.Message.getFieldWithDefault(msg, 4, 0),
 down: jspb.Message.getFieldWithDefault(msg, 5, 0),
 firstDownDistance: (f = msg.getFirstDownDistance()) && proto.bragi.RushMaddenFirstDownDistance.toObject(includeInstance, f),
 yardsToEndzone: jspb.Message.getFieldWithDefault(msg, 7, 0),
-possessionSide: jspb.Message.getFieldWithDefault(msg, 8, 0)
+possessionSide: jspb.Message.getFieldWithDefault(msg, 8, 0),
+timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -5635,6 +5636,11 @@ proto.bragi.RushMaddenTimelineEvent.deserializeBinaryFromReader = function(msg, 
     case 8:
       var value = /** @type {!proto.bragi.RushMaddenPossessionSide} */ (reader.readEnum());
       msg.setPossessionSide(value);
+      break;
+    case 9:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setTimestamp(value);
       break;
     default:
       reader.skipField();
@@ -5721,6 +5727,14 @@ proto.bragi.RushMaddenTimelineEvent.serializeBinaryToWriter = function(message, 
     writer.writeEnum(
       8,
       f
+    );
+  }
+  f = message.getTimestamp();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
 };
@@ -5905,6 +5919,43 @@ proto.bragi.RushMaddenTimelineEvent.prototype.getPossessionSide = function() {
  */
 proto.bragi.RushMaddenTimelineEvent.prototype.setPossessionSide = function(value) {
   return jspb.Message.setProto3EnumField(this, 8, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp timestamp = 9;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.bragi.RushMaddenTimelineEvent.prototype.getTimestamp = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 9));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.bragi.RushMaddenTimelineEvent} returns this
+*/
+proto.bragi.RushMaddenTimelineEvent.prototype.setTimestamp = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.bragi.RushMaddenTimelineEvent} returns this
+ */
+proto.bragi.RushMaddenTimelineEvent.prototype.clearTimestamp = function() {
+  return this.setTimestamp(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.RushMaddenTimelineEvent.prototype.hasTimestamp = function() {
+  return jspb.Message.getField(this, 9) != null;
 };
 
 
