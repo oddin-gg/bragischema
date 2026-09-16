@@ -338,6 +338,7 @@ func (m *RushCricketTimelineEvent) CloneVT() *RushCricketTimelineEvent {
 	r.Runs = m.Runs
 	r.BoundaryRun = m.BoundaryRun
 	r.BowlerError = m.BowlerError
+	r.Timestamp = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.Timestamp).CloneVT())
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -1145,6 +1146,9 @@ func (this *RushCricketTimelineEvent) EqualVT(that *RushCricketTimelineEvent) bo
 		return false
 	}
 	if this.BowlerError != that.BowlerError {
+		return false
+	}
+	if !(*timestamppb1.Timestamp)(this.Timestamp).EqualVT((*timestamppb1.Timestamp)(that.Timestamp)) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)

@@ -115,6 +115,9 @@ message RushBasketballTimelineEvent {
   google.protobuf.Duration remaining_time = 3;
   // Period.
   RushBasketballPeriod period = 4;
+  // When this event was first observed, not the in-game moment it occurred - upstream sends no
+  // such value. Unset on events first observed before this field existed.
+  google.protobuf.Timestamp timestamp = 5;
 }
 
 // ---------------------------------------------------------------------------------------------------------------------

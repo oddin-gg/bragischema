@@ -310,6 +310,9 @@ message RushHockeyTimelineEvent {
   RushHockeyPeriod period = 4;
   // Penalty detail. Set on PENALTY events only.
   RushHockeyPenalty penalty = 5;
+  // When this event was first observed, not the in-game moment it occurred - upstream sends no
+  // such value. Unset on events first observed before this field existed.
+  google.protobuf.Timestamp timestamp = 6;
 }
 
 // Detail of a penalty as it was called. Unlike RushHockeyActivePenalty it stays on the timeline once

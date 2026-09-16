@@ -139,6 +139,9 @@ message RushCricketTimelineEvent {
   RushCricketBoundaryRun boundary_run = 5;
   // Bowler error if applicable
   RushCricketBowlerError bowler_error = 6;
+  // When this event was first observed, not the in-game moment it occurred - upstream sends no
+  // such value. Unset on events first observed before this field existed.
+  google.protobuf.Timestamp timestamp = 7;
 }
 
 // ---------------------------------------------------------------------------------------------------------------------

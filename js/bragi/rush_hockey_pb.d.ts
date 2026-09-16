@@ -836,6 +836,11 @@ export class RushHockeyTimelineEvent extends jspb.Message {
   getPenalty(): RushHockeyPenalty | undefined;
   setPenalty(value?: RushHockeyPenalty): void;
 
+  hasTimestamp(): boolean;
+  clearTimestamp(): void;
+  getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RushHockeyTimelineEvent.AsObject;
   static toObject(includeInstance: boolean, msg: RushHockeyTimelineEvent): RushHockeyTimelineEvent.AsObject;
@@ -853,6 +858,7 @@ export namespace RushHockeyTimelineEvent {
     elapsedTime?: google_protobuf_duration_pb.Duration.AsObject,
     period: RushHockeyPeriodMap[keyof RushHockeyPeriodMap],
     penalty?: RushHockeyPenalty.AsObject,
+    timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
 

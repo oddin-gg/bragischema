@@ -196,6 +196,9 @@ message RushSoccerTimelineEvent {
   // Ball position at the tick the event was first observed; unset when unknown (ball tracking was stale at
   // that tick, or the event predates the state the builder resumed from - positions are never backfilled).
   RushSoccerPitchPosition position = 6;
+  // When this event was first observed, not the in-game moment it occurred - upstream sends no
+  // such value. Unset on events first observed before this field existed.
+  google.protobuf.Timestamp timestamp = 7;
 }
 
 // ---------------------------------------------------------------------------------------------------------------------

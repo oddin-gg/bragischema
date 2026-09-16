@@ -343,6 +343,11 @@ export class RushBasketballTimelineEvent extends jspb.Message {
   getPeriod(): RushBasketballPeriodMap[keyof RushBasketballPeriodMap];
   setPeriod(value: RushBasketballPeriodMap[keyof RushBasketballPeriodMap]): void;
 
+  hasTimestamp(): boolean;
+  clearTimestamp(): void;
+  getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RushBasketballTimelineEvent.AsObject;
   static toObject(includeInstance: boolean, msg: RushBasketballTimelineEvent): RushBasketballTimelineEvent.AsObject;
@@ -359,6 +364,7 @@ export namespace RushBasketballTimelineEvent {
     eventType: RushBasketballEventTypeMap[keyof RushBasketballEventTypeMap],
     remainingTime?: google_protobuf_duration_pb.Duration.AsObject,
     period: RushBasketballPeriodMap[keyof RushBasketballPeriodMap],
+    timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
 

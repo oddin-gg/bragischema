@@ -680,6 +680,7 @@ func (m *RushHockeyTimelineEvent) CloneVT() *RushHockeyTimelineEvent {
 	r.ElapsedTime = (*durationpb.Duration)((*durationpb1.Duration)(m.ElapsedTime).CloneVT())
 	r.Period = m.Period
 	r.Penalty = m.Penalty.CloneVT()
+	r.Timestamp = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.Timestamp).CloneVT())
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -1839,6 +1840,9 @@ func (this *RushHockeyTimelineEvent) EqualVT(that *RushHockeyTimelineEvent) bool
 		return false
 	}
 	if !this.Penalty.EqualVT(that.Penalty) {
+		return false
+	}
+	if !(*timestamppb1.Timestamp)(this.Timestamp).EqualVT((*timestamppb1.Timestamp)(that.Timestamp)) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
