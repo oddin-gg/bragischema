@@ -258,6 +258,9 @@ message RushMaddenTimelineEvent {
   uint32 yards_to_endzone = 7;
   // Which side was in possession at the moment of the event.
   RushMaddenPossessionSide possession_side = 8;
+  // When this event was first observed, not the in-game moment the play occurred - upstream sends
+  // no such value. Unset on events first observed before this field existed.
+  google.protobuf.Timestamp timestamp = 9;
 }
 
 // ---------------------------------------------------------------------------------------------------------------------

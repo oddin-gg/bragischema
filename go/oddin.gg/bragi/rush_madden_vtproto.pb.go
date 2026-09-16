@@ -639,6 +639,7 @@ func (m *RushMaddenTimelineEvent) CloneVT() *RushMaddenTimelineEvent {
 	r.FirstDownDistance = m.FirstDownDistance.CloneVT()
 	r.YardsToEndzone = m.YardsToEndzone
 	r.PossessionSide = m.PossessionSide
+	r.Timestamp = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.Timestamp).CloneVT())
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -1733,6 +1734,9 @@ func (this *RushMaddenTimelineEvent) EqualVT(that *RushMaddenTimelineEvent) bool
 		return false
 	}
 	if this.PossessionSide != that.PossessionSide {
+		return false
+	}
+	if !(*timestamppb1.Timestamp)(this.Timestamp).EqualVT((*timestamppb1.Timestamp)(that.Timestamp)) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)

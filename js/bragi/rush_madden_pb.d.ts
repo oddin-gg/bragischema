@@ -750,6 +750,11 @@ export class RushMaddenTimelineEvent extends jspb.Message {
   getPossessionSide(): RushMaddenPossessionSideMap[keyof RushMaddenPossessionSideMap];
   setPossessionSide(value: RushMaddenPossessionSideMap[keyof RushMaddenPossessionSideMap]): void;
 
+  hasTimestamp(): boolean;
+  clearTimestamp(): void;
+  getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RushMaddenTimelineEvent.AsObject;
   static toObject(includeInstance: boolean, msg: RushMaddenTimelineEvent): RushMaddenTimelineEvent.AsObject;
@@ -770,6 +775,7 @@ export namespace RushMaddenTimelineEvent {
     firstDownDistance?: RushMaddenFirstDownDistance.AsObject,
     yardsToEndzone: number,
     possessionSide: RushMaddenPossessionSideMap[keyof RushMaddenPossessionSideMap],
+    timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
 
