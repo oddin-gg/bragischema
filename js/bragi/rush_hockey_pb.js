@@ -6374,7 +6374,8 @@ teamUrn: jspb.Message.getFieldWithDefault(msg, 1, ""),
 eventType: jspb.Message.getFieldWithDefault(msg, 2, 0),
 elapsedTime: (f = msg.getElapsedTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
 period: jspb.Message.getFieldWithDefault(msg, 4, 0),
-penalty: (f = msg.getPenalty()) && proto.bragi.RushHockeyPenalty.toObject(includeInstance, f)
+penalty: (f = msg.getPenalty()) && proto.bragi.RushHockeyPenalty.toObject(includeInstance, f),
+timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -6432,6 +6433,11 @@ proto.bragi.RushHockeyTimelineEvent.deserializeBinaryFromReader = function(msg, 
       var value = new proto.bragi.RushHockeyPenalty;
       reader.readMessage(value,proto.bragi.RushHockeyPenalty.deserializeBinaryFromReader);
       msg.setPenalty(value);
+      break;
+    case 6:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setTimestamp(value);
       break;
     default:
       reader.skipField();
@@ -6497,6 +6503,14 @@ proto.bragi.RushHockeyTimelineEvent.serializeBinaryToWriter = function(message, 
       5,
       f,
       proto.bragi.RushHockeyPenalty.serializeBinaryToWriter
+    );
+  }
+  f = message.getTimestamp();
+  if (f != null) {
+    writer.writeMessage(
+      6,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
 };
@@ -6627,6 +6641,43 @@ proto.bragi.RushHockeyTimelineEvent.prototype.clearPenalty = function() {
  */
 proto.bragi.RushHockeyTimelineEvent.prototype.hasPenalty = function() {
   return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional google.protobuf.Timestamp timestamp = 6;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.bragi.RushHockeyTimelineEvent.prototype.getTimestamp = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 6));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.bragi.RushHockeyTimelineEvent} returns this
+*/
+proto.bragi.RushHockeyTimelineEvent.prototype.setTimestamp = function(value) {
+  return jspb.Message.setWrapperField(this, 6, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.bragi.RushHockeyTimelineEvent} returns this
+ */
+proto.bragi.RushHockeyTimelineEvent.prototype.clearTimestamp = function() {
+  return this.setTimestamp(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.RushHockeyTimelineEvent.prototype.hasTimestamp = function() {
+  return jspb.Message.getField(this, 6) != null;
 };
 
 

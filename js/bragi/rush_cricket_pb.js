@@ -3262,7 +3262,8 @@ eventType: jspb.Message.getFieldWithDefault(msg, 2, 0),
 ballState: (f = msg.getBallState()) && proto.bragi.RushCricketBallState.toObject(includeInstance, f),
 runs: jspb.Message.getFieldWithDefault(msg, 4, 0),
 boundaryRun: jspb.Message.getFieldWithDefault(msg, 5, 0),
-bowlerError: jspb.Message.getFieldWithDefault(msg, 6, 0)
+bowlerError: jspb.Message.getFieldWithDefault(msg, 6, 0),
+timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3323,6 +3324,11 @@ proto.bragi.RushCricketTimelineEvent.deserializeBinaryFromReader = function(msg,
     case 6:
       var value = /** @type {!proto.bragi.RushCricketBowlerError} */ (reader.readEnum());
       msg.setBowlerError(value);
+      break;
+    case 7:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setTimestamp(value);
       break;
     default:
       reader.skipField();
@@ -3394,6 +3400,14 @@ proto.bragi.RushCricketTimelineEvent.serializeBinaryToWriter = function(message,
     writer.writeEnum(
       6,
       f
+    );
+  }
+  f = message.getTimestamp();
+  if (f != null) {
+    writer.writeMessage(
+      7,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
 };
@@ -3523,6 +3537,43 @@ proto.bragi.RushCricketTimelineEvent.prototype.getBowlerError = function() {
  */
 proto.bragi.RushCricketTimelineEvent.prototype.setBowlerError = function(value) {
   return jspb.Message.setProto3EnumField(this, 6, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp timestamp = 7;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.bragi.RushCricketTimelineEvent.prototype.getTimestamp = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 7));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.bragi.RushCricketTimelineEvent} returns this
+*/
+proto.bragi.RushCricketTimelineEvent.prototype.setTimestamp = function(value) {
+  return jspb.Message.setWrapperField(this, 7, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.bragi.RushCricketTimelineEvent} returns this
+ */
+proto.bragi.RushCricketTimelineEvent.prototype.clearTimestamp = function() {
+  return this.setTimestamp(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.RushCricketTimelineEvent.prototype.hasTimestamp = function() {
+  return jspb.Message.getField(this, 7) != null;
 };
 
 

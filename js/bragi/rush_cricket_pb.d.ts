@@ -414,6 +414,11 @@ export class RushCricketTimelineEvent extends jspb.Message {
   getBowlerError(): RushCricketBowlerErrorMap[keyof RushCricketBowlerErrorMap];
   setBowlerError(value: RushCricketBowlerErrorMap[keyof RushCricketBowlerErrorMap]): void;
 
+  hasTimestamp(): boolean;
+  clearTimestamp(): void;
+  getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RushCricketTimelineEvent.AsObject;
   static toObject(includeInstance: boolean, msg: RushCricketTimelineEvent): RushCricketTimelineEvent.AsObject;
@@ -432,6 +437,7 @@ export namespace RushCricketTimelineEvent {
     runs: number,
     boundaryRun: RushCricketBoundaryRunMap[keyof RushCricketBoundaryRunMap],
     bowlerError: RushCricketBowlerErrorMap[keyof RushCricketBowlerErrorMap],
+    timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
 

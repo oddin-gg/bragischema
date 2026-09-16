@@ -562,6 +562,11 @@ export class VirtualSoccerTimelineEvent extends jspb.Message {
   getPosition(): VirtualSoccerPitchPosition | undefined;
   setPosition(value?: VirtualSoccerPitchPosition): void;
 
+  hasTimestamp(): boolean;
+  clearTimestamp(): void;
+  getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): VirtualSoccerTimelineEvent.AsObject;
   static toObject(includeInstance: boolean, msg: VirtualSoccerTimelineEvent): VirtualSoccerTimelineEvent.AsObject;
@@ -580,6 +585,7 @@ export namespace VirtualSoccerTimelineEvent {
     gameTime?: google_protobuf_duration_pb.Duration.AsObject,
     period: VirtualSoccerPeriodMap[keyof VirtualSoccerPeriodMap],
     position?: VirtualSoccerPitchPosition.AsObject,
+    timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
 

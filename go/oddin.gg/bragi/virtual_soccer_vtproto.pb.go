@@ -435,6 +435,7 @@ func (m *VirtualSoccerTimelineEvent) CloneVT() *VirtualSoccerTimelineEvent {
 	r.GameTime = (*durationpb.Duration)((*durationpb1.Duration)(m.GameTime).CloneVT())
 	r.Period = m.Period
 	r.Position = m.Position.CloneVT()
+	r.Timestamp = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.Timestamp).CloneVT())
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -1400,6 +1401,9 @@ func (this *VirtualSoccerTimelineEvent) EqualVT(that *VirtualSoccerTimelineEvent
 		return false
 	}
 	if !this.Position.EqualVT(that.Position) {
+		return false
+	}
+	if !(*timestamppb1.Timestamp)(this.Timestamp).EqualVT((*timestamppb1.Timestamp)(that.Timestamp)) {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
