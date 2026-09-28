@@ -8,6 +8,74 @@ if (-not (Get-Command k6 -ErrorAction SilentlyContinue)) {
 
 Set-Location $PSScriptRoot
 
+# --- Auth preflight -------------------------------------------------------
+# One unary MatchTimelineSports call before the suite. Every RPC on this
+# service authenticates the same way, so a rejected token means all 9 tests
+# would fail on PermissionDenied — which reads like 9 product defects instead
+# of one expired token. Stop here with a single unambiguous result.
+#
+# Exit codes this script uses:
+#   0  all tests passed
+#   1  one or more tests failed
+#   3  AUTH FAILED     - token rejected; no tests were run
+#   4  UNREACHABLE     - endpoint not reachable (VPN down); no tests were run
+#
+# Set BRAGI_SKIP_PREFLIGHT=1 to bypass (e.g. when deliberately testing the
+# service's own auth behaviour).
+if ($env:BRAGI_SKIP_PREFLIGHT -ne "1") {
+    Write-Host "  Preflight: checking BRAGI_TOKEN against MatchTimelineSports ..." -ForegroundColor Gray
+
+    # Capture via --console-output rather than `2>&1`. k6 writes console.log to
+    # stderr, and under PS 5.1 redirecting a native command's stderr wraps each
+    # line in an ErrorRecord (NativeCommandError) — which $ErrorActionPreference
+    # = "Stop" turns into a terminating error, killing the runner before it can
+    # report anything. Writing to a file keeps stderr untouched.
+    $preflightLog = Join-Path $env:TEMP "bragi-preflight-$PID.log"
+    & k6 run --quiet --console-output $preflightLog preflight.js | Out-Null
+    $preflight = if (Test-Path $preflightLog) { Get-Content $preflightLog -Raw } else { "" }
+    Remove-Item $preflightLog -ErrorAction SilentlyContinue
+
+    if ($preflight -match 'BRAGI_PREFLIGHT_AUTH_FAILED reason=([^"\r\n]*)') {
+        $reason = $matches[1].Trim()
+        Write-Host ""
+        Write-Host "  ##############################################" -ForegroundColor Red
+        Write-Host "  #   AUTH FAILED - check BRAGI_TOKEN          #" -ForegroundColor Red
+        Write-Host "  ##############################################" -ForegroundColor Red
+        Write-Host ""
+        Write-Host "    $reason" -ForegroundColor Red
+        Write-Host ""
+        Write-Host "    Bragi rejected the token, so all 9 tests would fail for this" -ForegroundColor Yellow
+        Write-Host "    one reason. Skipping the suite - this is NOT a product failure." -ForegroundColor Yellow
+        Write-Host ""
+        Write-Host "    Set a valid token and rerun:" -ForegroundColor Gray
+        Write-Host '      $env:BRAGI_TOKEN = "<token>"' -ForegroundColor Gray
+        Write-Host "      .\run_tests.ps1" -ForegroundColor Gray
+        Write-Host ""
+        exit 3
+    }
+
+    if ($preflight -match 'BRAGI_PREFLIGHT_UNREACHABLE reason=([^"\r\n]*)') {
+        $reason = $matches[1].Trim()
+        Write-Host ""
+        Write-Host "  ERROR: Bragi endpoint unreachable - is the VPN connected?" -ForegroundColor Red
+        Write-Host "         $reason" -ForegroundColor Red
+        Write-Host ""
+        exit 4
+    }
+
+    if ($preflight -notmatch 'BRAGI_PREFLIGHT_OK') {
+        # Preflight itself broke (k6 error, proto load failure). Don't guess -
+        # surface it rather than running a suite we can't trust.
+        Write-Host ""
+        Write-Host "  ERROR: preflight did not report a result. Output:" -ForegroundColor Red
+        Write-Host $preflight -ForegroundColor DarkGray
+        Write-Host ""
+        exit 4
+    }
+
+    Write-Host "  Preflight: token accepted." -ForegroundColor Green
+}
+
 $tests = @(
     "match_timeline_sports.js",
     "match_timeline_tournaments.js",
