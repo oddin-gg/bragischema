@@ -6,6 +6,8 @@ if (-not (Get-Command k6 -ErrorAction SilentlyContinue)) {
     exit 1
 }
 
+Set-Location $PSScriptRoot
+
 $tests = @(
     "match_timeline_sports.js",
     "match_timeline_tournaments.js",
@@ -17,8 +19,6 @@ $tests = @(
     "live_data_feed.js",
     "match_events_feed.js"
 )
-
-Set-Location $PSScriptRoot
 
 Write-Host ""
 Write-Host "  ==========================================" -ForegroundColor Cyan
@@ -35,8 +35,27 @@ foreach ($test in $tests) {
     $idx++
     Write-Host "  [$idx/$total] Running $test ..." -ForegroundColor Gray
 
-    $output = & k6 run $test 2>&1 | Out-String
+    # Route k6's stderr streams (console.log + k6's own level=... lines) into
+    # files and merge them into $output, instead of `2>&1` into the pipeline.
+    # Under PS 5.1, redirecting a native command's stderr wraps every line in a
+    # NativeCommandError ErrorRecord; combined with $ErrorActionPreference =
+    # "Stop" at the top of this script, the FIRST failing test ("thresholds on
+    # metrics 'checks' have been crossed" goes to stderr) killed the whole
+    # runner mid-loop — so no results table was printed and the suite's exit
+    # code came from the terminating error rather than from the tests.
+    $consoleLog = Join-Path $env:TEMP "bragi-k6-console-$PID.log"
+    $k6Log      = Join-Path $env:TEMP "bragi-k6-log-$PID.log"
+
+    $stdout = & k6 run --console-output $consoleLog "--log-output=file=$k6Log" $test | Out-String
     $exitCode = $LASTEXITCODE
+
+    $output = $stdout
+    foreach ($extra in @($consoleLog, $k6Log)) {
+        if (Test-Path $extra) {
+            $output += (Get-Content $extra -Raw)
+            Remove-Item $extra -ErrorAction SilentlyContinue
+        }
+    }
 
     $passed = ([regex]::Matches($output, [char]0x2713)).Count
     $failed = ([regex]::Matches($output, [char]0x2717)).Count
@@ -93,3 +112,5 @@ if ($allFailures.Count -gt 0) {
 if ($failCount -gt 0) {
     exit 1
 }
+
+exit 0
