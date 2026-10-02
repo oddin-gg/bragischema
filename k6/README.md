@@ -35,6 +35,9 @@ bragischema/
     ├── match_timeline_feed.js                # MatchTimelineFeed (stream)
     ├── live_data_feed.js                     # LiveDataFeed (stream)
     ├── match_events_feed.js                  # MatchEventsFeed (stream)
+    ├── preflight.js                          # Auth preflight (not a test - no checks)
+    ├── lib/
+    │   └── assertions.js                     # Counted check() + shared THRESHOLDS
     ├── run_tests.ps1                         # PowerShell runner with summary
     └── README.md                             # This file
 ```
@@ -52,8 +55,69 @@ Run all tests with summary:
 
 ```powershell
 cd k6
+$env:BRAGI_TOKEN = "<token>"
 .\run_tests.ps1
 ```
+
+### Auth preflight
+
+`run_tests.ps1` makes one unary `MatchTimelineSports` call before running
+anything. Every RPC on this service authenticates the same way, so a stale
+token would otherwise surface as nine independent test failures with 40+
+failed checks -- which reads like nine product defects rather than one
+expired token. When the token is rejected the runner stops with a single
+`AUTH FAILED - check BRAGI_TOKEN` result and runs no tests.
+
+Set `BRAGI_SKIP_PREFLIGHT=1` to bypass it (e.g. when deliberately testing the
+service's own auth behaviour).
+
+### Exit codes
+
+`run_tests.ps1` exits with:
+
+| Code | Meaning |
+|------|---------|
+| `0` | All tests passed |
+| `1` | One or more tests failed -- a real result worth triaging |
+| `3` | **AUTH FAILED** -- token rejected (gRPC 7 / 16) or `BRAGI_TOKEN` unset. No tests ran; not a product failure |
+| `4` | **UNREACHABLE** -- endpoint not reachable (VPN down), or the preflight itself failed |
+
+### Why every test asserts at least once
+
+Each test gates its `check()` calls behind a stream `data` handler or a
+successful unary response. If the RPC is denied, no handler fires and **zero**
+checks run -- and `checks: ['rate==1.0']` is satisfied by an empty Rate, so k6
+would exit 0 and the runner would report PASS for a test that verified nothing.
+
+k6 cannot express "at least one check ran" on the built-in `checks` metric:
+it is a Rate, and Rate supports only the `rate` aggregation. `checks:
+['count>0']` is a config error, not a threshold:
+
+```
+unsupported aggregation method count on metric of type rate.
+supported aggregation methods for this metric are: rate
+```
+
+So `lib/assertions.js` counts assertions in an `assertions_run` Counter and
+thresholds *that*. Import `check` from the helper rather than from `k6` and
+every assertion is counted automatically:
+
+```js
+import { check, THRESHOLDS } from './lib/assertions.js';
+
+export const options = {
+  thresholds: THRESHOLDS,   // checks rate==1.0 AND assertions_run count>0
+};
+```
+
+A test needing extra thresholds should spread these rather than replace them:
+
+```js
+thresholds: { ...THRESHOLDS, grpc_req_duration: ['p(95)<2000'] }
+```
+
+**When adding a test to this suite, import `check` from `lib/assertions.js`.**
+Importing it from `k6` silently opts out of the zero-assertion guard.
 
 ## Configuration
 
@@ -347,7 +411,9 @@ const METADATA = { metadata: { token: BRAGI_TOKEN } };
 
 | Symptom | Cause | Fix |
 |---------|-------|-----|
+| `AUTH FAILED - check BRAGI_TOKEN` (exit 3) | Token rejected or unset — every RPC would fail the same way | Set a valid `BRAGI_TOKEN` and rerun. No tests ran; this is not a product failure |
 | `code: 7, access denied` | Invalid token or VPN not connected | Connect VPN, verify `BRAGI_TOKEN` env var |
+| Test reports PASS with `checks_total: 0` | Should be impossible now — the `assertions_run` threshold fails a test that asserts nothing | If it happens, the test imports `check` from `'k6'` instead of `./lib/assertions.js` |
 | `k6: command not found` | K6 not in PATH | Restart terminal or use full path: `"/c/Program Files/k6/k6.exe"` |
 | Stream tests hang | Server not sending data | Check if live matches exist on the test environment |
 | `snake_case` field checks fail | K6 gRPC uses camelCase (protobuf JSON mapping) | Use `matchUrn` not `match_urn`, `homeScore` not `home_score` |
