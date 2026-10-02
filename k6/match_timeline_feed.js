@@ -1,13 +1,12 @@
 import { Client, Stream } from 'k6/net/grpc';
-import { check, sleep } from 'k6';
+import { sleep } from 'k6';
+import { check, THRESHOLDS } from './lib/assertions.js';
 
 const client = new Client();
 client.load(['../proto'], 'bragi/bragi_service.proto');
 
 export const options = {
-  thresholds: {
-    checks: ['rate==1.0'],
-  },
+  thresholds: THRESHOLDS,
 };
 
 const GRPC_ADDR = __ENV.BRAGI_ADDR || 'api-bragi-test.integration.oddin.dev:443';
