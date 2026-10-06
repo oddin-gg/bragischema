@@ -33,7 +33,8 @@ const (
 	RushSoccerEventType_RUSH_SOCCER_EVENT_TYPE_FREE_KICK     RushSoccerEventType = 5
 	RushSoccerEventType_RUSH_SOCCER_EVENT_TYPE_CORNER_KICK   RushSoccerEventType = 6
 	RushSoccerEventType_RUSH_SOCCER_EVENT_TYPE_PERIOD_CHANGE RushSoccerEventType = 7
-	// Shot events require upstream clean-data support; not emitted until it lands.
+	// Never emitted: the eFootball stream carries no shot-outcome event. Shot attempts have no event type and are
+	// only counted (total_shots).
 	RushSoccerEventType_RUSH_SOCCER_EVENT_TYPE_SHOT_ON_TARGET  RushSoccerEventType = 8
 	RushSoccerEventType_RUSH_SOCCER_EVENT_TYPE_SHOT_OFF_TARGET RushSoccerEventType = 9
 	// Synthetic: the ball entered the half the attributed team's opponent defends. Edge-triggered - leaving
@@ -1769,9 +1770,12 @@ type RushSoccerTeamStatisticsValues struct {
 	FreeKicks uint32 `protobuf:"varint,5,opt,name=free_kicks,json=freeKicks,proto3" json:"free_kicks,omitempty"`
 	// Number of penalty kicks.
 	PenaltyKicks uint32 `protobuf:"varint,6,opt,name=penalty_kicks,json=penaltyKicks,proto3" json:"penalty_kicks,omitempty"`
-	// Number of shots on and off target. Always 0 until upstream shot events are available.
+	// Number of shots: one per upstream shot attempt (subzero merges the vision provider's per-frame attempt runs
+	// into one attempt per strike and adds one for a goal without an attempt). Goals are not counted as shots, so
+	// a feed without shot attempts reports 0, which means "no shot data". A volume indicator, not an exact count.
 	TotalShots uint32 `protobuf:"varint,7,opt,name=total_shots,json=totalShots,proto3" json:"total_shots,omitempty"`
-	// Number of shots on target. Always 0 until upstream shot events are available.
+	// Always 0. The eFootball stream reports whether a shot scored and nothing finer (saved vs off target is not
+	// recoverable), and a goal is published as a goal rather than relabelled as on target.
 	ShotsOnTarget uint32 `protobuf:"varint,8,opt,name=shots_on_target,json=shotsOnTarget,proto3" json:"shots_on_target,omitempty"`
 	// Number of attacks: the ball moved into the half this team's opponent defends. Zone-based (edge-triggered
 	// on the ball crossing the halfway line), regardless of which side upstream attributes possession to.
