@@ -1,6 +1,7 @@
 import { Client, Stream } from 'k6/net/grpc';
 import { sleep } from 'k6';
 import { check, THRESHOLDS } from './lib/assertions.js';
+import { isValidSport } from './lib/sports.js';
 
 const client = new Client();
 client.load(['../proto'], 'bragi/bragi_service.proto');
@@ -48,10 +49,7 @@ export default function () {
           '[SportsFeed] All matchCounts are non-negative': (s) =>
             s.every(item => item.matchCount >= 0),
           '[SportsFeed] Sports are valid enum values': (s) =>
-            s.every(item => [
-              'SPORT_CS2', 'SPORT_DOTA2', 'SPORT_LOL', 'SPORT_VALORANT',
-              'SPORT_RUSH_SOCCER', 'SPORT_RUSH_BASKETBALL',
-            ].includes(item.sport)),
+            s.every(item => isValidSport(item.sport)),
           '[SportsFeed] No duplicate sports in message': (s) => {
             const sportNames = s.map(item => item.sport);
             return new Set(sportNames).size === sportNames.length;
