@@ -1,5 +1,6 @@
 import grpc from 'k6/net/grpc';
 import { check, THRESHOLDS } from './lib/assertions.js';
+import { isValidSport } from './lib/sports.js';
 
 const client = new grpc.Client();
 client.load(['../proto'], 'bragi/bragi_service.proto');
@@ -41,10 +42,7 @@ export default function () {
         '[AllSports] Each item has sport field': (s) => typeof s.sport === 'string' && s.sport.length > 0,
         '[AllSports] Each item has matchCount field': (s) => typeof s.matchCount === 'number',
         '[AllSports] matchCount is non-negative': (s) => s.matchCount >= 0,
-        '[AllSports] sport is a valid enum value': (s) => [
-          'SPORT_CS2', 'SPORT_DOTA2', 'SPORT_LOL', 'SPORT_VALORANT',
-          'SPORT_RUSH_SOCCER', 'SPORT_RUSH_BASKETBALL',
-        ].includes(s.sport),
+        '[AllSports] sport is a valid enum value': (s) => isValidSport(s.sport),
       });
 
       // Validate all sports have valid structure
