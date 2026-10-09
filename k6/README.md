@@ -37,7 +37,8 @@ bragischema/
     ├── match_events_feed.js                  # MatchEventsFeed (stream)
     ├── preflight.js                          # Auth preflight (not a test - no checks)
     ├── lib/
-    │   └── assertions.js                     # Counted check() + shared THRESHOLDS
+    │   ├── assertions.js                     # Counted check() + shared THRESHOLDS
+    │   └── sports.js                         # isValidSport(): is it a Sport enum name
     ├── run_tests.ps1                         # PowerShell runner with summary
     └── README.md                             # This file
 ```
@@ -164,7 +165,7 @@ const METADATA = { metadata: { token: BRAGI_TOKEN } };
 | 5 | `[AllSports] Each item has sport field` | Each sport has a valid string sport name |
 | 6 | `[AllSports] Each item has matchCount field` | Each sport has a numeric match count |
 | 7 | `[AllSports] matchCount is non-negative` | No negative counts |
-| 8 | `[AllSports] sport is a valid enum value` | Sport is one of: CS2, DOTA2, LOL, VALORANT, RUSH_SOCCER, RUSH_BASKETBALL |
+| 8 | `[AllSports] sport is a valid enum value` | Sport decodes to a `Sport` enum name other than `SPORT_UNSPECIFIED` (`lib/sports.js`) |
 | 9 | `[AllSports] All items have sport and matchCount` | Validates structure across all items |
 | 10 | `[AllSports] No duplicate sports` | No sport appears twice |
 | 11 | `[LiveSports] Status is OK` | `live_only=true` variant returns OK |
@@ -281,7 +282,7 @@ const METADATA = { metadata: { token: BRAGI_TOKEN } };
 | 4 | `[SportsFeed] Each item has sport field` | Valid sport string |
 | 5 | `[SportsFeed] Each item has matchCount` | Numeric count |
 | 6 | `[SportsFeed] All matchCounts are non-negative` | No negatives |
-| 7 | `[SportsFeed] Sports are valid enum values` | Enum validation |
+| 7 | `[SportsFeed] Sports are valid enum values` | Every sport decodes to a `Sport` enum name other than `SPORT_UNSPECIFIED` (`lib/sports.js`) |
 | 8 | `[SportsFeed] No duplicate sports in message` | Uniqueness |
 
 **Stream behavior:** Connects, receives first message, validates, then closes.
