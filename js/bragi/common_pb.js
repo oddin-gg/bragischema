@@ -41,6 +41,7 @@ goog.exportSymbol('proto.bragi.Player', null, global);
 goog.exportSymbol('proto.bragi.PlayerProfile', null, global);
 goog.exportSymbol('proto.bragi.Sport', null, global);
 goog.exportSymbol('proto.bragi.SportRoster', null, global);
+goog.exportSymbol('proto.bragi.Subsport', null, global);
 goog.exportSymbol('proto.bragi.Team', null, global);
 goog.exportSymbol('proto.bragi.TeamProfile', null, global);
 goog.exportSymbol('proto.bragi.Tournament', null, global);
@@ -2258,7 +2259,8 @@ isOffline: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
 startDate: (f = msg.getStartDate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
 organizerId: jspb.Message.getFieldWithDefault(msg, 5, 0),
 organizerName: jspb.Message.getFieldWithDefault(msg, 6, ""),
-endDate: (f = msg.getEndDate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+endDate: (f = msg.getEndDate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+subsport: jspb.Message.getFieldWithDefault(msg, 8, 0)
   };
 
   if (includeInstance) {
@@ -2324,6 +2326,10 @@ proto.bragi.Tournament.deserializeBinaryFromReader = function(msg, reader) {
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setEndDate(value);
+      break;
+    case 8:
+      var value = /** @type {!proto.bragi.Subsport} */ (reader.readEnum());
+      msg.setSubsport(value);
       break;
     default:
       reader.skipField();
@@ -2403,6 +2409,13 @@ proto.bragi.Tournament.serializeBinaryToWriter = function(message, writer) {
       7,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = message.getSubsport();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      8,
+      f
     );
   }
 };
@@ -2569,6 +2582,24 @@ proto.bragi.Tournament.prototype.clearEndDate = function() {
  */
 proto.bragi.Tournament.prototype.hasEndDate = function() {
   return jspb.Message.getField(this, 7) != null;
+};
+
+
+/**
+ * optional Subsport subsport = 8;
+ * @return {!proto.bragi.Subsport}
+ */
+proto.bragi.Tournament.prototype.getSubsport = function() {
+  return /** @type {!proto.bragi.Subsport} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+};
+
+
+/**
+ * @param {!proto.bragi.Subsport} value
+ * @return {!proto.bragi.Tournament} returns this
+ */
+proto.bragi.Tournament.prototype.setSubsport = function(value) {
+  return jspb.Message.setProto3EnumField(this, 8, value);
 };
 
 
@@ -4329,6 +4360,14 @@ proto.bragi.Sport = {
   SPORT_TABLE_TENNIS: 12,
   SPORT_RUSH_HOCKEY: 13,
   SPORT_MOBILE_LEGENDS: 14
+};
+
+/**
+ * @enum {number}
+ */
+proto.bragi.Subsport = {
+  SUBSPORT_UNSPECIFIED: 0,
+  SUBSPORT_VOLTA: 1
 };
 
 /**

@@ -78,9 +78,18 @@ message MatchTimelineSportsRequest {
 message MatchTimelineSportsResponse {
   message SportMatchCount {
     Sport sport = 1;
+    // Includes the matches counted in subsports.
     uint32 match_count = 2;
+    // Matches of this sport that belong to a subsport, one entry per subsport that has
+    // any. Empty when the sport has none.
+    repeated SubsportMatchCount subsports = 3;
   }
   repeated SportMatchCount sports = 1;
+}
+
+message SubsportMatchCount {
+  Subsport subsport = 1;
+  uint32 match_count = 2;
 }
 
 message MatchTimelineTournamentsRequest {
@@ -115,7 +124,11 @@ message MatchTimelineSportsFeedRequest {
 message MatchTimelineSportsFeedResponse {
   message SportMatchCount {
     Sport sport = 1;
+    // Includes the matches counted in subsports.
     uint32 match_count = 2;
+    // Matches of this sport that belong to a subsport, one entry per subsport that has
+    // any. Empty when the sport has none.
+    repeated SubsportMatchCount subsports = 3;
   }
   repeated SportMatchCount sports = 1;
 }
