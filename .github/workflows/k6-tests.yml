@@ -46,17 +46,41 @@ jobs:
   k6-tests:
     runs-on: [self-hosted, linux]
     timeout-minutes: 30
+    outputs:
+      summary: ${{ steps.results.outputs.summary }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Install K6
+        id: install_k6
         run: |
           curl -fsSL https://dl.k6.io/key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/k6-archive-keyring.gpg
           echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
           sudo apt-get update
           sudo apt-get install -y k6
+
+      # One verdict on the token before the suites run. A rejected BRAGI_TOKEN
+      # otherwise fails all nine with PermissionDenied, which reads like an
+      # outage. preflight.js always exits 0 and reports through a sentinel line.
+      - name: Auth preflight
+        id: preflight
+        working-directory: k6
+        env:
+          BRAGI_TOKEN: ${{ secrets.BRAGI_TOKEN }}
+        run: |
+          OUT=$(k6 run --quiet preflight.js 2>&1) || true
+          echo "$OUT" | grep -o 'BRAGI_PREFLIGHT_.*' || true
+          if echo "$OUT" | grep -q 'BRAGI_PREFLIGHT_OK'; then
+            echo "result=ok" >> "$GITHUB_OUTPUT"
+          elif echo "$OUT" | grep -q 'BRAGI_PREFLIGHT_UNREACHABLE'; then
+            echo "result=unreachable" >> "$GITHUB_OUTPUT"
+            exit 1
+          else
+            echo "result=auth_failed" >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
 
       - name: Run match_timeline_sports
         id: test_match_timeline_sports
@@ -139,39 +163,66 @@ jobs:
         env:
           BRAGI_TOKEN: ${{ secrets.BRAGI_TOKEN }}
 
+      # A suite counts as failed unless it succeeded or was deselected in a
+      # manual dispatch. "skipped" after a failed setup step and "cancelled"
+      # are failures too: they verified nothing.
       - name: Check test results
+        id: results
         if: always()
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           FAILED=""
-          add() { [ "$2" = "failure" ] && FAILED="${FAILED:+$FAILED, }$1" || true; }
-          add match_timeline_sports            "${{ steps.test_match_timeline_sports.outcome }}"
-          add match_timeline_tournaments       "${{ steps.test_match_timeline_tournaments.outcome }}"
-          add match_timeline_filters           "${{ steps.test_match_timeline_filters.outcome }}"
-          add team_profile                     "${{ steps.test_team_profile.outcome }}"
-          add match_timeline_feed              "${{ steps.test_match_timeline_feed.outcome }}"
-          add match_timeline_sports_feed       "${{ steps.test_match_timeline_sports_feed.outcome }}"
-          add match_timeline_tournaments_feed  "${{ steps.test_match_timeline_tournaments_feed.outcome }}"
-          add live_data_feed                   "${{ steps.test_live_data_feed.outcome }}"
-          add match_events_feed                "${{ steps.test_match_events_feed.outcome }}"
+          add() { # name, outcome, selected
+            [ "$2" = "success" ] && return
+            [ "$2" = "skipped" ] && [ "$3" = "false" ] && return
+            FAILED="${FAILED:+$FAILED, }$1 ($2)"
+          }
+          add match_timeline_sports            "${{ steps.test_match_timeline_sports.outcome }}"            "${{ github.event_name != 'workflow_dispatch' || inputs.run_match_timeline_sports }}"
+          add match_timeline_tournaments       "${{ steps.test_match_timeline_tournaments.outcome }}"       "${{ github.event_name != 'workflow_dispatch' || inputs.run_match_timeline_tournaments }}"
+          add match_timeline_filters           "${{ steps.test_match_timeline_filters.outcome }}"           "${{ github.event_name != 'workflow_dispatch' || inputs.run_match_timeline_filters }}"
+          add team_profile                     "${{ steps.test_team_profile.outcome }}"                     "${{ github.event_name != 'workflow_dispatch' || inputs.run_team_profile }}"
+          add match_timeline_feed              "${{ steps.test_match_timeline_feed.outcome }}"              "${{ github.event_name != 'workflow_dispatch' || inputs.run_match_timeline_feed }}"
+          add match_timeline_sports_feed       "${{ steps.test_match_timeline_sports_feed.outcome }}"       "${{ github.event_name != 'workflow_dispatch' || inputs.run_match_timeline_sports_feed }}"
+          add match_timeline_tournaments_feed  "${{ steps.test_match_timeline_tournaments_feed.outcome }}"  "${{ github.event_name != 'workflow_dispatch' || inputs.run_match_timeline_tournaments_feed }}"
+          add live_data_feed                   "${{ steps.test_live_data_feed.outcome }}"                   "${{ github.event_name != 'workflow_dispatch' || inputs.run_live_data_feed }}"
+          add match_events_feed                "${{ steps.test_match_events_feed.outcome }}"                "${{ github.event_name != 'workflow_dispatch' || inputs.run_match_events_feed }}"
 
-          if [ -z "$FAILED" ]; then
-            echo "All k6 tests passed"
+          if [ "${{ steps.install_k6.outcome }}" != "success" ]; then
+            SUMMARY="k6 install failed on the runner; no suites ran."
+          elif [ "${{ steps.preflight.outputs.result }}" = "auth_failed" ]; then
+            SUMMARY="BRAGI_TOKEN rejected by Bragi; no suites ran. Check or rotate the BRAGI_TOKEN secret."
+          elif [ "${{ steps.preflight.outputs.result }}" = "unreachable" ]; then
+            SUMMARY="Bragi unreachable from the runner (VPN down?); no suites ran."
+          elif [ -n "$FAILED" ]; then
+            SUMMARY="Failed suites: $FAILED"
+          else
+            echo "All selected k6 suites passed"
             exit 0
           fi
-          echo "::error::Failed k6 suites: $FAILED"
-
-          # Notify Slack on failure (no-op if SLACK_WEBHOOK_URL is unset).
-          if [ -n "$SLACK_WEBHOOK_URL" ]; then
-            RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
-            # Prefer python3 for correct JSON escaping; fall back to a manual
-            # payload (content here is controlled — static suite names + URL).
-            if command -v python3 >/dev/null 2>&1; then
-              PAYLOAD=$(FAILED="$FAILED" RUN_URL="$RUN_URL" python3 -c 'import json, os; print(json.dumps({"text": ":rotating_light: bragischema k6 gRPC tests FAILED\nSuites: {}\nRun: {}".format(os.environ["FAILED"], os.environ["RUN_URL"])}))')
-            else
-              PAYLOAD="{\"text\":\":rotating_light: bragischema k6 gRPC tests FAILED\nSuites: ${FAILED}\nRun: ${RUN_URL}\"}"
-            fi
-            curl -fsS -X POST "$SLACK_WEBHOOK_URL" -H 'Content-Type: application/json' -d "$PAYLOAD"
-          fi
+          echo "summary=$SUMMARY" >> "$GITHUB_OUTPUT"
+          echo "::error::$SUMMARY"
           exit 1
+
+  # Alerting lives in its own job on a GitHub-hosted runner so it still fires
+  # when the self-hosted job never got that far: no runner online (the job
+  # sits queued and is cancelled after 24h), a timeout, or a crashed runner.
+  notify:
+    needs: k6-tests
+    if: ${{ always() && needs.k6-tests.result != 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Notify Slack
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          RESULT: ${{ needs.k6-tests.result }}
+          SUMMARY: ${{ needs.k6-tests.outputs.summary }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          DETAIL="${SUMMARY:-The k6 job did not finish (result: $RESULT). Likely no self-hosted runner picked it up, or it timed out.}"
+          echo "::error::$DETAIL"
+          if [ -z "$SLACK_WEBHOOK_URL" ]; then
+            echo "SLACK_WEBHOOK_URL is not set; skipping the Slack message."
+            exit 0
+          fi
+          PAYLOAD=$(DETAIL="$DETAIL" python3 -c 'import json, os; print(json.dumps({"text": ":rotating_light: bragischema k6 gRPC tests FAILED\n{}\nRun: {}".format(os.environ["DETAIL"], os.environ["RUN_URL"])}))')
+          curl -fsS -X POST "$SLACK_WEBHOOK_URL" -H 'Content-Type: application/json' -d "$PAYLOAD"
