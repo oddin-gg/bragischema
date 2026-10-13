@@ -149,6 +149,11 @@ export namespace MatchTimelineSportsResponse {
     getMatchCount(): number;
     setMatchCount(value: number): void;
 
+    clearSubsportsList(): void;
+    getSubsportsList(): Array<SubsportMatchCount>;
+    setSubsportsList(value: Array<SubsportMatchCount>): void;
+    addSubsports(value?: SubsportMatchCount, index?: number): SubsportMatchCount;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): SportMatchCount.AsObject;
     static toObject(includeInstance: boolean, msg: SportMatchCount): SportMatchCount.AsObject;
@@ -163,7 +168,32 @@ export namespace MatchTimelineSportsResponse {
     export type AsObject = {
       sport: bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap],
       matchCount: number,
+      subsportsList: Array<SubsportMatchCount.AsObject>,
     }
+  }
+}
+
+export class SubsportMatchCount extends jspb.Message {
+  getSubsport(): bragi_common_pb.SubsportMap[keyof bragi_common_pb.SubsportMap];
+  setSubsport(value: bragi_common_pb.SubsportMap[keyof bragi_common_pb.SubsportMap]): void;
+
+  getMatchCount(): number;
+  setMatchCount(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SubsportMatchCount.AsObject;
+  static toObject(includeInstance: boolean, msg: SubsportMatchCount): SubsportMatchCount.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: SubsportMatchCount, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SubsportMatchCount;
+  static deserializeBinaryFromReader(message: SubsportMatchCount, reader: jspb.BinaryReader): SubsportMatchCount;
+}
+
+export namespace SubsportMatchCount {
+  export type AsObject = {
+    subsport: bragi_common_pb.SubsportMap[keyof bragi_common_pb.SubsportMap],
+    matchCount: number,
   }
 }
 
@@ -353,6 +383,11 @@ export namespace MatchTimelineSportsFeedResponse {
     getMatchCount(): number;
     setMatchCount(value: number): void;
 
+    clearSubsportsList(): void;
+    getSubsportsList(): Array<SubsportMatchCount>;
+    setSubsportsList(value: Array<SubsportMatchCount>): void;
+    addSubsports(value?: SubsportMatchCount, index?: number): SubsportMatchCount;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): SportMatchCount.AsObject;
     static toObject(includeInstance: boolean, msg: SportMatchCount): SportMatchCount.AsObject;
@@ -367,6 +402,7 @@ export namespace MatchTimelineSportsFeedResponse {
     export type AsObject = {
       sport: bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap],
       matchCount: number,
+      subsportsList: Array<SubsportMatchCount.AsObject>,
     }
   }
 }

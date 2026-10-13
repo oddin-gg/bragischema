@@ -79,6 +79,10 @@ message Tournament {
   uint32 organizer_id = 5;
   string organizer_name = 6;
   google.protobuf.Timestamp end_date = 7;
+  // Subsport the tournament belongs to, e.g. Volta under SPORT_RUSH_SOCCER. A subsport
+  // match keeps its parent sport everywhere else. SUBSPORT_UNSPECIFIED for a plain
+  // tournament of its sport.
+  Subsport subsport = 8;
 }
 
 message Team {
@@ -164,6 +168,14 @@ enum Sport {
   SPORT_TABLE_TENNIS = 12;
   SPORT_RUSH_HOCKEY = 13;
   SPORT_MOBILE_LEGENDS = 14;
+}
+
+// Subsport refines its parent sport. The values are the ids of the platform's
+// subsports table, the same as commons.Subsport in protocol-buffers.
+enum Subsport {
+  SUBSPORT_UNSPECIFIED = 0;
+  // Volta, under SPORT_RUSH_SOCCER (eFootball).
+  SUBSPORT_VOLTA = 1;
 }
 
 enum BestOfType {

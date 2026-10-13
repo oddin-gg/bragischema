@@ -297,6 +297,9 @@ export class Tournament extends jspb.Message {
   getEndDate(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setEndDate(value?: google_protobuf_timestamp_pb.Timestamp): void;
 
+  getSubsport(): SubsportMap[keyof SubsportMap];
+  setSubsport(value: SubsportMap[keyof SubsportMap]): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Tournament.AsObject;
   static toObject(includeInstance: boolean, msg: Tournament): Tournament.AsObject;
@@ -316,6 +319,7 @@ export namespace Tournament {
     organizerId: number,
     organizerName: string,
     endDate?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    subsport: SubsportMap[keyof SubsportMap],
   }
 }
 
@@ -574,6 +578,13 @@ export interface SportMap {
 }
 
 export const Sport: SportMap;
+
+export interface SubsportMap {
+  SUBSPORT_UNSPECIFIED: 0;
+  SUBSPORT_VOLTA: 1;
+}
+
+export const Subsport: SubsportMap;
 
 export interface BestOfTypeMap {
   BEST_OF_TYPE_UNSPECIFIED: 0;
