@@ -657,6 +657,9 @@ export class RushSoccerCurrentMapState extends jspb.Message {
 
   getTeamsMap(): jspb.Map<string, RushSoccerTeamCurrentMapState>;
   clearTeamsMap(): void;
+  getPhase(): RushSoccerMatchPhaseMap[keyof RushSoccerMatchPhaseMap];
+  setPhase(value: RushSoccerMatchPhaseMap[keyof RushSoccerMatchPhaseMap]): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RushSoccerCurrentMapState.AsObject;
   static toObject(includeInstance: boolean, msg: RushSoccerCurrentMapState): RushSoccerCurrentMapState.AsObject;
@@ -674,6 +677,7 @@ export namespace RushSoccerCurrentMapState {
     score?: RushSoccerCurrentMapScoreState.AsObject,
     mapPaused: boolean,
     teamsMap: Array<[string, RushSoccerTeamCurrentMapState.AsObject]>,
+    phase: RushSoccerMatchPhaseMap[keyof RushSoccerMatchPhaseMap],
   }
 }
 
@@ -953,6 +957,7 @@ export interface RushSoccerEventTypeMap {
   RUSH_SOCCER_EVENT_TYPE_SHOT_OFF_TARGET: 9;
   RUSH_SOCCER_EVENT_TYPE_ATTACK: 10;
   RUSH_SOCCER_EVENT_TYPE_DANGEROUS_ATTACK: 11;
+  RUSH_SOCCER_EVENT_TYPE_PERIOD_END: 12;
 }
 
 export const RushSoccerEventType: RushSoccerEventTypeMap;
@@ -973,4 +978,17 @@ export interface RushSoccerPeriodMap {
 }
 
 export const RushSoccerPeriod: RushSoccerPeriodMap;
+
+export interface RushSoccerMatchPhaseMap {
+  RUSH_SOCCER_MATCH_PHASE_UNSPECIFIED: 0;
+  RUSH_SOCCER_MATCH_PHASE_NOT_STARTED: 1;
+  RUSH_SOCCER_MATCH_PHASE_FIRST_HALF: 2;
+  RUSH_SOCCER_MATCH_PHASE_FIRST_HALF_ADDED_TIME: 3;
+  RUSH_SOCCER_MATCH_PHASE_HALF_TIME: 4;
+  RUSH_SOCCER_MATCH_PHASE_SECOND_HALF: 5;
+  RUSH_SOCCER_MATCH_PHASE_SECOND_HALF_ADDED_TIME: 6;
+  RUSH_SOCCER_MATCH_PHASE_ENDED: 7;
+}
+
+export const RushSoccerMatchPhase: RushSoccerMatchPhaseMap;
 

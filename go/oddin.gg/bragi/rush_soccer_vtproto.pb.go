@@ -513,6 +513,7 @@ func (m *RushSoccerCurrentMapState) CloneVT() *RushSoccerCurrentMapState {
 	r.GameTime = m.GameTime.CloneVT()
 	r.Score = m.Score.CloneVT()
 	r.MapPaused = m.MapPaused
+	r.Phase = m.Phase
 	if rhs := m.Teams; rhs != nil {
 		tmpContainer := make(map[string]*RushSoccerTeamCurrentMapState, len(rhs))
 		for k, v := range rhs {
@@ -1588,6 +1589,9 @@ func (this *RushSoccerCurrentMapState) EqualVT(that *RushSoccerCurrentMapState) 
 				return false
 			}
 		}
+	}
+	if this.Phase != that.Phase {
+		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
 }
