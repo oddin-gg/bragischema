@@ -230,6 +230,10 @@ message RushSoccerCurrentMapState {
   bool map_paused = 4;
   // Teams.
   map<string, RushSoccerTeamCurrentMapState> teams = 5;
+  // Where the match is in its regulation. `period` keeps its meaning next to it: FIRST through half time,
+  // SECOND from the second kick-off on, including after full time. A phase change is delivered as a whole
+  // current_map_state partial - there is no partial-update arm for it, same as period and map_paused.
+  RushSoccerMatchPhase phase = 6;
 }
 
 message RushSoccerCurrentMapTimeState {
@@ -354,6 +358,13 @@ enum RushSoccerEventType {
   // together with ATTACK. Set pieces taken in the final third increment the dangerous_attacks counter only
   // and keep their own event type in the timeline.
   RUSH_SOCCER_EVENT_TYPE_DANGEROUS_ATTACK = 11;
+  // Synthetic: a half's clock ran out. Carries the period that ENDED, no team and no clock - the boundary is
+  // only resolvable to the rate at which state arrives, so any time would be invented precision. Derived from
+  // the source's match state: the first half counts as ended from its half-time state on, so the marker always
+  // precedes PERIOD_CHANGE even when the source jumps straight to the second half; the second half counts as
+  // ended from its full-time state on, or once match_status is FINISHED, so a finished match always carries it
+  // and a cancelled match never does. Both markers stay on the timeline for the rest of the match.
+  RUSH_SOCCER_EVENT_TYPE_PERIOD_END = 12;
 }
 
 enum RushSoccerPossessionSide {
@@ -368,4 +379,17 @@ enum RushSoccerPeriod {
   RUSH_SOCCER_PERIOD_UNSPECIFIED = 0;
   RUSH_SOCCER_PERIOD_FIRST = 1;
   RUSH_SOCCER_PERIOD_SECOND = 2;
+}
+
+// Where the match is in its regulation, read from the source's own match state. match_status stays the
+// authority on whether the match is finished or cancelled: ENDED here means the source reported full time.
+enum RushSoccerMatchPhase {
+  RUSH_SOCCER_MATCH_PHASE_UNSPECIFIED = 0;
+  RUSH_SOCCER_MATCH_PHASE_NOT_STARTED = 1;
+  RUSH_SOCCER_MATCH_PHASE_FIRST_HALF = 2;
+  RUSH_SOCCER_MATCH_PHASE_FIRST_HALF_ADDED_TIME = 3;
+  RUSH_SOCCER_MATCH_PHASE_HALF_TIME = 4;
+  RUSH_SOCCER_MATCH_PHASE_SECOND_HALF = 5;
+  RUSH_SOCCER_MATCH_PHASE_SECOND_HALF_ADDED_TIME = 6;
+  RUSH_SOCCER_MATCH_PHASE_ENDED = 7;
 }

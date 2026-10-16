@@ -37,6 +37,7 @@ goog.exportSymbol('proto.bragi.RushSoccerEventType', null, global);
 goog.exportSymbol('proto.bragi.RushSoccerMatchMessage', null, global);
 goog.exportSymbol('proto.bragi.RushSoccerMatchMessage.Payload', null, global);
 goog.exportSymbol('proto.bragi.RushSoccerMatchMessage.Payload.PayloadCase', null, global);
+goog.exportSymbol('proto.bragi.RushSoccerMatchPhase', null, global);
 goog.exportSymbol('proto.bragi.RushSoccerMatchScoreState', null, global);
 goog.exportSymbol('proto.bragi.RushSoccerMatchSnapshot', null, global);
 goog.exportSymbol('proto.bragi.RushSoccerMatchState', null, global);
@@ -5137,7 +5138,8 @@ period: jspb.Message.getFieldWithDefault(msg, 1, 0),
 gameTime: (f = msg.getGameTime()) && proto.bragi.RushSoccerCurrentMapTimeState.toObject(includeInstance, f),
 score: (f = msg.getScore()) && proto.bragi.RushSoccerCurrentMapScoreState.toObject(includeInstance, f),
 mapPaused: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
-teamsMap: (f = msg.getTeamsMap()) ? f.toObject(includeInstance, proto.bragi.RushSoccerTeamCurrentMapState.toObject) : []
+teamsMap: (f = msg.getTeamsMap()) ? f.toObject(includeInstance, proto.bragi.RushSoccerTeamCurrentMapState.toObject) : [],
+phase: jspb.Message.getFieldWithDefault(msg, 6, 0)
   };
 
   if (includeInstance) {
@@ -5197,6 +5199,10 @@ proto.bragi.RushSoccerCurrentMapState.deserializeBinaryFromReader = function(msg
       reader.readMessage(value, function(message, reader) {
         jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readMessage, proto.bragi.RushSoccerTeamCurrentMapState.deserializeBinaryFromReader, "", new proto.bragi.RushSoccerTeamCurrentMapState());
          });
+      break;
+    case 6:
+      var value = /** @type {!proto.bragi.RushSoccerMatchPhase} */ (reader.readEnum());
+      msg.setPhase(value);
       break;
     default:
       reader.skipField();
@@ -5260,6 +5266,13 @@ proto.bragi.RushSoccerCurrentMapState.serializeBinaryToWriter = function(message
   f = message.getTeamsMap(true);
   if (f && f.getLength() > 0) {
     f.serializeBinary(5, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeMessage, proto.bragi.RushSoccerTeamCurrentMapState.serializeBinaryToWriter);
+  }
+  f = message.getPhase();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      6,
+      f
+    );
   }
 };
 
@@ -5394,6 +5407,24 @@ proto.bragi.RushSoccerCurrentMapState.prototype.getTeamsMap = function(opt_noLaz
 proto.bragi.RushSoccerCurrentMapState.prototype.clearTeamsMap = function() {
   this.getTeamsMap().clear();
   return this;
+};
+
+
+/**
+ * optional RushSoccerMatchPhase phase = 6;
+ * @return {!proto.bragi.RushSoccerMatchPhase}
+ */
+proto.bragi.RushSoccerCurrentMapState.prototype.getPhase = function() {
+  return /** @type {!proto.bragi.RushSoccerMatchPhase} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/**
+ * @param {!proto.bragi.RushSoccerMatchPhase} value
+ * @return {!proto.bragi.RushSoccerCurrentMapState} returns this
+ */
+proto.bragi.RushSoccerCurrentMapState.prototype.setPhase = function(value) {
+  return jspb.Message.setProto3EnumField(this, 6, value);
 };
 
 
@@ -7278,7 +7309,8 @@ proto.bragi.RushSoccerEventType = {
   RUSH_SOCCER_EVENT_TYPE_SHOT_ON_TARGET: 8,
   RUSH_SOCCER_EVENT_TYPE_SHOT_OFF_TARGET: 9,
   RUSH_SOCCER_EVENT_TYPE_ATTACK: 10,
-  RUSH_SOCCER_EVENT_TYPE_DANGEROUS_ATTACK: 11
+  RUSH_SOCCER_EVENT_TYPE_DANGEROUS_ATTACK: 11,
+  RUSH_SOCCER_EVENT_TYPE_PERIOD_END: 12
 };
 
 /**
@@ -7298,6 +7330,20 @@ proto.bragi.RushSoccerPeriod = {
   RUSH_SOCCER_PERIOD_UNSPECIFIED: 0,
   RUSH_SOCCER_PERIOD_FIRST: 1,
   RUSH_SOCCER_PERIOD_SECOND: 2
+};
+
+/**
+ * @enum {number}
+ */
+proto.bragi.RushSoccerMatchPhase = {
+  RUSH_SOCCER_MATCH_PHASE_UNSPECIFIED: 0,
+  RUSH_SOCCER_MATCH_PHASE_NOT_STARTED: 1,
+  RUSH_SOCCER_MATCH_PHASE_FIRST_HALF: 2,
+  RUSH_SOCCER_MATCH_PHASE_FIRST_HALF_ADDED_TIME: 3,
+  RUSH_SOCCER_MATCH_PHASE_HALF_TIME: 4,
+  RUSH_SOCCER_MATCH_PHASE_SECOND_HALF: 5,
+  RUSH_SOCCER_MATCH_PHASE_SECOND_HALF_ADDED_TIME: 6,
+  RUSH_SOCCER_MATCH_PHASE_ENDED: 7
 };
 
 goog.object.extend(exports, proto.bragi);
