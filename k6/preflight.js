@@ -10,7 +10,8 @@
 // stdout, which the runner greps for:
 //
 //   BRAGI_PREFLIGHT_AUTH_FAILED   token rejected (gRPC 7 PermissionDenied /
-//                                 16 Unauthenticated) — stop, don't run tests
+//                                 16 Unauthenticated / 3 InvalidArgument
+//                                 naming the token) — stop, don't run tests
 //   BRAGI_PREFLIGHT_UNREACHABLE   endpoint not reachable (VPN down, wrong addr)
 //   BRAGI_PREFLIGHT_OK            token accepted — proceed
 //

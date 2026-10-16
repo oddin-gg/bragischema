@@ -79,7 +79,7 @@ service's own auth behaviour).
 |------|---------|
 | `0` | All tests passed |
 | `1` | One or more tests failed -- a real result worth triaging |
-| `3` | **AUTH FAILED** -- token rejected (gRPC 7 / 16) or `BRAGI_TOKEN` unset. No tests ran; not a product failure |
+| `3` | **AUTH FAILED** -- token rejected (gRPC 7 / 16, or 3 InvalidArgument naming the token) or `BRAGI_TOKEN` unset. No tests ran; not a product failure |
 | `4` | **UNREACHABLE** -- endpoint not reachable (VPN down), or the preflight itself failed |
 
 ### Why every test asserts at least once
