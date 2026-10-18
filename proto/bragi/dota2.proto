@@ -486,3 +486,171 @@ enum Dota2ItemPosition {
   DOTA2_ITEM_POSITION_SLOT7 = 16;
   DOTA2_ITEM_POSITION_SLOT8 = 17;
 }
+
+// ---------------------------------------------------------------------------------------------------------------------
+// EVENTS --------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+
+message Dota2MatchEvents {
+  string match_urn = 1;
+  repeated Dota2Event events = 2;
+}
+
+message Dota2Event {
+  // Wall-clock time when the event was received; history replays keep the original time.
+  google.protobuf.Timestamp timestamp = 1;
+  uint64 map_id = 2;
+  // In-game clock in seconds, negative before the horn. Currently not set for multikill, killstreak and tormentor_killed.
+  optional int32 game_time = 3;
+
+  oneof event {
+    Dota2MapStarted map_started = 10;
+    Dota2MapEnded map_ended = 11;
+    Dota2MapPaused map_paused = 12;
+    Dota2MapResumed map_resumed = 13;
+    Dota2HeroKill hero_kill = 14;
+    Dota2HeroDeathByEnvironment hero_death_by_environment = 15;
+    Dota2TowerDestroyed tower_destroyed = 16;
+    Dota2BarracksDestroyed barracks_destroyed = 17;
+    Dota2AncientDestroyed ancient_destroyed = 18;
+    Dota2MegaCreeps mega_creeps = 19;
+    Dota2RoshanKilled roshan_killed = 20;
+    Dota2RoshanRespawned roshan_respawned = 21;
+    Dota2AegisPickedUp aegis_picked_up = 22;
+    Dota2AegisLost aegis_lost = 23;
+    Dota2Buyback buyback = 24;
+    Dota2DayNightChanged day_night_changed = 25;
+    Dota2Multikill multikill = 26;
+    Dota2Killstreak killstreak = 27;
+    Dota2TormentorKilled tormentor_killed = 28;
+  }
+}
+
+message Dota2EventTeam {
+  string team_urn = 1;
+  Dota2Faction faction = 2;
+}
+
+message Dota2EventPlayer {
+  string player_urn = 1;
+  string team_urn = 2;
+  Dota2Faction faction = 3;
+  // Valve hero id; 0 when unknown.
+  uint32 hero_id = 4;
+}
+
+// ------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
+
+message Dota2MapStarted {}
+
+message Dota2MapEnded {
+  // Not set when the winner is unknown.
+  Dota2EventTeam winner = 1;
+}
+
+message Dota2MapPaused {}
+
+message Dota2MapResumed {}
+
+message Dota2HeroKill {
+  Dota2EventPlayer killer = 1;
+  Dota2EventPlayer victim = 2;
+  bool first_blood = 3;
+  // Kill streak of the killer, including this kill.
+  uint32 killer_streak = 4;
+}
+
+message Dota2HeroDeathByEnvironment {
+  Dota2EventPlayer victim = 1;
+  Dota2EnvironmentKillerKind killer_kind = 2;
+}
+
+message Dota2TowerDestroyed {
+  // Team that lost it.
+  Dota2EventTeam team = 1;
+  // Team credited with the destruction (the opponent of team).
+  Dota2EventTeam attributed_team = 2;
+  Dota2Lane lane = 3;
+  Dota2TowerTier tier = 4;
+}
+
+message Dota2BarracksDestroyed {
+  // Team that lost it.
+  Dota2EventTeam team = 1;
+  // Team credited with the destruction (the opponent of team).
+  Dota2EventTeam attributed_team = 2;
+  Dota2Lane lane = 3;
+  Dota2BarrackType type = 4;
+}
+
+message Dota2AncientDestroyed {
+  // Team that lost it.
+  Dota2EventTeam team = 1;
+  // Team credited with the destruction (the opponent of team).
+  Dota2EventTeam attributed_team = 2;
+}
+
+message Dota2MegaCreeps {
+  // Team that gets mega creeps.
+  Dota2EventTeam team = 1;
+  // Team that lost all its barracks.
+  Dota2EventTeam against_team = 2;
+}
+
+message Dota2RoshanKilled {
+  // Not set when the team that killed Roshan is unknown.
+  Dota2EventTeam team = 1;
+}
+
+message Dota2RoshanRespawned {}
+
+message Dota2AegisPickedUp {
+  Dota2EventPlayer player = 1;
+  // Picked up by the team that did not kill Roshan. Best effort: false when unknown.
+  bool snatched = 2;
+}
+
+message Dota2AegisLost {
+  // Player that held the Aegis.
+  Dota2EventPlayer player = 1;
+}
+
+message Dota2Buyback {
+  Dota2EventPlayer player = 1;
+}
+
+message Dota2DayNightChanged {
+  bool is_day = 1;
+}
+
+message Dota2Multikill {
+  Dota2EventPlayer player = 1;
+  // Kills in the multikill: 2 = double kill, 3 = triple kill, and so on.
+  uint32 kills = 2;
+}
+
+message Dota2Killstreak {
+  Dota2EventPlayer player = 1;
+  // Length of the player's kill streak at the time of the event.
+  uint32 streak = 2;
+}
+
+message Dota2TormentorKilled {
+  Dota2EventPlayer killer = 1;
+}
+
+// ------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
+
+// Only UNKNOWN is sent today. The other values are reserved for a later release.
+enum Dota2EnvironmentKillerKind {
+  DOTA2_ENVIRONMENT_KILLER_KIND_UNSPECIFIED = 0;
+  DOTA2_ENVIRONMENT_KILLER_KIND_UNKNOWN = 1;
+  DOTA2_ENVIRONMENT_KILLER_KIND_TOWER = 2;
+  DOTA2_ENVIRONMENT_KILLER_KIND_NEUTRAL = 3;
+  DOTA2_ENVIRONMENT_KILLER_KIND_ROSHAN = 4;
+  DOTA2_ENVIRONMENT_KILLER_KIND_TORMENTOR = 5;
+}

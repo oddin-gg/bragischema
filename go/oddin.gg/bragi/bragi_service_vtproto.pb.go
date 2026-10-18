@@ -57,6 +57,16 @@ func (m *MatchEventsFeedRequest) CloneVT() *MatchEventsFeedRequest {
 		return (*MatchEventsFeedRequest)(nil)
 	}
 	r := new(MatchEventsFeedRequest)
+	if rhs := m.Sports; rhs != nil {
+		tmpContainer := make([]Sport, len(rhs))
+		copy(tmpContainer, rhs)
+		r.Sports = tmpContainer
+	}
+	if rhs := m.MatchUrns; rhs != nil {
+		tmpContainer := make([]string, len(rhs))
+		copy(tmpContainer, rhs)
+		r.MatchUrns = tmpContainer
+	}
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -95,6 +105,15 @@ func (m *MatchEventsFeedMessage_Cs2) CloneVT() isMatchEventsFeedMessage_Payload 
 	}
 	r := new(MatchEventsFeedMessage_Cs2)
 	r.Cs2 = m.Cs2.CloneVT()
+	return r
+}
+
+func (m *MatchEventsFeedMessage_Dota2) CloneVT() isMatchEventsFeedMessage_Payload {
+	if m == nil {
+		return (*MatchEventsFeedMessage_Dota2)(nil)
+	}
+	r := new(MatchEventsFeedMessage_Dota2)
+	r.Dota2 = m.Dota2.CloneVT()
 	return r
 }
 
@@ -985,6 +1004,24 @@ func (this *MatchEventsFeedRequest) EqualVT(that *MatchEventsFeedRequest) bool {
 	} else if this == nil || that == nil {
 		return false
 	}
+	if len(this.Sports) != len(that.Sports) {
+		return false
+	}
+	for i, vx := range this.Sports {
+		vy := that.Sports[i]
+		if vx != vy {
+			return false
+		}
+	}
+	if len(this.MatchUrns) != len(that.MatchUrns) {
+		return false
+	}
+	for i, vx := range this.MatchUrns {
+		vy := that.MatchUrns[i]
+		if vx != vy {
+			return false
+		}
+	}
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
@@ -1040,6 +1077,31 @@ func (this *MatchEventsFeedMessage_Cs2) EqualVT(thatIface isMatchEventsFeedMessa
 		}
 		if q == nil {
 			q = &CS2MatchEvents{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *MatchEventsFeedMessage_Dota2) EqualVT(thatIface isMatchEventsFeedMessage_Payload) bool {
+	that, ok := thatIface.(*MatchEventsFeedMessage_Dota2)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.Dota2, that.Dota2; p != q {
+		if p == nil {
+			p = &Dota2MatchEvents{}
+		}
+		if q == nil {
+			q = &Dota2MatchEvents{}
 		}
 		if !p.EqualVT(q) {
 			return false

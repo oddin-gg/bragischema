@@ -319,7 +319,8 @@ liveDataFeed: {
     responseSerialize: serialize_bragi_LiveDataFeedMessage,
     responseDeserialize: deserialize_bragi_LiveDataFeedMessage,
   },
-  // Sends all historical events for currently played matches, then only real-time updates
+  // Sends all historical events for currently played matches, then only real-time updates.
+// Carries CS2, CS2 Duels and Dota 2 events. MatchEventsFeedRequest filters by sport and by match; an event must pass both.
 matchEventsFeed: {
     path: '/bragi.Bragi/MatchEventsFeed',
     requestStream: false,

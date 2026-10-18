@@ -1228,6 +1228,598 @@ func (m *Dota2Position) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
+func (m *Dota2MatchEvents) CloneVT() *Dota2MatchEvents {
+	if m == nil {
+		return (*Dota2MatchEvents)(nil)
+	}
+	r := new(Dota2MatchEvents)
+	r.MatchUrn = m.MatchUrn
+	if rhs := m.Events; rhs != nil {
+		tmpContainer := make([]*Dota2Event, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Events = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2MatchEvents) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2Event) CloneVT() *Dota2Event {
+	if m == nil {
+		return (*Dota2Event)(nil)
+	}
+	r := new(Dota2Event)
+	r.Timestamp = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.Timestamp).CloneVT())
+	r.MapId = m.MapId
+	if rhs := m.GameTime; rhs != nil {
+		tmpVal := *rhs
+		r.GameTime = &tmpVal
+	}
+	if m.Event != nil {
+		r.Event = m.Event.(interface{ CloneVT() isDota2Event_Event }).CloneVT()
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2Event) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2Event_MapStarted) CloneVT() isDota2Event_Event {
+	if m == nil {
+		return (*Dota2Event_MapStarted)(nil)
+	}
+	r := new(Dota2Event_MapStarted)
+	r.MapStarted = m.MapStarted.CloneVT()
+	return r
+}
+
+func (m *Dota2Event_MapEnded) CloneVT() isDota2Event_Event {
+	if m == nil {
+		return (*Dota2Event_MapEnded)(nil)
+	}
+	r := new(Dota2Event_MapEnded)
+	r.MapEnded = m.MapEnded.CloneVT()
+	return r
+}
+
+func (m *Dota2Event_MapPaused) CloneVT() isDota2Event_Event {
+	if m == nil {
+		return (*Dota2Event_MapPaused)(nil)
+	}
+	r := new(Dota2Event_MapPaused)
+	r.MapPaused = m.MapPaused.CloneVT()
+	return r
+}
+
+func (m *Dota2Event_MapResumed) CloneVT() isDota2Event_Event {
+	if m == nil {
+		return (*Dota2Event_MapResumed)(nil)
+	}
+	r := new(Dota2Event_MapResumed)
+	r.MapResumed = m.MapResumed.CloneVT()
+	return r
+}
+
+func (m *Dota2Event_HeroKill) CloneVT() isDota2Event_Event {
+	if m == nil {
+		return (*Dota2Event_HeroKill)(nil)
+	}
+	r := new(Dota2Event_HeroKill)
+	r.HeroKill = m.HeroKill.CloneVT()
+	return r
+}
+
+func (m *Dota2Event_HeroDeathByEnvironment) CloneVT() isDota2Event_Event {
+	if m == nil {
+		return (*Dota2Event_HeroDeathByEnvironment)(nil)
+	}
+	r := new(Dota2Event_HeroDeathByEnvironment)
+	r.HeroDeathByEnvironment = m.HeroDeathByEnvironment.CloneVT()
+	return r
+}
+
+func (m *Dota2Event_TowerDestroyed) CloneVT() isDota2Event_Event {
+	if m == nil {
+		return (*Dota2Event_TowerDestroyed)(nil)
+	}
+	r := new(Dota2Event_TowerDestroyed)
+	r.TowerDestroyed = m.TowerDestroyed.CloneVT()
+	return r
+}
+
+func (m *Dota2Event_BarracksDestroyed) CloneVT() isDota2Event_Event {
+	if m == nil {
+		return (*Dota2Event_BarracksDestroyed)(nil)
+	}
+	r := new(Dota2Event_BarracksDestroyed)
+	r.BarracksDestroyed = m.BarracksDestroyed.CloneVT()
+	return r
+}
+
+func (m *Dota2Event_AncientDestroyed) CloneVT() isDota2Event_Event {
+	if m == nil {
+		return (*Dota2Event_AncientDestroyed)(nil)
+	}
+	r := new(Dota2Event_AncientDestroyed)
+	r.AncientDestroyed = m.AncientDestroyed.CloneVT()
+	return r
+}
+
+func (m *Dota2Event_MegaCreeps) CloneVT() isDota2Event_Event {
+	if m == nil {
+		return (*Dota2Event_MegaCreeps)(nil)
+	}
+	r := new(Dota2Event_MegaCreeps)
+	r.MegaCreeps = m.MegaCreeps.CloneVT()
+	return r
+}
+
+func (m *Dota2Event_RoshanKilled) CloneVT() isDota2Event_Event {
+	if m == nil {
+		return (*Dota2Event_RoshanKilled)(nil)
+	}
+	r := new(Dota2Event_RoshanKilled)
+	r.RoshanKilled = m.RoshanKilled.CloneVT()
+	return r
+}
+
+func (m *Dota2Event_RoshanRespawned) CloneVT() isDota2Event_Event {
+	if m == nil {
+		return (*Dota2Event_RoshanRespawned)(nil)
+	}
+	r := new(Dota2Event_RoshanRespawned)
+	r.RoshanRespawned = m.RoshanRespawned.CloneVT()
+	return r
+}
+
+func (m *Dota2Event_AegisPickedUp) CloneVT() isDota2Event_Event {
+	if m == nil {
+		return (*Dota2Event_AegisPickedUp)(nil)
+	}
+	r := new(Dota2Event_AegisPickedUp)
+	r.AegisPickedUp = m.AegisPickedUp.CloneVT()
+	return r
+}
+
+func (m *Dota2Event_AegisLost) CloneVT() isDota2Event_Event {
+	if m == nil {
+		return (*Dota2Event_AegisLost)(nil)
+	}
+	r := new(Dota2Event_AegisLost)
+	r.AegisLost = m.AegisLost.CloneVT()
+	return r
+}
+
+func (m *Dota2Event_Buyback) CloneVT() isDota2Event_Event {
+	if m == nil {
+		return (*Dota2Event_Buyback)(nil)
+	}
+	r := new(Dota2Event_Buyback)
+	r.Buyback = m.Buyback.CloneVT()
+	return r
+}
+
+func (m *Dota2Event_DayNightChanged) CloneVT() isDota2Event_Event {
+	if m == nil {
+		return (*Dota2Event_DayNightChanged)(nil)
+	}
+	r := new(Dota2Event_DayNightChanged)
+	r.DayNightChanged = m.DayNightChanged.CloneVT()
+	return r
+}
+
+func (m *Dota2Event_Multikill) CloneVT() isDota2Event_Event {
+	if m == nil {
+		return (*Dota2Event_Multikill)(nil)
+	}
+	r := new(Dota2Event_Multikill)
+	r.Multikill = m.Multikill.CloneVT()
+	return r
+}
+
+func (m *Dota2Event_Killstreak) CloneVT() isDota2Event_Event {
+	if m == nil {
+		return (*Dota2Event_Killstreak)(nil)
+	}
+	r := new(Dota2Event_Killstreak)
+	r.Killstreak = m.Killstreak.CloneVT()
+	return r
+}
+
+func (m *Dota2Event_TormentorKilled) CloneVT() isDota2Event_Event {
+	if m == nil {
+		return (*Dota2Event_TormentorKilled)(nil)
+	}
+	r := new(Dota2Event_TormentorKilled)
+	r.TormentorKilled = m.TormentorKilled.CloneVT()
+	return r
+}
+
+func (m *Dota2EventTeam) CloneVT() *Dota2EventTeam {
+	if m == nil {
+		return (*Dota2EventTeam)(nil)
+	}
+	r := new(Dota2EventTeam)
+	r.TeamUrn = m.TeamUrn
+	r.Faction = m.Faction
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2EventTeam) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2EventPlayer) CloneVT() *Dota2EventPlayer {
+	if m == nil {
+		return (*Dota2EventPlayer)(nil)
+	}
+	r := new(Dota2EventPlayer)
+	r.PlayerUrn = m.PlayerUrn
+	r.TeamUrn = m.TeamUrn
+	r.Faction = m.Faction
+	r.HeroId = m.HeroId
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2EventPlayer) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2MapStarted) CloneVT() *Dota2MapStarted {
+	if m == nil {
+		return (*Dota2MapStarted)(nil)
+	}
+	r := new(Dota2MapStarted)
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2MapStarted) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2MapEnded) CloneVT() *Dota2MapEnded {
+	if m == nil {
+		return (*Dota2MapEnded)(nil)
+	}
+	r := new(Dota2MapEnded)
+	r.Winner = m.Winner.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2MapEnded) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2MapPaused) CloneVT() *Dota2MapPaused {
+	if m == nil {
+		return (*Dota2MapPaused)(nil)
+	}
+	r := new(Dota2MapPaused)
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2MapPaused) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2MapResumed) CloneVT() *Dota2MapResumed {
+	if m == nil {
+		return (*Dota2MapResumed)(nil)
+	}
+	r := new(Dota2MapResumed)
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2MapResumed) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2HeroKill) CloneVT() *Dota2HeroKill {
+	if m == nil {
+		return (*Dota2HeroKill)(nil)
+	}
+	r := new(Dota2HeroKill)
+	r.Killer = m.Killer.CloneVT()
+	r.Victim = m.Victim.CloneVT()
+	r.FirstBlood = m.FirstBlood
+	r.KillerStreak = m.KillerStreak
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2HeroKill) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2HeroDeathByEnvironment) CloneVT() *Dota2HeroDeathByEnvironment {
+	if m == nil {
+		return (*Dota2HeroDeathByEnvironment)(nil)
+	}
+	r := new(Dota2HeroDeathByEnvironment)
+	r.Victim = m.Victim.CloneVT()
+	r.KillerKind = m.KillerKind
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2HeroDeathByEnvironment) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2TowerDestroyed) CloneVT() *Dota2TowerDestroyed {
+	if m == nil {
+		return (*Dota2TowerDestroyed)(nil)
+	}
+	r := new(Dota2TowerDestroyed)
+	r.Team = m.Team.CloneVT()
+	r.AttributedTeam = m.AttributedTeam.CloneVT()
+	r.Lane = m.Lane
+	r.Tier = m.Tier
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2TowerDestroyed) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2BarracksDestroyed) CloneVT() *Dota2BarracksDestroyed {
+	if m == nil {
+		return (*Dota2BarracksDestroyed)(nil)
+	}
+	r := new(Dota2BarracksDestroyed)
+	r.Team = m.Team.CloneVT()
+	r.AttributedTeam = m.AttributedTeam.CloneVT()
+	r.Lane = m.Lane
+	r.Type = m.Type
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2BarracksDestroyed) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2AncientDestroyed) CloneVT() *Dota2AncientDestroyed {
+	if m == nil {
+		return (*Dota2AncientDestroyed)(nil)
+	}
+	r := new(Dota2AncientDestroyed)
+	r.Team = m.Team.CloneVT()
+	r.AttributedTeam = m.AttributedTeam.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2AncientDestroyed) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2MegaCreeps) CloneVT() *Dota2MegaCreeps {
+	if m == nil {
+		return (*Dota2MegaCreeps)(nil)
+	}
+	r := new(Dota2MegaCreeps)
+	r.Team = m.Team.CloneVT()
+	r.AgainstTeam = m.AgainstTeam.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2MegaCreeps) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2RoshanKilled) CloneVT() *Dota2RoshanKilled {
+	if m == nil {
+		return (*Dota2RoshanKilled)(nil)
+	}
+	r := new(Dota2RoshanKilled)
+	r.Team = m.Team.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2RoshanKilled) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2RoshanRespawned) CloneVT() *Dota2RoshanRespawned {
+	if m == nil {
+		return (*Dota2RoshanRespawned)(nil)
+	}
+	r := new(Dota2RoshanRespawned)
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2RoshanRespawned) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2AegisPickedUp) CloneVT() *Dota2AegisPickedUp {
+	if m == nil {
+		return (*Dota2AegisPickedUp)(nil)
+	}
+	r := new(Dota2AegisPickedUp)
+	r.Player = m.Player.CloneVT()
+	r.Snatched = m.Snatched
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2AegisPickedUp) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2AegisLost) CloneVT() *Dota2AegisLost {
+	if m == nil {
+		return (*Dota2AegisLost)(nil)
+	}
+	r := new(Dota2AegisLost)
+	r.Player = m.Player.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2AegisLost) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2Buyback) CloneVT() *Dota2Buyback {
+	if m == nil {
+		return (*Dota2Buyback)(nil)
+	}
+	r := new(Dota2Buyback)
+	r.Player = m.Player.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2Buyback) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2DayNightChanged) CloneVT() *Dota2DayNightChanged {
+	if m == nil {
+		return (*Dota2DayNightChanged)(nil)
+	}
+	r := new(Dota2DayNightChanged)
+	r.IsDay = m.IsDay
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2DayNightChanged) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2Multikill) CloneVT() *Dota2Multikill {
+	if m == nil {
+		return (*Dota2Multikill)(nil)
+	}
+	r := new(Dota2Multikill)
+	r.Player = m.Player.CloneVT()
+	r.Kills = m.Kills
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2Multikill) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2Killstreak) CloneVT() *Dota2Killstreak {
+	if m == nil {
+		return (*Dota2Killstreak)(nil)
+	}
+	r := new(Dota2Killstreak)
+	r.Player = m.Player.CloneVT()
+	r.Streak = m.Streak
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2Killstreak) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2TormentorKilled) CloneVT() *Dota2TormentorKilled {
+	if m == nil {
+		return (*Dota2TormentorKilled)(nil)
+	}
+	r := new(Dota2TormentorKilled)
+	r.Killer = m.Killer.CloneVT()
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2TormentorKilled) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
 func (this *Dota2MatchMessage_Payload) EqualVT(that *Dota2MatchMessage_Payload) bool {
 	if this == that {
 		return true
@@ -3306,6 +3898,996 @@ func (this *Dota2Position) EqualVT(that *Dota2Position) bool {
 
 func (this *Dota2Position) EqualMessageVT(thatMsg proto.Message) bool {
 	that, ok := thatMsg.(*Dota2Position)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2MatchEvents) EqualVT(that *Dota2MatchEvents) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.MatchUrn != that.MatchUrn {
+		return false
+	}
+	if len(this.Events) != len(that.Events) {
+		return false
+	}
+	for i, vx := range this.Events {
+		vy := that.Events[i]
+		if p, q := vx, vy; p != q {
+			if p == nil {
+				p = &Dota2Event{}
+			}
+			if q == nil {
+				q = &Dota2Event{}
+			}
+			if !p.EqualVT(q) {
+				return false
+			}
+		}
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2MatchEvents) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2MatchEvents)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2Event) EqualVT(that *Dota2Event) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.Event == nil && that.Event != nil {
+		return false
+	} else if this.Event != nil {
+		if that.Event == nil {
+			return false
+		}
+		if !this.Event.(interface{ EqualVT(isDota2Event_Event) bool }).EqualVT(that.Event) {
+			return false
+		}
+	}
+	if !(*timestamppb1.Timestamp)(this.Timestamp).EqualVT((*timestamppb1.Timestamp)(that.Timestamp)) {
+		return false
+	}
+	if this.MapId != that.MapId {
+		return false
+	}
+	if p, q := this.GameTime, that.GameTime; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2Event) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2Event)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2Event_MapStarted) EqualVT(thatIface isDota2Event_Event) bool {
+	that, ok := thatIface.(*Dota2Event_MapStarted)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.MapStarted, that.MapStarted; p != q {
+		if p == nil {
+			p = &Dota2MapStarted{}
+		}
+		if q == nil {
+			q = &Dota2MapStarted{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *Dota2Event_MapEnded) EqualVT(thatIface isDota2Event_Event) bool {
+	that, ok := thatIface.(*Dota2Event_MapEnded)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.MapEnded, that.MapEnded; p != q {
+		if p == nil {
+			p = &Dota2MapEnded{}
+		}
+		if q == nil {
+			q = &Dota2MapEnded{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *Dota2Event_MapPaused) EqualVT(thatIface isDota2Event_Event) bool {
+	that, ok := thatIface.(*Dota2Event_MapPaused)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.MapPaused, that.MapPaused; p != q {
+		if p == nil {
+			p = &Dota2MapPaused{}
+		}
+		if q == nil {
+			q = &Dota2MapPaused{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *Dota2Event_MapResumed) EqualVT(thatIface isDota2Event_Event) bool {
+	that, ok := thatIface.(*Dota2Event_MapResumed)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.MapResumed, that.MapResumed; p != q {
+		if p == nil {
+			p = &Dota2MapResumed{}
+		}
+		if q == nil {
+			q = &Dota2MapResumed{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *Dota2Event_HeroKill) EqualVT(thatIface isDota2Event_Event) bool {
+	that, ok := thatIface.(*Dota2Event_HeroKill)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.HeroKill, that.HeroKill; p != q {
+		if p == nil {
+			p = &Dota2HeroKill{}
+		}
+		if q == nil {
+			q = &Dota2HeroKill{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *Dota2Event_HeroDeathByEnvironment) EqualVT(thatIface isDota2Event_Event) bool {
+	that, ok := thatIface.(*Dota2Event_HeroDeathByEnvironment)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.HeroDeathByEnvironment, that.HeroDeathByEnvironment; p != q {
+		if p == nil {
+			p = &Dota2HeroDeathByEnvironment{}
+		}
+		if q == nil {
+			q = &Dota2HeroDeathByEnvironment{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *Dota2Event_TowerDestroyed) EqualVT(thatIface isDota2Event_Event) bool {
+	that, ok := thatIface.(*Dota2Event_TowerDestroyed)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.TowerDestroyed, that.TowerDestroyed; p != q {
+		if p == nil {
+			p = &Dota2TowerDestroyed{}
+		}
+		if q == nil {
+			q = &Dota2TowerDestroyed{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *Dota2Event_BarracksDestroyed) EqualVT(thatIface isDota2Event_Event) bool {
+	that, ok := thatIface.(*Dota2Event_BarracksDestroyed)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.BarracksDestroyed, that.BarracksDestroyed; p != q {
+		if p == nil {
+			p = &Dota2BarracksDestroyed{}
+		}
+		if q == nil {
+			q = &Dota2BarracksDestroyed{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *Dota2Event_AncientDestroyed) EqualVT(thatIface isDota2Event_Event) bool {
+	that, ok := thatIface.(*Dota2Event_AncientDestroyed)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.AncientDestroyed, that.AncientDestroyed; p != q {
+		if p == nil {
+			p = &Dota2AncientDestroyed{}
+		}
+		if q == nil {
+			q = &Dota2AncientDestroyed{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *Dota2Event_MegaCreeps) EqualVT(thatIface isDota2Event_Event) bool {
+	that, ok := thatIface.(*Dota2Event_MegaCreeps)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.MegaCreeps, that.MegaCreeps; p != q {
+		if p == nil {
+			p = &Dota2MegaCreeps{}
+		}
+		if q == nil {
+			q = &Dota2MegaCreeps{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *Dota2Event_RoshanKilled) EqualVT(thatIface isDota2Event_Event) bool {
+	that, ok := thatIface.(*Dota2Event_RoshanKilled)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.RoshanKilled, that.RoshanKilled; p != q {
+		if p == nil {
+			p = &Dota2RoshanKilled{}
+		}
+		if q == nil {
+			q = &Dota2RoshanKilled{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *Dota2Event_RoshanRespawned) EqualVT(thatIface isDota2Event_Event) bool {
+	that, ok := thatIface.(*Dota2Event_RoshanRespawned)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.RoshanRespawned, that.RoshanRespawned; p != q {
+		if p == nil {
+			p = &Dota2RoshanRespawned{}
+		}
+		if q == nil {
+			q = &Dota2RoshanRespawned{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *Dota2Event_AegisPickedUp) EqualVT(thatIface isDota2Event_Event) bool {
+	that, ok := thatIface.(*Dota2Event_AegisPickedUp)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.AegisPickedUp, that.AegisPickedUp; p != q {
+		if p == nil {
+			p = &Dota2AegisPickedUp{}
+		}
+		if q == nil {
+			q = &Dota2AegisPickedUp{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *Dota2Event_AegisLost) EqualVT(thatIface isDota2Event_Event) bool {
+	that, ok := thatIface.(*Dota2Event_AegisLost)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.AegisLost, that.AegisLost; p != q {
+		if p == nil {
+			p = &Dota2AegisLost{}
+		}
+		if q == nil {
+			q = &Dota2AegisLost{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *Dota2Event_Buyback) EqualVT(thatIface isDota2Event_Event) bool {
+	that, ok := thatIface.(*Dota2Event_Buyback)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.Buyback, that.Buyback; p != q {
+		if p == nil {
+			p = &Dota2Buyback{}
+		}
+		if q == nil {
+			q = &Dota2Buyback{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *Dota2Event_DayNightChanged) EqualVT(thatIface isDota2Event_Event) bool {
+	that, ok := thatIface.(*Dota2Event_DayNightChanged)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.DayNightChanged, that.DayNightChanged; p != q {
+		if p == nil {
+			p = &Dota2DayNightChanged{}
+		}
+		if q == nil {
+			q = &Dota2DayNightChanged{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *Dota2Event_Multikill) EqualVT(thatIface isDota2Event_Event) bool {
+	that, ok := thatIface.(*Dota2Event_Multikill)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.Multikill, that.Multikill; p != q {
+		if p == nil {
+			p = &Dota2Multikill{}
+		}
+		if q == nil {
+			q = &Dota2Multikill{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *Dota2Event_Killstreak) EqualVT(thatIface isDota2Event_Event) bool {
+	that, ok := thatIface.(*Dota2Event_Killstreak)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.Killstreak, that.Killstreak; p != q {
+		if p == nil {
+			p = &Dota2Killstreak{}
+		}
+		if q == nil {
+			q = &Dota2Killstreak{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *Dota2Event_TormentorKilled) EqualVT(thatIface isDota2Event_Event) bool {
+	that, ok := thatIface.(*Dota2Event_TormentorKilled)
+	if !ok {
+		return false
+	}
+	if this == that {
+		return true
+	}
+	if this == nil && that != nil || this != nil && that == nil {
+		return false
+	}
+	if p, q := this.TormentorKilled, that.TormentorKilled; p != q {
+		if p == nil {
+			p = &Dota2TormentorKilled{}
+		}
+		if q == nil {
+			q = &Dota2TormentorKilled{}
+		}
+		if !p.EqualVT(q) {
+			return false
+		}
+	}
+	return true
+}
+
+func (this *Dota2EventTeam) EqualVT(that *Dota2EventTeam) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.TeamUrn != that.TeamUrn {
+		return false
+	}
+	if this.Faction != that.Faction {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2EventTeam) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2EventTeam)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2EventPlayer) EqualVT(that *Dota2EventPlayer) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.PlayerUrn != that.PlayerUrn {
+		return false
+	}
+	if this.TeamUrn != that.TeamUrn {
+		return false
+	}
+	if this.Faction != that.Faction {
+		return false
+	}
+	if this.HeroId != that.HeroId {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2EventPlayer) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2EventPlayer)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2MapStarted) EqualVT(that *Dota2MapStarted) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2MapStarted) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2MapStarted)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2MapEnded) EqualVT(that *Dota2MapEnded) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if !this.Winner.EqualVT(that.Winner) {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2MapEnded) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2MapEnded)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2MapPaused) EqualVT(that *Dota2MapPaused) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2MapPaused) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2MapPaused)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2MapResumed) EqualVT(that *Dota2MapResumed) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2MapResumed) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2MapResumed)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2HeroKill) EqualVT(that *Dota2HeroKill) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if !this.Killer.EqualVT(that.Killer) {
+		return false
+	}
+	if !this.Victim.EqualVT(that.Victim) {
+		return false
+	}
+	if this.FirstBlood != that.FirstBlood {
+		return false
+	}
+	if this.KillerStreak != that.KillerStreak {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2HeroKill) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2HeroKill)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2HeroDeathByEnvironment) EqualVT(that *Dota2HeroDeathByEnvironment) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if !this.Victim.EqualVT(that.Victim) {
+		return false
+	}
+	if this.KillerKind != that.KillerKind {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2HeroDeathByEnvironment) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2HeroDeathByEnvironment)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2TowerDestroyed) EqualVT(that *Dota2TowerDestroyed) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if !this.Team.EqualVT(that.Team) {
+		return false
+	}
+	if !this.AttributedTeam.EqualVT(that.AttributedTeam) {
+		return false
+	}
+	if this.Lane != that.Lane {
+		return false
+	}
+	if this.Tier != that.Tier {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2TowerDestroyed) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2TowerDestroyed)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2BarracksDestroyed) EqualVT(that *Dota2BarracksDestroyed) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if !this.Team.EqualVT(that.Team) {
+		return false
+	}
+	if !this.AttributedTeam.EqualVT(that.AttributedTeam) {
+		return false
+	}
+	if this.Lane != that.Lane {
+		return false
+	}
+	if this.Type != that.Type {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2BarracksDestroyed) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2BarracksDestroyed)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2AncientDestroyed) EqualVT(that *Dota2AncientDestroyed) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if !this.Team.EqualVT(that.Team) {
+		return false
+	}
+	if !this.AttributedTeam.EqualVT(that.AttributedTeam) {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2AncientDestroyed) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2AncientDestroyed)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2MegaCreeps) EqualVT(that *Dota2MegaCreeps) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if !this.Team.EqualVT(that.Team) {
+		return false
+	}
+	if !this.AgainstTeam.EqualVT(that.AgainstTeam) {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2MegaCreeps) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2MegaCreeps)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2RoshanKilled) EqualVT(that *Dota2RoshanKilled) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if !this.Team.EqualVT(that.Team) {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2RoshanKilled) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2RoshanKilled)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2RoshanRespawned) EqualVT(that *Dota2RoshanRespawned) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2RoshanRespawned) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2RoshanRespawned)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2AegisPickedUp) EqualVT(that *Dota2AegisPickedUp) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if !this.Player.EqualVT(that.Player) {
+		return false
+	}
+	if this.Snatched != that.Snatched {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2AegisPickedUp) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2AegisPickedUp)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2AegisLost) EqualVT(that *Dota2AegisLost) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if !this.Player.EqualVT(that.Player) {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2AegisLost) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2AegisLost)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2Buyback) EqualVT(that *Dota2Buyback) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if !this.Player.EqualVT(that.Player) {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2Buyback) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2Buyback)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2DayNightChanged) EqualVT(that *Dota2DayNightChanged) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.IsDay != that.IsDay {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2DayNightChanged) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2DayNightChanged)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2Multikill) EqualVT(that *Dota2Multikill) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if !this.Player.EqualVT(that.Player) {
+		return false
+	}
+	if this.Kills != that.Kills {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2Multikill) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2Multikill)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2Killstreak) EqualVT(that *Dota2Killstreak) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if !this.Player.EqualVT(that.Player) {
+		return false
+	}
+	if this.Streak != that.Streak {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2Killstreak) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2Killstreak)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2TormentorKilled) EqualVT(that *Dota2TormentorKilled) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if !this.Killer.EqualVT(that.Killer) {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2TormentorKilled) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2TormentorKilled)
 	if !ok {
 		return false
 	}

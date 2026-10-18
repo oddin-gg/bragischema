@@ -1655,6 +1655,720 @@ export namespace Dota2Position {
   }
 }
 
+export class Dota2MatchEvents extends jspb.Message {
+  getMatchUrn(): string;
+  setMatchUrn(value: string): void;
+
+  clearEventsList(): void;
+  getEventsList(): Array<Dota2Event>;
+  setEventsList(value: Array<Dota2Event>): void;
+  addEvents(value?: Dota2Event, index?: number): Dota2Event;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2MatchEvents.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2MatchEvents): Dota2MatchEvents.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2MatchEvents, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2MatchEvents;
+  static deserializeBinaryFromReader(message: Dota2MatchEvents, reader: jspb.BinaryReader): Dota2MatchEvents;
+}
+
+export namespace Dota2MatchEvents {
+  export type AsObject = {
+    matchUrn: string,
+    eventsList: Array<Dota2Event.AsObject>,
+  }
+}
+
+export class Dota2Event extends jspb.Message {
+  hasTimestamp(): boolean;
+  clearTimestamp(): void;
+  getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
+  getMapId(): number;
+  setMapId(value: number): void;
+
+  hasGameTime(): boolean;
+  clearGameTime(): void;
+  getGameTime(): number;
+  setGameTime(value: number): void;
+
+  hasMapStarted(): boolean;
+  clearMapStarted(): void;
+  getMapStarted(): Dota2MapStarted | undefined;
+  setMapStarted(value?: Dota2MapStarted): void;
+
+  hasMapEnded(): boolean;
+  clearMapEnded(): void;
+  getMapEnded(): Dota2MapEnded | undefined;
+  setMapEnded(value?: Dota2MapEnded): void;
+
+  hasMapPaused(): boolean;
+  clearMapPaused(): void;
+  getMapPaused(): Dota2MapPaused | undefined;
+  setMapPaused(value?: Dota2MapPaused): void;
+
+  hasMapResumed(): boolean;
+  clearMapResumed(): void;
+  getMapResumed(): Dota2MapResumed | undefined;
+  setMapResumed(value?: Dota2MapResumed): void;
+
+  hasHeroKill(): boolean;
+  clearHeroKill(): void;
+  getHeroKill(): Dota2HeroKill | undefined;
+  setHeroKill(value?: Dota2HeroKill): void;
+
+  hasHeroDeathByEnvironment(): boolean;
+  clearHeroDeathByEnvironment(): void;
+  getHeroDeathByEnvironment(): Dota2HeroDeathByEnvironment | undefined;
+  setHeroDeathByEnvironment(value?: Dota2HeroDeathByEnvironment): void;
+
+  hasTowerDestroyed(): boolean;
+  clearTowerDestroyed(): void;
+  getTowerDestroyed(): Dota2TowerDestroyed | undefined;
+  setTowerDestroyed(value?: Dota2TowerDestroyed): void;
+
+  hasBarracksDestroyed(): boolean;
+  clearBarracksDestroyed(): void;
+  getBarracksDestroyed(): Dota2BarracksDestroyed | undefined;
+  setBarracksDestroyed(value?: Dota2BarracksDestroyed): void;
+
+  hasAncientDestroyed(): boolean;
+  clearAncientDestroyed(): void;
+  getAncientDestroyed(): Dota2AncientDestroyed | undefined;
+  setAncientDestroyed(value?: Dota2AncientDestroyed): void;
+
+  hasMegaCreeps(): boolean;
+  clearMegaCreeps(): void;
+  getMegaCreeps(): Dota2MegaCreeps | undefined;
+  setMegaCreeps(value?: Dota2MegaCreeps): void;
+
+  hasRoshanKilled(): boolean;
+  clearRoshanKilled(): void;
+  getRoshanKilled(): Dota2RoshanKilled | undefined;
+  setRoshanKilled(value?: Dota2RoshanKilled): void;
+
+  hasRoshanRespawned(): boolean;
+  clearRoshanRespawned(): void;
+  getRoshanRespawned(): Dota2RoshanRespawned | undefined;
+  setRoshanRespawned(value?: Dota2RoshanRespawned): void;
+
+  hasAegisPickedUp(): boolean;
+  clearAegisPickedUp(): void;
+  getAegisPickedUp(): Dota2AegisPickedUp | undefined;
+  setAegisPickedUp(value?: Dota2AegisPickedUp): void;
+
+  hasAegisLost(): boolean;
+  clearAegisLost(): void;
+  getAegisLost(): Dota2AegisLost | undefined;
+  setAegisLost(value?: Dota2AegisLost): void;
+
+  hasBuyback(): boolean;
+  clearBuyback(): void;
+  getBuyback(): Dota2Buyback | undefined;
+  setBuyback(value?: Dota2Buyback): void;
+
+  hasDayNightChanged(): boolean;
+  clearDayNightChanged(): void;
+  getDayNightChanged(): Dota2DayNightChanged | undefined;
+  setDayNightChanged(value?: Dota2DayNightChanged): void;
+
+  hasMultikill(): boolean;
+  clearMultikill(): void;
+  getMultikill(): Dota2Multikill | undefined;
+  setMultikill(value?: Dota2Multikill): void;
+
+  hasKillstreak(): boolean;
+  clearKillstreak(): void;
+  getKillstreak(): Dota2Killstreak | undefined;
+  setKillstreak(value?: Dota2Killstreak): void;
+
+  hasTormentorKilled(): boolean;
+  clearTormentorKilled(): void;
+  getTormentorKilled(): Dota2TormentorKilled | undefined;
+  setTormentorKilled(value?: Dota2TormentorKilled): void;
+
+  getEventCase(): Dota2Event.EventCase;
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2Event.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2Event): Dota2Event.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2Event, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2Event;
+  static deserializeBinaryFromReader(message: Dota2Event, reader: jspb.BinaryReader): Dota2Event;
+}
+
+export namespace Dota2Event {
+  export type AsObject = {
+    timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    mapId: number,
+    gameTime: number,
+    mapStarted?: Dota2MapStarted.AsObject,
+    mapEnded?: Dota2MapEnded.AsObject,
+    mapPaused?: Dota2MapPaused.AsObject,
+    mapResumed?: Dota2MapResumed.AsObject,
+    heroKill?: Dota2HeroKill.AsObject,
+    heroDeathByEnvironment?: Dota2HeroDeathByEnvironment.AsObject,
+    towerDestroyed?: Dota2TowerDestroyed.AsObject,
+    barracksDestroyed?: Dota2BarracksDestroyed.AsObject,
+    ancientDestroyed?: Dota2AncientDestroyed.AsObject,
+    megaCreeps?: Dota2MegaCreeps.AsObject,
+    roshanKilled?: Dota2RoshanKilled.AsObject,
+    roshanRespawned?: Dota2RoshanRespawned.AsObject,
+    aegisPickedUp?: Dota2AegisPickedUp.AsObject,
+    aegisLost?: Dota2AegisLost.AsObject,
+    buyback?: Dota2Buyback.AsObject,
+    dayNightChanged?: Dota2DayNightChanged.AsObject,
+    multikill?: Dota2Multikill.AsObject,
+    killstreak?: Dota2Killstreak.AsObject,
+    tormentorKilled?: Dota2TormentorKilled.AsObject,
+  }
+
+  export enum EventCase {
+    EVENT_NOT_SET = 0,
+    MAP_STARTED = 10,
+    MAP_ENDED = 11,
+    MAP_PAUSED = 12,
+    MAP_RESUMED = 13,
+    HERO_KILL = 14,
+    HERO_DEATH_BY_ENVIRONMENT = 15,
+    TOWER_DESTROYED = 16,
+    BARRACKS_DESTROYED = 17,
+    ANCIENT_DESTROYED = 18,
+    MEGA_CREEPS = 19,
+    ROSHAN_KILLED = 20,
+    ROSHAN_RESPAWNED = 21,
+    AEGIS_PICKED_UP = 22,
+    AEGIS_LOST = 23,
+    BUYBACK = 24,
+    DAY_NIGHT_CHANGED = 25,
+    MULTIKILL = 26,
+    KILLSTREAK = 27,
+    TORMENTOR_KILLED = 28,
+  }
+}
+
+export class Dota2EventTeam extends jspb.Message {
+  getTeamUrn(): string;
+  setTeamUrn(value: string): void;
+
+  getFaction(): Dota2FactionMap[keyof Dota2FactionMap];
+  setFaction(value: Dota2FactionMap[keyof Dota2FactionMap]): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2EventTeam.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2EventTeam): Dota2EventTeam.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2EventTeam, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2EventTeam;
+  static deserializeBinaryFromReader(message: Dota2EventTeam, reader: jspb.BinaryReader): Dota2EventTeam;
+}
+
+export namespace Dota2EventTeam {
+  export type AsObject = {
+    teamUrn: string,
+    faction: Dota2FactionMap[keyof Dota2FactionMap],
+  }
+}
+
+export class Dota2EventPlayer extends jspb.Message {
+  getPlayerUrn(): string;
+  setPlayerUrn(value: string): void;
+
+  getTeamUrn(): string;
+  setTeamUrn(value: string): void;
+
+  getFaction(): Dota2FactionMap[keyof Dota2FactionMap];
+  setFaction(value: Dota2FactionMap[keyof Dota2FactionMap]): void;
+
+  getHeroId(): number;
+  setHeroId(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2EventPlayer.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2EventPlayer): Dota2EventPlayer.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2EventPlayer, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2EventPlayer;
+  static deserializeBinaryFromReader(message: Dota2EventPlayer, reader: jspb.BinaryReader): Dota2EventPlayer;
+}
+
+export namespace Dota2EventPlayer {
+  export type AsObject = {
+    playerUrn: string,
+    teamUrn: string,
+    faction: Dota2FactionMap[keyof Dota2FactionMap],
+    heroId: number,
+  }
+}
+
+export class Dota2MapStarted extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2MapStarted.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2MapStarted): Dota2MapStarted.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2MapStarted, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2MapStarted;
+  static deserializeBinaryFromReader(message: Dota2MapStarted, reader: jspb.BinaryReader): Dota2MapStarted;
+}
+
+export namespace Dota2MapStarted {
+  export type AsObject = {
+  }
+}
+
+export class Dota2MapEnded extends jspb.Message {
+  hasWinner(): boolean;
+  clearWinner(): void;
+  getWinner(): Dota2EventTeam | undefined;
+  setWinner(value?: Dota2EventTeam): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2MapEnded.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2MapEnded): Dota2MapEnded.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2MapEnded, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2MapEnded;
+  static deserializeBinaryFromReader(message: Dota2MapEnded, reader: jspb.BinaryReader): Dota2MapEnded;
+}
+
+export namespace Dota2MapEnded {
+  export type AsObject = {
+    winner?: Dota2EventTeam.AsObject,
+  }
+}
+
+export class Dota2MapPaused extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2MapPaused.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2MapPaused): Dota2MapPaused.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2MapPaused, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2MapPaused;
+  static deserializeBinaryFromReader(message: Dota2MapPaused, reader: jspb.BinaryReader): Dota2MapPaused;
+}
+
+export namespace Dota2MapPaused {
+  export type AsObject = {
+  }
+}
+
+export class Dota2MapResumed extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2MapResumed.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2MapResumed): Dota2MapResumed.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2MapResumed, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2MapResumed;
+  static deserializeBinaryFromReader(message: Dota2MapResumed, reader: jspb.BinaryReader): Dota2MapResumed;
+}
+
+export namespace Dota2MapResumed {
+  export type AsObject = {
+  }
+}
+
+export class Dota2HeroKill extends jspb.Message {
+  hasKiller(): boolean;
+  clearKiller(): void;
+  getKiller(): Dota2EventPlayer | undefined;
+  setKiller(value?: Dota2EventPlayer): void;
+
+  hasVictim(): boolean;
+  clearVictim(): void;
+  getVictim(): Dota2EventPlayer | undefined;
+  setVictim(value?: Dota2EventPlayer): void;
+
+  getFirstBlood(): boolean;
+  setFirstBlood(value: boolean): void;
+
+  getKillerStreak(): number;
+  setKillerStreak(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2HeroKill.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2HeroKill): Dota2HeroKill.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2HeroKill, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2HeroKill;
+  static deserializeBinaryFromReader(message: Dota2HeroKill, reader: jspb.BinaryReader): Dota2HeroKill;
+}
+
+export namespace Dota2HeroKill {
+  export type AsObject = {
+    killer?: Dota2EventPlayer.AsObject,
+    victim?: Dota2EventPlayer.AsObject,
+    firstBlood: boolean,
+    killerStreak: number,
+  }
+}
+
+export class Dota2HeroDeathByEnvironment extends jspb.Message {
+  hasVictim(): boolean;
+  clearVictim(): void;
+  getVictim(): Dota2EventPlayer | undefined;
+  setVictim(value?: Dota2EventPlayer): void;
+
+  getKillerKind(): Dota2EnvironmentKillerKindMap[keyof Dota2EnvironmentKillerKindMap];
+  setKillerKind(value: Dota2EnvironmentKillerKindMap[keyof Dota2EnvironmentKillerKindMap]): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2HeroDeathByEnvironment.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2HeroDeathByEnvironment): Dota2HeroDeathByEnvironment.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2HeroDeathByEnvironment, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2HeroDeathByEnvironment;
+  static deserializeBinaryFromReader(message: Dota2HeroDeathByEnvironment, reader: jspb.BinaryReader): Dota2HeroDeathByEnvironment;
+}
+
+export namespace Dota2HeroDeathByEnvironment {
+  export type AsObject = {
+    victim?: Dota2EventPlayer.AsObject,
+    killerKind: Dota2EnvironmentKillerKindMap[keyof Dota2EnvironmentKillerKindMap],
+  }
+}
+
+export class Dota2TowerDestroyed extends jspb.Message {
+  hasTeam(): boolean;
+  clearTeam(): void;
+  getTeam(): Dota2EventTeam | undefined;
+  setTeam(value?: Dota2EventTeam): void;
+
+  hasAttributedTeam(): boolean;
+  clearAttributedTeam(): void;
+  getAttributedTeam(): Dota2EventTeam | undefined;
+  setAttributedTeam(value?: Dota2EventTeam): void;
+
+  getLane(): Dota2LaneMap[keyof Dota2LaneMap];
+  setLane(value: Dota2LaneMap[keyof Dota2LaneMap]): void;
+
+  getTier(): Dota2TowerTierMap[keyof Dota2TowerTierMap];
+  setTier(value: Dota2TowerTierMap[keyof Dota2TowerTierMap]): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2TowerDestroyed.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2TowerDestroyed): Dota2TowerDestroyed.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2TowerDestroyed, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2TowerDestroyed;
+  static deserializeBinaryFromReader(message: Dota2TowerDestroyed, reader: jspb.BinaryReader): Dota2TowerDestroyed;
+}
+
+export namespace Dota2TowerDestroyed {
+  export type AsObject = {
+    team?: Dota2EventTeam.AsObject,
+    attributedTeam?: Dota2EventTeam.AsObject,
+    lane: Dota2LaneMap[keyof Dota2LaneMap],
+    tier: Dota2TowerTierMap[keyof Dota2TowerTierMap],
+  }
+}
+
+export class Dota2BarracksDestroyed extends jspb.Message {
+  hasTeam(): boolean;
+  clearTeam(): void;
+  getTeam(): Dota2EventTeam | undefined;
+  setTeam(value?: Dota2EventTeam): void;
+
+  hasAttributedTeam(): boolean;
+  clearAttributedTeam(): void;
+  getAttributedTeam(): Dota2EventTeam | undefined;
+  setAttributedTeam(value?: Dota2EventTeam): void;
+
+  getLane(): Dota2LaneMap[keyof Dota2LaneMap];
+  setLane(value: Dota2LaneMap[keyof Dota2LaneMap]): void;
+
+  getType(): Dota2BarrackTypeMap[keyof Dota2BarrackTypeMap];
+  setType(value: Dota2BarrackTypeMap[keyof Dota2BarrackTypeMap]): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2BarracksDestroyed.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2BarracksDestroyed): Dota2BarracksDestroyed.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2BarracksDestroyed, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2BarracksDestroyed;
+  static deserializeBinaryFromReader(message: Dota2BarracksDestroyed, reader: jspb.BinaryReader): Dota2BarracksDestroyed;
+}
+
+export namespace Dota2BarracksDestroyed {
+  export type AsObject = {
+    team?: Dota2EventTeam.AsObject,
+    attributedTeam?: Dota2EventTeam.AsObject,
+    lane: Dota2LaneMap[keyof Dota2LaneMap],
+    type: Dota2BarrackTypeMap[keyof Dota2BarrackTypeMap],
+  }
+}
+
+export class Dota2AncientDestroyed extends jspb.Message {
+  hasTeam(): boolean;
+  clearTeam(): void;
+  getTeam(): Dota2EventTeam | undefined;
+  setTeam(value?: Dota2EventTeam): void;
+
+  hasAttributedTeam(): boolean;
+  clearAttributedTeam(): void;
+  getAttributedTeam(): Dota2EventTeam | undefined;
+  setAttributedTeam(value?: Dota2EventTeam): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2AncientDestroyed.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2AncientDestroyed): Dota2AncientDestroyed.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2AncientDestroyed, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2AncientDestroyed;
+  static deserializeBinaryFromReader(message: Dota2AncientDestroyed, reader: jspb.BinaryReader): Dota2AncientDestroyed;
+}
+
+export namespace Dota2AncientDestroyed {
+  export type AsObject = {
+    team?: Dota2EventTeam.AsObject,
+    attributedTeam?: Dota2EventTeam.AsObject,
+  }
+}
+
+export class Dota2MegaCreeps extends jspb.Message {
+  hasTeam(): boolean;
+  clearTeam(): void;
+  getTeam(): Dota2EventTeam | undefined;
+  setTeam(value?: Dota2EventTeam): void;
+
+  hasAgainstTeam(): boolean;
+  clearAgainstTeam(): void;
+  getAgainstTeam(): Dota2EventTeam | undefined;
+  setAgainstTeam(value?: Dota2EventTeam): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2MegaCreeps.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2MegaCreeps): Dota2MegaCreeps.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2MegaCreeps, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2MegaCreeps;
+  static deserializeBinaryFromReader(message: Dota2MegaCreeps, reader: jspb.BinaryReader): Dota2MegaCreeps;
+}
+
+export namespace Dota2MegaCreeps {
+  export type AsObject = {
+    team?: Dota2EventTeam.AsObject,
+    againstTeam?: Dota2EventTeam.AsObject,
+  }
+}
+
+export class Dota2RoshanKilled extends jspb.Message {
+  hasTeam(): boolean;
+  clearTeam(): void;
+  getTeam(): Dota2EventTeam | undefined;
+  setTeam(value?: Dota2EventTeam): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2RoshanKilled.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2RoshanKilled): Dota2RoshanKilled.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2RoshanKilled, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2RoshanKilled;
+  static deserializeBinaryFromReader(message: Dota2RoshanKilled, reader: jspb.BinaryReader): Dota2RoshanKilled;
+}
+
+export namespace Dota2RoshanKilled {
+  export type AsObject = {
+    team?: Dota2EventTeam.AsObject,
+  }
+}
+
+export class Dota2RoshanRespawned extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2RoshanRespawned.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2RoshanRespawned): Dota2RoshanRespawned.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2RoshanRespawned, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2RoshanRespawned;
+  static deserializeBinaryFromReader(message: Dota2RoshanRespawned, reader: jspb.BinaryReader): Dota2RoshanRespawned;
+}
+
+export namespace Dota2RoshanRespawned {
+  export type AsObject = {
+  }
+}
+
+export class Dota2AegisPickedUp extends jspb.Message {
+  hasPlayer(): boolean;
+  clearPlayer(): void;
+  getPlayer(): Dota2EventPlayer | undefined;
+  setPlayer(value?: Dota2EventPlayer): void;
+
+  getSnatched(): boolean;
+  setSnatched(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2AegisPickedUp.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2AegisPickedUp): Dota2AegisPickedUp.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2AegisPickedUp, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2AegisPickedUp;
+  static deserializeBinaryFromReader(message: Dota2AegisPickedUp, reader: jspb.BinaryReader): Dota2AegisPickedUp;
+}
+
+export namespace Dota2AegisPickedUp {
+  export type AsObject = {
+    player?: Dota2EventPlayer.AsObject,
+    snatched: boolean,
+  }
+}
+
+export class Dota2AegisLost extends jspb.Message {
+  hasPlayer(): boolean;
+  clearPlayer(): void;
+  getPlayer(): Dota2EventPlayer | undefined;
+  setPlayer(value?: Dota2EventPlayer): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2AegisLost.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2AegisLost): Dota2AegisLost.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2AegisLost, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2AegisLost;
+  static deserializeBinaryFromReader(message: Dota2AegisLost, reader: jspb.BinaryReader): Dota2AegisLost;
+}
+
+export namespace Dota2AegisLost {
+  export type AsObject = {
+    player?: Dota2EventPlayer.AsObject,
+  }
+}
+
+export class Dota2Buyback extends jspb.Message {
+  hasPlayer(): boolean;
+  clearPlayer(): void;
+  getPlayer(): Dota2EventPlayer | undefined;
+  setPlayer(value?: Dota2EventPlayer): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2Buyback.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2Buyback): Dota2Buyback.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2Buyback, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2Buyback;
+  static deserializeBinaryFromReader(message: Dota2Buyback, reader: jspb.BinaryReader): Dota2Buyback;
+}
+
+export namespace Dota2Buyback {
+  export type AsObject = {
+    player?: Dota2EventPlayer.AsObject,
+  }
+}
+
+export class Dota2DayNightChanged extends jspb.Message {
+  getIsDay(): boolean;
+  setIsDay(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2DayNightChanged.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2DayNightChanged): Dota2DayNightChanged.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2DayNightChanged, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2DayNightChanged;
+  static deserializeBinaryFromReader(message: Dota2DayNightChanged, reader: jspb.BinaryReader): Dota2DayNightChanged;
+}
+
+export namespace Dota2DayNightChanged {
+  export type AsObject = {
+    isDay: boolean,
+  }
+}
+
+export class Dota2Multikill extends jspb.Message {
+  hasPlayer(): boolean;
+  clearPlayer(): void;
+  getPlayer(): Dota2EventPlayer | undefined;
+  setPlayer(value?: Dota2EventPlayer): void;
+
+  getKills(): number;
+  setKills(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2Multikill.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2Multikill): Dota2Multikill.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2Multikill, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2Multikill;
+  static deserializeBinaryFromReader(message: Dota2Multikill, reader: jspb.BinaryReader): Dota2Multikill;
+}
+
+export namespace Dota2Multikill {
+  export type AsObject = {
+    player?: Dota2EventPlayer.AsObject,
+    kills: number,
+  }
+}
+
+export class Dota2Killstreak extends jspb.Message {
+  hasPlayer(): boolean;
+  clearPlayer(): void;
+  getPlayer(): Dota2EventPlayer | undefined;
+  setPlayer(value?: Dota2EventPlayer): void;
+
+  getStreak(): number;
+  setStreak(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2Killstreak.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2Killstreak): Dota2Killstreak.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2Killstreak, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2Killstreak;
+  static deserializeBinaryFromReader(message: Dota2Killstreak, reader: jspb.BinaryReader): Dota2Killstreak;
+}
+
+export namespace Dota2Killstreak {
+  export type AsObject = {
+    player?: Dota2EventPlayer.AsObject,
+    streak: number,
+  }
+}
+
+export class Dota2TormentorKilled extends jspb.Message {
+  hasKiller(): boolean;
+  clearKiller(): void;
+  getKiller(): Dota2EventPlayer | undefined;
+  setKiller(value?: Dota2EventPlayer): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2TormentorKilled.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2TormentorKilled): Dota2TormentorKilled.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2TormentorKilled, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2TormentorKilled;
+  static deserializeBinaryFromReader(message: Dota2TormentorKilled, reader: jspb.BinaryReader): Dota2TormentorKilled;
+}
+
+export namespace Dota2TormentorKilled {
+  export type AsObject = {
+    killer?: Dota2EventPlayer.AsObject,
+  }
+}
+
 export interface Dota2FactionMap {
   DOTA2_FACTION_UNSPECIFIED: 0;
   DOTA2_FACTION_RADIANT: 1;
@@ -1712,4 +2426,15 @@ export interface Dota2ItemPositionMap {
 }
 
 export const Dota2ItemPosition: Dota2ItemPositionMap;
+
+export interface Dota2EnvironmentKillerKindMap {
+  DOTA2_ENVIRONMENT_KILLER_KIND_UNSPECIFIED: 0;
+  DOTA2_ENVIRONMENT_KILLER_KIND_UNKNOWN: 1;
+  DOTA2_ENVIRONMENT_KILLER_KIND_TOWER: 2;
+  DOTA2_ENVIRONMENT_KILLER_KIND_NEUTRAL: 3;
+  DOTA2_ENVIRONMENT_KILLER_KIND_ROSHAN: 4;
+  DOTA2_ENVIRONMENT_KILLER_KIND_TORMENTOR: 5;
+}
+
+export const Dota2EnvironmentKillerKind: Dota2EnvironmentKillerKindMap;
 

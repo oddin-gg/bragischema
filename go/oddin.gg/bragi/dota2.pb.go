@@ -321,6 +321,65 @@ func (Dota2ItemPosition) EnumDescriptor() ([]byte, []int) {
 	return file_bragi_dota2_proto_rawDescGZIP(), []int{4}
 }
 
+// Only UNKNOWN is sent today. The other values are reserved for a later release.
+type Dota2EnvironmentKillerKind int32
+
+const (
+	Dota2EnvironmentKillerKind_DOTA2_ENVIRONMENT_KILLER_KIND_UNSPECIFIED Dota2EnvironmentKillerKind = 0
+	Dota2EnvironmentKillerKind_DOTA2_ENVIRONMENT_KILLER_KIND_UNKNOWN     Dota2EnvironmentKillerKind = 1
+	Dota2EnvironmentKillerKind_DOTA2_ENVIRONMENT_KILLER_KIND_TOWER       Dota2EnvironmentKillerKind = 2
+	Dota2EnvironmentKillerKind_DOTA2_ENVIRONMENT_KILLER_KIND_NEUTRAL     Dota2EnvironmentKillerKind = 3
+	Dota2EnvironmentKillerKind_DOTA2_ENVIRONMENT_KILLER_KIND_ROSHAN      Dota2EnvironmentKillerKind = 4
+	Dota2EnvironmentKillerKind_DOTA2_ENVIRONMENT_KILLER_KIND_TORMENTOR   Dota2EnvironmentKillerKind = 5
+)
+
+// Enum value maps for Dota2EnvironmentKillerKind.
+var (
+	Dota2EnvironmentKillerKind_name = map[int32]string{
+		0: "DOTA2_ENVIRONMENT_KILLER_KIND_UNSPECIFIED",
+		1: "DOTA2_ENVIRONMENT_KILLER_KIND_UNKNOWN",
+		2: "DOTA2_ENVIRONMENT_KILLER_KIND_TOWER",
+		3: "DOTA2_ENVIRONMENT_KILLER_KIND_NEUTRAL",
+		4: "DOTA2_ENVIRONMENT_KILLER_KIND_ROSHAN",
+		5: "DOTA2_ENVIRONMENT_KILLER_KIND_TORMENTOR",
+	}
+	Dota2EnvironmentKillerKind_value = map[string]int32{
+		"DOTA2_ENVIRONMENT_KILLER_KIND_UNSPECIFIED": 0,
+		"DOTA2_ENVIRONMENT_KILLER_KIND_UNKNOWN":     1,
+		"DOTA2_ENVIRONMENT_KILLER_KIND_TOWER":       2,
+		"DOTA2_ENVIRONMENT_KILLER_KIND_NEUTRAL":     3,
+		"DOTA2_ENVIRONMENT_KILLER_KIND_ROSHAN":      4,
+		"DOTA2_ENVIRONMENT_KILLER_KIND_TORMENTOR":   5,
+	}
+)
+
+func (x Dota2EnvironmentKillerKind) Enum() *Dota2EnvironmentKillerKind {
+	p := new(Dota2EnvironmentKillerKind)
+	*p = x
+	return p
+}
+
+func (x Dota2EnvironmentKillerKind) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (Dota2EnvironmentKillerKind) Descriptor() protoreflect.EnumDescriptor {
+	return file_bragi_dota2_proto_enumTypes[5].Descriptor()
+}
+
+func (Dota2EnvironmentKillerKind) Type() protoreflect.EnumType {
+	return &file_bragi_dota2_proto_enumTypes[5]
+}
+
+func (x Dota2EnvironmentKillerKind) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use Dota2EnvironmentKillerKind.Descriptor instead.
+func (Dota2EnvironmentKillerKind) EnumDescriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{5}
+}
+
 type PicksAndBansSelectionsPerTeam_State int32
 
 const (
@@ -354,11 +413,11 @@ func (x PicksAndBansSelectionsPerTeam_State) String() string {
 }
 
 func (PicksAndBansSelectionsPerTeam_State) Descriptor() protoreflect.EnumDescriptor {
-	return file_bragi_dota2_proto_enumTypes[5].Descriptor()
+	return file_bragi_dota2_proto_enumTypes[6].Descriptor()
 }
 
 func (PicksAndBansSelectionsPerTeam_State) Type() protoreflect.EnumType {
-	return &file_bragi_dota2_proto_enumTypes[5]
+	return &file_bragi_dota2_proto_enumTypes[6]
 }
 
 func (x PicksAndBansSelectionsPerTeam_State) Number() protoreflect.EnumNumber {
@@ -403,11 +462,11 @@ func (x PicksAndBansSelectionsPerTeam_SelectionType) String() string {
 }
 
 func (PicksAndBansSelectionsPerTeam_SelectionType) Descriptor() protoreflect.EnumDescriptor {
-	return file_bragi_dota2_proto_enumTypes[6].Descriptor()
+	return file_bragi_dota2_proto_enumTypes[7].Descriptor()
 }
 
 func (PicksAndBansSelectionsPerTeam_SelectionType) Type() protoreflect.EnumType {
-	return &file_bragi_dota2_proto_enumTypes[6]
+	return &file_bragi_dota2_proto_enumTypes[7]
 }
 
 func (x PicksAndBansSelectionsPerTeam_SelectionType) Number() protoreflect.EnumNumber {
@@ -452,11 +511,11 @@ func (x PicksAndBansSelectionsPerTeam_TeamType) String() string {
 }
 
 func (PicksAndBansSelectionsPerTeam_TeamType) Descriptor() protoreflect.EnumDescriptor {
-	return file_bragi_dota2_proto_enumTypes[7].Descriptor()
+	return file_bragi_dota2_proto_enumTypes[8].Descriptor()
 }
 
 func (PicksAndBansSelectionsPerTeam_TeamType) Type() protoreflect.EnumType {
-	return &file_bragi_dota2_proto_enumTypes[7]
+	return &file_bragi_dota2_proto_enumTypes[8]
 }
 
 func (x PicksAndBansSelectionsPerTeam_TeamType) Number() protoreflect.EnumNumber {
@@ -501,11 +560,11 @@ func (x PicksAndBansSelections_TeamType) String() string {
 }
 
 func (PicksAndBansSelections_TeamType) Descriptor() protoreflect.EnumDescriptor {
-	return file_bragi_dota2_proto_enumTypes[8].Descriptor()
+	return file_bragi_dota2_proto_enumTypes[9].Descriptor()
 }
 
 func (PicksAndBansSelections_TeamType) Type() protoreflect.EnumType {
-	return &file_bragi_dota2_proto_enumTypes[8]
+	return &file_bragi_dota2_proto_enumTypes[9]
 }
 
 func (x PicksAndBansSelections_TeamType) Number() protoreflect.EnumNumber {
@@ -550,11 +609,11 @@ func (x PicksAndBansSelections_State) String() string {
 }
 
 func (PicksAndBansSelections_State) Descriptor() protoreflect.EnumDescriptor {
-	return file_bragi_dota2_proto_enumTypes[9].Descriptor()
+	return file_bragi_dota2_proto_enumTypes[10].Descriptor()
 }
 
 func (PicksAndBansSelections_State) Type() protoreflect.EnumType {
-	return &file_bragi_dota2_proto_enumTypes[9]
+	return &file_bragi_dota2_proto_enumTypes[10]
 }
 
 func (x PicksAndBansSelections_State) Number() protoreflect.EnumNumber {
@@ -3153,6 +3212,1498 @@ func (x *Dota2Position) GetY() float32 {
 	return 0
 }
 
+type Dota2MatchEvents struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MatchUrn      string                 `protobuf:"bytes,1,opt,name=match_urn,json=matchUrn,proto3" json:"match_urn,omitempty"`
+	Events        []*Dota2Event          `protobuf:"bytes,2,rep,name=events,proto3" json:"events,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Dota2MatchEvents) Reset() {
+	*x = Dota2MatchEvents{}
+	mi := &file_bragi_dota2_proto_msgTypes[34]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2MatchEvents) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2MatchEvents) ProtoMessage() {}
+
+func (x *Dota2MatchEvents) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[34]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2MatchEvents.ProtoReflect.Descriptor instead.
+func (*Dota2MatchEvents) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *Dota2MatchEvents) GetMatchUrn() string {
+	if x != nil {
+		return x.MatchUrn
+	}
+	return ""
+}
+
+func (x *Dota2MatchEvents) GetEvents() []*Dota2Event {
+	if x != nil {
+		return x.Events
+	}
+	return nil
+}
+
+type Dota2Event struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Wall-clock time when the event was received; history replays keep the original time.
+	Timestamp *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	MapId     uint64                 `protobuf:"varint,2,opt,name=map_id,json=mapId,proto3" json:"map_id,omitempty"`
+	// In-game clock in seconds, negative before the horn. Currently not set for multikill, killstreak and tormentor_killed.
+	GameTime *int32 `protobuf:"varint,3,opt,name=game_time,json=gameTime,proto3,oneof" json:"game_time,omitempty"`
+	// Types that are valid to be assigned to Event:
+	//
+	//	*Dota2Event_MapStarted
+	//	*Dota2Event_MapEnded
+	//	*Dota2Event_MapPaused
+	//	*Dota2Event_MapResumed
+	//	*Dota2Event_HeroKill
+	//	*Dota2Event_HeroDeathByEnvironment
+	//	*Dota2Event_TowerDestroyed
+	//	*Dota2Event_BarracksDestroyed
+	//	*Dota2Event_AncientDestroyed
+	//	*Dota2Event_MegaCreeps
+	//	*Dota2Event_RoshanKilled
+	//	*Dota2Event_RoshanRespawned
+	//	*Dota2Event_AegisPickedUp
+	//	*Dota2Event_AegisLost
+	//	*Dota2Event_Buyback
+	//	*Dota2Event_DayNightChanged
+	//	*Dota2Event_Multikill
+	//	*Dota2Event_Killstreak
+	//	*Dota2Event_TormentorKilled
+	Event         isDota2Event_Event `protobuf_oneof:"event"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Dota2Event) Reset() {
+	*x = Dota2Event{}
+	mi := &file_bragi_dota2_proto_msgTypes[35]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2Event) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2Event) ProtoMessage() {}
+
+func (x *Dota2Event) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[35]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2Event.ProtoReflect.Descriptor instead.
+func (*Dota2Event) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *Dota2Event) GetTimestamp() *timestamppb.Timestamp {
+	if x != nil {
+		return x.Timestamp
+	}
+	return nil
+}
+
+func (x *Dota2Event) GetMapId() uint64 {
+	if x != nil {
+		return x.MapId
+	}
+	return 0
+}
+
+func (x *Dota2Event) GetGameTime() int32 {
+	if x != nil && x.GameTime != nil {
+		return *x.GameTime
+	}
+	return 0
+}
+
+func (x *Dota2Event) GetEvent() isDota2Event_Event {
+	if x != nil {
+		return x.Event
+	}
+	return nil
+}
+
+func (x *Dota2Event) GetMapStarted() *Dota2MapStarted {
+	if x != nil {
+		if x, ok := x.Event.(*Dota2Event_MapStarted); ok {
+			return x.MapStarted
+		}
+	}
+	return nil
+}
+
+func (x *Dota2Event) GetMapEnded() *Dota2MapEnded {
+	if x != nil {
+		if x, ok := x.Event.(*Dota2Event_MapEnded); ok {
+			return x.MapEnded
+		}
+	}
+	return nil
+}
+
+func (x *Dota2Event) GetMapPaused() *Dota2MapPaused {
+	if x != nil {
+		if x, ok := x.Event.(*Dota2Event_MapPaused); ok {
+			return x.MapPaused
+		}
+	}
+	return nil
+}
+
+func (x *Dota2Event) GetMapResumed() *Dota2MapResumed {
+	if x != nil {
+		if x, ok := x.Event.(*Dota2Event_MapResumed); ok {
+			return x.MapResumed
+		}
+	}
+	return nil
+}
+
+func (x *Dota2Event) GetHeroKill() *Dota2HeroKill {
+	if x != nil {
+		if x, ok := x.Event.(*Dota2Event_HeroKill); ok {
+			return x.HeroKill
+		}
+	}
+	return nil
+}
+
+func (x *Dota2Event) GetHeroDeathByEnvironment() *Dota2HeroDeathByEnvironment {
+	if x != nil {
+		if x, ok := x.Event.(*Dota2Event_HeroDeathByEnvironment); ok {
+			return x.HeroDeathByEnvironment
+		}
+	}
+	return nil
+}
+
+func (x *Dota2Event) GetTowerDestroyed() *Dota2TowerDestroyed {
+	if x != nil {
+		if x, ok := x.Event.(*Dota2Event_TowerDestroyed); ok {
+			return x.TowerDestroyed
+		}
+	}
+	return nil
+}
+
+func (x *Dota2Event) GetBarracksDestroyed() *Dota2BarracksDestroyed {
+	if x != nil {
+		if x, ok := x.Event.(*Dota2Event_BarracksDestroyed); ok {
+			return x.BarracksDestroyed
+		}
+	}
+	return nil
+}
+
+func (x *Dota2Event) GetAncientDestroyed() *Dota2AncientDestroyed {
+	if x != nil {
+		if x, ok := x.Event.(*Dota2Event_AncientDestroyed); ok {
+			return x.AncientDestroyed
+		}
+	}
+	return nil
+}
+
+func (x *Dota2Event) GetMegaCreeps() *Dota2MegaCreeps {
+	if x != nil {
+		if x, ok := x.Event.(*Dota2Event_MegaCreeps); ok {
+			return x.MegaCreeps
+		}
+	}
+	return nil
+}
+
+func (x *Dota2Event) GetRoshanKilled() *Dota2RoshanKilled {
+	if x != nil {
+		if x, ok := x.Event.(*Dota2Event_RoshanKilled); ok {
+			return x.RoshanKilled
+		}
+	}
+	return nil
+}
+
+func (x *Dota2Event) GetRoshanRespawned() *Dota2RoshanRespawned {
+	if x != nil {
+		if x, ok := x.Event.(*Dota2Event_RoshanRespawned); ok {
+			return x.RoshanRespawned
+		}
+	}
+	return nil
+}
+
+func (x *Dota2Event) GetAegisPickedUp() *Dota2AegisPickedUp {
+	if x != nil {
+		if x, ok := x.Event.(*Dota2Event_AegisPickedUp); ok {
+			return x.AegisPickedUp
+		}
+	}
+	return nil
+}
+
+func (x *Dota2Event) GetAegisLost() *Dota2AegisLost {
+	if x != nil {
+		if x, ok := x.Event.(*Dota2Event_AegisLost); ok {
+			return x.AegisLost
+		}
+	}
+	return nil
+}
+
+func (x *Dota2Event) GetBuyback() *Dota2Buyback {
+	if x != nil {
+		if x, ok := x.Event.(*Dota2Event_Buyback); ok {
+			return x.Buyback
+		}
+	}
+	return nil
+}
+
+func (x *Dota2Event) GetDayNightChanged() *Dota2DayNightChanged {
+	if x != nil {
+		if x, ok := x.Event.(*Dota2Event_DayNightChanged); ok {
+			return x.DayNightChanged
+		}
+	}
+	return nil
+}
+
+func (x *Dota2Event) GetMultikill() *Dota2Multikill {
+	if x != nil {
+		if x, ok := x.Event.(*Dota2Event_Multikill); ok {
+			return x.Multikill
+		}
+	}
+	return nil
+}
+
+func (x *Dota2Event) GetKillstreak() *Dota2Killstreak {
+	if x != nil {
+		if x, ok := x.Event.(*Dota2Event_Killstreak); ok {
+			return x.Killstreak
+		}
+	}
+	return nil
+}
+
+func (x *Dota2Event) GetTormentorKilled() *Dota2TormentorKilled {
+	if x != nil {
+		if x, ok := x.Event.(*Dota2Event_TormentorKilled); ok {
+			return x.TormentorKilled
+		}
+	}
+	return nil
+}
+
+type isDota2Event_Event interface {
+	isDota2Event_Event()
+}
+
+type Dota2Event_MapStarted struct {
+	MapStarted *Dota2MapStarted `protobuf:"bytes,10,opt,name=map_started,json=mapStarted,proto3,oneof"`
+}
+
+type Dota2Event_MapEnded struct {
+	MapEnded *Dota2MapEnded `protobuf:"bytes,11,opt,name=map_ended,json=mapEnded,proto3,oneof"`
+}
+
+type Dota2Event_MapPaused struct {
+	MapPaused *Dota2MapPaused `protobuf:"bytes,12,opt,name=map_paused,json=mapPaused,proto3,oneof"`
+}
+
+type Dota2Event_MapResumed struct {
+	MapResumed *Dota2MapResumed `protobuf:"bytes,13,opt,name=map_resumed,json=mapResumed,proto3,oneof"`
+}
+
+type Dota2Event_HeroKill struct {
+	HeroKill *Dota2HeroKill `protobuf:"bytes,14,opt,name=hero_kill,json=heroKill,proto3,oneof"`
+}
+
+type Dota2Event_HeroDeathByEnvironment struct {
+	HeroDeathByEnvironment *Dota2HeroDeathByEnvironment `protobuf:"bytes,15,opt,name=hero_death_by_environment,json=heroDeathByEnvironment,proto3,oneof"`
+}
+
+type Dota2Event_TowerDestroyed struct {
+	TowerDestroyed *Dota2TowerDestroyed `protobuf:"bytes,16,opt,name=tower_destroyed,json=towerDestroyed,proto3,oneof"`
+}
+
+type Dota2Event_BarracksDestroyed struct {
+	BarracksDestroyed *Dota2BarracksDestroyed `protobuf:"bytes,17,opt,name=barracks_destroyed,json=barracksDestroyed,proto3,oneof"`
+}
+
+type Dota2Event_AncientDestroyed struct {
+	AncientDestroyed *Dota2AncientDestroyed `protobuf:"bytes,18,opt,name=ancient_destroyed,json=ancientDestroyed,proto3,oneof"`
+}
+
+type Dota2Event_MegaCreeps struct {
+	MegaCreeps *Dota2MegaCreeps `protobuf:"bytes,19,opt,name=mega_creeps,json=megaCreeps,proto3,oneof"`
+}
+
+type Dota2Event_RoshanKilled struct {
+	RoshanKilled *Dota2RoshanKilled `protobuf:"bytes,20,opt,name=roshan_killed,json=roshanKilled,proto3,oneof"`
+}
+
+type Dota2Event_RoshanRespawned struct {
+	RoshanRespawned *Dota2RoshanRespawned `protobuf:"bytes,21,opt,name=roshan_respawned,json=roshanRespawned,proto3,oneof"`
+}
+
+type Dota2Event_AegisPickedUp struct {
+	AegisPickedUp *Dota2AegisPickedUp `protobuf:"bytes,22,opt,name=aegis_picked_up,json=aegisPickedUp,proto3,oneof"`
+}
+
+type Dota2Event_AegisLost struct {
+	AegisLost *Dota2AegisLost `protobuf:"bytes,23,opt,name=aegis_lost,json=aegisLost,proto3,oneof"`
+}
+
+type Dota2Event_Buyback struct {
+	Buyback *Dota2Buyback `protobuf:"bytes,24,opt,name=buyback,proto3,oneof"`
+}
+
+type Dota2Event_DayNightChanged struct {
+	DayNightChanged *Dota2DayNightChanged `protobuf:"bytes,25,opt,name=day_night_changed,json=dayNightChanged,proto3,oneof"`
+}
+
+type Dota2Event_Multikill struct {
+	Multikill *Dota2Multikill `protobuf:"bytes,26,opt,name=multikill,proto3,oneof"`
+}
+
+type Dota2Event_Killstreak struct {
+	Killstreak *Dota2Killstreak `protobuf:"bytes,27,opt,name=killstreak,proto3,oneof"`
+}
+
+type Dota2Event_TormentorKilled struct {
+	TormentorKilled *Dota2TormentorKilled `protobuf:"bytes,28,opt,name=tormentor_killed,json=tormentorKilled,proto3,oneof"`
+}
+
+func (*Dota2Event_MapStarted) isDota2Event_Event() {}
+
+func (*Dota2Event_MapEnded) isDota2Event_Event() {}
+
+func (*Dota2Event_MapPaused) isDota2Event_Event() {}
+
+func (*Dota2Event_MapResumed) isDota2Event_Event() {}
+
+func (*Dota2Event_HeroKill) isDota2Event_Event() {}
+
+func (*Dota2Event_HeroDeathByEnvironment) isDota2Event_Event() {}
+
+func (*Dota2Event_TowerDestroyed) isDota2Event_Event() {}
+
+func (*Dota2Event_BarracksDestroyed) isDota2Event_Event() {}
+
+func (*Dota2Event_AncientDestroyed) isDota2Event_Event() {}
+
+func (*Dota2Event_MegaCreeps) isDota2Event_Event() {}
+
+func (*Dota2Event_RoshanKilled) isDota2Event_Event() {}
+
+func (*Dota2Event_RoshanRespawned) isDota2Event_Event() {}
+
+func (*Dota2Event_AegisPickedUp) isDota2Event_Event() {}
+
+func (*Dota2Event_AegisLost) isDota2Event_Event() {}
+
+func (*Dota2Event_Buyback) isDota2Event_Event() {}
+
+func (*Dota2Event_DayNightChanged) isDota2Event_Event() {}
+
+func (*Dota2Event_Multikill) isDota2Event_Event() {}
+
+func (*Dota2Event_Killstreak) isDota2Event_Event() {}
+
+func (*Dota2Event_TormentorKilled) isDota2Event_Event() {}
+
+type Dota2EventTeam struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TeamUrn       string                 `protobuf:"bytes,1,opt,name=team_urn,json=teamUrn,proto3" json:"team_urn,omitempty"`
+	Faction       Dota2Faction           `protobuf:"varint,2,opt,name=faction,proto3,enum=bragi.Dota2Faction" json:"faction,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Dota2EventTeam) Reset() {
+	*x = Dota2EventTeam{}
+	mi := &file_bragi_dota2_proto_msgTypes[36]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2EventTeam) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2EventTeam) ProtoMessage() {}
+
+func (x *Dota2EventTeam) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[36]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2EventTeam.ProtoReflect.Descriptor instead.
+func (*Dota2EventTeam) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{36}
+}
+
+func (x *Dota2EventTeam) GetTeamUrn() string {
+	if x != nil {
+		return x.TeamUrn
+	}
+	return ""
+}
+
+func (x *Dota2EventTeam) GetFaction() Dota2Faction {
+	if x != nil {
+		return x.Faction
+	}
+	return Dota2Faction_DOTA2_FACTION_UNSPECIFIED
+}
+
+type Dota2EventPlayer struct {
+	state     protoimpl.MessageState `protogen:"open.v1"`
+	PlayerUrn string                 `protobuf:"bytes,1,opt,name=player_urn,json=playerUrn,proto3" json:"player_urn,omitempty"`
+	TeamUrn   string                 `protobuf:"bytes,2,opt,name=team_urn,json=teamUrn,proto3" json:"team_urn,omitempty"`
+	Faction   Dota2Faction           `protobuf:"varint,3,opt,name=faction,proto3,enum=bragi.Dota2Faction" json:"faction,omitempty"`
+	// Valve hero id; 0 when unknown.
+	HeroId        uint32 `protobuf:"varint,4,opt,name=hero_id,json=heroId,proto3" json:"hero_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Dota2EventPlayer) Reset() {
+	*x = Dota2EventPlayer{}
+	mi := &file_bragi_dota2_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2EventPlayer) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2EventPlayer) ProtoMessage() {}
+
+func (x *Dota2EventPlayer) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2EventPlayer.ProtoReflect.Descriptor instead.
+func (*Dota2EventPlayer) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *Dota2EventPlayer) GetPlayerUrn() string {
+	if x != nil {
+		return x.PlayerUrn
+	}
+	return ""
+}
+
+func (x *Dota2EventPlayer) GetTeamUrn() string {
+	if x != nil {
+		return x.TeamUrn
+	}
+	return ""
+}
+
+func (x *Dota2EventPlayer) GetFaction() Dota2Faction {
+	if x != nil {
+		return x.Faction
+	}
+	return Dota2Faction_DOTA2_FACTION_UNSPECIFIED
+}
+
+func (x *Dota2EventPlayer) GetHeroId() uint32 {
+	if x != nil {
+		return x.HeroId
+	}
+	return 0
+}
+
+type Dota2MapStarted struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Dota2MapStarted) Reset() {
+	*x = Dota2MapStarted{}
+	mi := &file_bragi_dota2_proto_msgTypes[38]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2MapStarted) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2MapStarted) ProtoMessage() {}
+
+func (x *Dota2MapStarted) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[38]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2MapStarted.ProtoReflect.Descriptor instead.
+func (*Dota2MapStarted) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{38}
+}
+
+type Dota2MapEnded struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Not set when the winner is unknown.
+	Winner        *Dota2EventTeam `protobuf:"bytes,1,opt,name=winner,proto3" json:"winner,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Dota2MapEnded) Reset() {
+	*x = Dota2MapEnded{}
+	mi := &file_bragi_dota2_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2MapEnded) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2MapEnded) ProtoMessage() {}
+
+func (x *Dota2MapEnded) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[39]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2MapEnded.ProtoReflect.Descriptor instead.
+func (*Dota2MapEnded) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *Dota2MapEnded) GetWinner() *Dota2EventTeam {
+	if x != nil {
+		return x.Winner
+	}
+	return nil
+}
+
+type Dota2MapPaused struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Dota2MapPaused) Reset() {
+	*x = Dota2MapPaused{}
+	mi := &file_bragi_dota2_proto_msgTypes[40]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2MapPaused) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2MapPaused) ProtoMessage() {}
+
+func (x *Dota2MapPaused) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[40]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2MapPaused.ProtoReflect.Descriptor instead.
+func (*Dota2MapPaused) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{40}
+}
+
+type Dota2MapResumed struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Dota2MapResumed) Reset() {
+	*x = Dota2MapResumed{}
+	mi := &file_bragi_dota2_proto_msgTypes[41]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2MapResumed) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2MapResumed) ProtoMessage() {}
+
+func (x *Dota2MapResumed) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[41]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2MapResumed.ProtoReflect.Descriptor instead.
+func (*Dota2MapResumed) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{41}
+}
+
+type Dota2HeroKill struct {
+	state      protoimpl.MessageState `protogen:"open.v1"`
+	Killer     *Dota2EventPlayer      `protobuf:"bytes,1,opt,name=killer,proto3" json:"killer,omitempty"`
+	Victim     *Dota2EventPlayer      `protobuf:"bytes,2,opt,name=victim,proto3" json:"victim,omitempty"`
+	FirstBlood bool                   `protobuf:"varint,3,opt,name=first_blood,json=firstBlood,proto3" json:"first_blood,omitempty"`
+	// Kill streak of the killer, including this kill.
+	KillerStreak  uint32 `protobuf:"varint,4,opt,name=killer_streak,json=killerStreak,proto3" json:"killer_streak,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Dota2HeroKill) Reset() {
+	*x = Dota2HeroKill{}
+	mi := &file_bragi_dota2_proto_msgTypes[42]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2HeroKill) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2HeroKill) ProtoMessage() {}
+
+func (x *Dota2HeroKill) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[42]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2HeroKill.ProtoReflect.Descriptor instead.
+func (*Dota2HeroKill) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{42}
+}
+
+func (x *Dota2HeroKill) GetKiller() *Dota2EventPlayer {
+	if x != nil {
+		return x.Killer
+	}
+	return nil
+}
+
+func (x *Dota2HeroKill) GetVictim() *Dota2EventPlayer {
+	if x != nil {
+		return x.Victim
+	}
+	return nil
+}
+
+func (x *Dota2HeroKill) GetFirstBlood() bool {
+	if x != nil {
+		return x.FirstBlood
+	}
+	return false
+}
+
+func (x *Dota2HeroKill) GetKillerStreak() uint32 {
+	if x != nil {
+		return x.KillerStreak
+	}
+	return 0
+}
+
+type Dota2HeroDeathByEnvironment struct {
+	state         protoimpl.MessageState     `protogen:"open.v1"`
+	Victim        *Dota2EventPlayer          `protobuf:"bytes,1,opt,name=victim,proto3" json:"victim,omitempty"`
+	KillerKind    Dota2EnvironmentKillerKind `protobuf:"varint,2,opt,name=killer_kind,json=killerKind,proto3,enum=bragi.Dota2EnvironmentKillerKind" json:"killer_kind,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Dota2HeroDeathByEnvironment) Reset() {
+	*x = Dota2HeroDeathByEnvironment{}
+	mi := &file_bragi_dota2_proto_msgTypes[43]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2HeroDeathByEnvironment) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2HeroDeathByEnvironment) ProtoMessage() {}
+
+func (x *Dota2HeroDeathByEnvironment) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[43]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2HeroDeathByEnvironment.ProtoReflect.Descriptor instead.
+func (*Dota2HeroDeathByEnvironment) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{43}
+}
+
+func (x *Dota2HeroDeathByEnvironment) GetVictim() *Dota2EventPlayer {
+	if x != nil {
+		return x.Victim
+	}
+	return nil
+}
+
+func (x *Dota2HeroDeathByEnvironment) GetKillerKind() Dota2EnvironmentKillerKind {
+	if x != nil {
+		return x.KillerKind
+	}
+	return Dota2EnvironmentKillerKind_DOTA2_ENVIRONMENT_KILLER_KIND_UNSPECIFIED
+}
+
+type Dota2TowerDestroyed struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Team that lost it.
+	Team *Dota2EventTeam `protobuf:"bytes,1,opt,name=team,proto3" json:"team,omitempty"`
+	// Team credited with the destruction (the opponent of team).
+	AttributedTeam *Dota2EventTeam `protobuf:"bytes,2,opt,name=attributed_team,json=attributedTeam,proto3" json:"attributed_team,omitempty"`
+	Lane           Dota2Lane       `protobuf:"varint,3,opt,name=lane,proto3,enum=bragi.Dota2Lane" json:"lane,omitempty"`
+	Tier           Dota2TowerTier  `protobuf:"varint,4,opt,name=tier,proto3,enum=bragi.Dota2TowerTier" json:"tier,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *Dota2TowerDestroyed) Reset() {
+	*x = Dota2TowerDestroyed{}
+	mi := &file_bragi_dota2_proto_msgTypes[44]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2TowerDestroyed) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2TowerDestroyed) ProtoMessage() {}
+
+func (x *Dota2TowerDestroyed) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[44]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2TowerDestroyed.ProtoReflect.Descriptor instead.
+func (*Dota2TowerDestroyed) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{44}
+}
+
+func (x *Dota2TowerDestroyed) GetTeam() *Dota2EventTeam {
+	if x != nil {
+		return x.Team
+	}
+	return nil
+}
+
+func (x *Dota2TowerDestroyed) GetAttributedTeam() *Dota2EventTeam {
+	if x != nil {
+		return x.AttributedTeam
+	}
+	return nil
+}
+
+func (x *Dota2TowerDestroyed) GetLane() Dota2Lane {
+	if x != nil {
+		return x.Lane
+	}
+	return Dota2Lane_DOTA2_LANE_UNSPECIFIED
+}
+
+func (x *Dota2TowerDestroyed) GetTier() Dota2TowerTier {
+	if x != nil {
+		return x.Tier
+	}
+	return Dota2TowerTier_DOTA2_TOWER_TIER_UNSPECIFIED
+}
+
+type Dota2BarracksDestroyed struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Team that lost it.
+	Team *Dota2EventTeam `protobuf:"bytes,1,opt,name=team,proto3" json:"team,omitempty"`
+	// Team credited with the destruction (the opponent of team).
+	AttributedTeam *Dota2EventTeam  `protobuf:"bytes,2,opt,name=attributed_team,json=attributedTeam,proto3" json:"attributed_team,omitempty"`
+	Lane           Dota2Lane        `protobuf:"varint,3,opt,name=lane,proto3,enum=bragi.Dota2Lane" json:"lane,omitempty"`
+	Type           Dota2BarrackType `protobuf:"varint,4,opt,name=type,proto3,enum=bragi.Dota2BarrackType" json:"type,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *Dota2BarracksDestroyed) Reset() {
+	*x = Dota2BarracksDestroyed{}
+	mi := &file_bragi_dota2_proto_msgTypes[45]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2BarracksDestroyed) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2BarracksDestroyed) ProtoMessage() {}
+
+func (x *Dota2BarracksDestroyed) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[45]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2BarracksDestroyed.ProtoReflect.Descriptor instead.
+func (*Dota2BarracksDestroyed) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{45}
+}
+
+func (x *Dota2BarracksDestroyed) GetTeam() *Dota2EventTeam {
+	if x != nil {
+		return x.Team
+	}
+	return nil
+}
+
+func (x *Dota2BarracksDestroyed) GetAttributedTeam() *Dota2EventTeam {
+	if x != nil {
+		return x.AttributedTeam
+	}
+	return nil
+}
+
+func (x *Dota2BarracksDestroyed) GetLane() Dota2Lane {
+	if x != nil {
+		return x.Lane
+	}
+	return Dota2Lane_DOTA2_LANE_UNSPECIFIED
+}
+
+func (x *Dota2BarracksDestroyed) GetType() Dota2BarrackType {
+	if x != nil {
+		return x.Type
+	}
+	return Dota2BarrackType_DOTA2_BARRACK_TYPE_UNSPECIFIED
+}
+
+type Dota2AncientDestroyed struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Team that lost it.
+	Team *Dota2EventTeam `protobuf:"bytes,1,opt,name=team,proto3" json:"team,omitempty"`
+	// Team credited with the destruction (the opponent of team).
+	AttributedTeam *Dota2EventTeam `protobuf:"bytes,2,opt,name=attributed_team,json=attributedTeam,proto3" json:"attributed_team,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *Dota2AncientDestroyed) Reset() {
+	*x = Dota2AncientDestroyed{}
+	mi := &file_bragi_dota2_proto_msgTypes[46]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2AncientDestroyed) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2AncientDestroyed) ProtoMessage() {}
+
+func (x *Dota2AncientDestroyed) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[46]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2AncientDestroyed.ProtoReflect.Descriptor instead.
+func (*Dota2AncientDestroyed) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{46}
+}
+
+func (x *Dota2AncientDestroyed) GetTeam() *Dota2EventTeam {
+	if x != nil {
+		return x.Team
+	}
+	return nil
+}
+
+func (x *Dota2AncientDestroyed) GetAttributedTeam() *Dota2EventTeam {
+	if x != nil {
+		return x.AttributedTeam
+	}
+	return nil
+}
+
+type Dota2MegaCreeps struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Team that gets mega creeps.
+	Team *Dota2EventTeam `protobuf:"bytes,1,opt,name=team,proto3" json:"team,omitempty"`
+	// Team that lost all its barracks.
+	AgainstTeam   *Dota2EventTeam `protobuf:"bytes,2,opt,name=against_team,json=againstTeam,proto3" json:"against_team,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Dota2MegaCreeps) Reset() {
+	*x = Dota2MegaCreeps{}
+	mi := &file_bragi_dota2_proto_msgTypes[47]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2MegaCreeps) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2MegaCreeps) ProtoMessage() {}
+
+func (x *Dota2MegaCreeps) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[47]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2MegaCreeps.ProtoReflect.Descriptor instead.
+func (*Dota2MegaCreeps) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{47}
+}
+
+func (x *Dota2MegaCreeps) GetTeam() *Dota2EventTeam {
+	if x != nil {
+		return x.Team
+	}
+	return nil
+}
+
+func (x *Dota2MegaCreeps) GetAgainstTeam() *Dota2EventTeam {
+	if x != nil {
+		return x.AgainstTeam
+	}
+	return nil
+}
+
+type Dota2RoshanKilled struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Not set when the team that killed Roshan is unknown.
+	Team          *Dota2EventTeam `protobuf:"bytes,1,opt,name=team,proto3" json:"team,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Dota2RoshanKilled) Reset() {
+	*x = Dota2RoshanKilled{}
+	mi := &file_bragi_dota2_proto_msgTypes[48]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2RoshanKilled) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2RoshanKilled) ProtoMessage() {}
+
+func (x *Dota2RoshanKilled) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[48]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2RoshanKilled.ProtoReflect.Descriptor instead.
+func (*Dota2RoshanKilled) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{48}
+}
+
+func (x *Dota2RoshanKilled) GetTeam() *Dota2EventTeam {
+	if x != nil {
+		return x.Team
+	}
+	return nil
+}
+
+type Dota2RoshanRespawned struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Dota2RoshanRespawned) Reset() {
+	*x = Dota2RoshanRespawned{}
+	mi := &file_bragi_dota2_proto_msgTypes[49]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2RoshanRespawned) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2RoshanRespawned) ProtoMessage() {}
+
+func (x *Dota2RoshanRespawned) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[49]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2RoshanRespawned.ProtoReflect.Descriptor instead.
+func (*Dota2RoshanRespawned) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{49}
+}
+
+type Dota2AegisPickedUp struct {
+	state  protoimpl.MessageState `protogen:"open.v1"`
+	Player *Dota2EventPlayer      `protobuf:"bytes,1,opt,name=player,proto3" json:"player,omitempty"`
+	// Picked up by the team that did not kill Roshan. Best effort: false when unknown.
+	Snatched      bool `protobuf:"varint,2,opt,name=snatched,proto3" json:"snatched,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Dota2AegisPickedUp) Reset() {
+	*x = Dota2AegisPickedUp{}
+	mi := &file_bragi_dota2_proto_msgTypes[50]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2AegisPickedUp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2AegisPickedUp) ProtoMessage() {}
+
+func (x *Dota2AegisPickedUp) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[50]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2AegisPickedUp.ProtoReflect.Descriptor instead.
+func (*Dota2AegisPickedUp) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{50}
+}
+
+func (x *Dota2AegisPickedUp) GetPlayer() *Dota2EventPlayer {
+	if x != nil {
+		return x.Player
+	}
+	return nil
+}
+
+func (x *Dota2AegisPickedUp) GetSnatched() bool {
+	if x != nil {
+		return x.Snatched
+	}
+	return false
+}
+
+type Dota2AegisLost struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Player that held the Aegis.
+	Player        *Dota2EventPlayer `protobuf:"bytes,1,opt,name=player,proto3" json:"player,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Dota2AegisLost) Reset() {
+	*x = Dota2AegisLost{}
+	mi := &file_bragi_dota2_proto_msgTypes[51]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2AegisLost) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2AegisLost) ProtoMessage() {}
+
+func (x *Dota2AegisLost) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[51]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2AegisLost.ProtoReflect.Descriptor instead.
+func (*Dota2AegisLost) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{51}
+}
+
+func (x *Dota2AegisLost) GetPlayer() *Dota2EventPlayer {
+	if x != nil {
+		return x.Player
+	}
+	return nil
+}
+
+type Dota2Buyback struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Player        *Dota2EventPlayer      `protobuf:"bytes,1,opt,name=player,proto3" json:"player,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Dota2Buyback) Reset() {
+	*x = Dota2Buyback{}
+	mi := &file_bragi_dota2_proto_msgTypes[52]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2Buyback) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2Buyback) ProtoMessage() {}
+
+func (x *Dota2Buyback) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[52]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2Buyback.ProtoReflect.Descriptor instead.
+func (*Dota2Buyback) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{52}
+}
+
+func (x *Dota2Buyback) GetPlayer() *Dota2EventPlayer {
+	if x != nil {
+		return x.Player
+	}
+	return nil
+}
+
+type Dota2DayNightChanged struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	IsDay         bool                   `protobuf:"varint,1,opt,name=is_day,json=isDay,proto3" json:"is_day,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Dota2DayNightChanged) Reset() {
+	*x = Dota2DayNightChanged{}
+	mi := &file_bragi_dota2_proto_msgTypes[53]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2DayNightChanged) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2DayNightChanged) ProtoMessage() {}
+
+func (x *Dota2DayNightChanged) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[53]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2DayNightChanged.ProtoReflect.Descriptor instead.
+func (*Dota2DayNightChanged) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{53}
+}
+
+func (x *Dota2DayNightChanged) GetIsDay() bool {
+	if x != nil {
+		return x.IsDay
+	}
+	return false
+}
+
+type Dota2Multikill struct {
+	state  protoimpl.MessageState `protogen:"open.v1"`
+	Player *Dota2EventPlayer      `protobuf:"bytes,1,opt,name=player,proto3" json:"player,omitempty"`
+	// Kills in the multikill: 2 = double kill, 3 = triple kill, and so on.
+	Kills         uint32 `protobuf:"varint,2,opt,name=kills,proto3" json:"kills,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Dota2Multikill) Reset() {
+	*x = Dota2Multikill{}
+	mi := &file_bragi_dota2_proto_msgTypes[54]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2Multikill) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2Multikill) ProtoMessage() {}
+
+func (x *Dota2Multikill) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[54]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2Multikill.ProtoReflect.Descriptor instead.
+func (*Dota2Multikill) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{54}
+}
+
+func (x *Dota2Multikill) GetPlayer() *Dota2EventPlayer {
+	if x != nil {
+		return x.Player
+	}
+	return nil
+}
+
+func (x *Dota2Multikill) GetKills() uint32 {
+	if x != nil {
+		return x.Kills
+	}
+	return 0
+}
+
+type Dota2Killstreak struct {
+	state  protoimpl.MessageState `protogen:"open.v1"`
+	Player *Dota2EventPlayer      `protobuf:"bytes,1,opt,name=player,proto3" json:"player,omitempty"`
+	// Length of the player's kill streak at the time of the event.
+	Streak        uint32 `protobuf:"varint,2,opt,name=streak,proto3" json:"streak,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Dota2Killstreak) Reset() {
+	*x = Dota2Killstreak{}
+	mi := &file_bragi_dota2_proto_msgTypes[55]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2Killstreak) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2Killstreak) ProtoMessage() {}
+
+func (x *Dota2Killstreak) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[55]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2Killstreak.ProtoReflect.Descriptor instead.
+func (*Dota2Killstreak) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{55}
+}
+
+func (x *Dota2Killstreak) GetPlayer() *Dota2EventPlayer {
+	if x != nil {
+		return x.Player
+	}
+	return nil
+}
+
+func (x *Dota2Killstreak) GetStreak() uint32 {
+	if x != nil {
+		return x.Streak
+	}
+	return 0
+}
+
+type Dota2TormentorKilled struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Killer        *Dota2EventPlayer      `protobuf:"bytes,1,opt,name=killer,proto3" json:"killer,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Dota2TormentorKilled) Reset() {
+	*x = Dota2TormentorKilled{}
+	mi := &file_bragi_dota2_proto_msgTypes[56]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Dota2TormentorKilled) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dota2TormentorKilled) ProtoMessage() {}
+
+func (x *Dota2TormentorKilled) ProtoReflect() protoreflect.Message {
+	mi := &file_bragi_dota2_proto_msgTypes[56]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dota2TormentorKilled.ProtoReflect.Descriptor instead.
+func (*Dota2TormentorKilled) Descriptor() ([]byte, []int) {
+	return file_bragi_dota2_proto_rawDescGZIP(), []int{56}
+}
+
+func (x *Dota2TormentorKilled) GetKiller() *Dota2EventPlayer {
+	if x != nil {
+		return x.Killer
+	}
+	return nil
+}
+
 type Dota2MatchMessage_Payload struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Types that are valid to be assigned to Payload:
@@ -3166,7 +4717,7 @@ type Dota2MatchMessage_Payload struct {
 
 func (x *Dota2MatchMessage_Payload) Reset() {
 	*x = Dota2MatchMessage_Payload{}
-	mi := &file_bragi_dota2_proto_msgTypes[34]
+	mi := &file_bragi_dota2_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3178,7 +4729,7 @@ func (x *Dota2MatchMessage_Payload) String() string {
 func (*Dota2MatchMessage_Payload) ProtoMessage() {}
 
 func (x *Dota2MatchMessage_Payload) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_dota2_proto_msgTypes[34]
+	mi := &file_bragi_dota2_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3247,7 +4798,7 @@ type PicksAndBansSelectionsPerTeam_HeroSelection struct {
 
 func (x *PicksAndBansSelectionsPerTeam_HeroSelection) Reset() {
 	*x = PicksAndBansSelectionsPerTeam_HeroSelection{}
-	mi := &file_bragi_dota2_proto_msgTypes[35]
+	mi := &file_bragi_dota2_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3259,7 +4810,7 @@ func (x *PicksAndBansSelectionsPerTeam_HeroSelection) String() string {
 func (*PicksAndBansSelectionsPerTeam_HeroSelection) ProtoMessage() {}
 
 func (x *PicksAndBansSelectionsPerTeam_HeroSelection) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_dota2_proto_msgTypes[35]
+	mi := &file_bragi_dota2_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3299,7 +4850,7 @@ type PicksAndBansSelectionsPerTeam_RadiantSelections struct {
 
 func (x *PicksAndBansSelectionsPerTeam_RadiantSelections) Reset() {
 	*x = PicksAndBansSelectionsPerTeam_RadiantSelections{}
-	mi := &file_bragi_dota2_proto_msgTypes[36]
+	mi := &file_bragi_dota2_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3311,7 +4862,7 @@ func (x *PicksAndBansSelectionsPerTeam_RadiantSelections) String() string {
 func (*PicksAndBansSelectionsPerTeam_RadiantSelections) ProtoMessage() {}
 
 func (x *PicksAndBansSelectionsPerTeam_RadiantSelections) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_dota2_proto_msgTypes[36]
+	mi := &file_bragi_dota2_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3351,7 +4902,7 @@ type PicksAndBansSelectionsPerTeam_DireSelections struct {
 
 func (x *PicksAndBansSelectionsPerTeam_DireSelections) Reset() {
 	*x = PicksAndBansSelectionsPerTeam_DireSelections{}
-	mi := &file_bragi_dota2_proto_msgTypes[37]
+	mi := &file_bragi_dota2_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3363,7 +4914,7 @@ func (x *PicksAndBansSelectionsPerTeam_DireSelections) String() string {
 func (*PicksAndBansSelectionsPerTeam_DireSelections) ProtoMessage() {}
 
 func (x *PicksAndBansSelectionsPerTeam_DireSelections) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_dota2_proto_msgTypes[37]
+	mi := &file_bragi_dota2_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3406,7 +4957,7 @@ type PicksAndBansSelections_CurrentHeroSelection struct {
 
 func (x *PicksAndBansSelections_CurrentHeroSelection) Reset() {
 	*x = PicksAndBansSelections_CurrentHeroSelection{}
-	mi := &file_bragi_dota2_proto_msgTypes[38]
+	mi := &file_bragi_dota2_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3418,7 +4969,7 @@ func (x *PicksAndBansSelections_CurrentHeroSelection) String() string {
 func (*PicksAndBansSelections_CurrentHeroSelection) ProtoMessage() {}
 
 func (x *PicksAndBansSelections_CurrentHeroSelection) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_dota2_proto_msgTypes[38]
+	mi := &file_bragi_dota2_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3481,7 +5032,7 @@ type PicksAndBansSelections_PickOrBan struct {
 
 func (x *PicksAndBansSelections_PickOrBan) Reset() {
 	*x = PicksAndBansSelections_PickOrBan{}
-	mi := &file_bragi_dota2_proto_msgTypes[39]
+	mi := &file_bragi_dota2_proto_msgTypes[62]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3493,7 +5044,7 @@ func (x *PicksAndBansSelections_PickOrBan) String() string {
 func (*PicksAndBansSelections_PickOrBan) ProtoMessage() {}
 
 func (x *PicksAndBansSelections_PickOrBan) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_dota2_proto_msgTypes[39]
+	mi := &file_bragi_dota2_proto_msgTypes[62]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3550,7 +5101,7 @@ type Dota2MatchUpdate_Payload struct {
 
 func (x *Dota2MatchUpdate_Payload) Reset() {
 	*x = Dota2MatchUpdate_Payload{}
-	mi := &file_bragi_dota2_proto_msgTypes[40]
+	mi := &file_bragi_dota2_proto_msgTypes[63]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3562,7 +5113,7 @@ func (x *Dota2MatchUpdate_Payload) String() string {
 func (*Dota2MatchUpdate_Payload) ProtoMessage() {}
 
 func (x *Dota2MatchUpdate_Payload) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_dota2_proto_msgTypes[40]
+	mi := &file_bragi_dota2_proto_msgTypes[63]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3633,7 +5184,7 @@ type Dota2TeamCurrentMapStatePartialUpdate_Payload struct {
 
 func (x *Dota2TeamCurrentMapStatePartialUpdate_Payload) Reset() {
 	*x = Dota2TeamCurrentMapStatePartialUpdate_Payload{}
-	mi := &file_bragi_dota2_proto_msgTypes[43]
+	mi := &file_bragi_dota2_proto_msgTypes[66]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3645,7 +5196,7 @@ func (x *Dota2TeamCurrentMapStatePartialUpdate_Payload) String() string {
 func (*Dota2TeamCurrentMapStatePartialUpdate_Payload) ProtoMessage() {}
 
 func (x *Dota2TeamCurrentMapStatePartialUpdate_Payload) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_dota2_proto_msgTypes[43]
+	mi := &file_bragi_dota2_proto_msgTypes[66]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3740,7 +5291,7 @@ type Dota2PlayerCurrentMapStatePartialUpdate_Payload struct {
 
 func (x *Dota2PlayerCurrentMapStatePartialUpdate_Payload) Reset() {
 	*x = Dota2PlayerCurrentMapStatePartialUpdate_Payload{}
-	mi := &file_bragi_dota2_proto_msgTypes[45]
+	mi := &file_bragi_dota2_proto_msgTypes[68]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3752,7 +5303,7 @@ func (x *Dota2PlayerCurrentMapStatePartialUpdate_Payload) String() string {
 func (*Dota2PlayerCurrentMapStatePartialUpdate_Payload) ProtoMessage() {}
 
 func (x *Dota2PlayerCurrentMapStatePartialUpdate_Payload) ProtoReflect() protoreflect.Message {
-	mi := &file_bragi_dota2_proto_msgTypes[45]
+	mi := &file_bragi_dota2_proto_msgTypes[68]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4567,74 +6118,310 @@ var file_bragi_dota2_proto_rawDesc = []byte{
 	0x61, 0x6c, 0x69, 0x76, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x08, 0x52, 0x05, 0x61, 0x6c, 0x69,
 	0x76, 0x65, 0x22, 0x2b, 0x0a, 0x0d, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x50, 0x6f, 0x73, 0x69, 0x74,
 	0x69, 0x6f, 0x6e, 0x12, 0x0c, 0x0a, 0x01, 0x78, 0x18, 0x01, 0x20, 0x01, 0x28, 0x02, 0x52, 0x01,
-	0x78, 0x12, 0x0c, 0x0a, 0x01, 0x79, 0x18, 0x02, 0x20, 0x01, 0x28, 0x02, 0x52, 0x01, 0x79, 0x2a,
-	0x60, 0x0a, 0x0c, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x46, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x12,
-	0x1d, 0x0a, 0x19, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x46, 0x41, 0x43, 0x54, 0x49, 0x4f, 0x4e,
-	0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x19,
-	0x0a, 0x15, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x46, 0x41, 0x43, 0x54, 0x49, 0x4f, 0x4e, 0x5f,
-	0x52, 0x41, 0x44, 0x49, 0x41, 0x4e, 0x54, 0x10, 0x01, 0x12, 0x16, 0x0a, 0x12, 0x44, 0x4f, 0x54,
-	0x41, 0x32, 0x5f, 0x46, 0x41, 0x43, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x44, 0x49, 0x52, 0x45, 0x10,
-	0x02, 0x2a, 0x63, 0x0a, 0x09, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x4c, 0x61, 0x6e, 0x65, 0x12, 0x1a,
-	0x0a, 0x16, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x4c, 0x41, 0x4e, 0x45, 0x5f, 0x55, 0x4e, 0x53,
-	0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x12, 0x0a, 0x0e, 0x44, 0x4f,
-	0x54, 0x41, 0x32, 0x5f, 0x4c, 0x41, 0x4e, 0x45, 0x5f, 0x54, 0x4f, 0x50, 0x10, 0x01, 0x12, 0x12,
-	0x0a, 0x0e, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x4c, 0x41, 0x4e, 0x45, 0x5f, 0x4d, 0x49, 0x44,
-	0x10, 0x02, 0x12, 0x12, 0x0a, 0x0e, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x4c, 0x41, 0x4e, 0x45,
-	0x5f, 0x42, 0x4f, 0x54, 0x10, 0x03, 0x2a, 0x92, 0x01, 0x0a, 0x0e, 0x44, 0x6f, 0x74, 0x61, 0x32,
-	0x54, 0x6f, 0x77, 0x65, 0x72, 0x54, 0x69, 0x65, 0x72, 0x12, 0x20, 0x0a, 0x1c, 0x44, 0x4f, 0x54,
-	0x41, 0x32, 0x5f, 0x54, 0x4f, 0x57, 0x45, 0x52, 0x5f, 0x54, 0x49, 0x45, 0x52, 0x5f, 0x55, 0x4e,
-	0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x16, 0x0a, 0x12, 0x44,
-	0x4f, 0x54, 0x41, 0x32, 0x5f, 0x54, 0x4f, 0x57, 0x45, 0x52, 0x5f, 0x54, 0x49, 0x45, 0x52, 0x5f,
-	0x31, 0x10, 0x01, 0x12, 0x16, 0x0a, 0x12, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x54, 0x4f, 0x57,
-	0x45, 0x52, 0x5f, 0x54, 0x49, 0x45, 0x52, 0x5f, 0x32, 0x10, 0x02, 0x12, 0x16, 0x0a, 0x12, 0x44,
-	0x4f, 0x54, 0x41, 0x32, 0x5f, 0x54, 0x4f, 0x57, 0x45, 0x52, 0x5f, 0x54, 0x49, 0x45, 0x52, 0x5f,
-	0x33, 0x10, 0x03, 0x12, 0x16, 0x0a, 0x12, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x54, 0x4f, 0x57,
-	0x45, 0x52, 0x5f, 0x54, 0x49, 0x45, 0x52, 0x5f, 0x34, 0x10, 0x04, 0x2a, 0x73, 0x0a, 0x10, 0x44,
-	0x6f, 0x74, 0x61, 0x32, 0x42, 0x61, 0x72, 0x72, 0x61, 0x63, 0x6b, 0x54, 0x79, 0x70, 0x65, 0x12,
-	0x22, 0x0a, 0x1e, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x42, 0x41, 0x52, 0x52, 0x41, 0x43, 0x4b,
-	0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45,
-	0x44, 0x10, 0x00, 0x12, 0x1d, 0x0a, 0x19, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x42, 0x41, 0x52,
-	0x52, 0x41, 0x43, 0x4b, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x52, 0x41, 0x4e, 0x47, 0x45, 0x44,
-	0x10, 0x01, 0x12, 0x1c, 0x0a, 0x18, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x42, 0x41, 0x52, 0x52,
-	0x41, 0x43, 0x4b, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x4d, 0x45, 0x4c, 0x45, 0x45, 0x10, 0x02,
-	0x2a, 0xd2, 0x04, 0x0a, 0x11, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x49, 0x74, 0x65, 0x6d, 0x50, 0x6f,
-	0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x23, 0x0a, 0x1f, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f,
-	0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x55, 0x4e,
-	0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x1f, 0x0a, 0x1b, 0x44,
-	0x4f, 0x54, 0x41, 0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49,
-	0x4f, 0x4e, 0x5f, 0x4e, 0x45, 0x55, 0x54, 0x52, 0x41, 0x4c, 0x10, 0x01, 0x12, 0x1e, 0x0a, 0x1a,
-	0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54,
-	0x49, 0x4f, 0x4e, 0x5f, 0x53, 0x54, 0x41, 0x53, 0x48, 0x30, 0x10, 0x02, 0x12, 0x1e, 0x0a, 0x1a,
-	0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54,
-	0x49, 0x4f, 0x4e, 0x5f, 0x53, 0x54, 0x41, 0x53, 0x48, 0x31, 0x10, 0x03, 0x12, 0x1e, 0x0a, 0x1a,
-	0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54,
-	0x49, 0x4f, 0x4e, 0x5f, 0x53, 0x54, 0x41, 0x53, 0x48, 0x32, 0x10, 0x04, 0x12, 0x1e, 0x0a, 0x1a,
-	0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54,
-	0x49, 0x4f, 0x4e, 0x5f, 0x53, 0x54, 0x41, 0x53, 0x48, 0x33, 0x10, 0x05, 0x12, 0x1e, 0x0a, 0x1a,
-	0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54,
-	0x49, 0x4f, 0x4e, 0x5f, 0x53, 0x54, 0x41, 0x53, 0x48, 0x34, 0x10, 0x06, 0x12, 0x1e, 0x0a, 0x1a,
-	0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54,
-	0x49, 0x4f, 0x4e, 0x5f, 0x53, 0x54, 0x41, 0x53, 0x48, 0x35, 0x10, 0x07, 0x12, 0x20, 0x0a, 0x1c,
-	0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54,
-	0x49, 0x4f, 0x4e, 0x5f, 0x54, 0x45, 0x4c, 0x45, 0x50, 0x4f, 0x52, 0x54, 0x10, 0x08, 0x12, 0x1d,
-	0x0a, 0x19, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53,
-	0x49, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x53, 0x4c, 0x4f, 0x54, 0x30, 0x10, 0x09, 0x12, 0x1d, 0x0a,
-	0x19, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49,
-	0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x53, 0x4c, 0x4f, 0x54, 0x31, 0x10, 0x0a, 0x12, 0x1d, 0x0a, 0x19,
-	0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54,
-	0x49, 0x4f, 0x4e, 0x5f, 0x53, 0x4c, 0x4f, 0x54, 0x32, 0x10, 0x0b, 0x12, 0x1d, 0x0a, 0x19, 0x44,
-	0x4f, 0x54, 0x41, 0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49,
-	0x4f, 0x4e, 0x5f, 0x53, 0x4c, 0x4f, 0x54, 0x33, 0x10, 0x0c, 0x12, 0x1d, 0x0a, 0x19, 0x44, 0x4f,
-	0x54, 0x41, 0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49, 0x4f,
-	0x4e, 0x5f, 0x53, 0x4c, 0x4f, 0x54, 0x34, 0x10, 0x0d, 0x12, 0x1d, 0x0a, 0x19, 0x44, 0x4f, 0x54,
-	0x41, 0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49, 0x4f, 0x4e,
-	0x5f, 0x53, 0x4c, 0x4f, 0x54, 0x35, 0x10, 0x0e, 0x12, 0x1d, 0x0a, 0x19, 0x44, 0x4f, 0x54, 0x41,
+	0x78, 0x12, 0x0c, 0x0a, 0x01, 0x79, 0x18, 0x02, 0x20, 0x01, 0x28, 0x02, 0x52, 0x01, 0x79, 0x22,
+	0x5a, 0x0a, 0x10, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x45, 0x76, 0x65,
+	0x6e, 0x74, 0x73, 0x12, 0x1b, 0x0a, 0x09, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x5f, 0x75, 0x72, 0x6e,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x55, 0x72, 0x6e,
+	0x12, 0x29, 0x0a, 0x06, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b,
+	0x32, 0x11, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x45, 0x76,
+	0x65, 0x6e, 0x74, 0x52, 0x06, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x73, 0x22, 0xed, 0x0a, 0x0a, 0x0a,
+	0x44, 0x6f, 0x74, 0x61, 0x32, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x12, 0x38, 0x0a, 0x09, 0x74, 0x69,
+	0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e,
+	0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x09, 0x74, 0x69, 0x6d, 0x65, 0x73,
+	0x74, 0x61, 0x6d, 0x70, 0x12, 0x15, 0x0a, 0x06, 0x6d, 0x61, 0x70, 0x5f, 0x69, 0x64, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x04, 0x52, 0x05, 0x6d, 0x61, 0x70, 0x49, 0x64, 0x12, 0x20, 0x0a, 0x09, 0x67,
+	0x61, 0x6d, 0x65, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x48, 0x01,
+	0x52, 0x08, 0x67, 0x61, 0x6d, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x88, 0x01, 0x01, 0x12, 0x39, 0x0a,
+	0x0b, 0x6d, 0x61, 0x70, 0x5f, 0x73, 0x74, 0x61, 0x72, 0x74, 0x65, 0x64, 0x18, 0x0a, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x16, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32,
+	0x4d, 0x61, 0x70, 0x53, 0x74, 0x61, 0x72, 0x74, 0x65, 0x64, 0x48, 0x00, 0x52, 0x0a, 0x6d, 0x61,
+	0x70, 0x53, 0x74, 0x61, 0x72, 0x74, 0x65, 0x64, 0x12, 0x33, 0x0a, 0x09, 0x6d, 0x61, 0x70, 0x5f,
+	0x65, 0x6e, 0x64, 0x65, 0x64, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x62, 0x72,
+	0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x4d, 0x61, 0x70, 0x45, 0x6e, 0x64, 0x65,
+	0x64, 0x48, 0x00, 0x52, 0x08, 0x6d, 0x61, 0x70, 0x45, 0x6e, 0x64, 0x65, 0x64, 0x12, 0x36, 0x0a,
+	0x0a, 0x6d, 0x61, 0x70, 0x5f, 0x70, 0x61, 0x75, 0x73, 0x65, 0x64, 0x18, 0x0c, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x15, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x4d,
+	0x61, 0x70, 0x50, 0x61, 0x75, 0x73, 0x65, 0x64, 0x48, 0x00, 0x52, 0x09, 0x6d, 0x61, 0x70, 0x50,
+	0x61, 0x75, 0x73, 0x65, 0x64, 0x12, 0x39, 0x0a, 0x0b, 0x6d, 0x61, 0x70, 0x5f, 0x72, 0x65, 0x73,
+	0x75, 0x6d, 0x65, 0x64, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x62, 0x72, 0x61,
+	0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x4d, 0x61, 0x70, 0x52, 0x65, 0x73, 0x75, 0x6d,
+	0x65, 0x64, 0x48, 0x00, 0x52, 0x0a, 0x6d, 0x61, 0x70, 0x52, 0x65, 0x73, 0x75, 0x6d, 0x65, 0x64,
+	0x12, 0x33, 0x0a, 0x09, 0x68, 0x65, 0x72, 0x6f, 0x5f, 0x6b, 0x69, 0x6c, 0x6c, 0x18, 0x0e, 0x20,
+	0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61,
+	0x32, 0x48, 0x65, 0x72, 0x6f, 0x4b, 0x69, 0x6c, 0x6c, 0x48, 0x00, 0x52, 0x08, 0x68, 0x65, 0x72,
+	0x6f, 0x4b, 0x69, 0x6c, 0x6c, 0x12, 0x5f, 0x0a, 0x19, 0x68, 0x65, 0x72, 0x6f, 0x5f, 0x64, 0x65,
+	0x61, 0x74, 0x68, 0x5f, 0x62, 0x79, 0x5f, 0x65, 0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65,
+	0x6e, 0x74, 0x18, 0x0f, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69,
+	0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x48, 0x65, 0x72, 0x6f, 0x44, 0x65, 0x61, 0x74, 0x68, 0x42,
+	0x79, 0x45, 0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x48, 0x00, 0x52, 0x16,
+	0x68, 0x65, 0x72, 0x6f, 0x44, 0x65, 0x61, 0x74, 0x68, 0x42, 0x79, 0x45, 0x6e, 0x76, 0x69, 0x72,
+	0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x12, 0x45, 0x0a, 0x0f, 0x74, 0x6f, 0x77, 0x65, 0x72, 0x5f,
+	0x64, 0x65, 0x73, 0x74, 0x72, 0x6f, 0x79, 0x65, 0x64, 0x18, 0x10, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x1a, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x54, 0x6f, 0x77,
+	0x65, 0x72, 0x44, 0x65, 0x73, 0x74, 0x72, 0x6f, 0x79, 0x65, 0x64, 0x48, 0x00, 0x52, 0x0e, 0x74,
+	0x6f, 0x77, 0x65, 0x72, 0x44, 0x65, 0x73, 0x74, 0x72, 0x6f, 0x79, 0x65, 0x64, 0x12, 0x4e, 0x0a,
+	0x12, 0x62, 0x61, 0x72, 0x72, 0x61, 0x63, 0x6b, 0x73, 0x5f, 0x64, 0x65, 0x73, 0x74, 0x72, 0x6f,
+	0x79, 0x65, 0x64, 0x18, 0x11, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x62, 0x72, 0x61, 0x67,
+	0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x42, 0x61, 0x72, 0x72, 0x61, 0x63, 0x6b, 0x73, 0x44,
+	0x65, 0x73, 0x74, 0x72, 0x6f, 0x79, 0x65, 0x64, 0x48, 0x00, 0x52, 0x11, 0x62, 0x61, 0x72, 0x72,
+	0x61, 0x63, 0x6b, 0x73, 0x44, 0x65, 0x73, 0x74, 0x72, 0x6f, 0x79, 0x65, 0x64, 0x12, 0x4b, 0x0a,
+	0x11, 0x61, 0x6e, 0x63, 0x69, 0x65, 0x6e, 0x74, 0x5f, 0x64, 0x65, 0x73, 0x74, 0x72, 0x6f, 0x79,
+	0x65, 0x64, 0x18, 0x12, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69,
+	0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x41, 0x6e, 0x63, 0x69, 0x65, 0x6e, 0x74, 0x44, 0x65, 0x73,
+	0x74, 0x72, 0x6f, 0x79, 0x65, 0x64, 0x48, 0x00, 0x52, 0x10, 0x61, 0x6e, 0x63, 0x69, 0x65, 0x6e,
+	0x74, 0x44, 0x65, 0x73, 0x74, 0x72, 0x6f, 0x79, 0x65, 0x64, 0x12, 0x39, 0x0a, 0x0b, 0x6d, 0x65,
+	0x67, 0x61, 0x5f, 0x63, 0x72, 0x65, 0x65, 0x70, 0x73, 0x18, 0x13, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x16, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x4d, 0x65, 0x67,
+	0x61, 0x43, 0x72, 0x65, 0x65, 0x70, 0x73, 0x48, 0x00, 0x52, 0x0a, 0x6d, 0x65, 0x67, 0x61, 0x43,
+	0x72, 0x65, 0x65, 0x70, 0x73, 0x12, 0x3f, 0x0a, 0x0d, 0x72, 0x6f, 0x73, 0x68, 0x61, 0x6e, 0x5f,
+	0x6b, 0x69, 0x6c, 0x6c, 0x65, 0x64, 0x18, 0x14, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x62,
+	0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x52, 0x6f, 0x73, 0x68, 0x61, 0x6e,
+	0x4b, 0x69, 0x6c, 0x6c, 0x65, 0x64, 0x48, 0x00, 0x52, 0x0c, 0x72, 0x6f, 0x73, 0x68, 0x61, 0x6e,
+	0x4b, 0x69, 0x6c, 0x6c, 0x65, 0x64, 0x12, 0x48, 0x0a, 0x10, 0x72, 0x6f, 0x73, 0x68, 0x61, 0x6e,
+	0x5f, 0x72, 0x65, 0x73, 0x70, 0x61, 0x77, 0x6e, 0x65, 0x64, 0x18, 0x15, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x1b, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x52, 0x6f,
+	0x73, 0x68, 0x61, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x61, 0x77, 0x6e, 0x65, 0x64, 0x48, 0x00, 0x52,
+	0x0f, 0x72, 0x6f, 0x73, 0x68, 0x61, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x61, 0x77, 0x6e, 0x65, 0x64,
+	0x12, 0x43, 0x0a, 0x0f, 0x61, 0x65, 0x67, 0x69, 0x73, 0x5f, 0x70, 0x69, 0x63, 0x6b, 0x65, 0x64,
+	0x5f, 0x75, 0x70, 0x18, 0x16, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x62, 0x72, 0x61, 0x67,
+	0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x41, 0x65, 0x67, 0x69, 0x73, 0x50, 0x69, 0x63, 0x6b,
+	0x65, 0x64, 0x55, 0x70, 0x48, 0x00, 0x52, 0x0d, 0x61, 0x65, 0x67, 0x69, 0x73, 0x50, 0x69, 0x63,
+	0x6b, 0x65, 0x64, 0x55, 0x70, 0x12, 0x36, 0x0a, 0x0a, 0x61, 0x65, 0x67, 0x69, 0x73, 0x5f, 0x6c,
+	0x6f, 0x73, 0x74, 0x18, 0x17, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x15, 0x2e, 0x62, 0x72, 0x61, 0x67,
+	0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x41, 0x65, 0x67, 0x69, 0x73, 0x4c, 0x6f, 0x73, 0x74,
+	0x48, 0x00, 0x52, 0x09, 0x61, 0x65, 0x67, 0x69, 0x73, 0x4c, 0x6f, 0x73, 0x74, 0x12, 0x2f, 0x0a,
+	0x07, 0x62, 0x75, 0x79, 0x62, 0x61, 0x63, 0x6b, 0x18, 0x18, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x13,
+	0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x42, 0x75, 0x79, 0x62,
+	0x61, 0x63, 0x6b, 0x48, 0x00, 0x52, 0x07, 0x62, 0x75, 0x79, 0x62, 0x61, 0x63, 0x6b, 0x12, 0x49,
+	0x0a, 0x11, 0x64, 0x61, 0x79, 0x5f, 0x6e, 0x69, 0x67, 0x68, 0x74, 0x5f, 0x63, 0x68, 0x61, 0x6e,
+	0x67, 0x65, 0x64, 0x18, 0x19, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x62, 0x72, 0x61, 0x67,
+	0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x44, 0x61, 0x79, 0x4e, 0x69, 0x67, 0x68, 0x74, 0x43,
+	0x68, 0x61, 0x6e, 0x67, 0x65, 0x64, 0x48, 0x00, 0x52, 0x0f, 0x64, 0x61, 0x79, 0x4e, 0x69, 0x67,
+	0x68, 0x74, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x64, 0x12, 0x35, 0x0a, 0x09, 0x6d, 0x75, 0x6c,
+	0x74, 0x69, 0x6b, 0x69, 0x6c, 0x6c, 0x18, 0x1a, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x15, 0x2e, 0x62,
+	0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x4d, 0x75, 0x6c, 0x74, 0x69, 0x6b,
+	0x69, 0x6c, 0x6c, 0x48, 0x00, 0x52, 0x09, 0x6d, 0x75, 0x6c, 0x74, 0x69, 0x6b, 0x69, 0x6c, 0x6c,
+	0x12, 0x38, 0x0a, 0x0a, 0x6b, 0x69, 0x6c, 0x6c, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6b, 0x18, 0x1b,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74,
+	0x61, 0x32, 0x4b, 0x69, 0x6c, 0x6c, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6b, 0x48, 0x00, 0x52, 0x0a,
+	0x6b, 0x69, 0x6c, 0x6c, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6b, 0x12, 0x48, 0x0a, 0x10, 0x74, 0x6f,
+	0x72, 0x6d, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x5f, 0x6b, 0x69, 0x6c, 0x6c, 0x65, 0x64, 0x18, 0x1c,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74,
+	0x61, 0x32, 0x54, 0x6f, 0x72, 0x6d, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x4b, 0x69, 0x6c, 0x6c, 0x65,
+	0x64, 0x48, 0x00, 0x52, 0x0f, 0x74, 0x6f, 0x72, 0x6d, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x4b, 0x69,
+	0x6c, 0x6c, 0x65, 0x64, 0x42, 0x07, 0x0a, 0x05, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x42, 0x0c, 0x0a,
+	0x0a, 0x5f, 0x67, 0x61, 0x6d, 0x65, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x22, 0x5a, 0x0a, 0x0e, 0x44,
+	0x6f, 0x74, 0x61, 0x32, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x54, 0x65, 0x61, 0x6d, 0x12, 0x19, 0x0a,
+	0x08, 0x74, 0x65, 0x61, 0x6d, 0x5f, 0x75, 0x72, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x07, 0x74, 0x65, 0x61, 0x6d, 0x55, 0x72, 0x6e, 0x12, 0x2d, 0x0a, 0x07, 0x66, 0x61, 0x63, 0x74,
+	0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x13, 0x2e, 0x62, 0x72, 0x61, 0x67,
+	0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x46, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x07,
+	0x66, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x94, 0x01, 0x0a, 0x10, 0x44, 0x6f, 0x74, 0x61,
+	0x32, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x12, 0x1d, 0x0a, 0x0a,
+	0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x5f, 0x75, 0x72, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x09, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x55, 0x72, 0x6e, 0x12, 0x19, 0x0a, 0x08, 0x74,
+	0x65, 0x61, 0x6d, 0x5f, 0x75, 0x72, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x74,
+	0x65, 0x61, 0x6d, 0x55, 0x72, 0x6e, 0x12, 0x2d, 0x0a, 0x07, 0x66, 0x61, 0x63, 0x74, 0x69, 0x6f,
+	0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x13, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e,
+	0x44, 0x6f, 0x74, 0x61, 0x32, 0x46, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x07, 0x66, 0x61,
+	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x17, 0x0a, 0x07, 0x68, 0x65, 0x72, 0x6f, 0x5f, 0x69, 0x64,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x06, 0x68, 0x65, 0x72, 0x6f, 0x49, 0x64, 0x22, 0x11,
+	0x0a, 0x0f, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x4d, 0x61, 0x70, 0x53, 0x74, 0x61, 0x72, 0x74, 0x65,
+	0x64, 0x22, 0x3e, 0x0a, 0x0d, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x4d, 0x61, 0x70, 0x45, 0x6e, 0x64,
+	0x65, 0x64, 0x12, 0x2d, 0x0a, 0x06, 0x77, 0x69, 0x6e, 0x6e, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x15, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32,
+	0x45, 0x76, 0x65, 0x6e, 0x74, 0x54, 0x65, 0x61, 0x6d, 0x52, 0x06, 0x77, 0x69, 0x6e, 0x6e, 0x65,
+	0x72, 0x22, 0x10, 0x0a, 0x0e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x4d, 0x61, 0x70, 0x50, 0x61, 0x75,
+	0x73, 0x65, 0x64, 0x22, 0x11, 0x0a, 0x0f, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x4d, 0x61, 0x70, 0x52,
+	0x65, 0x73, 0x75, 0x6d, 0x65, 0x64, 0x22, 0xb7, 0x01, 0x0a, 0x0d, 0x44, 0x6f, 0x74, 0x61, 0x32,
+	0x48, 0x65, 0x72, 0x6f, 0x4b, 0x69, 0x6c, 0x6c, 0x12, 0x2f, 0x0a, 0x06, 0x6b, 0x69, 0x6c, 0x6c,
+	0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69,
+	0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x79, 0x65,
+	0x72, 0x52, 0x06, 0x6b, 0x69, 0x6c, 0x6c, 0x65, 0x72, 0x12, 0x2f, 0x0a, 0x06, 0x76, 0x69, 0x63,
+	0x74, 0x69, 0x6d, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x62, 0x72, 0x61, 0x67,
+	0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x79,
+	0x65, 0x72, 0x52, 0x06, 0x76, 0x69, 0x63, 0x74, 0x69, 0x6d, 0x12, 0x1f, 0x0a, 0x0b, 0x66, 0x69,
+	0x72, 0x73, 0x74, 0x5f, 0x62, 0x6c, 0x6f, 0x6f, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x08, 0x52,
+	0x0a, 0x66, 0x69, 0x72, 0x73, 0x74, 0x42, 0x6c, 0x6f, 0x6f, 0x64, 0x12, 0x23, 0x0a, 0x0d, 0x6b,
+	0x69, 0x6c, 0x6c, 0x65, 0x72, 0x5f, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6b, 0x18, 0x04, 0x20, 0x01,
+	0x28, 0x0d, 0x52, 0x0c, 0x6b, 0x69, 0x6c, 0x6c, 0x65, 0x72, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6b,
+	0x22, 0x92, 0x01, 0x0a, 0x1b, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x48, 0x65, 0x72, 0x6f, 0x44, 0x65,
+	0x61, 0x74, 0x68, 0x42, 0x79, 0x45, 0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74,
+	0x12, 0x2f, 0x0a, 0x06, 0x76, 0x69, 0x63, 0x74, 0x69, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x17, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x45, 0x76,
+	0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x52, 0x06, 0x76, 0x69, 0x63, 0x74, 0x69,
+	0x6d, 0x12, 0x42, 0x0a, 0x0b, 0x6b, 0x69, 0x6c, 0x6c, 0x65, 0x72, 0x5f, 0x6b, 0x69, 0x6e, 0x64,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x21, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44,
+	0x6f, 0x74, 0x61, 0x32, 0x45, 0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x4b,
+	0x69, 0x6c, 0x6c, 0x65, 0x72, 0x4b, 0x69, 0x6e, 0x64, 0x52, 0x0a, 0x6b, 0x69, 0x6c, 0x6c, 0x65,
+	0x72, 0x4b, 0x69, 0x6e, 0x64, 0x22, 0xd1, 0x01, 0x0a, 0x13, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x54,
+	0x6f, 0x77, 0x65, 0x72, 0x44, 0x65, 0x73, 0x74, 0x72, 0x6f, 0x79, 0x65, 0x64, 0x12, 0x29, 0x0a,
+	0x04, 0x74, 0x65, 0x61, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x15, 0x2e, 0x62, 0x72,
+	0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x54, 0x65,
+	0x61, 0x6d, 0x52, 0x04, 0x74, 0x65, 0x61, 0x6d, 0x12, 0x3e, 0x0a, 0x0f, 0x61, 0x74, 0x74, 0x72,
+	0x69, 0x62, 0x75, 0x74, 0x65, 0x64, 0x5f, 0x74, 0x65, 0x61, 0x6d, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x15, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x45,
+	0x76, 0x65, 0x6e, 0x74, 0x54, 0x65, 0x61, 0x6d, 0x52, 0x0e, 0x61, 0x74, 0x74, 0x72, 0x69, 0x62,
+	0x75, 0x74, 0x65, 0x64, 0x54, 0x65, 0x61, 0x6d, 0x12, 0x24, 0x0a, 0x04, 0x6c, 0x61, 0x6e, 0x65,
+	0x18, 0x03, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x10, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44,
+	0x6f, 0x74, 0x61, 0x32, 0x4c, 0x61, 0x6e, 0x65, 0x52, 0x04, 0x6c, 0x61, 0x6e, 0x65, 0x12, 0x29,
+	0x0a, 0x04, 0x74, 0x69, 0x65, 0x72, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x15, 0x2e, 0x62,
+	0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x54, 0x6f, 0x77, 0x65, 0x72, 0x54,
+	0x69, 0x65, 0x72, 0x52, 0x04, 0x74, 0x69, 0x65, 0x72, 0x22, 0xd6, 0x01, 0x0a, 0x16, 0x44, 0x6f,
+	0x74, 0x61, 0x32, 0x42, 0x61, 0x72, 0x72, 0x61, 0x63, 0x6b, 0x73, 0x44, 0x65, 0x73, 0x74, 0x72,
+	0x6f, 0x79, 0x65, 0x64, 0x12, 0x29, 0x0a, 0x04, 0x74, 0x65, 0x61, 0x6d, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x15, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32,
+	0x45, 0x76, 0x65, 0x6e, 0x74, 0x54, 0x65, 0x61, 0x6d, 0x52, 0x04, 0x74, 0x65, 0x61, 0x6d, 0x12,
+	0x3e, 0x0a, 0x0f, 0x61, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65, 0x64, 0x5f, 0x74, 0x65,
+	0x61, 0x6d, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x15, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69,
+	0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x54, 0x65, 0x61, 0x6d, 0x52,
+	0x0e, 0x61, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65, 0x64, 0x54, 0x65, 0x61, 0x6d, 0x12,
+	0x24, 0x0a, 0x04, 0x6c, 0x61, 0x6e, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x10, 0x2e,
+	0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x4c, 0x61, 0x6e, 0x65, 0x52,
+	0x04, 0x6c, 0x61, 0x6e, 0x65, 0x12, 0x2b, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x04, 0x20,
+	0x01, 0x28, 0x0e, 0x32, 0x17, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61,
+	0x32, 0x42, 0x61, 0x72, 0x72, 0x61, 0x63, 0x6b, 0x54, 0x79, 0x70, 0x65, 0x52, 0x04, 0x74, 0x79,
+	0x70, 0x65, 0x22, 0x82, 0x01, 0x0a, 0x15, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x41, 0x6e, 0x63, 0x69,
+	0x65, 0x6e, 0x74, 0x44, 0x65, 0x73, 0x74, 0x72, 0x6f, 0x79, 0x65, 0x64, 0x12, 0x29, 0x0a, 0x04,
+	0x74, 0x65, 0x61, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x15, 0x2e, 0x62, 0x72, 0x61,
+	0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x54, 0x65, 0x61,
+	0x6d, 0x52, 0x04, 0x74, 0x65, 0x61, 0x6d, 0x12, 0x3e, 0x0a, 0x0f, 0x61, 0x74, 0x74, 0x72, 0x69,
+	0x62, 0x75, 0x74, 0x65, 0x64, 0x5f, 0x74, 0x65, 0x61, 0x6d, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x15, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x45, 0x76,
+	0x65, 0x6e, 0x74, 0x54, 0x65, 0x61, 0x6d, 0x52, 0x0e, 0x61, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75,
+	0x74, 0x65, 0x64, 0x54, 0x65, 0x61, 0x6d, 0x22, 0x76, 0x0a, 0x0f, 0x44, 0x6f, 0x74, 0x61, 0x32,
+	0x4d, 0x65, 0x67, 0x61, 0x43, 0x72, 0x65, 0x65, 0x70, 0x73, 0x12, 0x29, 0x0a, 0x04, 0x74, 0x65,
+	0x61, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x15, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69,
+	0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x54, 0x65, 0x61, 0x6d, 0x52,
+	0x04, 0x74, 0x65, 0x61, 0x6d, 0x12, 0x38, 0x0a, 0x0c, 0x61, 0x67, 0x61, 0x69, 0x6e, 0x73, 0x74,
+	0x5f, 0x74, 0x65, 0x61, 0x6d, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x15, 0x2e, 0x62, 0x72,
+	0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x54, 0x65,
+	0x61, 0x6d, 0x52, 0x0b, 0x61, 0x67, 0x61, 0x69, 0x6e, 0x73, 0x74, 0x54, 0x65, 0x61, 0x6d, 0x22,
+	0x3e, 0x0a, 0x11, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x52, 0x6f, 0x73, 0x68, 0x61, 0x6e, 0x4b, 0x69,
+	0x6c, 0x6c, 0x65, 0x64, 0x12, 0x29, 0x0a, 0x04, 0x74, 0x65, 0x61, 0x6d, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x15, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32,
+	0x45, 0x76, 0x65, 0x6e, 0x74, 0x54, 0x65, 0x61, 0x6d, 0x52, 0x04, 0x74, 0x65, 0x61, 0x6d, 0x22,
+	0x16, 0x0a, 0x14, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x52, 0x6f, 0x73, 0x68, 0x61, 0x6e, 0x52, 0x65,
+	0x73, 0x70, 0x61, 0x77, 0x6e, 0x65, 0x64, 0x22, 0x61, 0x0a, 0x12, 0x44, 0x6f, 0x74, 0x61, 0x32,
+	0x41, 0x65, 0x67, 0x69, 0x73, 0x50, 0x69, 0x63, 0x6b, 0x65, 0x64, 0x55, 0x70, 0x12, 0x2f, 0x0a,
+	0x06, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e,
+	0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x45, 0x76, 0x65, 0x6e, 0x74,
+	0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x52, 0x06, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x12, 0x1a,
+	0x0a, 0x08, 0x73, 0x6e, 0x61, 0x74, 0x63, 0x68, 0x65, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x08,
+	0x52, 0x08, 0x73, 0x6e, 0x61, 0x74, 0x63, 0x68, 0x65, 0x64, 0x22, 0x41, 0x0a, 0x0e, 0x44, 0x6f,
+	0x74, 0x61, 0x32, 0x41, 0x65, 0x67, 0x69, 0x73, 0x4c, 0x6f, 0x73, 0x74, 0x12, 0x2f, 0x0a, 0x06,
+	0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x62,
+	0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x50,
+	0x6c, 0x61, 0x79, 0x65, 0x72, 0x52, 0x06, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x22, 0x3f, 0x0a,
+	0x0c, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x42, 0x75, 0x79, 0x62, 0x61, 0x63, 0x6b, 0x12, 0x2f, 0x0a,
+	0x06, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e,
+	0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x45, 0x76, 0x65, 0x6e, 0x74,
+	0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x52, 0x06, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x22, 0x2d,
+	0x0a, 0x14, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x44, 0x61, 0x79, 0x4e, 0x69, 0x67, 0x68, 0x74, 0x43,
+	0x68, 0x61, 0x6e, 0x67, 0x65, 0x64, 0x12, 0x15, 0x0a, 0x06, 0x69, 0x73, 0x5f, 0x64, 0x61, 0x79,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x05, 0x69, 0x73, 0x44, 0x61, 0x79, 0x22, 0x57, 0x0a,
+	0x0e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x4d, 0x75, 0x6c, 0x74, 0x69, 0x6b, 0x69, 0x6c, 0x6c, 0x12,
+	0x2f, 0x0a, 0x06, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x17, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x45, 0x76, 0x65,
+	0x6e, 0x74, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x52, 0x06, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72,
+	0x12, 0x14, 0x0a, 0x05, 0x6b, 0x69, 0x6c, 0x6c, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0d, 0x52,
+	0x05, 0x6b, 0x69, 0x6c, 0x6c, 0x73, 0x22, 0x5a, 0x0a, 0x0f, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x4b,
+	0x69, 0x6c, 0x6c, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6b, 0x12, 0x2f, 0x0a, 0x06, 0x70, 0x6c, 0x61,
+	0x79, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x62, 0x72, 0x61, 0x67,
+	0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x79,
+	0x65, 0x72, 0x52, 0x06, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x74,
+	0x72, 0x65, 0x61, 0x6b, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x06, 0x73, 0x74, 0x72, 0x65,
+	0x61, 0x6b, 0x22, 0x47, 0x0a, 0x14, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x54, 0x6f, 0x72, 0x6d, 0x65,
+	0x6e, 0x74, 0x6f, 0x72, 0x4b, 0x69, 0x6c, 0x6c, 0x65, 0x64, 0x12, 0x2f, 0x0a, 0x06, 0x6b, 0x69,
+	0x6c, 0x6c, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x62, 0x72, 0x61,
+	0x67, 0x69, 0x2e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61,
+	0x79, 0x65, 0x72, 0x52, 0x06, 0x6b, 0x69, 0x6c, 0x6c, 0x65, 0x72, 0x2a, 0x60, 0x0a, 0x0c, 0x44,
+	0x6f, 0x74, 0x61, 0x32, 0x46, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x1d, 0x0a, 0x19, 0x44,
+	0x4f, 0x54, 0x41, 0x32, 0x5f, 0x46, 0x41, 0x43, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x55, 0x4e, 0x53,
+	0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x19, 0x0a, 0x15, 0x44, 0x4f,
+	0x54, 0x41, 0x32, 0x5f, 0x46, 0x41, 0x43, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x52, 0x41, 0x44, 0x49,
+	0x41, 0x4e, 0x54, 0x10, 0x01, 0x12, 0x16, 0x0a, 0x12, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x46,
+	0x41, 0x43, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x44, 0x49, 0x52, 0x45, 0x10, 0x02, 0x2a, 0x63, 0x0a,
+	0x09, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x4c, 0x61, 0x6e, 0x65, 0x12, 0x1a, 0x0a, 0x16, 0x44, 0x4f,
+	0x54, 0x41, 0x32, 0x5f, 0x4c, 0x41, 0x4e, 0x45, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49,
+	0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x12, 0x0a, 0x0e, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f,
+	0x4c, 0x41, 0x4e, 0x45, 0x5f, 0x54, 0x4f, 0x50, 0x10, 0x01, 0x12, 0x12, 0x0a, 0x0e, 0x44, 0x4f,
+	0x54, 0x41, 0x32, 0x5f, 0x4c, 0x41, 0x4e, 0x45, 0x5f, 0x4d, 0x49, 0x44, 0x10, 0x02, 0x12, 0x12,
+	0x0a, 0x0e, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x4c, 0x41, 0x4e, 0x45, 0x5f, 0x42, 0x4f, 0x54,
+	0x10, 0x03, 0x2a, 0x92, 0x01, 0x0a, 0x0e, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x54, 0x6f, 0x77, 0x65,
+	0x72, 0x54, 0x69, 0x65, 0x72, 0x12, 0x20, 0x0a, 0x1c, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x54,
+	0x4f, 0x57, 0x45, 0x52, 0x5f, 0x54, 0x49, 0x45, 0x52, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43,
+	0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x16, 0x0a, 0x12, 0x44, 0x4f, 0x54, 0x41, 0x32,
+	0x5f, 0x54, 0x4f, 0x57, 0x45, 0x52, 0x5f, 0x54, 0x49, 0x45, 0x52, 0x5f, 0x31, 0x10, 0x01, 0x12,
+	0x16, 0x0a, 0x12, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x54, 0x4f, 0x57, 0x45, 0x52, 0x5f, 0x54,
+	0x49, 0x45, 0x52, 0x5f, 0x32, 0x10, 0x02, 0x12, 0x16, 0x0a, 0x12, 0x44, 0x4f, 0x54, 0x41, 0x32,
+	0x5f, 0x54, 0x4f, 0x57, 0x45, 0x52, 0x5f, 0x54, 0x49, 0x45, 0x52, 0x5f, 0x33, 0x10, 0x03, 0x12,
+	0x16, 0x0a, 0x12, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x54, 0x4f, 0x57, 0x45, 0x52, 0x5f, 0x54,
+	0x49, 0x45, 0x52, 0x5f, 0x34, 0x10, 0x04, 0x2a, 0x73, 0x0a, 0x10, 0x44, 0x6f, 0x74, 0x61, 0x32,
+	0x42, 0x61, 0x72, 0x72, 0x61, 0x63, 0x6b, 0x54, 0x79, 0x70, 0x65, 0x12, 0x22, 0x0a, 0x1e, 0x44,
+	0x4f, 0x54, 0x41, 0x32, 0x5f, 0x42, 0x41, 0x52, 0x52, 0x41, 0x43, 0x4b, 0x5f, 0x54, 0x59, 0x50,
+	0x45, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12,
+	0x1d, 0x0a, 0x19, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x42, 0x41, 0x52, 0x52, 0x41, 0x43, 0x4b,
+	0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x52, 0x41, 0x4e, 0x47, 0x45, 0x44, 0x10, 0x01, 0x12, 0x1c,
+	0x0a, 0x18, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x42, 0x41, 0x52, 0x52, 0x41, 0x43, 0x4b, 0x5f,
+	0x54, 0x59, 0x50, 0x45, 0x5f, 0x4d, 0x45, 0x4c, 0x45, 0x45, 0x10, 0x02, 0x2a, 0xd2, 0x04, 0x0a,
+	0x11, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x49, 0x74, 0x65, 0x6d, 0x50, 0x6f, 0x73, 0x69, 0x74, 0x69,
+	0x6f, 0x6e, 0x12, 0x23, 0x0a, 0x1f, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d,
+	0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43,
+	0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x1f, 0x0a, 0x1b, 0x44, 0x4f, 0x54, 0x41, 0x32,
+	0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x4e,
+	0x45, 0x55, 0x54, 0x52, 0x41, 0x4c, 0x10, 0x01, 0x12, 0x1e, 0x0a, 0x1a, 0x44, 0x4f, 0x54, 0x41,
 	0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49, 0x4f, 0x4e, 0x5f,
-	0x53, 0x4c, 0x4f, 0x54, 0x36, 0x10, 0x0f, 0x12, 0x1d, 0x0a, 0x19, 0x44, 0x4f, 0x54, 0x41, 0x32,
+	0x53, 0x54, 0x41, 0x53, 0x48, 0x30, 0x10, 0x02, 0x12, 0x1e, 0x0a, 0x1a, 0x44, 0x4f, 0x54, 0x41,
+	0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49, 0x4f, 0x4e, 0x5f,
+	0x53, 0x54, 0x41, 0x53, 0x48, 0x31, 0x10, 0x03, 0x12, 0x1e, 0x0a, 0x1a, 0x44, 0x4f, 0x54, 0x41,
+	0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49, 0x4f, 0x4e, 0x5f,
+	0x53, 0x54, 0x41, 0x53, 0x48, 0x32, 0x10, 0x04, 0x12, 0x1e, 0x0a, 0x1a, 0x44, 0x4f, 0x54, 0x41,
+	0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49, 0x4f, 0x4e, 0x5f,
+	0x53, 0x54, 0x41, 0x53, 0x48, 0x33, 0x10, 0x05, 0x12, 0x1e, 0x0a, 0x1a, 0x44, 0x4f, 0x54, 0x41,
+	0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49, 0x4f, 0x4e, 0x5f,
+	0x53, 0x54, 0x41, 0x53, 0x48, 0x34, 0x10, 0x06, 0x12, 0x1e, 0x0a, 0x1a, 0x44, 0x4f, 0x54, 0x41,
+	0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49, 0x4f, 0x4e, 0x5f,
+	0x53, 0x54, 0x41, 0x53, 0x48, 0x35, 0x10, 0x07, 0x12, 0x20, 0x0a, 0x1c, 0x44, 0x4f, 0x54, 0x41,
+	0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49, 0x4f, 0x4e, 0x5f,
+	0x54, 0x45, 0x4c, 0x45, 0x50, 0x4f, 0x52, 0x54, 0x10, 0x08, 0x12, 0x1d, 0x0a, 0x19, 0x44, 0x4f,
+	0x54, 0x41, 0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49, 0x4f,
+	0x4e, 0x5f, 0x53, 0x4c, 0x4f, 0x54, 0x30, 0x10, 0x09, 0x12, 0x1d, 0x0a, 0x19, 0x44, 0x4f, 0x54,
+	0x41, 0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49, 0x4f, 0x4e,
+	0x5f, 0x53, 0x4c, 0x4f, 0x54, 0x31, 0x10, 0x0a, 0x12, 0x1d, 0x0a, 0x19, 0x44, 0x4f, 0x54, 0x41,
+	0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49, 0x4f, 0x4e, 0x5f,
+	0x53, 0x4c, 0x4f, 0x54, 0x32, 0x10, 0x0b, 0x12, 0x1d, 0x0a, 0x19, 0x44, 0x4f, 0x54, 0x41, 0x32,
 	0x5f, 0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x53,
-	0x4c, 0x4f, 0x54, 0x37, 0x10, 0x10, 0x12, 0x1d, 0x0a, 0x19, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f,
+	0x4c, 0x4f, 0x54, 0x33, 0x10, 0x0c, 0x12, 0x1d, 0x0a, 0x19, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f,
 	0x49, 0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x53, 0x4c,
-	0x4f, 0x54, 0x38, 0x10, 0x11, 0x42, 0x21, 0x0a, 0x0f, 0x63, 0x6f, 0x6d, 0x2e, 0x6f, 0x64, 0x64,
+	0x4f, 0x54, 0x34, 0x10, 0x0d, 0x12, 0x1d, 0x0a, 0x19, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x49,
+	0x54, 0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x53, 0x4c, 0x4f,
+	0x54, 0x35, 0x10, 0x0e, 0x12, 0x1d, 0x0a, 0x19, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x49, 0x54,
+	0x45, 0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x53, 0x4c, 0x4f, 0x54,
+	0x36, 0x10, 0x0f, 0x12, 0x1d, 0x0a, 0x19, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x49, 0x54, 0x45,
+	0x4d, 0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x53, 0x4c, 0x4f, 0x54, 0x37,
+	0x10, 0x10, 0x12, 0x1d, 0x0a, 0x19, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x49, 0x54, 0x45, 0x4d,
+	0x5f, 0x50, 0x4f, 0x53, 0x49, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x53, 0x4c, 0x4f, 0x54, 0x38, 0x10,
+	0x11, 0x2a, 0xa1, 0x02, 0x0a, 0x1a, 0x44, 0x6f, 0x74, 0x61, 0x32, 0x45, 0x6e, 0x76, 0x69, 0x72,
+	0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x4b, 0x69, 0x6c, 0x6c, 0x65, 0x72, 0x4b, 0x69, 0x6e, 0x64,
+	0x12, 0x2d, 0x0a, 0x29, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x45, 0x4e, 0x56, 0x49, 0x52, 0x4f,
+	0x4e, 0x4d, 0x45, 0x4e, 0x54, 0x5f, 0x4b, 0x49, 0x4c, 0x4c, 0x45, 0x52, 0x5f, 0x4b, 0x49, 0x4e,
+	0x44, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12,
+	0x29, 0x0a, 0x25, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x45, 0x4e, 0x56, 0x49, 0x52, 0x4f, 0x4e,
+	0x4d, 0x45, 0x4e, 0x54, 0x5f, 0x4b, 0x49, 0x4c, 0x4c, 0x45, 0x52, 0x5f, 0x4b, 0x49, 0x4e, 0x44,
+	0x5f, 0x55, 0x4e, 0x4b, 0x4e, 0x4f, 0x57, 0x4e, 0x10, 0x01, 0x12, 0x27, 0x0a, 0x23, 0x44, 0x4f,
+	0x54, 0x41, 0x32, 0x5f, 0x45, 0x4e, 0x56, 0x49, 0x52, 0x4f, 0x4e, 0x4d, 0x45, 0x4e, 0x54, 0x5f,
+	0x4b, 0x49, 0x4c, 0x4c, 0x45, 0x52, 0x5f, 0x4b, 0x49, 0x4e, 0x44, 0x5f, 0x54, 0x4f, 0x57, 0x45,
+	0x52, 0x10, 0x02, 0x12, 0x29, 0x0a, 0x25, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x45, 0x4e, 0x56,
+	0x49, 0x52, 0x4f, 0x4e, 0x4d, 0x45, 0x4e, 0x54, 0x5f, 0x4b, 0x49, 0x4c, 0x4c, 0x45, 0x52, 0x5f,
+	0x4b, 0x49, 0x4e, 0x44, 0x5f, 0x4e, 0x45, 0x55, 0x54, 0x52, 0x41, 0x4c, 0x10, 0x03, 0x12, 0x28,
+	0x0a, 0x24, 0x44, 0x4f, 0x54, 0x41, 0x32, 0x5f, 0x45, 0x4e, 0x56, 0x49, 0x52, 0x4f, 0x4e, 0x4d,
+	0x45, 0x4e, 0x54, 0x5f, 0x4b, 0x49, 0x4c, 0x4c, 0x45, 0x52, 0x5f, 0x4b, 0x49, 0x4e, 0x44, 0x5f,
+	0x52, 0x4f, 0x53, 0x48, 0x41, 0x4e, 0x10, 0x04, 0x12, 0x2b, 0x0a, 0x27, 0x44, 0x4f, 0x54, 0x41,
+	0x32, 0x5f, 0x45, 0x4e, 0x56, 0x49, 0x52, 0x4f, 0x4e, 0x4d, 0x45, 0x4e, 0x54, 0x5f, 0x4b, 0x49,
+	0x4c, 0x4c, 0x45, 0x52, 0x5f, 0x4b, 0x49, 0x4e, 0x44, 0x5f, 0x54, 0x4f, 0x52, 0x4d, 0x45, 0x4e,
+	0x54, 0x4f, 0x52, 0x10, 0x05, 0x42, 0x21, 0x0a, 0x0f, 0x63, 0x6f, 0x6d, 0x2e, 0x6f, 0x64, 0x64,
 	0x69, 0x6e, 0x2e, 0x62, 0x72, 0x61, 0x67, 0x69, 0x5a, 0x0e, 0x6f, 0x64, 0x64, 0x69, 0x6e, 0x2e,
 	0x67, 0x67, 0x2f, 0x62, 0x72, 0x61, 0x67, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
@@ -4651,180 +6438,251 @@ func file_bragi_dota2_proto_rawDescGZIP() []byte {
 	return file_bragi_dota2_proto_rawDescData
 }
 
-var file_bragi_dota2_proto_enumTypes = make([]protoimpl.EnumInfo, 10)
-var file_bragi_dota2_proto_msgTypes = make([]protoimpl.MessageInfo, 47)
+var file_bragi_dota2_proto_enumTypes = make([]protoimpl.EnumInfo, 11)
+var file_bragi_dota2_proto_msgTypes = make([]protoimpl.MessageInfo, 70)
 var file_bragi_dota2_proto_goTypes = []any{
 	(Dota2Faction)(0),                                       // 0: bragi.Dota2Faction
 	(Dota2Lane)(0),                                          // 1: bragi.Dota2Lane
 	(Dota2TowerTier)(0),                                     // 2: bragi.Dota2TowerTier
 	(Dota2BarrackType)(0),                                   // 3: bragi.Dota2BarrackType
 	(Dota2ItemPosition)(0),                                  // 4: bragi.Dota2ItemPosition
-	(PicksAndBansSelectionsPerTeam_State)(0),                // 5: bragi.PicksAndBansSelectionsPerTeam.State
-	(PicksAndBansSelectionsPerTeam_SelectionType)(0),        // 6: bragi.PicksAndBansSelectionsPerTeam.SelectionType
-	(PicksAndBansSelectionsPerTeam_TeamType)(0),             // 7: bragi.PicksAndBansSelectionsPerTeam.TeamType
-	(PicksAndBansSelections_TeamType)(0),                    // 8: bragi.PicksAndBansSelections.TeamType
-	(PicksAndBansSelections_State)(0),                       // 9: bragi.PicksAndBansSelections.State
-	(*Dota2MatchMessage)(nil),                               // 10: bragi.Dota2MatchMessage
-	(*Dota2MatchSnapshot)(nil),                              // 11: bragi.Dota2MatchSnapshot
-	(*PicksAndBansSelectionsPerTeam)(nil),                   // 12: bragi.PicksAndBansSelectionsPerTeam
-	(*PicksAndBansSelections)(nil),                          // 13: bragi.PicksAndBansSelections
-	(*Dota2MatchUpdate)(nil),                                // 14: bragi.Dota2MatchUpdate
-	(*Dota2MatchStatePartialUpdates)(nil),                   // 15: bragi.Dota2MatchStatePartialUpdates
-	(*Dota2MatchStatePartialUpdate)(nil),                    // 16: bragi.Dota2MatchStatePartialUpdate
-	(*Dota2MatchState)(nil),                                 // 17: bragi.Dota2MatchState
-	(*Dota2MatchScoreState)(nil),                            // 18: bragi.Dota2MatchScoreState
-	(*Dota2CurrentMapStatePartialUpdate)(nil),               // 19: bragi.Dota2CurrentMapStatePartialUpdate
-	(*Dota2CurrentMapState)(nil),                            // 20: bragi.Dota2CurrentMapState
-	(*Dota2CurrentMapTimeState)(nil),                        // 21: bragi.Dota2CurrentMapTimeState
-	(*Dota2PreviousMapState)(nil),                           // 22: bragi.Dota2PreviousMapState
-	(*Dota2TeamCurrentMapStatePartialUpdate)(nil),           // 23: bragi.Dota2TeamCurrentMapStatePartialUpdate
-	(*Dota2TeamCurrentMapState)(nil),                        // 24: bragi.Dota2TeamCurrentMapState
-	(*Dota2TeamCurrentMapStatisticsState)(nil),              // 25: bragi.Dota2TeamCurrentMapStatisticsState
-	(*Dota2PlayerCurrentMapStatePartialUpdate)(nil),         // 26: bragi.Dota2PlayerCurrentMapStatePartialUpdate
-	(*Dota2PlayerCurrentMapState)(nil),                      // 27: bragi.Dota2PlayerCurrentMapState
-	(*Dota2PlayerCurrentMapStatisticsState)(nil),            // 28: bragi.Dota2PlayerCurrentMapStatisticsState
-	(*Dota2PlayerCurrentMapTimersState)(nil),                // 29: bragi.Dota2PlayerCurrentMapTimersState
-	(*Dota2TeamPreviousMapState)(nil),                       // 30: bragi.Dota2TeamPreviousMapState
-	(*Dota2PlayerPreviousMapState)(nil),                     // 31: bragi.Dota2PlayerPreviousMapState
-	(*Dota2PlayerInfoState)(nil),                            // 32: bragi.Dota2PlayerInfoState
-	(*Dota2PlayerStatisticsState)(nil),                      // 33: bragi.Dota2PlayerStatisticsState
-	(*Dota2Towers)(nil),                                     // 34: bragi.Dota2Towers
-	(*Dota2Barracks)(nil),                                   // 35: bragi.Dota2Barracks
-	(*Dota2Abilities)(nil),                                  // 36: bragi.Dota2Abilities
-	(*Dota2Items)(nil),                                      // 37: bragi.Dota2Items
-	(*Dota2Item)(nil),                                       // 38: bragi.Dota2Item
-	(*Dota2Ability)(nil),                                    // 39: bragi.Dota2Ability
-	(*Roshan)(nil),                                          // 40: bragi.Roshan
-	(*Dota2Tower)(nil),                                      // 41: bragi.Dota2Tower
-	(*Dota2Barrack)(nil),                                    // 42: bragi.Dota2Barrack
-	(*Dota2Position)(nil),                                   // 43: bragi.Dota2Position
-	(*Dota2MatchMessage_Payload)(nil),                       // 44: bragi.Dota2MatchMessage.Payload
-	(*PicksAndBansSelectionsPerTeam_HeroSelection)(nil),     // 45: bragi.PicksAndBansSelectionsPerTeam.HeroSelection
-	(*PicksAndBansSelectionsPerTeam_RadiantSelections)(nil), // 46: bragi.PicksAndBansSelectionsPerTeam.RadiantSelections
-	(*PicksAndBansSelectionsPerTeam_DireSelections)(nil),    // 47: bragi.PicksAndBansSelectionsPerTeam.DireSelections
-	(*PicksAndBansSelections_CurrentHeroSelection)(nil),     // 48: bragi.PicksAndBansSelections.CurrentHeroSelection
-	(*PicksAndBansSelections_PickOrBan)(nil),                // 49: bragi.PicksAndBansSelections.PickOrBan
-	(*Dota2MatchUpdate_Payload)(nil),                        // 50: bragi.Dota2MatchUpdate.Payload
-	nil,                                                     // 51: bragi.Dota2CurrentMapState.TeamsEntry
-	nil,                                                     // 52: bragi.Dota2PreviousMapState.TeamsEntry
-	(*Dota2TeamCurrentMapStatePartialUpdate_Payload)(nil),   // 53: bragi.Dota2TeamCurrentMapStatePartialUpdate.Payload
-	nil, // 54: bragi.Dota2TeamCurrentMapState.PlayersEntry
-	(*Dota2PlayerCurrentMapStatePartialUpdate_Payload)(nil), // 55: bragi.Dota2PlayerCurrentMapStatePartialUpdate.Payload
-	nil,                           // 56: bragi.Dota2TeamPreviousMapState.PlayersEntry
-	(*timestamppb.Timestamp)(nil), // 57: google.protobuf.Timestamp
-	(DataStatus)(0),               // 58: bragi.DataStatus
-	(*Announcement)(nil),          // 59: bragi.Announcement
-	(*Tournament)(nil),            // 60: bragi.Tournament
-	(BestOfType)(0),               // 61: bragi.BestOfType
-	(*Team)(nil),                  // 62: bragi.Team
-	(MatchStatusType)(0),          // 63: bragi.MatchStatusType
-	(*durationpb.Duration)(nil),   // 64: google.protobuf.Duration
+	(Dota2EnvironmentKillerKind)(0),                         // 5: bragi.Dota2EnvironmentKillerKind
+	(PicksAndBansSelectionsPerTeam_State)(0),                // 6: bragi.PicksAndBansSelectionsPerTeam.State
+	(PicksAndBansSelectionsPerTeam_SelectionType)(0),        // 7: bragi.PicksAndBansSelectionsPerTeam.SelectionType
+	(PicksAndBansSelectionsPerTeam_TeamType)(0),             // 8: bragi.PicksAndBansSelectionsPerTeam.TeamType
+	(PicksAndBansSelections_TeamType)(0),                    // 9: bragi.PicksAndBansSelections.TeamType
+	(PicksAndBansSelections_State)(0),                       // 10: bragi.PicksAndBansSelections.State
+	(*Dota2MatchMessage)(nil),                               // 11: bragi.Dota2MatchMessage
+	(*Dota2MatchSnapshot)(nil),                              // 12: bragi.Dota2MatchSnapshot
+	(*PicksAndBansSelectionsPerTeam)(nil),                   // 13: bragi.PicksAndBansSelectionsPerTeam
+	(*PicksAndBansSelections)(nil),                          // 14: bragi.PicksAndBansSelections
+	(*Dota2MatchUpdate)(nil),                                // 15: bragi.Dota2MatchUpdate
+	(*Dota2MatchStatePartialUpdates)(nil),                   // 16: bragi.Dota2MatchStatePartialUpdates
+	(*Dota2MatchStatePartialUpdate)(nil),                    // 17: bragi.Dota2MatchStatePartialUpdate
+	(*Dota2MatchState)(nil),                                 // 18: bragi.Dota2MatchState
+	(*Dota2MatchScoreState)(nil),                            // 19: bragi.Dota2MatchScoreState
+	(*Dota2CurrentMapStatePartialUpdate)(nil),               // 20: bragi.Dota2CurrentMapStatePartialUpdate
+	(*Dota2CurrentMapState)(nil),                            // 21: bragi.Dota2CurrentMapState
+	(*Dota2CurrentMapTimeState)(nil),                        // 22: bragi.Dota2CurrentMapTimeState
+	(*Dota2PreviousMapState)(nil),                           // 23: bragi.Dota2PreviousMapState
+	(*Dota2TeamCurrentMapStatePartialUpdate)(nil),           // 24: bragi.Dota2TeamCurrentMapStatePartialUpdate
+	(*Dota2TeamCurrentMapState)(nil),                        // 25: bragi.Dota2TeamCurrentMapState
+	(*Dota2TeamCurrentMapStatisticsState)(nil),              // 26: bragi.Dota2TeamCurrentMapStatisticsState
+	(*Dota2PlayerCurrentMapStatePartialUpdate)(nil),         // 27: bragi.Dota2PlayerCurrentMapStatePartialUpdate
+	(*Dota2PlayerCurrentMapState)(nil),                      // 28: bragi.Dota2PlayerCurrentMapState
+	(*Dota2PlayerCurrentMapStatisticsState)(nil),            // 29: bragi.Dota2PlayerCurrentMapStatisticsState
+	(*Dota2PlayerCurrentMapTimersState)(nil),                // 30: bragi.Dota2PlayerCurrentMapTimersState
+	(*Dota2TeamPreviousMapState)(nil),                       // 31: bragi.Dota2TeamPreviousMapState
+	(*Dota2PlayerPreviousMapState)(nil),                     // 32: bragi.Dota2PlayerPreviousMapState
+	(*Dota2PlayerInfoState)(nil),                            // 33: bragi.Dota2PlayerInfoState
+	(*Dota2PlayerStatisticsState)(nil),                      // 34: bragi.Dota2PlayerStatisticsState
+	(*Dota2Towers)(nil),                                     // 35: bragi.Dota2Towers
+	(*Dota2Barracks)(nil),                                   // 36: bragi.Dota2Barracks
+	(*Dota2Abilities)(nil),                                  // 37: bragi.Dota2Abilities
+	(*Dota2Items)(nil),                                      // 38: bragi.Dota2Items
+	(*Dota2Item)(nil),                                       // 39: bragi.Dota2Item
+	(*Dota2Ability)(nil),                                    // 40: bragi.Dota2Ability
+	(*Roshan)(nil),                                          // 41: bragi.Roshan
+	(*Dota2Tower)(nil),                                      // 42: bragi.Dota2Tower
+	(*Dota2Barrack)(nil),                                    // 43: bragi.Dota2Barrack
+	(*Dota2Position)(nil),                                   // 44: bragi.Dota2Position
+	(*Dota2MatchEvents)(nil),                                // 45: bragi.Dota2MatchEvents
+	(*Dota2Event)(nil),                                      // 46: bragi.Dota2Event
+	(*Dota2EventTeam)(nil),                                  // 47: bragi.Dota2EventTeam
+	(*Dota2EventPlayer)(nil),                                // 48: bragi.Dota2EventPlayer
+	(*Dota2MapStarted)(nil),                                 // 49: bragi.Dota2MapStarted
+	(*Dota2MapEnded)(nil),                                   // 50: bragi.Dota2MapEnded
+	(*Dota2MapPaused)(nil),                                  // 51: bragi.Dota2MapPaused
+	(*Dota2MapResumed)(nil),                                 // 52: bragi.Dota2MapResumed
+	(*Dota2HeroKill)(nil),                                   // 53: bragi.Dota2HeroKill
+	(*Dota2HeroDeathByEnvironment)(nil),                     // 54: bragi.Dota2HeroDeathByEnvironment
+	(*Dota2TowerDestroyed)(nil),                             // 55: bragi.Dota2TowerDestroyed
+	(*Dota2BarracksDestroyed)(nil),                          // 56: bragi.Dota2BarracksDestroyed
+	(*Dota2AncientDestroyed)(nil),                           // 57: bragi.Dota2AncientDestroyed
+	(*Dota2MegaCreeps)(nil),                                 // 58: bragi.Dota2MegaCreeps
+	(*Dota2RoshanKilled)(nil),                               // 59: bragi.Dota2RoshanKilled
+	(*Dota2RoshanRespawned)(nil),                            // 60: bragi.Dota2RoshanRespawned
+	(*Dota2AegisPickedUp)(nil),                              // 61: bragi.Dota2AegisPickedUp
+	(*Dota2AegisLost)(nil),                                  // 62: bragi.Dota2AegisLost
+	(*Dota2Buyback)(nil),                                    // 63: bragi.Dota2Buyback
+	(*Dota2DayNightChanged)(nil),                            // 64: bragi.Dota2DayNightChanged
+	(*Dota2Multikill)(nil),                                  // 65: bragi.Dota2Multikill
+	(*Dota2Killstreak)(nil),                                 // 66: bragi.Dota2Killstreak
+	(*Dota2TormentorKilled)(nil),                            // 67: bragi.Dota2TormentorKilled
+	(*Dota2MatchMessage_Payload)(nil),                       // 68: bragi.Dota2MatchMessage.Payload
+	(*PicksAndBansSelectionsPerTeam_HeroSelection)(nil),     // 69: bragi.PicksAndBansSelectionsPerTeam.HeroSelection
+	(*PicksAndBansSelectionsPerTeam_RadiantSelections)(nil), // 70: bragi.PicksAndBansSelectionsPerTeam.RadiantSelections
+	(*PicksAndBansSelectionsPerTeam_DireSelections)(nil),    // 71: bragi.PicksAndBansSelectionsPerTeam.DireSelections
+	(*PicksAndBansSelections_CurrentHeroSelection)(nil),     // 72: bragi.PicksAndBansSelections.CurrentHeroSelection
+	(*PicksAndBansSelections_PickOrBan)(nil),                // 73: bragi.PicksAndBansSelections.PickOrBan
+	(*Dota2MatchUpdate_Payload)(nil),                        // 74: bragi.Dota2MatchUpdate.Payload
+	nil,                                                     // 75: bragi.Dota2CurrentMapState.TeamsEntry
+	nil,                                                     // 76: bragi.Dota2PreviousMapState.TeamsEntry
+	(*Dota2TeamCurrentMapStatePartialUpdate_Payload)(nil),   // 77: bragi.Dota2TeamCurrentMapStatePartialUpdate.Payload
+	nil, // 78: bragi.Dota2TeamCurrentMapState.PlayersEntry
+	(*Dota2PlayerCurrentMapStatePartialUpdate_Payload)(nil), // 79: bragi.Dota2PlayerCurrentMapStatePartialUpdate.Payload
+	nil,                           // 80: bragi.Dota2TeamPreviousMapState.PlayersEntry
+	(*timestamppb.Timestamp)(nil), // 81: google.protobuf.Timestamp
+	(DataStatus)(0),               // 82: bragi.DataStatus
+	(*Announcement)(nil),          // 83: bragi.Announcement
+	(*Tournament)(nil),            // 84: bragi.Tournament
+	(BestOfType)(0),               // 85: bragi.BestOfType
+	(*Team)(nil),                  // 86: bragi.Team
+	(MatchStatusType)(0),          // 87: bragi.MatchStatusType
+	(*durationpb.Duration)(nil),   // 88: google.protobuf.Duration
 }
 var file_bragi_dota2_proto_depIdxs = []int32{
-	57, // 0: bragi.Dota2MatchMessage.timestamp:type_name -> google.protobuf.Timestamp
-	58, // 1: bragi.Dota2MatchMessage.data_status:type_name -> bragi.DataStatus
-	44, // 2: bragi.Dota2MatchMessage.payload:type_name -> bragi.Dota2MatchMessage.Payload
-	57, // 3: bragi.Dota2MatchSnapshot.timestamp:type_name -> google.protobuf.Timestamp
-	58, // 4: bragi.Dota2MatchSnapshot.data_status:type_name -> bragi.DataStatus
-	59, // 5: bragi.Dota2MatchSnapshot.announcements:type_name -> bragi.Announcement
-	17, // 6: bragi.Dota2MatchSnapshot.match_state:type_name -> bragi.Dota2MatchState
-	60, // 7: bragi.Dota2MatchSnapshot.tournament:type_name -> bragi.Tournament
-	5,  // 8: bragi.PicksAndBansSelectionsPerTeam.state:type_name -> bragi.PicksAndBansSelectionsPerTeam.State
-	7,  // 9: bragi.PicksAndBansSelectionsPerTeam.active_team:type_name -> bragi.PicksAndBansSelectionsPerTeam.TeamType
-	6,  // 10: bragi.PicksAndBansSelectionsPerTeam.selection_type:type_name -> bragi.PicksAndBansSelectionsPerTeam.SelectionType
-	46, // 11: bragi.PicksAndBansSelectionsPerTeam.radiant_selections:type_name -> bragi.PicksAndBansSelectionsPerTeam.RadiantSelections
-	47, // 12: bragi.PicksAndBansSelectionsPerTeam.dire_selections:type_name -> bragi.PicksAndBansSelectionsPerTeam.DireSelections
-	48, // 13: bragi.PicksAndBansSelections.current_hero_selection:type_name -> bragi.PicksAndBansSelections.CurrentHeroSelection
-	49, // 14: bragi.PicksAndBansSelections.picks_and_bans:type_name -> bragi.PicksAndBansSelections.PickOrBan
-	9,  // 15: bragi.PicksAndBansSelections.state:type_name -> bragi.PicksAndBansSelections.State
-	50, // 16: bragi.Dota2MatchUpdate.payload:type_name -> bragi.Dota2MatchUpdate.Payload
-	16, // 17: bragi.Dota2MatchStatePartialUpdates.updates:type_name -> bragi.Dota2MatchStatePartialUpdate
-	18, // 18: bragi.Dota2MatchStatePartialUpdate.score:type_name -> bragi.Dota2MatchScoreState
-	20, // 19: bragi.Dota2MatchStatePartialUpdate.current_map_state:type_name -> bragi.Dota2CurrentMapState
-	19, // 20: bragi.Dota2MatchStatePartialUpdate.current_map_state_partial_update:type_name -> bragi.Dota2CurrentMapStatePartialUpdate
-	13, // 21: bragi.Dota2MatchStatePartialUpdate.picks_and_bans_selections:type_name -> bragi.PicksAndBansSelections
-	12, // 22: bragi.Dota2MatchStatePartialUpdate.picks_and_bans_selections_per_team:type_name -> bragi.PicksAndBansSelectionsPerTeam
-	61, // 23: bragi.Dota2MatchState.match_type:type_name -> bragi.BestOfType
-	62, // 24: bragi.Dota2MatchState.home_team:type_name -> bragi.Team
-	62, // 25: bragi.Dota2MatchState.away_team:type_name -> bragi.Team
-	18, // 26: bragi.Dota2MatchState.score:type_name -> bragi.Dota2MatchScoreState
-	63, // 27: bragi.Dota2MatchState.match_status:type_name -> bragi.MatchStatusType
-	20, // 28: bragi.Dota2MatchState.current_map:type_name -> bragi.Dota2CurrentMapState
-	22, // 29: bragi.Dota2MatchState.previous_maps:type_name -> bragi.Dota2PreviousMapState
-	13, // 30: bragi.Dota2MatchState.picks_and_bans_selections:type_name -> bragi.PicksAndBansSelections
-	12, // 31: bragi.Dota2MatchState.picks_and_bans_selections_per_team:type_name -> bragi.PicksAndBansSelectionsPerTeam
-	21, // 32: bragi.Dota2CurrentMapStatePartialUpdate.game_time:type_name -> bragi.Dota2CurrentMapTimeState
-	24, // 33: bragi.Dota2CurrentMapStatePartialUpdate.team_current_map_state:type_name -> bragi.Dota2TeamCurrentMapState
-	23, // 34: bragi.Dota2CurrentMapStatePartialUpdate.team_current_map_partial_update:type_name -> bragi.Dota2TeamCurrentMapStatePartialUpdate
-	34, // 35: bragi.Dota2CurrentMapStatePartialUpdate.towers:type_name -> bragi.Dota2Towers
-	35, // 36: bragi.Dota2CurrentMapStatePartialUpdate.barracks:type_name -> bragi.Dota2Barracks
-	40, // 37: bragi.Dota2CurrentMapStatePartialUpdate.roshan:type_name -> bragi.Roshan
-	21, // 38: bragi.Dota2CurrentMapState.game_time:type_name -> bragi.Dota2CurrentMapTimeState
-	51, // 39: bragi.Dota2CurrentMapState.teams:type_name -> bragi.Dota2CurrentMapState.TeamsEntry
-	34, // 40: bragi.Dota2CurrentMapState.towers:type_name -> bragi.Dota2Towers
-	35, // 41: bragi.Dota2CurrentMapState.barracks:type_name -> bragi.Dota2Barracks
-	40, // 42: bragi.Dota2CurrentMapState.roshan:type_name -> bragi.Roshan
-	64, // 43: bragi.Dota2CurrentMapTimeState.game_time:type_name -> google.protobuf.Duration
-	52, // 44: bragi.Dota2PreviousMapState.teams:type_name -> bragi.Dota2PreviousMapState.TeamsEntry
-	53, // 45: bragi.Dota2TeamCurrentMapStatePartialUpdate.payload:type_name -> bragi.Dota2TeamCurrentMapStatePartialUpdate.Payload
-	0,  // 46: bragi.Dota2TeamCurrentMapState.faction:type_name -> bragi.Dota2Faction
-	25, // 47: bragi.Dota2TeamCurrentMapState.statistics:type_name -> bragi.Dota2TeamCurrentMapStatisticsState
-	54, // 48: bragi.Dota2TeamCurrentMapState.players:type_name -> bragi.Dota2TeamCurrentMapState.PlayersEntry
-	55, // 49: bragi.Dota2PlayerCurrentMapStatePartialUpdate.payload:type_name -> bragi.Dota2PlayerCurrentMapStatePartialUpdate.Payload
-	32, // 50: bragi.Dota2PlayerCurrentMapState.player_info:type_name -> bragi.Dota2PlayerInfoState
-	29, // 51: bragi.Dota2PlayerCurrentMapState.timers:type_name -> bragi.Dota2PlayerCurrentMapTimersState
-	33, // 52: bragi.Dota2PlayerCurrentMapState.statistics:type_name -> bragi.Dota2PlayerStatisticsState
-	28, // 53: bragi.Dota2PlayerCurrentMapState.map_statistics:type_name -> bragi.Dota2PlayerCurrentMapStatisticsState
-	43, // 54: bragi.Dota2PlayerCurrentMapState.position:type_name -> bragi.Dota2Position
-	37, // 55: bragi.Dota2PlayerCurrentMapState.items:type_name -> bragi.Dota2Items
-	36, // 56: bragi.Dota2PlayerCurrentMapState.abilities:type_name -> bragi.Dota2Abilities
-	64, // 57: bragi.Dota2PlayerCurrentMapTimersState.respawn_timer:type_name -> google.protobuf.Duration
-	64, // 58: bragi.Dota2PlayerCurrentMapTimersState.buyback_cooldown:type_name -> google.protobuf.Duration
-	0,  // 59: bragi.Dota2TeamPreviousMapState.faction:type_name -> bragi.Dota2Faction
-	56, // 60: bragi.Dota2TeamPreviousMapState.players:type_name -> bragi.Dota2TeamPreviousMapState.PlayersEntry
-	32, // 61: bragi.Dota2PlayerPreviousMapState.player_info:type_name -> bragi.Dota2PlayerInfoState
-	33, // 62: bragi.Dota2PlayerPreviousMapState.statistics:type_name -> bragi.Dota2PlayerStatisticsState
-	41, // 63: bragi.Dota2Towers.towers:type_name -> bragi.Dota2Tower
-	42, // 64: bragi.Dota2Barracks.barracks:type_name -> bragi.Dota2Barrack
-	39, // 65: bragi.Dota2Abilities.abilities:type_name -> bragi.Dota2Ability
-	38, // 66: bragi.Dota2Items.items:type_name -> bragi.Dota2Item
-	4,  // 67: bragi.Dota2Item.position:type_name -> bragi.Dota2ItemPosition
-	43, // 68: bragi.Roshan.position:type_name -> bragi.Dota2Position
-	1,  // 69: bragi.Dota2Tower.lane:type_name -> bragi.Dota2Lane
-	0,  // 70: bragi.Dota2Tower.faction:type_name -> bragi.Dota2Faction
-	2,  // 71: bragi.Dota2Tower.tier:type_name -> bragi.Dota2TowerTier
-	1,  // 72: bragi.Dota2Barrack.lane:type_name -> bragi.Dota2Lane
-	0,  // 73: bragi.Dota2Barrack.faction:type_name -> bragi.Dota2Faction
-	3,  // 74: bragi.Dota2Barrack.type:type_name -> bragi.Dota2BarrackType
-	11, // 75: bragi.Dota2MatchMessage.Payload.snapshot:type_name -> bragi.Dota2MatchSnapshot
-	14, // 76: bragi.Dota2MatchMessage.Payload.update:type_name -> bragi.Dota2MatchUpdate
-	45, // 77: bragi.PicksAndBansSelectionsPerTeam.RadiantSelections.bans:type_name -> bragi.PicksAndBansSelectionsPerTeam.HeroSelection
-	45, // 78: bragi.PicksAndBansSelectionsPerTeam.RadiantSelections.picks:type_name -> bragi.PicksAndBansSelectionsPerTeam.HeroSelection
-	45, // 79: bragi.PicksAndBansSelectionsPerTeam.DireSelections.bans:type_name -> bragi.PicksAndBansSelectionsPerTeam.HeroSelection
-	45, // 80: bragi.PicksAndBansSelectionsPerTeam.DireSelections.picks:type_name -> bragi.PicksAndBansSelectionsPerTeam.HeroSelection
-	8,  // 81: bragi.PicksAndBansSelections.CurrentHeroSelection.active_team:type_name -> bragi.PicksAndBansSelections.TeamType
-	8,  // 82: bragi.PicksAndBansSelections.PickOrBan.team:type_name -> bragi.PicksAndBansSelections.TeamType
-	17, // 83: bragi.Dota2MatchUpdate.Payload.match_state:type_name -> bragi.Dota2MatchState
-	15, // 84: bragi.Dota2MatchUpdate.Payload.partial_updates:type_name -> bragi.Dota2MatchStatePartialUpdates
-	24, // 85: bragi.Dota2CurrentMapState.TeamsEntry.value:type_name -> bragi.Dota2TeamCurrentMapState
-	30, // 86: bragi.Dota2PreviousMapState.TeamsEntry.value:type_name -> bragi.Dota2TeamPreviousMapState
-	25, // 87: bragi.Dota2TeamCurrentMapStatePartialUpdate.Payload.statistics:type_name -> bragi.Dota2TeamCurrentMapStatisticsState
-	27, // 88: bragi.Dota2TeamCurrentMapStatePartialUpdate.Payload.player_current_map_state:type_name -> bragi.Dota2PlayerCurrentMapState
-	26, // 89: bragi.Dota2TeamCurrentMapStatePartialUpdate.Payload.player_current_map_partial_update:type_name -> bragi.Dota2PlayerCurrentMapStatePartialUpdate
-	27, // 90: bragi.Dota2TeamCurrentMapState.PlayersEntry.value:type_name -> bragi.Dota2PlayerCurrentMapState
-	32, // 91: bragi.Dota2PlayerCurrentMapStatePartialUpdate.Payload.player_info:type_name -> bragi.Dota2PlayerInfoState
-	29, // 92: bragi.Dota2PlayerCurrentMapStatePartialUpdate.Payload.timers:type_name -> bragi.Dota2PlayerCurrentMapTimersState
-	33, // 93: bragi.Dota2PlayerCurrentMapStatePartialUpdate.Payload.statistics:type_name -> bragi.Dota2PlayerStatisticsState
-	28, // 94: bragi.Dota2PlayerCurrentMapStatePartialUpdate.Payload.map_statistics:type_name -> bragi.Dota2PlayerCurrentMapStatisticsState
-	43, // 95: bragi.Dota2PlayerCurrentMapStatePartialUpdate.Payload.position:type_name -> bragi.Dota2Position
-	37, // 96: bragi.Dota2PlayerCurrentMapStatePartialUpdate.Payload.items:type_name -> bragi.Dota2Items
-	36, // 97: bragi.Dota2PlayerCurrentMapStatePartialUpdate.Payload.abilities:type_name -> bragi.Dota2Abilities
-	31, // 98: bragi.Dota2TeamPreviousMapState.PlayersEntry.value:type_name -> bragi.Dota2PlayerPreviousMapState
-	99, // [99:99] is the sub-list for method output_type
-	99, // [99:99] is the sub-list for method input_type
-	99, // [99:99] is the sub-list for extension type_name
-	99, // [99:99] is the sub-list for extension extendee
-	0,  // [0:99] is the sub-list for field type_name
+	81,  // 0: bragi.Dota2MatchMessage.timestamp:type_name -> google.protobuf.Timestamp
+	82,  // 1: bragi.Dota2MatchMessage.data_status:type_name -> bragi.DataStatus
+	68,  // 2: bragi.Dota2MatchMessage.payload:type_name -> bragi.Dota2MatchMessage.Payload
+	81,  // 3: bragi.Dota2MatchSnapshot.timestamp:type_name -> google.protobuf.Timestamp
+	82,  // 4: bragi.Dota2MatchSnapshot.data_status:type_name -> bragi.DataStatus
+	83,  // 5: bragi.Dota2MatchSnapshot.announcements:type_name -> bragi.Announcement
+	18,  // 6: bragi.Dota2MatchSnapshot.match_state:type_name -> bragi.Dota2MatchState
+	84,  // 7: bragi.Dota2MatchSnapshot.tournament:type_name -> bragi.Tournament
+	6,   // 8: bragi.PicksAndBansSelectionsPerTeam.state:type_name -> bragi.PicksAndBansSelectionsPerTeam.State
+	8,   // 9: bragi.PicksAndBansSelectionsPerTeam.active_team:type_name -> bragi.PicksAndBansSelectionsPerTeam.TeamType
+	7,   // 10: bragi.PicksAndBansSelectionsPerTeam.selection_type:type_name -> bragi.PicksAndBansSelectionsPerTeam.SelectionType
+	70,  // 11: bragi.PicksAndBansSelectionsPerTeam.radiant_selections:type_name -> bragi.PicksAndBansSelectionsPerTeam.RadiantSelections
+	71,  // 12: bragi.PicksAndBansSelectionsPerTeam.dire_selections:type_name -> bragi.PicksAndBansSelectionsPerTeam.DireSelections
+	72,  // 13: bragi.PicksAndBansSelections.current_hero_selection:type_name -> bragi.PicksAndBansSelections.CurrentHeroSelection
+	73,  // 14: bragi.PicksAndBansSelections.picks_and_bans:type_name -> bragi.PicksAndBansSelections.PickOrBan
+	10,  // 15: bragi.PicksAndBansSelections.state:type_name -> bragi.PicksAndBansSelections.State
+	74,  // 16: bragi.Dota2MatchUpdate.payload:type_name -> bragi.Dota2MatchUpdate.Payload
+	17,  // 17: bragi.Dota2MatchStatePartialUpdates.updates:type_name -> bragi.Dota2MatchStatePartialUpdate
+	19,  // 18: bragi.Dota2MatchStatePartialUpdate.score:type_name -> bragi.Dota2MatchScoreState
+	21,  // 19: bragi.Dota2MatchStatePartialUpdate.current_map_state:type_name -> bragi.Dota2CurrentMapState
+	20,  // 20: bragi.Dota2MatchStatePartialUpdate.current_map_state_partial_update:type_name -> bragi.Dota2CurrentMapStatePartialUpdate
+	14,  // 21: bragi.Dota2MatchStatePartialUpdate.picks_and_bans_selections:type_name -> bragi.PicksAndBansSelections
+	13,  // 22: bragi.Dota2MatchStatePartialUpdate.picks_and_bans_selections_per_team:type_name -> bragi.PicksAndBansSelectionsPerTeam
+	85,  // 23: bragi.Dota2MatchState.match_type:type_name -> bragi.BestOfType
+	86,  // 24: bragi.Dota2MatchState.home_team:type_name -> bragi.Team
+	86,  // 25: bragi.Dota2MatchState.away_team:type_name -> bragi.Team
+	19,  // 26: bragi.Dota2MatchState.score:type_name -> bragi.Dota2MatchScoreState
+	87,  // 27: bragi.Dota2MatchState.match_status:type_name -> bragi.MatchStatusType
+	21,  // 28: bragi.Dota2MatchState.current_map:type_name -> bragi.Dota2CurrentMapState
+	23,  // 29: bragi.Dota2MatchState.previous_maps:type_name -> bragi.Dota2PreviousMapState
+	14,  // 30: bragi.Dota2MatchState.picks_and_bans_selections:type_name -> bragi.PicksAndBansSelections
+	13,  // 31: bragi.Dota2MatchState.picks_and_bans_selections_per_team:type_name -> bragi.PicksAndBansSelectionsPerTeam
+	22,  // 32: bragi.Dota2CurrentMapStatePartialUpdate.game_time:type_name -> bragi.Dota2CurrentMapTimeState
+	25,  // 33: bragi.Dota2CurrentMapStatePartialUpdate.team_current_map_state:type_name -> bragi.Dota2TeamCurrentMapState
+	24,  // 34: bragi.Dota2CurrentMapStatePartialUpdate.team_current_map_partial_update:type_name -> bragi.Dota2TeamCurrentMapStatePartialUpdate
+	35,  // 35: bragi.Dota2CurrentMapStatePartialUpdate.towers:type_name -> bragi.Dota2Towers
+	36,  // 36: bragi.Dota2CurrentMapStatePartialUpdate.barracks:type_name -> bragi.Dota2Barracks
+	41,  // 37: bragi.Dota2CurrentMapStatePartialUpdate.roshan:type_name -> bragi.Roshan
+	22,  // 38: bragi.Dota2CurrentMapState.game_time:type_name -> bragi.Dota2CurrentMapTimeState
+	75,  // 39: bragi.Dota2CurrentMapState.teams:type_name -> bragi.Dota2CurrentMapState.TeamsEntry
+	35,  // 40: bragi.Dota2CurrentMapState.towers:type_name -> bragi.Dota2Towers
+	36,  // 41: bragi.Dota2CurrentMapState.barracks:type_name -> bragi.Dota2Barracks
+	41,  // 42: bragi.Dota2CurrentMapState.roshan:type_name -> bragi.Roshan
+	88,  // 43: bragi.Dota2CurrentMapTimeState.game_time:type_name -> google.protobuf.Duration
+	76,  // 44: bragi.Dota2PreviousMapState.teams:type_name -> bragi.Dota2PreviousMapState.TeamsEntry
+	77,  // 45: bragi.Dota2TeamCurrentMapStatePartialUpdate.payload:type_name -> bragi.Dota2TeamCurrentMapStatePartialUpdate.Payload
+	0,   // 46: bragi.Dota2TeamCurrentMapState.faction:type_name -> bragi.Dota2Faction
+	26,  // 47: bragi.Dota2TeamCurrentMapState.statistics:type_name -> bragi.Dota2TeamCurrentMapStatisticsState
+	78,  // 48: bragi.Dota2TeamCurrentMapState.players:type_name -> bragi.Dota2TeamCurrentMapState.PlayersEntry
+	79,  // 49: bragi.Dota2PlayerCurrentMapStatePartialUpdate.payload:type_name -> bragi.Dota2PlayerCurrentMapStatePartialUpdate.Payload
+	33,  // 50: bragi.Dota2PlayerCurrentMapState.player_info:type_name -> bragi.Dota2PlayerInfoState
+	30,  // 51: bragi.Dota2PlayerCurrentMapState.timers:type_name -> bragi.Dota2PlayerCurrentMapTimersState
+	34,  // 52: bragi.Dota2PlayerCurrentMapState.statistics:type_name -> bragi.Dota2PlayerStatisticsState
+	29,  // 53: bragi.Dota2PlayerCurrentMapState.map_statistics:type_name -> bragi.Dota2PlayerCurrentMapStatisticsState
+	44,  // 54: bragi.Dota2PlayerCurrentMapState.position:type_name -> bragi.Dota2Position
+	38,  // 55: bragi.Dota2PlayerCurrentMapState.items:type_name -> bragi.Dota2Items
+	37,  // 56: bragi.Dota2PlayerCurrentMapState.abilities:type_name -> bragi.Dota2Abilities
+	88,  // 57: bragi.Dota2PlayerCurrentMapTimersState.respawn_timer:type_name -> google.protobuf.Duration
+	88,  // 58: bragi.Dota2PlayerCurrentMapTimersState.buyback_cooldown:type_name -> google.protobuf.Duration
+	0,   // 59: bragi.Dota2TeamPreviousMapState.faction:type_name -> bragi.Dota2Faction
+	80,  // 60: bragi.Dota2TeamPreviousMapState.players:type_name -> bragi.Dota2TeamPreviousMapState.PlayersEntry
+	33,  // 61: bragi.Dota2PlayerPreviousMapState.player_info:type_name -> bragi.Dota2PlayerInfoState
+	34,  // 62: bragi.Dota2PlayerPreviousMapState.statistics:type_name -> bragi.Dota2PlayerStatisticsState
+	42,  // 63: bragi.Dota2Towers.towers:type_name -> bragi.Dota2Tower
+	43,  // 64: bragi.Dota2Barracks.barracks:type_name -> bragi.Dota2Barrack
+	40,  // 65: bragi.Dota2Abilities.abilities:type_name -> bragi.Dota2Ability
+	39,  // 66: bragi.Dota2Items.items:type_name -> bragi.Dota2Item
+	4,   // 67: bragi.Dota2Item.position:type_name -> bragi.Dota2ItemPosition
+	44,  // 68: bragi.Roshan.position:type_name -> bragi.Dota2Position
+	1,   // 69: bragi.Dota2Tower.lane:type_name -> bragi.Dota2Lane
+	0,   // 70: bragi.Dota2Tower.faction:type_name -> bragi.Dota2Faction
+	2,   // 71: bragi.Dota2Tower.tier:type_name -> bragi.Dota2TowerTier
+	1,   // 72: bragi.Dota2Barrack.lane:type_name -> bragi.Dota2Lane
+	0,   // 73: bragi.Dota2Barrack.faction:type_name -> bragi.Dota2Faction
+	3,   // 74: bragi.Dota2Barrack.type:type_name -> bragi.Dota2BarrackType
+	46,  // 75: bragi.Dota2MatchEvents.events:type_name -> bragi.Dota2Event
+	81,  // 76: bragi.Dota2Event.timestamp:type_name -> google.protobuf.Timestamp
+	49,  // 77: bragi.Dota2Event.map_started:type_name -> bragi.Dota2MapStarted
+	50,  // 78: bragi.Dota2Event.map_ended:type_name -> bragi.Dota2MapEnded
+	51,  // 79: bragi.Dota2Event.map_paused:type_name -> bragi.Dota2MapPaused
+	52,  // 80: bragi.Dota2Event.map_resumed:type_name -> bragi.Dota2MapResumed
+	53,  // 81: bragi.Dota2Event.hero_kill:type_name -> bragi.Dota2HeroKill
+	54,  // 82: bragi.Dota2Event.hero_death_by_environment:type_name -> bragi.Dota2HeroDeathByEnvironment
+	55,  // 83: bragi.Dota2Event.tower_destroyed:type_name -> bragi.Dota2TowerDestroyed
+	56,  // 84: bragi.Dota2Event.barracks_destroyed:type_name -> bragi.Dota2BarracksDestroyed
+	57,  // 85: bragi.Dota2Event.ancient_destroyed:type_name -> bragi.Dota2AncientDestroyed
+	58,  // 86: bragi.Dota2Event.mega_creeps:type_name -> bragi.Dota2MegaCreeps
+	59,  // 87: bragi.Dota2Event.roshan_killed:type_name -> bragi.Dota2RoshanKilled
+	60,  // 88: bragi.Dota2Event.roshan_respawned:type_name -> bragi.Dota2RoshanRespawned
+	61,  // 89: bragi.Dota2Event.aegis_picked_up:type_name -> bragi.Dota2AegisPickedUp
+	62,  // 90: bragi.Dota2Event.aegis_lost:type_name -> bragi.Dota2AegisLost
+	63,  // 91: bragi.Dota2Event.buyback:type_name -> bragi.Dota2Buyback
+	64,  // 92: bragi.Dota2Event.day_night_changed:type_name -> bragi.Dota2DayNightChanged
+	65,  // 93: bragi.Dota2Event.multikill:type_name -> bragi.Dota2Multikill
+	66,  // 94: bragi.Dota2Event.killstreak:type_name -> bragi.Dota2Killstreak
+	67,  // 95: bragi.Dota2Event.tormentor_killed:type_name -> bragi.Dota2TormentorKilled
+	0,   // 96: bragi.Dota2EventTeam.faction:type_name -> bragi.Dota2Faction
+	0,   // 97: bragi.Dota2EventPlayer.faction:type_name -> bragi.Dota2Faction
+	47,  // 98: bragi.Dota2MapEnded.winner:type_name -> bragi.Dota2EventTeam
+	48,  // 99: bragi.Dota2HeroKill.killer:type_name -> bragi.Dota2EventPlayer
+	48,  // 100: bragi.Dota2HeroKill.victim:type_name -> bragi.Dota2EventPlayer
+	48,  // 101: bragi.Dota2HeroDeathByEnvironment.victim:type_name -> bragi.Dota2EventPlayer
+	5,   // 102: bragi.Dota2HeroDeathByEnvironment.killer_kind:type_name -> bragi.Dota2EnvironmentKillerKind
+	47,  // 103: bragi.Dota2TowerDestroyed.team:type_name -> bragi.Dota2EventTeam
+	47,  // 104: bragi.Dota2TowerDestroyed.attributed_team:type_name -> bragi.Dota2EventTeam
+	1,   // 105: bragi.Dota2TowerDestroyed.lane:type_name -> bragi.Dota2Lane
+	2,   // 106: bragi.Dota2TowerDestroyed.tier:type_name -> bragi.Dota2TowerTier
+	47,  // 107: bragi.Dota2BarracksDestroyed.team:type_name -> bragi.Dota2EventTeam
+	47,  // 108: bragi.Dota2BarracksDestroyed.attributed_team:type_name -> bragi.Dota2EventTeam
+	1,   // 109: bragi.Dota2BarracksDestroyed.lane:type_name -> bragi.Dota2Lane
+	3,   // 110: bragi.Dota2BarracksDestroyed.type:type_name -> bragi.Dota2BarrackType
+	47,  // 111: bragi.Dota2AncientDestroyed.team:type_name -> bragi.Dota2EventTeam
+	47,  // 112: bragi.Dota2AncientDestroyed.attributed_team:type_name -> bragi.Dota2EventTeam
+	47,  // 113: bragi.Dota2MegaCreeps.team:type_name -> bragi.Dota2EventTeam
+	47,  // 114: bragi.Dota2MegaCreeps.against_team:type_name -> bragi.Dota2EventTeam
+	47,  // 115: bragi.Dota2RoshanKilled.team:type_name -> bragi.Dota2EventTeam
+	48,  // 116: bragi.Dota2AegisPickedUp.player:type_name -> bragi.Dota2EventPlayer
+	48,  // 117: bragi.Dota2AegisLost.player:type_name -> bragi.Dota2EventPlayer
+	48,  // 118: bragi.Dota2Buyback.player:type_name -> bragi.Dota2EventPlayer
+	48,  // 119: bragi.Dota2Multikill.player:type_name -> bragi.Dota2EventPlayer
+	48,  // 120: bragi.Dota2Killstreak.player:type_name -> bragi.Dota2EventPlayer
+	48,  // 121: bragi.Dota2TormentorKilled.killer:type_name -> bragi.Dota2EventPlayer
+	12,  // 122: bragi.Dota2MatchMessage.Payload.snapshot:type_name -> bragi.Dota2MatchSnapshot
+	15,  // 123: bragi.Dota2MatchMessage.Payload.update:type_name -> bragi.Dota2MatchUpdate
+	69,  // 124: bragi.PicksAndBansSelectionsPerTeam.RadiantSelections.bans:type_name -> bragi.PicksAndBansSelectionsPerTeam.HeroSelection
+	69,  // 125: bragi.PicksAndBansSelectionsPerTeam.RadiantSelections.picks:type_name -> bragi.PicksAndBansSelectionsPerTeam.HeroSelection
+	69,  // 126: bragi.PicksAndBansSelectionsPerTeam.DireSelections.bans:type_name -> bragi.PicksAndBansSelectionsPerTeam.HeroSelection
+	69,  // 127: bragi.PicksAndBansSelectionsPerTeam.DireSelections.picks:type_name -> bragi.PicksAndBansSelectionsPerTeam.HeroSelection
+	9,   // 128: bragi.PicksAndBansSelections.CurrentHeroSelection.active_team:type_name -> bragi.PicksAndBansSelections.TeamType
+	9,   // 129: bragi.PicksAndBansSelections.PickOrBan.team:type_name -> bragi.PicksAndBansSelections.TeamType
+	18,  // 130: bragi.Dota2MatchUpdate.Payload.match_state:type_name -> bragi.Dota2MatchState
+	16,  // 131: bragi.Dota2MatchUpdate.Payload.partial_updates:type_name -> bragi.Dota2MatchStatePartialUpdates
+	25,  // 132: bragi.Dota2CurrentMapState.TeamsEntry.value:type_name -> bragi.Dota2TeamCurrentMapState
+	31,  // 133: bragi.Dota2PreviousMapState.TeamsEntry.value:type_name -> bragi.Dota2TeamPreviousMapState
+	26,  // 134: bragi.Dota2TeamCurrentMapStatePartialUpdate.Payload.statistics:type_name -> bragi.Dota2TeamCurrentMapStatisticsState
+	28,  // 135: bragi.Dota2TeamCurrentMapStatePartialUpdate.Payload.player_current_map_state:type_name -> bragi.Dota2PlayerCurrentMapState
+	27,  // 136: bragi.Dota2TeamCurrentMapStatePartialUpdate.Payload.player_current_map_partial_update:type_name -> bragi.Dota2PlayerCurrentMapStatePartialUpdate
+	28,  // 137: bragi.Dota2TeamCurrentMapState.PlayersEntry.value:type_name -> bragi.Dota2PlayerCurrentMapState
+	33,  // 138: bragi.Dota2PlayerCurrentMapStatePartialUpdate.Payload.player_info:type_name -> bragi.Dota2PlayerInfoState
+	30,  // 139: bragi.Dota2PlayerCurrentMapStatePartialUpdate.Payload.timers:type_name -> bragi.Dota2PlayerCurrentMapTimersState
+	34,  // 140: bragi.Dota2PlayerCurrentMapStatePartialUpdate.Payload.statistics:type_name -> bragi.Dota2PlayerStatisticsState
+	29,  // 141: bragi.Dota2PlayerCurrentMapStatePartialUpdate.Payload.map_statistics:type_name -> bragi.Dota2PlayerCurrentMapStatisticsState
+	44,  // 142: bragi.Dota2PlayerCurrentMapStatePartialUpdate.Payload.position:type_name -> bragi.Dota2Position
+	38,  // 143: bragi.Dota2PlayerCurrentMapStatePartialUpdate.Payload.items:type_name -> bragi.Dota2Items
+	37,  // 144: bragi.Dota2PlayerCurrentMapStatePartialUpdate.Payload.abilities:type_name -> bragi.Dota2Abilities
+	32,  // 145: bragi.Dota2TeamPreviousMapState.PlayersEntry.value:type_name -> bragi.Dota2PlayerPreviousMapState
+	146, // [146:146] is the sub-list for method output_type
+	146, // [146:146] is the sub-list for method input_type
+	146, // [146:146] is the sub-list for extension type_name
+	146, // [146:146] is the sub-list for extension extendee
+	0,   // [0:146] is the sub-list for field type_name
 }
 
 func init() { file_bragi_dota2_proto_init() }
@@ -4854,20 +6712,41 @@ func file_bragi_dota2_proto_init() {
 	file_bragi_dota2_proto_msgTypes[22].OneofWrappers = []any{}
 	file_bragi_dota2_proto_msgTypes[28].OneofWrappers = []any{}
 	file_bragi_dota2_proto_msgTypes[29].OneofWrappers = []any{}
-	file_bragi_dota2_proto_msgTypes[34].OneofWrappers = []any{
+	file_bragi_dota2_proto_msgTypes[35].OneofWrappers = []any{
+		(*Dota2Event_MapStarted)(nil),
+		(*Dota2Event_MapEnded)(nil),
+		(*Dota2Event_MapPaused)(nil),
+		(*Dota2Event_MapResumed)(nil),
+		(*Dota2Event_HeroKill)(nil),
+		(*Dota2Event_HeroDeathByEnvironment)(nil),
+		(*Dota2Event_TowerDestroyed)(nil),
+		(*Dota2Event_BarracksDestroyed)(nil),
+		(*Dota2Event_AncientDestroyed)(nil),
+		(*Dota2Event_MegaCreeps)(nil),
+		(*Dota2Event_RoshanKilled)(nil),
+		(*Dota2Event_RoshanRespawned)(nil),
+		(*Dota2Event_AegisPickedUp)(nil),
+		(*Dota2Event_AegisLost)(nil),
+		(*Dota2Event_Buyback)(nil),
+		(*Dota2Event_DayNightChanged)(nil),
+		(*Dota2Event_Multikill)(nil),
+		(*Dota2Event_Killstreak)(nil),
+		(*Dota2Event_TormentorKilled)(nil),
+	}
+	file_bragi_dota2_proto_msgTypes[57].OneofWrappers = []any{
 		(*Dota2MatchMessage_Payload_Snapshot)(nil),
 		(*Dota2MatchMessage_Payload_Update)(nil),
 	}
-	file_bragi_dota2_proto_msgTypes[40].OneofWrappers = []any{
+	file_bragi_dota2_proto_msgTypes[63].OneofWrappers = []any{
 		(*Dota2MatchUpdate_Payload_MatchState)(nil),
 		(*Dota2MatchUpdate_Payload_PartialUpdates)(nil),
 	}
-	file_bragi_dota2_proto_msgTypes[43].OneofWrappers = []any{
+	file_bragi_dota2_proto_msgTypes[66].OneofWrappers = []any{
 		(*Dota2TeamCurrentMapStatePartialUpdate_Payload_Statistics)(nil),
 		(*Dota2TeamCurrentMapStatePartialUpdate_Payload_PlayerCurrentMapState)(nil),
 		(*Dota2TeamCurrentMapStatePartialUpdate_Payload_PlayerCurrentMapPartialUpdate)(nil),
 	}
-	file_bragi_dota2_proto_msgTypes[45].OneofWrappers = []any{
+	file_bragi_dota2_proto_msgTypes[68].OneofWrappers = []any{
 		(*Dota2PlayerCurrentMapStatePartialUpdate_Payload_PlayerInfo)(nil),
 		(*Dota2PlayerCurrentMapStatePartialUpdate_Payload_Timers)(nil),
 		(*Dota2PlayerCurrentMapStatePartialUpdate_Payload_Statistics)(nil),
@@ -4881,8 +6760,8 @@ func file_bragi_dota2_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_bragi_dota2_proto_rawDesc,
-			NumEnums:      10,
-			NumMessages:   47,
+			NumEnums:      11,
+			NumMessages:   70,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
