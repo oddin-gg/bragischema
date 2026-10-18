@@ -1322,12 +1322,12 @@ func (m *Dota2Event_HeroKill) CloneVT() isDota2Event_Event {
 	return r
 }
 
-func (m *Dota2Event_HeroDeathByEnvironment) CloneVT() isDota2Event_Event {
+func (m *Dota2Event_HeroDeath) CloneVT() isDota2Event_Event {
 	if m == nil {
-		return (*Dota2Event_HeroDeathByEnvironment)(nil)
+		return (*Dota2Event_HeroDeath)(nil)
 	}
-	r := new(Dota2Event_HeroDeathByEnvironment)
-	r.HeroDeathByEnvironment = m.HeroDeathByEnvironment.CloneVT()
+	r := new(Dota2Event_HeroDeath)
+	r.HeroDeath = m.HeroDeath.CloneVT()
 	return r
 }
 
@@ -1571,13 +1571,14 @@ func (m *Dota2HeroKill) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
-func (m *Dota2HeroDeathByEnvironment) CloneVT() *Dota2HeroDeathByEnvironment {
+func (m *Dota2HeroDeath) CloneVT() *Dota2HeroDeath {
 	if m == nil {
-		return (*Dota2HeroDeathByEnvironment)(nil)
+		return (*Dota2HeroDeath)(nil)
 	}
-	r := new(Dota2HeroDeathByEnvironment)
+	r := new(Dota2HeroDeath)
 	r.Victim = m.Victim.CloneVT()
 	r.KillerKind = m.KillerKind
+	r.Killer = m.Killer.CloneVT()
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -1585,7 +1586,7 @@ func (m *Dota2HeroDeathByEnvironment) CloneVT() *Dota2HeroDeathByEnvironment {
 	return r
 }
 
-func (m *Dota2HeroDeathByEnvironment) CloneMessageVT() proto.Message {
+func (m *Dota2HeroDeath) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
@@ -4099,8 +4100,8 @@ func (this *Dota2Event_HeroKill) EqualVT(thatIface isDota2Event_Event) bool {
 	return true
 }
 
-func (this *Dota2Event_HeroDeathByEnvironment) EqualVT(thatIface isDota2Event_Event) bool {
-	that, ok := thatIface.(*Dota2Event_HeroDeathByEnvironment)
+func (this *Dota2Event_HeroDeath) EqualVT(thatIface isDota2Event_Event) bool {
+	that, ok := thatIface.(*Dota2Event_HeroDeath)
 	if !ok {
 		return false
 	}
@@ -4110,12 +4111,12 @@ func (this *Dota2Event_HeroDeathByEnvironment) EqualVT(thatIface isDota2Event_Ev
 	if this == nil && that != nil || this != nil && that == nil {
 		return false
 	}
-	if p, q := this.HeroDeathByEnvironment, that.HeroDeathByEnvironment; p != q {
+	if p, q := this.HeroDeath, that.HeroDeath; p != q {
 		if p == nil {
-			p = &Dota2HeroDeathByEnvironment{}
+			p = &Dota2HeroDeath{}
 		}
 		if q == nil {
-			q = &Dota2HeroDeathByEnvironment{}
+			q = &Dota2HeroDeath{}
 		}
 		if !p.EqualVT(q) {
 			return false
@@ -4594,7 +4595,7 @@ func (this *Dota2HeroKill) EqualMessageVT(thatMsg proto.Message) bool {
 	}
 	return this.EqualVT(that)
 }
-func (this *Dota2HeroDeathByEnvironment) EqualVT(that *Dota2HeroDeathByEnvironment) bool {
+func (this *Dota2HeroDeath) EqualVT(that *Dota2HeroDeath) bool {
 	if this == that {
 		return true
 	} else if this == nil || that == nil {
@@ -4606,11 +4607,14 @@ func (this *Dota2HeroDeathByEnvironment) EqualVT(that *Dota2HeroDeathByEnvironme
 	if this.KillerKind != that.KillerKind {
 		return false
 	}
+	if !this.Killer.EqualVT(that.Killer) {
+		return false
+	}
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
-func (this *Dota2HeroDeathByEnvironment) EqualMessageVT(thatMsg proto.Message) bool {
-	that, ok := thatMsg.(*Dota2HeroDeathByEnvironment)
+func (this *Dota2HeroDeath) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2HeroDeath)
 	if !ok {
 		return false
 	}

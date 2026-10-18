@@ -424,7 +424,7 @@ Checks 27–28 need a Bragi version that applies the request filters. An older B
 
 **Dota 2 event types validated:**
 - `mapStarted`, `mapEnded`, `mapPaused`, `mapResumed`
-- `heroKill`, `heroDeathByEnvironment`
+- `heroKill`, `heroDeath`
 - `towerDestroyed`, `barracksDestroyed`, `ancientDestroyed`, `megaCreeps`
 - `roshanKilled`, `roshanRespawned`, `aegisPickedUp`, `aegisLost`
 - `buyback`, `dayNightChanged`

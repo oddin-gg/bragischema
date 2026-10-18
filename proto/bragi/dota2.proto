@@ -509,7 +509,7 @@ message Dota2Event {
     Dota2MapPaused map_paused = 12;
     Dota2MapResumed map_resumed = 13;
     Dota2HeroKill hero_kill = 14;
-    Dota2HeroDeathByEnvironment hero_death_by_environment = 15;
+    Dota2HeroDeath hero_death = 15;
     Dota2TowerDestroyed tower_destroyed = 16;
     Dota2BarracksDestroyed barracks_destroyed = 17;
     Dota2AncientDestroyed ancient_destroyed = 18;
@@ -562,9 +562,12 @@ message Dota2HeroKill {
   uint32 killer_streak = 4;
 }
 
-message Dota2HeroDeathByEnvironment {
+// Sent for every hero death, also when Dota2HeroKill is sent for the same death.
+message Dota2HeroDeath {
   Dota2EventPlayer victim = 1;
-  Dota2EnvironmentKillerKind killer_kind = 2;
+  Dota2KillerKind killer_kind = 2;
+  // Set only when killer_kind is DOTA2_KILLER_KIND_HERO.
+  Dota2EventPlayer killer = 3;
 }
 
 message Dota2TowerDestroyed {
@@ -645,12 +648,14 @@ message Dota2TormentorKilled {
 // ------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------
 
-// Only UNKNOWN is sent today. The other values are reserved for a later release.
-enum Dota2EnvironmentKillerKind {
-  DOTA2_ENVIRONMENT_KILLER_KIND_UNSPECIFIED = 0;
-  DOTA2_ENVIRONMENT_KILLER_KIND_UNKNOWN = 1;
-  DOTA2_ENVIRONMENT_KILLER_KIND_TOWER = 2;
-  DOTA2_ENVIRONMENT_KILLER_KIND_NEUTRAL = 3;
-  DOTA2_ENVIRONMENT_KILLER_KIND_ROSHAN = 4;
-  DOTA2_ENVIRONMENT_KILLER_KIND_TORMENTOR = 5;
+// Only HERO and OTHER are sent today; the other kinds require a combat-log source.
+enum Dota2KillerKind {
+  DOTA2_KILLER_KIND_UNSPECIFIED = 0;
+  DOTA2_KILLER_KIND_OTHER = 1;
+  DOTA2_KILLER_KIND_TOWER = 2;
+  DOTA2_KILLER_KIND_NEUTRAL = 3;
+  DOTA2_KILLER_KIND_ROSHAN = 4;
+  DOTA2_KILLER_KIND_TORMENTOR = 5;
+  DOTA2_KILLER_KIND_CREEP = 6;
+  DOTA2_KILLER_KIND_HERO = 7;
 }

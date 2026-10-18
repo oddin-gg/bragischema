@@ -22,7 +22,7 @@ const MATCH_URNS = (__ENV.MATCH_URNS || '')
 
 const DOTA2_EVENT_TYPES = [
   'mapStarted', 'mapEnded', 'mapPaused', 'mapResumed',
-  'heroKill', 'heroDeathByEnvironment',
+  'heroKill', 'heroDeath',
   'towerDestroyed', 'barracksDestroyed', 'ancientDestroyed', 'megaCreeps',
   'roshanKilled', 'roshanRespawned',
   'aegisPickedUp', 'aegisLost', 'buyback', 'dayNightChanged',

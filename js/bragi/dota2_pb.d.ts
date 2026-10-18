@@ -1720,10 +1720,10 @@ export class Dota2Event extends jspb.Message {
   getHeroKill(): Dota2HeroKill | undefined;
   setHeroKill(value?: Dota2HeroKill): void;
 
-  hasHeroDeathByEnvironment(): boolean;
-  clearHeroDeathByEnvironment(): void;
-  getHeroDeathByEnvironment(): Dota2HeroDeathByEnvironment | undefined;
-  setHeroDeathByEnvironment(value?: Dota2HeroDeathByEnvironment): void;
+  hasHeroDeath(): boolean;
+  clearHeroDeath(): void;
+  getHeroDeath(): Dota2HeroDeath | undefined;
+  setHeroDeath(value?: Dota2HeroDeath): void;
 
   hasTowerDestroyed(): boolean;
   clearTowerDestroyed(): void;
@@ -1811,7 +1811,7 @@ export namespace Dota2Event {
     mapPaused?: Dota2MapPaused.AsObject,
     mapResumed?: Dota2MapResumed.AsObject,
     heroKill?: Dota2HeroKill.AsObject,
-    heroDeathByEnvironment?: Dota2HeroDeathByEnvironment.AsObject,
+    heroDeath?: Dota2HeroDeath.AsObject,
     towerDestroyed?: Dota2TowerDestroyed.AsObject,
     barracksDestroyed?: Dota2BarracksDestroyed.AsObject,
     ancientDestroyed?: Dota2AncientDestroyed.AsObject,
@@ -1834,7 +1834,7 @@ export namespace Dota2Event {
     MAP_PAUSED = 12,
     MAP_RESUMED = 13,
     HERO_KILL = 14,
-    HERO_DEATH_BY_ENVIRONMENT = 15,
+    HERO_DEATH = 15,
     TOWER_DESTROYED = 16,
     BARRACKS_DESTROYED = 17,
     ANCIENT_DESTROYED = 18,
@@ -2013,29 +2013,35 @@ export namespace Dota2HeroKill {
   }
 }
 
-export class Dota2HeroDeathByEnvironment extends jspb.Message {
+export class Dota2HeroDeath extends jspb.Message {
   hasVictim(): boolean;
   clearVictim(): void;
   getVictim(): Dota2EventPlayer | undefined;
   setVictim(value?: Dota2EventPlayer): void;
 
-  getKillerKind(): Dota2EnvironmentKillerKindMap[keyof Dota2EnvironmentKillerKindMap];
-  setKillerKind(value: Dota2EnvironmentKillerKindMap[keyof Dota2EnvironmentKillerKindMap]): void;
+  getKillerKind(): Dota2KillerKindMap[keyof Dota2KillerKindMap];
+  setKillerKind(value: Dota2KillerKindMap[keyof Dota2KillerKindMap]): void;
+
+  hasKiller(): boolean;
+  clearKiller(): void;
+  getKiller(): Dota2EventPlayer | undefined;
+  setKiller(value?: Dota2EventPlayer): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Dota2HeroDeathByEnvironment.AsObject;
-  static toObject(includeInstance: boolean, msg: Dota2HeroDeathByEnvironment): Dota2HeroDeathByEnvironment.AsObject;
+  toObject(includeInstance?: boolean): Dota2HeroDeath.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2HeroDeath): Dota2HeroDeath.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: Dota2HeroDeathByEnvironment, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Dota2HeroDeathByEnvironment;
-  static deserializeBinaryFromReader(message: Dota2HeroDeathByEnvironment, reader: jspb.BinaryReader): Dota2HeroDeathByEnvironment;
+  static serializeBinaryToWriter(message: Dota2HeroDeath, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2HeroDeath;
+  static deserializeBinaryFromReader(message: Dota2HeroDeath, reader: jspb.BinaryReader): Dota2HeroDeath;
 }
 
-export namespace Dota2HeroDeathByEnvironment {
+export namespace Dota2HeroDeath {
   export type AsObject = {
     victim?: Dota2EventPlayer.AsObject,
-    killerKind: Dota2EnvironmentKillerKindMap[keyof Dota2EnvironmentKillerKindMap],
+    killerKind: Dota2KillerKindMap[keyof Dota2KillerKindMap],
+    killer?: Dota2EventPlayer.AsObject,
   }
 }
 
@@ -2427,14 +2433,16 @@ export interface Dota2ItemPositionMap {
 
 export const Dota2ItemPosition: Dota2ItemPositionMap;
 
-export interface Dota2EnvironmentKillerKindMap {
-  DOTA2_ENVIRONMENT_KILLER_KIND_UNSPECIFIED: 0;
-  DOTA2_ENVIRONMENT_KILLER_KIND_UNKNOWN: 1;
-  DOTA2_ENVIRONMENT_KILLER_KIND_TOWER: 2;
-  DOTA2_ENVIRONMENT_KILLER_KIND_NEUTRAL: 3;
-  DOTA2_ENVIRONMENT_KILLER_KIND_ROSHAN: 4;
-  DOTA2_ENVIRONMENT_KILLER_KIND_TORMENTOR: 5;
+export interface Dota2KillerKindMap {
+  DOTA2_KILLER_KIND_UNSPECIFIED: 0;
+  DOTA2_KILLER_KIND_OTHER: 1;
+  DOTA2_KILLER_KIND_TOWER: 2;
+  DOTA2_KILLER_KIND_NEUTRAL: 3;
+  DOTA2_KILLER_KIND_ROSHAN: 4;
+  DOTA2_KILLER_KIND_TORMENTOR: 5;
+  DOTA2_KILLER_KIND_CREEP: 6;
+  DOTA2_KILLER_KIND_HERO: 7;
 }
 
-export const Dota2EnvironmentKillerKind: Dota2EnvironmentKillerKindMap;
+export const Dota2KillerKind: Dota2KillerKindMap;
 
