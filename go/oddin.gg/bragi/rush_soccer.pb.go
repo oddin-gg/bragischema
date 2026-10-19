@@ -44,13 +44,7 @@ const (
 	// together with ATTACK. Set pieces taken in the final third increment the dangerous_attacks counter only
 	// and keep their own event type in the timeline.
 	RushSoccerEventType_RUSH_SOCCER_EVENT_TYPE_DANGEROUS_ATTACK RushSoccerEventType = 11
-	// Synthetic: a half's clock ran out. Carries the period that ENDED, no team and no clock - the boundary is
-	// only resolvable to the rate at which state arrives, so any time would be invented precision. Derived from
-	// the source's match state: the first half counts as ended from its half-time state on, so the marker always
-	// precedes PERIOD_CHANGE even when the source jumps straight to the second half; the second half counts as
-	// ended from its full-time state on, or once match_status is FINISHED, so a finished match always carries it
-	// and a cancelled match never does. Both markers stay on the timeline for the rest of the match.
-	RushSoccerEventType_RUSH_SOCCER_EVENT_TYPE_PERIOD_END RushSoccerEventType = 12
+	RushSoccerEventType_RUSH_SOCCER_EVENT_TYPE_PERIOD_END       RushSoccerEventType = 12
 )
 
 // Enum value maps for RushSoccerEventType.
@@ -216,8 +210,6 @@ func (RushSoccerPeriod) EnumDescriptor() ([]byte, []int) {
 	return file_bragi_rush_soccer_proto_rawDescGZIP(), []int{2}
 }
 
-// Where the match is in its regulation, read from the source's own match state. match_status stays the
-// authority on whether the match is finished or cancelled: ENDED here means the source reported full time.
 type RushSoccerMatchPhase int32
 
 const (
@@ -1410,11 +1402,8 @@ type RushSoccerCurrentMapState struct {
 	// Paused flag.
 	MapPaused bool `protobuf:"varint,4,opt,name=map_paused,json=mapPaused,proto3" json:"map_paused,omitempty"`
 	// Teams.
-	Teams map[string]*RushSoccerTeamCurrentMapState `protobuf:"bytes,5,rep,name=teams,proto3" json:"teams,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// Where the match is in its regulation. `period` keeps its meaning next to it: FIRST through half time,
-	// SECOND from the second kick-off on, including after full time. A phase change is delivered as a whole
-	// current_map_state partial - there is no partial-update arm for it, same as period and map_paused.
-	Phase         RushSoccerMatchPhase `protobuf:"varint,6,opt,name=phase,proto3,enum=bragi.RushSoccerMatchPhase" json:"phase,omitempty"`
+	Teams         map[string]*RushSoccerTeamCurrentMapState `protobuf:"bytes,5,rep,name=teams,proto3" json:"teams,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Phase         RushSoccerMatchPhase                      `protobuf:"varint,6,opt,name=phase,proto3,enum=bragi.RushSoccerMatchPhase" json:"phase,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
