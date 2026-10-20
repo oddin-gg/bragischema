@@ -230,6 +230,7 @@ message RushSoccerCurrentMapState {
   bool map_paused = 4;
   // Teams.
   map<string, RushSoccerTeamCurrentMapState> teams = 5;
+  RushSoccerMatchPhase phase = 6;
 }
 
 message RushSoccerCurrentMapTimeState {
@@ -354,6 +355,7 @@ enum RushSoccerEventType {
   // together with ATTACK. Set pieces taken in the final third increment the dangerous_attacks counter only
   // and keep their own event type in the timeline.
   RUSH_SOCCER_EVENT_TYPE_DANGEROUS_ATTACK = 11;
+  RUSH_SOCCER_EVENT_TYPE_PERIOD_END = 12;
 }
 
 enum RushSoccerPossessionSide {
@@ -368,4 +370,15 @@ enum RushSoccerPeriod {
   RUSH_SOCCER_PERIOD_UNSPECIFIED = 0;
   RUSH_SOCCER_PERIOD_FIRST = 1;
   RUSH_SOCCER_PERIOD_SECOND = 2;
+}
+
+enum RushSoccerMatchPhase {
+  RUSH_SOCCER_MATCH_PHASE_UNSPECIFIED = 0;
+  RUSH_SOCCER_MATCH_PHASE_NOT_STARTED = 1;
+  RUSH_SOCCER_MATCH_PHASE_FIRST_HALF = 2;
+  RUSH_SOCCER_MATCH_PHASE_FIRST_HALF_ADDED_TIME = 3;
+  RUSH_SOCCER_MATCH_PHASE_HALF_TIME = 4;
+  RUSH_SOCCER_MATCH_PHASE_SECOND_HALF = 5;
+  RUSH_SOCCER_MATCH_PHASE_SECOND_HALF_ADDED_TIME = 6;
+  RUSH_SOCCER_MATCH_PHASE_ENDED = 7;
 }
