@@ -18,7 +18,7 @@ bragischema/
 │       ├── bragi_service.proto           # Service definition (9 RPCs)
 │       ├── common.proto                  # Shared types (Match, Team, Sport, etc.)
 │       ├── cs2.proto                     # CS2 match state & events
-│       ├── dota2.proto                   # Dota 2 match state
+│       ├── dota2.proto                   # Dota 2 match state & events
 │       ├── lol.proto                     # League of Legends match state
 │       ├── valorant.proto                # Valorant match state
 │       ├── rush_soccer.proto             # Rush Soccer match state
@@ -369,18 +369,49 @@ const METADATA = { metadata: { token: BRAGI_TOKEN } };
 **RPC:** `MatchEventsFeed` (server stream)
 **Proto:** `MatchEventsFeedRequest` → `stream MatchEventsFeedMessage`
 
+The test opens two streams at the same time:
+
+- **Main stream** sends `{}` (every sport and match). When `MATCH_URNS` is set, it sends `{matchUrns: [...]}`. It accepts `cs2` and `dota2` payloads.
+- **CS2 filter stream** sends `{sports: ['SPORT_CS2']}`. It fails if a `dota2` payload arrives.
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `MATCH_URNS` | *(empty)* | Comma-separated match URNs, e.g. `od:match:123,od:match:456`. The main stream asks only for these matches and checks each payload's `matchUrn` against the list |
+
+```bash
+k6 run -e BRAGI_TOKEN=your-token -e MATCH_URNS=od:match:123 match_events_feed.js
+```
+
 | # | Check | Description |
 |---|-------|-------------|
 | 1 | `[MatchEventsFeed] Received a message` | Stream delivers data |
-| 2 | `[MatchEventsFeed] CS2 events has matchUrn` | Match URN present |
-| 3 | `[MatchEventsFeed] matchUrn starts with od:match:` | URN format |
-| 4 | `[MatchEventsFeed] events is a non-empty array` | Events array non-empty |
-| 5 | `[MatchEventsFeed] Event has timestamp` | Each event timestamped |
-| 6 | `[MatchEventsFeed] Event has at least one event type` | Valid event oneof |
-| 7 | `[MatchEventsFeed] Events have timestamps` | Bulk timestamp validation |
+| 2 | `[MatchEventsFeed] Payload is cs2 or dota2` | Payload oneof is set |
+| 3 | `[MatchEventsFeed] matchUrn is in MATCH_URNS` | Only when `MATCH_URNS` is set |
+| 4–5 | `[MatchEventsFeed] CS2 events has matchUrn`, `matchUrn starts with od:match:` | CS2 match URN present and in URN format |
+| 6–7 | `[MatchEventsFeed] Event has timestamp`, `Event has at least one known event type` | First CS2 event has a timestamp and a known oneof |
+| 8–16 | `[MatchEventsFeed] Kill …`, `RoundStart …`, `RoundEnd …`, `Death …` | Fields of the first CS2 event when it is a kill, round start, round end or death |
+| 17–18 | `[MatchEventsFeed] Events have timestamps`, `Events are chronologically ordered` | CS2 events are timestamped and in order |
+| 19 | `[MatchEventsFeed] Dota 2 matchUrn starts with od:match:` | Dota 2 match URN format |
+| 20 | `[MatchEventsFeed] Dota 2 events have timestamp` | Every Dota 2 event is timestamped |
+| 21 | `[MatchEventsFeed] Dota 2 events have a known event type` | Every Dota 2 event has a known oneof |
+| 22 | `[MatchEventsFeed] Dota 2 gameTime is an integer when set` | `gameTime` is absent or an integer (it is negative before the horn) |
+| 23 | `[MatchEventsFeed] Dota 2 events are chronological per source` | Events with `gameTime` and events without it are each in order |
+| 24 | `[MatchEventsFeed] HeroKill has killer and victim playerUrn` | First `heroKill` in the message names both players |
+| 25 | `[MatchEventsFeed] Stream produced at least one message` | Main stream delivered data |
+| 26 | `[MatchEventsFeed] Received CS2 or Dota 2 events` | At least one `cs2` or `dota2` payload arrived |
+| 27 | `[MatchEventsFeed CS2 filter] No dota2 payload` | The `sports` filter keeps Dota 2 out |
+| 28 | `[MatchEventsFeed CS2 filter] Payload is cs2` | Every payload on the CS2 filter stream is `cs2` |
+| 29 | `[MatchEventsFeed] No stream error before close` | The main stream did not fail during the 15-second window |
+| 30 | `[MatchEventsFeed CS2 filter] No stream error before close` | The CS2 filter stream did not fail during the window, e.g. with `INVALID_ARGUMENT` for the filters |
 
-**Stream behavior:** Receives historical events for live matches, then real-time updates.
+**Stream behavior:** Receives historical events for live matches, then real-time updates. At the end it logs the message count and how many messages carried Dota 2 events.
 **Timeout:** 15 seconds.
+
+Dota 2 `multikill`, `killstreak` and `tormentorKilled` have no `gameTime` and come from a second upstream source. For this reason, check 23 checks the order of each group separately.
+
+Checks 29–30 run when the window ends. The test closes the streams with a timer, not `sleep()`, so stream callbacks run during the window. The "canceled by client" error from the close at the end does not count.
+
+Checks 27–28 need a Bragi version that applies the request filters. An older Bragi ignores `sports` and `matchUrns`. The checks still pass there while Bragi sends no Dota 2 events.
 
 **CS2 event types validated:**
 - `bombDefuseStarted`, `bombDefused`, `bombExploded`, `bombPlantStarted`, `bombPlanted`
@@ -390,6 +421,14 @@ const METADATA = { metadata: { token: BRAGI_TOKEN } };
 - `mapStart`, `mapEnd`
 - `roundStart`, `roundEnd`, `roundPause`, `roundResume`, `roundRollback`
 - `worldBomb`
+
+**Dota 2 event types validated:**
+- `mapStarted`, `mapEnded`, `mapPaused`, `mapResumed`
+- `heroKill`, `heroDeath`
+- `towerDestroyed`, `barracksDestroyed`, `ancientDestroyed`, `megaCreeps`
+- `roshanKilled`, `roshanRespawned`, `aegisPickedUp`, `aegisLost`
+- `buyback`, `dayNightChanged`
+- `multikill`, `killstreak`, `tormentorKilled`
 
 ---
 
@@ -405,8 +444,8 @@ const METADATA = { metadata: { token: BRAGI_TOKEN } };
 | `MatchTimelineTournamentsFeed` | stream | `match_timeline_tournaments_feed.js` | 11 |
 | `MatchTimelineFeed` | stream | `match_timeline_feed.js` | 6 |
 | `LiveDataFeed` | stream | `live_data_feed.js` | 9 |
-| `MatchEventsFeed` | stream | `match_events_feed.js` | 7 |
-| **Total** | | **9 files** | **116** |
+| `MatchEventsFeed` | stream | `match_events_feed.js` | 30 |
+| **Total** | | **9 files** | **139** |
 
 ## Troubleshooting
 

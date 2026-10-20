@@ -148,7 +148,8 @@ class BragiServicer:
         raise NotImplementedError('Method not implemented!')
 
     def MatchEventsFeed(self, request, context):
-        """Sends all historical events for currently played matches, then only real-time updates
+        """Sends all historical events for currently played matches, then only real-time updates.
+        Carries CS2, CS2 Duels and Dota 2 events. MatchEventsFeedRequest filters by sport and by match; an event must pass both.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')

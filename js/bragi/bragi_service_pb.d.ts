@@ -58,6 +58,16 @@ export namespace TeamProfileResponse {
 }
 
 export class MatchEventsFeedRequest extends jspb.Message {
+  clearSportsList(): void;
+  getSportsList(): Array<bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap]>;
+  setSportsList(value: Array<bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap]>): void;
+  addSports(value: bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap], index?: number): bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap];
+
+  clearMatchUrnsList(): void;
+  getMatchUrnsList(): Array<string>;
+  setMatchUrnsList(value: Array<string>): void;
+  addMatchUrns(value: string, index?: number): string;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MatchEventsFeedRequest.AsObject;
   static toObject(includeInstance: boolean, msg: MatchEventsFeedRequest): MatchEventsFeedRequest.AsObject;
@@ -70,6 +80,8 @@ export class MatchEventsFeedRequest extends jspb.Message {
 
 export namespace MatchEventsFeedRequest {
   export type AsObject = {
+    sportsList: Array<bragi_common_pb.SportMap[keyof bragi_common_pb.SportMap]>,
+    matchUrnsList: Array<string>,
   }
 }
 
@@ -78,6 +90,11 @@ export class MatchEventsFeedMessage extends jspb.Message {
   clearCs2(): void;
   getCs2(): bragi_cs2_pb.CS2MatchEvents | undefined;
   setCs2(value?: bragi_cs2_pb.CS2MatchEvents): void;
+
+  hasDota2(): boolean;
+  clearDota2(): void;
+  getDota2(): bragi_dota2_pb.Dota2MatchEvents | undefined;
+  setDota2(value?: bragi_dota2_pb.Dota2MatchEvents): void;
 
   getPayloadCase(): MatchEventsFeedMessage.PayloadCase;
   serializeBinary(): Uint8Array;
@@ -93,11 +110,13 @@ export class MatchEventsFeedMessage extends jspb.Message {
 export namespace MatchEventsFeedMessage {
   export type AsObject = {
     cs2?: bragi_cs2_pb.CS2MatchEvents.AsObject,
+    dota2?: bragi_dota2_pb.Dota2MatchEvents.AsObject,
   }
 
   export enum PayloadCase {
     PAYLOAD_NOT_SET = 0,
     CS2 = 1,
+    DOTA2 = 2,
   }
 }
 

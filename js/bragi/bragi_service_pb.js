@@ -131,7 +131,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.bragi.MatchEventsFeedRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.bragi.MatchEventsFeedRequest.repeatedFields_, null);
 };
 goog.inherits(proto.bragi.MatchEventsFeedRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -927,6 +927,13 @@ proto.bragi.TeamProfileResponse.prototype.hasTeam = function() {
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.bragi.MatchEventsFeedRequest.repeatedFields_ = [1,2];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -958,7 +965,8 @@ proto.bragi.MatchEventsFeedRequest.prototype.toObject = function(opt_includeInst
  */
 proto.bragi.MatchEventsFeedRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-
+sportsList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
+matchUrnsList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -995,6 +1003,16 @@ proto.bragi.MatchEventsFeedRequest.deserializeBinaryFromReader = function(msg, r
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var values = /** @type {!Array<!proto.bragi.Sport>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addSports(values[i]);
+      }
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addMatchUrns(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1024,6 +1042,94 @@ proto.bragi.MatchEventsFeedRequest.prototype.serializeBinary = function() {
  */
 proto.bragi.MatchEventsFeedRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getSportsList();
+  if (f.length > 0) {
+    writer.writePackedEnum(
+      1,
+      f
+    );
+  }
+  f = message.getMatchUrnsList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated Sport sports = 1;
+ * @return {!Array<!proto.bragi.Sport>}
+ */
+proto.bragi.MatchEventsFeedRequest.prototype.getSportsList = function() {
+  return /** @type {!Array<!proto.bragi.Sport>} */ (jspb.Message.getRepeatedField(this, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.bragi.Sport>} value
+ * @return {!proto.bragi.MatchEventsFeedRequest} returns this
+ */
+proto.bragi.MatchEventsFeedRequest.prototype.setSportsList = function(value) {
+  return jspb.Message.setField(this, 1, value || []);
+};
+
+
+/**
+ * @param {!proto.bragi.Sport} value
+ * @param {number=} opt_index
+ * @return {!proto.bragi.MatchEventsFeedRequest} returns this
+ */
+proto.bragi.MatchEventsFeedRequest.prototype.addSports = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.bragi.MatchEventsFeedRequest} returns this
+ */
+proto.bragi.MatchEventsFeedRequest.prototype.clearSportsList = function() {
+  return this.setSportsList([]);
+};
+
+
+/**
+ * repeated string match_urns = 2;
+ * @return {!Array<string>}
+ */
+proto.bragi.MatchEventsFeedRequest.prototype.getMatchUrnsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 2));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.bragi.MatchEventsFeedRequest} returns this
+ */
+proto.bragi.MatchEventsFeedRequest.prototype.setMatchUrnsList = function(value) {
+  return jspb.Message.setField(this, 2, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.bragi.MatchEventsFeedRequest} returns this
+ */
+proto.bragi.MatchEventsFeedRequest.prototype.addMatchUrns = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 2, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.bragi.MatchEventsFeedRequest} returns this
+ */
+proto.bragi.MatchEventsFeedRequest.prototype.clearMatchUrnsList = function() {
+  return this.setMatchUrnsList([]);
 };
 
 
@@ -1036,14 +1142,15 @@ proto.bragi.MatchEventsFeedRequest.serializeBinaryToWriter = function(message, w
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.bragi.MatchEventsFeedMessage.oneofGroups_ = [[1]];
+proto.bragi.MatchEventsFeedMessage.oneofGroups_ = [[1,2]];
 
 /**
  * @enum {number}
  */
 proto.bragi.MatchEventsFeedMessage.PayloadCase = {
   PAYLOAD_NOT_SET: 0,
-  CS2: 1
+  CS2: 1,
+  DOTA2: 2
 };
 
 /**
@@ -1084,7 +1191,8 @@ proto.bragi.MatchEventsFeedMessage.prototype.toObject = function(opt_includeInst
  */
 proto.bragi.MatchEventsFeedMessage.toObject = function(includeInstance, msg) {
   var f, obj = {
-cs2: (f = msg.getCs2()) && bragi_cs2_pb.CS2MatchEvents.toObject(includeInstance, f)
+cs2: (f = msg.getCs2()) && bragi_cs2_pb.CS2MatchEvents.toObject(includeInstance, f),
+dota2: (f = msg.getDota2()) && bragi_dota2_pb.Dota2MatchEvents.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1126,6 +1234,11 @@ proto.bragi.MatchEventsFeedMessage.deserializeBinaryFromReader = function(msg, r
       reader.readMessage(value,bragi_cs2_pb.CS2MatchEvents.deserializeBinaryFromReader);
       msg.setCs2(value);
       break;
+    case 2:
+      var value = new bragi_dota2_pb.Dota2MatchEvents;
+      reader.readMessage(value,bragi_dota2_pb.Dota2MatchEvents.deserializeBinaryFromReader);
+      msg.setDota2(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1161,6 +1274,14 @@ proto.bragi.MatchEventsFeedMessage.serializeBinaryToWriter = function(message, w
       1,
       f,
       bragi_cs2_pb.CS2MatchEvents.serializeBinaryToWriter
+    );
+  }
+  f = message.getDota2();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      bragi_dota2_pb.Dota2MatchEvents.serializeBinaryToWriter
     );
   }
 };
@@ -1200,6 +1321,43 @@ proto.bragi.MatchEventsFeedMessage.prototype.clearCs2 = function() {
  */
 proto.bragi.MatchEventsFeedMessage.prototype.hasCs2 = function() {
   return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional Dota2MatchEvents dota2 = 2;
+ * @return {?proto.bragi.Dota2MatchEvents}
+ */
+proto.bragi.MatchEventsFeedMessage.prototype.getDota2 = function() {
+  return /** @type{?proto.bragi.Dota2MatchEvents} */ (
+    jspb.Message.getWrapperField(this, bragi_dota2_pb.Dota2MatchEvents, 2));
+};
+
+
+/**
+ * @param {?proto.bragi.Dota2MatchEvents|undefined} value
+ * @return {!proto.bragi.MatchEventsFeedMessage} returns this
+*/
+proto.bragi.MatchEventsFeedMessage.prototype.setDota2 = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 2, proto.bragi.MatchEventsFeedMessage.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.bragi.MatchEventsFeedMessage} returns this
+ */
+proto.bragi.MatchEventsFeedMessage.prototype.clearDota2 = function() {
+  return this.setDota2(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.bragi.MatchEventsFeedMessage.prototype.hasDota2 = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 

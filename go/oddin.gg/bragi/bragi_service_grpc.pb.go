@@ -57,7 +57,8 @@ type BragiClient interface {
 	MatchTimelineFeed(ctx context.Context, in *MatchTimelineFeedRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[MatchTimelineFeedMessage], error)
 	// LiveDataFeed gRPC stream returning LiveDataFeedMessage one direction stream
 	LiveDataFeed(ctx context.Context, in *LiveDataFeedRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[LiveDataFeedMessage], error)
-	// Sends all historical events for currently played matches, then only real-time updates
+	// Sends all historical events for currently played matches, then only real-time updates.
+	// Carries CS2, CS2 Duels and Dota 2 events. MatchEventsFeedRequest filters by sport and by match; an event must pass both.
 	MatchEventsFeed(ctx context.Context, in *MatchEventsFeedRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[MatchEventsFeedMessage], error)
 }
 
@@ -231,7 +232,8 @@ type BragiServer interface {
 	MatchTimelineFeed(*MatchTimelineFeedRequest, grpc.ServerStreamingServer[MatchTimelineFeedMessage]) error
 	// LiveDataFeed gRPC stream returning LiveDataFeedMessage one direction stream
 	LiveDataFeed(*LiveDataFeedRequest, grpc.ServerStreamingServer[LiveDataFeedMessage]) error
-	// Sends all historical events for currently played matches, then only real-time updates
+	// Sends all historical events for currently played matches, then only real-time updates.
+	// Carries CS2, CS2 Duels and Dota 2 events. MatchEventsFeedRequest filters by sport and by match; an event must pass both.
 	MatchEventsFeed(*MatchEventsFeedRequest, grpc.ServerStreamingServer[MatchEventsFeedMessage]) error
 	mustEmbedUnimplementedBragiServer()
 }

@@ -51,7 +51,8 @@ service Bragi {
   // LiveDataFeed gRPC stream returning LiveDataFeedMessage one direction stream
   rpc LiveDataFeed(LiveDataFeedRequest) returns (stream LiveDataFeedMessage) {}
 
-  // Sends all historical events for currently played matches, then only real-time updates
+  // Sends all historical events for currently played matches, then only real-time updates.
+  // Carries CS2, CS2 Duels and Dota 2 events. MatchEventsFeedRequest filters by sport and by match; an event must pass both.
   rpc MatchEventsFeed(MatchEventsFeedRequest) returns (stream MatchEventsFeedMessage) {}
 }
 
@@ -63,11 +64,19 @@ message TeamProfileResponse {
   TeamProfile team = 1;
 }
 
-message MatchEventsFeedRequest {}
+message MatchEventsFeedRequest {
+  // Sports to receive events for; empty means all. Only SPORT_CS2, SPORT_CS2_DUELS (same cs2 payload, list it separately)
+  // and SPORT_DOTA2 have events; other sports give an empty stream. SPORT_UNSPECIFIED fails with INVALID_ARGUMENT.
+  repeated Sport sports = 1;
+  // Match URNs to receive events for; empty means all. An unparsable URN fails with INVALID_ARGUMENT.
+  // A valid URN of a match without events gives no messages.
+  repeated string match_urns = 2;
+}
 
 message MatchEventsFeedMessage {
   oneof payload {
     CS2MatchEvents cs2 = 1;
+    Dota2MatchEvents dota2 = 2;
   }
 }
 
