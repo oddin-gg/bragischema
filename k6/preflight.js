@@ -10,7 +10,8 @@
 // stdout, which the runner greps for:
 //
 //   BRAGI_PREFLIGHT_AUTH_FAILED   token rejected (gRPC 7 PermissionDenied /
-//                                 16 Unauthenticated) — stop, don't run tests
+//                                 16 Unauthenticated / 3 InvalidArgument
+//                                 naming the token) — stop, don't run tests
 //   BRAGI_PREFLIGHT_UNREACHABLE   endpoint not reachable (VPN down, wrong addr)
 //   BRAGI_PREFLIGHT_OK            token accepted — proceed
 //
@@ -76,7 +77,14 @@ export default function () {
 
     // 7 = PermissionDenied, 16 = Unauthenticated. Both mean "the token, not the
     // product" -- but only if they persist. Retry before believing it.
-    if (res.status === grpc.StatusPermissionDenied || res.status === grpc.StatusUnauthenticated) {
+    // Bragi also answers an unknown token with 3 = InvalidArgument "token is
+    // not valid" (seen 2026-10-09), which is the same verdict.
+    const message = (res.error && res.error.message) || '';
+    const tokenRejected =
+      res.status === grpc.StatusPermissionDenied ||
+      res.status === grpc.StatusUnauthenticated ||
+      (res.status === grpc.StatusInvalidArgument && /token/i.test(message));
+    if (tokenRejected) {
       lastAuthDetail = `gRPC ${res.status}: ${(res.error && res.error.message) || 'access denied'}`;
       client.close();
       if (attempt < ATTEMPTS) {
