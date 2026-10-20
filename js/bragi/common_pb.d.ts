@@ -242,6 +242,11 @@ export class Match extends jspb.Message {
   setVideoStreamsList(value: Array<VideoStream>): void;
   addVideoStreams(value?: VideoStream, index?: number): VideoStream;
 
+  hasCancelReason(): boolean;
+  clearCancelReason(): void;
+  getCancelReason(): MatchCancelReason | undefined;
+  setCancelReason(value?: MatchCancelReason): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Match.AsObject;
   static toObject(includeInstance: boolean, msg: Match): Match.AsObject;
@@ -268,6 +273,33 @@ export namespace Match {
     playersList: Array<Player.AsObject>,
     bestOfType: BestOfTypeMap[keyof BestOfTypeMap],
     videoStreamsList: Array<VideoStream.AsObject>,
+    cancelReason?: MatchCancelReason.AsObject,
+  }
+}
+
+export class MatchCancelReason extends jspb.Message {
+  getType(): MatchCancelReasonTypeMap[keyof MatchCancelReasonTypeMap];
+  setType(value: MatchCancelReasonTypeMap[keyof MatchCancelReasonTypeMap]): void;
+
+  hasTeamUrn(): boolean;
+  clearTeamUrn(): void;
+  getTeamUrn(): string;
+  setTeamUrn(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MatchCancelReason.AsObject;
+  static toObject(includeInstance: boolean, msg: MatchCancelReason): MatchCancelReason.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MatchCancelReason, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MatchCancelReason;
+  static deserializeBinaryFromReader(message: MatchCancelReason, reader: jspb.BinaryReader): MatchCancelReason;
+}
+
+export namespace MatchCancelReason {
+  export type AsObject = {
+    type: MatchCancelReasonTypeMap[keyof MatchCancelReasonTypeMap],
+    teamUrn: string,
   }
 }
 
@@ -609,6 +641,18 @@ export interface MatchStatusTypeMap {
 }
 
 export const MatchStatusType: MatchStatusTypeMap;
+
+export interface MatchCancelReasonTypeMap {
+  MATCH_CANCEL_REASON_TYPE_UNSPECIFIED: 0;
+  MATCH_CANCEL_REASON_TYPE_FORFEIT: 1;
+  MATCH_CANCEL_REASON_TYPE_WITHDRAWAL: 2;
+  MATCH_CANCEL_REASON_TYPE_POSTPONED: 3;
+  MATCH_CANCEL_REASON_TYPE_FORMAT: 4;
+  MATCH_CANCEL_REASON_TYPE_SCHEDULE_CHANGE: 5;
+  MATCH_CANCEL_REASON_TYPE_OTHER: 6;
+}
+
+export const MatchCancelReasonType: MatchCancelReasonTypeMap;
 
 export interface DataStatusMap {
   DATA_STATUS_UNSPECIFIED: 0;
