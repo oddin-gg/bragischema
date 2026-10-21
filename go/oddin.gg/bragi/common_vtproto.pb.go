@@ -176,6 +176,7 @@ func (m *Match) CloneVT() *Match {
 	r.PlannetStart = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.PlannetStart).CloneVT())
 	r.Tournament = m.Tournament.CloneVT()
 	r.BestOfType = m.BestOfType
+	r.CancelReason = m.CancelReason.CloneVT()
 	if rhs := m.Teams; rhs != nil {
 		tmpContainer := make([]*Team, len(rhs))
 		for k, v := range rhs {
@@ -205,6 +206,27 @@ func (m *Match) CloneVT() *Match {
 }
 
 func (m *Match) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *MatchCancelReason) CloneVT() *MatchCancelReason {
+	if m == nil {
+		return (*MatchCancelReason)(nil)
+	}
+	r := new(MatchCancelReason)
+	r.Type = m.Type
+	if rhs := m.TeamUrn; rhs != nil {
+		tmpVal := *rhs
+		r.TeamUrn = &tmpVal
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *MatchCancelReason) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
@@ -724,11 +746,36 @@ func (this *Match) EqualVT(that *Match) bool {
 			}
 		}
 	}
+	if !this.CancelReason.EqualVT(that.CancelReason) {
+		return false
+	}
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
 func (this *Match) EqualMessageVT(thatMsg proto.Message) bool {
 	that, ok := thatMsg.(*Match)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *MatchCancelReason) EqualVT(that *MatchCancelReason) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.Type != that.Type {
+		return false
+	}
+	if p, q := this.TeamUrn, that.TeamUrn; (p == nil && q != nil) || (p != nil && (q == nil || *p != *q)) {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *MatchCancelReason) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*MatchCancelReason)
 	if !ok {
 		return false
 	}

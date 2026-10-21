@@ -69,6 +69,19 @@ message Match {
   BestOfType best_of_type = 13;
   // Public video streams of the match, ordered by id; empty when none are available.
   repeated VideoStream video_streams = 14;
+  // Why the match was cancelled. Set only when match_status is MATCH_STATUS_TYPE_CANCELED and the
+  // cancellation was recorded with a reason; unset otherwise, including for a match that is sent as
+  // CANCELED because it was deleted or withdrawn from the live offer.
+  MatchCancelReason cancel_reason = 15;
+}
+
+// MatchCancelReason is the public reason a match was cancelled. It is shared by every feed that
+// reports a cancelled match.
+message MatchCancelReason {
+  MatchCancelReasonType type = 1;
+  // URN of the team the reason names, in format e.g. 'od:team:123'. Currently set only for
+  // MATCH_CANCEL_REASON_TYPE_FORFEIT, as the team that forfeited, and only when that team is known.
+  optional string team_urn = 2;
 }
 
 message Tournament {
@@ -196,6 +209,23 @@ enum MatchStatusType {
   MATCH_STATUS_TYPE_FINISHED = 3;
   MATCH_STATUS_TYPE_CANCELED = 4;
   MATCH_STATUS_TYPE_PLACEHOLDER = 5;
+}
+
+enum MatchCancelReasonType {
+  // No reason was recorded.
+  MATCH_CANCEL_REASON_TYPE_UNSPECIFIED = 0;
+  // A team forfeited the match. MatchCancelReason.team_urn names the team when it is known.
+  MATCH_CANCEL_REASON_TYPE_FORFEIT = 1;
+  // A team withdrew from the tournament.
+  MATCH_CANCEL_REASON_TYPE_WITHDRAWAL = 2;
+  // The match was rescheduled more than 24 hours away or to an unknown date.
+  MATCH_CANCEL_REASON_TYPE_POSTPONED = 3;
+  // The format of the match changed.
+  MATCH_CANCEL_REASON_TYPE_FORMAT = 4;
+  // The schedule changed, e.g. to different matchups.
+  MATCH_CANCEL_REASON_TYPE_SCHEDULE_CHANGE = 5;
+  // Any other reason, including reasons added after this version of the schema.
+  MATCH_CANCEL_REASON_TYPE_OTHER = 6;
 }
 
 enum DataStatus {
