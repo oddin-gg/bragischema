@@ -278,6 +278,7 @@ func (m *RushSoccerMatchState) CloneVT() *RushSoccerMatchState {
 	r.CurrentMap = m.CurrentMap.CloneVT()
 	r.BallState = m.BallState.CloneVT()
 	r.PossessionStatistics = m.PossessionStatistics.CloneVT()
+	r.Regulation = m.Regulation.CloneVT()
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -286,6 +287,24 @@ func (m *RushSoccerMatchState) CloneVT() *RushSoccerMatchState {
 }
 
 func (m *RushSoccerMatchState) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *RushSoccerRegulation) CloneVT() *RushSoccerRegulation {
+	if m == nil {
+		return (*RushSoccerRegulation)(nil)
+	}
+	r := new(RushSoccerRegulation)
+	r.PeriodLength = (*durationpb.Duration)((*durationpb1.Duration)(m.PeriodLength).CloneVT())
+	r.Periods = m.Periods
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *RushSoccerRegulation) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
@@ -1200,11 +1219,36 @@ func (this *RushSoccerMatchState) EqualVT(that *RushSoccerMatchState) bool {
 	if !this.PossessionStatistics.EqualVT(that.PossessionStatistics) {
 		return false
 	}
+	if !this.Regulation.EqualVT(that.Regulation) {
+		return false
+	}
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
 func (this *RushSoccerMatchState) EqualMessageVT(thatMsg proto.Message) bool {
 	that, ok := thatMsg.(*RushSoccerMatchState)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *RushSoccerRegulation) EqualVT(that *RushSoccerRegulation) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if !(*durationpb1.Duration)(this.PeriodLength).EqualVT((*durationpb1.Duration)(that.PeriodLength)) {
+		return false
+	}
+	if this.Periods != that.Periods {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *RushSoccerRegulation) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*RushSoccerRegulation)
 	if !ok {
 		return false
 	}
