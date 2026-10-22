@@ -320,6 +320,11 @@ export class RushSoccerMatchState extends jspb.Message {
   getPossessionStatistics(): RushSoccerPossessionStatisticsState | undefined;
   setPossessionStatistics(value?: RushSoccerPossessionStatisticsState): void;
 
+  hasRegulation(): boolean;
+  clearRegulation(): void;
+  getRegulation(): RushSoccerRegulation | undefined;
+  setRegulation(value?: RushSoccerRegulation): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RushSoccerMatchState.AsObject;
   static toObject(includeInstance: boolean, msg: RushSoccerMatchState): RushSoccerMatchState.AsObject;
@@ -342,6 +347,33 @@ export namespace RushSoccerMatchState {
     currentMap?: RushSoccerCurrentMapState.AsObject,
     ballState?: RushSoccerBallState.AsObject,
     possessionStatistics?: RushSoccerPossessionStatisticsState.AsObject,
+    regulation?: RushSoccerRegulation.AsObject,
+  }
+}
+
+export class RushSoccerRegulation extends jspb.Message {
+  hasPeriodLength(): boolean;
+  clearPeriodLength(): void;
+  getPeriodLength(): google_protobuf_duration_pb.Duration | undefined;
+  setPeriodLength(value?: google_protobuf_duration_pb.Duration): void;
+
+  getPeriods(): number;
+  setPeriods(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RushSoccerRegulation.AsObject;
+  static toObject(includeInstance: boolean, msg: RushSoccerRegulation): RushSoccerRegulation.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: RushSoccerRegulation, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RushSoccerRegulation;
+  static deserializeBinaryFromReader(message: RushSoccerRegulation, reader: jspb.BinaryReader): RushSoccerRegulation;
+}
+
+export namespace RushSoccerRegulation {
+  export type AsObject = {
+    periodLength?: google_protobuf_duration_pb.Duration.AsObject,
+    periods: number,
   }
 }
 
