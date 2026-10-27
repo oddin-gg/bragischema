@@ -724,10 +724,9 @@ type RushSoccerMatchState struct {
 	// Cumulative possession share per team. Always set on newly built states; percentages and the
 	// attributed-seconds accumulators update at tick frequency via the possession_statistics partial update.
 	PossessionStatistics *RushSoccerPossessionStatisticsState `protobuf:"bytes,10,opt,name=possession_statistics,json=possessionStatistics,proto3" json:"possession_statistics,omitempty"`
-	// Nominal game-clock geometry for this match. Always set on newly built states.
-	Regulation    *RushSoccerRegulation `protobuf:"bytes,11,opt,name=regulation,proto3" json:"regulation,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	Regulation           *RushSoccerRegulation                `protobuf:"bytes,11,opt,name=regulation,proto3" json:"regulation,omitempty"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
 }
 
 func (x *RushSoccerMatchState) Reset() {
@@ -837,19 +836,12 @@ func (x *RushSoccerMatchState) GetRegulation() *RushSoccerRegulation {
 	return nil
 }
 
-// Nominal lengths on the game clock, published so consumers do not hardcode them. They depend on the
-// tournament's subsport: eFootball plays 2 x 45 minutes, Volta 2 x 3 minutes. The source states them only in
-// its setup and never per match, so these are asserted rather than observed. Added time can run the game clock
-// past a half's nominal end; regulation time is periods x period_length.
-//
-// Carried on the match state rather than on the game time, since it is constant for a match and would
-// otherwise ride every clock tick.
+// Nominal game-clock lengths, set by the tournament's subsport: eFootball 2 x 45 min, Volta 2 x 3 min.
+// Added time can run the clock past a half's nominal end.
 type RushSoccerRegulation struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Length of one period on the game clock.
-	PeriodLength *durationpb.Duration `protobuf:"bytes,1,opt,name=period_length,json=periodLength,proto3" json:"period_length,omitempty"`
-	// Number of periods in regulation.
-	Periods       uint32 `protobuf:"varint,2,opt,name=periods,proto3" json:"periods,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PeriodLength  *durationpb.Duration   `protobuf:"bytes,1,opt,name=period_length,json=periodLength,proto3" json:"period_length,omitempty"`
+	Periods       uint32                 `protobuf:"varint,2,opt,name=periods,proto3" json:"periods,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
