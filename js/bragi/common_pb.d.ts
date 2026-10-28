@@ -418,6 +418,9 @@ export class VideoStream extends jspb.Message {
   getLanguage(): string;
   setLanguage(value: string): void;
 
+  getPlatform(): string;
+  setPlatform(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): VideoStream.AsObject;
   static toObject(includeInstance: boolean, msg: VideoStream): VideoStream.AsObject;
@@ -432,6 +435,7 @@ export namespace VideoStream {
   export type AsObject = {
     url: string,
     language: string,
+    platform: string,
   }
 }
 

@@ -299,6 +299,7 @@ func (m *VideoStream) CloneVT() *VideoStream {
 	r := new(VideoStream)
 	r.Url = m.Url
 	r.Language = m.Language
+	r.Platform = m.Platform
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -881,6 +882,9 @@ func (this *VideoStream) EqualVT(that *VideoStream) bool {
 		return false
 	}
 	if this.Language != that.Language {
+		return false
+	}
+	if this.Platform != that.Platform {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
