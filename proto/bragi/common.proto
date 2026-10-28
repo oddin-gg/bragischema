@@ -119,6 +119,12 @@ message VideoStream {
   // two-letter codes such as "en", but not strictly (e.g. "br" = Brazilian Portuguese,
   // "aa" = Arabic). Empty when the language is unknown.
   string language = 2;
+  // Platform hosting the stream, derived from the URL's host: one of "twitch", "youtube",
+  // "kick", "gjirafa" (Gjirafa VP Player, vpplayer.tech), "huya", "douyu", "bilibili",
+  // "soop" (formerly AfreecaTV), "facebook", "trovo", "douyin", "weibo", "qq", "onlive",
+  // "garena", "vidio" or "vk". Empty when the host is not a recognised platform. More
+  // values may be added later, so treat an unknown value like an empty one.
+  string platform = 3;
 }
 
 message ExternalIdentityList {

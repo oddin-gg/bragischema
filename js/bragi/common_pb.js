@@ -3268,7 +3268,8 @@ proto.bragi.VideoStream.prototype.toObject = function(opt_includeInstance) {
 proto.bragi.VideoStream.toObject = function(includeInstance, msg) {
   var f, obj = {
 url: jspb.Message.getFieldWithDefault(msg, 1, ""),
-language: jspb.Message.getFieldWithDefault(msg, 2, "")
+language: jspb.Message.getFieldWithDefault(msg, 2, ""),
+platform: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -3313,6 +3314,10 @@ proto.bragi.VideoStream.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {string} */ (reader.readString());
       msg.setLanguage(value);
       break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPlatform(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -3356,6 +3361,13 @@ proto.bragi.VideoStream.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getPlatform();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -3392,6 +3404,24 @@ proto.bragi.VideoStream.prototype.getLanguage = function() {
  */
 proto.bragi.VideoStream.prototype.setLanguage = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string platform = 3;
+ * @return {string}
+ */
+proto.bragi.VideoStream.prototype.getPlatform = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.bragi.VideoStream} returns this
+ */
+proto.bragi.VideoStream.prototype.setPlatform = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
