@@ -116,6 +116,14 @@ message RushSoccerMatchState {
   // Cumulative possession share per team. Always set on newly built states; percentages and the
   // attributed-seconds accumulators update at tick frequency via the possession_statistics partial update.
   RushSoccerPossessionStatisticsState possession_statistics = 10;
+  RushSoccerRegulation regulation = 11;
+}
+
+// Nominal game-clock lengths, set by the tournament's subsport: eFootball 2 x 45 min, Volta 2 x 3 min.
+// Added time can run the clock past a half's nominal end.
+message RushSoccerRegulation {
+  google.protobuf.Duration period_length = 1;
+  uint32 periods = 2;
 }
 
 message RushSoccerMatchScoreState {
