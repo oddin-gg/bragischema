@@ -323,6 +323,7 @@ message Dota2PlayerCurrentMapStatisticsState {
   uint32 net_worth = 6;
   // How much gold you need to spend to use buyback.
   uint32 buyback_cost = 7;
+  // True when the player can buy back now (dead) or after dying now (alive). False during the buyback cooldown.
   bool has_buyback = 8;
   bool has_aegis = 9;
   uint32 mana = 10;
@@ -336,6 +337,8 @@ message Dota2PlayerCurrentMapStatisticsState {
   // Number of killed creeps.
   uint32 last_hits = 15;
   uint32 level = 16;
+  // Gold the player still needs for a buyback, 0 when the gold suffices. Independent of the buyback cooldown.
+  uint32 buyback_gold_needed = 17;
 }
 
 message Dota2PlayerCurrentMapTimersState {
