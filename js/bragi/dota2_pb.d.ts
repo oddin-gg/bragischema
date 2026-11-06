@@ -1155,8 +1155,8 @@ export class Dota2PlayerCurrentMapStatisticsState extends jspb.Message {
   getLevel(): number;
   setLevel(value: number): void;
 
-  getBuybackGoldNeeded(): number;
-  setBuybackGoldNeeded(value: number): void;
+  getBuybackMissingGold(): number;
+  setBuybackMissingGold(value: number): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Dota2PlayerCurrentMapStatisticsState.AsObject;
@@ -1186,7 +1186,7 @@ export namespace Dota2PlayerCurrentMapStatisticsState {
     denies: number,
     lastHits: number,
     level: number,
-    buybackGoldNeeded: number,
+    buybackMissingGold: number,
   }
 }
 

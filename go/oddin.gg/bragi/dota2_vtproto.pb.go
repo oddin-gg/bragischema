@@ -884,7 +884,7 @@ func (m *Dota2PlayerCurrentMapStatisticsState) CloneVT() *Dota2PlayerCurrentMapS
 	r.Denies = m.Denies
 	r.LastHits = m.LastHits
 	r.Level = m.Level
-	r.BuybackGoldNeeded = m.BuybackGoldNeeded
+	r.BuybackMissingGold = m.BuybackMissingGold
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -3429,7 +3429,7 @@ func (this *Dota2PlayerCurrentMapStatisticsState) EqualVT(that *Dota2PlayerCurre
 	if this.Level != that.Level {
 		return false
 	}
-	if this.BuybackGoldNeeded != that.BuybackGoldNeeded {
+	if this.BuybackMissingGold != that.BuybackMissingGold {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)

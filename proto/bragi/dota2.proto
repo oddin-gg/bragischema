@@ -337,8 +337,8 @@ message Dota2PlayerCurrentMapStatisticsState {
   // Number of killed creeps.
   uint32 last_hits = 15;
   uint32 level = 16;
-  // Gold the player still needs for a buyback, 0 when the gold suffices. Independent of the buyback cooldown.
-  uint32 buyback_gold_needed = 17;
+  // Gold still missing for a buyback now (dead) or after dying now (alive), 0 when the gold suffices. Independent of the buyback cooldown.
+  uint32 buyback_missing_gold = 17;
 }
 
 message Dota2PlayerCurrentMapTimersState {
