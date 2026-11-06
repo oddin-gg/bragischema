@@ -9229,7 +9229,8 @@ goldReliable: jspb.Message.getFieldWithDefault(msg, 12, 0),
 goldUnreliable: jspb.Message.getFieldWithDefault(msg, 13, 0),
 denies: jspb.Message.getFieldWithDefault(msg, 14, 0),
 lastHits: jspb.Message.getFieldWithDefault(msg, 15, 0),
-level: jspb.Message.getFieldWithDefault(msg, 16, 0)
+level: jspb.Message.getFieldWithDefault(msg, 16, 0),
+buybackMissingGold: jspb.Message.getFieldWithDefault(msg, 17, 0)
   };
 
   if (includeInstance) {
@@ -9329,6 +9330,10 @@ proto.bragi.Dota2PlayerCurrentMapStatisticsState.deserializeBinaryFromReader = f
     case 16:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setLevel(value);
+      break;
+    case 17:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setBuybackMissingGold(value);
       break;
     default:
       reader.skipField();
@@ -9468,6 +9473,13 @@ proto.bragi.Dota2PlayerCurrentMapStatisticsState.serializeBinaryToWriter = funct
   if (f !== 0) {
     writer.writeUint32(
       16,
+      f
+    );
+  }
+  f = message.getBuybackMissingGold();
+  if (f !== 0) {
+    writer.writeUint32(
+      17,
       f
     );
   }
@@ -9759,6 +9771,24 @@ proto.bragi.Dota2PlayerCurrentMapStatisticsState.prototype.getLevel = function()
  */
 proto.bragi.Dota2PlayerCurrentMapStatisticsState.prototype.setLevel = function(value) {
   return jspb.Message.setProto3IntField(this, 16, value);
+};
+
+
+/**
+ * optional uint32 buyback_missing_gold = 17;
+ * @return {number}
+ */
+proto.bragi.Dota2PlayerCurrentMapStatisticsState.prototype.getBuybackMissingGold = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 17, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.bragi.Dota2PlayerCurrentMapStatisticsState} returns this
+ */
+proto.bragi.Dota2PlayerCurrentMapStatisticsState.prototype.setBuybackMissingGold = function(value) {
+  return jspb.Message.setProto3IntField(this, 17, value);
 };
 
 
