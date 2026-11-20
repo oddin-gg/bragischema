@@ -1094,6 +1094,13 @@ func (m *Dota2Items) CloneVT() *Dota2Items {
 		}
 		r.Items = tmpContainer
 	}
+	if rhs := m.AdditionalUnitInventories; rhs != nil {
+		tmpContainer := make([]*Dota2UnitInventory, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.AdditionalUnitInventories = tmpContainer
+	}
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -1102,6 +1109,30 @@ func (m *Dota2Items) CloneVT() *Dota2Items {
 }
 
 func (m *Dota2Items) CloneMessageVT() proto.Message {
+	return m.CloneVT()
+}
+
+func (m *Dota2UnitInventory) CloneVT() *Dota2UnitInventory {
+	if m == nil {
+		return (*Dota2UnitInventory)(nil)
+	}
+	r := new(Dota2UnitInventory)
+	r.UnitName = m.UnitName
+	if rhs := m.Items; rhs != nil {
+		tmpContainer := make([]*Dota2Item, len(rhs))
+		for k, v := range rhs {
+			tmpContainer[k] = v.CloneVT()
+		}
+		r.Items = tmpContainer
+	}
+	if len(m.unknownFields) > 0 {
+		r.unknownFields = make([]byte, len(m.unknownFields))
+		copy(r.unknownFields, m.unknownFields)
+	}
+	return r
+}
+
+func (m *Dota2UnitInventory) CloneMessageVT() proto.Message {
 	return m.CloneVT()
 }
 
@@ -3736,11 +3767,64 @@ func (this *Dota2Items) EqualVT(that *Dota2Items) bool {
 			}
 		}
 	}
+	if len(this.AdditionalUnitInventories) != len(that.AdditionalUnitInventories) {
+		return false
+	}
+	for i, vx := range this.AdditionalUnitInventories {
+		vy := that.AdditionalUnitInventories[i]
+		if p, q := vx, vy; p != q {
+			if p == nil {
+				p = &Dota2UnitInventory{}
+			}
+			if q == nil {
+				q = &Dota2UnitInventory{}
+			}
+			if !p.EqualVT(q) {
+				return false
+			}
+		}
+	}
 	return string(this.unknownFields) == string(that.unknownFields)
 }
 
 func (this *Dota2Items) EqualMessageVT(thatMsg proto.Message) bool {
 	that, ok := thatMsg.(*Dota2Items)
+	if !ok {
+		return false
+	}
+	return this.EqualVT(that)
+}
+func (this *Dota2UnitInventory) EqualVT(that *Dota2UnitInventory) bool {
+	if this == that {
+		return true
+	} else if this == nil || that == nil {
+		return false
+	}
+	if this.UnitName != that.UnitName {
+		return false
+	}
+	if len(this.Items) != len(that.Items) {
+		return false
+	}
+	for i, vx := range this.Items {
+		vy := that.Items[i]
+		if p, q := vx, vy; p != q {
+			if p == nil {
+				p = &Dota2Item{}
+			}
+			if q == nil {
+				q = &Dota2Item{}
+			}
+			if !p.EqualVT(q) {
+				return false
+			}
+		}
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *Dota2UnitInventory) EqualMessageVT(thatMsg proto.Message) bool {
+	that, ok := thatMsg.(*Dota2UnitInventory)
 	if !ok {
 		return false
 	}

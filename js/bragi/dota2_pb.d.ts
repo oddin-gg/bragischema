@@ -1453,6 +1453,11 @@ export class Dota2Items extends jspb.Message {
   setItemsList(value: Array<Dota2Item>): void;
   addItems(value?: Dota2Item, index?: number): Dota2Item;
 
+  clearAdditionalUnitInventoriesList(): void;
+  getAdditionalUnitInventoriesList(): Array<Dota2UnitInventory>;
+  setAdditionalUnitInventoriesList(value: Array<Dota2UnitInventory>): void;
+  addAdditionalUnitInventories(value?: Dota2UnitInventory, index?: number): Dota2UnitInventory;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Dota2Items.AsObject;
   static toObject(includeInstance: boolean, msg: Dota2Items): Dota2Items.AsObject;
@@ -1465,6 +1470,33 @@ export class Dota2Items extends jspb.Message {
 
 export namespace Dota2Items {
   export type AsObject = {
+    itemsList: Array<Dota2Item.AsObject>,
+    additionalUnitInventoriesList: Array<Dota2UnitInventory.AsObject>,
+  }
+}
+
+export class Dota2UnitInventory extends jspb.Message {
+  getUnitName(): string;
+  setUnitName(value: string): void;
+
+  clearItemsList(): void;
+  getItemsList(): Array<Dota2Item>;
+  setItemsList(value: Array<Dota2Item>): void;
+  addItems(value?: Dota2Item, index?: number): Dota2Item;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dota2UnitInventory.AsObject;
+  static toObject(includeInstance: boolean, msg: Dota2UnitInventory): Dota2UnitInventory.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dota2UnitInventory, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dota2UnitInventory;
+  static deserializeBinaryFromReader(message: Dota2UnitInventory, reader: jspb.BinaryReader): Dota2UnitInventory;
+}
+
+export namespace Dota2UnitInventory {
+  export type AsObject = {
+    unitName: string,
     itemsList: Array<Dota2Item.AsObject>,
   }
 }
