@@ -397,6 +397,17 @@ message Dota2Abilities {
 
 message Dota2Items {
   repeated Dota2Item items = 1;
+  // Items of other units the player controls. Today only Lone Druid's Spirit Bear ("npc_dota_lone_druid_bear").
+  // Empty for other heroes and when the data source does not report the unit, for example during the draft.
+  repeated Dota2UnitInventory additional_unit_inventories = 2;
+}
+
+message Dota2UnitInventory {
+  // Unit name, for example "npc_dota_lone_druid_bear".
+  string unit_name = 1;
+  // Items of the unit. They use the same positions as the hero's items.
+  // Today the neutral item repeats the hero's neutral item.
+  repeated Dota2Item items = 2;
 }
 
 message Dota2Item {
