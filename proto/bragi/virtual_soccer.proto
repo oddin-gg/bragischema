@@ -195,10 +195,14 @@ message VirtualSoccerTimelineEvent {
   VirtualSoccerPeriod period = 5;
   // Ball position at the tick the event was first observed; unset when unknown (ball tracking was stale at
   // that tick, or the event predates the state the builder resumed from - positions are never backfilled).
+  // On POTENTIAL_GOAL it is the last ball position seen before the goal was first detected, when one was seen.
   VirtualSoccerPitchPosition position = 6;
   // When this event was first observed, not the in-game moment it occurred - upstream sends no
   // such value. Unset on events first observed before this field existed.
   google.protobuf.Timestamp timestamp = 7;
+  // Set only on POTENTIAL_GOAL. The entry keeps its team and times while its state changes, so a later
+  // timeline shows the same entry as CONFIRMED or CANCELLED instead of adding a new one.
+  VirtualSoccerPotentialGoalState potential_goal_state = 8;
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -332,6 +336,20 @@ enum VirtualSoccerEventType {
   // together with ATTACK. Set pieces taken in the final third increment the dangerous_attacks counter only
   // and keep their own event type in the timeline.
   VIRTUAL_SOCCER_EVENT_TYPE_DANGEROUS_ATTACK = 11;
+  // Early goal detection, sent before the score shows the goal. It never changes the score
+  // or the goal counters: a confirmed goal still comes as its own GOAL event. See potential_goal_state.
+  VIRTUAL_SOCCER_EVENT_TYPE_POTENTIAL_GOAL = 12;
+}
+
+enum VirtualSoccerPotentialGoalState {
+  VIRTUAL_SOCCER_POTENTIAL_GOAL_STATE_UNSPECIFIED = 0;
+  // A goal is detected and the team's score has not gone up yet.
+  VIRTUAL_SOCCER_POTENTIAL_GOAL_STATE_PENDING = 1;
+  // The team's score went up.
+  VIRTUAL_SOCCER_POTENTIAL_GOAL_STATE_CONFIRMED = 2;
+  // A false alarm: the score did not go up in time, the half or the match ended first, or the goal that
+  // confirmed it was taken back.
+  VIRTUAL_SOCCER_POTENTIAL_GOAL_STATE_CANCELLED = 3;
 }
 
 enum VirtualSoccerPossessionSide {

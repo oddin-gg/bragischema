@@ -567,6 +567,9 @@ export class VirtualSoccerTimelineEvent extends jspb.Message {
   getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
 
+  getPotentialGoalState(): VirtualSoccerPotentialGoalStateMap[keyof VirtualSoccerPotentialGoalStateMap];
+  setPotentialGoalState(value: VirtualSoccerPotentialGoalStateMap[keyof VirtualSoccerPotentialGoalStateMap]): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): VirtualSoccerTimelineEvent.AsObject;
   static toObject(includeInstance: boolean, msg: VirtualSoccerTimelineEvent): VirtualSoccerTimelineEvent.AsObject;
@@ -586,6 +589,7 @@ export namespace VirtualSoccerTimelineEvent {
     period: VirtualSoccerPeriodMap[keyof VirtualSoccerPeriodMap],
     position?: VirtualSoccerPitchPosition.AsObject,
     timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    potentialGoalState: VirtualSoccerPotentialGoalStateMap[keyof VirtualSoccerPotentialGoalStateMap],
   }
 }
 
@@ -925,9 +929,19 @@ export interface VirtualSoccerEventTypeMap {
   VIRTUAL_SOCCER_EVENT_TYPE_SHOT_OFF_TARGET: 9;
   VIRTUAL_SOCCER_EVENT_TYPE_ATTACK: 10;
   VIRTUAL_SOCCER_EVENT_TYPE_DANGEROUS_ATTACK: 11;
+  VIRTUAL_SOCCER_EVENT_TYPE_POTENTIAL_GOAL: 12;
 }
 
 export const VirtualSoccerEventType: VirtualSoccerEventTypeMap;
+
+export interface VirtualSoccerPotentialGoalStateMap {
+  VIRTUAL_SOCCER_POTENTIAL_GOAL_STATE_UNSPECIFIED: 0;
+  VIRTUAL_SOCCER_POTENTIAL_GOAL_STATE_PENDING: 1;
+  VIRTUAL_SOCCER_POTENTIAL_GOAL_STATE_CONFIRMED: 2;
+  VIRTUAL_SOCCER_POTENTIAL_GOAL_STATE_CANCELLED: 3;
+}
+
+export const VirtualSoccerPotentialGoalState: VirtualSoccerPotentialGoalStateMap;
 
 export interface VirtualSoccerPossessionSideMap {
   VIRTUAL_SOCCER_POSSESSION_SIDE_UNSPECIFIED: 0;

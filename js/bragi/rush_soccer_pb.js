@@ -53,6 +53,7 @@ goog.exportSymbol('proto.bragi.RushSoccerPlayerCurrentMapState', null, global);
 goog.exportSymbol('proto.bragi.RushSoccerPossessionSide', null, global);
 goog.exportSymbol('proto.bragi.RushSoccerPossessionStatisticsState', null, global);
 goog.exportSymbol('proto.bragi.RushSoccerPossessionStatisticsState.Values', null, global);
+goog.exportSymbol('proto.bragi.RushSoccerPotentialGoalState', null, global);
 goog.exportSymbol('proto.bragi.RushSoccerRegulation', null, global);
 goog.exportSymbol('proto.bragi.RushSoccerTeamCurrentMapState', null, global);
 goog.exportSymbol('proto.bragi.RushSoccerTeamCurrentMapStatePartialUpdate', null, global);
@@ -4668,7 +4669,8 @@ realTime: (f = msg.getRealTime()) && google_protobuf_duration_pb.Duration.toObje
 gameTime: (f = msg.getGameTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
 period: jspb.Message.getFieldWithDefault(msg, 5, 0),
 position: (f = msg.getPosition()) && proto.bragi.RushSoccerPitchPosition.toObject(includeInstance, f),
-timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+potentialGoalState: jspb.Message.getFieldWithDefault(msg, 8, 0)
   };
 
   if (includeInstance) {
@@ -4736,6 +4738,10 @@ proto.bragi.RushSoccerTimelineEvent.deserializeBinaryFromReader = function(msg, 
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setTimestamp(value);
+      break;
+    case 8:
+      var value = /** @type {!proto.bragi.RushSoccerPotentialGoalState} */ (reader.readEnum());
+      msg.setPotentialGoalState(value);
       break;
     default:
       reader.skipField();
@@ -4817,6 +4823,13 @@ proto.bragi.RushSoccerTimelineEvent.serializeBinaryToWriter = function(message, 
       7,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = message.getPotentialGoalState();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      8,
+      f
     );
   }
 };
@@ -5021,6 +5034,24 @@ proto.bragi.RushSoccerTimelineEvent.prototype.clearTimestamp = function() {
  */
 proto.bragi.RushSoccerTimelineEvent.prototype.hasTimestamp = function() {
   return jspb.Message.getField(this, 7) != null;
+};
+
+
+/**
+ * optional RushSoccerPotentialGoalState potential_goal_state = 8;
+ * @return {!proto.bragi.RushSoccerPotentialGoalState}
+ */
+proto.bragi.RushSoccerTimelineEvent.prototype.getPotentialGoalState = function() {
+  return /** @type {!proto.bragi.RushSoccerPotentialGoalState} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+};
+
+
+/**
+ * @param {!proto.bragi.RushSoccerPotentialGoalState} value
+ * @return {!proto.bragi.RushSoccerTimelineEvent} returns this
+ */
+proto.bragi.RushSoccerTimelineEvent.prototype.setPotentialGoalState = function(value) {
+  return jspb.Message.setProto3EnumField(this, 8, value);
 };
 
 
@@ -7564,7 +7595,18 @@ proto.bragi.RushSoccerEventType = {
   RUSH_SOCCER_EVENT_TYPE_SHOT_OFF_TARGET: 9,
   RUSH_SOCCER_EVENT_TYPE_ATTACK: 10,
   RUSH_SOCCER_EVENT_TYPE_DANGEROUS_ATTACK: 11,
-  RUSH_SOCCER_EVENT_TYPE_PERIOD_END: 12
+  RUSH_SOCCER_EVENT_TYPE_PERIOD_END: 12,
+  RUSH_SOCCER_EVENT_TYPE_POTENTIAL_GOAL: 13
+};
+
+/**
+ * @enum {number}
+ */
+proto.bragi.RushSoccerPotentialGoalState = {
+  RUSH_SOCCER_POTENTIAL_GOAL_STATE_UNSPECIFIED: 0,
+  RUSH_SOCCER_POTENTIAL_GOAL_STATE_PENDING: 1,
+  RUSH_SOCCER_POTENTIAL_GOAL_STATE_CONFIRMED: 2,
+  RUSH_SOCCER_POTENTIAL_GOAL_STATE_CANCELLED: 3
 };
 
 /**
