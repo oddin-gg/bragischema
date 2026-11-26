@@ -96,6 +96,9 @@ message Tournament {
   // match keeps its parent sport everywhere else. SUBSPORT_UNSPECIFIED for a plain
   // tournament of its sport.
   Subsport subsport = 8;
+  // Whether the tournament is published. TOURNAMENT_STATUS_TYPE_UNSPECIFIED is read as
+  // TOURNAMENT_STATUS_TYPE_PUBLISHED.
+  TournamentStatusType status = 9;
 }
 
 message Team {
@@ -195,6 +198,14 @@ enum Subsport {
   SUBSPORT_UNSPECIFIED = 0;
   // Volta, under SPORT_RUSH_SOCCER (eFootball).
   SUBSPORT_VOLTA = 1;
+}
+
+enum TournamentStatusType {
+  // No status was sent. Read it as TOURNAMENT_STATUS_TYPE_PUBLISHED.
+  TOURNAMENT_STATUS_TYPE_UNSPECIFIED = 0;
+  TOURNAMENT_STATUS_TYPE_PUBLISHED = 1;
+  // The tournament is a placeholder that has not been published yet.
+  TOURNAMENT_STATUS_TYPE_PLACEHOLDER = 2;
 }
 
 enum BestOfType {

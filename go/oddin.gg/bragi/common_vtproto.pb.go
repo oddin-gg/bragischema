@@ -243,6 +243,7 @@ func (m *Tournament) CloneVT() *Tournament {
 	r.OrganizerName = m.OrganizerName
 	r.EndDate = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.EndDate).CloneVT())
 	r.Subsport = m.Subsport
+	r.Status = m.Status
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -810,6 +811,9 @@ func (this *Tournament) EqualVT(that *Tournament) bool {
 		return false
 	}
 	if this.Subsport != that.Subsport {
+		return false
+	}
+	if this.Status != that.Status {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)
