@@ -332,6 +332,9 @@ export class Tournament extends jspb.Message {
   getSubsport(): SubsportMap[keyof SubsportMap];
   setSubsport(value: SubsportMap[keyof SubsportMap]): void;
 
+  getStatus(): TournamentStatusTypeMap[keyof TournamentStatusTypeMap];
+  setStatus(value: TournamentStatusTypeMap[keyof TournamentStatusTypeMap]): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Tournament.AsObject;
   static toObject(includeInstance: boolean, msg: Tournament): Tournament.AsObject;
@@ -352,6 +355,7 @@ export namespace Tournament {
     organizerName: string,
     endDate?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     subsport: SubsportMap[keyof SubsportMap],
+    status: TournamentStatusTypeMap[keyof TournamentStatusTypeMap],
   }
 }
 
@@ -621,6 +625,14 @@ export interface SubsportMap {
 }
 
 export const Subsport: SubsportMap;
+
+export interface TournamentStatusTypeMap {
+  TOURNAMENT_STATUS_TYPE_UNSPECIFIED: 0;
+  TOURNAMENT_STATUS_TYPE_PUBLISHED: 1;
+  TOURNAMENT_STATUS_TYPE_PLACEHOLDER: 2;
+}
+
+export const TournamentStatusType: TournamentStatusTypeMap;
 
 export interface BestOfTypeMap {
   BEST_OF_TYPE_UNSPECIFIED: 0;
