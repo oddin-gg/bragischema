@@ -599,6 +599,9 @@ export class RushSoccerTimelineEvent extends jspb.Message {
   getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
 
+  getPotentialGoalState(): RushSoccerPotentialGoalStateMap[keyof RushSoccerPotentialGoalStateMap];
+  setPotentialGoalState(value: RushSoccerPotentialGoalStateMap[keyof RushSoccerPotentialGoalStateMap]): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RushSoccerTimelineEvent.AsObject;
   static toObject(includeInstance: boolean, msg: RushSoccerTimelineEvent): RushSoccerTimelineEvent.AsObject;
@@ -618,6 +621,7 @@ export namespace RushSoccerTimelineEvent {
     period: RushSoccerPeriodMap[keyof RushSoccerPeriodMap],
     position?: RushSoccerPitchPosition.AsObject,
     timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    potentialGoalState: RushSoccerPotentialGoalStateMap[keyof RushSoccerPotentialGoalStateMap],
   }
 }
 
@@ -990,9 +994,19 @@ export interface RushSoccerEventTypeMap {
   RUSH_SOCCER_EVENT_TYPE_ATTACK: 10;
   RUSH_SOCCER_EVENT_TYPE_DANGEROUS_ATTACK: 11;
   RUSH_SOCCER_EVENT_TYPE_PERIOD_END: 12;
+  RUSH_SOCCER_EVENT_TYPE_POTENTIAL_GOAL: 13;
 }
 
 export const RushSoccerEventType: RushSoccerEventTypeMap;
+
+export interface RushSoccerPotentialGoalStateMap {
+  RUSH_SOCCER_POTENTIAL_GOAL_STATE_UNSPECIFIED: 0;
+  RUSH_SOCCER_POTENTIAL_GOAL_STATE_PENDING: 1;
+  RUSH_SOCCER_POTENTIAL_GOAL_STATE_CONFIRMED: 2;
+  RUSH_SOCCER_POTENTIAL_GOAL_STATE_CANCELLED: 3;
+}
+
+export const RushSoccerPotentialGoalState: RushSoccerPotentialGoalStateMap;
 
 export interface RushSoccerPossessionSideMap {
   RUSH_SOCCER_POSSESSION_SIDE_UNSPECIFIED: 0;

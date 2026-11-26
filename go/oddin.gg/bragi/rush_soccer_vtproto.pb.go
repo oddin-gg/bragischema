@@ -455,6 +455,7 @@ func (m *RushSoccerTimelineEvent) CloneVT() *RushSoccerTimelineEvent {
 	r.Period = m.Period
 	r.Position = m.Position.CloneVT()
 	r.Timestamp = (*timestamppb.Timestamp)((*timestamppb1.Timestamp)(m.Timestamp).CloneVT())
+	r.PotentialGoalState = m.PotentialGoalState
 	if len(m.unknownFields) > 0 {
 		r.unknownFields = make([]byte, len(m.unknownFields))
 		copy(r.unknownFields, m.unknownFields)
@@ -1456,6 +1457,9 @@ func (this *RushSoccerTimelineEvent) EqualVT(that *RushSoccerTimelineEvent) bool
 		return false
 	}
 	if !(*timestamppb1.Timestamp)(this.Timestamp).EqualVT((*timestamppb1.Timestamp)(that.Timestamp)) {
+		return false
+	}
+	if this.PotentialGoalState != that.PotentialGoalState {
 		return false
 	}
 	return string(this.unknownFields) == string(that.unknownFields)

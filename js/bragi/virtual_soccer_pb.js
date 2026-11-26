@@ -52,6 +52,7 @@ goog.exportSymbol('proto.bragi.VirtualSoccerPlayerCurrentMapState', null, global
 goog.exportSymbol('proto.bragi.VirtualSoccerPossessionSide', null, global);
 goog.exportSymbol('proto.bragi.VirtualSoccerPossessionStatisticsState', null, global);
 goog.exportSymbol('proto.bragi.VirtualSoccerPossessionStatisticsState.Values', null, global);
+goog.exportSymbol('proto.bragi.VirtualSoccerPotentialGoalState', null, global);
 goog.exportSymbol('proto.bragi.VirtualSoccerTeamCurrentMapState', null, global);
 goog.exportSymbol('proto.bragi.VirtualSoccerTeamCurrentMapStatePartialUpdate', null, global);
 goog.exportSymbol('proto.bragi.VirtualSoccerTeamCurrentMapStatePartialUpdate.Payload', null, global);
@@ -4413,7 +4414,8 @@ realTime: (f = msg.getRealTime()) && google_protobuf_duration_pb.Duration.toObje
 gameTime: (f = msg.getGameTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
 period: jspb.Message.getFieldWithDefault(msg, 5, 0),
 position: (f = msg.getPosition()) && proto.bragi.VirtualSoccerPitchPosition.toObject(includeInstance, f),
-timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+potentialGoalState: jspb.Message.getFieldWithDefault(msg, 8, 0)
   };
 
   if (includeInstance) {
@@ -4481,6 +4483,10 @@ proto.bragi.VirtualSoccerTimelineEvent.deserializeBinaryFromReader = function(ms
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setTimestamp(value);
+      break;
+    case 8:
+      var value = /** @type {!proto.bragi.VirtualSoccerPotentialGoalState} */ (reader.readEnum());
+      msg.setPotentialGoalState(value);
       break;
     default:
       reader.skipField();
@@ -4562,6 +4568,13 @@ proto.bragi.VirtualSoccerTimelineEvent.serializeBinaryToWriter = function(messag
       7,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = message.getPotentialGoalState();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      8,
+      f
     );
   }
 };
@@ -4766,6 +4779,24 @@ proto.bragi.VirtualSoccerTimelineEvent.prototype.clearTimestamp = function() {
  */
 proto.bragi.VirtualSoccerTimelineEvent.prototype.hasTimestamp = function() {
   return jspb.Message.getField(this, 7) != null;
+};
+
+
+/**
+ * optional VirtualSoccerPotentialGoalState potential_goal_state = 8;
+ * @return {!proto.bragi.VirtualSoccerPotentialGoalState}
+ */
+proto.bragi.VirtualSoccerTimelineEvent.prototype.getPotentialGoalState = function() {
+  return /** @type {!proto.bragi.VirtualSoccerPotentialGoalState} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+};
+
+
+/**
+ * @param {!proto.bragi.VirtualSoccerPotentialGoalState} value
+ * @return {!proto.bragi.VirtualSoccerTimelineEvent} returns this
+ */
+proto.bragi.VirtualSoccerTimelineEvent.prototype.setPotentialGoalState = function(value) {
+  return jspb.Message.setProto3EnumField(this, 8, value);
 };
 
 
@@ -7068,7 +7099,18 @@ proto.bragi.VirtualSoccerEventType = {
   VIRTUAL_SOCCER_EVENT_TYPE_SHOT_ON_TARGET: 8,
   VIRTUAL_SOCCER_EVENT_TYPE_SHOT_OFF_TARGET: 9,
   VIRTUAL_SOCCER_EVENT_TYPE_ATTACK: 10,
-  VIRTUAL_SOCCER_EVENT_TYPE_DANGEROUS_ATTACK: 11
+  VIRTUAL_SOCCER_EVENT_TYPE_DANGEROUS_ATTACK: 11,
+  VIRTUAL_SOCCER_EVENT_TYPE_POTENTIAL_GOAL: 12
+};
+
+/**
+ * @enum {number}
+ */
+proto.bragi.VirtualSoccerPotentialGoalState = {
+  VIRTUAL_SOCCER_POTENTIAL_GOAL_STATE_UNSPECIFIED: 0,
+  VIRTUAL_SOCCER_POTENTIAL_GOAL_STATE_PENDING: 1,
+  VIRTUAL_SOCCER_POTENTIAL_GOAL_STATE_CONFIRMED: 2,
+  VIRTUAL_SOCCER_POTENTIAL_GOAL_STATE_CANCELLED: 3
 };
 
 /**
